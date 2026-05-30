@@ -1,0 +1,6 @@
+{
+  "name": "SAT Prep Pro",
+  "description": "Hệ thống luyện đề thi thử SAT Digital thông minh tích hợp thẻ ghi nhớ và bảng vàng thi đua học thuật.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
