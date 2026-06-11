@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
-  ChevronLeft, ChevronRight, Grid, Flag, Timer, Eye, EyeOff, 
+  ChevronLeft, ChevronRight, Flag, Timer, Eye, EyeOff, 
   CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle
 } from 'lucide-react';
 import { Question, Passage, Theme } from '../types';
@@ -10,7 +10,7 @@ interface ActiveTestScreenProps {
   moduleId: string;
   moduleTitle: string;
   questions: Question[];
-  passage?: Passage; // present if reading, absent if math
+  passage?: Passage;
   onFinishTest: (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => void;
   onExit: () => void;
 }
@@ -26,14 +26,23 @@ export default function ActiveTestScreen({
 }: ActiveTestScreenProps) {
   const isDark = theme === 'dark';
 
+  // 1. FIX: Thêm Early Return để chống Crash UI khi questions chưa load xong
+  if (!questions || questions.length === 0) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center font-mono text-sm uppercase tracking-widest ${isDark ? 'bg-[#0A0A0A] text-white' : 'bg-[#FAFAFA] text-black'}`}>
+        Đang tải dữ liệu...
+      </div>
+    );
+  }
+
   // State Management
   const [currentIdx, setCurrentIdx] = useState(0);
   const [userAnswers, setUserAnswers] = useState<Record<number, 'A' | 'B' | 'C' | 'D'>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
-  const [eliminatedOptions, setEliminatedOptions] = useState<Record<string, boolean>>({}); // Format: questionId-optionLetter, eg. "1-A"
+  const [eliminatedOptions, setEliminatedOptions] = useState<Record<string, boolean>>({}); 
   
   // Highlighting system states
-  const [highlights, setHighlights] = useState<string[]>([]); // Saved highlights snippets
+  const [highlights, setHighlights] = useState<string[]>([]);
   const [selectedText, setSelectedText] = useState('');
   const [selectionBox, setSelectionBox] = useState<{ x: number; y: number } | null>(null);
 
@@ -41,6 +50,12 @@ export default function ActiveTestScreen({
   const [timeLeftSec, setTimeLeftSec] = useState(32 * 60);
   const [showTimer, setShowTimer] = useState(true);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  // 2. FIX: Dùng useRef để lưu userAnswers mới nhất, tránh trigger useEffect của Timer liên tục
+  const latestAnswers = useRef(userAnswers);
+  useEffect(() => {
+    latestAnswers.current = userAnswers;
+  }, [userAnswers]);
 
   // Timer run
   useEffect(() => {
@@ -59,28 +74,30 @@ export default function ActiveTestScreen({
     return () => clearInterval(interval);
   }, [hasSubmitted]);
 
+  // Submit khi hết giờ
   useEffect(() => {
     if (timeLeftSec === 0 && !hasSubmitted) {
       setHasSubmitted(true);
-      onFinishTest(userAnswers);
+      onFinishTest(latestAnswers.current); // Gọi function từ reference thay vì state trực tiếp
     }
-  }, [timeLeftSec, hasSubmitted, onFinishTest, userAnswers]);
+  }, [timeLeftSec, hasSubmitted, onFinishTest]);
 
-  // Sync state transitions when question index changes
   const currentQuestion = questions[currentIdx];
 
-  // Text selection detector for passage highlighting
-  const handlePassageSelect = (e: React.MouseEvent) => {
+  const handlePassageSelect = (e: React.MouseEvent | React.TouchEvent) => {
     const selection = window.getSelection();
     if (!selection) return;
     
     const text = selection.toString().trim();
     if (text.length > 3) {
       setSelectedText(text);
-      // Coordinate overlay bubble
+      // Hỗ trợ tọa độ cho cả Touch và Mouse
+      const clientX = 'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+      
       setSelectionBox({
-        x: e.clientX,
-        y: e.clientY - 40,
+        x: clientX,
+        y: clientY - 40,
       });
     } else {
       setSelectedText('');
@@ -92,7 +109,6 @@ export default function ActiveTestScreen({
     if (selectedText && !highlights.includes(selectedText)) {
       setHighlights([...highlights, selectedText]);
     }
-    // Clear selection
     window.getSelection()?.removeAllRanges();
     setSelectedText('');
     setSelectionBox(null);
@@ -147,18 +163,18 @@ export default function ActiveTestScreen({
     }
   };
 
-  // Helper renderer to inline-styled marks for any raw text
+  // 3. FIX: Chặn việc replace nhầm các thẻ HTML bằng Negative Lookahead Regex
   const renderWithHighlights = (text: string) => {
     if (!text) return '';
     let htmlOutput = text;
     
-    // Sort terms by length descending, to avoid matching substrings of other highlights first
     const sortedHighlights = [...highlights].sort((a, b) => b.length - a.length);
 
     sortedHighlights.forEach((term) => {
       if (term.trim().length > 2 && text.includes(term)) {
         const escaped = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-        const regex = new RegExp(`(${escaped})`, 'g');
+        // (?![^<]*>) giúp bỏ qua những đoạn text nằm bên trong cặp ngoặc < > của HTML
+        const regex = new RegExp(`(${escaped})(?![^<]*>)`, 'g');
         htmlOutput = htmlOutput.replace(regex, `<mark class="bg-[#FEF08A] text-black px-1.5 py-0.5 rounded-none font-bold border border-yellow-400/50 shadow-sm">$1</mark>`);
       }
     });
@@ -167,9 +183,10 @@ export default function ActiveTestScreen({
   };
 
   return (
+    // 4. FIX: Bổ sung onTouchEnd để xài được trên Tablet/iPad
     <div className={`min-h-screen flex flex-col select-text ${
       isDark ? 'bg-[#0A0A0A] text-[#F3F4F6]' : 'bg-[#FAFAFA] text-[#0A0A0A]'
-    }`} onMouseUp={handlePassageSelect}>
+    }`} onMouseUp={handlePassageSelect} onTouchEnd={handlePassageSelect}>
       
       {/* 1. Header Area with dynamic timer and metadata */}
       <header className={`px-4 py-4 md:px-6 flex items-center justify-between border-b-2 transition-all shrink-0 ${
@@ -205,7 +222,6 @@ export default function ActiveTestScreen({
 
         {/* Center: Bluebook Mock Countdown widget */}
         <div className="flex items-center gap-3">
-          {/* Flag (Mark for Review) on Top */}
           <button
             onClick={toggleFlag}
             className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer rounded-none select-none ${
@@ -343,17 +359,16 @@ export default function ActiveTestScreen({
 
       </div>
 
-      {/* 3. Main Content Frame (Passage visualizer splitscreen vs Question workspace) */}
+      {/* 3. Main Content Frame */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden h-[calc(100vh-190px)] md:h-[calc(100vh-190px)]">
         
-        {/* Left Side: Study Content / Reading Passage adapted for Highlights */}
+        {/* Left Side: Study Content / Reading Passage */}
         {passage ? (
           <div 
             className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full relative select-text transition-colors scrollbar-thin ${
               isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'
             }`}
           >
-            {/* Passage Controls */}
             <div className="flex items-center justify-between mb-2.5 border-b border-white/5 pb-2 select-none">
               <span className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-[#00D2FF]' : 'text-black'}`}>
                 Paragraph Context / Đoạn Văn Bản
@@ -391,7 +406,6 @@ export default function ActiveTestScreen({
             </div>
           </div>
         ) : (
-          /* Math formulation empty background or formula display depending on subjects */
           <div className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full flex flex-col justify-center items-center transition-colors select-none ${
             isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'
           }`}>
@@ -418,13 +432,11 @@ export default function ActiveTestScreen({
               </span>
             </div>
 
-            {/* Question description */}
             <div 
               className={`text-base md:text-[17px] font-bold leading-relaxed mb-8 ${isDark ? 'text-white' : 'text-[#0A0A0A]'}`}
               dangerouslySetInnerHTML={{ __html: renderWithHighlights(currentQuestion.text) }}
             />
 
-            {/* Answer Options listing */}
             <div className="space-y-4">
               {(['A', 'B', 'C', 'D'] as const).map((letter) => {
                 const isSelected = userAnswers[currentQuestion.id] === letter;
@@ -445,7 +457,6 @@ export default function ActiveTestScreen({
                                 : 'bg-white border-black/15 hover:border-black'))
                     }`}
                   >
-                    {/* Elimination Button at left extreme - Brutalist style [DEL] */}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -461,7 +472,6 @@ export default function ActiveTestScreen({
                       {isEliminated ? '✕' : '[DEL]'}
                     </button>
 
-                    {/* Main select body area */}
                     <button
                       onClick={() => handleSelectAnswer(letter)}
                       className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer"
@@ -494,7 +504,6 @@ export default function ActiveTestScreen({
         </div>
       </div>
 
-      {/* Global Quick highlight action item (Sits globally above columns for perfect pointer coordinate overlay) */}
       {selectionBox && (
         <div 
           className="fixed z-50 bg-black border-2 border-[#00D2FF] rounded-none py-1.5 px-2 flex items-center gap-1 text-xs shadow-lg select-none"
