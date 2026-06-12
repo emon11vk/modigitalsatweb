@@ -61,10 +61,8 @@ export default function App() {
 
   const [selectedAttempt, setSelectedAttempt] = useState<TestAttemptHistory | null>(null);
 
-  {/*  */}
   // ─── Hàm gọi chi tiết bài test (Được tối ưu bằng useCallback để tránh lỗi render/build) ───
   const handleViewAttemptDetails = useCallback(async (attempt: TestAttemptHistory) => {
-    // Nếu là bài vừa làm xong đã có sẵn câu hỏi trong state thì mở xem luôn, không gọi API nữa
     if (attempt.questions && attempt.questions.length > 0) {
       setSelectedAttempt(attempt);
       setCurrentScreen('review');
@@ -72,10 +70,10 @@ export default function App() {
     }
 
     try {
-      // Chỉ kéo dữ liệu test_answers và questions của ĐÚNG bài test này dựa trên attemptId
       const { data, error } = await supabase
         .from('test_history')
         .select(`
+          id,
           test_answers (
             question_id,
             user_answer,
@@ -96,46 +94,44 @@ export default function App() {
 
       if (error) throw error;
 
-      // Định dạng lại cấu trúc câu hỏi và đoạn văn tương thích với giao diện
-      const questions: QuestionResult[] = (data?.test_answers ?? [])
-        .map((answer: any) => {
-          const q = answer.questions;
-          if (!q) return null;
+      if (data && data.test_answers) {
+        const questions = data.test_answers.map((ans: any) => ({
+          id: ans.questions.id,
+          questionText: ans.questions.text,
+          userAnswer: ans.user_answer,
+          correctAnswer: ans.questions.correct_answer,
+          isCorrect: ans.is_correct,
+          options: ans.questions.options,
+          passage: ans.questions.passage_paragraphs
+            ? {
+                title: ans.questions.passage_title || 'Reading Text',
+                introduction: ans.questions.passage_intro || '',
+                paragraphs: Array.isArray(ans.questions.passage_paragraphs)
+                  ? ans.questions.passage_paragraphs
+                  : [ans.questions.passage_paragraphs]
+              }
+            : undefined
+        }));
 
-          const passage: Passage | undefined =
-            q.passage_paragraphs && Array.isArray(q.passage_paragraphs)
-              ? {
-                  title: q.passage_title || 'Reading Text',
-                  introduction: q.passage_intro || '',
-                  paragraphs: q.passage_paragraphs
-                }
-              : undefined;
-
-          return {
-            id: q.id,
-            questionText: q.text,
-            userAnswer: answer.user_answer ?? null,
-            correctAnswer: q.correct_answer,
-            isCorrect: answer.is_correct,
-            options: q.options,
-            passage
-          };
-        })
-        .filter((q: QuestionResult | null): q is QuestionResult => q !== null);
-
-      const sharedPassage = questions.find((q) => q.passage)?.passage;
-
-      const fullAttempt = {
-        ...attempt,
-        questions,
-        passage: sharedPassage
-      };
-
-      setSelectedAttempt(fullAttempt);
-      setCurrentScreen('review');
+        const firstWithPassage = data.test_answers.find((ans: any) => ans.questions.passage_paragraphs);
+        setSelectedAttempt({
+          ...attempt,
+          questions,
+          passage: firstWithPassage
+            ? {
+                title: firstWithPassage.questions.passage_title || 'Reading Text',
+                introduction: firstWithPassage.questions.passage_intro || '',
+                paragraphs: Array.isArray(firstWithPassage.questions.passage_paragraphs)
+                  ? firstWithPassage.questions.passage_paragraphs
+                  : [firstWithPassage.questions.passage_paragraphs]
+              }
+            : undefined
+        });
+        setCurrentScreen('review');
+      }
     } catch (err) {
-      console.error('Error fetching test details:', err);
-      alert('Không thể tải chi tiết bài làm — vui lòng thử lại.');
+      console.error('Error fetching attempt details:', err);
+      alert('Lỗi khi tải chi tiết bài làm — vui lòng thử lại.');
     }
   }, []);
 
@@ -380,14 +376,14 @@ export default function App() {
     }
   };
 
-  const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => {
+const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => {
     if (!activeModuleId || !currentUser) return;
 
     const module = modules.find((m: any) => m.id === activeModuleId);
     if (!module) return;
 
     try {
-      // Calculate correct answers
+      // 1. Tính toán điểm số
       let correctCount = 0;
       activeQuestions.forEach((q) => {
         if (answers[q.id] === q.correctAnswer) correctCount++;
@@ -397,7 +393,7 @@ export default function App() {
       const multiplier = 600 / totalCount;
       const earnedScore = Math.round(200 + correctCount * multiplier);
 
-      // Update module status locally
+      // Cập nhật trạng thái hiển thị (để hiện thẻ Attempted ở Dashboard)
       setModules((prev) =>
         prev.map((m) =>
           m.id === activeModuleId
@@ -406,82 +402,81 @@ export default function App() {
         )
       );
 
-      // Check if this module was already attempted
+      // 2. Kiểm tra xem học sinh đã làm bài này bao giờ chưa
       const alreadyAttempted = attemptHistory.some(
         (item) => item.moduleId === activeModuleId
       );
 
-      // Save test_history
-      const { data: insertedHistory, error: insertError } = await supabase
-        .from('test_history')
-        .insert({
-          user_id: currentUser.id,
-          module_id: activeModuleId,
-          correct_count: correctCount,
-          total_count: totalCount,
-          is_first_attempt: !alreadyAttempted
-        })
-        .select()
-        .single();
-
-      if (insertError) {
-        console.error('Error inserting history:', insertError);
-        alert('Lỗi khi lưu kết quả — vui lòng thử lại.');
-        return;
-      }
-
-      // Save test_answers
-      if (insertedHistory) {
-        const answerRows = activeQuestions.map((q) => ({
-          history_id: insertedHistory.id,
-          question_id: q.id,
-          user_answer: answers[q.id] ?? null,
-          is_correct: answers[q.id] === q.correctAnswer
-        }));
-
-        const { error: answerError } = await supabase
-          .from('test_answers')
-          .insert(answerRows);
-
-        if (answerError) {
-          console.error('Error inserting answers:', answerError);
-        }
-      }
-
-      // Build new attempt result for immediate review
-      const today = new Date();
-      const newAttempt: TestAttemptHistory = {
-        attemptId: insertedHistory?.id,
-        moduleId: activeModuleId,
-        moduleTitle: module.title,
-        subject: module.subject,
-        correctCount,
-        totalCount,
-        dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
-        questions: activeQuestions.map((q) => ({
-          id: q.id,
-          questionText: q.text,
-          userAnswer: answers[q.id] ?? null,
-          correctAnswer: q.correctAnswer,
-          isCorrect: answers[q.id] === q.correctAnswer,
-          options: q.options,
-          passage: q.passage
-        })),
-        passage: activePassage
-      };
-
-      // Add to history only if first attempt
+      // 3. CHỈ LƯU DATABASE NẾU LÀ LẦN ĐẦU TIÊN
       if (!alreadyAttempted) {
+        // Lưu bảng test_history
+        const { data: insertedHistory, error: insertError } = await supabase
+          .from('test_history')
+          .insert({
+            user_id: currentUser.id,
+            module_id: activeModuleId,
+            correct_count: correctCount,
+            total_count: totalCount
+          })
+          .select()
+          .single();
+
+        if (insertError) {
+          console.error('Error inserting history:', insertError);
+          alert('Lỗi khi lưu kết quả — vui lòng thử lại.');
+          return;
+        }
+
+        // Lưu bảng test_answers
+        if (insertedHistory) {
+          const answerRows = activeQuestions.map((q) => ({
+            history_id: insertedHistory.id,
+            question_id: q.id,
+            user_answer: answers[q.id] ?? null,
+            is_correct: answers[q.id] === q.correctAnswer
+          }));
+
+          const { error: answerError } = await supabase
+            .from('test_answers')
+            .insert(answerRows);
+
+          if (answerError) {
+            console.error('Error inserting answers:', answerError);
+          }
+        }
+
+        // Tạo cục dữ liệu lịch sử mới để đưa vào giao diện ngay lập tức
+        const today = new Date();
+        const newAttempt: TestAttemptHistory = {
+          attemptId: insertedHistory?.id,
+          moduleId: activeModuleId,
+          moduleTitle: module.title,
+          subject: module.subject,
+          correctCount,
+          totalCount,
+          dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
+          questions: activeQuestions.map((q) => ({
+            id: q.id,
+            questionText: q.text,
+            userAnswer: answers[q.id] ?? null,
+            correctAnswer: q.correctAnswer,
+            isCorrect: answers[q.id] === q.correctAnswer,
+            options: q.options,
+            passage: q.passage
+          })),
+          passage: activePassage
+        };
+
         setAttemptHistory((prev) => [newAttempt, ...prev]);
 
-        // Update profile stats
+        // Cập nhật Bảng Vàng (Leaderboard)
         const currentRank = rankings.find((r) => r.isCurrentUser);
         if (currentRank) {
           const newTotal = currentRank.totalScore + earnedScore;
           const newTests = currentRank.testsCompleted + 1;
           const newAvg = newTotal / newTests;
 
-          const { error: profileError } = await supabase
+          await supabase
             .from('profiles')
             .update({
               total_score: newTotal,
@@ -490,27 +485,17 @@ export default function App() {
             })
             .eq('id', currentUser.id);
 
-          if (profileError) {
-            console.error('Error updating profile:', profileError);
-          }
-
-          // Update local rankings
           setRankings((prev) =>
             prev.map((r) =>
               r.isCurrentUser
-                ? {
-                    ...r,
-                    totalScore: newTotal,
-                    testsCompleted: newTests,
-                    avgScore: newAvg
-                  }
+                ? { ...r, totalScore: newTotal, testsCompleted: newTests, avgScore: newAvg }
                 : r
             )
           );
         }
       }
 
-      // Set result and navigate
+      // 4. Luôn hiện bảng điểm hoàn thành (dù là lần 1 hay lần N)
       setTestResult({
         correctCount,
         totalCount,
@@ -520,6 +505,7 @@ export default function App() {
       });
       setCurrentScreen('dashboard');
       setActiveModuleId(null);
+
     } catch (err) {
       console.error('Fatal error in handleFinishTest:', err);
       alert('Lỗi hệ thống — vui lòng thử lại.');
