@@ -63,6 +63,45 @@ export default function App() {
     return () => subscription.unsubscribe();
   }, []);
 
+  // Persist selectedAttempt to localStorage
+  useEffect(() => {
+    if (selectedAttempt && currentScreen === 'review') {
+      localStorage.setItem('modigitalsat_selectedAttempt', JSON.stringify(selectedAttempt));
+      localStorage.setItem('modigitalsat_currentScreen', 'review');
+    }
+  }, [selectedAttempt, currentScreen]);
+
+  // Restore selectedAttempt from localStorage when data is loaded
+  useEffect(() => {
+    if (!attemptHistory || attemptHistory.length === 0) return;
+    if (selectedAttempt) return; // Already set
+
+    const savedAttempt = localStorage.getItem('modigitalsat_selectedAttempt');
+    const savedScreen = localStorage.getItem('modigitalsat_currentScreen');
+
+    if (savedAttempt && savedScreen === 'review') {
+      try {
+        const attempt = JSON.parse(savedAttempt);
+        // Verify that this attempt still exists in the current history
+        const existingAttempt = attemptHistory.find(
+          h => h.moduleId === attempt.moduleId && h.dateStr === attempt.dateStr
+        );
+        if (existingAttempt) {
+          setSelectedAttempt(existingAttempt);
+          setCurrentScreen('review');
+        } else {
+          // Clear stale data
+          localStorage.removeItem('modigitalsat_selectedAttempt');
+          localStorage.removeItem('modigitalsat_currentScreen');
+        }
+      } catch (e) {
+        console.error('Failed to restore attempt:', e);
+        localStorage.removeItem('modigitalsat_selectedAttempt');
+        localStorage.removeItem('modigitalsat_currentScreen');
+      }
+    }
+  }, [attemptHistory]);
+
   // Kéo toàn bộ data khi user đăng nhập
   useEffect(() => {
     async function fetchAllData() {
@@ -183,6 +222,10 @@ export default function App() {
     await supabase.auth.signOut();
     setCurrentUser(null);
     setCurrentScreen('login' as Screen);
+    setSelectedAttempt(null);
+    // Clear localStorage on logout
+    localStorage.removeItem('modigitalsat_selectedAttempt');
+    localStorage.removeItem('modigitalsat_currentScreen');
   };
 
   const handleStartModule = async (moduleId: string) => {
@@ -367,6 +410,8 @@ export default function App() {
   const handleBackFromReview = () => {
     setSelectedAttempt(null);
     setCurrentScreen('history');
+    localStorage.removeItem('modigitalsat_selectedAttempt');
+    localStorage.removeItem('modigitalsat_currentScreen');
   };
 
   const isDark = theme === 'dark';
@@ -413,7 +458,14 @@ export default function App() {
         isDark ? 'bg-[#0A0A0A]/95 border-white/10' : 'bg-white/95 border-black/10'
       }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => setCurrentScreen('dashboard')}>
+          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => {
+            if (currentScreen === 'review') {
+              setSelectedAttempt(null);
+              localStorage.removeItem('modigitalsat_selectedAttempt');
+              localStorage.removeItem('modigitalsat_currentScreen');
+            }
+            setCurrentScreen('dashboard');
+          }}>
             <div className={`p-1.5 border transition-all ${
               isDark ? 'bg-black border-white/20 text-[#00D2FF]' : 'bg-[#0A0A0A] border-transparent text-[#00D2FF]'
             }`}>
@@ -449,7 +501,15 @@ export default function App() {
               return (
                 <button
                   key={key}
-                  onClick={() => setCurrentScreen(key)}
+                  onClick={() => {
+                    // Clear localStorage when navigating away from history/review
+                    if (key !== 'history' && currentScreen === 'review') {
+                      setSelectedAttempt(null);
+                      localStorage.removeItem('modigitalsat_selectedAttempt');
+                      localStorage.removeItem('modigitalsat_currentScreen');
+                    }
+                    setCurrentScreen(key);
+                  }}
                   className={`px-3 py-2 text-[10px] md:text-[11px] font-black tracking-[0.18em] uppercase transition-all duration-150 cursor-pointer border ${
                     isActive
                       ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-[#0A0A0A] text-white border-[#0A0A0A]')
