@@ -260,6 +260,11 @@ export default function App() {
         }))
       };
 
+      // Thêm passage vào newAttempt
+      if (activePassage) {
+        newAttempt.passage = activePassage;
+      }
+
       setAttemptHistory(prev => [newAttempt, ...prev]);
 
       const currentRank = rankings.find(r => r.isCurrentUser);

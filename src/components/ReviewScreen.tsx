@@ -145,7 +145,33 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
         </div>
       </div>
 
-      {/* 5. Question List */}
+      {/* 5. Passage Display (if available) */}
+      {attempt.passage && (
+        <div className={`p-6 border-2 ${isDark ? 'bg-black border-white/10' : 'bg-white border-black/20'}`}>
+          <h3 className={`text-[11px] font-black uppercase tracking-widest font-mono mb-3 ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+            📖 Đoạn văn bản
+          </h3>
+          {attempt.passage.title && (
+            <h4 className={`text-base md:text-lg font-black uppercase tracking-tight mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+              {attempt.passage.title}
+            </h4>
+          )}
+          {attempt.passage.introduction && (
+            <p className={`text-sm font-mono mb-4 leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+              {attempt.passage.introduction}
+            </p>
+          )}
+          <div className="space-y-4">
+            {attempt.passage.paragraphs?.map((para, idx) => (
+              <p key={idx} className={`text-sm font-mono leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                {para}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 6. Question List */}
       <div className="space-y-3">
         <h3 className={`text-[10px] font-black uppercase tracking-widest font-mono ${isDark ? 'text-white/50' : 'text-black/50'}`}>
           Chi tiết từng câu hỏi — {attempt.totalCount} câu
@@ -287,7 +313,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
         )}
       </div>
 
-      {/* 6. Footer Notice */}
+      {/* 7. Footer Notice */}
       <div className={`p-5 border ${isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'}`}>
         <div className="flex gap-3">
           <AlertCircle className="w-4 h-4 text-[#00D2FF] shrink-0 mt-0.5" />

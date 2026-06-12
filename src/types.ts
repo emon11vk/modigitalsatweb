@@ -72,5 +72,7 @@ export interface TestAttemptHistory {
   totalCount: number;
   dateStr: string;
   // 3. Thêm mảng questions để ReviewScreen có dữ liệu render
-  questions?: QuestionResult[]; 
+  questions?: QuestionResult[];
+  // 4. Thêm passage để có thể xem lại trong ReviewScreen
+  passage?: Passage;
 }
