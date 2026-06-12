@@ -36,7 +36,7 @@ function useHighlight(containerRef: React.RefObject<HTMLDivElement | null>) {
       const mark = document.createElement('mark');
       mark.dataset.hlId = id;
       mark.style.cssText =
-        'background:#FEF08A;color:inherit;border-radius:2px;cursor:pointer;padding:1px 2px;transition:background 0.15s;';
+        'background:#FEF08A;color:#000 !important;border-radius:2px;cursor:pointer;padding:1px 3px;transition:background 0.15s;';
       mark.title = 'Click để xóa highlight này';
 
       try {
@@ -51,8 +51,8 @@ function useHighlight(containerRef: React.RefObject<HTMLDivElement | null>) {
         e.stopPropagation();
         removeById(id);
       });
-      mark.addEventListener('mouseenter', () => { mark.style.background = '#fca5a5'; });
-      mark.addEventListener('mouseleave', () => { mark.style.background = '#FEF08A'; });
+      mark.addEventListener('mouseenter', () => { mark.style.background = '#fca5a5'; mark.style.color = '#000'; });
+      mark.addEventListener('mouseleave', () => { mark.style.background = '#FEF08A'; mark.style.color = '#000'; });
 
       setHighlights(prev => [...prev, { id, text }]);
     } catch (err) {
@@ -339,27 +339,7 @@ export default function ActiveTestScreen({
               ))}
             </div>
 
-            {/* Highlight chips list */}
-            {highlights.length > 0 && (
-              <div className="mt-8 pt-4 border-t border-white/10">
-                <p className="text-[9px] font-black uppercase tracking-widest opacity-40 mb-2 select-none">
-                  Highlights ({highlights.length}) — click vào đoạn vàng để xóa
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {highlights.map(h => (
-                    <button
-                      key={h.id}
-                      onClick={() => removeById(h.id)}
-                      className="flex items-center gap-1.5 px-2 py-1 bg-[#FEF08A] text-black text-[10px] font-bold rounded-sm hover:bg-red-200 transition-colors cursor-pointer max-w-[180px]"
-                      title="Click để xóa highlight này"
-                    >
-                      <span className="truncate">{h.text.length > 25 ? h.text.slice(0, 25) + '…' : h.text}</span>
-                      <span className="text-red-500 shrink-0">✕</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+
           </div>
         ) : (
           <div className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full flex flex-col justify-center items-center transition-colors select-none ${isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'}`}>
