@@ -1,5 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Theme, Screen, VocabularyWord, Module, StudentRank, TestAttemptHistory, Question, Passage } from './types';
+import {
+  Theme,
+  Screen,
+  VocabularyWord,
+  Module,
+  StudentRank,
+  TestAttemptHistory,
+  Question,
+  Passage,
+  QuestionResult
+} from './types';
 
 import { supabase } from './supabaseClient';
 
@@ -14,8 +24,14 @@ import ReviewScreen from './components/ReviewScreen';
 
 // Icon Imports
 import {
-  Sun, Moon, LogOut, LayoutDashboard,
-  Award, BookOpen, GraduationCap, CheckCircle2,
+  Sun,
+  Moon,
+  LogOut,
+  LayoutDashboard,
+  Award,
+  BookOpen,
+  GraduationCap,
+  CheckCircle2,
   History
 } from 'lucide-react';
 
@@ -92,155 +108,170 @@ export default function App() {
     async function fetchAllData() {
       if (!currentUser) return;
 
-      // Modules
-      const { data: modData } = await supabase
-        .from('modules')
-        .select('*')
-        .order('module_num', { ascending: true });
+      try {
+        // ===== Fetch Modules =====
+        const { data: modData, error: modError } = await supabase
+          .from('modules')
+          .select('*')
+          .order('module_num', { ascending: true });
 
-      if (modData) {
-        setModules(modData.map(m => ({
-          id: m.id,
-          title: m.title,
-          subject: m.subject,
-          module: m.module_num,
-          questionsCount: m.questions_count,
-          durationMinutes: m.duration_minutes,
-          status: 'Not Started',
-          score: null
-        })));
-      }
+        if (modError) console.error('Error fetching modules:', modError);
 
-      // Vocabulary
-      const { data: vocabData } = await supabase
-        .from('vocabulary')
-        .select('*')
-        .eq('user_id', currentUser.id)
-        .order('created_at', { ascending: false });
+        if (modData && modData.length > 0) {
+          setModules(
+            modData.map((m: any) => ({
+              id: m.id,
+              title: m.title,
+              subject: m.subject,
+              moduleNum: m.module_num,
+              questionsCount: m.questions_count,
+              durationMinutes: m.duration_minutes,
+              status: 'Not Started' as const,
+              score: undefined
+            }))
+          );
+        }
 
-      if (vocabData) {
-        setWords(vocabData.map(v => ({
-          id: v.id,
-          term: v.term,
-          type: v.type,
-          definition: v.definition,
-          example: v.example,
-          status: v.status as 'Learning' | 'Mastered',
-          date: new Date(v.created_at).toLocaleDateString('en-US', {
-            month: 'short', day: 'numeric', year: 'numeric'
-          })
-        })));
-      }
+        // ===== Fetch Vocabulary =====
+        const { data: vocabData, error: vocabError } = await supabase
+          .from('vocabulary')
+          .select('*')
+          .eq('user_id', currentUser.id)
+          .order('created_at', { ascending: false });
 
-      // ─── Test history + per-question detail ──────────────────────────────────
-      //
-      // FIX: Supabase trả nested JOIN dạng:
-      //   test_answers[i].questions = { id, text, correct_answer, options, ... }
-      //                               (object đơn, KHÔNG phải array)
-      //
-      // Code cũ build `questions[]` từ `h.test_answers?.[0]?.questions` (chỉ lấy
-      // câu đầu tiên của module thay vì từng câu). Sau reload, nếu JOIN trả null
-      // thì toàn bộ questions[] = []. Fix: map TỪNG test_answer → lấy .questions
-      // của chính answer đó, không lấy từ [0].
-      // ─────────────────────────────────────────────────────────────────────────
-      const { data: histData, error: histError } = await supabase
-        .from('test_history')
-        .select(`
-          id,
-          module_id,
-          correct_count,
-          total_count,
-          created_at,
-          modules (
-            title,
-            subject
-          ),
-          test_answers (
-            question_id,
-            user_answer,
-            is_correct,
-            questions (
-              id,
-              text,
-              correct_answer,
-              options,
-              passage_paragraphs,
-              passage_intro,
-              passage_title
+        if (vocabError) console.error('Error fetching vocabulary:', vocabError);
+
+        if (vocabData && vocabData.length > 0) {
+          setWords(
+            vocabData.map((v: any) => ({
+              id: v.id,
+              term: v.term,
+              type: v.type,
+              definition: v.definition,
+              example: v.example,
+              status: v.status as 'Learning' | 'Mastered',
+              date: new Date(v.created_at).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
+            }))
+          );
+        }
+
+        // ===== Fetch Test History + Questions (with proper mapping) =====
+        // ⚠️ KEY FIX: Supabase nested SELECT returns:
+        //   test_answers[i].questions = { id, text, correct_answer, ... } (SINGLE object)
+        //   NOT an array! So we map EACH test_answer to extract ITS question object.
+        const { data: histData, error: histError } = await supabase
+          .from('test_history')
+          .select(
+            `
+            id,
+            module_id,
+            correct_count,
+            total_count,
+            created_at,
+            modules (
+              title,
+              subject
+            ),
+            test_answers (
+              question_id,
+              user_answer,
+              is_correct,
+              questions (
+                id,
+                text,
+                correct_answer,
+                options,
+                passage_paragraphs,
+                passage_intro,
+                passage_title
+              )
             )
+          `
           )
-        `)
-        .eq('user_id', currentUser.id)
-        .order('created_at', { ascending: false });
+          .eq('user_id', currentUser.id)
+          .order('created_at', { ascending: false });
 
-      if (histError) {
-        console.error('Error fetching history:', histError);
-      }
+        if (histError) {
+          console.error('Error fetching history:', histError);
+        }
 
-      if (histData) {
-        const mapped: TestAttemptHistory[] = histData.map(h => {
-          // FIX: map từng answer, lấy .questions của chính answer đó
-          const questions = (h.test_answers ?? [])
-            .map((a: any) => {
-              const q = a.questions; // object đơn từ nested JOIN
-              if (!q) return null;   // bảo vệ khi RLS chặn hoặc câu bị xóa
+        if (histData && histData.length > 0) {
+          const mapped: TestAttemptHistory[] = histData.map((h: any) => {
+            // Map each test_answer → extract its single questions object
+            const questions: QuestionResult[] = (h.test_answers ?? [])
+              .map((answer: any) => {
+                const q = answer.questions; // This is a SINGLE object from the nested JOIN
+                if (!q) return null; // RLS blocked or question deleted
 
-              const passage = q.passage_paragraphs
-                ? {
-                    title: q.passage_title || 'Reading Text',
-                    introduction: q.passage_intro || '',
-                    paragraphs: q.passage_paragraphs as string[]
-                  }
-                : undefined;
+                // Build passage if it exists
+                const passage: Passage | undefined =
+                  q.passage_paragraphs && Array.isArray(q.passage_paragraphs)
+                    ? {
+                        title: q.passage_title || 'Reading Text',
+                        introduction: q.passage_intro || '',
+                        paragraphs: q.passage_paragraphs
+                      }
+                    : undefined;
 
-              return {
-                id: q.id,
-                questionText: q.text,
-                userAnswer: a.user_answer,
-                correctAnswer: q.correct_answer,
-                isCorrect: a.is_correct,
-                options: q.options,
-                passage
-              };
-            })
-            .filter(Boolean); // bỏ null
+                return {
+                  id: q.id,
+                  questionText: q.text,
+                  userAnswer: answer.user_answer ?? null,
+                  correctAnswer: q.correct_answer,
+                  isCorrect: answer.is_correct,
+                  options: q.options,
+                  passage
+                };
+              })
+              .filter((q: QuestionResult | null): q is QuestionResult => q !== null);
 
-          // Passage chung cho module (lấy từ câu đầu tiên có passage)
-          const sharedPassage = questions.find((q: any) => q?.passage)?.passage;
+            // Shared passage from first question (if exists)
+            const sharedPassage = questions.find((q) => q.passage)?.passage;
 
-          return {
-            attemptId: h.id,
-            moduleId: h.module_id,
-            moduleTitle: h.modules?.title || 'Unknown',
-            subject: h.modules?.subject || 'Unknown',
-            correctCount: h.correct_count,
-            totalCount: h.total_count,
-            dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
-            questions,
-            passage: sharedPassage
-          };
-        });
+            return {
+              attemptId: h.id,
+              moduleId: h.module_id,
+              moduleTitle: h.modules?.title || 'Unknown',
+              subject: h.modules?.subject || 'Unknown',
+              correctCount: h.correct_count,
+              totalCount: h.total_count,
+              dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
+              questions,
+              passage: sharedPassage
+            } as TestAttemptHistory;
+          });
 
-        setAttemptHistory(mapped);
-      }
+          setAttemptHistory(mapped);
+        }
 
-      // Leaderboard
-      const { data: profData } = await supabase
-        .from('profiles')
-        .select('*')
-        .order('total_score', { ascending: false });
+        // ===== Fetch Leaderboard =====
+        const { data: profData, error: profError } = await supabase
+          .from('profiles')
+          .select('*')
+          .order('total_score', { ascending: false });
 
-      if (profData) {
-        setRankings(profData.map((p, index) => ({
-          id: p.id,
-          name: p.name || 'Anonymous',
-          avatarUrl: p.avatar_url || '',
-          testsCompleted: p.tests_completed || 0,
-          totalScore: p.total_score || 0,
-          avgScore: p.avg_score || 0,
-          rank: index + 1,
-          isCurrentUser: p.id === currentUser.id
-        })));
+        if (profError) console.error('Error fetching profiles:', profError);
+
+        if (profData && profData.length > 0) {
+          setRankings(
+            profData.map((p: any, index: number) => ({
+              id: p.id,
+              rank: index + 1,
+              name: p.name || 'Anonymous',
+              avatarUrl: p.avatar_url || '',
+              testsCompleted: p.tests_completed || 0,
+              totalScore: p.total_score || 0,
+              avgScore: p.avg_score || 0,
+              isCurrentUser: p.id === currentUser.id
+            }))
+          );
+        }
+      } catch (err) {
+        console.error('Fatal error in fetchAllData:', err);
       }
     }
 
@@ -248,7 +279,7 @@ export default function App() {
   }, [currentUser]);
 
   // ─── Handlers ────────────────────────────────────────────────────────────────
-  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
 
   const handleLogin = () => setCurrentScreen('dashboard');
 
@@ -263,18 +294,26 @@ export default function App() {
 
   const handleStartModule = async (moduleId: string) => {
     try {
-      const { data } = await supabase
+      // Fetch all questions for this module
+      const { data: questionsData, error: questionsError } = await supabase
         .from('questions')
         .select('*')
         .eq('module_id', moduleId)
         .order('id', { ascending: true });
 
-      if (!data || data.length === 0) {
+      if (questionsError) {
+        console.error('Error fetching questions:', questionsError);
+        alert('Không thể tải câu hỏi — vui lòng thử lại.');
+        return;
+      }
+
+      if (!questionsData || questionsData.length === 0) {
         alert('Đề thi này chưa có câu hỏi trên hệ thống!');
         return;
       }
 
-      const formattedQs: Question[] = data.map(q => ({
+      // Format questions: ensure all required fields are present
+      const formattedQs: Question[] = questionsData.map((q: any) => ({
         id: q.id,
         text: q.text,
         options: q.options,
@@ -283,21 +322,28 @@ export default function App() {
           ? {
               title: q.passage_title || 'Reading Text',
               introduction: q.passage_intro || '',
-              paragraphs: q.passage_paragraphs
+              paragraphs: Array.isArray(q.passage_paragraphs)
+                ? q.passage_paragraphs
+                : [q.passage_paragraphs]
             }
           : undefined
       }));
 
+      // Set all questions
       setActiveQuestions(formattedQs);
-      setActivePassage(
-        data[0].passage_paragraphs
-          ? {
-              title: data[0].passage_title || 'Reading Text',
-              introduction: data[0].passage_intro || '',
-              paragraphs: data[0].passage_paragraphs
-            }
-          : undefined
-      );
+
+      // Set shared passage (from first question if exists)
+      const firstWithPassage = questionsData.find((q: any) => q.passage_paragraphs);
+      if (firstWithPassage) {
+        setActivePassage({
+          title: firstWithPassage.passage_title || 'Reading Text',
+          introduction: firstWithPassage.passage_intro || '',
+          paragraphs: Array.isArray(firstWithPassage.passage_paragraphs)
+            ? firstWithPassage.passage_paragraphs
+            : [firstWithPassage.passage_paragraphs]
+        });
+      }
+
       setActiveModuleId(moduleId);
       setCurrentScreen('practice');
     } catch (err) {
@@ -309,145 +355,235 @@ export default function App() {
   const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => {
     if (!activeModuleId || !currentUser) return;
 
-    const module = modules.find(m => m.id === activeModuleId);
+    const module = modules.find((m: any) => m.id === activeModuleId);
     if (!module) return;
 
-    let correctCount = 0;
-    activeQuestions.forEach(q => {
-      if (answers[q.id] === q.correctAnswer) correctCount++;
-    });
+    try {
+      // Calculate correct answers
+      let correctCount = 0;
+      activeQuestions.forEach((q) => {
+        if (answers[q.id] === q.correctAnswer) correctCount++;
+      });
 
-    const totalCount = activeQuestions.length;
-    const multiplier = 600 / totalCount;
-    const earnedScore = Math.round(200 + correctCount * multiplier);
+      const totalCount = activeQuestions.length;
+      const multiplier = 600 / totalCount;
+      const earnedScore = Math.round(200 + correctCount * multiplier);
 
-    setModules(prev =>
-      prev.map(m => m.id === activeModuleId ? { ...m, status: 'Attempted', score: earnedScore } : m)
-    );
+      // Update module status locally
+      setModules((prev) =>
+        prev.map((m) =>
+          m.id === activeModuleId
+            ? { ...m, status: 'Attempted' as const, score: earnedScore }
+            : m
+        )
+      );
 
-    const alreadyAttempted = attemptHistory.some(item => item.moduleId === activeModuleId);
+      // Check if this module was already attempted
+      const alreadyAttempted = attemptHistory.some(
+        (item) => item.moduleId === activeModuleId
+      );
 
-    // Lưu test_history
-    const { data: insertedHistory, error: insertError } = await supabase
-      .from('test_history')
-      .insert({
-        user_id: currentUser.id,
-        module_id: activeModuleId,
-        correct_count: correctCount,
-        total_count: totalCount,
-        is_first_attempt: !alreadyAttempted
-      })
-      .select()
-      .single();
+      // Save test_history
+      const { data: insertedHistory, error: insertError } = await supabase
+        .from('test_history')
+        .insert({
+          user_id: currentUser.id,
+          module_id: activeModuleId,
+          correct_count: correctCount,
+          total_count: totalCount,
+          is_first_attempt: !alreadyAttempted
+        })
+        .select()
+        .single();
 
-    if (insertError) {
-      console.error('Error inserting history:', insertError);
-    }
-
-    // Lưu test_answers
-    if (insertedHistory) {
-      const answerRows = activeQuestions.map(q => ({
-        history_id: insertedHistory.id,
-        question_id: q.id,
-        user_answer: answers[q.id] ?? null,
-        is_correct: answers[q.id] === q.correctAnswer
-      }));
-      await supabase.from('test_answers').insert(answerRows);
-    }
-
-    // FIX: luôn build newAttempt với questions[] đầy đủ,
-    // bất kể alreadyAttempted — để state local luôn có data cho ReviewScreen
-    const today = new Date();
-    const newAttempt: TestAttemptHistory = {
-      attemptId: insertedHistory?.id,
-      moduleId: activeModuleId,
-      moduleTitle: module.title,
-      subject: module.subject,
-      correctCount,
-      totalCount,
-      dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
-      questions: activeQuestions.map(q => ({
-        id: q.id,
-        questionText: q.text,
-        userAnswer: answers[q.id] ?? null,
-        correctAnswer: q.correctAnswer,
-        isCorrect: answers[q.id] === q.correctAnswer,
-        options: q.options,
-        passage: q.passage
-      })),
-      passage: activePassage
-    };
-
-    if (!alreadyAttempted) {
-      // Chỉ prepend vào history khi là lần đầu (để không trùng với record đã có)
-      setAttemptHistory(prev => [newAttempt, ...prev]);
-
-      // Cập nhật điểm profile
-      const currentRank = rankings.find(r => r.isCurrentUser);
-      if (currentRank) {
-        const newTotal = currentRank.totalScore + earnedScore;
-        const newTests = currentRank.testsCompleted + 1;
-        const newAvg = newTotal / newTests;
-        await supabase.from('profiles').update({
-          total_score: newTotal,
-          tests_completed: newTests,
-          avg_score: newAvg
-        }).eq('id', currentUser.id);
+      if (insertError) {
+        console.error('Error inserting history:', insertError);
+        alert('Lỗi khi lưu kết quả — vui lòng thử lại.');
+        return;
       }
-    }
 
-    setTestResult({
-      correctCount,
-      totalCount,
-      earnedScore,
-      subject: module.subject,
-      moduleTitle: module.title
-    });
-    setCurrentScreen('dashboard');
-    setActiveModuleId(null);
+      // Save test_answers
+      if (insertedHistory) {
+        const answerRows = activeQuestions.map((q) => ({
+          history_id: insertedHistory.id,
+          question_id: q.id,
+          user_answer: answers[q.id] ?? null,
+          is_correct: answers[q.id] === q.correctAnswer
+        }));
+
+        const { error: answerError } = await supabase
+          .from('test_answers')
+          .insert(answerRows);
+
+        if (answerError) {
+          console.error('Error inserting answers:', answerError);
+        }
+      }
+
+      // Build new attempt result for immediate review
+      const today = new Date();
+      const newAttempt: TestAttemptHistory = {
+        attemptId: insertedHistory?.id,
+        moduleId: activeModuleId,
+        moduleTitle: module.title,
+        subject: module.subject,
+        correctCount,
+        totalCount,
+        dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
+        questions: activeQuestions.map((q) => ({
+          id: q.id,
+          questionText: q.text,
+          userAnswer: answers[q.id] ?? null,
+          correctAnswer: q.correctAnswer,
+          isCorrect: answers[q.id] === q.correctAnswer,
+          options: q.options,
+          passage: q.passage
+        })),
+        passage: activePassage
+      };
+
+      // Add to history only if first attempt
+      if (!alreadyAttempted) {
+        setAttemptHistory((prev) => [newAttempt, ...prev]);
+
+        // Update profile stats
+        const currentRank = rankings.find((r) => r.isCurrentUser);
+        if (currentRank) {
+          const newTotal = currentRank.totalScore + earnedScore;
+          const newTests = currentRank.testsCompleted + 1;
+          const newAvg = newTotal / newTests;
+
+          const { error: profileError } = await supabase
+            .from('profiles')
+            .update({
+              total_score: newTotal,
+              tests_completed: newTests,
+              avg_score: newAvg
+            })
+            .eq('id', currentUser.id);
+
+          if (profileError) {
+            console.error('Error updating profile:', profileError);
+          }
+
+          // Update local rankings
+          setRankings((prev) =>
+            prev.map((r) =>
+              r.isCurrentUser
+                ? {
+                    ...r,
+                    totalScore: newTotal,
+                    testsCompleted: newTests,
+                    avgScore: newAvg
+                  }
+                : r
+            )
+          );
+        }
+      }
+
+      // Set result and navigate
+      setTestResult({
+        correctCount,
+        totalCount,
+        earnedScore,
+        subject: module.subject,
+        moduleTitle: module.title
+      });
+      setCurrentScreen('dashboard');
+      setActiveModuleId(null);
+    } catch (err) {
+      console.error('Fatal error in handleFinishTest:', err);
+      alert('Lỗi hệ thống — vui lòng thử lại.');
+    }
   };
 
   const handleAddWord = async (wordData: Omit<VocabularyWord, 'id' | 'date'>) => {
     if (!currentUser) return;
-    const { data, error } = await supabase
-      .from('vocabulary')
-      .insert({
-        user_id: currentUser.id,
-        term: wordData.term,
-        type: wordData.type,
-        definition: wordData.definition,
-        example: wordData.example,
-        status: 'Learning'
-      })
-      .select()
-      .single();
 
-    if (data && !error) {
-      setWords(prev => [{
-        id: data.id,
-        term: data.term,
-        type: data.type,
-        definition: data.definition,
-        example: data.example || '',
-        status: data.status as 'Learning' | 'Mastered',
-        date: new Date(data.created_at).toLocaleDateString('en-US', {
-          month: 'short', day: 'numeric', year: 'numeric'
+    try {
+      const { data, error } = await supabase
+        .from('vocabulary')
+        .insert({
+          user_id: currentUser.id,
+          term: wordData.term,
+          type: wordData.type,
+          definition: wordData.definition,
+          example: wordData.example,
+          status: 'Learning'
         })
-      }, ...prev]);
+        .select()
+        .single();
+
+      if (error) {
+        console.error('Error adding word:', error);
+        alert('Lỗi khi thêm từ — vui lòng thử lại.');
+        return;
+      }
+
+      if (data) {
+        setWords((prev) => [
+          {
+            id: data.id,
+            term: data.term,
+            type: data.type,
+            definition: data.definition,
+            example: data.example || '',
+            status: data.status as 'Learning' | 'Mastered',
+            date: new Date(data.created_at).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric'
+            })
+          },
+          ...prev
+        ]);
+      }
+    } catch (err) {
+      console.error('Fatal error adding word:', err);
     }
   };
 
   const handleDeleteWord = async (id: string) => {
-    await supabase.from('vocabulary').delete().eq('id', id);
-    setWords(prev => prev.filter(w => w.id !== id));
+    try {
+      const { error } = await supabase.from('vocabulary').delete().eq('id', id);
+
+      if (error) {
+        console.error('Error deleting word:', error);
+        alert('Lỗi khi xóa từ — vui lòng thử lại.');
+        return;
+      }
+
+      setWords((prev) => prev.filter((w) => w.id !== id));
+    } catch (err) {
+      console.error('Fatal error deleting word:', err);
+    }
   };
 
   const handleToggleStatus = async (id: string) => {
-    const word = words.find(w => w.id === id);
+    const word = words.find((w) => w.id === id);
     if (!word) return;
+
     const newStatus = word.status === 'Learning' ? 'Mastered' : 'Learning';
-    await supabase.from('vocabulary').update({ status: newStatus }).eq('id', id);
-    setWords(prev => prev.map(w => w.id === id ? { ...w, status: newStatus } : w));
+
+    try {
+      const { error } = await supabase
+        .from('vocabulary')
+        .update({ status: newStatus })
+        .eq('id', id);
+
+      if (error) {
+        console.error('Error updating word status:', error);
+        alert('Lỗi khi cập nhật từ — vui lòng thử lại.');
+        return;
+      }
+
+      setWords((prev) =>
+        prev.map((w) => (w.id === id ? { ...w, status: newStatus } : w))
+      );
+    } catch (err) {
+      console.error('Fatal error toggling word status:', err);
+    }
   };
 
   const handleViewAttemptDetails = (attempt: TestAttemptHistory) => {
@@ -462,20 +598,22 @@ export default function App() {
     localStorage.removeItem('modigitalsat_currentScreen');
   };
 
-  // ─── Render ───────────────────────────────────────────────────────────────────
-  const isDark = theme === 'dark';
-  const currentModuleObj = modules.find(m => m.id === activeModuleId);
-
+  // ─── Loading state ────────────────────────────────────────────────────────────
   if (loadingAuth) {
     return (
-      <div className={`min-h-screen flex items-center justify-center font-mono text-sm tracking-widest ${
-        isDark ? 'bg-[#0A0A0A] text-[#00D2FF]' : 'bg-white text-black'
-      }`}>
+      <div
+        className={`min-h-screen flex items-center justify-center font-mono text-sm tracking-widest ${
+          theme === 'dark'
+            ? 'bg-[#0A0A0A] text-[#00D2FF]'
+            : 'bg-white text-black'
+        }`}
+      >
         ĐANG TẢI...
       </div>
     );
   }
 
+  // ─── Login screen ─────────────────────────────────────────────────────────────
   if (!currentUser) {
     return (
       <LoginScreen
@@ -486,24 +624,37 @@ export default function App() {
     );
   }
 
+  // ─── Active test screen ───────────────────────────────────────────────────────
   if (currentScreen === 'practice' && activeModuleId) {
     return (
       <ActiveTestScreen
         theme={theme}
         moduleId={activeModuleId}
-        moduleTitle={currentModuleObj?.title || ''}
+        moduleTitle={modules.find((m) => m.id === activeModuleId)?.title || ''}
         questions={activeQuestions}
         passage={activePassage}
-        onExit={() => { setCurrentScreen('dashboard'); setActiveModuleId(null); }}
+        onExit={() => {
+          setCurrentScreen('dashboard');
+          setActiveModuleId(null);
+        }}
         onFinishTest={handleFinishTest}
       />
     );
   }
 
+  // ─── Main layout variables ───────────────────────────────────────────────────
+  const isDark = theme === 'dark';
+
+  // ─── Main render ─────────────────────────────────────────────────────────────
   return (
-    <div className={`min-h-screen font-sans flex flex-col justify-between transition-colors duration-300 ${
-      isDark ? 'bg-[#0A0A0A] text-[#F5F5F5]' : 'bg-[#FAFAFA] text-[#0A0A0A]'
-    }`}>
+    <div
+      className={`min-h-screen font-sans flex flex-col justify-between transition-colors duration-300 ${
+        isDark
+          ? 'bg-[#0A0A0A] text-[#F5F5F5]'
+          : 'bg-[#FAFAFA] text-[#0A0A0A]'
+      }`}
+    >
+      {/* Background decoration */}
       {isDark && (
         <div className="absolute top-1/4 right-0 text-[300px] font-black leading-none tracking-tighter opacity-[0.02] pointer-events-none select-none font-display">
           SAT
@@ -511,9 +662,13 @@ export default function App() {
       )}
 
       {/* Header */}
-      <header className={`px-4 py-3 sm:py-4 md:px-8 border-b sticky top-0 z-40 backdrop-blur-md transition-all ${
-        isDark ? 'bg-[#0A0A0A]/95 border-white/10' : 'bg-white/95 border-black/10'
-      }`}>
+      <header
+        className={`px-4 py-3 sm:py-4 md:px-8 border-b sticky top-0 z-40 backdrop-blur-md transition-all ${
+          isDark
+            ? 'bg-[#0A0A0A]/95 border-white/10'
+            : 'bg-white/95 border-black/10'
+        }`}
+      >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           {/* Logo */}
           <div
@@ -527,24 +682,35 @@ export default function App() {
               setCurrentScreen('dashboard');
             }}
           >
-            <div className={`p-1.5 border transition-all ${
-              isDark
-                ? 'bg-black border-white/20 text-[#00D2FF]'
-                : 'bg-[#0A0A0A] border-transparent text-[#00D2FF]'
-            }`}>
+            <div
+              className={`p-1.5 border transition-all ${
+                isDark
+                  ? 'bg-black border-white/20 text-[#00D2FF]'
+                  : 'bg-[#0A0A0A] border-transparent text-[#00D2FF]'
+              }`}
+            >
               <GraduationCap className="w-5 h-5" />
             </div>
             <div>
               <h1 className="text-base sm:text-lg font-black tracking-tighter flex items-center gap-2 uppercase font-display select-none">
                 <span
                   className={isDark ? 'text-[#00D2FF] animate-pulse' : 'text-black'}
-                  style={isDark ? { textShadow: '0 0 6px #00D2FF, 0 0 15px rgba(0,210,255,0.6)' } : undefined}
+                  style={
+                    isDark
+                      ? {
+                          textShadow:
+                            '0 0 6px #00D2FF, 0 0 15px rgba(0,210,255,0.6)'
+                        }
+                      : undefined
+                  }
                 >
                   Mơ.DigitalSat
                 </span>
                 <span
                   className="bg-[#00D2FF] text-black text-[9px] font-black tracking-[0.2em] px-2 py-0.5 rounded-none font-sans"
-                  style={isDark ? { boxShadow: '0 0 10px rgba(0,210,255,0.8)' } : undefined}
+                  style={
+                    isDark ? { boxShadow: '0 0 10px rgba(0,210,255,0.8)' } : undefined
+                  }
                 >
                   PRO
                 </span>
@@ -552,15 +718,35 @@ export default function App() {
             </div>
           </div>
 
-          {/* Nav */}
+          {/* Navigation */}
           <nav className="flex items-center gap-1 sm:gap-2">
-            {([
-              { key: 'dashboard',   icon: <LayoutDashboard className="w-3.5 h-3.5" />, label: 'BẢNG ĐIỀU KHIỂN' },
-              { key: 'vocabulary',  icon: <BookOpen        className="w-3.5 h-3.5" />, label: 'TỪ VỰNG SAT'     },
-              { key: 'leaderboard', icon: <Award           className="w-3.5 h-3.5" />, label: 'BẢNG VÀNG'       },
-              { key: 'history',     icon: <History         className="w-3.5 h-3.5" />, label: 'LỊCH SỬ'         },
-            ] as const).map(({ key, icon, label }) => {
-              const isActive = currentScreen === key || (key === 'history' && currentScreen === 'review');
+            {(
+              [
+                {
+                  key: 'dashboard' as Screen,
+                  icon: <LayoutDashboard className="w-3.5 h-3.5" />,
+                  label: 'BẢNG ĐIỀU KHIỂN'
+                },
+                {
+                  key: 'vocabulary' as Screen,
+                  icon: <BookOpen className="w-3.5 h-3.5" />,
+                  label: 'TỪ VỰNG SAT'
+                },
+                {
+                  key: 'leaderboard' as Screen,
+                  icon: <Award className="w-3.5 h-3.5" />,
+                  label: 'BẢNG VÀNG'
+                },
+                {
+                  key: 'history' as Screen,
+                  icon: <History className="w-3.5 h-3.5" />,
+                  label: 'LỊCH SỬ'
+                }
+              ] as const
+            ).map(({ key, icon, label }) => {
+              const isActive =
+                currentScreen === key ||
+                (key === 'history' && currentScreen === 'review');
               return (
                 <button
                   key={key}
@@ -593,6 +779,7 @@ export default function App() {
 
           {/* Right controls */}
           <div className="flex items-center gap-2">
+            {/* Theme toggle */}
             <button
               onClick={toggleTheme}
               className={`p-2 transition-colors cursor-pointer border ${
@@ -602,23 +789,35 @@ export default function App() {
               }`}
               title="Đổi theme"
             >
-              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {isDark ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
             </button>
 
-            <div className={`hidden md:flex items-center gap-2 px-3 py-1.5 border ${
-              isDark ? 'bg-black border-white/10' : 'bg-white border-black/10'
-            }`}>
+            {/* User info */}
+            <div
+              className={`hidden md:flex items-center gap-2 px-3 py-1.5 border ${
+                isDark ? 'bg-black border-white/10' : 'bg-white border-black/10'
+              }`}
+            >
               <img
-                src={currentUser?.user_metadata?.avatar_url || 'https://ui-avatars.com/api/?name=User&background=random'}
+                src={
+                  currentUser?.user_metadata?.avatar_url ||
+                  'https://ui-avatars.com/api/?name=User&background=random'
+                }
                 alt="Avatar"
                 referrerPolicy="no-referrer"
                 className="w-5 h-5 rounded-none object-cover border border-white/20"
               />
               <span className="text-[10px] font-bold tracking-widest uppercase opacity-75 truncate max-w-[100px]">
-                {currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0]}
+                {currentUser?.user_metadata?.full_name ||
+                  currentUser?.email?.split('@')[0]}
               </span>
             </div>
 
+            {/* Logout button */}
             <button
               onClick={handleLogout}
               className={`p-2 border hover:text-red-500 transition-colors cursor-pointer ${
@@ -636,7 +835,6 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 transition-all">
-
         {currentScreen === 'dashboard' && (
           <DashboardScreen
             theme={theme}
@@ -684,7 +882,6 @@ export default function App() {
             onBack={handleBackFromReview}
           />
         )}
-
       </main>
 
       {/* Footer */}
