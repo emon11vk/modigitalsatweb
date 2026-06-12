@@ -138,19 +138,30 @@ export default function App() {
     setCurrentScreen('login');
   };
 
-  const handleStartModule = async (moduleId: string) => {
-    const { data } = await supabase.from('questions').select('*').eq('module_id', moduleId).order('id', { ascending: true });
+const handleStartModule = async (moduleId: string) => {
+    try {
+      const { data } = await supabase.from('questions').select('*').eq('module_id', moduleId).order('id', { ascending: true });
 
-    if (data && data.length > 0) {
+      if (!data || data.length === 0) {
+        alert("Đề thi này chưa có câu hỏi trên hệ thống!");
+        return;
+      }
+
       const formattedQs: Question[] = data.map(q => ({
         id: q.id,
         text: q.text,
         options: q.options,
-        correctAnswer: q.correct_answer
+        correctAnswer: q.correct_answer,
+        passage: q.passage_paragraphs ? {
+          title: q.passage_title || 'Reading Text',
+          introduction: q.passage_intro || '',
+          paragraphs: q.passage_paragraphs
+        } : undefined
       }));
 
       setActiveQuestions(formattedQs);
 
+      // If the first question includes a passage, set it for the test screen
       if (data[0].passage_paragraphs) {
         setActivePassage({
           title: data[0].passage_title || 'Reading Text',
@@ -163,8 +174,9 @@ export default function App() {
 
       setActiveModuleId(moduleId);
       setCurrentScreen('practice');
-    } else {
-      alert("Đề thi này chưa có câu hỏi trên hệ thống!");
+    } catch (err) {
+      console.error('Failed to start module', err);
+      alert('Không thể bắt đầu đề thi — vui lòng thử lại.');
     }
   };
 

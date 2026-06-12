@@ -24,6 +24,7 @@ export interface Question {
   };
   correctAnswer: 'A' | 'B' | 'C' | 'D';
   userAnswer?: 'A' | 'B' | 'C' | 'D';
+  passage?: Passage; // 🟢 THÊM ĐÚNG 1 DÒNG NÀY VÀO ĐÂY
 }
 
 export interface Passage {

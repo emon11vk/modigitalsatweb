@@ -83,7 +83,9 @@ export default function ActiveTestScreen({
   }, [timeLeftSec, hasSubmitted, onFinishTest]);
 
   const currentQuestion = questions[currentIdx];
-
+  // Lấy đoạn văn của chính câu hỏi hiện tại
+  const displayPassage = currentQuestion.passage || passage;
+  
   const handlePassageSelect = (e: React.MouseEvent | React.TouchEvent) => {
     const selection = window.getSelection();
     if (!selection) return;
@@ -116,6 +118,18 @@ export default function ActiveTestScreen({
 
   const clearHighlights = () => {
     setHighlights([]);
+  };
+
+  // 🟢 HÀM MỚI: Bắt sự kiện bấm vào nút X để xóa từng đoạn highlight riêng lẻ
+  const handleContentClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.getAttribute('data-action') === 'remove-highlight') {
+      e.stopPropagation(); // Ngăn hiển thị popup highlight
+      const termToRemove = target.parentElement?.getAttribute('data-term');
+      if (termToRemove) {
+        setHighlights(prev => prev.filter(t => t !== termToRemove));
+      }
+    }
   };
 
   const formatTime = (seconds: number) => {
@@ -163,19 +177,24 @@ export default function ActiveTestScreen({
     }
   };
 
-  // 3. FIX: Chặn việc replace nhầm các thẻ HTML bằng Negative Lookahead Regex
+  // 🟢 ĐÃ FIX: Nâng cấp regex và thêm nút X xóa từng phần
   const renderWithHighlights = (text: string) => {
     if (!text) return '';
     let htmlOutput = text;
     
+    // Sắp xếp chuỗi dài lên trước để không bị highlight lồng nhau
     const sortedHighlights = [...highlights].sort((a, b) => b.length - a.length);
 
     sortedHighlights.forEach((term) => {
-      if (term.trim().length > 2 && text.includes(term)) {
-        const escaped = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-        // (?![^<]*>) giúp bỏ qua những đoạn text nằm bên trong cặp ngoặc < > của HTML
+      if (term.trim().length > 0) {
+        // Thay thế khoảng trắng thành \s+ để linh hoạt match dấu cách/xuống dòng
+        const escaped = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&').replace(/\s+/g, '\\s+');
         const regex = new RegExp(`(${escaped})(?![^<]*>)`, 'g');
-        htmlOutput = htmlOutput.replace(regex, `<mark class="bg-[#FEF08A] text-black px-1.5 py-0.5 rounded-none font-bold border border-yellow-400/50 shadow-sm">$1</mark>`);
+        
+        // Thêm nút X vào góc trên bên phải (chỉ hiện khi rê chuột - group-hover)
+        const markHTML = `<mark class="group relative bg-[#FEF08A] text-black px-1 py-0.5 rounded-sm font-bold border-b-2 border-yellow-500 shadow-sm transition-all" data-term="${term.replace(/"/g, '&quot;')}">$1<span class="absolute -top-2.5 -right-2.5 bg-red-500 text-white w-4 h-4 flex items-center justify-center rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity z-10 cursor-pointer shadow-md border border-red-700" data-action="remove-highlight">✕</span></mark>`;
+        
+        htmlOutput = htmlOutput.replace(regex, markHTML);
       }
     });
 
@@ -183,7 +202,6 @@ export default function ActiveTestScreen({
   };
 
   return (
-    // 4. FIX: Bổ sung onTouchEnd để xài được trên Tablet/iPad
     <div className={`min-h-screen flex flex-col select-text ${
       isDark ? 'bg-[#0A0A0A] text-[#F3F4F6]' : 'bg-[#FAFAFA] text-[#0A0A0A]'
     }`} onMouseUp={handlePassageSelect} onTouchEnd={handlePassageSelect}>
@@ -362,12 +380,13 @@ export default function ActiveTestScreen({
       {/* 3. Main Content Frame */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden h-[calc(100vh-190px)] md:h-[calc(100vh-190px)]">
         
-        {/* Left Side: Study Content / Reading Passage */}
-        {passage ? (
+        {/* Left Side: Study Content / Reading displayPassage */}
+        {displayPassage ? (
           <div 
             className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full relative select-text transition-colors scrollbar-thin ${
               isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'
             }`}
+            onClick={handleContentClick} // 🟢 Gắn event xóa Highlight
           >
             <div className="flex items-center justify-between mb-2.5 border-b border-white/5 pb-2 select-none">
               <span className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-[#00D2FF]' : 'text-black'}`}>
@@ -380,23 +399,23 @@ export default function ActiveTestScreen({
                   className="text-[9px] font-black uppercase tracking-widest text-red-500 hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <Eraser className="w-3.5 h-3.5" />
-                  Xoá các tô màu ({highlights.length})
+                  Xoá toàn bộ Highlight ({highlights.length})
                 </button>
               )}
             </div>
 
             <h3 
               className={`text-xl sm:text-2xl font-black tracking-tight mb-3 uppercase font-display ${isDark ? 'text-white' : 'text-black'}`}
-              dangerouslySetInnerHTML={{ __html: `Paragraph: ${renderWithHighlights(passage.title)}` }}
+              dangerouslySetInnerHTML={{ __html: `Paragraph: ${renderWithHighlights(displayPassage.title)}` }}
             />
             
             <p 
               className="text-xs font-mono opacity-50 mb-6 leading-relaxed bg-black/35 py-3 px-4 border border-white/5 rounded-none"
-              dangerouslySetInnerHTML={{ __html: renderWithHighlights(passage.introduction) }}
+              dangerouslySetInnerHTML={{ __html: renderWithHighlights(displayPassage.introduction) }}
             />
 
             <div className="space-y-4 font-sans max-w-none">
-              {passage.paragraphs.map((p, idx) => (
+              {displayPassage.paragraphs.map((p, idx) => (
                 <p 
                   key={idx} 
                   className="mb-4 leading-relaxed text-sm md:text-base opacity-90 transition-all font-sans"
@@ -422,9 +441,12 @@ export default function ActiveTestScreen({
         )}
 
         {/* Right Side: Active Question Workspace Panel */}
-        <div className={`p-6 md:p-8 overflow-y-auto h-full space-y-6 flex flex-col justify-between ${
-          isDark ? 'bg-[#060606]' : 'bg-[#FAFAFA]'
-        }`}>
+        <div 
+          className={`p-6 md:p-8 overflow-y-auto h-full space-y-6 flex flex-col justify-between ${
+            isDark ? 'bg-[#060606]' : 'bg-[#FAFAFA]'
+          }`}
+          onClick={handleContentClick} // 🟢 Gắn event xóa Highlight
+        >
           <div>
             <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-6 select-none">
               <span className="text-xs font-black uppercase tracking-widest opacity-60 font-mono">
