@@ -105,27 +105,54 @@ export default function App() {
             question_id,
             user_answer,
             is_correct,
-            questions (text, correct_answer, options)
+            questions (
+              id,
+              text,
+              correct_answer,
+              options,
+              passage_paragraphs,
+              passage_intro,
+              passage_title
+            )
           )
         `)
         .eq('user_id', currentUser.id)
         .order('created_at', { ascending: false });
 
       if (histData) {
-        setAttemptHistory(histData.map(h => ({
-          moduleId: h.module_id,
-          moduleTitle: h.modules?.title || 'Unknown',
-          subject: h.modules?.subject || 'Unknown',
-          correctCount: h.correct_count,
-          totalCount: h.total_count,
-          dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
-          // Map chi tiết câu hỏi nếu có
-          questions: h.test_answers?.map((a: any) => ({
-            questionText: a.questions?.text,
-            userAnswer: a.user_answer,
-            correctAnswer: a.questions?.correct_answer,
-          })) || []
-        })));
+        setAttemptHistory(histData.map(h => {
+          // Get unique passage from first question (all from same module should have same passage)
+          const firstQuestionData = h.test_answers?.[0]?.questions;
+          const passage = firstQuestionData?.passage_paragraphs ? {
+            title: firstQuestionData.passage_title || 'Reading Text',
+            introduction: firstQuestionData.passage_intro || '',
+            paragraphs: firstQuestionData.passage_paragraphs
+          } : undefined;
+
+          return {
+            moduleId: h.module_id,
+            moduleTitle: h.modules?.title || 'Unknown',
+            subject: h.modules?.subject || 'Unknown',
+            correctCount: h.correct_count,
+            totalCount: h.total_count,
+            dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
+            // Map chi tiết câu hỏi nếu có
+            questions: h.test_answers?.map((a: any) => ({
+              id: a.questions?.id,
+              questionText: a.questions?.text,
+              userAnswer: a.user_answer,
+              correctAnswer: a.questions?.correct_answer,
+              isCorrect: a.is_correct,
+              options: a.questions?.options,
+              passage: a.questions?.passage_paragraphs ? {
+                title: a.questions.passage_title || 'Reading Text',
+                introduction: a.questions.passage_intro || '',
+                paragraphs: a.questions.passage_paragraphs
+              } : undefined
+            })) || [],
+            passage
+          };
+        }));
       }
 
       const { data: profData } = await supabase.from('profiles').select('*').order('total_score', { ascending: false });
@@ -254,9 +281,13 @@ export default function App() {
         dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
         // Lưu chi tiết câu hỏi ngay vào state để có thể xem lại ngay
         questions: activeQuestions.map(q => ({
+          id: q.id,
           questionText: q.text,
           userAnswer: answers[q.id] ?? null,
           correctAnswer: q.correctAnswer,
+          isCorrect: answers[q.id] === q.correctAnswer,
+          options: q.options,
+          passage: q.passage
         }))
       };
 

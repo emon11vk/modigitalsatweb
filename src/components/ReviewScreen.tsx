@@ -145,155 +145,183 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
         </div>
       </div>
 
-      {/* 5. Passage Display (if available) */}
-      {attempt.passage && (
-        <div className={`p-6 border-2 ${isDark ? 'bg-black border-white/10' : 'bg-white border-black/20'}`}>
-          <h3 className={`text-[11px] font-black uppercase tracking-widest font-mono mb-3 ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-            📖 Đoạn văn bản
-          </h3>
-          {attempt.passage.title && (
-            <h4 className={`text-base md:text-lg font-black uppercase tracking-tight mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
-              {attempt.passage.title}
-            </h4>
-          )}
-          {attempt.passage.introduction && (
-            <p className={`text-sm font-mono mb-4 leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-              {attempt.passage.introduction}
-            </p>
-          )}
-          <div className="space-y-4">
-            {attempt.passage.paragraphs?.map((para, idx) => (
-              <p key={idx} className={`text-sm font-mono leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}>
-                {para}
-              </p>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* 6. Question List */}
-      <div className="space-y-3">
-        <h3 className={`text-[10px] font-black uppercase tracking-widest font-mono ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+      {/* 5. Questions Section - Digital SAT Format */}
+      <div className="space-y-4">
+        <h3 className={`text-[11px] font-black uppercase tracking-widest font-mono ${isDark ? 'text-white/60' : 'text-black/60'} mb-4`}>
           Chi tiết từng câu hỏi — {attempt.totalCount} câu
         </h3>
 
         {attempt.questions && attempt.questions.length > 0 ? (
           attempt.questions.map((q, idx) => {
             const isCorrect = q.userAnswer === q.correctAnswer;
+
             return (
               <div
                 key={idx}
-                className={`p-5 border-2 transition-all duration-200 ${
+                className={`border-2 rounded-none overflow-hidden ${
                   isCorrect
                     ? isDark
                       ? 'border-emerald-700/60 bg-emerald-950/30'
-                      : 'border-emerald-600 bg-emerald-50'
+                      : 'border-emerald-600/50 bg-emerald-50'
                     : isDark
                     ? 'border-red-700/60 bg-red-950/30'
-                    : 'border-red-500 bg-red-50'
+                    : 'border-red-600/50 bg-red-50'
                 }`}
               >
-                {/* Question header */}
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`text-[9px] font-black font-mono px-2 py-0.5 border ${
-                        isDark ? 'border-white/10 text-white/40' : 'border-black/15 text-black/40'
-                      }`}
-                    >
-                      CÂU {idx + 1}
+                {/* Question Header */}
+                <div className={`p-4 border-b ${
+                  isCorrect
+                    ? isDark
+                      ? 'border-emerald-700/40 bg-emerald-950/20'
+                      : 'border-emerald-600/30 bg-emerald-100/40'
+                    : isDark
+                    ? 'border-red-700/40 bg-red-950/20'
+                    : 'border-red-600/30 bg-red-100/40'
+                } flex items-center justify-between`}>
+                  <span className={`text-[10px] font-black uppercase tracking-widest font-mono ${
+                    isDark ? 'text-white/70' : 'text-black/70'
+                  }`}>
+                    CÂU {idx + 1}
+                  </span>
+                  {isCorrect ? (
+                    <span className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-emerald-500">
+                      <CheckCircle2 className="w-3.5 h-3.5" /> ĐÚNG
                     </span>
-                    {isCorrect ? (
-                      <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-emerald-400">
-                        <CheckCircle2 className="w-3.5 h-3.5" /> Đúng
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-red-400">
-                        <XCircle className="w-3.5 h-3.5" /> Sai
-                      </span>
-                    )}
-                  </div>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-red-500">
+                      <XCircle className="w-3.5 h-3.5" /> SAI
+                    </span>
+                  )}
                 </div>
 
-                {/* Question text */}
-                {q.questionText && (
-                  <p className={`text-sm font-mono mb-4 leading-relaxed ${isDark ? 'text-white/80' : 'text-black/80'}`}>
-                    {q.questionText}
-                  </p>
-                )}
+                <div className="p-5 space-y-5">
+                  {/* Passage for this question (if available) */}
+                  {q.passage && (
+                    <div className={`p-4 border ${isDark ? 'border-white/10 bg-black/40' : 'border-black/10 bg-white/60'}`}>
+                      <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+                        📖 Đoạn văn bản
+                      </div>
+                      {q.passage.title && (
+                        <h4 className={`text-sm font-black uppercase tracking-tight mb-2 ${isDark ? 'text-white/90' : 'text-black/90'}`}>
+                          {q.passage.title}
+                        </h4>
+                      )}
+                      {q.passage.introduction && (
+                        <p className={`text-xs font-mono mb-3 leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+                          {q.passage.introduction}
+                        </p>
+                      )}
+                      <div className="space-y-3">
+                        {q.passage.paragraphs?.map((para, pidx) => (
+                          <p key={pidx} className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                            {para}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
-                {/* Answer comparison */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {/* User Answer */}
-                  <div
-                    className={`p-3 border ${
-                      isCorrect
-                        ? isDark
-                          ? 'border-emerald-700/40 bg-emerald-900/20'
-                          : 'border-emerald-500/40 bg-emerald-100/60'
-                        : isDark
-                        ? 'border-red-700/40 bg-red-900/20'
-                        : 'border-red-400/40 bg-red-100/60'
-                    }`}
-                  >
-                    <div
-                      className={`text-[8px] font-black uppercase tracking-[0.2em] font-mono mb-1.5 ${
-                        isCorrect ? 'text-emerald-500' : 'text-red-500'
-                      }`}
-                    >
-                      Bạn chọn
+                  {/* Question Text */}
+                  {q.questionText && (
+                    <div>
+                      <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+                        Câu hỏi
+                      </div>
+                      <p className={`text-sm font-mono leading-relaxed ${isDark ? 'text-white/85' : 'text-black/85'}`}>
+                        {q.questionText}
+                      </p>
                     </div>
-                    <div
-                      className={`text-sm font-black font-mono ${
-                        isCorrect
-                          ? isDark
-                            ? 'text-emerald-300'
-                            : 'text-emerald-700'
-                          : isDark
-                          ? 'text-red-300'
-                          : 'text-red-700'
-                      }`}
-                    >
-                      {q.userAnswer ?? <span className="opacity-40 italic font-normal">Không trả lời</span>}
-                    </div>
-                  </div>
+                  )}
 
-                  {/* Correct Answer */}
-                  <div
-                    className={`p-3 border ${
-                      isDark
-                        ? 'border-emerald-700/40 bg-emerald-900/20'
-                        : 'border-emerald-500/40 bg-emerald-100/60'
-                    }`}
-                  >
-                    <div className="text-[8px] font-black uppercase tracking-[0.2em] font-mono mb-1.5 text-emerald-500">
-                      Đáp án đúng
+                  {/* Options Grid */}
+                  {q.options && (
+                    <div>
+                      <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-3 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+                        Các đáp án
+                      </div>
+                      <div className="grid grid-cols-1 gap-2">
+                        {['A', 'B', 'C', 'D'].map((letter) => {
+                          const optionText = q.options?.[letter as keyof typeof q.options];
+                          const isUserAnswer = q.userAnswer === letter;
+                          const isCorrectAnswer = q.correctAnswer === letter;
+                          const shouldHighlightGreen = isUserAnswer && isCorrect;
+                          const shouldHighlightRed = isUserAnswer && !isCorrect;
+                          const shouldShowCorrectAnswer = !isCorrect && isCorrectAnswer;
+
+                          let borderClass = '';
+                          let bgClass = '';
+                          let textColorClass = '';
+
+                          if (shouldHighlightGreen) {
+                            borderClass = isDark
+                              ? 'border-emerald-600/80 border-2'
+                              : 'border-emerald-600 border-2';
+                            bgClass = isDark
+                              ? 'bg-emerald-950/50'
+                              : 'bg-emerald-100/80';
+                            textColorClass = isDark ? 'text-emerald-300' : 'text-emerald-800';
+                          } else if (shouldHighlightRed) {
+                            borderClass = isDark
+                              ? 'border-red-600/80 border-2'
+                              : 'border-red-600 border-2';
+                            bgClass = isDark
+                              ? 'bg-red-950/50'
+                              : 'bg-red-100/80';
+                            textColorClass = isDark ? 'text-red-300' : 'text-red-800';
+                          } else if (shouldShowCorrectAnswer) {
+                            borderClass = isDark
+                              ? 'border-emerald-600/80 border-2'
+                              : 'border-emerald-600 border-2';
+                            bgClass = isDark
+                              ? 'bg-emerald-950/50'
+                              : 'bg-emerald-100/80';
+                            textColorClass = isDark ? 'text-emerald-300' : 'text-emerald-800';
+                          } else {
+                            borderClass = isDark
+                              ? 'border-white/20'
+                              : 'border-black/20';
+                            bgClass = isDark
+                              ? 'bg-black/30'
+                              : 'bg-white/40';
+                            textColorClass = isDark ? 'text-white/60' : 'text-black/60';
+                          }
+
+                          return (
+                            <div
+                              key={letter}
+                              className={`p-3 border transition-all ${borderClass} ${bgClass}`}
+                            >
+                              <div className="flex items-start gap-3">
+                                <span className={`text-sm font-black font-mono mt-0.5 shrink-0 ${textColorClass}`}>
+                                  {letter}
+                                </span>
+                                <span className={`text-sm font-mono leading-relaxed ${textColorClass}`}>
+                                  {optionText || '—'}
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
+                  )}
+
+                  {/* Explanation (if available) */}
+                  {q.explanation && (
                     <div
-                      className={`text-sm font-black font-mono ${
-                        isDark ? 'text-emerald-300' : 'text-emerald-700'
+                      className={`p-3 border-l-4 border-[#00D2FF] ${
+                        isDark ? 'bg-[#00D2FF]/5' : 'bg-[#00D2FF]/5'
                       }`}
                     >
-                      {q.correctAnswer}
+                      <div className="text-[9px] font-black uppercase tracking-widest font-mono text-[#00D2FF] mb-2">
+                        💡 Giải thích
+                      </div>
+                      <p className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+                        {q.explanation}
+                      </p>
                     </div>
-                  </div>
+                  )}
                 </div>
-
-                {/* Explanation (if available) */}
-                {q.explanation && (
-                  <div
-                    className={`mt-3 p-3 border-l-2 border-[#00D2FF] ${
-                      isDark ? 'bg-[#00D2FF]/5' : 'bg-[#00D2FF]/5'
-                    }`}
-                  >
-                    <span className="text-[8px] font-black uppercase tracking-widest font-mono text-[#00D2FF] block mb-1">
-                      Giải thích
-                    </span>
-                    <p className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}>
-                      {q.explanation}
-                    </p>
-                  </div>
-                )}
               </div>
             );
           })
@@ -313,7 +341,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
         )}
       </div>
 
-      {/* 7. Footer Notice */}
+      {/* 6. Footer Notice */}
       <div className={`p-5 border ${isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'}`}>
         <div className="flex gap-3">
           <AlertCircle className="w-4 h-4 text-[#00D2FF] shrink-0 mt-0.5" />

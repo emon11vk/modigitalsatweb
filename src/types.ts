@@ -58,10 +58,17 @@ export interface StudentRank {
 export interface QuestionResult {
   id: number | string;
   questionText?: string;
-  userAnswer: string | null | undefined; // Có thể rỗng nếu bỏ qua không làm
+  userAnswer: string | null | undefined;
   correctAnswer: string;
-  explanation?: string; // Dành cho phần giải thích đáp án (nếu có)
+  explanation?: string;
   isCorrect: boolean;
+  options?: {
+    A: string;
+    B: string;
+    C: string;
+    D: string;
+  };
+  passage?: Passage; // Từng câu có passage riêng
 }
 
 export interface TestAttemptHistory {
