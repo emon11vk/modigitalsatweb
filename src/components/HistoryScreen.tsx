@@ -5,9 +5,10 @@ interface HistoryScreenProps {
   theme: Theme;
   history: TestAttemptHistory[];
   onStartPractice: () => void;
+  onViewDetails: (attempt: TestAttemptHistory) => void;
 }
 
-export default function HistoryScreen({ theme, history, onStartPractice }: HistoryScreenProps) {
+export default function HistoryScreen({ theme, history, onStartPractice, onViewDetails }: HistoryScreenProps) {
   const isDark = theme === 'dark';
 
   return (
@@ -68,7 +69,8 @@ export default function HistoryScreen({ theme, history, onStartPractice }: Histo
               return (
                 <div
                   key={attempt.moduleId + '-' + index}
-                  className={`p-5 rounded-none border-2 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4 ${
+                  onClick={() => onViewDetails(attempt)}
+                  className={`p-5 rounded-none border-2 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer ${
                     isDark
                       ? 'bg-black border-white/10 hover:border-[#00D2FF]/50'
                       : 'bg-white border-black hover:border-black/50'
@@ -104,17 +106,33 @@ export default function HistoryScreen({ theme, history, onStartPractice }: Histo
                     </div>
                   </div>
 
-                  <div className="flex flex-col md:items-end justify-center pt-2 md:pt-0 border-t md:border-t-0 border-white/5">
-                    <div className="text-[10px] uppercase font-mono tracking-wider opacity-50">SỐ CÂU ĐÚNG / TỔNG SỐ CÂU</div>
-                    <div className="flex items-baseline gap-1 mt-1">
-                      <span className={`text-2xl md:text-3xl font-black font-mono capitalize ${isDark ? 'text-white' : 'text-black'}`}>
-                        {subjectLabel}: <span className="text-[#00D2FF]">{attempt.correctCount}</span>
-                      </span>
-                      <span className="text-lg opacity-40 font-mono">/ {attempt.totalCount}</span>
+                  <div className="flex flex-col md:items-end justify-center pt-2 md:pt-0 border-t md:border-t-0 border-white/5 gap-3">
+                    <div>
+                      <div className="text-[10px] uppercase font-mono tracking-wider opacity-50">SỐ CÂU ĐÚNG / TỔNG SỐ CÂU</div>
+                      <div className="flex items-baseline gap-1 mt-1">
+                        <span className={`text-2xl md:text-3xl font-black font-mono capitalize ${isDark ? 'text-white' : 'text-black'}`}>
+                          {subjectLabel}: <span className="text-[#00D2FF]">{attempt.correctCount}</span>
+                        </span>
+                        <span className="text-lg opacity-40 font-mono">/ {attempt.totalCount}</span>
+                      </div>
+                      <div className="text-[9px] font-mono text-[#00D2FF] mt-1 bg-[#00D2FF]/10 px-2 py-0.5 select-none font-bold">
+                        Đã khóa kết quả lần 1 ✓
+                      </div>
                     </div>
-                    <div className="text-[9px] font-mono text-[#00D2FF] mt-1 bg-[#00D2FF]/10 px-2 py-0.5 select-none font-bold">
-                      Đã khóa kết quả lần 1 ✓
-                    </div>
+                    <button
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-[9px] font-black uppercase tracking-widest border transition-all hover:bg-[#00D2FF] hover:text-black hover:border-[#00D2FF] ${
+                        isDark
+                          ? 'border-white/10 text-white/60'
+                          : 'border-black/10 text-black/60'
+                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onViewDetails(attempt);
+                      }}
+                    >
+                      Xem chi tiết
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
               );
