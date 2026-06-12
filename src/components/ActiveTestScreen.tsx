@@ -26,7 +26,6 @@ export default function ActiveTestScreen({
 }: ActiveTestScreenProps) {
   const isDark = theme === 'dark';
 
-  // 1. FIX: Thêm Early Return để chống Crash UI khi questions chưa load xong
   if (!questions || questions.length === 0) {
     return (
       <div className={`min-h-screen flex items-center justify-center font-mono text-sm uppercase tracking-widest ${isDark ? 'bg-[#0A0A0A] text-white' : 'bg-[#FAFAFA] text-black'}`}>
@@ -35,32 +34,26 @@ export default function ActiveTestScreen({
     );
   }
 
-  // State Management
   const [currentIdx, setCurrentIdx] = useState(0);
   const [userAnswers, setUserAnswers] = useState<Record<number, 'A' | 'B' | 'C' | 'D'>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
   const [eliminatedOptions, setEliminatedOptions] = useState<Record<string, boolean>>({}); 
   
-  // Highlighting system states
   const [highlights, setHighlights] = useState<string[]>([]);
   const [selectedText, setSelectedText] = useState('');
   const [selectionBox, setSelectionBox] = useState<{ x: number; y: number } | null>(null);
 
-  // Clock Countdown (eg. 32 minutes default)
   const [timeLeftSec, setTimeLeftSec] = useState(32 * 60);
   const [showTimer, setShowTimer] = useState(true);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  // 2. FIX: Dùng useRef để lưu userAnswers mới nhất, tránh trigger useEffect của Timer liên tục
   const latestAnswers = useRef(userAnswers);
   useEffect(() => {
     latestAnswers.current = userAnswers;
   }, [userAnswers]);
 
-  // Timer run
   useEffect(() => {
     if (hasSubmitted) return;
-
     const interval = setInterval(() => {
       setTimeLeftSec((prev) => {
         if (prev <= 1) {
@@ -70,20 +63,17 @@ export default function ActiveTestScreen({
         return prev - 1;
       });
     }, 1000);
-
     return () => clearInterval(interval);
   }, [hasSubmitted]);
 
-  // Submit khi hết giờ
   useEffect(() => {
     if (timeLeftSec === 0 && !hasSubmitted) {
       setHasSubmitted(true);
-      onFinishTest(latestAnswers.current); // Gọi function từ reference thay vì state trực tiếp
+      onFinishTest(latestAnswers.current); 
     }
   }, [timeLeftSec, hasSubmitted, onFinishTest]);
 
   const currentQuestion = questions[currentIdx];
-  // Lấy đoạn văn của chính câu hỏi hiện tại
   const displayPassage = currentQuestion.passage || passage;
   
   const handlePassageSelect = (e: React.MouseEvent | React.TouchEvent) => {
@@ -93,13 +83,12 @@ export default function ActiveTestScreen({
     const text = selection.toString().trim();
     if (text.length > 3) {
       setSelectedText(text);
-      // Hỗ trợ tọa độ cho cả Touch và Mouse
       const clientX = 'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
       const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
       
       setSelectionBox({
         x: clientX,
-        y: clientY - 40,
+        y: clientY - 45, // Nâng box lên 1 chút cho dễ nhìn
       });
     } else {
       setSelectedText('');
@@ -120,12 +109,13 @@ export default function ActiveTestScreen({
     setHighlights([]);
   };
 
-  // 🟢 HÀM MỚI: Bắt sự kiện bấm vào nút X để xóa từng đoạn highlight riêng lẻ
+  // 🟢 ĐÃ FIX UX: Bấm thẳng vào đoạn Highlight để xóa siêu tiện lợi
   const handleContentClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
-    if (target.getAttribute('data-action') === 'remove-highlight') {
-      e.stopPropagation(); // Ngăn hiển thị popup highlight
-      const termToRemove = target.parentElement?.getAttribute('data-term');
+    const markElement = target.closest('mark');
+    if (markElement) {
+      e.stopPropagation(); // Không kích hoạt hiển thị popup bôi đen
+      const termToRemove = markElement.getAttribute('data-term');
       if (termToRemove) {
         setHighlights(prev => prev.filter(t => t !== termToRemove));
       }
@@ -139,60 +129,43 @@ export default function ActiveTestScreen({
   };
 
   const handleSelectAnswer = (option: 'A' | 'B' | 'C' | 'D') => {
-    setUserAnswers(prev => ({
-      ...prev,
-      [currentQuestion.id]: option
-    }));
+    setUserAnswers(prev => ({ ...prev, [currentQuestion.id]: option }));
   };
 
   const toggleFlag = () => {
-    setFlaggedQuestions(prev => ({
-      ...prev,
-      [currentQuestion.id]: !prev[currentQuestion.id]
-    }));
+    setFlaggedQuestions(prev => ({ ...prev, [currentQuestion.id]: !prev[currentQuestion.id] }));
   };
 
   const toggleEliminate = (option: 'A' | 'B' | 'C' | 'D') => {
     const key = `${currentQuestion.id}-${option}`;
-    setEliminatedOptions(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
+    setEliminatedOptions(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const navigatePrev = () => {
-    if (currentIdx > 0) setCurrentIdx(currentIdx - 1);
-  };
+  const navigatePrev = () => { if (currentIdx > 0) setCurrentIdx(currentIdx - 1); };
+  const navigateNext = () => { if (currentIdx < questions.length - 1) setCurrentIdx(currentIdx + 1); };
+  const handleManualSubmit = () => { if (!hasSubmitted) { setHasSubmitted(true); onFinishTest(userAnswers); } };
 
-  const navigateNext = () => {
-    if (currentIdx < questions.length - 1) {
-      setCurrentIdx(currentIdx + 1);
-    }
-  };
-
-  const handleManualSubmit = () => {
-    if (!hasSubmitted) {
-      setHasSubmitted(true);
-      onFinishTest(userAnswers);
-    }
-  };
-
-  // 🟢 ĐÃ FIX: Nâng cấp regex và thêm nút X xóa từng phần
+  // 🟢 ĐÃ FIX LỖI TÀNG HÌNH: Thuật toán tách từ, bất chấp khoảng trắng hay xuống dòng
   const renderWithHighlights = (text: string) => {
     if (!text) return '';
-    let htmlOutput = text;
+    if (highlights.length === 0) return text;
     
-    // Sắp xếp chuỗi dài lên trước để không bị highlight lồng nhau
+    let htmlOutput = text;
     const sortedHighlights = [...highlights].sort((a, b) => b.length - a.length);
 
     sortedHighlights.forEach((term) => {
       if (term.trim().length > 0) {
-        // Thay thế khoảng trắng thành \s+ để linh hoạt match dấu cách/xuống dòng
-        const escaped = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&').replace(/\s+/g, '\\s+');
-        const regex = new RegExp(`(${escaped})(?![^<]*>)`, 'g');
+        // Tách chữ ra, cho phép cách nhau bằng dấu cách, xuống dòng hoặc cả thẻ HTML ẩn
+        const escaped = term
+          .trim()
+          .split(/\s+/)
+          .map(word => word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'))
+          .join('(?:\\s|<[^>]*>)+'); 
+          
+        const regex = new RegExp(`(${escaped})(?![^<]*>)`, 'gi');
         
-        // Thêm nút X vào góc trên bên phải (chỉ hiện khi rê chuột - group-hover)
-        const markHTML = `<mark class="group relative bg-[#FEF08A] text-black px-1 py-0.5 rounded-sm font-bold border-b-2 border-yellow-500 shadow-sm transition-all" data-term="${term.replace(/"/g, '&quot;')}">$1<span class="absolute -top-2.5 -right-2.5 bg-red-500 text-white w-4 h-4 flex items-center justify-center rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity z-10 cursor-pointer shadow-md border border-red-700" data-action="remove-highlight">✕</span></mark>`;
+        // Thêm thẻ X nhỏ trên góc, click vào vùng vàng sẽ tự xóa
+        const markHTML = `<mark class="group relative bg-[#FEF08A] text-black px-1 rounded-sm cursor-pointer hover:bg-red-200 transition-colors shadow-sm" title="Bấm vào để xóa Highlight này" data-term="${term.replace(/"/g, '&quot;')}">$1<span class="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-red-500 text-white rounded-full flex items-center justify-center text-[8px] font-bold opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">✕</span></mark>`;
         
         htmlOutput = htmlOutput.replace(regex, markHTML);
       }
@@ -206,58 +179,39 @@ export default function ActiveTestScreen({
       isDark ? 'bg-[#0A0A0A] text-[#F3F4F6]' : 'bg-[#FAFAFA] text-[#0A0A0A]'
     }`} onMouseUp={handlePassageSelect} onTouchEnd={handlePassageSelect}>
       
-      {/* 1. Header Area with dynamic timer and metadata */}
+      {/* Header Area */}
       <header className={`px-4 py-4 md:px-6 flex items-center justify-between border-b-2 transition-all shrink-0 ${
         isDark ? 'bg-[#0A0A0A] border-white/10' : 'bg-white border-black'
       }`}>
-        {/* Left branding and back warning */}
         <div className="flex items-center gap-3">
-          <button 
-            onClick={onExit}
-            className={`flex items-center gap-1.5 px-4 py-2 text-xs font-black uppercase tracking-widest rounded-none border-2 transition-all cursor-pointer ${
-              isDark 
-                ? 'border-white/15 text-white hover:bg-[#00D2FF] hover:text-black hover:border-[#00D2FF]' 
-                : 'border-black text-black hover:bg-black hover:text-white'
-            }`}
-          >
+          <button onClick={onExit} className={`flex items-center gap-1.5 px-4 py-2 text-xs font-black uppercase tracking-widest rounded-none border-2 transition-all cursor-pointer ${
+            isDark ? 'border-white/15 text-white hover:bg-[#00D2FF] hover:text-black hover:border-[#00D2FF]' : 'border-black text-black hover:bg-black hover:text-white'
+          }`}>
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Thoát</span>
           </button>
           
           <div className="hidden sm:flex items-center gap-2">
             <span className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-none border ${
-              passage 
-                ? (isDark ? 'bg-white/5 border-white/20 text-white' : 'bg-gray-105 border-black text-black')
-                : (isDark ? 'bg-[#00D2FF]/10 border-[#00D2FF]/30 text-[#00D2FF]' : 'bg-black border-black text-white')
+              passage ? (isDark ? 'bg-white/5 border-white/20 text-white' : 'bg-gray-105 border-black text-black') : (isDark ? 'bg-[#00D2FF]/10 border-[#00D2FF]/30 text-[#00D2FF]' : 'bg-black border-black text-white')
             }`}>
               {passage ? 'Đọc & Viết' : 'Toán Học'}
             </span>
-            <span className={`text-xs font-mono tracking-tight opacity-55`}>
-              {moduleTitle}
-            </span>
+            <span className={`text-xs font-mono tracking-tight opacity-55`}>{moduleTitle}</span>
           </div>
         </div>
 
-        {/* Center: Bluebook Mock Countdown widget */}
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggleFlag}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer rounded-none select-none ${
-              flaggedQuestions[currentQuestion.id]
-                ? 'bg-amber-500/20 border-amber-500 text-amber-500 font-bold'
-                : (isDark ? 'bg-black border-white/20 text-gray-300 hover:text-[#00D2FF] hover:border-[#00D2FF]' : 'bg-white border-black text-black hover:bg-black hover:text-white')
-            }`}
-            title="Đánh dấu câu hỏi này để xem lại"
-          >
+          <button onClick={toggleFlag} className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer rounded-none select-none ${
+            flaggedQuestions[currentQuestion.id] ? 'bg-amber-500/20 border-amber-500 text-amber-500 font-bold' : (isDark ? 'bg-black border-white/20 text-gray-300 hover:text-[#00D2FF] hover:border-[#00D2FF]' : 'bg-white border-black text-black hover:bg-black hover:text-white')
+          }`}>
             <Flag className={`w-3.5 h-3.5 ${flaggedQuestions[currentQuestion.id] ? 'fill-current text-amber-500' : ''}`} />
             <span className="hidden xs:inline">{flaggedQuestions[currentQuestion.id] ? 'FLAGGED' : 'FLAG'}</span>
           </button>
 
           {showTimer ? (
             <div className={`px-4 py-2 border-2 flex items-center gap-2 text-center transition-all rounded-none ${
-              timeLeftSec < 120 
-                ? 'border-red-600 bg-red-600/10 text-red-500 font-black animate-pulse' 
-                : (isDark ? 'border-[#00D2FF]/40 bg-black text-[#00D2FF]' : 'border-black bg-white text-black')
+              timeLeftSec < 120 ? 'border-red-600 bg-red-600/10 text-red-500 font-black animate-pulse' : (isDark ? 'border-[#00D2FF]/40 bg-black text-[#00D2FF]' : 'border-black bg-white text-black')
             }`}>
               <Timer className="w-4 h-4 shrink-0" />
               <span className="font-mono text-base font-black tracking-wider leading-none">{formatTime(timeLeftSec)}</span>
@@ -266,127 +220,78 @@ export default function ActiveTestScreen({
             <div className="text-xs font-mono uppercase tracking-wider opacity-40">Timer Off</div>
           )}
 
-          <button
-            onClick={() => setShowTimer(!showTimer)}
-            className={`p-2 border transition-colors rounded-none cursor-pointer ${
-              isDark ? 'border-white/10 text-gray-500 hover:text-[#00D2FF]' : 'border-black/15 text-gray-400 hover:text-black'
-            }`}
-            title={showTimer ? "Ẩn đồng hồ" : "Hiện đồng hồ"}
-          >
+          <button onClick={() => setShowTimer(!showTimer)} className={`p-2 border transition-colors rounded-none cursor-pointer ${
+            isDark ? 'border-white/10 text-gray-500 hover:text-[#00D2FF]' : 'border-black/15 text-gray-400 hover:text-black'
+          }`}>
             {showTimer ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
         </div>
 
-        {/* Right submit action button */}
         <div>
-          <button
-            onClick={handleManualSubmit}
-            className={`px-4 py-2 md:px-6 md:py-2.5 text-xs font-black uppercase tracking-widest rounded-none cursor-pointer transition-all border ${
-              isDark
-                ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/20'
-                : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'
-            }`}
-          >
-            Nộp bài
-          </button>
+          <button onClick={handleManualSubmit} className={`px-4 py-2 md:px-6 md:py-2.5 text-xs font-black uppercase tracking-widest rounded-none cursor-pointer transition-all border ${
+            isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/20' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'
+          }`}>Nộp bài</button>
         </div>
       </header>
 
-      {/* 2. Top-Aligned Navigation Row containing the Question Selector Matrix */}
+      {/* Navigation Row */}
       <div className={`px-4 py-3 border-b-2 flex flex-col md:flex-row items-center justify-between gap-4 transition-all shrink-0 ${
         isDark ? 'bg-[#0A0A0A] border-white/10' : 'bg-white border-black'
       }`}>
-        
-        {/* Left question navigator */}
         <div>
-          <button
-            onClick={navigatePrev}
-            disabled={currentIdx === 0}
-            className={`px-4 py-2.5 text-xs font-black uppercase tracking-widest rounded-none border-2 flex items-center gap-1 transition-all ${
-              currentIdx === 0
-                ? 'opacity-20 cursor-not-allowed'
-                : (isDark 
-                    ? 'border-white/10 text-white hover:bg-white/5 cursor-pointer' 
-                    : 'border-black text-black hover:bg-black hover:text-white cursor-pointer')
-            }`}
-          >
+          <button onClick={navigatePrev} disabled={currentIdx === 0} className={`px-4 py-2.5 text-xs font-black uppercase tracking-widest rounded-none border-2 flex items-center gap-1 transition-all ${
+            currentIdx === 0 ? 'opacity-20 cursor-not-allowed' : (isDark ? 'border-white/10 text-white hover:bg-white/5 cursor-pointer' : 'border-black text-black hover:bg-black hover:text-white cursor-pointer')
+          }`}>
             <ChevronLeft className="w-3.5 h-3.5" />
             <span>Câu trước</span>
           </button>
         </div>
 
-        {/* Center: Interactive Questions Matrix Bubble Rows */}
         <div className="flex items-center gap-2">
           {questions.map((q, idx) => {
             const isSelected = idx === currentIdx;
             const isAnswered = !!userAnswers[q.id];
             const isFlagged = flaggedQuestions[q.id];
-
             return (
-              <button
-                key={q.id}
-                onClick={() => setCurrentIdx(idx)}
-                className={`relative w-8 h-8 md:w-9 md:h-9 rounded-none flex items-center justify-center text-xs font-black font-mono transition-all border-2 cursor-pointer ${
-                  isSelected
-                    ? (isDark 
-                        ? 'bg-[#00D2FF] text-black border-[#00D2FF]' 
-                        : 'bg-black text-white border-black')
-                    : (isAnswered
-                        ? (isDark ? 'bg-black border-[#00D2FF]/50 text-[#00D2FF]' : 'bg-gray-105 border-black text-black font-black')
-                        : (isDark ? 'bg-black border-white/10 text-white/40' : 'bg-white border-black/10 text-black/40'))
-                }`}
-                title={`Đi tới Câu ${idx + 1}`}
-              >
+              <button key={q.id} onClick={() => setCurrentIdx(idx)} className={`relative w-8 h-8 md:w-9 md:h-9 rounded-none flex items-center justify-center text-xs font-black font-mono transition-all border-2 cursor-pointer ${
+                isSelected ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-black text-white border-black') : (isAnswered ? (isDark ? 'bg-black border-[#00D2FF]/50 text-[#00D2FF]' : 'bg-gray-105 border-black text-black font-black') : (isDark ? 'bg-black border-white/10 text-white/40' : 'bg-white border-black/10 text-black/40'))
+              }`}>
                 {idx + 1}
-                {isFlagged && (
-                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-500 border border-black" />
-                )}
+                {isFlagged && <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-500 border border-black" />}
               </button>
             );
           })}
         </div>
 
-        {/* Right navigation / submit */}
         <div>
           {currentIdx === questions.length - 1 ? (
-            <button
-              onClick={handleManualSubmit}
-              className={`px-5 py-2.5 text-xs font-black uppercase tracking-widest rounded-none flex items-center gap-1.5 cursor-pointer transition-all border ${
-                isDark
-                  ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/10'
-                  : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'
-              }`}
-            >
+            <button onClick={handleManualSubmit} className={`px-5 py-2.5 text-xs font-black uppercase tracking-widest rounded-none flex items-center gap-1.5 cursor-pointer transition-all border ${
+              isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/10' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'
+            }`}>
               <span>Nộp bài & kết quả</span>
               <CheckSquare className="w-3.5 h-3.5" />
             </button>
           ) : (
-            <button
-              onClick={navigateNext}
-              className={`px-4 py-2.5 text-xs font-black uppercase tracking-widest rounded-none border-2 flex items-center gap-1.5 transition-all cursor-pointer ${
-                isDark
-                  ? 'border-white/10 text-white hover:bg-white/5'
-                  : 'border-black text-black hover:bg-black hover:text-white'
-              }`}
-            >
+            <button onClick={navigateNext} className={`px-4 py-2.5 text-xs font-black uppercase tracking-widest rounded-none border-2 flex items-center gap-1.5 transition-all cursor-pointer ${
+              isDark ? 'border-white/10 text-white hover:bg-white/5' : 'border-black text-black hover:bg-black hover:text-white'
+            }`}>
               <span>Câu kế tiếp</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
           )}
         </div>
-
       </div>
 
-      {/* 3. Main Content Frame */}
+      {/* Main Content Frame */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden h-[calc(100vh-190px)] md:h-[calc(100vh-190px)]">
         
-        {/* Left Side: Study Content / Reading displayPassage */}
+        {/* Left Side: Study Content */}
         {displayPassage ? (
           <div 
             className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full relative select-text transition-colors scrollbar-thin ${
               isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'
             }`}
-            onClick={handleContentClick} // 🟢 Gắn event xóa Highlight
+            onClick={handleContentClick}
           >
             <div className="flex items-center justify-between mb-2.5 border-b border-white/5 pb-2 select-none">
               <span className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-[#00D2FF]' : 'text-black'}`}>
@@ -399,7 +304,7 @@ export default function ActiveTestScreen({
                   className="text-[9px] font-black uppercase tracking-widest text-red-500 hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <Eraser className="w-3.5 h-3.5" />
-                  Xoá toàn bộ Highlight ({highlights.length})
+                  Xoá toàn bộ ({highlights.length})
                 </button>
               )}
             </div>
@@ -440,12 +345,12 @@ export default function ActiveTestScreen({
           </div>
         )}
 
-        {/* Right Side: Active Question Workspace Panel */}
+        {/* Right Side: Questions */}
         <div 
           className={`p-6 md:p-8 overflow-y-auto h-full space-y-6 flex flex-col justify-between ${
             isDark ? 'bg-[#060606]' : 'bg-[#FAFAFA]'
           }`}
-          onClick={handleContentClick} // 🟢 Gắn event xóa Highlight
+          onClick={handleContentClick}
         >
           <div>
             <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-6 select-none">
@@ -465,52 +370,20 @@ export default function ActiveTestScreen({
                 const isEliminated = !!eliminatedOptions[`${currentQuestion.id}-${letter}`];
                 
                 return (
-                  <div 
-                    key={letter}
-                    className={`relative group flex items-stretch rounded-none border-2 transition-all ${
-                      isSelected 
-                        ? (isDark 
-                            ? 'bg-[#00D2FF]/5 border-[#00D2FF] text-white' 
-                            : 'bg-black border-black text-white') 
-                        : (isEliminated 
-                            ? 'opacity-20 line-through scale-[0.98]' 
-                            : (isDark 
-                                ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' 
-                                : 'bg-white border-black/15 hover:border-black'))
-                    }`}
-                  >
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleEliminate(letter);
-                      }}
-                      className={`px-3 flex items-center justify-center transition-colors border-r-2 text-[9px] font-mono tracking-widest uppercase cursor-pointer select-none ${
-                        isEliminated 
-                          ? 'border-red-500/20 text-red-500 bg-red-950/10' 
-                          : 'border-transparent text-gray-500 hover:text-red-500'
-                      }`}
-                      title={isEliminated ? "Khôi phục lại phương án" : "Gạch bỏ phương án"}
-                    >
+                  <div key={letter} className={`relative group flex items-stretch rounded-none border-2 transition-all ${
+                      isSelected ? (isDark ? 'bg-[#00D2FF]/5 border-[#00D2FF] text-white' : 'bg-black border-black text-white') : (isEliminated ? 'opacity-20 line-through scale-[0.98]' : (isDark ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' : 'bg-white border-black/15 hover:border-black'))
+                    }`}>
+                    <button onClick={(e) => { e.stopPropagation(); toggleEliminate(letter); }} className={`px-3 flex items-center justify-center transition-colors border-r-2 text-[9px] font-mono tracking-widest uppercase cursor-pointer select-none ${
+                        isEliminated ? 'border-red-500/20 text-red-500 bg-red-950/10' : 'border-transparent text-gray-500 hover:text-red-500'
+                      }`} title={isEliminated ? "Khôi phục lại phương án" : "Gạch bỏ phương án"}>
                       {isEliminated ? '✕' : '[DEL]'}
                     </button>
 
-                    <button
-                      onClick={() => handleSelectAnswer(letter)}
-                      className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer"
-                    >
+                    <button onClick={() => handleSelectAnswer(letter)} className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer">
                       <span className={`flex items-center justify-center w-7 h-7 text-xs font-black border-2 uppercase shrink-0 transition-all rounded-none select-none ${
-                        isSelected 
-                          ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-white text-black border-white')
-                          : (isDark ? 'bg-black border-white/10 text-[#00D2FF] group-hover:border-[#00D2FF]' : 'bg-gray-50 border-black/15 text-black')
-                      }`}>
-                        {letter}
-                      </span>
-                      <span 
-                        className={`text-sm md:text-base font-bold leading-relaxed pt-0.5 ${
-                          isEliminated ? 'line-through opacity-40' : ''
-                        }`}
-                        dangerouslySetInnerHTML={{ __html: renderWithHighlights(currentQuestion.options[letter]) }}
-                      />
+                        isSelected ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-white text-black border-white') : (isDark ? 'bg-black border-white/10 text-[#00D2FF] group-hover:border-[#00D2FF]' : 'bg-gray-50 border-black/15 text-black')
+                      }`}>{letter}</span>
+                      <span className={`text-sm md:text-base font-bold leading-relaxed pt-0.5 ${isEliminated ? 'line-through opacity-40' : ''}`} dangerouslySetInnerHTML={{ __html: renderWithHighlights(currentQuestion.options[letter]) }} />
                     </button>
                   </div>
                 );
@@ -522,19 +395,20 @@ export default function ActiveTestScreen({
             <AlertCircle className="w-4 h-4 text-[#00D2FF]" />
             <span>Xếp hạng và điểm số được cập nhật trực tuyến sau khi hoàn thành.</span>
           </div>
-
         </div>
       </div>
 
+      {/* 🟢 ĐÃ FIX SỰ KIỆN: Dùng onMouseDown + preventDefault để bảo toàn vùng chọn */}
       {selectionBox && (
         <div 
-          className="fixed z-50 bg-black border-2 border-[#00D2FF] rounded-none py-1.5 px-2 flex items-center gap-1 text-xs shadow-lg select-none"
+          className="fixed z-50 bg-black border-2 border-[#00D2FF] rounded-none py-1.5 px-2 flex items-center gap-1 text-xs shadow-lg select-none transition-all animate-in zoom-in-95 duration-150"
           style={{ top: `${selectionBox.y}px`, left: `${selectionBox.x}px` }}
+          onMouseDown={(e) => { 
+            e.preventDefault(); 
+            addHighlight(); 
+          }}
         >
-          <button 
-            onClick={addHighlight}
-            className="flex items-center gap-1.5 px-2.5 py-1 bg-[#00D2FF] text-black font-black uppercase tracking-widest rounded-none hover:bg-white text-[9px] cursor-pointer"
-          >
+          <button className="flex items-center gap-1.5 px-2.5 py-1 bg-[#00D2FF] text-black font-black uppercase tracking-widest rounded-none hover:bg-white text-[9px] cursor-pointer">
             <Paintbrush className="w-3 h-3" />
             Highlight Selection
           </button>
