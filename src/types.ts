@@ -1,6 +1,7 @@
 export type Theme = 'light' | 'dark';
 
-export type Screen = 'login' | 'dashboard' | 'practice' | 'vocabulary' | 'leaderboard' | 'history';
+// 1. Thêm 'review' vào danh sách Screen
+export type Screen = 'login' | 'dashboard' | 'practice' | 'vocabulary' | 'leaderboard' | 'history' | 'review';
 
 export interface Module {
   id: string;
@@ -53,6 +54,16 @@ export interface StudentRank {
   isCurrentUser?: boolean;
 }
 
+// 2. Thêm interface mới để lưu kết quả từng câu hỏi
+export interface QuestionResult {
+  id: number | string;
+  questionText?: string;
+  userAnswer: string | null | undefined; // Có thể rỗng nếu bỏ qua không làm
+  correctAnswer: string;
+  explanation?: string; // Dành cho phần giải thích đáp án (nếu có)
+  isCorrect: boolean;
+}
+
 export interface TestAttemptHistory {
   moduleId: string;
   moduleTitle: string;
@@ -60,4 +71,6 @@ export interface TestAttemptHistory {
   correctCount: number;
   totalCount: number;
   dateStr: string;
+  // 3. Thêm mảng questions để ReviewScreen có dữ liệu render
+  questions?: QuestionResult[]; 
 }

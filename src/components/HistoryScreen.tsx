@@ -1,8 +1,8 @@
-import { TestAttemptHistory } from '../types';
+import { TestAttemptHistory, Theme } from '../types';
 import { History, Calendar, CheckCircle2, ChevronRight, BookOpen, AlertCircle } from 'lucide-react';
 
 interface HistoryScreenProps {
-  theme: 'light' | 'dark';
+  theme: Theme;
   history: TestAttemptHistory[];
   onStartPractice: () => void;
 }
@@ -31,7 +31,7 @@ export default function HistoryScreen({ theme, history, onStartPractice }: Histo
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-display uppercase tracking-tight leading-none">
             BẢNG LỊCH SỬ LÀM BÀI
           </h2>
-          <p className="text-xs md:text-sm font-mono opacity-85 leading-relaxed">
+          <p className="text-xs md:text-sm font-mono opacity-80 leading-relaxed">
             Hệ thống tự động lưu trữ kết quả và số câu trả lời chính xác của <span className="text-[#00D2FF] font-bold">LẦN LÀM ĐẦU TIÊN (FIRST ATTEMPT ONLY)</span> để đảm bảo tính khách quan và đánh giá năng lực thực tế.
           </p>
         </div>
@@ -129,7 +129,7 @@ export default function HistoryScreen({ theme, history, onStartPractice }: Histo
           <AlertCircle className="w-4 h-4 text-[#00D2FF] shrink-0 mt-0.5" />
           <div className="space-y-1.5">
             <h5 className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-black'}`}>Quy tắc lưu trữ:</h5>
-            <p className="text-11px text-gray-500 font-mono leading-relaxed">
+            <p className="text-[11px] text-gray-500 font-mono leading-relaxed">
               Nhằm đảm bảo điểm số phản ánh chính xác nhất năng lực tiếp thu tự nhiên, hệ thống chỉ lưu lịch sử kết quả của <strong className={isDark ? 'text-white' : 'text-black'}>LẦN LÀM ĐẦU TIÊN</strong>. Mọi lượt thi thử lại sau đó chỉ hiển thị kết quả cục bộ và không lưu đè hoặc ghi nhận thêm điểm số mới vào hồ sơ học thuật của bạn.
             </p>
           </div>
