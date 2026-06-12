@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Theme, Screen, VocabularyWord, Module, StudentRank, TestAttemptHistory, Question, Passage } from './types';
 
-import { supabase } from './supabaseClient'; 
+import { supabase } from './supabaseClient';
 
 // Component Imports
 import LoginScreen from './components/LoginScreen';
@@ -13,20 +13,17 @@ import HistoryScreen from './components/HistoryScreen';
 import ReviewScreen from './components/ReviewScreen';
 
 // Icon Imports
-import { 
-  Sun, Moon, LogOut, LayoutDashboard, 
+import {
+  Sun, Moon, LogOut, LayoutDashboard,
   Award, BookOpen, GraduationCap, CheckCircle2,
   History
 } from 'lucide-react';
 
-// Mở rộng Screen type để bao gồm 'review'
-// Trong types.ts, cập nhật: export type Screen = 'dashboard' | 'vocabulary' | 'leaderboard' | 'history' | 'practice' | 'review';
-
 export default function App() {
-  const [currentUser, setCurrentUser] = useState<any>(null); 
+  const [currentUser, setCurrentUser] = useState<any>(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
 
-  const [theme, setTheme] = useState<Theme>('dark'); 
+  const [theme, setTheme] = useState<Theme>('dark');
   const [currentScreen, setCurrentScreen] = useState<Screen>('dashboard');
 
   const [modules, setModules] = useState<Module[]>([]);
@@ -46,10 +43,9 @@ export default function App() {
     moduleTitle: string;
   } | null>(null);
 
-  // --- State mới: bài làm đang được xem lại ---
   const [selectedAttempt, setSelectedAttempt] = useState<TestAttemptHistory | null>(null);
 
-  // Lắng nghe Auth
+  // ─── Auth listener ───────────────────────────────────────────────────────────
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setCurrentUser(session?.user ?? null);
@@ -63,52 +59,45 @@ export default function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Persist selectedAttempt to localStorage
+  // ─── Persist review screen to localStorage ───────────────────────────────────
   useEffect(() => {
     if (selectedAttempt && currentScreen === 'review' && selectedAttempt.attemptId) {
       localStorage.setItem('modigitalsat_attemptId', selectedAttempt.attemptId);
       localStorage.setItem('modigitalsat_currentScreen', 'review');
-      console.log('Saved attempt to localStorage:', selectedAttempt.attemptId);
     }
   }, [selectedAttempt, currentScreen]);
 
-  // Restore selectedAttempt from localStorage when data is loaded
+  // ─── Restore review screen from localStorage after data loads ────────────────
   useEffect(() => {
     if (!attemptHistory || attemptHistory.length === 0) return;
-    if (selectedAttempt) return; // Already set
+    if (selectedAttempt) return;
 
     const savedAttemptId = localStorage.getItem('modigitalsat_attemptId');
     const savedScreen = localStorage.getItem('modigitalsat_currentScreen');
 
     if (savedAttemptId && savedScreen === 'review') {
-      try {
-        // Find the attempt by ID from the loaded history
-        const existingAttempt = attemptHistory.find(h => h.attemptId === savedAttemptId);
-        
-        if (existingAttempt) {
-          console.log('Restoring attempt from localStorage:', existingAttempt);
-          setSelectedAttempt(existingAttempt);
-          setCurrentScreen('review');
-        } else {
-          // Clear stale data if attempt not found
-          console.warn('Saved attempt not found in history, clearing localStorage');
-          localStorage.removeItem('modigitalsat_attemptId');
-          localStorage.removeItem('modigitalsat_currentScreen');
-        }
-      } catch (e) {
-        console.error('Failed to restore attempt:', e);
+      const existingAttempt = attemptHistory.find(h => h.attemptId === savedAttemptId);
+      if (existingAttempt) {
+        setSelectedAttempt(existingAttempt);
+        setCurrentScreen('review');
+      } else {
         localStorage.removeItem('modigitalsat_attemptId');
         localStorage.removeItem('modigitalsat_currentScreen');
       }
     }
   }, [attemptHistory]);
 
-  // Kéo toàn bộ data khi user đăng nhập
+  // ─── Fetch all data on login ──────────────────────────────────────────────────
   useEffect(() => {
     async function fetchAllData() {
       if (!currentUser) return;
 
-      const { data: modData } = await supabase.from('modules').select('*').order('module_num', { ascending: true });
+      // Modules
+      const { data: modData } = await supabase
+        .from('modules')
+        .select('*')
+        .order('module_num', { ascending: true });
+
       if (modData) {
         setModules(modData.map(m => ({
           id: m.id,
@@ -122,7 +111,13 @@ export default function App() {
         })));
       }
 
-      const { data: vocabData } = await supabase.from('vocabulary').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false });
+      // Vocabulary
+      const { data: vocabData } = await supabase
+        .from('vocabulary')
+        .select('*')
+        .eq('user_id', currentUser.id)
+        .order('created_at', { ascending: false });
+
       if (vocabData) {
         setWords(vocabData.map(v => ({
           id: v.id,
@@ -131,16 +126,35 @@ export default function App() {
           definition: v.definition,
           example: v.example,
           status: v.status as 'Learning' | 'Mastered',
-          date: new Date(v.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+          date: new Date(v.created_at).toLocaleDateString('en-US', {
+            month: 'short', day: 'numeric', year: 'numeric'
+          })
         })));
       }
 
-      // Kéo lịch sử thi — JOIN thêm bảng test_answers để lấy chi tiết từng câu
-      const { data: histData } = await supabase
+      // ─── Test history + per-question detail ──────────────────────────────────
+      //
+      // FIX: Supabase trả nested JOIN dạng:
+      //   test_answers[i].questions = { id, text, correct_answer, options, ... }
+      //                               (object đơn, KHÔNG phải array)
+      //
+      // Code cũ build `questions[]` từ `h.test_answers?.[0]?.questions` (chỉ lấy
+      // câu đầu tiên của module thay vì từng câu). Sau reload, nếu JOIN trả null
+      // thì toàn bộ questions[] = []. Fix: map TỪNG test_answer → lấy .questions
+      // của chính answer đó, không lấy từ [0].
+      // ─────────────────────────────────────────────────────────────────────────
+      const { data: histData, error: histError } = await supabase
         .from('test_history')
         .select(`
-          *,
-          modules (title, subject),
+          id,
+          module_id,
+          correct_count,
+          total_count,
+          created_at,
+          modules (
+            title,
+            subject
+          ),
           test_answers (
             question_id,
             user_answer,
@@ -159,44 +173,63 @@ export default function App() {
         .eq('user_id', currentUser.id)
         .order('created_at', { ascending: false });
 
+      if (histError) {
+        console.error('Error fetching history:', histError);
+      }
+
       if (histData) {
-        setAttemptHistory(histData.map(h => {
-          // Get unique passage from first question (all from same module should have same passage)
-          const firstQuestionData = h.test_answers?.[0]?.questions;
-          const passage = firstQuestionData?.passage_paragraphs ? {
-            title: firstQuestionData.passage_title || 'Reading Text',
-            introduction: firstQuestionData.passage_intro || '',
-            paragraphs: firstQuestionData.passage_paragraphs
-          } : undefined;
+        const mapped: TestAttemptHistory[] = histData.map(h => {
+          // FIX: map từng answer, lấy .questions của chính answer đó
+          const questions = (h.test_answers ?? [])
+            .map((a: any) => {
+              const q = a.questions; // object đơn từ nested JOIN
+              if (!q) return null;   // bảo vệ khi RLS chặn hoặc câu bị xóa
+
+              const passage = q.passage_paragraphs
+                ? {
+                    title: q.passage_title || 'Reading Text',
+                    introduction: q.passage_intro || '',
+                    paragraphs: q.passage_paragraphs as string[]
+                  }
+                : undefined;
+
+              return {
+                id: q.id,
+                questionText: q.text,
+                userAnswer: a.user_answer,
+                correctAnswer: q.correct_answer,
+                isCorrect: a.is_correct,
+                options: q.options,
+                passage
+              };
+            })
+            .filter(Boolean); // bỏ null
+
+          // Passage chung cho module (lấy từ câu đầu tiên có passage)
+          const sharedPassage = questions.find((q: any) => q?.passage)?.passage;
 
           return {
-            attemptId: h.id, // Add unique database ID
+            attemptId: h.id,
             moduleId: h.module_id,
             moduleTitle: h.modules?.title || 'Unknown',
             subject: h.modules?.subject || 'Unknown',
             correctCount: h.correct_count,
             totalCount: h.total_count,
             dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
-            // Map chi tiết câu hỏi nếu có
-            questions: h.test_answers?.map((a: any) => ({
-              id: a.questions?.id,
-              questionText: a.questions?.text,
-              userAnswer: a.user_answer,
-              correctAnswer: a.questions?.correct_answer,
-              isCorrect: a.is_correct,
-              options: a.questions?.options,
-              passage: a.questions?.passage_paragraphs ? {
-                title: a.questions.passage_title || 'Reading Text',
-                introduction: a.questions.passage_intro || '',
-                paragraphs: a.questions.passage_paragraphs
-              } : undefined
-            })) || [],
-            passage
+            questions,
+            passage: sharedPassage
           };
-        }));
+        });
+
+        setAttemptHistory(mapped);
       }
 
-      const { data: profData } = await supabase.from('profiles').select('*').order('total_score', { ascending: false });
+      // Leaderboard
+      const { data: profData } = await supabase
+        .from('profiles')
+        .select('*')
+        .order('total_score', { ascending: false });
+
       if (profData) {
         setRankings(profData.map((p, index) => ({
           id: p.id,
@@ -214,28 +247,30 @@ export default function App() {
     fetchAllData();
   }, [currentUser]);
 
+  // ─── Handlers ────────────────────────────────────────────────────────────────
   const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
 
-  const handleLogin = () => {
-    setCurrentScreen('dashboard');
-  };
+  const handleLogin = () => setCurrentScreen('dashboard');
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setCurrentUser(null);
     setCurrentScreen('login' as Screen);
     setSelectedAttempt(null);
-    // Clear localStorage on logout
     localStorage.removeItem('modigitalsat_attemptId');
     localStorage.removeItem('modigitalsat_currentScreen');
   };
 
   const handleStartModule = async (moduleId: string) => {
     try {
-      const { data } = await supabase.from('questions').select('*').eq('module_id', moduleId).order('id', { ascending: true });
+      const { data } = await supabase
+        .from('questions')
+        .select('*')
+        .eq('module_id', moduleId)
+        .order('id', { ascending: true });
 
       if (!data || data.length === 0) {
-        alert("Đề thi này chưa có câu hỏi trên hệ thống!");
+        alert('Đề thi này chưa có câu hỏi trên hệ thống!');
         return;
       }
 
@@ -244,25 +279,25 @@ export default function App() {
         text: q.text,
         options: q.options,
         correctAnswer: q.correct_answer,
-        passage: q.passage_paragraphs ? {
-          title: q.passage_title || 'Reading Text',
-          introduction: q.passage_intro || '',
-          paragraphs: q.passage_paragraphs
-        } : undefined
+        passage: q.passage_paragraphs
+          ? {
+              title: q.passage_title || 'Reading Text',
+              introduction: q.passage_intro || '',
+              paragraphs: q.passage_paragraphs
+            }
+          : undefined
       }));
 
       setActiveQuestions(formattedQs);
-
-      if (data[0].passage_paragraphs) {
-        setActivePassage({
-          title: data[0].passage_title || 'Reading Text',
-          introduction: data[0].passage_intro || '',
-          paragraphs: data[0].passage_paragraphs
-        });
-      } else {
-        setActivePassage(undefined);
-      }
-
+      setActivePassage(
+        data[0].passage_paragraphs
+          ? {
+              title: data[0].passage_title || 'Reading Text',
+              introduction: data[0].passage_intro || '',
+              paragraphs: data[0].passage_paragraphs
+            }
+          : undefined
+      );
       setActiveModuleId(moduleId);
       setCurrentScreen('practice');
     } catch (err) {
@@ -278,20 +313,22 @@ export default function App() {
     if (!module) return;
 
     let correctCount = 0;
-    activeQuestions.forEach((q) => {
+    activeQuestions.forEach(q => {
       if (answers[q.id] === q.correctAnswer) correctCount++;
     });
 
     const totalCount = activeQuestions.length;
     const multiplier = 600 / totalCount;
-    const earnedScore = Math.round(200 + (correctCount * multiplier));
+    const earnedScore = Math.round(200 + correctCount * multiplier);
 
-    setModules(prev => prev.map(m => m.id === activeModuleId ? { ...m, status: 'Attempted', score: earnedScore } : m));
+    setModules(prev =>
+      prev.map(m => m.id === activeModuleId ? { ...m, status: 'Attempted', score: earnedScore } : m)
+    );
 
     const alreadyAttempted = attemptHistory.some(item => item.moduleId === activeModuleId);
 
-    // Lưu lịch sử thi vào Database
-    const { data: insertedHistory } = await supabase
+    // Lưu test_history
+    const { data: insertedHistory, error: insertError } = await supabase
       .from('test_history')
       .insert({
         user_id: currentUser.id,
@@ -303,7 +340,11 @@ export default function App() {
       .select()
       .single();
 
-    // Lưu chi tiết từng câu trả lời vào bảng test_answers (nếu có)
+    if (insertError) {
+      console.error('Error inserting history:', insertError);
+    }
+
+    // Lưu test_answers
     if (insertedHistory) {
       const answerRows = activeQuestions.map(q => ({
         history_id: insertedHistory.id,
@@ -311,44 +352,42 @@ export default function App() {
         user_answer: answers[q.id] ?? null,
         is_correct: answers[q.id] === q.correctAnswer
       }));
-
       await supabase.from('test_answers').insert(answerRows);
     }
 
+    // FIX: luôn build newAttempt với questions[] đầy đủ,
+    // bất kể alreadyAttempted — để state local luôn có data cho ReviewScreen
+    const today = new Date();
+    const newAttempt: TestAttemptHistory = {
+      attemptId: insertedHistory?.id,
+      moduleId: activeModuleId,
+      moduleTitle: module.title,
+      subject: module.subject,
+      correctCount,
+      totalCount,
+      dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
+      questions: activeQuestions.map(q => ({
+        id: q.id,
+        questionText: q.text,
+        userAnswer: answers[q.id] ?? null,
+        correctAnswer: q.correctAnswer,
+        isCorrect: answers[q.id] === q.correctAnswer,
+        options: q.options,
+        passage: q.passage
+      })),
+      passage: activePassage
+    };
+
     if (!alreadyAttempted) {
-      const today = new Date();
-      const newAttempt: TestAttemptHistory = {
-        moduleId: activeModuleId,
-        moduleTitle: module.title,
-        subject: module.subject,
-        correctCount,
-        totalCount,
-        dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
-        // Lưu chi tiết câu hỏi ngay vào state để có thể xem lại ngay
-        questions: activeQuestions.map(q => ({
-          id: q.id,
-          questionText: q.text,
-          userAnswer: answers[q.id] ?? null,
-          correctAnswer: q.correctAnswer,
-          isCorrect: answers[q.id] === q.correctAnswer,
-          options: q.options,
-          passage: q.passage
-        }))
-      };
-
-      // Thêm passage vào newAttempt
-      if (activePassage) {
-        newAttempt.passage = activePassage;
-      }
-
+      // Chỉ prepend vào history khi là lần đầu (để không trùng với record đã có)
       setAttemptHistory(prev => [newAttempt, ...prev]);
 
+      // Cập nhật điểm profile
       const currentRank = rankings.find(r => r.isCurrentUser);
       if (currentRank) {
         const newTotal = currentRank.totalScore + earnedScore;
         const newTests = currentRank.testsCompleted + 1;
         const newAvg = newTotal / newTests;
-
         await supabase.from('profiles').update({
           total_score: newTotal,
           tests_completed: newTests,
@@ -357,22 +396,31 @@ export default function App() {
       }
     }
 
-    setTestResult({ correctCount, totalCount, earnedScore, subject: module.subject, moduleTitle: module.title });
+    setTestResult({
+      correctCount,
+      totalCount,
+      earnedScore,
+      subject: module.subject,
+      moduleTitle: module.title
+    });
     setCurrentScreen('dashboard');
     setActiveModuleId(null);
   };
 
   const handleAddWord = async (wordData: Omit<VocabularyWord, 'id' | 'date'>) => {
     if (!currentUser) return;
-
-    const { data, error } = await supabase.from('vocabulary').insert({
-      user_id: currentUser.id,
-      term: wordData.term,
-      type: wordData.type,
-      definition: wordData.definition,
-      example: wordData.example,
-      status: 'Learning'
-    }).select().single();
+    const { data, error } = await supabase
+      .from('vocabulary')
+      .insert({
+        user_id: currentUser.id,
+        term: wordData.term,
+        type: wordData.type,
+        definition: wordData.definition,
+        example: wordData.example,
+        status: 'Learning'
+      })
+      .select()
+      .single();
 
     if (data && !error) {
       setWords(prev => [{
@@ -382,7 +430,9 @@ export default function App() {
         definition: data.definition,
         example: data.example || '',
         status: data.status as 'Learning' | 'Mastered',
-        date: new Date(data.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        date: new Date(data.created_at).toLocaleDateString('en-US', {
+          month: 'short', day: 'numeric', year: 'numeric'
+        })
       }, ...prev]);
     }
   };
@@ -395,20 +445,16 @@ export default function App() {
   const handleToggleStatus = async (id: string) => {
     const word = words.find(w => w.id === id);
     if (!word) return;
-    
     const newStatus = word.status === 'Learning' ? 'Mastered' : 'Learning';
     await supabase.from('vocabulary').update({ status: newStatus }).eq('id', id);
-    
     setWords(prev => prev.map(w => w.id === id ? { ...w, status: newStatus } : w));
   };
 
-  // --- Handler: Xem lại chi tiết bài làm ---
   const handleViewAttemptDetails = (attempt: TestAttemptHistory) => {
     setSelectedAttempt(attempt);
     setCurrentScreen('review');
   };
 
-  // --- Handler: Quay lại từ ReviewScreen ---
   const handleBackFromReview = () => {
     setSelectedAttempt(null);
     setCurrentScreen('history');
@@ -416,19 +462,28 @@ export default function App() {
     localStorage.removeItem('modigitalsat_currentScreen');
   };
 
+  // ─── Render ───────────────────────────────────────────────────────────────────
   const isDark = theme === 'dark';
   const currentModuleObj = modules.find(m => m.id === activeModuleId);
 
   if (loadingAuth) {
     return (
-      <div className={`min-h-screen flex items-center justify-center font-mono text-sm tracking-widest ${isDark ? 'bg-[#0A0A0A] text-[#00D2FF]' : 'bg-white text-black'}`}>
+      <div className={`min-h-screen flex items-center justify-center font-mono text-sm tracking-widest ${
+        isDark ? 'bg-[#0A0A0A] text-[#00D2FF]' : 'bg-white text-black'
+      }`}>
         ĐANG TẢI...
       </div>
     );
   }
 
   if (!currentUser) {
-    return <LoginScreen theme={theme} onLoginSuccess={handleLogin} toggleTheme={toggleTheme} />;
+    return (
+      <LoginScreen
+        theme={theme}
+        onLoginSuccess={handleLogin}
+        toggleTheme={toggleTheme}
+      />
+    );
   }
 
   if (currentScreen === 'practice' && activeModuleId) {
@@ -460,16 +515,22 @@ export default function App() {
         isDark ? 'bg-[#0A0A0A]/95 border-white/10' : 'bg-white/95 border-black/10'
       }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => {
-            if (currentScreen === 'review') {
-              setSelectedAttempt(null);
-              localStorage.removeItem('modigitalsat_attemptId');
-              localStorage.removeItem('modigitalsat_currentScreen');
-            }
-            setCurrentScreen('dashboard');
-          }}>
+          {/* Logo */}
+          <div
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => {
+              if (currentScreen === 'review') {
+                setSelectedAttempt(null);
+                localStorage.removeItem('modigitalsat_attemptId');
+                localStorage.removeItem('modigitalsat_currentScreen');
+              }
+              setCurrentScreen('dashboard');
+            }}
+          >
             <div className={`p-1.5 border transition-all ${
-              isDark ? 'bg-black border-white/20 text-[#00D2FF]' : 'bg-[#0A0A0A] border-transparent text-[#00D2FF]'
+              isDark
+                ? 'bg-black border-white/20 text-[#00D2FF]'
+                : 'bg-[#0A0A0A] border-transparent text-[#00D2FF]'
             }`}>
               <GraduationCap className="w-5 h-5" />
             </div>
@@ -491,20 +552,19 @@ export default function App() {
             </div>
           </div>
 
+          {/* Nav */}
           <nav className="flex items-center gap-1 sm:gap-2">
             {([
-              { key: 'dashboard', icon: <LayoutDashboard className="w-3.5 h-3.5" />, label: 'BẢNG ĐIỀU KHIỂN' },
-              { key: 'vocabulary', icon: <BookOpen className="w-3.5 h-3.5" />, label: 'TỪ VỰNG SAT' },
-              { key: 'leaderboard', icon: <Award className="w-3.5 h-3.5" />, label: 'BẢNG VÀNG' },
-              { key: 'history', icon: <History className="w-3.5 h-3.5" />, label: 'LỊCH SỬ' },
+              { key: 'dashboard',   icon: <LayoutDashboard className="w-3.5 h-3.5" />, label: 'BẢNG ĐIỀU KHIỂN' },
+              { key: 'vocabulary',  icon: <BookOpen        className="w-3.5 h-3.5" />, label: 'TỪ VỰNG SAT'     },
+              { key: 'leaderboard', icon: <Award           className="w-3.5 h-3.5" />, label: 'BẢNG VÀNG'       },
+              { key: 'history',     icon: <History         className="w-3.5 h-3.5" />, label: 'LỊCH SỬ'         },
             ] as const).map(({ key, icon, label }) => {
-              // Highlight History button cả khi đang ở màn review
               const isActive = currentScreen === key || (key === 'history' && currentScreen === 'review');
               return (
                 <button
                   key={key}
                   onClick={() => {
-                    // Clear localStorage when navigating away from history/review
                     if (key !== 'history' && currentScreen === 'review') {
                       setSelectedAttempt(null);
                       localStorage.removeItem('modigitalsat_attemptId');
@@ -514,8 +574,12 @@ export default function App() {
                   }}
                   className={`px-3 py-2 text-[10px] md:text-[11px] font-black tracking-[0.18em] uppercase transition-all duration-150 cursor-pointer border ${
                     isActive
-                      ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-[#0A0A0A] text-white border-[#0A0A0A]')
-                      : (isDark ? 'border-transparent text-white/50 hover:text-white hover:border-white/10' : 'border-transparent text-black/50 hover:text-black hover:border-black/5')
+                      ? isDark
+                        ? 'bg-[#00D2FF] text-black border-[#00D2FF]'
+                        : 'bg-[#0A0A0A] text-white border-[#0A0A0A]'
+                      : isDark
+                      ? 'border-transparent text-white/50 hover:text-white hover:border-white/10'
+                      : 'border-transparent text-black/50 hover:text-black hover:border-black/5'
                   }`}
                 >
                   <span className="inline-flex items-center gap-1.5">
@@ -527,11 +591,14 @@ export default function App() {
             })}
           </nav>
 
+          {/* Right controls */}
           <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
               className={`p-2 transition-colors cursor-pointer border ${
-                isDark ? 'border-white/10 bg-[#0A0A0A] text-[#00D2FF] hover:bg-[#00D2FF]/10' : 'border-black/10 bg-white text-black hover:bg-black/5'
+                isDark
+                  ? 'border-white/10 bg-[#0A0A0A] text-[#00D2FF] hover:bg-[#00D2FF]/10'
+                  : 'border-black/10 bg-white text-black hover:bg-black/5'
               }`}
               title="Đổi theme"
             >
@@ -542,7 +609,7 @@ export default function App() {
               isDark ? 'bg-black border-white/10' : 'bg-white border-black/10'
             }`}>
               <img
-                src={currentUser?.user_metadata?.avatar_url || "https://ui-avatars.com/api/?name=User&background=random"}
+                src={currentUser?.user_metadata?.avatar_url || 'https://ui-avatars.com/api/?name=User&background=random'}
                 alt="Avatar"
                 referrerPolicy="no-referrer"
                 className="w-5 h-5 rounded-none object-cover border border-white/20"
@@ -555,7 +622,9 @@ export default function App() {
             <button
               onClick={handleLogout}
               className={`p-2 border hover:text-red-500 transition-colors cursor-pointer ${
-                isDark ? 'border-white/10 bg-[#0a0a0a] text-white/50' : 'border-black/10 bg-white text-black/50'
+                isDark
+                  ? 'border-white/10 bg-[#0a0a0a] text-white/50'
+                  : 'border-black/10 bg-white text-black/50'
               }`}
               title="Đăng xuất"
             >
@@ -574,8 +643,8 @@ export default function App() {
             userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
             modules={modules}
             vocabTotal={words.length}
-            vocabMastered={words.filter((w) => w.status === 'Mastered').length}
-            leaderboardRank={rankings.find((r) => r.isCurrentUser)?.rank ?? null}
+            vocabMastered={words.filter(w => w.status === 'Mastered').length}
+            leaderboardRank={rankings.find(r => r.isCurrentUser)?.rank ?? null}
             onStartModule={handleStartModule}
             onNavigateToVocab={() => setCurrentScreen('vocabulary')}
             onNavigateToLeaderboard={() => setCurrentScreen('leaderboard')}
@@ -608,7 +677,6 @@ export default function App() {
           />
         )}
 
-        {/* ReviewScreen — hiển thị khi có selectedAttempt */}
         {currentScreen === 'review' && selectedAttempt && (
           <ReviewScreen
             theme={theme}
@@ -639,7 +707,9 @@ export default function App() {
           }`}>
             <div className="flex justify-center">
               <div className={`inline-flex items-center justify-center w-12 h-12 border ${
-                isDark ? 'bg-black border-[#00D2FF]/50 text-[#00D2FF]' : 'bg-black border-transparent text-[#00D2FF]'
+                isDark
+                  ? 'bg-black border-[#00D2FF]/50 text-[#00D2FF]'
+                  : 'bg-black border-transparent text-[#00D2FF]'
               }`}>
                 <CheckCircle2 className="w-7 h-7" />
               </div>
@@ -649,7 +719,9 @@ export default function App() {
               <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#00D2FF] bg-[#00D2FF]/10 py-1 px-3 inline-block">
                 HOÀN THÀNH BÀI KIỂM TRA
               </span>
-              <h3 className="text-2xl font-black font-display tracking-tight uppercase leading-none">{testResult.moduleTitle}</h3>
+              <h3 className="text-2xl font-black font-display tracking-tight uppercase leading-none">
+                {testResult.moduleTitle}
+              </h3>
               <p className="text-xs opacity-60 leading-relaxed px-2 font-mono">
                 Kết quả bài làm đã được đối lưu và cập nhật tự động lên hệ thống Bảng Vàng học thuật.
               </p>
@@ -658,14 +730,18 @@ export default function App() {
             <div className={`p-5 border rounded-none ${
               isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'
             }`}>
-              <div className="text-[10px] opacity-40 uppercase tracking-widest font-black">Điểm đạt được của bạn</div>
+              <div className="text-[10px] opacity-40 uppercase tracking-widest font-black">
+                Điểm đạt được của bạn
+              </div>
               <div className="text-4xl sm:text-5xl font-black font-display text-white mt-2">
                 <span className="text-[#00D2FF]">{testResult.earnedScore}</span>
                 <span className="text-xs opacity-40 font-sans tracking-normal ml-2">/ 800 PTS</span>
               </div>
               <div className="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono">
                 <span className="opacity-50">SỐ CÂU ĐÚNG:</span>
-                <span className="font-bold text-[#00D2FF]">{testResult.correctCount} / {testResult.totalCount}</span>
+                <span className="font-bold text-[#00D2FF]">
+                  {testResult.correctCount} / {testResult.totalCount}
+                </span>
               </div>
             </div>
 
@@ -673,7 +749,9 @@ export default function App() {
               <button
                 onClick={() => setTestResult(null)}
                 className={`w-full py-3.5 font-black uppercase tracking-widest text-xs cursor-pointer transition-all border ${
-                  isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/20' : 'bg-black text-white border-black hover:bg-transparent hover:text-black'
+                  isDark
+                    ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/20'
+                    : 'bg-black text-white border-black hover:bg-transparent hover:text-black'
                 }`}
               >
                 Trở lại Trang chính
