@@ -72,6 +72,7 @@ export interface QuestionResult {
 }
 
 export interface TestAttemptHistory {
+  attemptId?: string; // Unique ID from database test_history.id
   moduleId: string;
   moduleTitle: string;
   subject: 'Reading & Writing' | 'Math';

@@ -65,9 +65,10 @@ export default function App() {
 
   // Persist selectedAttempt to localStorage
   useEffect(() => {
-    if (selectedAttempt && currentScreen === 'review') {
-      localStorage.setItem('modigitalsat_selectedAttempt', JSON.stringify(selectedAttempt));
+    if (selectedAttempt && currentScreen === 'review' && selectedAttempt.attemptId) {
+      localStorage.setItem('modigitalsat_attemptId', selectedAttempt.attemptId);
       localStorage.setItem('modigitalsat_currentScreen', 'review');
+      console.log('Saved attempt to localStorage:', selectedAttempt.attemptId);
     }
   }, [selectedAttempt, currentScreen]);
 
@@ -76,27 +77,27 @@ export default function App() {
     if (!attemptHistory || attemptHistory.length === 0) return;
     if (selectedAttempt) return; // Already set
 
-    const savedAttempt = localStorage.getItem('modigitalsat_selectedAttempt');
+    const savedAttemptId = localStorage.getItem('modigitalsat_attemptId');
     const savedScreen = localStorage.getItem('modigitalsat_currentScreen');
 
-    if (savedAttempt && savedScreen === 'review') {
+    if (savedAttemptId && savedScreen === 'review') {
       try {
-        const attempt = JSON.parse(savedAttempt);
-        // Verify that this attempt still exists in the current history
-        const existingAttempt = attemptHistory.find(
-          h => h.moduleId === attempt.moduleId && h.dateStr === attempt.dateStr
-        );
+        // Find the attempt by ID from the loaded history
+        const existingAttempt = attemptHistory.find(h => h.attemptId === savedAttemptId);
+        
         if (existingAttempt) {
+          console.log('Restoring attempt from localStorage:', existingAttempt);
           setSelectedAttempt(existingAttempt);
           setCurrentScreen('review');
         } else {
-          // Clear stale data
-          localStorage.removeItem('modigitalsat_selectedAttempt');
+          // Clear stale data if attempt not found
+          console.warn('Saved attempt not found in history, clearing localStorage');
+          localStorage.removeItem('modigitalsat_attemptId');
           localStorage.removeItem('modigitalsat_currentScreen');
         }
       } catch (e) {
         console.error('Failed to restore attempt:', e);
-        localStorage.removeItem('modigitalsat_selectedAttempt');
+        localStorage.removeItem('modigitalsat_attemptId');
         localStorage.removeItem('modigitalsat_currentScreen');
       }
     }
@@ -169,6 +170,7 @@ export default function App() {
           } : undefined;
 
           return {
+            attemptId: h.id, // Add unique database ID
             moduleId: h.module_id,
             moduleTitle: h.modules?.title || 'Unknown',
             subject: h.modules?.subject || 'Unknown',
@@ -224,7 +226,7 @@ export default function App() {
     setCurrentScreen('login' as Screen);
     setSelectedAttempt(null);
     // Clear localStorage on logout
-    localStorage.removeItem('modigitalsat_selectedAttempt');
+    localStorage.removeItem('modigitalsat_attemptId');
     localStorage.removeItem('modigitalsat_currentScreen');
   };
 
@@ -410,7 +412,7 @@ export default function App() {
   const handleBackFromReview = () => {
     setSelectedAttempt(null);
     setCurrentScreen('history');
-    localStorage.removeItem('modigitalsat_selectedAttempt');
+    localStorage.removeItem('modigitalsat_attemptId');
     localStorage.removeItem('modigitalsat_currentScreen');
   };
 
@@ -461,7 +463,7 @@ export default function App() {
           <div className="flex items-center gap-3 cursor-pointer group" onClick={() => {
             if (currentScreen === 'review') {
               setSelectedAttempt(null);
-              localStorage.removeItem('modigitalsat_selectedAttempt');
+              localStorage.removeItem('modigitalsat_attemptId');
               localStorage.removeItem('modigitalsat_currentScreen');
             }
             setCurrentScreen('dashboard');
@@ -505,7 +507,7 @@ export default function App() {
                     // Clear localStorage when navigating away from history/review
                     if (key !== 'history' && currentScreen === 'review') {
                       setSelectedAttempt(null);
-                      localStorage.removeItem('modigitalsat_selectedAttempt');
+                      localStorage.removeItem('modigitalsat_attemptId');
                       localStorage.removeItem('modigitalsat_currentScreen');
                     }
                     setCurrentScreen(key);
