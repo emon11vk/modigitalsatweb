@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react'; // Đã thêm useCallback ở đây
 import {
   Theme,
   Screen,
@@ -61,6 +61,84 @@ export default function App() {
 
   const [selectedAttempt, setSelectedAttempt] = useState<TestAttemptHistory | null>(null);
 
+  {/*  */}
+  // ─── Hàm gọi chi tiết bài test (Được tối ưu bằng useCallback để tránh lỗi render/build) ───
+  const handleViewAttemptDetails = useCallback(async (attempt: TestAttemptHistory) => {
+    // Nếu là bài vừa làm xong đã có sẵn câu hỏi trong state thì mở xem luôn, không gọi API nữa
+    if (attempt.questions && attempt.questions.length > 0) {
+      setSelectedAttempt(attempt);
+      setCurrentScreen('review');
+      return;
+    }
+
+    try {
+      // Chỉ kéo dữ liệu test_answers và questions của ĐÚNG bài test này dựa trên attemptId
+      const { data, error } = await supabase
+        .from('test_history')
+        .select(`
+          test_answers (
+            question_id,
+            user_answer,
+            is_correct,
+            questions (
+              id,
+              text,
+              correct_answer,
+              options,
+              passage_paragraphs,
+              passage_intro,
+              passage_title
+            )
+          )
+        `)
+        .eq('id', attempt.attemptId)
+        .single();
+
+      if (error) throw error;
+
+      // Định dạng lại cấu trúc câu hỏi và đoạn văn tương thích với giao diện
+      const questions: QuestionResult[] = (data?.test_answers ?? [])
+        .map((answer: any) => {
+          const q = answer.questions;
+          if (!q) return null;
+
+          const passage: Passage | undefined =
+            q.passage_paragraphs && Array.isArray(q.passage_paragraphs)
+              ? {
+                  title: q.passage_title || 'Reading Text',
+                  introduction: q.passage_intro || '',
+                  paragraphs: q.passage_paragraphs
+                }
+              : undefined;
+
+          return {
+            id: q.id,
+            questionText: q.text,
+            userAnswer: answer.user_answer ?? null,
+            correctAnswer: q.correct_answer,
+            isCorrect: answer.is_correct,
+            options: q.options,
+            passage
+          };
+        })
+        .filter((q: QuestionResult | null): q is QuestionResult => q !== null);
+
+      const sharedPassage = questions.find((q) => q.passage)?.passage;
+
+      const fullAttempt = {
+        ...attempt,
+        questions,
+        passage: sharedPassage
+      };
+
+      setSelectedAttempt(fullAttempt);
+      setCurrentScreen('review');
+    } catch (err) {
+      console.error('Error fetching test details:', err);
+      alert('Không thể tải chi tiết bài làm — vui lòng thử lại.');
+    }
+  }, []);
+
   // ─── Auth listener ───────────────────────────────────────────────────────────
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -94,14 +172,14 @@ export default function App() {
     if (savedAttemptId && savedScreen === 'review') {
       const existingAttempt = attemptHistory.find(h => h.attemptId === savedAttemptId);
       if (existingAttempt) {
-        setSelectedAttempt(existingAttempt);
-        setCurrentScreen('review');
+        // Gọi hàm an toàn vì đã được tối ưu hóa tham chiếu
+        handleViewAttemptDetails(existingAttempt);
       } else {
         localStorage.removeItem('modigitalsat_attemptId');
         localStorage.removeItem('modigitalsat_currentScreen');
       }
     }
-  }, [attemptHistory]);
+  }, [attemptHistory, handleViewAttemptDetails]); // Đã điền đủ dependencies chuẩn ESLint
 
   // ─── Fetch all data on login ──────────────────────────────────────────────────
   useEffect(() => {
@@ -159,14 +237,10 @@ export default function App() {
           );
         }
 
-        // ===== Fetch Test History + Questions (with proper mapping) =====
-        // ⚠️ KEY FIX: Supabase nested SELECT returns:
-        //   test_answers[i].questions = { id, text, correct_answer, ... } (SINGLE object)
-        //   NOT an array! So we map EACH test_answer to extract ITS question object.
+        // ===== Fetch Test History (Chỉ lấy sườn thông tin cơ bản để tránh sập server) =====
         const { data: histData, error: histError } = await supabase
           .from('test_history')
-          .select(
-            `
+          .select(`
             id,
             module_id,
             correct_count,
@@ -175,23 +249,8 @@ export default function App() {
             modules (
               title,
               subject
-            ),
-            test_answers (
-              question_id,
-              user_answer,
-              is_correct,
-              questions (
-                id,
-                text,
-                correct_answer,
-                options,
-                passage_paragraphs,
-                passage_intro,
-                passage_title
-              )
             )
-          `
-          )
+          `)
           .eq('user_id', currentUser.id)
           .order('created_at', { ascending: false });
 
@@ -201,37 +260,6 @@ export default function App() {
 
         if (histData && histData.length > 0) {
           const mapped: TestAttemptHistory[] = histData.map((h: any) => {
-            // Map each test_answer → extract its single questions object
-            const questions: QuestionResult[] = (h.test_answers ?? [])
-              .map((answer: any) => {
-                const q = answer.questions; // This is a SINGLE object from the nested JOIN
-                if (!q) return null; // RLS blocked or question deleted
-
-                // Build passage if it exists
-                const passage: Passage | undefined =
-                  q.passage_paragraphs && Array.isArray(q.passage_paragraphs)
-                    ? {
-                        title: q.passage_title || 'Reading Text',
-                        introduction: q.passage_intro || '',
-                        paragraphs: q.passage_paragraphs
-                      }
-                    : undefined;
-
-                return {
-                  id: q.id,
-                  questionText: q.text,
-                  userAnswer: answer.user_answer ?? null,
-                  correctAnswer: q.correct_answer,
-                  isCorrect: answer.is_correct,
-                  options: q.options,
-                  passage
-                };
-              })
-              .filter((q: QuestionResult | null): q is QuestionResult => q !== null);
-
-            // Shared passage from first question (if exists)
-            const sharedPassage = questions.find((q) => q.passage)?.passage;
-
             return {
               attemptId: h.id,
               moduleId: h.module_id,
@@ -240,8 +268,8 @@ export default function App() {
               correctCount: h.correct_count,
               totalCount: h.total_count,
               dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
-              questions,
-              passage: sharedPassage
+              questions: [], // Tạm thời để trống, tải lazy-loading khi click xem bài làm
+              passage: undefined
             } as TestAttemptHistory;
           });
 
@@ -584,11 +612,6 @@ export default function App() {
     } catch (err) {
       console.error('Fatal error toggling word status:', err);
     }
-  };
-
-  const handleViewAttemptDetails = (attempt: TestAttemptHistory) => {
-    setSelectedAttempt(attempt);
-    setCurrentScreen('review');
   };
 
   const handleBackFromReview = () => {
