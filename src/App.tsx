@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Theme, Screen, VocabularyWord, Module, StudentRank, TestAttemptHistory, Question, Passage } from './types';
-// 🟢 Xóa bớt INITIAL_MODULES, SAT_PASSAGE, RW1_QUESTIONS, MATH_QUESTIONS đi, chỉ giữ lại mấy cái chưa có trên database
-import { 
-  INITIAL_VOCABULARY, 
-  STUDENT_RANKINGS 
-} from './data/mockData';
 
-// 🟢 Kéo kết nối Supabase vào App
+// 🟢 Đã XÓA SẠCH import mockData. Không còn một chút dữ liệu giả nào!
 import { supabase } from './supabaseClient'; 
 
 // Component Imports
@@ -25,19 +20,20 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState<string | null>('student@example.com'); 
+  // 🟢 1. Quản lý trạng thái Đăng nhập thật bằng User Object của Supabase
+  const [currentUser, setCurrentUser] = useState<any>(null); 
+  const [loadingAuth, setLoadingAuth] = useState(true);
+
   const [theme, setTheme] = useState<Theme>('dark'); 
   const [currentScreen, setCurrentScreen] = useState<Screen>('dashboard');
 
-  // 🟢 1. Khởi tạo mảng rỗng cho Module thay vì dùng data giả
   const [modules, setModules] = useState<Module[]>([]);
-  
-  // 🟢 2. Thêm state lưu câu hỏi và đoạn văn thật được kéo từ Supabase về
   const [activeQuestions, setActiveQuestions] = useState<Question[]>([]);
   const [activePassage, setActivePassage] = useState<Passage | undefined>(undefined);
 
-  const [words, setWords] = useState<VocabularyWord[]>(INITIAL_VOCABULARY);
-  const [rankings, setRankings] = useState<StudentRank[]>(STUDENT_RANKINGS);
+  // 🟢 2. Khởi tạo mảng rỗng chờ data từ database
+  const [words, setWords] = useState<VocabularyWord[]>([]);
+  const [rankings, setRankings] = useState<StudentRank[]>([]);
   const [attemptHistory, setAttemptHistory] = useState<TestAttemptHistory[]>([]);
 
   const [activeModuleId, setActiveModuleId] = useState<string | null>(null);
@@ -49,17 +45,29 @@ export default function App() {
     moduleTitle: string;
   } | null>(null);
 
-  // 🟢 3. Fetch danh sách Modules ngay khi vào web
+  // 🟢 3. Lắng nghe Auth (Đăng nhập / Đăng xuất)
   useEffect(() => {
-    async function fetchModules() {
-      const { data, error } = await supabase
-        .from('modules')
-        .select('*')
-        .order('module_num', { ascending: true });
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setCurrentUser(session?.user ?? null);
+      setLoadingAuth(false);
+    });
 
-      if (data) {
-        // Chuyển đổi key từ database (snake_case) sang camelCase của frontend
-        const formattedModules = data.map(m => ({
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setCurrentUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // 🟢 4. Kéo TOÀN BỘ dữ liệu thật khi user đã đăng nhập
+  useEffect(() => {
+    async function fetchAllData() {
+      if (!currentUser) return;
+
+      // 4.1 Kéo danh sách Modules
+      const { data: modData } = await supabase.from('modules').select('*').order('module_num', { ascending: true });
+      if (modData) {
+        setModules(modData.map(m => ({
           id: m.id,
           title: m.title,
           subject: m.subject,
@@ -68,38 +76,72 @@ export default function App() {
           durationMinutes: m.duration_minutes,
           status: 'Not Started',
           score: null
-        }));
-        setModules(formattedModules);
+        })));
+      }
+
+      // 4.2 Kéo Từ vựng của riêng user này
+      const { data: vocabData } = await supabase.from('vocabulary').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false });
+      if (vocabData) {
+        setWords(vocabData.map(v => ({
+          id: v.id,
+          term: v.term,
+          type: v.type,
+          definition: v.definition,
+          example: v.example,
+          status: v.status as 'Learning' | 'Mastered',
+          date: new Date(v.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        })));
+      }
+
+      // 4.3 Kéo Lịch sử thi của riêng user này (Join với bảng modules để lấy tên)
+      const { data: histData } = await supabase.from('test_history').select(`*, modules (title, subject)`).eq('user_id', currentUser.id).order('created_at', { ascending: false });
+      if (histData) {
+        setAttemptHistory(histData.map(h => ({
+          moduleId: h.module_id,
+          moduleTitle: h.modules?.title || 'Unknown',
+          subject: h.modules?.subject || 'Unknown',
+          correctCount: h.correct_count,
+          totalCount: h.total_count,
+          dateStr: new Date(h.created_at).toLocaleDateString('en-GB')
+        })));
+      }
+
+      // 4.4 Kéo Bảng Xếp Hạng từ bảng profiles
+      const { data: profData } = await supabase.from('profiles').select('*').order('total_score', { ascending: false });
+      if (profData) {
+        setRankings(profData.map((p, index) => ({
+          id: p.id,
+          name: p.name || 'Anonymous',
+          avatarUrl: p.avatar_url || '',
+          testsCompleted: p.tests_completed || 0,
+          totalScore: p.total_score || 0,
+          avgScore: p.avg_score || 0,
+          rank: index + 1,
+          isCurrentUser: p.id === currentUser.id
+        })));
       }
     }
-    fetchModules();
-  }, []);
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
-  };
+    fetchAllData();
+  }, [currentUser]);
 
-  const handleLogin = (email: string) => {
-    setCurrentUser(email);
+  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
+
+  const handleLogin = () => {
+    // Nếu màn LoginScreen dùng Supabase Google Auth, nó sẽ tự update currentUser qua onAuthStateChange
     setCurrentScreen('dashboard');
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setCurrentUser(null);
     setCurrentScreen('login');
   };
 
-  // 🟢 4. Khi click vào 1 đề, tự động gọi API lấy 27 câu hỏi của đề đó
   const handleStartModule = async (moduleId: string) => {
-    // Kéo câu hỏi từ Supabase
-    const { data, error } = await supabase
-      .from('questions')
-      .select('*')
-      .eq('module_id', moduleId)
-      .order('id', { ascending: true }); // Hoặc orderIndex nếu cậu có
+    const { data } = await supabase.from('questions').select('*').eq('module_id', moduleId).order('id', { ascending: true });
 
     if (data && data.length > 0) {
-      // Format lại data cho khớp với Type của Frontend
       const formattedQs: Question[] = data.map(q => ({
         id: q.id,
         text: q.text,
@@ -109,7 +151,6 @@ export default function App() {
 
       setActiveQuestions(formattedQs);
 
-      // Nếu là bài Đọc Hiểu, bóc đoạn văn từ câu hỏi đầu tiên ra
       if (data[0].passage_paragraphs) {
         setActivePassage({
           title: data[0].passage_title || 'Reading Text',
@@ -127,120 +168,130 @@ export default function App() {
     }
   };
 
-  // 🟢 5. Hàm chấm điểm dùng data thật (activeQuestions)
-  const handleFinishTest = (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => {
-    if (!activeModuleId) return;
+  const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => {
+    if (!activeModuleId || !currentUser) return;
 
     const module = modules.find(m => m.id === activeModuleId);
     if (!module) return;
 
     let correctCount = 0;
-    // Chấm dựa trên mảng câu hỏi thật vừa kéo về
     activeQuestions.forEach((q) => {
-      const uAns = answers[q.id];
-      if (uAns === q.correctAnswer) {
-        correctCount++;
-      }
+      if (answers[q.id] === q.correctAnswer) correctCount++;
     });
 
     const totalCount = activeQuestions.length;
     const multiplier = 600 / totalCount;
     const earnedScore = Math.round(200 + (correctCount * multiplier));
 
-    setModules(prev => prev.map(m => {
-      if (m.id === activeModuleId) {
-        return { ...m, status: 'Attempted', score: earnedScore };
-      }
-      return m;
-    }));
+    // Cập nhật State cục bộ
+    setModules(prev => prev.map(m => m.id === activeModuleId ? { ...m, status: 'Attempted', score: earnedScore } : m));
 
     const alreadyAttempted = attemptHistory.some(item => item.moduleId === activeModuleId);
+    
+    // 🟢 Lưu lịch sử thi vào Database
+    await supabase.from('test_history').insert({
+      user_id: currentUser.id,
+      module_id: activeModuleId,
+      correct_count: correctCount,
+      total_count: totalCount,
+      is_first_attempt: !alreadyAttempted
+    });
+
     if (!alreadyAttempted) {
       const today = new Date();
-      const dateStr = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
-      
-      const newHistoryItem: TestAttemptHistory = {
+      setAttemptHistory(prev => [{
         moduleId: activeModuleId,
         moduleTitle: module.title,
         subject: module.subject,
-        correctCount: correctCount,
-        totalCount: totalCount,
-        dateStr
-      };
-      setAttemptHistory(prev => [newHistoryItem, ...prev]);
+        correctCount,
+        totalCount,
+        dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`
+      }, ...prev]);
+
+      // 🟢 Cập nhật điểm lên bảng profiles cho Leaderboard
+      const currentRank = rankings.find(r => r.isCurrentUser);
+      if (currentRank) {
+        const newTotal = currentRank.totalScore + earnedScore;
+        const newTests = currentRank.testsCompleted + 1;
+        const newAvg = newTotal / newTests;
+
+        await supabase.from('profiles').update({
+          total_score: newTotal,
+          tests_completed: newTests,
+          avg_score: newAvg
+        }).eq('id', currentUser.id);
+      }
     }
 
-    setTestResult({
-      correctCount,
-      totalCount,
-      earnedScore,
-      subject: module.subject,
-      moduleTitle: module.title
-    });
-
-    setRankings(prev => {
-      const mapped = prev.map(rank => {
-        if (rank.isCurrentUser) {
-          const updatedCompleted = rank.testsCompleted + 1;
-          const updatedTotal = rank.totalScore + earnedScore - (module.score || 0);
-          const updatedAverage = updatedTotal / updatedCompleted;
-          return { ...rank, testsCompleted: updatedCompleted, totalScore: updatedTotal, avgScore: updatedAverage };
-        }
-        return rank;
-      });
-
-      return mapped
-        .sort((a, b) => b.totalScore - a.totalScore)
-        .map((student, idx) => ({ ...student, rank: idx + 1 }));
-    });
-
+    setTestResult({ correctCount, totalCount, earnedScore, subject: module.subject, moduleTitle: module.title });
     setCurrentScreen('dashboard');
     setActiveModuleId(null);
   };
 
-  const handleAddWord = (wordData: Omit<VocabularyWord, 'id' | 'date'>) => {
-    const todayStr = new Date().toLocaleDateString('en-US', {
-      month: 'short', day: 'numeric', year: 'numeric'
-    });
-    const newWord: VocabularyWord = {
-      ...wordData, id: Math.random().toString(36).substr(2, 9), date: todayStr
-    };
-    setWords(prev => [newWord, ...prev]);
+  // 🟢 Lưu từ vựng mới thẳng lên Supabase
+  const handleAddWord = async (wordData: Omit<VocabularyWord, 'id' | 'date'>) => {
+    if (!currentUser) return;
+
+    const { data, error } = await supabase.from('vocabulary').insert({
+      user_id: currentUser.id,
+      term: wordData.term,
+      type: wordData.type,
+      definition: wordData.definition,
+      example: wordData.example,
+      status: 'Learning'
+    }).select().single();
+
+    if (data && !error) {
+      setWords(prev => [{
+        id: data.id,
+        term: data.term,
+        type: data.type,
+        definition: data.definition,
+        example: data.example || '',
+        status: data.status as 'Learning' | 'Mastered',
+        date: new Date(data.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      }, ...prev]);
+    }
   };
 
-  const handleDeleteWord = (id: string) => {
+  // 🟢 Xóa từ vựng trên Supabase
+  const handleDeleteWord = async (id: string) => {
+    await supabase.from('vocabulary').delete().eq('id', id);
     setWords(prev => prev.filter(w => w.id !== id));
   };
 
-  const handleToggleStatus = (id: string) => {
-    setWords(prev => prev.map(w => {
-      if (w.id === id) {
-        return { ...w, status: w.status === 'Learning' ? 'Mastered' : 'Learning' };
-      }
-      return w;
-    }));
+  // 🟢 Cập nhật trạng thái Mastered/Learning lên Supabase
+  const handleToggleStatus = async (id: string) => {
+    const word = words.find(w => w.id === id);
+    if (!word) return;
+    
+    const newStatus = word.status === 'Learning' ? 'Mastered' : 'Learning';
+    await supabase.from('vocabulary').update({ status: newStatus }).eq('id', id);
+    
+    setWords(prev => prev.map(w => w.id === id ? { ...w, status: newStatus } : w));
   };
 
   const isDark = theme === 'dark';
   const currentModuleObj = modules.find(m => m.id === activeModuleId);
 
+  // Màn hình chờ kiểm tra đăng nhập
+  if (loadingAuth) {
+    return <div className={`min-h-screen flex items-center justify-center font-mono text-sm tracking-widest ${isDark ? 'bg-[#0A0A0A] text-[#00D2FF]' : 'bg-white text-black'}`}>ĐANG TẢI...</div>;
+  }
+
   if (!currentUser) {
     return <LoginScreen theme={theme} onLoginSuccess={handleLogin} toggleTheme={toggleTheme} />;
   }
 
-  // 🟢 6. Truyền thẳng data thật vào màn hình thi
   if (currentScreen === 'practice' && activeModuleId) {
     return (
       <ActiveTestScreen
         theme={theme}
         moduleId={activeModuleId}
         moduleTitle={currentModuleObj?.title || ''}
-        questions={activeQuestions} // Data xịn từ database
-        passage={activePassage}     // Đoạn văn xịn từ database
-        onExit={() => {
-          setCurrentScreen('dashboard');
-          setActiveModuleId(null);
-        }}
+        questions={activeQuestions}
+        passage={activePassage}
+        onExit={() => { setCurrentScreen('dashboard'); setActiveModuleId(null); }}
         onFinishTest={handleFinishTest}
       />
     );
@@ -342,10 +393,12 @@ export default function App() {
             <div className={`hidden md:flex items-center gap-2 px-3 py-1.5 border ${
               isDark ? 'bg-black border-white/10' : 'bg-white border-black/10'
             }`}>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLEryZ9kwBtqN2I7R61KGfcElyDcesnwdZgezNI-oODn1KaN4iFWvLY5u5YgbwthXh_hxPKypTjlV9z3sGzhJwSDKJm7BqADupXzgHKcNb-SaP2I4ME7hvdU-9JEnLzt--I8ZLsY4VuRxoa_pFInGmN9o9eEKi46XjDINyOT2d5NvrKbPA2UwNB4iiBst8WYKdOlP_8bPARkHGN8_iz3atlT-2JxB-NHwycCqbcktys_bWLfCEOvEGM77ksq8u5rcDnNv3E4U5IqM"
+              <img src={currentUser?.user_metadata?.avatar_url || "https://ui-avatars.com/api/?name=User&background=random"}
                    alt="Avatar" referrerPolicy="no-referrer"
                    className="w-5 h-5 rounded-none object-cover border border-white/20" />
-              <span className="text-[10px] font-bold tracking-widest uppercase opacity-75">L. Garcia</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase opacity-75 truncate max-w-[100px]">
+                {currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0]}
+              </span>
             </div>
 
             <button onClick={handleLogout}
@@ -363,7 +416,7 @@ export default function App() {
         {currentScreen === 'dashboard' && (
           <DashboardScreen
             theme={theme}
-            userName="L. Garcia"
+            userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
             modules={modules}
             vocabTotal={words.length}
             vocabMastered={words.filter((w) => w.status === 'Mastered').length}
