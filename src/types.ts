@@ -17,15 +17,16 @@ export interface Module {
 export interface Question {
   id: number;
   text: string;
-  options: {
+  question_type: 'mcq' | 'spr';
+  options?: {
     A: string;
     B: string;
     C: string;
     D: string;
   };
-  correctAnswer: 'A' | 'B' | 'C' | 'D';
-  userAnswer?: 'A' | 'B' | 'C' | 'D';
-  passage?: Passage; // 🟢 THÊM ĐÚNG 1 DÒNG NÀY VÀO ĐÂY
+  correctAnswer: string[];
+  userAnswer?: string;
+  passage?: Passage;
 }
 
 export interface Passage {
@@ -58,8 +59,9 @@ export interface StudentRank {
 export interface QuestionResult {
   id: number | string;
   questionText?: string;
+  question_type?: 'mcq' | 'spr';
   userAnswer: string | null | undefined;
-  correctAnswer: string;
+  correctAnswer: string[];
   explanation?: string;
   isCorrect: boolean;
   options?: {
@@ -68,7 +70,7 @@ export interface QuestionResult {
     C: string;
     D: string;
   };
-  passage?: Passage; // Từng câu có passage riêng
+  passage?: Passage;
 }
 
 export interface TestAttemptHistory {

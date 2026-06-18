@@ -103,7 +103,7 @@ interface ActiveTestScreenProps {
   moduleTitle: string;
   questions: Question[];
   passage?: Passage;
-  onFinishTest: (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => void;
+  onFinishTest: (answers: Record<number, string>) => void;
   onExit: () => void;
 }
 
@@ -127,7 +127,7 @@ export default function ActiveTestScreen({
   }
 
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<Record<number, 'A' | 'B' | 'C' | 'D'>>({});
+  const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
   const [eliminatedOptions, setEliminatedOptions] = useState<Record<string, boolean>>({});
 
@@ -189,7 +189,7 @@ export default function ActiveTestScreen({
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  const handleSelectAnswer = (option: 'A' | 'B' | 'C' | 'D') => {
+  const handleSelectAnswer = (option: string) => {
     setUserAnswers(prev => ({ ...prev, [currentQuestion.id]: option }));
   };
 
@@ -368,31 +368,46 @@ export default function ActiveTestScreen({
               {currentQuestion.text}
             </div>
 
-            <div className="space-y-4">
-              {(['A', 'B', 'C', 'D'] as const).map((letter) => {
-                const isSelected = userAnswers[currentQuestion.id] === letter;
-                const isEliminated = !!eliminatedOptions[`${currentQuestion.id}-${letter}`];
-                return (
-                  <div key={letter} className={`relative group flex items-stretch rounded-none border-2 transition-all ${isSelected ? (isDark ? 'bg-[#00D2FF]/5 border-[#00D2FF] text-white' : 'bg-black border-black text-white') : (isEliminated ? 'opacity-20 scale-[0.98]' : (isDark ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' : 'bg-white border-black/15 hover:border-black'))}`}>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); toggleEliminate(letter); }}
-                      className={`px-3 flex items-center justify-center transition-colors border-r-2 text-[9px] font-mono tracking-widest uppercase cursor-pointer select-none ${isEliminated ? 'border-red-500/20 text-red-500 bg-red-950/10' : 'border-transparent text-gray-500 hover:text-red-500'}`}
-                      title={isEliminated ? 'Khôi phục lại phương án' : 'Gạch bỏ phương án'}
-                    >
-                      {isEliminated ? '✕' : '[DEL]'}
-                    </button>
-                    <button onClick={() => handleSelectAnswer(letter)} className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer">
-                      <span className={`flex items-center justify-center w-7 h-7 text-xs font-black border-2 uppercase shrink-0 transition-all rounded-none select-none ${isSelected ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-white text-black border-white') : (isDark ? 'bg-black border-white/10 text-[#00D2FF] group-hover:border-[#00D2FF]' : 'bg-gray-50 border-black/15 text-black')}`}>
-                        {letter}
-                      </span>
-                      <span className={`text-sm md:text-base font-bold leading-relaxed pt-0.5 ${isEliminated ? 'line-through opacity-40' : ''}`}>
-                        {currentQuestion.options[letter]}
-                      </span>
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
+            {currentQuestion.question_type === 'mcq' ? (
+              <div className="space-y-4">
+                {(['A', 'B', 'C', 'D'] as const).map((letter) => {
+                  const isSelected = userAnswers[currentQuestion.id] === letter;
+                  const isEliminated = !!eliminatedOptions[`${currentQuestion.id}-${letter}`];
+                  return (
+                    <div key={letter} className={`relative group flex items-stretch rounded-none border-2 transition-all ${isSelected ? (isDark ? 'bg-[#00D2FF]/5 border-[#00D2FF] text-white' : 'bg-black border-black text-white') : (isEliminated ? 'opacity-20 scale-[0.98]' : (isDark ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' : 'bg-white border-black/15 hover:border-black'))}`}>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); toggleEliminate(letter); }}
+                        className={`px-3 flex items-center justify-center transition-colors border-r-2 text-[9px] font-mono tracking-widest uppercase cursor-pointer select-none ${isEliminated ? 'border-red-500/20 text-red-500 bg-red-950/10' : 'border-transparent text-gray-500 hover:text-red-500'}`}
+                        title={isEliminated ? 'Khôi phục lại phương án' : 'Gạch bỏ phương án'}
+                      >
+                        {isEliminated ? '✕' : '[DEL]'}
+                      </button>
+                      <button onClick={() => handleSelectAnswer(letter)} className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer">
+                        <span className={`flex items-center justify-center w-7 h-7 text-xs font-black border-2 uppercase shrink-0 transition-all rounded-none select-none ${isSelected ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-white text-black border-white') : (isDark ? 'bg-black border-white/10 text-[#00D2FF] group-hover:border-[#00D2FF]' : 'bg-gray-50 border-black/15 text-black')}`}>
+                          {letter}
+                        </span>
+                        <span className={`text-sm md:text-base font-bold leading-relaxed pt-0.5 ${isEliminated ? 'line-through opacity-40' : ''}`}>
+                          {currentQuestion.options?.[letter as keyof typeof currentQuestion.options]}
+                        </span>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <label className={`text-sm font-bold ${isDark ? 'text-white/80' : 'text-black/80'}`}>
+                  Nhập đáp án của bạn:
+                </label>
+                <input
+                  type="text"
+                  value={userAnswers[currentQuestion.id] || ''}
+                  onChange={(e) => handleSelectAnswer(e.target.value)}
+                  placeholder="Ví dụ: 0.5, 1/2, .5"
+                  className={`w-full px-4 py-3 border-2 rounded-none font-mono text-base transition-all ${isDark ? 'bg-black border-white/20 text-white placeholder-gray-500 focus:border-[#00D2FF] focus:outline-none' : 'bg-white border-black/15 text-black placeholder-gray-400 focus:border-black focus:outline-none'}`}
+                />
+              </div>
+            )}
           </div>
 
           <div className="pt-6 text-[10px] font-mono uppercase tracking-wider opacity-40 flex items-center gap-1.5 justify-end select-none">

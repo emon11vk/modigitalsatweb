@@ -153,7 +153,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
 
         {attempt.questions && attempt.questions.length > 0 ? (
           attempt.questions.map((q, idx) => {
-            const isCorrect = q.userAnswer === q.correctAnswer;
+            const isCorrect = q.correctAnswer.includes(q.userAnswer?.trim() || '');
 
             return (
               <div
@@ -233,8 +233,8 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                     </div>
                   )}
 
-                  {/* Options Grid */}
-                  {q.options && (
+                  {/* Options Grid (for MCQ only) */}
+                  {q.options && q.question_type === 'mcq' && (
                     <div>
                       <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-3 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
                         Các đáp án
@@ -243,7 +243,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                         {['A', 'B', 'C', 'D'].map((letter) => {
                           const optionText = q.options?.[letter as keyof typeof q.options];
                           const isUserAnswer = q.userAnswer === letter;
-                          const isCorrectAnswer = q.correctAnswer === letter;
+                          const isCorrectAnswer = q.correctAnswer.includes(letter);
                           const shouldHighlightGreen = isUserAnswer && isCorrect;
                           const shouldHighlightRed = isUserAnswer && !isCorrect;
                           const shouldShowCorrectAnswer = !isCorrect && isCorrectAnswer;
@@ -303,6 +303,31 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                           );
                         })}
                       </div>
+                    </div>
+                  )}
+
+                  {/* User Answer and Correct Answer (for SPR) */}
+                  {q.question_type === 'spr' && (
+                    <div className="space-y-4">
+                      <div className={`p-3 border-2 ${isCorrect ? (isDark ? 'border-emerald-600/60 bg-emerald-950/30' : 'border-emerald-600/50 bg-emerald-50') : (isDark ? 'border-red-600/60 bg-red-950/30' : 'border-red-600/50 bg-red-50')}`}>
+                        <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+                          Đáp án bạn nhập
+                        </div>
+                        <p className={`text-sm font-mono font-bold ${isCorrect ? (isDark ? 'text-emerald-300' : 'text-emerald-800') : (isDark ? 'text-red-300' : 'text-red-800')}`}>
+                          {q.userAnswer || '(Trống)'}
+                        </p>
+                      </div>
+
+                      {!isCorrect && (
+                        <div className={`p-3 border-2 border-emerald-600/60 bg-emerald-950/30`}>
+                          <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 text-white/50`}>
+                            ✓ Đáp án đúng
+                          </div>
+                          <p className={`text-sm font-mono font-bold text-emerald-300`}>
+                            {q.correctAnswer.join(', ')}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
 
