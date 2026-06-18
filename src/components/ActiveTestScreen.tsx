@@ -4,6 +4,7 @@ import {
   CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle
 } from 'lucide-react';
 import { Question, Passage, Theme } from '../types';
+import MathRenderer from './MathRenderer';
 
 // ─── Highlight Hook ────────────────────────────────────────────────────────────
 interface HighlightEntry { id: string; text: string; }
@@ -326,16 +327,21 @@ export default function ActiveTestScreen({
             </h3>
 
             {/* Introduction */}
-            <p className="text-xs font-mono opacity-50 mb-6 leading-relaxed bg-black/35 py-3 px-4 border border-white/5 rounded-none">
-              {displayPassage.introduction}
-            </p>
+            <MathRenderer
+              content={displayPassage.introduction}
+              className="text-xs font-mono opacity-50 mb-6 leading-relaxed bg-black/35 py-3 px-4 border border-white/5 rounded-none"
+              isDark={isDark}
+            />
 
             {/* Paragraphs */}
             <div className="space-y-4 font-sans max-w-none">
               {displayPassage.paragraphs.map((p, idx) => (
-                <p key={idx} className="mb-4 leading-relaxed text-sm md:text-base opacity-90 transition-all font-sans">
-                  {p}
-                </p>
+                <MathRenderer
+                  key={idx}
+                  content={p}
+                  className="mb-4 leading-relaxed text-sm md:text-base opacity-90 transition-all font-sans"
+                  isDark={isDark}
+                />
               ))}
             </div>
 
@@ -365,7 +371,11 @@ export default function ActiveTestScreen({
             </div>
 
             <div className={`text-base md:text-[17px] font-bold leading-relaxed mb-8 ${isDark ? 'text-white' : 'text-[#0A0A0A]'}`}>
-              {currentQuestion.text}
+              <MathRenderer
+                content={currentQuestion.text}
+                className="w-full"
+                isDark={isDark}
+              />
             </div>
 
             {currentQuestion.question_type === 'mcq' ? (

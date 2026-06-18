@@ -9,6 +9,7 @@ import {
   BarChart2,
   AlertCircle,
 } from 'lucide-react';
+import MathRenderer from './MathRenderer';
 
 interface ReviewScreenProps {
   theme: 'light' | 'dark';
@@ -207,15 +208,20 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                         </h4>
                       )}
                       {q.passage.introduction && (
-                        <p className={`text-xs font-mono mb-3 leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-                          {q.passage.introduction}
-                        </p>
+                        <MathRenderer
+                          content={q.passage.introduction}
+                          className={`text-xs font-mono mb-3 leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}
+                          isDark={isDark}
+                        />
                       )}
                       <div className="space-y-3">
                         {q.passage.paragraphs?.map((para, pidx) => (
-                          <p key={pidx} className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}>
-                            {para}
-                          </p>
+                          <MathRenderer
+                            key={pidx}
+                            content={para}
+                            className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}
+                            isDark={isDark}
+                          />
                         ))}
                       </div>
                     </div>
@@ -227,9 +233,13 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                       <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
                         Câu hỏi
                       </div>
-                      <p className={`text-sm font-mono leading-relaxed ${isDark ? 'text-white/85' : 'text-black/85'}`}>
-                        {q.questionText}
-                      </p>
+                      <div className={`text-sm font-mono leading-relaxed ${isDark ? 'text-white/85' : 'text-black/85'}`}>
+                        <MathRenderer
+                          content={q.questionText}
+                          className="w-full"
+                          isDark={isDark}
+                        />
+                      </div>
                     </div>
                   )}
 

@@ -70,65 +70,56 @@ export default function App() {
     }
 
     try {
-      const { data, error } = await supabase
-        .from('test_history')
-        .select(`
-          id,
-          test_answers (
-            question_id,
-            user_answer,
-            is_correct,
-            questions (
-              id,
-              text,
-              correct_answer,
-              options,
-              passage_paragraphs,
-              passage_intro,
-              passage_title
-            )
-          )
-        `)
-        .eq('id', attempt.attemptId)
-        .single();
+      // Step 1: Fetch test_answers with question_id and user_answer
+      const { data: answersData, error: answersError } = await supabase
+        .from('test_answers')
+        .select('question_id, user_answer, is_correct')
+        .eq('history_id', attempt.attemptId);
 
-      if (error) throw error;
-
-      if (data && data.test_answers) {
-        const questions = data.test_answers.map((ans: any) => ({
-          id: ans.questions.id,
-          questionText: ans.questions.text,
-          userAnswer: ans.user_answer,
-          correctAnswer: ans.questions.correct_answer,
-          isCorrect: ans.is_correct,
-          options: ans.questions.options,
-          passage: ans.questions.passage_paragraphs
-            ? {
-                title: ans.questions.passage_title || 'Reading Text',
-                introduction: ans.questions.passage_intro || '',
-                paragraphs: Array.isArray(ans.questions.passage_paragraphs)
-                  ? ans.questions.passage_paragraphs
-                  : [ans.questions.passage_paragraphs]
-              }
-            : undefined
-        }));
-
-        const firstWithPassage = data.test_answers.find((ans: any) => ans.questions.passage_paragraphs);
-        setSelectedAttempt({
-          ...attempt,
-          questions,
-          passage: firstWithPassage
-            ? {
-                title: firstWithPassage.questions.passage_title || 'Reading Text',
-                introduction: firstWithPassage.questions.passage_intro || '',
-                paragraphs: Array.isArray(firstWithPassage.questions.passage_paragraphs)
-                  ? firstWithPassage.questions.passage_paragraphs
-                  : [firstWithPassage.questions.passage_paragraphs]
-              }
-            : undefined
-        });
-        setCurrentScreen('review');
+      if (answersError) throw answersError;
+      if (!answersData || answersData.length === 0) {
+        throw new Error('No answers found for this test attempt');
       }
+
+      // Step 2: Fetch all questions referenced by these answers
+      const questionIds = answersData.map((ans: any) => ans.question_id);
+      const { data: questionsData, error: questionsError } = await supabase
+        .from('questions')
+        .select('id, text, correct_answer, options, passage_paragraphs, passage_intro, passage_title, question_type')
+        .in('id', questionIds);
+
+      if (questionsError) throw questionsError;
+
+      // Step 3: Merge answers with questions
+      const questionMap = new Map(questionsData?.map((q: any) => [q.id, q]) ?? []);
+      const questions = answersData.map((ans: any) => ({
+        id: ans.question_id,
+        questionText: questionMap.get(ans.question_id)?.text || '',
+        question_type: questionMap.get(ans.question_id)?.question_type || 'mcq',
+        userAnswer: ans.user_answer,
+        correctAnswer: questionMap.get(ans.question_id)?.correct_answer || [],
+        isCorrect: ans.is_correct,
+        options: questionMap.get(ans.question_id)?.options,
+        passage: questionMap.get(ans.question_id)?.passage_paragraphs
+          ? {
+              title: questionMap.get(ans.question_id)?.passage_title || 'Reading Text',
+              introduction: questionMap.get(ans.question_id)?.passage_intro || '',
+              paragraphs: Array.isArray(questionMap.get(ans.question_id)?.passage_paragraphs)
+                ? questionMap.get(ans.question_id)?.passage_paragraphs
+                : [questionMap.get(ans.question_id)?.passage_paragraphs]
+            }
+          : undefined
+      }));
+
+      // Find first question with passage for overall passage display
+      const firstWithPassage = questions.find((q: any) => q.passage);
+      
+      setSelectedAttempt({
+        ...attempt,
+        questions,
+        passage: firstWithPassage?.passage
+      });
+      setCurrentScreen('review');
     } catch (err) {
       console.error('Error fetching attempt details:', err);
       alert('Lỗi khi tải chi tiết bài làm — vui lòng thử lại.');
@@ -340,6 +331,7 @@ export default function App() {
       const formattedQs: Question[] = questionsData.map((q: any) => ({
         id: q.id,
         text: q.text,
+        question_type: q.question_type || 'mcq',
         options: q.options,
         correctAnswer: q.correct_answer,
         passage: q.passage_paragraphs
@@ -376,7 +368,7 @@ export default function App() {
     }
   };
 
-const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) => {
+const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | string>) => {
     if (!activeModuleId || !currentUser) return;
 
     const module = modules.find((m: any) => m.id === activeModuleId);
@@ -386,7 +378,9 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) 
       // 1. Tính toán điểm số
       let correctCount = 0;
       activeQuestions.forEach((q) => {
-        if (answers[q.id] === q.correctAnswer) correctCount++;
+        const userAnswer = answers[q.id];
+        const correctAnswers = Array.isArray(q.correctAnswer) ? q.correctAnswer : [q.correctAnswer];
+        if (correctAnswers.includes(userAnswer)) correctCount++;
       });
 
       const totalCount = activeQuestions.length;
@@ -429,12 +423,16 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) 
 
         // Lưu bảng test_answers
         if (insertedHistory) {
-          const answerRows = activeQuestions.map((q) => ({
-            history_id: insertedHistory.id,
-            question_id: q.id,
-            user_answer: answers[q.id] ?? null,
-            is_correct: answers[q.id] === q.correctAnswer
-          }));
+          const answerRows = activeQuestions.map((q) => {
+            const userAnswer = answers[q.id];
+            const correctAnswers = Array.isArray(q.correctAnswer) ? q.correctAnswer : [q.correctAnswer];
+            return {
+              history_id: insertedHistory.id,
+              question_id: q.id,
+              user_answer: userAnswer ?? null,
+              is_correct: correctAnswers.includes(userAnswer)
+            };
+          });
 
           const { error: answerError } = await supabase
             .from('test_answers')
@@ -455,15 +453,20 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D'>) 
           correctCount,
           totalCount,
           dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
-          questions: activeQuestions.map((q) => ({
-            id: q.id,
-            questionText: q.text,
-            userAnswer: answers[q.id] ?? null,
-            correctAnswer: q.correctAnswer,
-            isCorrect: answers[q.id] === q.correctAnswer,
-            options: q.options,
-            passage: q.passage
-          })),
+          questions: activeQuestions.map((q) => {
+            const userAnswer = answers[q.id];
+            const correctAnswers = Array.isArray(q.correctAnswer) ? q.correctAnswer : [q.correctAnswer];
+            return {
+              id: q.id,
+              questionText: q.text,
+              question_type: q.question_type,
+              userAnswer: userAnswer ?? null,
+              correctAnswer: correctAnswers,
+              isCorrect: correctAnswers.includes(userAnswer),
+              options: q.options,
+              passage: q.passage
+            };
+          }),
           passage: activePassage
         };
 
