@@ -616,7 +616,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
       <div
         className={`min-h-screen flex items-center justify-center font-mono text-sm tracking-widest ${
           theme === 'dark'
-            ? 'bg-[#0A0A0A] text-[#00D2FF]'
+            ? 'bg-[#0a0e1a] text-[#4dd9cc]'
             : 'bg-white text-black'
         }`}
       >
@@ -662,8 +662,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
     <div
       className={`min-h-screen font-sans flex flex-col justify-between transition-colors duration-300 ${
         isDark
-          ? 'bg-[#0A0A0A] text-[#F5F5F5]'
-          : 'bg-[#FAFAFA] text-[#0A0A0A]'
+          ? 'bg-[#0a0e1a] text-[#e8ecf4]'
+          : 'bg-[#FAFAFA] text-[#0a0e1a]'
       }`}
     >
       {/* Background decoration */}
@@ -677,7 +677,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
       <header
         className={`px-4 py-3 sm:py-4 md:px-8 border-b sticky top-0 z-40 backdrop-blur-md transition-all ${
           isDark
-            ? 'bg-[#0A0A0A]/95 border-white/10'
+            ? 'bg-[#0a0e1a]/95 border-[rgba(77,217,204,0.15)]'
             : 'bg-white/95 border-black/10'
         }`}
       >
@@ -697,8 +697,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             <div
               className={`p-1.5 border transition-all ${
                 isDark
-                  ? 'bg-black border-white/20 text-[#00D2FF]'
-                  : 'bg-[#0A0A0A] border-transparent text-[#00D2FF]'
+                  ? 'bg-black border-[rgba(77,217,204,0.2)] text-[#4dd9cc]'
+                  : 'bg-[#0a0e1a] border-transparent text-[#4dd9cc]'
               }`}
             >
               <GraduationCap className="w-5 h-5" />
@@ -706,12 +706,12 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             <div>
               <h1 className="text-base sm:text-lg font-black tracking-tighter flex items-center gap-2 uppercase font-display select-none">
                 <span
-                  className={isDark ? 'text-[#00D2FF] animate-pulse' : 'text-black'}
+                  className={isDark ? 'text-[#4dd9cc] animate-pulse' : 'text-black'}
                   style={
                     isDark
                       ? {
                           textShadow:
-                            '0 0 6px #00D2FF, 0 0 15px rgba(0,210,255,0.6)'
+                            '0 0 6px #4dd9cc, 0 0 15px rgba(77,217,204,0.6)'
                         }
                       : undefined
                   }
@@ -719,9 +719,9 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
                   Mơ.DigitalSat
                 </span>
                 <span
-                  className="bg-[#00D2FF] text-black text-[9px] font-black tracking-[0.2em] px-2 py-0.5 rounded-none font-sans"
+                  className="bg-[#4dd9cc] text-black text-[9px] font-black tracking-[0.2em] px-2 py-0.5 rounded-none font-sans"
                   style={
-                    isDark ? { boxShadow: '0 0 10px rgba(0,210,255,0.8)' } : undefined
+                    isDark ? { boxShadow: '0 0 10px rgba(77,217,204,0.8)' } : undefined
                   }
                 >
                   PRO
@@ -773,10 +773,10 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
                   className={`px-3 py-2 text-[10px] md:text-[11px] font-black tracking-[0.18em] uppercase transition-all duration-150 cursor-pointer border ${
                     isActive
                       ? isDark
-                        ? 'bg-[#00D2FF] text-black border-[#00D2FF]'
-                        : 'bg-[#0A0A0A] text-white border-[#0A0A0A]'
+                        ? 'bg-[#4dd9cc] text-black border-[#4dd9cc]'
+                        : 'bg-[#0a0e1a] text-white border-[#0a0e1a]'
                       : isDark
-                      ? 'border-transparent text-white/50 hover:text-white hover:border-white/10'
+                      ? 'border-transparent text-white/50 hover:text-white hover:border-[rgba(77,217,204,0.2)]'
                       : 'border-transparent text-black/50 hover:text-black hover:border-black/5'
                   }`}
                 >
@@ -796,7 +796,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
               onClick={toggleTheme}
               className={`p-2 transition-colors cursor-pointer border ${
                 isDark
-                  ? 'border-white/10 bg-[#0A0A0A] text-[#00D2FF] hover:bg-[#00D2FF]/10'
+                  ? 'border-[rgba(77,217,204,0.2)] bg-[#0a0e1a] text-[#4dd9cc] hover:bg-[rgba(77,217,204,0.1)]'
                   : 'border-black/10 bg-white text-black hover:bg-black/5'
               }`}
               title="Đổi theme"
@@ -811,7 +811,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             {/* User info */}
             <div
               className={`hidden md:flex items-center gap-2 px-3 py-1.5 border ${
-                isDark ? 'bg-black border-white/10' : 'bg-white border-black/10'
+                isDark ? 'bg-black border-[rgba(77,217,204,0.15)]' : 'bg-white border-black/10'
               }`}
             >
               <img
@@ -834,7 +834,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
               onClick={handleLogout}
               className={`p-2 border hover:text-red-500 transition-colors cursor-pointer ${
                 isDark
-                  ? 'border-white/10 bg-[#0a0a0a] text-white/50'
+                  ? 'border-[rgba(77,217,204,0.15)] bg-[#0a0e1a] text-white/50'
                   : 'border-black/10 bg-white text-black/50'
               }`}
               title="Đăng xuất"
@@ -898,7 +898,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
 
       {/* Footer */}
       <footer className={`border-t py-6 text-center select-none ${
-        isDark ? 'border-white/10 text-white/30' : 'border-black/10 text-black/40'
+        isDark ? 'border-[rgba(77,217,204,0.15)] text-white/30' : 'border-black/10 text-black/40'
       }`}>
         <div className="max-w-7xl mx-auto px-4 text-[10px] uppercase tracking-[0.25em] font-bold space-y-1.5">
           <p>© 2026 Mơ-DigitalSat / SAT Prep Pro. All Rights Reserved.</p>
@@ -912,20 +912,20 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
       {testResult && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
           <div className={`w-full max-w-md rounded-none border-2 transform transition-all p-6 md:p-8 text-center space-y-6 ${
-            isDark ? 'bg-[#0A0A0A] border-[#00D2FF] text-white' : 'bg-white border-black text-black'
+            isDark ? 'bg-[#0a0e1a] border-[#4dd9cc] text-white' : 'bg-white border-black text-black'
           }`}>
             <div className="flex justify-center">
               <div className={`inline-flex items-center justify-center w-12 h-12 border ${
                 isDark
-                  ? 'bg-black border-[#00D2FF]/50 text-[#00D2FF]'
-                  : 'bg-black border-transparent text-[#00D2FF]'
+                  ? 'bg-black border-[rgba(77,217,204,0.5)] text-[#4dd9cc]'
+                  : 'bg-black border-transparent text-[#4dd9cc]'
               }`}>
                 <CheckCircle2 className="w-7 h-7" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#00D2FF] bg-[#00D2FF]/10 py-1 px-3 inline-block">
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#4dd9cc] bg-[rgba(77,217,204,0.1)] py-1 px-3 inline-block">
                 HOÀN THÀNH BÀI KIỂM TRA
               </span>
               <h3 className="text-2xl font-black font-display tracking-tight uppercase leading-none">
@@ -937,18 +937,18 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             </div>
 
             <div className={`p-5 border rounded-none ${
-              isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'
+              isDark ? 'bg-black border-[rgba(77,217,204,0.15)]' : 'bg-gray-50 border-black/15'
             }`}>
               <div className="text-[10px] opacity-40 uppercase tracking-widest font-black">
                 Điểm đạt được của bạn
               </div>
               <div className="text-4xl sm:text-5xl font-black font-display text-white mt-2">
-                <span className="text-[#00D2FF]">{testResult.earnedScore}</span>
+                <span className="text-[#4dd9cc]">{testResult.earnedScore}</span>
                 <span className="text-xs opacity-40 font-sans tracking-normal ml-2">/ 800 PTS</span>
               </div>
               <div className="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono">
                 <span className="opacity-50">SỐ CÂU ĐÚNG:</span>
-                <span className="font-bold text-[#00D2FF]">
+                <span className="font-bold text-[#4dd9cc]">
                   {testResult.correctCount} / {testResult.totalCount}
                 </span>
               </div>
@@ -959,7 +959,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
                 onClick={() => setTestResult(null)}
                 className={`w-full py-3.5 font-black uppercase tracking-widest text-xs cursor-pointer transition-all border ${
                   isDark
-                    ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/20'
+                    ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/20'
                     : 'bg-black text-white border-black hover:bg-transparent hover:text-black'
                 }`}
               >

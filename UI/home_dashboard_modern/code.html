@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mơ - Digital SAT Dashboard (Modern)</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#0a0e1a",
+                        surface: "#0f1420",
+                        "surface-dim": "#0a0e1a",
+                        "surface-bright": "#2a3142",
+                        "surface-container-lowest": "#0d1120",
+                        "surface-container-low": "#121829",
+                        "surface-container": "#16192d",
+                        "surface-container-high": "#1e2238",
+                        "surface-container-highest": "#272d42",
+                        "glass-base": "rgba(22, 25, 45, 0.45)",
+                        "glass-light": "rgba(42, 49, 66, 0.35)",
+                        "on-surface": "#e8ecf4",
+                        "on-surface-variant": "#b3b9cc",
+                        "on-surface-muted": "#8a91a8",
+                        primary: "#4dd9cc",
+                        "primary-bright": "#5fe8db",
+                        "primary-dark": "#2fb5a3",
+                        "primary-container": "#1f5550",
+                        "on-primary": "#001f1c",
+                        "on-primary-container": "#7ff8e8",
+                        secondary: "#ff8fa3",
+                        "secondary-dark": "#e87091",
+                        "on-secondary": "#3b0008",
+                        "accent-gold": "#ffc857",
+                        "accent-gold-light": "#ffe180",
+                        "success-green": "#1dd1a1",
+                        "success-light": "#55efc4",
+                        "warning-orange": "#ff7f50",
+                        outline: "#6b7290",
+                        "outline-variant": "#434d66",
+                        "border-light": "rgba(77, 217, 204, 0.15)",
+                        "border-subtle": "rgba(255, 255, 255, 0.08)"
+                    },
+                    borderRadius: {
+                        xs: "0.375rem",
+                        sm: "0.5rem",
+                        md: "0.75rem",
+                        DEFAULT: "1rem",
+                        lg: "1.5rem",
+                        xl: "2rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        base: "8px",
+                        xs: "4px",
+                        sm: "8px",
+                        md: "12px",
+                        lg: "16px",
+                        xl: "24px",
+                        "2xl": "32px",
+                        "3xl": "40px",
+                        gutter: "16px",
+                        "card-padding": "24px",
+                        "container-margin": "24px"
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", {lineHeight: "56px", fontWeight: "700", letterSpacing: "-0.02em"}],
+                        "headline-lg": ["32px", {lineHeight: "40px", fontWeight: "700", letterSpacing: "-0.01em"}],
+                        "headline-md": ["24px", {lineHeight: "32px", fontWeight: "700", letterSpacing: "-0.005em"}],
+                        "headline-sm": ["18px", {lineHeight: "26px", fontWeight: "600"}],
+                        "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}],
+                        "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}],
+                        "label-lg": ["14px", {lineHeight: "20px", fontWeight: "600", letterSpacing: "0.02em"}],
+                        "label-md": ["13px", {lineHeight: "18px", fontWeight: "500", letterSpacing: "0.015em"}],
+                        "label-sm": ["12px", {lineHeight: "16px", fontWeight: "500", letterSpacing: "0.04em"}],
+                        "stats-number": ["42px", {lineHeight: "1", fontWeight: "700", letterSpacing: "-0.025em"}]
+                    },
+                    fontFamily: {
+                        inter: ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        "glass-sm": "0 1px 2px 0 rgba(0, 0, 0, 0.08)",
+                        "glass-base": "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
+                        "glass-md": "0 8px 24px 0 rgba(0, 0, 0, 0.2)",
+                        "glass-lg": "0 16px 40px 0 rgba(0, 0, 0, 0.25)",
+                        "glow": "0 0 24px 0 rgba(77, 217, 204, 0.15)"
+                    },
+                    backdropBlur: {
+                        glass: "12px"
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0e1a;
+            color: #e8ecf4;
+            overflow: hidden;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(77, 217, 204, 0.2);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(77, 217, 204, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(22, 25, 45, 0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(77, 217, 204, 0.15);
+        }
+
+        .glass-card-light {
+            background: rgba(42, 49, 66, 0.35);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4dd9cc 0%, #5fe8db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glow-primary {
+            box-shadow: 0 0 24px rgba(77, 217, 204, 0.15);
+        }
+
+        .glow-primary-hover:hover {
+            box-shadow: 0 0 24px rgba(77, 217, 204, 0.25);
+        }
+
+        .transition-smooth {
+            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-active {
+            background: rgba(77, 217, 204, 0.2);
+            color: #4dd9cc;
+            border: 1px solid rgba(77, 217, 204, 0.3);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(77, 217, 204, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<div class="flex h-screen w-full">
+    <!-- SIDEBAR -->
+    <aside class="fixed left-0 top-0 h-screen w-[240px] flex flex-col bg-surface border-r border-border-light py-6 px-3 z-50">
+        <div class="mb-10 px-4">
+            <h1 class="text-headline-lg font-bold gradient-text">MƠ</h1>
+            <p class="text-label-md text-on-surface-variant opacity-80 mt-1">Digital SAT</p>
+        </div>
+
+        <nav class="flex flex-col gap-2 flex-grow overflow-y-auto custom-scrollbar">
+            <a href="#" class="nav-active text-primary rounded-lg px-4 py-3 mx-2 flex items-center gap-3 transition-smooth">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+                <span class="font-label-lg">Home</span>
+            </a>
+            <a href="#" class="text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg px-4 py-3 mx-2 flex items-center gap-3 transition-smooth">
+                <span class="material-symbols-outlined">leaderboard</span>
+                <span class="font-label-lg">Leaderboard</span>
+            </a>
+            <a href="#" class="text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg px-4 py-3 mx-2 flex items-center gap-3 transition-smooth">
+                <span class="material-symbols-outlined">menu_book</span>
+                <span class="font-label-lg">VocabHub</span>
+            </a>
+            <a href="#" class="text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg px-4 py-3 mx-2 flex items-center gap-3 transition-smooth">
+                <span class="material-symbols-outlined">history</span>
+                <span class="font-label-lg">History</span>
+            </a>
+
+            <!-- Mascot Area -->
+            <div class="mt-8 px-4 flex justify-center">
+                <img class="w-32 h-32 object-contain filter drop-shadow-lg animate-pulse" alt="Educational mascot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7i9j2c4NKcADSSOsqBOJEcJEn4I93S2w-3ln5afzRCuP_nVa5DdPYt7Bx5U66uRn6ZyTO36Er_aM3p7zfxBzROZ0ElE0-RSGG-zE9qbvp4yDFBoK0PXsZPdz2yz6G4u4tu2GNEfUrHaKOtw_Si-c44HCu-HwR5X9ff4F0XcaMlBBy1YkdWbbPmWwe3N_rwzi8W1gOK_Y0Gbo8C4USGh1ipkb8HUjPi2qHiqGZ1gb0HlPZHCdIRNOmdJMGIeRzyB_rV_tjIaNdtozS" style="animation-duration: 4s;"/>
+            </div>
+        </nav>
+
+        <div class="mt-auto pt-6 flex flex-col gap-4 border-t border-border-subtle px-4">
+            <div class="flex items-center justify-between text-on-surface-variant font-label-md">
+                <div class="flex items-center gap-2 cursor-pointer hover:text-primary transition-smooth">
+                    <span class="material-symbols-outlined">language</span>
+                    <span class="text-label-sm">ENG | VI</span>
+                </div>
+                <div class="flex items-center gap-2 bg-surface-container-high px-3 py-1 rounded-full cursor-pointer hover:bg-surface-container-highest transition-smooth">
+                    <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+                </div>
+            </div>
+            <button class="text-on-surface-variant hover:text-secondary flex items-center gap-3 transition-smooth">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="font-label-lg">Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-[240px] mr-[320px] flex-grow h-screen overflow-y-auto px-lg py-6 custom-scrollbar">
+        <!-- Header with Streak & Controls -->
+        <div class="flex items-center justify-between mb-8">
+            <div class="glass-card rounded-full px-6 py-2 flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-accent-gold material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                    <span class="font-headline-sm text-on-surface">2 day streak</span>
+                </div>
+                <div class="h-6 w-px bg-border-light"></div>
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-container/50">Mo</div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-container/50">Tu</div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-primary bg-primary">We</div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-container/50">Th</div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-container/50">Fr</div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-container/50">Sa</div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-container/50">Su</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-smooth">
+                    <span class="material-symbols-outlined">volume_off</span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-smooth">
+                    <span class="material-symbols-outlined">call</span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-smooth">
+                    <span class="material-symbols-outlined">chat</span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-smooth">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Announcement Banner -->
+        <div class="relative w-full h-48 rounded-xl overflow-hidden mb-10 group glass-card glass-md">
+            <div class="w-full h-full bg-cover bg-center transition-smooth group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJA7_GEOLZWCuNf3y6o7FMQ06hnWpVz4Bk5mLgE_RBHi5fSWHqqrPv2JkA5yog3zUknFe2yogST72gk6hQWeavVymSzrOnuzg6sulM6aJsFgRuu3UK3_t1jUFlKJZoP_w6N1-BqS2Wd1E-mtzqr5eSwB3sIn9JjqwBPcwNWc7ahTbD98FWWXB8poxMRouDjnpkQaArLKSU2v-txngSQfXSqpCA4LvJQ4IFEMEaLIVy8ZIXQYSRVTt08m_VgPZKyXd5_7Bgs99CzT8p')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent flex flex-col justify-end p-6">
+                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm w-fit mb-3">Announcement</span>
+                <h2 class="text-headline-md font-bold text-on-surface">MADS Thông Báo: Thay Đổi & Nâng Cấp Hệ Thống</h2>
+            </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="mb-10">
+            <h3 class="font-headline-md mb-6 flex items-center gap-2 text-on-surface">
+                Courses <span class="w-2 h-2 rounded-full bg-primary"></span>
+            </h3>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="glass-card p-8 rounded-xl hover:glass-light transition-smooth cursor-pointer group">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-xl group-hover:scale-110 transition-smooth glow-primary-hover">
+                            <span class="material-symbols-outlined text-[32px]">functions</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block font-headline-md text-primary">Math</span>
+                            <span class="text-label-sm text-on-surface-variant opacity-70 uppercase tracking-widest">Practice & Lessons</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-xl hover:glass-light transition-smooth cursor-pointer group">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-xl group-hover:scale-110 transition-smooth glow-primary-hover">
+                            <span class="material-symbols-outlined text-[32px]">translate</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block font-headline-md text-primary">Verbal</span>
+                            <span class="text-label-sm text-on-surface-variant opacity-70 uppercase tracking-widest">Reading & Writing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics & Countdown Row -->
+        <div class="grid grid-cols-2 gap-6 mb-8">
+            <!-- Statistics Card -->
+            <div class="glass-card p-card-padding rounded-xl">
+                <div class="flex items-center justify-between mb-6">
+                    <h4 class="font-headline-md text-on-surface">Statistics</h4>
+                    <a href="#" class="text-primary text-label-md font-label-md flex items-center gap-1 hover:text-primary-bright transition-smooth">View All <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+                </div>
+                <div class="flex items-center gap-8">
+                    <div class="relative w-32 h-32">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle class="text-surface-container-highest" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-width="12"></circle>
+                            <circle class="text-primary" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.292" stroke-dashoffset="95" stroke-width="12"></circle>
+                            <circle class="text-secondary" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.292" stroke-dashoffset="244" stroke-width="12"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span class="font-stats-number text-stats-number text-on-surface">98</span>
+                            <span class="text-label-sm opacity-60">Done</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-primary"></div>
+                            <span class="text-on-surface-variant font-label-md">Correct</span>
+                            <span class="font-bold text-primary ml-auto">28%</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-secondary"></div>
+                            <span class="text-on-surface-variant font-label-md">Wrong</span>
+                            <span class="font-bold text-secondary ml-auto">72%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Countdown Card -->
+            <div class="glass-card p-card-padding rounded-xl flex flex-col items-center justify-center relative overflow-hidden border border-primary/10 glow-primary">
+                <div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+                <h4 class="text-primary font-headline-md mb-2">Next Digital SAT Exam</h4>
+                <p class="text-on-surface-variant font-label-lg mb-8">Aug 22, 2026</p>
+                <div class="flex gap-4 text-center">
+                    <div class="flex flex-col items-center gap-2">
+                        <span class="font-stats-number text-on-surface">64</span>
+                        <span class="text-label-sm opacity-50 uppercase tracking-widest">Days</span>
+                    </div>
+                    <div class="text-on-surface opacity-30 text-2xl mt-2">:</div>
+                    <div class="flex flex-col items-center gap-2">
+                        <span class="font-stats-number text-on-surface">14</span>
+                        <span class="text-label-sm opacity-50 uppercase tracking-widest">Hours</span>
+                    </div>
+                    <div class="text-on-surface opacity-30 text-2xl mt-2">:</div>
+                    <div class="flex flex-col items-center gap-2">
+                        <span class="font-stats-number text-on-surface">06</span>
+                        <span class="text-label-sm opacity-50 uppercase tracking-widest">Min</span>
+                    </div>
+                    <div class="text-on-surface opacity-30 text-2xl mt-2">:</div>
+                    <div class="flex flex-col items-center gap-2">
+                        <span class="font-stats-number text-on-surface">12</span>
+                        <span class="text-label-sm opacity-50 uppercase tracking-widest">Sec</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance & Error Log Cards -->
+        <div class="grid grid-cols-2 gap-6">
+            <div class="glass-card rounded-xl p-card-padding flex items-center justify-between border-l-4 border-primary group cursor-pointer hover:glass-light transition-smooth">
+                <div class="flex flex-col gap-1">
+                    <h4 class="text-primary font-headline-md">Performance</h4>
+                    <div class="flex items-center text-label-lg text-on-surface-variant group-hover:text-primary transition-smooth">
+                        View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                    </div>
+                </div>
+                <img class="w-20 h-20 object-contain drop-shadow-lg group-hover:scale-110 transition-smooth" alt="Performance mascot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBNY_U9mqbnQF00ZnEqp9BMS32-y91e_E551I8weekZNtqhUwzENRbv2sxGtuSfdSP8EOqSktjtuhsZlN9Q6dIsBEIr5eoQlVoNG_UnORjESHuzpr5iucKYcFw4BKlp0Q6p1lcC__egnzrnMBCoUSmGwGCgvBvts430hr-tpSZ9parf19Ak4ew4vNZJGI5JMlqDZfPIsBHK6RpBsQItqcjlql7k-Y_55nLUUaDvt4kwa1MTXuE_S0BTtud-iwNiPYiFFZhWD7fy2r8"/>
+            </div>
+
+            <div class="glass-card rounded-xl p-card-padding flex items-center justify-between border-l-4 border-secondary group cursor-pointer hover:glass-light transition-smooth">
+                <div class="flex flex-col gap-1">
+                    <h4 class="text-secondary font-headline-md">Error Log</h4>
+                    <div class="flex items-center text-label-lg text-on-surface-variant group-hover:text-secondary transition-smooth">
+                        View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                    </div>
+                </div>
+                <img class="w-20 h-20 object-contain drop-shadow-lg group-hover:scale-110 transition-smooth" alt="Error log mascot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYvC-wOj0rBmN_2YdnXBVikhF8iDSssXBruqgi1eZteAHDGraiIT84dfVX5lFaC-PBf3ue9PPb1Nc2FztulBec0W17JSKDPRofXH0yHha_RgNZrcH352emPEo63Fa9cGBTlZ3-OkBwZZ0KkWVx2kHmCAQ3AUy_bqr7XzKvb8oJfOG-wwiCqvPNAT9KjhfyUgXPKoUmd4r9m0M15fczwbN7vyzIKprNZapmhwpXLrbciPItkZMJAqDogW4fUVO0ss5b7bp7WL7usNYs"/>
+            </div>
+        </div>
+    </main>
+
+    <!-- RIGHT PANEL -->
+    <aside class="fixed right-0 top-0 h-screen w-[320px] bg-surface border-l border-border-light py-6 px-lg flex flex-col gap-6 custom-scrollbar overflow-y-auto">
+        <!-- Profile Card -->
+        <div class="glass-card rounded-xl p-4 flex items-center gap-4 relative overflow-hidden">
+            <div class="absolute -right-4 -bottom-4 opacity-5">
+                <span class="material-symbols-outlined text-[80px]">school</span>
+            </div>
+            <div class="relative z-10">
+                <img class="w-12 h-12 rounded-full border-2 border-primary object-cover" alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-e4yPS5akqG1oDicycGILToMJ2sJGCqor47lAuwMyj61Hvr-iHe5T95geIwsDB7ztG_4zPMhY3kQw5XNKr1aevdhOIzvHPSemLwb9jy5FrezulCTaiJ9SNelSTWSkYzbois329qgweN_Jfg8ZyMbqE6c0DRNeE0qgjFZ9k0HYEd4tzG3iYgvpYtNOeT_u3LELzU0TZ0LXN_WoPHucBzYK2YXnsQFANq1QMnnH12vQ6rR5fRFKY-mUCXzuLDcG3Nppb_6cj52V05uK"/>
+                <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-success-green rounded-full border-2 border-surface"></div>
+            </div>
+            <div class="flex flex-col overflow-hidden flex-1">
+                <span class="font-headline-md text-on-surface truncate">Hoàng Thị Thu Giang</span>
+                <span class="text-label-sm text-on-surface-variant">Nickname: No Nickname</span>
+            </div>
+            <div class="bg-accent-gold/20 text-accent-gold px-2 py-1 rounded-full flex items-center gap-1 z-10">
+                <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                <span class="font-bold text-label-sm">3</span>
+            </div>
+        </div>
+
+        <!-- Calendar Widget -->
+        <div class="glass-card rounded-xl p-4">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-bright transition-smooth">chevron_left</span>
+                    <h5 class="font-headline-md text-on-surface">Jun 2026</h5>
+                    <span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-bright transition-smooth">chevron_right</span>
+                </div>
+                <button class="bg-primary/20 text-primary px-3 py-1 rounded-lg font-label-sm hover:bg-primary/30 transition-smooth">Today</button>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-center mb-3">
+                <div class="text-label-sm opacity-40 uppercase">Su</div>
+                <div class="text-label-sm opacity-40 uppercase">Mo</div>
+                <div class="text-label-sm opacity-40 uppercase">Tu</div>
+                <div class="text-label-sm opacity-40 uppercase">We</div>
+                <div class="text-label-sm opacity-40 uppercase">Th</div>
+                <div class="text-label-sm opacity-40 uppercase">Fr</div>
+                <div class="text-label-sm opacity-40 uppercase">Sa</div>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-center text-label-lg">
+                <div class="h-10 flex items-center justify-center text-on-surface-variant opacity-30">31</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">1</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">2</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">3</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">4</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">5</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">6</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">7</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">8</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">9</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">10</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">11</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">12</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">13</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">14</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">15</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">16</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">17</div>
+                <div class="h-10 flex items-center justify-center text-on-surface font-bold bg-primary/20 rounded-lg">18</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">19</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">20</div>
+                <div class="h-10 flex items-center justify-center text-primary-container border-2 border-primary rounded-lg font-bold">21</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">22</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">23</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">24</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">25</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">26</div>
+                <div class="h-10 flex items-center justify-center text-on-surface">27</div>
+            </div>
+        </div>
+
+        <!-- Mission List -->
+        <div class="flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+                <h5 class="font-headline-md text-on-surface">Missions</h5>
+                <span class="bg-accent-gold/20 text-accent-gold px-3 py-1 rounded-full text-label-sm font-label-sm">Ongoing (10)</span>
+            </div>
+            <div class="flex flex-col gap-3">
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 relative hover:scale-[1.02] transition-smooth cursor-pointer">
+                    <div class="absolute top-2 right-2 bg-accent-gold text-on-primary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold">Ongoing</div>
+                    <div class="w-12 h-12 bg-surface-container-high flex items-center justify-center rounded-lg text-primary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-on-surface font-label-lg text-label-lg font-bold">[Daily Basis] Sprint 1</span>
+                        <div class="flex items-center gap-1.5 text-on-surface-variant text-label-sm">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            3 days 04:06:12
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 relative hover:scale-[1.02] transition-smooth cursor-pointer">
+                    <div class="absolute top-2 right-2 bg-accent-gold text-on-primary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold">Ongoing</div>
+                    <div class="w-12 h-12 bg-surface-container-high flex items-center justify-center rounded-lg text-primary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-on-surface font-label-lg text-label-lg font-bold">[Daily Basis] Sprint 2</span>
+                        <div class="flex items-center gap-1.5 text-on-surface-variant text-label-sm">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            3 days 04:06:12
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 relative hover:scale-[1.02] transition-smooth cursor-pointer opacity-70">
+                    <div class="absolute top-2 right-2 bg-accent-gold text-on-primary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold">Ongoing</div>
+                    <div class="w-12 h-12 bg-surface-container-high flex items-center justify-center rounded-lg text-primary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-on-surface font-label-lg text-label-lg font-bold">[Daily Basis] Sprint 3</span>
+                        <div class="flex items-center gap-1.5 text-on-surface-variant text-label-sm">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            3 days 04:06:12
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<script>
+    let seconds = 12, minutes = 6, hours = 14, days = 64;
+
+    function updateCountdown() {
+        seconds--;
+        if (seconds < 0) {
+            seconds = 59;
+            minutes--;
+            if (minutes < 0) {
+                minutes = 59;
+                hours--;
+                if (hours < 0) {
+                    hours = 23;
+                    days--;
+                }
+            }
+        }
+    }
+    setInterval(updateCountdown, 1000);
+
+    const navItems = document.querySelectorAll('nav a');
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            navItems.forEach(nav => nav.classList.remove('nav-active'));
+            item.classList.add('nav-active');
+        });
+    });
+</script>
+</body>
+</html>

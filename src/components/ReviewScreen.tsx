@@ -31,7 +31,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
         onClick={onBack}
         className={`inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest px-4 py-2 border transition-all duration-200 ${
           isDark
-            ? 'border-white/20 text-white hover:border-[#00D2FF] hover:text-[#00D2FF]'
+            ? 'border-white/20 text-white hover:border-[#4dd9cc] hover:text-[#4dd9cc]'
             : 'border-black/30 text-black hover:border-black hover:bg-black hover:text-white'
         }`}
       >
@@ -43,13 +43,13 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
       <div
         className={`relative overflow-hidden rounded-none p-6 md:p-8 border-2 transition-all duration-300 ${
           isDark
-            ? 'bg-black border-[#00D2FF] text-white'
-            : 'bg-[#0A0A0A] border-transparent text-white shadow-md'
+            ? 'bg-black border-[#4dd9cc] text-white'
+            : 'bg-[#0a0e1a] border-transparent text-white shadow-md'
         }`}
       >
         <div className="absolute right-0 top-0 h-full w-[40%] bg-[radial-gradient(circle_at_top_right,rgba(0,210,255,0.06),transparent_80%)] pointer-events-none" />
         <div className="relative z-10 max-w-2xl space-y-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00D2FF] text-black text-[10px] font-black uppercase tracking-[0.25em]">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#4dd9cc] text-black text-[10px] font-black uppercase tracking-[0.25em]">
             <BookOpen className="w-3.5 h-3.5" />
             Xem lại bài làm
           </span>
@@ -106,14 +106,14 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
             className={`p-4 border-2 flex flex-col gap-2 ${
               card.accent
                 ? isDark
-                  ? 'bg-[#00D2FF]/10 border-[#00D2FF]'
-                  : 'bg-[#00D2FF]/10 border-[#00D2FF]'
+                  ? 'bg-[#4dd9cc]/10 border-[#4dd9cc]'
+                  : 'bg-[#4dd9cc]/10 border-[#4dd9cc]'
                 : isDark
                 ? 'bg-black border-white/10'
                 : 'bg-white border-black'
             }`}
           >
-            <div className={`${card.accent ? 'text-[#00D2FF]' : (card.color ?? '')}`}>
+            <div className={`${card.accent ? 'text-[#4dd9cc]' : (card.color ?? '')}`}>
               {card.icon}
             </div>
             <div className={`text-[9px] font-black uppercase tracking-widest font-mono opacity-50 ${isDark ? 'text-white' : 'text-black'}`}>
@@ -121,7 +121,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
             </div>
             <div
               className={`text-2xl md:text-3xl font-black font-mono ${
-                card.accent ? 'text-[#00D2FF]' : (card.color ?? (isDark ? 'text-white' : 'text-black'))
+                card.accent ? 'text-[#4dd9cc]' : (card.color ?? (isDark ? 'text-white' : 'text-black'))
               }`}
             >
               {card.value}
@@ -136,11 +136,11 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
           <span className={`text-[9px] font-black uppercase tracking-widest font-mono ${isDark ? 'text-white/50' : 'text-black/50'}`}>
             Tỉ lệ đúng
           </span>
-          <span className="text-[10px] font-black font-mono text-[#00D2FF]">{scorePercent}%</span>
+          <span className="text-[10px] font-black font-mono text-[#4dd9cc]">{scorePercent}%</span>
         </div>
         <div className={`w-full h-2 ${isDark ? 'bg-white/10' : 'bg-black/10'}`}>
           <div
-            className="h-full bg-[#00D2FF] transition-all duration-700"
+            className="h-full bg-[#4dd9cc] transition-all duration-700"
             style={{ width: `${scorePercent}%` }}
           />
         </div>
@@ -344,11 +344,11 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                   {/* Explanation (if available) */}
                   {q.explanation && (
                     <div
-                      className={`p-3 border-l-4 border-[#00D2FF] ${
-                        isDark ? 'bg-[#00D2FF]/5' : 'bg-[#00D2FF]/5'
+                      className={`p-3 border-l-4 border-[#4dd9cc] ${
+                        isDark ? 'bg-[#4dd9cc]/5' : 'bg-[#4dd9cc]/5'
                       }`}
                     >
-                      <div className="text-[9px] font-black uppercase tracking-widest font-mono text-[#00D2FF] mb-2">
+                      <div className="text-[9px] font-black uppercase tracking-widest font-mono text-[#4dd9cc] mb-2">
                         💡 Giải thích
                       </div>
                       <p className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}>
@@ -367,7 +367,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
               isDark ? 'border-white/10 bg-black/20 text-gray-500' : 'border-black/15 bg-white text-gray-500'
             }`}
           >
-            <AlertCircle className="w-8 h-8 mx-auto opacity-30 mb-3 text-[#00D2FF]" />
+            <AlertCircle className="w-8 h-8 mx-auto opacity-30 mb-3 text-[#4dd9cc]" />
             <p className="text-xs uppercase tracking-widest font-black font-mono">Không có dữ liệu chi tiết câu hỏi</p>
             <p className="text-xs text-gray-400 mt-2 font-mono opacity-60">
               Bài làm này được lưu trước khi tính năng xem lại được bật.
@@ -379,7 +379,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
       {/* 6. Footer Notice */}
       <div className={`p-5 border ${isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'}`}>
         <div className="flex gap-3">
-          <AlertCircle className="w-4 h-4 text-[#00D2FF] shrink-0 mt-0.5" />
+          <AlertCircle className="w-4 h-4 text-[#4dd9cc] shrink-0 mt-0.5" />
           <p className="text-xs text-gray-500 font-mono leading-relaxed">
             Đây là kết quả được ghi nhận từ{' '}
             <strong className={isDark ? 'text-white' : 'text-black'}>lần làm bài đầu tiên</strong>. Kết quả này không thể thay đổi và phản ánh năng lực tiếp thu tự nhiên của bạn tại thời điểm làm bài.

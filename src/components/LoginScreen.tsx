@@ -60,8 +60,8 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
   return (
     <div className={`relative min-h-screen flex items-center justify-center p-4 md:p-8 antialiased transition-colors duration-500 ${
       isDark 
-        ? 'bg-[#0A0A0A] text-[#F5F5F5]' 
-        : 'bg-[#FAFAFA] text-[#0A0A0A]'
+        ? 'bg-[#0a0e1a] text-[#F5F5F5]' 
+        : 'bg-[#FAFAFA] text-[#0a0e1a]'
     }`}>
       {/* Decorative architectural grid background overlay */}
       <div className={`absolute inset-0 opacity-[0.03] pointer-events-none ${
@@ -74,7 +74,7 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
           onClick={toggleTheme}
           className={`flex items-center gap-2 px-4 py-2 rounded-none text-[10px] font-black tracking-widest uppercase transition-all border cursor-pointer ${
             isDark
-              ? 'bg-black border-white/20 text-[#00D2FF] hover:bg-[#00D2FF]/10'
+              ? 'bg-black border-white/20 text-[#4dd9cc] hover:bg-[#4dd9cc]/10'
               : 'bg-white border-black text-black hover:bg-black/5'
           }`}
         >
@@ -88,8 +88,8 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
         <div className="text-center mb-8 md:mb-10">
           <div className={`inline-flex items-center justify-center w-16 h-16 rounded-none mb-5 border-2 transition-all ${
             isDark 
-              ? 'bg-black border-[#00D2FF] text-[#00D2FF]'
-              : 'bg-[#0A0A0A] border-transparent text-[#00D2FF]'
+              ? 'bg-black border-[#4dd9cc] text-[#4dd9cc]'
+              : 'bg-[#0a0e1a] border-transparent text-[#4dd9cc]'
           }`}>
             <GraduationCap className="w-8 h-8" />
           </div>
@@ -97,8 +97,8 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
             {isDark ? (
               <>
                 <span 
-                  className="text-[#00D2FF] block animate-pulse" 
-                  style={{ textShadow: '0 0 8px #00D2FF, 0 0 18px rgba(0,210,255,0.8), 0 0 35px rgba(0,210,255,0.4)' }}
+                  className="text-[#4dd9cc] block animate-pulse" 
+                  style={{ textShadow: '0 0 8px #4dd9cc, 0 0 18px rgba(0,210,255,0.8), 0 0 35px rgba(0,210,255,0.4)' }}
                 >
                   MƠ_
                 </span>
@@ -111,7 +111,7 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
               </>
             ) : (
               <>
-                <span className="text-[#0A0A0A] block">MƠ_</span>
+                <span className="text-[#0a0e1a] block">MƠ_</span>
                 <span className="text-transparent text-stroke-black block">DIGITALSAT</span>
               </>
             )}
@@ -143,7 +143,7 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
                 placeholder="student@example.com"
                 className={`w-full p-3 rounded-none text-xs font-mono focus:outline-none border ${
                   isDark
-                    ? 'bg-white/5 border-white/10 text-white focus:border-[#00D2FF]'
+                    ? 'bg-white/5 border-white/10 text-white focus:border-[#4dd9cc]'
                     : 'bg-gray-50 border-black/15 text-black focus:border-black'
                 }`}
               />
@@ -154,7 +154,7 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
               onClick={handleDemoLogin}
               className={`w-full flex items-center justify-center gap-3 py-3.5 px-4 font-black uppercase tracking-[0.1em] transition-all rounded-none text-xs cursor-pointer border ${
                 isDark
-                  ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white'
+                  ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white'
                   : 'bg-black text-white border-black hover:bg-white hover:text-black'
               }`}
             >
@@ -167,8 +167,8 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
                 disabled={isLoading}
                 className={`w-full flex items-center justify-center gap-3 py-3.5 px-4 font-black uppercase tracking-[0.1em] transition-all rounded-none text-xs cursor-pointer border ${
                   isDark
-                    ? 'bg-white text-black border-white hover:bg-[#00D2FF] hover:border-[#00D2FF]'
-                    : 'bg-[#0A0A0A] text-white border-transparent hover:bg-white hover:text-black hover:border-black'
+                    ? 'bg-white text-black border-white hover:bg-[#4dd9cc] hover:border-[#4dd9cc]'
+                    : 'bg-[#0a0e1a] text-white border-transparent hover:bg-white hover:text-black hover:border-black'
                 } ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

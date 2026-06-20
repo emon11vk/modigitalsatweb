@@ -87,7 +87,7 @@ export default function VocabularyScreen({
           onClick={() => setIsModalOpen(true)}
           className={`px-5 py-3 rounded-none text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-all self-start md:self-auto cursor-pointer border ${
             isDark
-              ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/20'
+              ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/20'
               : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'
           }`}
         >
@@ -110,7 +110,7 @@ export default function VocabularyScreen({
             placeholder="Tìm kiếm từ vựng hoặc định nghĩa học thuật..."
             className={`w-full pl-9 pr-4 py-2.5 text-xs rounded-none font-mono focus:outline-none transition-colors border ${
               isDark 
-                ? 'bg-white/5 border-white/10 text-white focus:border-[#00D2FF]' 
+                ? 'bg-white/5 border-white/10 text-white focus:border-[#4dd9cc]' 
                 : 'bg-gray-50 border-black/15 text-gray-900 focus:border-black'
             }`}
           />
@@ -124,7 +124,7 @@ export default function VocabularyScreen({
               onClick={() => setStatusFilter(filter)}
               className={`flex-1 md:flex-initial px-4 py-2 rounded-none text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer border ${
                 statusFilter === filter
-                  ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-black text-white border-black')
+                  ? (isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc]' : 'bg-black text-white border-black')
                   : (isDark ? 'border-transparent text-white/50 hover:text-white hover:border-white/10' : 'border-transparent text-black/50 hover:text-black hover:border-black/5')
               }`}
             >
@@ -139,7 +139,7 @@ export default function VocabularyScreen({
         <div className={`text-center py-16 rounded-none border-2 border-dashed p-6 ${
           isDark ? 'border-white/10 text-gray-500' : 'border-black/15 text-gray-500'
         }`}>
-          <BookOpen className="w-10 h-10 mx-auto opacity-30 mb-4 text-[#00D2FF]" />
+          <BookOpen className="w-10 h-10 mx-auto opacity-30 mb-4 text-[#4dd9cc]" />
           <p className="text-xs uppercase tracking-widest font-black font-mono">Không tìm thấy từ tương ứng</p>
           <p className="text-xs text-gray-400 mt-2 font-mono opacity-60">Hãy nhấn "Thêm Từ Vựng Mới" để đa dạng hóa sổ học thuật.</p>
         </div>
@@ -163,7 +163,7 @@ export default function VocabularyScreen({
                   {/* FRONT SIDE */}
                   <div className={`absolute inset-0 w-full h-full backface-hidden p-5 rounded-none border-2 transition-all flex flex-col justify-between ${
                     isDark 
-                      ? 'bg-black border-white/10 group-hover:border-[#00D2FF]/50' 
+                      ? 'bg-black border-white/10 group-hover:border-[#4dd9cc]/50' 
                       : 'bg-white border-black/15 group-hover:border-black'
                   }`}>
                     <div className="flex items-start justify-between">
@@ -207,21 +207,21 @@ export default function VocabularyScreen({
                         <Clock className="w-3 h-3" />
                         ĐÃ THÊM: {word.date}
                       </span>
-                      <span className="font-bold text-[#00D2FF] uppercase tracking-wider">Chạm để xem nghĩa ↗</span>
+                      <span className="font-bold text-[#4dd9cc] uppercase tracking-wider">Chạm để xem nghĩa ↗</span>
                     </div>
                   </div>
 
                   {/* BACK SIDE */}
                   <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 p-5 rounded-none border-2 transition-all flex flex-col justify-between ${
                     isDark 
-                      ? 'bg-[#0f0f0f] border-[#00D2FF]/50' 
+                      ? 'bg-[#0f0f0f] border-[#4dd9cc]/50' 
                       : 'bg-gray-50 border-black'
                   }`}>
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <span className="text-[9px] font-black uppercase tracking-widest opacity-50">Định Nghĩa học thuật:</span>
                         <span className={`text-[9px] font-black uppercase tracking-widest px-1.5 py-0.5 border ${
-                          isMastered ? 'bg-[#00D2FF]/10 text-[#00D2FF] border-[#00D2FF]/30' : 'bg-amber-950 text-amber-400 border-amber-800'
+                          isMastered ? 'bg-[#4dd9cc]/10 text-[#4dd9cc] border-[#4dd9cc]/30' : 'bg-amber-950 text-amber-400 border-amber-800'
                         }`}>
                           {isMastered ? 'MASTERED' : 'LEARNING'}
                         </span>
@@ -256,13 +256,13 @@ export default function VocabularyScreen({
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
           <div className={`w-full max-w-md rounded-none border-2 transform transition-all p-6 md:p-8 ${
             isDark 
-              ? 'bg-[#0A0A0A] border-[#00D2FF] text-white' 
+              ? 'bg-[#0a0e1a] border-[#4dd9cc] text-white' 
               : 'bg-white border-black text-black'
           }`}>
             
             <div className="flex items-center justify-between mb-6 pb-2 border-b border-white/5">
               <h3 className="text-sm font-black uppercase tracking-widest flex items-center gap-2 font-display">
-                <Sparkles className="w-5 h-5 text-[#00D2FF]" />
+                <Sparkles className="w-5 h-5 text-[#4dd9cc]" />
                 <span>Thêm Từ Vựng SAT Mới</span>
               </h3>
               <button 
@@ -286,7 +286,7 @@ export default function VocabularyScreen({
                   placeholder="Ví dụ: Ephemeral"
                   className={`w-full p-2.5 text-xs rounded-none font-mono focus:outline-none border ${
                     isDark 
-                      ? 'bg-white/5 border-white/10 text-white focus:border-[#00D2FF]' 
+                      ? 'bg-white/5 border-white/10 text-white focus:border-[#4dd9cc]' 
                       : 'bg-gray-50 border-black/15 text-gray-900 focus:border-black'
                   }`}
                 />
@@ -300,8 +300,8 @@ export default function VocabularyScreen({
                   onChange={(e) => setNewType(e.target.value)}
                   className={`w-full p-2.5 text-xs rounded-none font-mono focus:outline-none border ${
                     isDark 
-                      ? 'bg-black border-white/10 text-white focus:border-[#00D2FF]' 
-                      : 'bg-white border-black text-black focus:border-[#0A0A0A]'
+                      ? 'bg-black border-white/10 text-white focus:border-[#4dd9cc]' 
+                      : 'bg-white border-black text-black focus:border-[#0a0e1a]'
                   }`}
                 >
                   <option value="Adjective">Tính từ (Adjective)</option>
@@ -322,7 +322,7 @@ export default function VocabularyScreen({
                   placeholder="Ví dụ: Kéo dài trong thời gian cực kỳ ngắn, thoáng qua."
                   className={`w-full p-2.5 text-xs rounded-none font-mono focus:outline-none border ${
                     isDark 
-                      ? 'bg-white/5 border-white/10 text-white focus:border-[#00D2FF]' 
+                      ? 'bg-white/5 border-white/10 text-white focus:border-[#4dd9cc]' 
                       : 'bg-gray-50 border-black/15 text-[#0a0a0a] focus:border-black'
                   }`}
                 />
@@ -338,7 +338,7 @@ export default function VocabularyScreen({
                   placeholder="Ví dụ: Beauty is ephemeral, but knowledge is eternal."
                   className={`w-full p-2.5 text-xs rounded-none font-mono focus:outline-none border ${
                     isDark 
-                      ? 'bg-white/5 border-white/10 text-white focus:border-[#00D2FF]' 
+                      ? 'bg-white/5 border-white/10 text-white focus:border-[#4dd9cc]' 
                       : 'bg-gray-50 border-black/15 text-[#0a0a0a] focus:border-black'
                   }`}
                 />
@@ -357,7 +357,7 @@ export default function VocabularyScreen({
                   type="submit"
                   className={`px-5 py-2.5 font-black uppercase tracking-widest text-[10px] rounded-none cursor-pointer transition-all border ${
                     isDark 
-                      ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/10' 
+                      ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/10' 
                       : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'
                   }`}
                 >

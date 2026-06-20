@@ -41,14 +41,14 @@ export default function DashboardScreen({
       <div 
         className={`relative overflow-hidden rounded-none p-6 md:p-8 border-2 transition-all duration-300 ${
           isDark
-            ? 'bg-black border-[#00D2FF] text-white'
-            : 'bg-[#0A0A0A] border-transparent text-white shadow-md'
+            ? 'bg-black border-[#4dd9cc] text-white'
+            : 'bg-[#0a0e1a] border-transparent text-white shadow-md'
         }`}
       >
         <div className="absolute right-0 top-0 h-full w-[40%] bg-[radial-gradient(circle_at_top_right,rgba(0,210,255,0.06),transparent_80%)] pointer-events-none" />
         <div className="relative z-10 max-w-2xl space-y-3">
           <span 
-            className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00D2FF] text-black text-[10px] font-black uppercase tracking-[0.25em]"
+            className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#4dd9cc] text-black text-[10px] font-black uppercase tracking-[0.25em]"
           >
             <Award className="w-3.5 h-3.5" />
             Bảng Điều Khiển Học Viên
@@ -66,30 +66,30 @@ export default function DashboardScreen({
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
         <div className={`p-5 rounded-none border transition-all duration-200 ${
           isDark 
-            ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' 
+            ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' 
             : 'bg-white border-black hover:border-black/50'
         }`}>
           <div className="flex items-center justify-between mb-3">
             <span className={`text-[10px] font-black uppercase tracking-[0.15em] opacity-60`}>
               Điểm Đọc & Viết (Module 1)
             </span>
-            <BarChart3 className={`w-4 h-4 ${isDark ? 'text-[#00D2FF]' : 'text-black'}`} />
+            <BarChart3 className={`w-4 h-4 ${isDark ? 'text-[#4dd9cc]' : 'text-black'}`} />
           </div>
           <div className="flex items-baseline gap-2 font-mono">
             <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-black'}`}>
               {averageReadingWritingScore} <span className="text-xs font-sans opacity-45">/ 800</span>
             </span>
-            <span className="text-[10px] uppercase font-black bg-[#00D2FF]/10 text-[#00D2FF] px-2 py-0.5">Top 15%</span>
+            <span className="text-[10px] uppercase font-black bg-[#4dd9cc]/10 text-[#4dd9cc] px-2 py-0.5">Top 15%</span>
           </div>
           {/* Custom neon progress bar */}
           <div className={`mt-4 w-full h-1 bg-white/10 overflow-hidden`}>
-            <div className="bg-[#00D2FF] h-full" style={{ width: '85%' }} />
+            <div className="bg-[#4dd9cc] h-full" style={{ width: '85%' }} />
           </div>
         </div>
 
         <div className={`p-5 rounded-none border transition-all duration-200 ${
           isDark 
-            ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' 
+            ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' 
             : 'bg-white border-black hover:border-black/50'
         }`}>
           <div className="flex items-center justify-between mb-3">
@@ -106,14 +106,14 @@ export default function DashboardScreen({
               {vocabMastered} Mastered
             </span>
           </div>
-          <div className="mt-4 text-[10px] uppercase tracking-widest font-black text-[#00D2FF] hover:underline flex items-center gap-1 cursor-pointer font-mono" onClick={onNavigateToVocab}>
+          <div className="mt-4 text-[10px] uppercase tracking-widest font-black text-[#4dd9cc] hover:underline flex items-center gap-1 cursor-pointer font-mono" onClick={onNavigateToVocab}>
             <span>Quản lý thẻ ôn tập</span> <ArrowRight className="w-3 h-3" />
           </div>
         </div>
 
         <div className={`p-5 rounded-none border transition-all duration-200 ${
           isDark 
-            ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' 
+            ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' 
             : 'bg-white border-black hover:border-black/50'
         }`}>
           <div className="flex items-center justify-between mb-3">
@@ -128,7 +128,7 @@ export default function DashboardScreen({
             </span>
             <span className="text-[10px] uppercase font-black opacity-60">{userName}</span>
           </div>
-          <div className="mt-4 text-[10px] uppercase tracking-widest font-black text-[#00D2FF] hover:underline flex items-center gap-1 cursor-pointer font-mono" onClick={onNavigateToLeaderboard}>
+          <div className="mt-4 text-[10px] uppercase tracking-widest font-black text-[#4dd9cc] hover:underline flex items-center gap-1 cursor-pointer font-mono" onClick={onNavigateToLeaderboard}>
             <span>Xem Bảng Xếp Hạng</span> <ArrowRight className="w-3 h-3" />
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function DashboardScreen({
                   key={m.id}
                   className={`p-5 rounded-none border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${
                     isDark 
-                      ? 'bg-black border-white/10 hover:border-[#00D2FF]/40' 
+                      ? 'bg-black border-white/10 hover:border-[#4dd9cc]/40' 
                       : 'bg-white border-black/15 hover:border-black'
                   }`}
                 >
@@ -204,7 +204,7 @@ export default function DashboardScreen({
                           onClick={() => onStartModule(m.id)}
                           className={`w-full md:w-auto px-5 py-2.5 rounded-none text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer transition-all border ${
                             isDark
-                              ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-[#00D2FF]'
+                              ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-[#4dd9cc]'
                               : 'bg-black text-white border-black hover:bg-white hover:text-black'
                           }`}
                         >
@@ -233,12 +233,12 @@ export default function DashboardScreen({
             onClick={onNavigateToVocab}
             className={`group p-6 rounded-none border-2 cursor-pointer transition-all ${
               isDark 
-                ? 'bg-black border-white/10 hover:border-[#00D2FF]' 
-                : 'bg-white border-black hover:border-[#00D2FF]'
+                ? 'bg-black border-white/10 hover:border-[#4dd9cc]' 
+                : 'bg-white border-black hover:border-[#4dd9cc]'
             }`}
           >
             <div className="flex items-start justify-between">
-              <div className={`p-3 border ${isDark ? 'bg-white/5 border-white/10 text-[#00D2FF]' : 'bg-black border-transparent text-[#00D2FF]'}`}>
+              <div className={`p-3 border ${isDark ? 'bg-white/5 border-white/10 text-[#4dd9cc]' : 'bg-black border-transparent text-[#4dd9cc]'}`}>
                 <BookOpen className="w-6 h-6" />
               </div>
               <span className={`text-[9px] font-black tracking-widest uppercase px-2 py-0.5 bg-indigo-950 text-indigo-300 border border-indigo-800`}>
@@ -252,7 +252,7 @@ export default function DashboardScreen({
               Tổng hợp 250+ từ vựng học thuật SAT cốt lõi thông qua thẻ ghi nhớ thông minh, tự đo lường độ thông thạo.
             </p>
             <div className={`flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-black transition-all ${
-              isDark ? 'text-[#00D2FF] group-hover:translate-x-1.5' : 'text-black group-hover:translate-x-1.5'
+              isDark ? 'text-[#4dd9cc] group-hover:translate-x-1.5' : 'text-black group-hover:translate-x-1.5'
             }`}>
               <span>Kiểm tra vốn từ ngay</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -262,7 +262,7 @@ export default function DashboardScreen({
           {/* Quick Tips */}
           <div className={`p-5 rounded-none border ${isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'}`}>
             <div className="flex gap-3">
-              <AlertCircle className="w-4 h-4 text-[#00D2FF] shrink-0 mt-0.5" />
+              <AlertCircle className="w-4 h-4 text-[#4dd9cc] shrink-0 mt-0.5" />
               <div className="space-y-1.5">
                 <h5 className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-black'}`}>Đầu mấu thi SAT:</h5>
                 <p className="text-[11px] text-gray-500 font-mono leading-relaxed">

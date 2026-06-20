@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mơ - Digital SAT Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#00201c",
+                        "primary-fixed": "#62fae3",
+                        "surface-navigation": "#111827",
+                        "on-tertiary-container": "#744000",
+                        "on-tertiary-fixed-variant": "#6b3b00",
+                        "secondary-fixed-dim": "#ffb2b7",
+                        "secondary-container": "#b50036",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#40000d",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#161d1b",
+                        "secondary": "#ffb2b7",
+                        "on-primary-fixed-variant": "#005047",
+                        "outline": "#859490",
+                        "on-secondary-fixed-variant": "#92002a",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "primary": "#57f1db",
+                        "on-secondary-container": "#ffc2c4",
+                        "surface-container-lowest": "#09100e",
+                        "on-surface-variant": "#bacac5",
+                        "surface-container-highest": "#2f3634",
+                        "surface-variant": "#2f3634",
+                        "on-background": "#dde4e1",
+                        "background": "#0e1513",
+                        "surface-container": "#1a211f",
+                        "on-surface": "#dde4e1",
+                        "success-green": "#22C55E",
+                        "inverse-on-surface": "#2b3230",
+                        "on-secondary": "#67001b",
+                        "inverse-surface": "#dde4e1",
+                        "primary-container": "#2dd4bf",
+                        "on-tertiary-fixed": "#2d1600",
+                        "tertiary-container": "#ffac5a",
+                        "tertiary-fixed-dim": "#ffb875",
+                        "on-primary": "#003731",
+                        "outline-variant": "#3c4a46",
+                        "primary-fixed-dim": "#3cddc7",
+                        "inverse-primary": "#006b5f",
+                        "bg-deep": "#0B1221",
+                        "text-muted": "#94A3B8",
+                        "surface-tint": "#3cddc7",
+                        "surface": "#0e1513",
+                        "secondary-fixed": "#ffdadb",
+                        "surface-card": "#161D2F",
+                        "on-tertiary": "#4b2800",
+                        "tertiary": "#ffd1aa",
+                        "tertiary-fixed": "#ffdcc0",
+                        "on-primary-container": "#00574d",
+                        "surface-bright": "#333b39",
+                        "accent-gold": "#FBBF24",
+                        "surface-container-high": "#242b2a",
+                        "surface-dim": "#0e1513"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "20px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "container-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "stats-number": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                        "stats-number": ["36px", {"lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e1513;
+            color: #dde4e1;
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #3c4a46; border-radius: 10px; }
+        .glass-card {
+            background: rgba(26, 33, 31, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<div class="flex h-screen w-full">
+<!-- COLUMN 1: SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] flex flex-col bg-surface-navigation border-r border-outline-variant py-6 px-3 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">MƠ</h1>
+<p class="font-label-lg text-label-lg text-primary-fixed-dim opacity-80">Digital SAT</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow overflow-y-auto"><!-- Home (Active) -->
+<a class="bg-primary-container text-on-primary-container rounded-full px-4 py-3 mx-2 flex items-center gap-3 transition-all scale-98" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded-full px-4 py-3 mx-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-lg text-label-lg">Leaderboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded-full px-4 py-3 mx-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-lg text-label-lg">VocabHub</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded-full px-4 py-3 mx-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-lg text-label-lg">History</span>
+</a>
+<!-- Mascot Area -->
+<div class="mt-8 px-4 flex justify-center">
+<img class="w-32 h-32 object-contain filter drop-shadow-lg animate-pulse" data-alt="A friendly and encouraging mascot illustration for an educational app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7i9j2c4NKcADSSOsqBOJEcJEn4I93S2w-3ln5afzRCuP_nVa5DdPYt7Bx5U66uRn6ZyTO36Er_aM3p7zfxBzROZ0ElE0-RSGG-zE9qbvp4yDFBoK0PXsZPdz2yz6G4u4tu2GNEfUrHaKOtw_Si-c44HCu-HwR5X9ff4F0XcaMlBBy1YkdWbbPmWwe3N_rwzi8W1gOK_Y0Gbo8C4USGh1ipkb8HUjPi2qHiqGZ1gb0HlPZHCdIRNOmdJMGIeRzyB_rV_tjIaNdtozS" style="animation-duration: 4s;"/>
+</div></nav>
+<div class="mt-auto pt-6 flex flex-col gap-4 border-t border-outline-variant px-4">
+<div class="flex items-center justify-between text-on-surface-variant font-label-lg text-label-lg">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">language</span>
+<span>ENG | VI</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-full cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">dark_mode</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error flex items-center gap-3 transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-lg text-label-lg">Logout</span>
+</button>
+</div>
+</aside>
+<!-- COLUMN 2: Main Content -->
+<main class="ml-[240px] mr-[320px] flex-grow h-screen overflow-y-auto px-gutter py-6 custom-scrollbar">
+<!-- Header Controls & Streak -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4 bg-surface-container rounded-full px-6 py-2 border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="text-accent-gold material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-headline-md text-headline-md text-on-surface">2 days</span>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<div class="flex gap-2">
+<div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-variant/30">Mo</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-variant/30">Tu</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-primary bg-primary border-2 border-primary-container">We</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-variant/30">Th</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-variant/30">Fr</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-variant/30">Sa</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full text-label-sm font-label-sm text-on-surface-variant bg-surface-variant/30">Su</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">volume_off</span></button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">call</span></button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">chat</span></button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+</div>
+</div>
+<!-- Banner -->
+<div class="relative w-full h-48 rounded-xl overflow-hidden mb-10 group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A professional banner for an SAT preparation platform. The design features a futuristic green digital background with floating 3D icons like graduation caps, open books, and digital screens. Large Vietnamese typography announces system updates and new contact channels. The lighting is high-tech with glowing green accents and sharp corporate aesthetics." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJA7_GEOLZWCuNf3y6o7FMQ06hnWpVz4Bk5mLgE_RBHi5fSWHqqrPv2JkA5yog3zUknFe2yogST72gk6hQWeavVymSzrOnuzg6sulM6aJsFgRuu3UK3_t1jUFlKJZoP_w6N1-BqS2Wd1E-mtzqr5eSwB3sIn9JjqwBPcwNWc7ahTbD98FWWXB8poxMRouDjnpkQaArLKSU2v-txngSQfXSqpCA4LvJQ4IFEMEaLIVy8ZIXQYSRVTt08m_VgPZKyXd5_7Bgs99CzT8p')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex flex-col justify-end p-6">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm w-fit mb-2">Announcement</span>
+<h2 class="text-headline-md font-headline-md">MADS Thông Báo: Thay Đổi &amp; Nâng Cấp Hệ Thống</h2>
+</div>
+</div>
+<!-- Courses Grid -->
+<div class="mb-10">
+<h3 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+                    Courses <span class="w-2 h-2 rounded-full bg-primary"></span>
+</h3>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col items-center gap-4 p-8 glass-card rounded-2xl hover:bg-surface-container-highest transition-all cursor-pointer border border-primary/10 group">
+<div class="w-16 h-16 flex items-center justify-center bg-primary-container/20 text-primary rounded-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">functions</span>
+</div>
+<div class="text-center">
+<span class="block font-headline-md text-headline-md text-primary">Math</span>
+<span class="text-label-sm text-on-surface-variant opacity-70 uppercase tracking-widest">Practice &amp; Lessons</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 p-8 glass-card rounded-2xl hover:bg-surface-container-highest transition-all cursor-pointer border border-primary/10 group">
+<div class="w-16 h-16 flex items-center justify-center bg-primary-container/20 text-primary rounded-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">translate</span>
+</div>
+<div class="text-center">
+<span class="block font-headline-md text-headline-md text-primary">Verbal</span>
+<span class="text-label-sm text-on-surface-variant opacity-70 uppercase tracking-widest">Reading &amp; Writing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Dashboard Section -->
+<div class="grid grid-cols-2 gap-6 mb-8">
+<!-- Statistics Card -->
+<div class="glass-card p-card-padding rounded-2xl">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-headline-md text-headline-md">Statistics</h4>
+<a class="text-primary text-label-lg font-label-lg flex items-center gap-1 hover:underline" href="#">View All <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+<div class="flex items-center gap-8">
+<div class="relative w-32 h-32">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-variant" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.292" stroke-dashoffset="95" stroke-width="12"></circle>
+<circle class="text-secondary" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.292" stroke-dashoffset="244" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-stats-number text-stats-number">98</span>
+<span class="text-label-sm font-label-sm opacity-60">Done</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-on-surface-variant font-label-lg">Correct</span>
+<span class="font-bold text-primary ml-auto">28%</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="text-on-surface-variant font-label-lg">Wrong</span>
+<span class="font-bold text-secondary ml-auto">72%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Countdown Card -->
+<div class="bg-surface-container-high p-card-padding rounded-2xl flex flex-col items-center justify-center relative overflow-hidden border border-primary/5">
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+<h4 class="text-primary font-headline-md text-headline-md mb-2">Next Digital SAT - Exam:</h4>
+<p class="text-on-surface font-label-lg text-label-lg mb-8">Aug 22, 2026</p>
+<div class="flex gap-4">
+<div class="flex flex-col items-center gap-1">
+<span class="font-stats-number text-stats-number text-on-surface">64</span>
+<span class="text-label-sm font-label-sm opacity-50 uppercase tracking-widest">Days</span>
+</div>
+<div class="text-headline-lg font-headline-lg opacity-30 mt-1">:</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-stats-number text-stats-number text-on-surface">14</span>
+<span class="text-label-sm font-label-sm opacity-50 uppercase tracking-widest">Hours</span>
+</div>
+<div class="text-headline-lg font-headline-lg opacity-30 mt-1">:</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-stats-number text-stats-number text-on-surface">06</span>
+<span class="text-label-sm font-label-sm opacity-50 uppercase tracking-widest">Min</span>
+</div>
+<div class="text-headline-lg font-headline-lg opacity-30 mt-1">:</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-stats-number text-stats-number text-on-surface">12</span>
+<span class="text-label-sm font-label-sm opacity-50 uppercase tracking-widest">Sec</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<!-- Performance -->
+<div class="glass-card rounded-2xl p-card-padding flex items-center justify-between border-l-4 border-primary group cursor-pointer hover:bg-surface-container-highest transition-all">
+<div class="flex flex-col gap-1">
+<h4 class="text-primary font-headline-md text-headline-md">Performance</h4>
+<div class="flex items-center text-label-lg font-label-lg text-on-surface-variant group-hover:text-primary transition-colors">
+                            View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+<img class="w-20 h-20 object-contain drop-shadow-md group-hover:scale-110 transition-transform" data-alt="A stylized miniature mascot illustration of a cat wearing a scholar cap, holding a certificate. It is designed to match a professional educational UI with soft lighting and vibrant colors on a deep dark background. The mood is celebratory and rewarding, encouraging the student to check their performance progress." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBNY_U9mqbnQF00ZnEqp9BMS32-y91e_E551I8weekZNtqhUwzENRbv2sxGtuSfdSP8EOqSktjtuhsZlN9Q6dIsBEIr5eoQlVoNG_UnORjESHuzpr5iucKYcFw4BKlp0Q6p1lcC__egnzrnMBCoUSmGwGCgvBvts430hr-tpSZ9parf19Ak4ew4vNZJGI5JMlqDZfPIsBHK6RpBsQItqcjlql7k-Y_55nLUUaDvt4kwa1MTXuE_S0BTtud-iwNiPYiFFZhWD7fy2r8"/>
+</div>
+<!-- Error Log -->
+<div class="glass-card rounded-2xl p-card-padding flex items-center justify-between border-l-4 border-error group cursor-pointer hover:bg-surface-container-highest transition-all">
+<div class="flex flex-col gap-1">
+<h4 class="text-error font-headline-md text-headline-md">Error Log</h4>
+<div class="flex items-center text-label-lg font-label-lg text-on-surface-variant group-hover:text-error transition-colors">
+                            View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+<img class="w-20 h-20 object-contain drop-shadow-md group-hover:scale-110 transition-transform" data-alt="A stylized mascot illustration of a cat looking confused while reading an open book, with a magnifying glass hovering nearby. The style is modern corporate with friendly character design, utilizing soft colors and clean lines that stand out in a dark-mode educational dashboard environment. The mood is analytical and curious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYvC-wOj0rBmN_2YdnXBVikhF8iDSssXBruqgi1eZteAHDGraiIT84dfVX5lFaC-PBf3ue9PPb1Nc2FztulBec0W17JSKDPRofXH0yHha_RgNZrcH352emPEo63Fa9cGBTlZ3-OkBwZZ0KkWVx2kHmCAQ3AUy_bqr7XzKvb8oJfOG-wwiCqvPNAT9KjhfyUgXPKoUmd4r9m0M15fczwbN7vyzIKprNZapmhwpXLrbciPItkZMJAqDogW4fUVO0ss5b7bp7WL7usNYs"/>
+</div>
+</div>
+</main>
+<!-- COLUMN 3: Utility Panel -->
+<aside class="fixed right-0 top-0 h-screen w-[320px] bg-surface-container-low border-l border-outline-variant/30 py-6 px-gutter flex flex-col gap-8 custom-scrollbar overflow-y-auto">
+<!-- Profile mini-card -->
+<div class="bg-surface-container-highest rounded-2xl p-4 flex items-center gap-4 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[80px]">school</span>
+</div>
+<div class="relative">
+<img class="w-12 h-12 rounded-full border-2 border-primary object-cover" data-alt="A professional high-resolution avatar of a young female student for a user profile interface. She has a friendly expression, soft lighting, and is set against a clean, minimalist studio background. The style is modern and polished, suitable for a high-end educational platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-e4yPS5akqG1oDicycGILToMJ2sJGCqor47lAuwMyj61Hvr-iHe5T95geIwsDB7ztG_4zPMhY3kQw5XNKr1aevdhOIzvHPSemLwb9jy5FrezulCTaiJ9SNelSTWSkYzbois329qgweN_Jfg8ZyMbqE6c0DRNeE0qgjFZ9k0HYEd4tzG3iYgvpYtNOeT_u3LELzU0TZ0LXN_WoPHucBzYK2YXnsQFANq1QMnnH12vQ6rR5fRFKY-mUCXzuLDcG3Nppb_6cj52V05uK"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-success-green rounded-full border-2 border-surface-container-highest"></div>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="font-headline-md text-headline-md text-on-surface truncate">Hoàng Thị Thu Giang</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Nickname: No Nickname</span>
+</div>
+<div class="ml-auto bg-primary/20 text-primary px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-bold text-label-lg">3</span>
+</div>
+</div>
+<!-- Calendar Widget -->
+<div class="glass-card rounded-2xl p-4">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer">chevron_left</span>
+<h5 class="font-headline-md text-headline-md">Jun 2026</h5>
+<span class="material-symbols-outlined text-primary cursor-pointer">chevron_right</span>
+</div>
+<button class="bg-primary-container/20 text-primary px-3 py-1 rounded-lg font-label-lg text-label-lg hover:bg-primary-container/40 transition-colors">Today</button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center mb-2">
+<div class="text-label-sm font-label-sm opacity-40 uppercase">Su</div>
+<div class="text-label-sm font-label-sm opacity-40 uppercase">Mo</div>
+<div class="text-label-sm font-label-sm opacity-40 uppercase">Tu</div>
+<div class="text-label-sm font-label-sm opacity-40 uppercase">We</div>
+<div class="text-label-sm font-label-sm opacity-40 uppercase">Th</div>
+<div class="text-label-sm font-label-sm opacity-40 uppercase">Fr</div>
+<div class="text-label-sm font-label-sm opacity-40 uppercase">Sa</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center">
+<!-- Week 1 snippet -->
+<div class="h-10 flex items-center justify-center text-on-surface-variant font-label-lg opacity-30">31</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">1</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">2</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">3</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">4</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">5</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">6</div>
+<!-- Week 2-4 filler -->
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">7</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">8</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">9</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">10</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">11</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">12</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">13</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">14</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">15</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">16</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">17</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg text-primary font-bold bg-primary/10 rounded-full">18</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">19</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">20</div>
+<div class="h-10 flex items-center justify-center text-primary-container border-2 border-primary rounded-full font-bold">21</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">22</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">23</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">24</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">25</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">26</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-label-lg">27</div>
+</div>
+</div>
+<!-- Mission List -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h5 class="font-headline-md text-headline-md">Mission</h5>
+<span class="bg-accent-gold/20 text-accent-gold px-3 py-1 rounded-full text-label-sm font-label-sm">Ongoing (10)</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Mission Card 1 -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-4 relative hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="absolute top-2 right-2 bg-accent-gold text-on-primary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold">Ongoing</div>
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center rounded-xl text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-label-lg text-label-lg font-bold">[Daily Basis] - Sprint 1</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-[12px]">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                3 days 04:06:12
+                            </div>
+</div>
+</div>
+<!-- Mission Card 2 -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-4 relative hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="absolute top-2 right-2 bg-accent-gold text-on-primary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold">Ongoing</div>
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center rounded-xl text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-label-lg text-label-lg font-bold">[Daily Basis] - Sprint 2</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-[12px]">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                3 days 04:06:12
+                            </div>
+</div>
+</div>
+<!-- Mission Card 3 -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-4 relative hover:scale-[1.02] transition-transform cursor-pointer opacity-80">
+<div class="absolute top-2 right-2 bg-accent-gold text-on-primary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold">Ongoing</div>
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center rounded-xl text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-label-lg text-label-lg font-bold">[Daily Basis] - Sprint 3</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-[12px]">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                3 days 04:06:12
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Simple countdown logic simulation
+        let seconds = 12;
+        let minutes = 6;
+        let hours = 14;
+        let days = 64;
+
+        function updateCountdown() {
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                    if (hours < 0) {
+                        hours = 23;
+                        days--;
+                    }
+                }
+            }
+            // Logic would update the DOM here in a real app
+        }
+        setInterval(updateCountdown, 1000);
+
+        // Sidebar active state logic (simplified for static demo)
+        const navItems = document.querySelectorAll('nav a');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                navItems.forEach(nav => {
+                    nav.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    nav.classList.add('text-on-surface-variant');
+                });
+                item.classList.add('bg-primary-container', 'text-on-primary-container');
+                item.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

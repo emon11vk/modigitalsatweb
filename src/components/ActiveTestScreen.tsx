@@ -121,7 +121,7 @@ export default function ActiveTestScreen({
 
   if (!questions || questions.length === 0) {
     return (
-      <div className={`min-h-screen flex items-center justify-center font-mono text-sm uppercase tracking-widest ${isDark ? 'bg-[#0A0A0A] text-white' : 'bg-[#FAFAFA] text-black'}`}>
+      <div className={`min-h-screen flex items-center justify-center font-mono text-sm uppercase tracking-widest ${isDark ? 'bg-[#0a0e1a] text-white' : 'bg-[#FAFAFA] text-black'}`}>
         Đang tải dữ liệu...
       </div>
     );
@@ -215,17 +215,17 @@ export default function ActiveTestScreen({
 
   return (
     <div
-      className={`min-h-screen flex flex-col select-text ${isDark ? 'bg-[#0A0A0A] text-[#F3F4F6]' : 'bg-[#FAFAFA] text-[#0A0A0A]'}`}
+      className={`min-h-screen flex flex-col select-text ${isDark ? 'bg-[#0a0e1a] text-[#F3F4F6]' : 'bg-[#FAFAFA] text-[#0a0e1a]'}`}
     >
       {/* ── HEADER ── */}
-      <header className={`px-4 py-4 md:px-6 flex items-center justify-between border-b-2 transition-all shrink-0 ${isDark ? 'bg-[#0A0A0A] border-white/10' : 'bg-white border-black'}`}>
+      <header className={`px-4 py-4 md:px-6 flex items-center justify-between border-b-2 transition-all shrink-0 ${isDark ? 'bg-[#0a0e1a] border-white/10' : 'bg-white border-black'}`}>
         <div className="flex items-center gap-3">
-          <button onClick={onExit} className={`flex items-center gap-1.5 px-4 py-2 text-xs font-black uppercase tracking-widest rounded-none border-2 transition-all cursor-pointer ${isDark ? 'border-white/15 text-white hover:bg-[#00D2FF] hover:text-black hover:border-[#00D2FF]' : 'border-black text-black hover:bg-black hover:text-white'}`}>
+          <button onClick={onExit} className={`flex items-center gap-1.5 px-4 py-2 text-xs font-black uppercase tracking-widest rounded-none border-2 transition-all cursor-pointer ${isDark ? 'border-white/15 text-white hover:bg-[#4dd9cc] hover:text-black hover:border-[#4dd9cc]' : 'border-black text-black hover:bg-black hover:text-white'}`}>
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Thoát</span>
           </button>
           <div className="hidden sm:flex items-center gap-2">
-            <span className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-none border ${passage ? (isDark ? 'bg-white/5 border-white/20 text-white' : 'bg-gray-105 border-black text-black') : (isDark ? 'bg-[#00D2FF]/10 border-[#00D2FF]/30 text-[#00D2FF]' : 'bg-black border-black text-white')}`}>
+            <span className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-none border ${passage ? (isDark ? 'bg-white/5 border-white/20 text-white' : 'bg-gray-105 border-black text-black') : (isDark ? 'bg-[#4dd9cc]/10 border-[#4dd9cc]/30 text-[#4dd9cc]' : 'bg-black border-black text-white')}`}>
               {passage ? 'Đọc & Viết' : 'Toán Học'}
             </span>
             <span className="text-xs font-mono tracking-tight opacity-55">{moduleTitle}</span>
@@ -233,13 +233,13 @@ export default function ActiveTestScreen({
         </div>
 
         <div className="flex items-center gap-3">
-          <button onClick={toggleFlag} className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer rounded-none select-none ${flaggedQuestions[currentQuestion.id] ? 'bg-amber-500/20 border-amber-500 text-amber-500 font-bold' : (isDark ? 'bg-black border-white/20 text-gray-300 hover:text-[#00D2FF] hover:border-[#00D2FF]' : 'bg-white border-black text-black hover:bg-black hover:text-white')}`}>
+          <button onClick={toggleFlag} className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer rounded-none select-none ${flaggedQuestions[currentQuestion.id] ? 'bg-amber-500/20 border-amber-500 text-amber-500 font-bold' : (isDark ? 'bg-black border-white/20 text-gray-300 hover:text-[#4dd9cc] hover:border-[#4dd9cc]' : 'bg-white border-black text-black hover:bg-black hover:text-white')}`}>
             <Flag className={`w-3.5 h-3.5 ${flaggedQuestions[currentQuestion.id] ? 'fill-current text-amber-500' : ''}`} />
             <span className="hidden xs:inline">{flaggedQuestions[currentQuestion.id] ? 'FLAGGED' : 'FLAG'}</span>
           </button>
 
           {showTimer ? (
-            <div className={`px-4 py-2 border-2 flex items-center gap-2 text-center transition-all rounded-none ${timeLeftSec < 120 ? 'border-red-600 bg-red-600/10 text-red-500 font-black animate-pulse' : (isDark ? 'border-[#00D2FF]/40 bg-black text-[#00D2FF]' : 'border-black bg-white text-black')}`}>
+            <div className={`px-4 py-2 border-2 flex items-center gap-2 text-center transition-all rounded-none ${timeLeftSec < 120 ? 'border-red-600 bg-red-600/10 text-red-500 font-black animate-pulse' : (isDark ? 'border-[#4dd9cc]/40 bg-black text-[#4dd9cc]' : 'border-black bg-white text-black')}`}>
               <Timer className="w-4 h-4 shrink-0" />
               <span className="font-mono text-base font-black tracking-wider leading-none">{formatTime(timeLeftSec)}</span>
             </div>
@@ -247,18 +247,18 @@ export default function ActiveTestScreen({
             <div className="text-xs font-mono uppercase tracking-wider opacity-40">Timer Off</div>
           )}
 
-          <button onClick={() => setShowTimer(!showTimer)} className={`p-2 border transition-colors rounded-none cursor-pointer ${isDark ? 'border-white/10 text-gray-500 hover:text-[#00D2FF]' : 'border-black/15 text-gray-400 hover:text-black'}`}>
+          <button onClick={() => setShowTimer(!showTimer)} className={`p-2 border transition-colors rounded-none cursor-pointer ${isDark ? 'border-white/10 text-gray-500 hover:text-[#4dd9cc]' : 'border-black/15 text-gray-400 hover:text-black'}`}>
             {showTimer ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
         </div>
 
-        <button onClick={handleManualSubmit} className={`px-4 py-2 md:px-6 md:py-2.5 text-xs font-black uppercase tracking-widest rounded-none cursor-pointer transition-all border ${isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/20' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'}`}>
+        <button onClick={handleManualSubmit} className={`px-4 py-2 md:px-6 md:py-2.5 text-xs font-black uppercase tracking-widest rounded-none cursor-pointer transition-all border ${isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/20' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'}`}>
           Nộp bài
         </button>
       </header>
 
       {/* ── NAV ROW ── */}
-      <div className={`px-4 py-3 border-b-2 flex flex-col md:flex-row items-center justify-between gap-4 transition-all shrink-0 ${isDark ? 'bg-[#0A0A0A] border-white/10' : 'bg-white border-black'}`}>
+      <div className={`px-4 py-3 border-b-2 flex flex-col md:flex-row items-center justify-between gap-4 transition-all shrink-0 ${isDark ? 'bg-[#0a0e1a] border-white/10' : 'bg-white border-black'}`}>
         <button onClick={navigatePrev} disabled={currentIdx === 0} className={`px-4 py-2.5 text-xs font-black uppercase tracking-widest rounded-none border-2 flex items-center gap-1 transition-all ${currentIdx === 0 ? 'opacity-20 cursor-not-allowed' : (isDark ? 'border-white/10 text-white hover:bg-white/5 cursor-pointer' : 'border-black text-black hover:bg-black hover:text-white cursor-pointer')}`}>
           <ChevronLeft className="w-3.5 h-3.5" />
           <span>Câu trước</span>
@@ -270,7 +270,7 @@ export default function ActiveTestScreen({
             const isAnswered = !!userAnswers[q.id];
             const isFlagged = flaggedQuestions[q.id];
             return (
-              <button key={q.id} onClick={() => setCurrentIdx(idx)} className={`relative w-8 h-8 md:w-9 md:h-9 rounded-none flex items-center justify-center text-xs font-black font-mono transition-all border-2 cursor-pointer ${isSelected ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-black text-white border-black') : (isAnswered ? (isDark ? 'bg-black border-[#00D2FF]/50 text-[#00D2FF]' : 'bg-gray-105 border-black text-black font-black') : (isDark ? 'bg-black border-white/10 text-white/40' : 'bg-white border-black/10 text-black/40'))}`}>
+              <button key={q.id} onClick={() => setCurrentIdx(idx)} className={`relative w-8 h-8 md:w-9 md:h-9 rounded-none flex items-center justify-center text-xs font-black font-mono transition-all border-2 cursor-pointer ${isSelected ? (isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc]' : 'bg-black text-white border-black') : (isAnswered ? (isDark ? 'bg-black border-[#4dd9cc]/50 text-[#4dd9cc]' : 'bg-gray-105 border-black text-black font-black') : (isDark ? 'bg-black border-white/10 text-white/40' : 'bg-white border-black/10 text-black/40'))}`}>
                 {idx + 1}
                 {isFlagged && <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-500 border border-black" />}
               </button>
@@ -279,7 +279,7 @@ export default function ActiveTestScreen({
         </div>
 
         {currentIdx === questions.length - 1 ? (
-          <button onClick={handleManualSubmit} className={`px-5 py-2.5 text-xs font-black uppercase tracking-widest rounded-none flex items-center gap-1.5 cursor-pointer transition-all border ${isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF] hover:bg-black hover:text-white hover:border-white/10' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'}`}>
+          <button onClick={handleManualSubmit} className={`px-5 py-2.5 text-xs font-black uppercase tracking-widest rounded-none flex items-center gap-1.5 cursor-pointer transition-all border ${isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/10' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'}`}>
             <span>Nộp bài & kết quả</span>
             <CheckSquare className="w-3.5 h-3.5" />
           </button>
@@ -307,7 +307,7 @@ export default function ActiveTestScreen({
           >
             {/* Passage header */}
             <div className="flex items-center justify-between mb-2.5 border-b border-white/5 pb-2 select-none">
-              <span className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-[#00D2FF]' : 'text-black'}`}>
+              <span className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-[#4dd9cc]' : 'text-black'}`}>
                 Paragraph Context / Đoạn Văn Bản
               </span>
               {highlights.length > 0 && (
@@ -350,8 +350,8 @@ export default function ActiveTestScreen({
         ) : (
           <div className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full flex flex-col justify-center items-center transition-colors select-none ${isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'}`}>
             <div className="max-w-md w-full p-8 text-center space-y-4 rounded-none border-2 border-dashed dark:border-white/10 bg-black/20">
-              <span className="text-3xl text-[#00D2FF]">📐</span>
-              <h3 className="text-sm font-black uppercase tracking-widest font-display text-[#00D2FF]">
+              <span className="text-3xl text-[#4dd9cc]">📐</span>
+              <h3 className="text-sm font-black uppercase tracking-widest font-display text-[#4dd9cc]">
                 Section 2: SAT Math Workspace
               </h3>
               <p className="text-xs font-mono opacity-50 leading-relaxed">
@@ -370,7 +370,7 @@ export default function ActiveTestScreen({
               </span>
             </div>
 
-            <div className={`text-base md:text-[17px] font-bold leading-relaxed mb-8 ${isDark ? 'text-white' : 'text-[#0A0A0A]'}`}>
+            <div className={`text-base md:text-[17px] font-bold leading-relaxed mb-8 ${isDark ? 'text-white' : 'text-[#0a0e1a]'}`}>
               <MathRenderer
                 content={currentQuestion.text}
                 className="w-full"
@@ -384,7 +384,7 @@ export default function ActiveTestScreen({
                   const isSelected = userAnswers[currentQuestion.id] === letter;
                   const isEliminated = !!eliminatedOptions[`${currentQuestion.id}-${letter}`];
                   return (
-                    <div key={letter} className={`relative group flex items-stretch rounded-none border-2 transition-all ${isSelected ? (isDark ? 'bg-[#00D2FF]/5 border-[#00D2FF] text-white' : 'bg-black border-black text-white') : (isEliminated ? 'opacity-20 scale-[0.98]' : (isDark ? 'bg-black border-white/10 hover:border-[#00D2FF]/50' : 'bg-white border-black/15 hover:border-black'))}`}>
+                    <div key={letter} className={`relative group flex items-stretch rounded-none border-2 transition-all ${isSelected ? (isDark ? 'bg-[#4dd9cc]/5 border-[#4dd9cc] text-white' : 'bg-black border-black text-white') : (isEliminated ? 'opacity-20 scale-[0.98]' : (isDark ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' : 'bg-white border-black/15 hover:border-black'))}`}>
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleEliminate(letter); }}
                         className={`px-3 flex items-center justify-center transition-colors border-r-2 text-[9px] font-mono tracking-widest uppercase cursor-pointer select-none ${isEliminated ? 'border-red-500/20 text-red-500 bg-red-950/10' : 'border-transparent text-gray-500 hover:text-red-500'}`}
@@ -393,7 +393,7 @@ export default function ActiveTestScreen({
                         {isEliminated ? '✕' : '[DEL]'}
                       </button>
                       <button onClick={() => handleSelectAnswer(letter)} className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer">
-                        <span className={`flex items-center justify-center w-7 h-7 text-xs font-black border-2 uppercase shrink-0 transition-all rounded-none select-none ${isSelected ? (isDark ? 'bg-[#00D2FF] text-black border-[#00D2FF]' : 'bg-white text-black border-white') : (isDark ? 'bg-black border-white/10 text-[#00D2FF] group-hover:border-[#00D2FF]' : 'bg-gray-50 border-black/15 text-black')}`}>
+                        <span className={`flex items-center justify-center w-7 h-7 text-xs font-black border-2 uppercase shrink-0 transition-all rounded-none select-none ${isSelected ? (isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc]' : 'bg-white text-black border-white') : (isDark ? 'bg-black border-white/10 text-[#4dd9cc] group-hover:border-[#4dd9cc]' : 'bg-gray-50 border-black/15 text-black')}`}>
                           {letter}
                         </span>
                         <span className={`text-sm md:text-base font-bold leading-relaxed pt-0.5 ${isEliminated ? 'line-through opacity-40' : ''}`}>
@@ -414,14 +414,14 @@ export default function ActiveTestScreen({
                   value={userAnswers[currentQuestion.id] || ''}
                   onChange={(e) => handleSelectAnswer(e.target.value)}
                   placeholder="Ví dụ: 0.5, 1/2, .5"
-                  className={`w-full px-4 py-3 border-2 rounded-none font-mono text-base transition-all ${isDark ? 'bg-black border-white/20 text-white placeholder-gray-500 focus:border-[#00D2FF] focus:outline-none' : 'bg-white border-black/15 text-black placeholder-gray-400 focus:border-black focus:outline-none'}`}
+                  className={`w-full px-4 py-3 border-2 rounded-none font-mono text-base transition-all ${isDark ? 'bg-black border-white/20 text-white placeholder-gray-500 focus:border-[#4dd9cc] focus:outline-none' : 'bg-white border-black/15 text-black placeholder-gray-400 focus:border-black focus:outline-none'}`}
                 />
               </div>
             )}
           </div>
 
           <div className="pt-6 text-[10px] font-mono uppercase tracking-wider opacity-40 flex items-center gap-1.5 justify-end select-none">
-            <AlertCircle className="w-4 h-4 text-[#00D2FF]" />
+            <AlertCircle className="w-4 h-4 text-[#4dd9cc]" />
             <span>Xếp hạng và điểm số được cập nhật trực tuyến sau khi hoàn thành.</span>
           </div>
         </div>
@@ -431,12 +431,12 @@ export default function ActiveTestScreen({
       {pending && (
         <div
           id="hl-toolbar"
-          className="fixed z-50 bg-[#111] border-2 border-[#00D2FF] rounded-none py-1.5 px-2 flex items-center gap-1.5 shadow-xl select-none"
+          className="fixed z-50 bg-[#111] border-2 border-[#4dd9cc] rounded-none py-1.5 px-2 flex items-center gap-1.5 shadow-xl select-none"
           style={{ top: toolbarStyle.top, left: toolbarStyle.left }}
         >
           <button
             onMouseDown={(e) => { e.preventDefault(); confirmHighlight(); }}
-            className="flex items-center gap-1.5 px-2.5 py-1 bg-[#00D2FF] text-black font-black uppercase tracking-widest rounded-none hover:bg-white text-[9px] cursor-pointer transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1 bg-[#4dd9cc] text-black font-black uppercase tracking-widest rounded-none hover:bg-white text-[9px] cursor-pointer transition-colors"
           >
             <Paintbrush className="w-3 h-3" />
             Highlight

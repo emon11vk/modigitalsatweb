@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mơ - Digital SAT | Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#003731",
+                      "surface": "#0e1513",
+                      "on-tertiary-fixed-variant": "#6b3b00",
+                      "on-secondary-fixed": "#40000d",
+                      "error-container": "#93000a",
+                      "background": "#0e1513",
+                      "on-error": "#690005",
+                      "inverse-primary": "#006b5f",
+                      "primary-container": "#2dd4bf",
+                      "on-secondary-container": "#ffc2c4",
+                      "inverse-on-surface": "#2b3230",
+                      "on-primary-fixed-variant": "#005047",
+                      "surface-card": "#161D2F",
+                      "outline-variant": "#3c4a46",
+                      "error": "#ffb4ab",
+                      "secondary-container": "#b50036",
+                      "primary-fixed-dim": "#3cddc7",
+                      "secondary-fixed": "#ffdadb",
+                      "primary-fixed": "#62fae3",
+                      "surface-container-high": "#242b2a",
+                      "surface-container": "#1a211f",
+                      "secondary": "#ffb2b7",
+                      "on-primary-fixed": "#00201c",
+                      "on-tertiary-container": "#744000",
+                      "surface-variant": "#2f3634",
+                      "tertiary-fixed": "#ffdcc0",
+                      "success-green": "#22C55E",
+                      "surface-navigation": "#111827",
+                      "accent-gold": "#FBBF24",
+                      "surface-container-highest": "#2f3634",
+                      "on-tertiary": "#4b2800",
+                      "primary": "#57f1db",
+                      "bg-deep": "#0B1221",
+                      "surface-tint": "#3cddc7",
+                      "inverse-surface": "#dde4e1",
+                      "surface-dim": "#0e1513",
+                      "on-secondary": "#67001b",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#333b39",
+                      "on-surface-variant": "#bacac5",
+                      "surface-container-low": "#161d1b",
+                      "on-background": "#dde4e1",
+                      "text-muted": "#94A3B8",
+                      "secondary-fixed-dim": "#ffb2b7",
+                      "tertiary-fixed-dim": "#ffb875",
+                      "tertiary": "#ffd1aa",
+                      "on-primary-container": "#00574d",
+                      "tertiary-container": "#ffac5a",
+                      "outline": "#859490",
+                      "on-surface": "#dde4e1",
+                      "on-tertiary-fixed": "#2d1600",
+                      "on-secondary-fixed-variant": "#92002a",
+                      "surface-container-lowest": "#09100e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-margin": "24px",
+                      "card-padding": "20px",
+                      "gutter": "16px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "stats-number": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "stats-number": ["36px", {"lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- TopAppBar (Mobile Only) -->
+<header class="flex justify-between items-center w-full h-16 px-6 bg-background/80 dark:bg-background/80 backdrop-blur-md docked full-width top-0 z-40 border-b border-white/10 md:hidden">
+<div class="font-headline-md text-headline-md font-black text-primary">Mơ - Digital SAT</div>
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary hover:text-primary active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-primary dark:text-primary hover:text-primary active:opacity-80 transition-opacity">
+<img alt="Student Avatar" class="w-8 h-8 rounded-full object-cover border border-white/10" data-alt="A detailed headshot of an avatar for a student profile, minimal digital art style, glowing teal accents, deep navy background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDILlKuGS30qkt40sLpCm5Ukw93-9ZbNVegROtQ9TuS5-b9HumY24DmmqPNpSnmxSWF39sMIN9xvcx25bfoOhzsrzSxm5ZGigTZ39PfKYn6b3rHtdC8Wa_bDtqMmn3N15Tt_P0hh8UHby8mJQoeQ62kDAL_4l_u_YY8wa8gfSrgH8LmeTzHbXJzHhgDtQgcgB7fDJSZEovbCn5HuI4A5fGOmqFa4G35bl3UchlsCH8WZXR3RtSZ8Lt5ynVl5USGPvWQpQSUWchj4Yrg"/>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex flex-col h-full py-6 px-4 bg-surface dark:bg-surface text-primary dark:text-primary font-label-lg text-label-lg w-[240px] fixed left-0 top-0 border-r border-white/10 z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">Mơ - Digital SAT</h1>
+<p class="text-on-surface-variant font-medium text-sm mt-1">Mastering the SAT</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-2 border-primary hover:bg-surface-variant transition-colors duration-200 active:scale-95 transition-transform bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                VocabHub
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                History
+            </a>
+</div>
+<div class="mt-auto pt-6 px-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-full font-bold hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+                Upgrade to Pro
+            </button>
+<div class="mt-6 flex items-center gap-3">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover border border-white/10" data-alt="A detailed headshot of an avatar for a student profile, minimal digital art style, glowing teal accents, deep navy background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFgxERWyAYLjmx7lolD25JJ1J8DpLp9x_m7oPDHv-iyBA5SPACoKFaAI8OxD7_ExEdc6E2Qa0pBViLGRW-wFIktOMkyFf6uotvP-s3uF52fIxaJ7GdgCJnukqgOIPd-aXYiJ8EcbPM5F2EVVqk93dwHVNkhSeWkVu0Cw0RDcPPOB3AQ0PkhTFPR7JfiLwZ9rjlvvl8LynHtQAja4ac3UxUbjrMS835i0ATYbGvBJ7NDimq21kL4mJUO82GbZSLMEkOB3Iqwt9etbp2"/>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Alex Chen</span>
+<span class="text-xs text-on-surface-variant">Rank #42</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow md:ml-[240px] pt-4 pb-24 md:pb-8 px-4 md:px-8 max-w-5xl mx-auto w-full">
+<!-- Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Global Ranking</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Compete with top students worldwide. Keep pushing your limits.</p>
+</div>
+<div class="flex bg-surface-container rounded-full p-1 border border-white/10 w-max">
+<button class="px-6 py-2 rounded-full font-label-lg text-label-lg bg-surface-variant text-primary font-bold shadow-sm">Weekly</button>
+<button class="px-6 py-2 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">Monthly</button>
+<button class="px-6 py-2 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">All-time</button>
+</div>
+</div>
+<!-- Podium Section -->
+<div class="flex justify-center items-end gap-2 md:gap-6 mb-16 h-64">
+<!-- Rank 2: Silver -->
+<div class="flex flex-col items-center w-28 md:w-36 animate-[slideUp_0.5s_ease-out]">
+<div class="relative mb-4">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-8 h-8 bg-surface-container rounded-full flex items-center justify-center border-2 border-surface-card z-10 text-text-muted font-bold">2</div>
+<img alt="Rank 2" class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-text-muted object-cover" data-alt="Digital illustration of a high school student avatar, cool silver lighting, focused expression, dark navy background with subtle grid lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLtZx3oc5JmEyDd4Wh5UmnZHhjEj_BOhlnJaW-Jil7Pv8yg5QO30ja-uvemezsHC5RoITTzTvGlrYMpraRE1vR-U3dGOrB8Vn5OZ0d65rcf8AS7OXA_PDU-pfx3k4eu-6tai1jyzmWSBO-pO_pnQl5c-QD32ss_B0Wv3Y-ORmWG2pz2P4WgsDX9HCgRJVqYb8nxKKctaSriBJR3hKS0DgmZS5U6D_TT3TaDT-6obBTV9aQnbf0j3h1rVRHm0OxB-4yx1oXKAvoAoG5"/>
+</div>
+<div class="bg-surface-container w-full rounded-t-xl border-t border-l border-r border-white/10 flex flex-col items-center pt-4 pb-6 h-32 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-50 pointer-events-none"></div>
+<span class="font-bold text-on-surface truncate w-full text-center px-2 z-10">Sarah M.</span>
+<span class="text-primary font-stats-number text-2xl mt-1 z-10">14,200</span>
+</div>
+</div>
+<!-- Rank 1: Gold -->
+<div class="flex flex-col items-center w-32 md:w-44 z-10 animate-[slideUp_0.7s_ease-out]">
+<div class="relative mb-4">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 w-10 h-10 bg-surface-container rounded-full flex items-center justify-center border-2 border-accent-gold z-10 text-accent-gold font-bold shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+<span class="material-symbols-outlined text-accent-gold" data-icon="emoji_events">emoji_events</span>
+</div>
+<img alt="Rank 1" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-accent-gold object-cover shadow-[0_0_20px_rgba(251,191,36,0.2)]" data-alt="Digital illustration of a top-performing student avatar, radiant warm lighting, confident expression, dark navy background with subtle glowing accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTTrs05UWqoBbcex4eOyqcuyWa4sSxStJED9FpLyVsg1QL-08EuJeqCPH1nlIHiU1PpVS5fWmno4sDAtjMh17IrqbHSd7LNF11kLaJFssbZm3ETHSXXSb9Ai_e98B0MT8NiJzH34UaKVTIScsppLhIRWG__X_inRmag80dEj1IzIuaDwiQaDAIUJa0awx55A6fI5D9idZqLIvbrX4-73F5f0wSNCtdwBIQIsLT4FMnaL3Z1xEoGuz6fuaedAqvX0UEv61x6ic5jCCY"/>
+</div>
+<div class="bg-surface-container w-full rounded-t-xl border border-accent-gold/30 flex flex-col items-center pt-6 pb-8 h-40 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-accent-gold/10 to-transparent pointer-events-none"></div>
+<span class="font-bold text-on-surface truncate w-full text-center px-2 z-10 text-lg">David K.</span>
+<span class="text-accent-gold font-stats-number text-3xl mt-1 z-10">15,850</span>
+</div>
+</div>
+<!-- Rank 3: Bronze -->
+<div class="flex flex-col items-center w-28 md:w-36 animate-[slideUp_0.6s_ease-out]">
+<div class="relative mb-4">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-8 h-8 bg-surface-container rounded-full flex items-center justify-center border-2 border-tertiary-fixed-dim z-10 text-tertiary-fixed-dim font-bold">3</div>
+<img alt="Rank 3" class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-tertiary-fixed-dim object-cover" data-alt="Digital illustration of a dedicated student avatar, warm bronze lighting, determined expression, dark navy background with subtle tech elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV9QptzGCA2xC-VXRp6mZbI3KSH7cviMHoYQXhWetztgCFDHjf8XnCPZ2EE780lLDjPn6kcMJhoWHBxYK4hPCLpG3j0msagt410ptT-YfsKNCLkFGt-dUsSgHczd7ZH0Qw1JNXfKUhq-762_C7g8hGHHAygRCzsHBNVp9zRs_oU2iLOX967bmAAGyrWU-ibensRziH6beupq1B2nUycO5WILuZ-1hqmJUCwlShMv66UNrRAnTB5_BzkPpOFJKlmefPpMp7YZ0t_Ss8"/>
+</div>
+<div class="bg-surface-container w-full rounded-t-xl border-t border-l border-r border-white/10 flex flex-col items-center pt-4 pb-6 h-28 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-50 pointer-events-none"></div>
+<span class="font-bold text-on-surface truncate w-full text-center px-2 z-10">Emily R.</span>
+<span class="text-primary font-stats-number text-2xl mt-1 z-10">13,900</span>
+</div>
+</div>
+</div>
+<!-- Leaderboard List -->
+<div class="bg-surface-container rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+<!-- Table Header -->
+<div class="grid grid-cols-[60px_1fr_100px_80px] md:grid-cols-[80px_1fr_150px_100px] gap-4 py-4 px-6 border-b border-white/10 bg-surface/50 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<div class="text-center">Rank</div>
+<div>Student</div>
+<div class="text-right">Points</div>
+<div class="text-center">Trend</div>
+</div>
+<!-- List Items -->
+<div class="flex flex-col divide-y divide-white/5">
+<!-- Rank 4 -->
+<div class="grid grid-cols-[60px_1fr_100px_80px] md:grid-cols-[80px_1fr_150px_100px] gap-4 py-4 px-6 items-center hover:bg-surface-variant/30 transition-colors">
+<div class="text-center font-bold text-on-surface-variant">4</div>
+<div class="flex items-center gap-3">
+<img alt="User 4" class="w-10 h-10 rounded-full object-cover border border-white/10" data-alt="Simple 2D avatar profile picture, flat design, minimal dark theme, subtle teal background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFSyxkursSBNRw7tCx4hoMoU7rGLVmsAeDtNctaZITEdiJUxs-QN8d6MbIfEow3GmYiAHGDhKghNQdyr4vkFlZqUzWk-WMtARfykA_nukT_NIKzVDDKg32kwD-RgLJUlLjyNXhPW59EWqGkgrpf9HcPJ7D5ATzNzvnSGgaRHcrl2D7J3gagi8WERUCC8Zg-Hk9lbDiPrpLMvH8ux7BsTUZlTWglwBZHAHgHiy921sWvvTAFb3FCz1BmGqdbCqAlyDR5RI8Y1O4Aev5"/>
+<span class="font-medium text-on-surface truncate">James T.</span>
+</div>
+<div class="text-right font-stats-number text-xl text-primary-fixed-dim">13,500</div>
+<div class="flex justify-center items-center text-success-green">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span>
+</div>
+</div>
+<!-- Rank 5 -->
+<div class="grid grid-cols-[60px_1fr_100px_80px] md:grid-cols-[80px_1fr_150px_100px] gap-4 py-4 px-6 items-center hover:bg-surface-variant/30 transition-colors">
+<div class="text-center font-bold text-on-surface-variant">5</div>
+<div class="flex items-center gap-3">
+<img alt="User 5" class="w-10 h-10 rounded-full object-cover border border-white/10" data-alt="Simple 2D avatar profile picture, flat design, minimal dark theme, subtle purple background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdJ8idk1EvjEaiucSLQr78WTSsC_-d3rSOxBn_nKSo0Gjm6FP2B-PnYDS5zaLiDhDRzV8jx_QvzwcRJu9XCMOtQ3-Q3-qJw8j_JKTThBAWb-jyWh9ylt7P-MtR9GATUtCUOqTWHmN7TAyohKMkzXcqWNem0oQRrxYh2DVGvXVcwafOa9Q0npwP_2UTU-gE9ibUO_airUwdeSTc2N0jY26L1ylozs6HDToZWcFzt8gVtFIPXf6eznxeY3JKdv1cYUieY0c303BU5UhP"/>
+<span class="font-medium text-on-surface truncate">Maria G.</span>
+</div>
+<div class="text-right font-stats-number text-xl text-primary-fixed-dim">12,800</div>
+<div class="flex justify-center items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</div>
+</div>
+<!-- Rank 6 -->
+<div class="grid grid-cols-[60px_1fr_100px_80px] md:grid-cols-[80px_1fr_150px_100px] gap-4 py-4 px-6 items-center hover:bg-surface-variant/30 transition-colors">
+<div class="text-center font-bold text-on-surface-variant">6</div>
+<div class="flex items-center gap-3">
+<img alt="User 6" class="w-10 h-10 rounded-full object-cover border border-white/10" data-alt="Simple 2D avatar profile picture, flat design, minimal dark theme, subtle orange background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrCUbRlMUqS-cv1rWuMTt1AMfX1kfY2Za-ComvL4IzqPJSZg1gmJJZJ_lgC-t7EIvjjzVDRhJU_rK_4ALKtV_QWwU0Yet10CQFNFj_N0YgIyi2738JBGOFevh9jhBNqoDXDplUYvmuyBVZMaxy9H4pUeCVAhH4_WRm4iVeYLC25h3hpvWZeLHii-whZI3zmaRM8uyXox69GgF3ShXonr0Y9kZMyShp7jTkD2ZzpTzRKivsw4tfYsGbYK-gV4gCNynzUnJE1etJFw6J"/>
+<span class="font-medium text-on-surface truncate">Lisa W.</span>
+</div>
+<div class="text-right font-stats-number text-xl text-primary-fixed-dim">12,100</div>
+<div class="flex justify-center items-center text-error">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_downward">arrow_downward</span>
+</div>
+</div>
+<!-- Rank 7 -->
+<div class="grid grid-cols-[60px_1fr_100px_80px] md:grid-cols-[80px_1fr_150px_100px] gap-4 py-4 px-6 items-center hover:bg-surface-variant/30 transition-colors">
+<div class="text-center font-bold text-on-surface-variant">7</div>
+<div class="flex items-center gap-3">
+<img alt="User 7" class="w-10 h-10 rounded-full object-cover border border-white/10" data-alt="Simple 2D avatar profile picture, flat design, minimal dark theme, subtle blue background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAhK3WUujWWirPnb3OC8c3Jak-8IByuzKOc24K7YEUskkmz-ItsiayvkAor3IdLXQ3z3cMITMEZGdP5Ht4NZsPF-JOM9Y1lbO71V5SxrOo0qxdWg7Y9BQWZnV28fsgT3oJGX3I2WiAFhxnB6GelpKwW2tqLa6fC8W-AyBkh6nEbFLPRJ2Cz4TapzKeY1oJq8VnetlRoOZ1HC8uunytRA30yGTftEHCLqXa9Q7DEGII1yV3EeqR10zviG1-y0hJFaMGAMze7ilKU5IB"/>
+<span class="font-medium text-on-surface truncate">Kevin L.</span>
+</div>
+<div class="text-right font-stats-number text-xl text-primary-fixed-dim">11,950</div>
+<div class="flex justify-center items-center text-success-green">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span>
+</div>
+</div>
+</div>
+<div class="py-3 px-6 text-center border-t border-white/10">
+<button class="text-primary font-medium hover:underline text-sm">Load More</button>
+</div>
+</div>
+</main>
+<!-- Sticky "Your Rank" Card -->
+<div class="fixed bottom-16 md:bottom-6 left-0 md:left-[240px] right-0 z-30 px-4 md:px-8 pointer-events-none">
+<div class="max-w-5xl mx-auto pointer-events-auto">
+<div class="bg-surface-card border border-primary/30 rounded-xl p-4 shadow-[0_0_30px_rgba(45,212,191,0.15)] flex items-center justify-between backdrop-blur-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center font-bold text-xl text-primary border border-primary/50">
+                        42
+                    </div>
+<div>
+<div class="font-bold text-on-surface">Alex Chen (You)</div>
+<div class="text-sm text-on-surface-variant">Top 15% this week</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-stats-number text-2xl text-primary">8,450</div>
+<div class="text-xs text-success-green flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="arrow_upward">arrow_upward</span>
+                        +450 pts
+                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full md:hidden flex justify-around items-center px-4 py-2 bg-surface dark:bg-surface text-primary dark:text-primary font-label-sm text-label-sm-mobile docked full-width bottom-0 z-50 rounded-t-lg shadow-lg border-t border-white/10">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl p-2 hover:bg-surface-container-high active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+            Leaderboard
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+            VocabHub
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+            History
+        </a>
+</nav>
+<style>
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body></html>

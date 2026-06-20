@@ -83,16 +83,16 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
             <div className="relative group">
               {/* Champion Indicators */}
               <div className="flex justify-center -mb-1">
-                <Trophy className="w-5 h-5 text-[#00D2FF] animate-bounce" />
+                <Trophy className="w-5 h-5 text-[#4dd9cc] animate-bounce" />
               </div>
 
               <img 
                 src={top1.avatarUrl} 
                 alt={top1.name} 
                 referrerPolicy="no-referrer"
-                className="w-16 h-16 md:w-24 md:h-24 rounded-none object-cover border-2 border-[#00D2FF] shadow-none"
+                className="w-16 h-16 md:w-24 md:h-24 rounded-none object-cover border-2 border-[#4dd9cc] shadow-none"
               />
-              <span className="absolute -bottom-2.5 left-1/2 transform -translate-x-1/2 bg-[#00D2FF] text-black text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-none leading-none">
+              <span className="absolute -bottom-2.5 left-1/2 transform -translate-x-1/2 bg-[#4dd9cc] text-black text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-none leading-none">
                 CHAMP
               </span>
             </div>
@@ -101,7 +101,7 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
               <h4 className={`text-sm md:text-base font-black uppercase truncate max-w-[120px] ${isDark ? 'text-white' : 'text-black'}`}>
                 {top1.name}
               </h4>
-              <p className="text-xs md:text-sm font-black font-mono text-[#00D2FF] mt-0.5">
+              <p className="text-xs md:text-sm font-black font-mono text-[#4dd9cc] mt-0.5">
                 {top1.totalScore} PTS
               </p>
               <p className="text-[9px] font-mono opacity-50">
@@ -112,7 +112,7 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
             {/* Championship Golden Pillar Podium block */}
             <div className={`w-full mt-4 h-32 rounded-none text-center flex flex-col justify-end pb-4 text-xs md:text-sm font-black border border-b-0 ${
               isDark 
-                ? 'bg-[#00D2FF]/5 border-[#00D2FF] text-[#00D2FF]' 
+                ? 'bg-[#4dd9cc]/5 border-[#4dd9cc] text-[#4dd9cc]' 
                 : 'bg-black border-black text-white'
             }`}>
               GOLD
@@ -176,14 +176,14 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
               placeholder="Tìm kiếm học viên..."
               className={`w-full pl-9 pr-4 py-2 text-xs rounded-none font-mono focus:outline-none transition-colors border ${
                 isDark 
-                  ? 'bg-white/5 border-white/10 text-white focus:border-[#00D2FF]' 
+                  ? 'bg-white/5 border-white/10 text-white focus:border-[#4dd9cc]' 
                   : 'bg-gray-50 border-black/15 text-gray-900 focus:border-black'
               }`}
             />
           </div>
 
           <div className="flex items-center gap-1.5 text-[10px] uppercase font-black tracking-widest opacity-60 font-mono">
-            <Users className="w-4 h-4 text-[#00D2FF]" />
+            <Users className="w-4 h-4 text-[#4dd9cc]" />
             <span>HIỂN THỊ {filteredRankings.length} HỌC VIÊN</span>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
                     key={student.rank}
                     className={`transition-colors ${
                       isUser 
-                        ? (isDark ? 'bg-[#00D2FF]/10 hover:bg-[#00D2FF]/15' : 'bg-[#00D2FF]/20 font-semibold')
+                        ? (isDark ? 'bg-[#4dd9cc]/10 hover:bg-[#4dd9cc]/15' : 'bg-[#4dd9cc]/20 font-semibold')
                         : (isDark ? 'hover:bg-white/5' : 'hover:bg-gray-50')
                     }`}
                   >
@@ -233,7 +233,7 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
                           <span className={`font-black flex items-center gap-2 uppercase tracking-wide ${isDark ? 'text-white' : 'text-black'}`}>
                             {student.name}
                             {isUser && (
-                              <span className="inline-flex items-center gap-1 bg-[#00D2FF] text-black text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-none border border-transparent">
+                              <span className="inline-flex items-center gap-1 bg-[#4dd9cc] text-black text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-none border border-transparent">
                                 <Sparkles className="w-2.5 h-2.5" /> BẠN (YOU)
                               </span>
                             )}
@@ -243,7 +243,7 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
                     </td>
 
                     {/* Total Score */}
-                    <td className="p-4 text-right font-black font-mono text-[#00D2FF]">
+                    <td className="p-4 text-right font-black font-mono text-[#4dd9cc]">
                       {student.totalScore}
                     </td>
 

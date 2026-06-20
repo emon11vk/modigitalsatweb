@@ -5,11 +5,30 @@
   --font-sans: "Inter", "Space Grotesk", system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  
-  --color-brand: #00D2FF;
-  --color-brand-hover: #009FD4;
-  --color-bg-dark: #0A0A0A;
+
+  /* Modern Glassmorphism Theme */
+  --color-brand: #4dd9cc;
+  --color-brand-bright: #5fe8db;
+  --color-brand-dark: #2fb5a3;
+  --color-brand-hover: #5fe8db;
+  --color-bg-dark: #0a0e1a;
+  --color-bg-surface: #0f1420;
   --color-bg-light: #FAFAFA;
+
+  /* New Glassmorphic Colors */
+  --color-surface-low: #121829;
+  --color-surface-medium: #16192d;
+  --color-surface-high: #1e2238;
+  --color-surface-highest: #272d42;
+  --color-text-primary: #e8ecf4;
+  --color-text-secondary: #b3b9cc;
+  --color-text-muted: #8a91a8;
+  --color-border-light: rgba(77, 217, 204, 0.15);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-accent-gold: #ffc857;
+  --color-accent-gold-light: #ffe180;
+  --color-success-green: #1dd1a1;
+  --color-secondary: #ff8fa3;
 }
 
 @utility perspective-1000 {
@@ -28,6 +47,31 @@
   transform: rotateY(180deg);
 }
 
+/* Glassmorphism utilities */
+@utility glass-card {
+  background: rgba(22, 25, 45, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(77, 217, 204, 0.15);
+}
+
+@utility glass-card-light {
+  background: rgba(42, 49, 66, 0.35);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility glow-primary {
+  box-shadow: 0 0 24px rgba(77, 217, 204, 0.15);
+}
+
+@utility glow-primary-hover {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@utility glow-primary-hover:hover {
+  box-shadow: 0 0 24px rgba(77, 217, 204, 0.25);
+}
+
 /* Bold outline text utility */
 .text-stroke-white {
   -webkit-text-stroke: 1.5px #FFFFFF;
@@ -37,7 +81,7 @@
   -webkit-text-stroke: 1.5px #0A0A0A;
 }
 
-/* Custom scrollbars to match minimal styling */
+/* Custom scrollbars with modern teal theme */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -46,14 +90,14 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(77, 217, 204, 0.2);
   border-radius: 3px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(77, 217, 204, 0.25);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(77, 217, 204, 0.4);
 }
 
 /* Custom Text Selection Highlight - Classic Yellow Highlighter Rect */
