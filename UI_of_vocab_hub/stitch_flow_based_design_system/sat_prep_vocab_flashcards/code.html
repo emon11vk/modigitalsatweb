@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAT Prep - Vocabulary Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#2c694e",
+                    "on-primary-container": "#a8e7c5",
+                    "secondary-container": "#a0f4c8",
+                    "on-tertiary-fixed": "#092012",
+                    "on-secondary-container": "#19724f",
+                    "surface-container-low": "#f3f4f5",
+                    "on-surface": "#191c1d",
+                    "on-tertiary-container": "#c6e1ca",
+                    "tertiary-fixed-dim": "#b3cdb7",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#002113",
+                    "secondary": "#0e6c4a",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#4d6553",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#364d3c",
+                    "primary-container": "#2d6a4f",
+                    "primary-fixed": "#b1f0ce",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed": "#002114",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-fixed-variant": "#354c3b",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#bfc9c1",
+                    "on-surface-variant": "#404943",
+                    "tertiary-fixed": "#cee9d3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "primary": "#0f5238",
+                    "outline": "#707973",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed": "#a0f4c8",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f8f9fa",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed-dim": "#85d7ad"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "container-max": "1200px",
+                    "md": "24px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .flashcard-inner {
+            perspective: 1000px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .flashcard-flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim { animation: subtle-float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden">
+<!-- TopNavBar (Updated Branding and Exit) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface-container-low shadow-sm h-16 flex items-center">
+<div class="flex justify-between items-center w-full px-md h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<a class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-md text-label-md">Exit to Dashboard</span>
+</a>
+<div class="w-px h-6 bg-outline-variant mx-xs"></div>
+<span class="font-headline-md text-headline-md font-bold text-primary">SAT Prep</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<nav class="flex gap-md items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Practice</a>
+<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md" href="#">Vocabulary</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Resources</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="p-xs rounded-full hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</button>
+<button class="p-xs rounded-full hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+<button class="md:hidden p-xs">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-xl px-gutter min-h-screen relative flex flex-col items-center">
+<!-- Background Decoration -->
+<div class="absolute top-40 right-10 w-96 h-96 bg-primary-fixed-dim/20 blur-[100px] rounded-full -z-10 float-anim"></div>
+<div class="absolute bottom-20 left-10 w-72 h-72 bg-secondary-fixed/20 blur-[100px] rounded-full -z-10 float-anim" style="animation-delay: -3s"></div>
+<div class="w-full max-w-3xl">
+<!-- Breadcrumbs / Status Bar -->
+<nav class="mb-md flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<a class="hover:text-primary transition-colors" href="#">SAT Prep</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Vocabulary</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">Study Session</span>
+</nav>
+<!-- Progress Header -->
+<div class="mb-lg flex flex-col gap-sm">
+<div class="flex justify-between items-end px-xs">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Daily Review</h1>
+<p class="text-on-surface-variant font-label-md text-label-md">High-Frequency Word List</p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-primary font-bold">5 / 20 words</span>
+<p class="text-on-surface-variant font-label-sm text-label-sm">85% Session Accuracy</p>
+</div>
+</div>
+<!-- Linear Progress Bar -->
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary transition-all duration-500 ease-out" id="progress-bar" style="width: 25%"></div>
+</div>
+</div>
+<!-- Flashcard Container -->
+<div class="relative w-full h-[400px] md:h-[480px] cursor-pointer group" id="flashcard">
+<div class="flashcard-inner w-full h-full relative shadow-sm hover:shadow-md transition-shadow">
+<!-- Front Face -->
+<div class="flashcard-front absolute inset-0 glass-panel rounded-xl flex flex-col items-center justify-center p-lg text-center border-2 border-primary/10">
+<span class="inline-block px-sm py-1 bg-primary/10 text-primary rounded-full font-label-sm text-label-sm mb-md uppercase tracking-wider">Vocabulary</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-sm">Ephemeral</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg italic">/əˈfem(ə)rəl/</p>
+<div class="mt-xl flex flex-col items-center gap-base">
+<button class="px-lg py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" id="btn-show-answer">
+                                Show Answer
+                            </button>
+<span class="text-on-surface-variant font-label-sm text-label-sm opacity-60">Press SPACE or Click to flip</span>
+</div>
+</div>
+<!-- Back Face -->
+<div class="flashcard-back absolute inset-0 glass-panel rounded-xl flex flex-col p-lg border-2 border-secondary/20">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Ephemeral</h2>
+<span class="text-secondary font-label-sm text-label-sm">adjective</span>
+</div>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="volume_up">volume_up</span>
+</button>
+</div>
+<div class="h-px w-full bg-outline-variant/30 mb-md"></div>
+<div class="flex-grow flex flex-col gap-md">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Definition</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Lasting for a very short time; fleeting.</p>
+</div>
+<div class="p-md bg-surface-container-low rounded-lg border border-outline-variant/20 italic text-on-surface-variant">
+                                "Fashions are ephemeral, but style is forever."
+                            </div>
+<div class="mt-auto grid grid-cols-2 gap-sm">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Synonyms</p>
+<p class="text-on-surface font-body-md text-body-md">transient, momentary</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Etymology</p>
+<p class="text-on-surface font-body-md text-body-md">Greek ephēmeros ‘lasting only a day’</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SM-2 Quality Assessment (Shown after flip) -->
+<div class="mt-lg opacity-0 pointer-events-none transition-all duration-300 translate-y-4" id="assessment-controls">
+<p class="text-center text-on-surface-variant font-label-md text-label-md mb-md">How well did you know this?</p>
+<div class="grid grid-cols-4 gap-sm">
+<button class="assessment-btn group flex flex-col items-center gap-xs p-sm bg-surface-container-highest hover:bg-error-container rounded-xl transition-all" data-quality="1">
+<span class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-error group-hover:bg-error group-hover:text-white transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="replay">replay</span>
+</span>
+<span class="font-label-md text-label-md text-on-surface">Again</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-60">&lt; 1m</span>
+</button>
+<button class="assessment-btn group flex flex-col items-center gap-xs p-sm bg-surface-container-highest hover:bg-orange-100 rounded-xl transition-all" data-quality="2">
+<span class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="sentiment_dissatisfied">sentiment_dissatisfied</span>
+</span>
+<span class="font-label-md text-label-md text-on-surface">Hard</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-60">2d</span>
+</button>
+<button class="assessment-btn group flex flex-col items-center gap-xs p-sm bg-surface-container-highest hover:bg-secondary-container rounded-xl transition-all" data-quality="4">
+<span class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-secondary group-hover:bg-secondary group-hover:text-white transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+</span>
+<span class="font-label-md text-label-md text-on-surface">Good</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-60">4d</span>
+</button>
+<button class="assessment-btn group flex flex-col items-center gap-xs p-sm bg-surface-container-highest hover:bg-primary-fixed rounded-xl transition-all" data-quality="5">
+<span class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-primary group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="sentiment_very_satisfied">sentiment_very_satisfied</span>
+</span>
+<span class="font-label-md text-label-md text-on-surface">Easy</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-60">7d</span>
+</button>
+</div>
+</div>
+<!-- Interaction Tips -->
+<div class="mt-xl flex justify-center gap-lg">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="px-xs py-0.5 bg-surface-container rounded border border-outline-variant shadow-sm">1-4</span>
+<span>Rate Quality</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="px-xs py-0.5 bg-surface-container rounded border border-outline-variant shadow-sm">Space</span>
+<span>Flip Card</span>
+</div>
+</div>
+</div>
+</main>
+<script>
+        const flashcard = document.getElementById('flashcard');
+        const assessmentControls = document.getElementById('assessment-controls');
+        const btnShowAnswer = document.getElementById('btn-show-answer');
+        const progressBar = document.getElementById('progress-bar');
+        
+        let isFlipped = false;
+
+        function flipCard() {
+            if (isFlipped) return;
+            isFlipped = true;
+            flashcard.classList.add('flashcard-flipped');
+            
+            // Show assessment buttons
+            assessmentControls.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        }
+
+        function resetCard() {
+            isFlipped = false;
+            flashcard.classList.remove('flashcard-flipped');
+            assessmentControls.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        }
+
+        flashcard.addEventListener('click', flipCard);
+        btnShowAnswer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            flipCard();
+        });
+
+        document.querySelectorAll('.assessment-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                btn.classList.add('scale-95');
+                setTimeout(() => {
+                    btn.classList.remove('scale-95');
+                    resetCard();
+                }, 150);
+            });
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                flipCard();
+            }
+            if (isFlipped) {
+                if (e.key === '1') document.querySelector('[data-quality="1"]').click();
+                if (e.key === '2') document.querySelector('[data-quality="2"]').click();
+                if (e.key === '3') document.querySelector('[data-quality="4"]').click();
+                if (e.key === '4') document.querySelector('[data-quality="5"]').click();
+            }
+        });
+
+        flashcard.addEventListener('mousemove', (e) => {
+            const rect = flashcard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const cards = flashcard.querySelectorAll('.glass-panel');
+            cards.forEach(card => {
+                card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.8), rgba(255,255,255,0.65))`;
+            });
+        });
+
+        flashcard.addEventListener('mouseleave', () => {
+            const cards = flashcard.querySelectorAll('.glass-panel');
+            cards.forEach(card => {
+                card.style.background = `rgba(255, 255, 255, 0.7)`;
+            });
+        });
+    </script>
+</body></html>

@@ -55,57 +55,62 @@ export const RW1_QUESTIONS: Question[] = [
   {
     id: 1,
     text: 'According to the first paragraph, the "true essence" of modern urban functionality is primarily associated with which of the following?',
+    question_type: 'mcq',
     options: {
       A: 'monumental structures that define the cityscape.',
       B: 'aesthetic cohesion mirroring traditional civic planning.',
       C: 'underground utility systems and electromagnetic networks.',
       D: 'towering skyscrapers that dominate the aesthetic skyline.'
     },
-    correctAnswer: 'C'
+    correctAnswer: ['C']
   },
   {
     id: 2,
     text: 'Which choice best describes the central paradox outlined in the third paragraph?',
+    question_type: 'mcq',
     options: {
       A: 'People feel overwhelmed by urban systems but are incapable of functioning without them.',
       B: 'Cities grow increasingly crowded yet urban residents report feeling lonelier.',
       C: 'Modern technology connects individuals globally while isolating them locally.',
       D: 'Environmental planners attempt to reduce sensory stimulation while increasing digital screens.'
     },
-    correctAnswer: 'A'
+    correctAnswer: ['A']
   },
   {
     id: 3,
     text: 'Based on the passage, future urban planners must prioritize which design goal?',
+    question_type: 'mcq',
     options: {
       A: 'Complete dismantling of high-speed digital arrays to protect nature.',
       B: 'Balancing digital connectivity with human cognitive thresholds.',
       C: 'Creating larger, more visually dramatic skyscrapers.',
       D: 'Replacing rapid transit with traditional forms of civic gathering.'
     },
-    correctAnswer: 'B'
+    correctAnswer: ['B']
   },
   {
     id: 4,
     text: 'As used in the second paragraph, the word "ubiquitous" most nearly means:',
+    question_type: 'mcq',
     options: {
       A: 'occasionally disruptive.',
       B: 'present everywhere.',
       C: 'visually appealing.',
       D: 'technologically advanced.'
     },
-    correctAnswer: 'B'
+    correctAnswer: ['B']
   },
   {
     id: 5,
     text: 'What primary tone is established by the author in discussing modern urban sensory stimulation?',
+    question_type: 'mcq',
     options: {
       A: 'Apathetic indifference toward societal changes.',
       B: 'Unchecked enthusiasm for tech-smart cities.',
       C: 'Objective concern regarding psychological impacts.',
       D: 'Disdainful contempt for architectural aesthetic.'
     },
-    correctAnswer: 'C'
+    correctAnswer: ['C']
   }
 ];
 
@@ -113,46 +118,50 @@ export const MATH_QUESTIONS: Question[] = [
   {
     id: 1,
     text: 'If f(x) = 3x - 7 and f(k) = 8, what is the value of k?',
+    question_type: 'mcq',
     options: {
       A: '3',
       B: '5',
       C: '7',
       D: '15'
     },
-    correctAnswer: 'B'
+    correctAnswer: ['B']
   },
   {
     id: 2,
     text: 'A certain line in the xy-plane passes through (2, 5) and has a slope of -2. What is the y-intercept of this line?',
+    question_type: 'mcq',
     options: {
       A: '1',
       B: '5',
       C: '9',
       D: '11'
     },
-    correctAnswer: 'C'
+    correctAnswer: ['C']
   },
   {
     id: 3,
     text: 'If x^2 - 6x + 9 = 0, what is the value of (x - 3)^3?',
+    question_type: 'mcq',
     options: {
       A: '-27',
       B: '0',
       C: '9',
       D: '27'
     },
-    correctAnswer: 'B'
+    correctAnswer: ['B']
   },
   {
     id: 4,
     text: 'The dynamic solution to the equation system ax + by = 12 and 2ax - by = 6, given that x = 2 and y = 4, implies what value for the coefficient coefficient a?',
+    question_type: 'mcq',
     options: {
       A: '3',
       B: '4',
       C: '5',
       D: '8'
     },
-    correctAnswer: 'A'
+    correctAnswer: ['A']
   }
 ];
 

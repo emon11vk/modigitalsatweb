@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   ChevronLeft, ChevronRight, Flag, Timer, Eye, EyeOff,
-  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle
+  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle, Send
 } from 'lucide-react';
 import { Question, Passage, Theme } from '../types';
 import MathRenderer from './MathRenderer';
@@ -37,8 +37,8 @@ function useHighlight(containerRef: React.RefObject<HTMLDivElement | null>) {
       const mark = document.createElement('mark');
       mark.dataset.hlId = id;
       mark.style.cssText =
-        'background:#FEF08A;color:#000 !important;border-radius:2px;cursor:pointer;padding:1px 3px;transition:background 0.15s;';
-      mark.title = 'Click để xóa highlight này';
+        'background:var(--color-accent-gold);color:var(--color-text-dark);font-weight:bold;border-radius:8px;cursor:pointer;padding:1px 3px;transition:background 0.15s;';
+      mark.title = 'Click để xóa highlight';
 
       try {
         range.surroundContents(mark);
@@ -52,8 +52,8 @@ function useHighlight(containerRef: React.RefObject<HTMLDivElement | null>) {
         e.stopPropagation();
         removeById(id);
       });
-      mark.addEventListener('mouseenter', () => { mark.style.background = '#fca5a5'; mark.style.color = '#000'; });
-      mark.addEventListener('mouseleave', () => { mark.style.background = '#FEF08A'; mark.style.color = '#000'; });
+      mark.addEventListener('mouseenter', () => { mark.style.background = 'var(--color-accent-gold-light)'; });
+      mark.addEventListener('mouseleave', () => { mark.style.background = 'var(--color-accent-gold)'; });
 
       setHighlights(prev => [...prev, { id, text }]);
     } catch (err) {
@@ -102,6 +102,8 @@ interface ActiveTestScreenProps {
   theme: Theme;
   moduleId: string;
   moduleTitle: string;
+  subject?: string;
+  durationMinutes?: number;
   questions: Question[];
   passage?: Passage;
   onFinishTest: (answers: Record<number, string>) => void;
@@ -112,17 +114,23 @@ export default function ActiveTestScreen({
   theme,
   moduleId,
   moduleTitle,
+  subject = '',
+  durationMinutes = 32,
   questions,
   passage,
   onFinishTest,
   onExit,
 }: ActiveTestScreenProps) {
   const isDark = theme === 'dark';
+  const isVerbal = subject === 'Reading & Writing' || subject === 'VERBAL';
 
   if (!questions || questions.length === 0) {
     return (
-      <div className={`min-h-screen flex items-center justify-center font-mono text-sm uppercase tracking-widest ${isDark ? 'bg-[#0a0e1a] text-white' : 'bg-[#FAFAFA] text-black'}`}>
-        Đang tải dữ liệu...
+      <div className={`min-h-screen flex items-center justify-center text-sm ${isDark ? 'bg-bg-dark text-text-secondary' : 'bg-bg-light text-text-dark-secondary'}`}>
+        <div className="flex items-center gap-3">
+          <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          Đang tải dữ liệu...
+        </div>
       </div>
     );
   }
@@ -132,9 +140,42 @@ export default function ActiveTestScreen({
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
   const [eliminatedOptions, setEliminatedOptions] = useState<Record<string, boolean>>({});
 
-  const [timeLeftSec, setTimeLeftSec] = useState(32 * 60);
+  const [timeLeftSec, setTimeLeftSec] = useState(durationMinutes * 60);
   const [showTimer, setShowTimer] = useState(true);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  // Modals
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [showExitModal, setShowExitModal] = useState(false);
+
+  // Resizing
+  const [leftPaneRatio, setLeftPaneRatio] = useState(50);
+  const mainContentRef = useRef<HTMLDivElement>(null);
+
+  const handleDragStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    const handleMove = (moveEvent: MouseEvent | TouchEvent) => {
+      if (!mainContentRef.current) return;
+      const { left, width } = mainContentRef.current.getBoundingClientRect();
+      const clientX = 'touches' in moveEvent ? moveEvent.touches[0].clientX : moveEvent.clientX;
+      let newRatio = ((clientX - left) / width) * 100;
+      if (newRatio < 20) newRatio = 20;
+      if (newRatio > 80) newRatio = 80;
+      setLeftPaneRatio(newRatio);
+    };
+    const handleUp = () => {
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('mouseup', handleUp);
+      document.removeEventListener('touchmove', handleMove);
+      document.removeEventListener('touchend', handleUp);
+      document.body.style.userSelect = '';
+    };
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleUp);
+    document.addEventListener('touchmove', handleMove);
+    document.addEventListener('touchend', handleUp);
+    document.body.style.userSelect = 'none';
+  }, []);
 
   const latestAnswers = useRef(userAnswers);
   useEffect(() => { latestAnswers.current = userAnswers; }, [userAnswers]);
@@ -162,7 +203,7 @@ export default function ActiveTestScreen({
     }
   }, [timeLeftSec, hasSubmitted, onFinishTest]);
 
-  // Close toolbar when clicking outside passage
+  // Close toolbar
   useEffect(() => {
     const handleGlobalMouseDown = (e: MouseEvent) => {
       const toolbar = document.getElementById('hl-toolbar');
@@ -205,200 +246,309 @@ export default function ActiveTestScreen({
 
   const navigatePrev = () => { if (currentIdx > 0) setCurrentIdx(currentIdx - 1); };
   const navigateNext = () => { if (currentIdx < questions.length - 1) setCurrentIdx(currentIdx + 1); };
-  const handleManualSubmit = () => { if (!hasSubmitted) { setHasSubmitted(true); onFinishTest(userAnswers); } };
+  const handleManualSubmit = () => { setShowSubmitModal(true); };
+  const confirmSubmit = () => { if (!hasSubmitted) { setHasSubmitted(true); onFinishTest(userAnswers); setShowSubmitModal(false); } };
+  const handleExitRequest = () => { setShowExitModal(true); };
+  const confirmExit = () => { setShowExitModal(false); onExit(); };
 
-  // Toolbar position: clamp so it never goes off screen
+  // Keyboard Shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      const key = e.key.toUpperCase();
+      if (['A', 'B', 'C', 'D'].includes(key)) {
+        if (currentQuestion.options && Object.values(currentQuestion.options).some(val => val !== null && val !== '' && val !== 'null')) {
+          handleSelectAnswer(key);
+        }
+      } else if (e.key === 'ArrowLeft') {
+        navigatePrev();
+      } else if (e.key === 'ArrowRight') {
+        navigateNext();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  });
+
   const toolbarStyle = pending ? {
     top: Math.max(pending.y - 50, 8),
     left: Math.min(pending.x + 8, (typeof window !== 'undefined' ? window.innerWidth : 800) - 210),
   } : {};
 
+  const answeredCount = Object.keys(userAnswers).length;
+  const timePercent = (timeLeftSec / (durationMinutes * 60)) * 100;
+
   return (
-    <div
-      className={`min-h-screen flex flex-col select-text ${isDark ? 'bg-[#0a0e1a] text-[#F3F4F6]' : 'bg-[#FAFAFA] text-[#0a0e1a]'}`}
-    >
+    <div className={`min-h-screen flex flex-col select-text ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'}`}>
+      
       {/* ── HEADER ── */}
-      <header className={`px-4 py-4 md:px-6 flex items-center justify-between border-b-2 transition-all shrink-0 ${isDark ? 'bg-[#0a0e1a] border-white/10' : 'bg-white border-black'}`}>
+      <header className={`px-4 py-3 md:px-6 flex items-center justify-between border-b shrink-0 ${
+        isDark ? 'bg-bg-dark/95 backdrop-blur-md border-white/5' : 'bg-white/95 backdrop-blur-md border-slate-200'
+      }`}>
         <div className="flex items-center gap-3">
-          <button onClick={onExit} className={`flex items-center gap-1.5 px-4 py-2 text-xs font-black uppercase tracking-widest rounded-none border-2 transition-all cursor-pointer ${isDark ? 'border-white/15 text-white hover:bg-[#4dd9cc] hover:text-black hover:border-[#4dd9cc]' : 'border-black text-black hover:bg-black hover:text-white'}`}>
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Thoát</span>
+          <button
+            onClick={handleExitRequest}
+            className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg border transition-colors cursor-pointer ${
+              isDark ? 'border-white/10 text-text-secondary hover:text-white hover:bg-white/5' : 'border-slate-200 text-text-dark-secondary hover:text-text-dark hover:bg-slate-50'
+            }`}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="hidden sm:inline">Thoát</span>
           </button>
+          
           <div className="hidden sm:flex items-center gap-2">
-            <span className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-none border ${passage ? (isDark ? 'bg-white/5 border-white/20 text-white' : 'bg-gray-105 border-black text-black') : (isDark ? 'bg-[#4dd9cc]/10 border-[#4dd9cc]/30 text-[#4dd9cc]' : 'bg-black border-black text-white')}`}>
-              {passage ? 'Đọc & Viết' : 'Toán Học'}
+            <span className={`px-3 py-1 rounded-md text-xs font-semibold ${
+              isVerbal
+                ? isDark ? 'bg-primary/15 text-primary-light' : 'bg-primary/10 text-primary'
+                : isDark ? 'bg-accent-gold/15 text-accent-gold' : 'bg-amber-100 text-amber-800'
+            }`}>
+              {isVerbal ? 'Đọc & Viết' : 'Toán Học'}
             </span>
-            <span className="text-xs font-mono tracking-tight opacity-55">{moduleTitle}</span>
+            <span className={`text-sm font-medium ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>{moduleTitle}</span>
           </div>
         </div>
-
-        <div className="flex items-center gap-3">
-          <button onClick={toggleFlag} className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer rounded-none select-none ${flaggedQuestions[currentQuestion.id] ? 'bg-amber-500/20 border-amber-500 text-amber-500 font-bold' : (isDark ? 'bg-black border-white/20 text-gray-300 hover:text-[#4dd9cc] hover:border-[#4dd9cc]' : 'bg-white border-black text-black hover:bg-black hover:text-white')}`}>
-            <Flag className={`w-3.5 h-3.5 ${flaggedQuestions[currentQuestion.id] ? 'fill-current text-amber-500' : ''}`} />
-            <span className="hidden xs:inline">{flaggedQuestions[currentQuestion.id] ? 'FLAGGED' : 'FLAG'}</span>
-          </button>
-
-          {showTimer ? (
-            <div className={`px-4 py-2 border-2 flex items-center gap-2 text-center transition-all rounded-none ${timeLeftSec < 120 ? 'border-red-600 bg-red-600/10 text-red-500 font-black animate-pulse' : (isDark ? 'border-[#4dd9cc]/40 bg-black text-[#4dd9cc]' : 'border-black bg-white text-black')}`}>
-              <Timer className="w-4 h-4 shrink-0" />
-              <span className="font-mono text-base font-black tracking-wider leading-none">{formatTime(timeLeftSec)}</span>
-            </div>
-          ) : (
-            <div className="text-xs font-mono uppercase tracking-wider opacity-40">Timer Off</div>
-          )}
-
-          <button onClick={() => setShowTimer(!showTimer)} className={`p-2 border transition-colors rounded-none cursor-pointer ${isDark ? 'border-white/10 text-gray-500 hover:text-[#4dd9cc]' : 'border-black/15 text-gray-400 hover:text-black'}`}>
-            {showTimer ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-          </button>
-        </div>
-
-        <button onClick={handleManualSubmit} className={`px-4 py-2 md:px-6 md:py-2.5 text-xs font-black uppercase tracking-widest rounded-none cursor-pointer transition-all border ${isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/20' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'}`}>
-          Nộp bài
-        </button>
-      </header>
-
-      {/* ── NAV ROW ── */}
-      <div className={`px-4 py-3 border-b-2 flex flex-col md:flex-row items-center justify-between gap-4 transition-all shrink-0 ${isDark ? 'bg-[#0a0e1a] border-white/10' : 'bg-white border-black'}`}>
-        <button onClick={navigatePrev} disabled={currentIdx === 0} className={`px-4 py-2.5 text-xs font-black uppercase tracking-widest rounded-none border-2 flex items-center gap-1 transition-all ${currentIdx === 0 ? 'opacity-20 cursor-not-allowed' : (isDark ? 'border-white/10 text-white hover:bg-white/5 cursor-pointer' : 'border-black text-black hover:bg-black hover:text-white cursor-pointer')}`}>
-          <ChevronLeft className="w-3.5 h-3.5" />
-          <span>Câu trước</span>
-        </button>
 
         <div className="flex items-center gap-2">
-          {questions.map((q, idx) => {
-            const isSelected = idx === currentIdx;
-            const isAnswered = !!userAnswers[q.id];
-            const isFlagged = flaggedQuestions[q.id];
-            return (
-              <button key={q.id} onClick={() => setCurrentIdx(idx)} className={`relative w-8 h-8 md:w-9 md:h-9 rounded-none flex items-center justify-center text-xs font-black font-mono transition-all border-2 cursor-pointer ${isSelected ? (isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc]' : 'bg-black text-white border-black') : (isAnswered ? (isDark ? 'bg-black border-[#4dd9cc]/50 text-[#4dd9cc]' : 'bg-gray-105 border-black text-black font-black') : (isDark ? 'bg-black border-white/10 text-white/40' : 'bg-white border-black/10 text-black/40'))}`}>
-                {idx + 1}
-                {isFlagged && <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-500 border border-black" />}
-              </button>
-            );
-          })}
-        </div>
+          {/* Timer */}
+          {showTimer ? (
+            <div className={`px-3 py-2 rounded-lg flex items-center gap-2 border transition-all ${
+              timeLeftSec < 120
+                ? 'border-accent-warm/30 bg-accent-warm/5 text-accent-warm'
+                : isDark ? 'border-white/10 bg-white/5 text-text-primary' : 'border-slate-200 bg-slate-50 text-text-dark'
+            }`}>
+              <Timer className="w-4 h-4 shrink-0" />
+              <span className="font-mono text-sm font-bold tracking-wider">{formatTime(timeLeftSec)}</span>
+            </div>
+          ) : (
+            <div className={`text-xs ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>Timer Off</div>
+          )}
 
-        {currentIdx === questions.length - 1 ? (
-          <button onClick={handleManualSubmit} className={`px-5 py-2.5 text-xs font-black uppercase tracking-widest rounded-none flex items-center gap-1.5 cursor-pointer transition-all border ${isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/10' : 'bg-black text-white border-transparent hover:bg-white hover:text-black hover:border-black'}`}>
-            <span>Nộp bài & kết quả</span>
-            <CheckSquare className="w-3.5 h-3.5" />
+          <button
+            onClick={() => setShowTimer(!showTimer)}
+            className={`p-2 rounded-lg border transition-all cursor-pointer ${
+              isDark ? 'border-white/10 text-text-muted hover:text-primary' : 'border-slate-200 text-slate-400 hover:text-primary'
+            }`}
+          >
+            {showTimer ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
-        ) : (
-          <button onClick={navigateNext} className={`px-4 py-2.5 text-xs font-black uppercase tracking-widest rounded-none border-2 flex items-center gap-1.5 transition-all cursor-pointer ${isDark ? 'border-white/10 text-white hover:bg-white/5' : 'border-black text-black hover:bg-black hover:text-white'}`}>
-            <span>Câu kế tiếp</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+
+          {/* Submit */}
+          <button
+            onClick={handleManualSubmit}
+            className="px-4 py-2 rounded-lg text-xs font-bold cursor-pointer transition-all bg-primary hover:bg-primary-light text-white shadow-md shadow-primary/20 flex items-center gap-1.5"
+          >
+            <Send className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Nộp bài</span>
           </button>
-        )}
-      </div>
+        </div>
+      </header>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden h-[calc(100vh-190px)] md:h-[calc(100vh-190px)]">
+      <div 
+        ref={mainContentRef}
+        className="flex-1 grid overflow-hidden h-0 relative lg:[grid-template-columns:var(--left-pane)_var(--right-pane)] grid-cols-1"
+        style={{ '--left-pane': `${leftPaneRatio}%`, '--right-pane': `${100 - leftPaneRatio}%` } as React.CSSProperties}
+      >
 
-        {/* LEFT: Passage or Math placeholder */}
-        {displayPassage ? (
-          <div
-            ref={passageRef}
-            className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full relative select-text transition-colors scrollbar-thin ${isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'}`}
-            onMouseUp={(e) => handleSelectionEnd(e.clientX, e.clientY)}
-            onTouchEnd={(e) => {
-              const t = e.changedTouches[0];
-              handleSelectionEnd(t.clientX, t.clientY);
-            }}
-          >
-            {/* Passage header */}
-            <div className="flex items-center justify-between mb-2.5 border-b border-white/5 pb-2 select-none">
-              <span className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-[#4dd9cc]' : 'text-black'}`}>
-                Paragraph Context / Đoạn Văn Bản
-              </span>
+        {/* LEFT: Passage and Question */}
+        <div
+          ref={passageRef}
+          className={`p-6 md:p-8 overflow-y-auto border-r h-full relative select-text transition-colors ${
+            isDark ? 'bg-bg-card/30 border-white/5' : 'bg-white border-slate-100'
+          }`}
+          onMouseUp={(e) => handleSelectionEnd(e.clientX, e.clientY)}
+          onTouchEnd={(e) => {
+            const t = e.changedTouches[0];
+            handleSelectionEnd(t.clientX, t.clientY);
+          }}
+        >
+          {displayPassage && (
+            <div className="mb-8">
+              {/* Clear Highlights Button (Only shown if there are highlights) */}
               {highlights.length > 0 && (
-                <button
-                  onClick={clearAll}
-                  className="text-[9px] font-black uppercase tracking-widest text-red-500 hover:underline flex items-center gap-1 cursor-pointer"
-                >
-                  <Eraser className="w-3.5 h-3.5" />
-                  Xoá toàn bộ ({highlights.length})
-                </button>
+                <div className="flex justify-end mb-2">
+                  <button
+                    onClick={clearAll}
+                    className="text-[10px] font-semibold text-accent-warm hover:underline flex items-center gap-1 cursor-pointer"
+                  >
+                    <Eraser className="w-3.5 h-3.5" />
+                    Xoá ({highlights.length})
+                  </button>
+                </div>
               )}
-            </div>
 
-            {/* Passage title */}
-            <h3 className={`text-xl sm:text-2xl font-black tracking-tight mb-3 uppercase font-display ${isDark ? 'text-white' : 'text-black'}`}>
-              Paragraph: {displayPassage.title}
-            </h3>
-
-            {/* Introduction */}
-            <MathRenderer
-              content={displayPassage.introduction}
-              className="text-xs font-mono opacity-50 mb-6 leading-relaxed bg-black/35 py-3 px-4 border border-white/5 rounded-none"
-              isDark={isDark}
-            />
-
-            {/* Paragraphs */}
-            <div className="space-y-4 font-sans max-w-none">
-              {displayPassage.paragraphs.map((p, idx) => (
-                <MathRenderer
-                  key={idx}
-                  content={p}
-                  className="mb-4 leading-relaxed text-sm md:text-base opacity-90 transition-all font-sans"
-                  isDark={isDark}
-                />
-              ))}
-            </div>
-
-
-          </div>
-        ) : (
-          <div className={`p-6 md:p-8 overflow-y-auto border-r-2 h-full flex flex-col justify-center items-center transition-colors select-none ${isDark ? 'bg-[#0c0c0c] border-white/10' : 'bg-white border-black/15'}`}>
-            <div className="max-w-md w-full p-8 text-center space-y-4 rounded-none border-2 border-dashed dark:border-white/10 bg-black/20">
-              <span className="text-3xl text-[#4dd9cc]">📐</span>
-              <h3 className="text-sm font-black uppercase tracking-widest font-display text-[#4dd9cc]">
-                Section 2: SAT Math Workspace
-              </h3>
-              <p className="text-xs font-mono opacity-50 leading-relaxed">
-                Đối với phần thi Toán học, hãy tham khảo công thức tính diện tích hình học, hoặc sử dụng hệ thống nháp riêng. Câu hỏi hiển thị trực tiếp ở bảng bên phải.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* RIGHT: Question */}
-        <div className={`p-6 md:p-8 overflow-y-auto h-full space-y-6 flex flex-col justify-between ${isDark ? 'bg-[#060606]' : 'bg-[#FAFAFA]'}`}>
-          <div>
-            <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-6 select-none">
-              <span className="text-xs font-black uppercase tracking-widest opacity-60 font-mono">
-                CÂU HỎI {currentIdx + 1} / {questions.length}
-              </span>
-            </div>
-
-            <div className={`text-base md:text-[17px] font-bold leading-relaxed mb-8 ${isDark ? 'text-white' : 'text-[#0a0e1a]'}`}>
               <MathRenderer
-                content={currentQuestion.text}
-                className="w-full"
+                content={displayPassage.introduction}
+                className={`font-serif text-sm mb-6 leading-relaxed p-3 rounded-lg ${
+                  isDark ? 'text-text-muted bg-white/3 border border-white/5' : 'text-text-dark-secondary bg-slate-50 border border-slate-100'
+                }`}
                 isDark={isDark}
+                disableMath={isVerbal}
               />
+
+              <div className="space-y-4">
+                {displayPassage.paragraphs.map((p, idx) => (
+                  <MathRenderer
+                    key={idx}
+                    content={p}
+                    className={`font-serif leading-relaxed text-base md:text-lg ${isDark ? 'text-text-primary/90' : 'text-text-dark/90'}`}
+                    isDark={isDark}
+                    disableMath={isVerbal}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Question Text */}
+          <div className="mt-2">
+             {!isVerbal && (
+               <>
+                 <div className={`flex items-center justify-between mb-4 pb-3 border-b ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
+                   <span className={`text-sm font-medium ${isDark ? 'text-primary' : 'text-primary'}`}>
+                     Câu hỏi
+                   </span>
+                   {highlights.length > 0 && (
+                    <button
+                      onClick={clearAll}
+                      className="text-[10px] font-semibold text-accent-warm hover:underline flex items-center gap-1 cursor-pointer"
+                    >
+                      <Eraser className="w-3.5 h-3.5" />
+                      Xoá ({highlights.length})
+                    </button>
+                   )}
+                 </div>
+                 
+                 <div className={`font-serif text-lg md:text-[19px] font-normal leading-relaxed mb-6 ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                   <MathRenderer
+                     content={currentQuestion.text}
+                     className="w-full"
+                     isDark={isDark}
+                     disableMath={false}
+                   />
+                 </div>
+               </>
+             )}
+
+             {currentQuestion.imageUrl && (
+               <div className="mb-6 flex justify-center">
+                 <img
+                   src={currentQuestion.imageUrl}
+                   alt="Question reference"
+                   className={`max-w-full h-auto rounded-lg shadow-sm border ${
+                     isDark ? 'border-white/10' : 'border-slate-200'
+                   }`}
+                   style={{ maxHeight: '400px' }}
+                 />
+               </div>
+             )}
+          </div>
+        </div>
+
+        {/* MIDDLE RESIZER HANDLE */}
+        <div 
+          onMouseDown={handleDragStart}
+          onTouchStart={handleDragStart}
+          className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 hidden lg:flex items-center justify-center w-6 h-12 rounded-sm cursor-col-resize shadow-md transition-colors hover:bg-primary hover:text-white hover:border-primary ${
+            isDark ? 'bg-bg-card border border-white/10 text-white' : 'bg-white border border-slate-200 text-slate-500'
+          }`}
+          style={{ left: `${leftPaneRatio}%` }}
+        >
+          <span className="font-mono text-xs font-bold px-0.5">{'⋮'}</span>
+        </div>
+
+        {/* RIGHT: Answer Choices */}
+        <div className={`p-6 md:p-8 overflow-y-auto h-full space-y-6 flex flex-col justify-between ${
+          isDark ? 'bg-bg-dark' : 'bg-bg-light'
+        }`}>
+          <div>
+            <div className={`flex items-center justify-between pb-3 mb-6 border-b-2 border-dashed ${isDark ? 'border-white/10' : 'border-slate-300'}`}>
+              <div className="flex items-center gap-3">
+                <div className={`w-8 h-8 flex items-center justify-center font-bold text-base rounded-sm ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
+                  {currentIdx + 1}
+                </div>
+                <button
+                  onClick={toggleFlag}
+                  className={`flex items-center gap-1.5 px-2 py-1 text-sm font-semibold rounded transition-all cursor-pointer ${
+                    flaggedQuestions[currentQuestion.id]
+                      ? 'text-accent-gold'
+                      : isDark ? 'text-text-muted hover:text-white' : 'text-slate-500 hover:text-black'
+                  }`}
+                >
+                  <Flag className={`w-4 h-4 ${flaggedQuestions[currentQuestion.id] ? 'fill-current' : ''}`} />
+                  Mark for Review
+                </button>
+              </div>
+              
+              <button 
+                className={`p-1.5 rounded border transition-all ${isDark ? 'border-white/20 text-white hover:bg-white/10' : 'border-slate-300 text-black hover:bg-slate-100'}`}
+                title="Cross out options"
+              >
+                <span className="font-mono text-[10px] line-through font-bold">ABC</span>
+              </button>
             </div>
 
-            {currentQuestion.question_type === 'mcq' ? (
-              <div className="space-y-4">
+            {/* Question Text for Verbal questions */}
+            {isVerbal && (
+              <div className={`mb-6 p-4 md:p-5 rounded-xl border ${isDark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
+                <MathRenderer
+                  content={currentQuestion.text}
+                  className={`font-serif text-[17px] leading-relaxed ${isDark ? 'text-white' : 'text-text-dark'}`}
+                  isDark={isDark}
+                  disableMath={true}
+                />
+              </div>
+            )}
+
+            {currentQuestion.options && Object.values(currentQuestion.options).some(val => val !== null && val !== '' && val !== 'null') ? (
+              <div className="space-y-3">
                 {(['A', 'B', 'C', 'D'] as const).map((letter) => {
                   const isSelected = userAnswers[currentQuestion.id] === letter;
                   const isEliminated = !!eliminatedOptions[`${currentQuestion.id}-${letter}`];
                   return (
-                    <div key={letter} className={`relative group flex items-stretch rounded-none border-2 transition-all ${isSelected ? (isDark ? 'bg-[#4dd9cc]/5 border-[#4dd9cc] text-white' : 'bg-black border-black text-white') : (isEliminated ? 'opacity-20 scale-[0.98]' : (isDark ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' : 'bg-white border-black/15 hover:border-black'))}`}>
+                    <div
+                      key={letter}
+                      className={`relative group flex items-stretch rounded-xl border-2 transition-all duration-200 ${
+                        isSelected
+                          ? 'bg-transparent border-accent-gold shadow-sm'
+                          : isEliminated
+                          ? 'opacity-25 scale-[0.98]'
+                          : isDark
+                          ? 'bg-bg-card border-white/10 hover:border-white/30'
+                          : 'bg-white border-slate-300 hover:border-slate-400'
+                      }`}
+                    >
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleEliminate(letter); }}
-                        className={`px-3 flex items-center justify-center transition-colors border-r-2 text-[9px] font-mono tracking-widest uppercase cursor-pointer select-none ${isEliminated ? 'border-red-500/20 text-red-500 bg-red-950/10' : 'border-transparent text-gray-500 hover:text-red-500'}`}
-                        title={isEliminated ? 'Khôi phục lại phương án' : 'Gạch bỏ phương án'}
+                        className={`px-3 flex items-center justify-center transition-colors border-r text-[10px] cursor-pointer ${
+                          isEliminated
+                            ? isDark ? 'border-white/5 text-accent-warm' : 'border-slate-100 text-accent-warm'
+                            : isDark ? 'border-white/5 text-text-muted hover:text-accent-warm' : 'border-slate-100 text-slate-300 hover:text-accent-warm'
+                        }`}
+                        title={isEliminated ? 'Khôi phục' : 'Gạch bỏ'}
                       >
-                        {isEliminated ? '✕' : '[DEL]'}
+                        ✕
                       </button>
-                      <button onClick={() => handleSelectAnswer(letter)} className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer">
-                        <span className={`flex items-center justify-center w-7 h-7 text-xs font-black border-2 uppercase shrink-0 transition-all rounded-none select-none ${isSelected ? (isDark ? 'bg-[#4dd9cc] text-black border-[#4dd9cc]' : 'bg-white text-black border-white') : (isDark ? 'bg-black border-white/10 text-[#4dd9cc] group-hover:border-[#4dd9cc]' : 'bg-gray-50 border-black/15 text-black')}`}>
+                      <button
+                        onClick={() => handleSelectAnswer(letter)}
+                        className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer"
+                      >
+                        <span className={`flex items-center justify-center w-7 h-7 text-sm font-bold rounded-full border-2 shrink-0 transition-all mt-0.5 ${
+                          isSelected
+                            ? 'bg-accent-gold border-accent-gold text-black'
+                            : isDark ? 'border-white/20 text-white' : 'border-slate-400 text-text-dark'
+                        }`}>
                           {letter}
                         </span>
-                        <span className={`text-sm md:text-base font-bold leading-relaxed pt-0.5 ${isEliminated ? 'line-through opacity-40' : ''}`}>
-                          {currentQuestion.options?.[letter as keyof typeof currentQuestion.options]}
-                        </span>
+                        <div className={`font-serif text-base md:text-lg leading-relaxed pt-0.5 ${
+                          isEliminated ? 'line-through opacity-40' : ''
+                        } ${isDark ? 'text-text-primary' : 'text-text-dark'}`}>
+                          <MathRenderer
+                            content={currentQuestion.options?.[letter as keyof typeof currentQuestion.options] || ''}
+                            isDark={isDark}
+                            disableMath={isVerbal}
+                          />
+                        </div>
                       </button>
                     </div>
                   );
@@ -406,24 +556,97 @@ export default function ActiveTestScreen({
               </div>
             ) : (
               <div className="space-y-3">
-                <label className={`text-sm font-bold ${isDark ? 'text-white/80' : 'text-black/80'}`}>
-                  Nhập đáp án của bạn:
+                <label className={`text-sm font-medium ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                  Nhập đáp án:
                 </label>
                 <input
                   type="text"
                   value={userAnswers[currentQuestion.id] || ''}
                   onChange={(e) => handleSelectAnswer(e.target.value)}
                   placeholder="Ví dụ: 0.5, 1/2, .5"
-                  className={`w-full px-4 py-3 border-2 rounded-none font-mono text-base transition-all ${isDark ? 'bg-black border-white/20 text-white placeholder-gray-500 focus:border-[#4dd9cc] focus:outline-none' : 'bg-white border-black/15 text-black placeholder-gray-400 focus:border-black focus:outline-none'}`}
+                  className={`w-full px-4 py-3 rounded-xl font-mono text-base transition-all ${
+                    isDark
+                      ? 'bg-bg-card border border-white/10 text-white placeholder-text-muted focus:border-primary/50'
+                      : 'bg-white border border-slate-200 text-text-dark placeholder-slate-400 focus:border-primary/50'
+                  }`}
                 />
               </div>
             )}
           </div>
 
-          <div className="pt-6 text-[10px] font-mono uppercase tracking-wider opacity-40 flex items-center gap-1.5 justify-end select-none">
-            <AlertCircle className="w-4 h-4 text-[#4dd9cc]" />
-            <span>Xếp hạng và điểm số được cập nhật trực tuyến sau khi hoàn thành.</span>
+          <div className={`pt-4 text-xs flex items-center gap-1.5 justify-end ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+            <AlertCircle className="w-3.5 h-3.5 text-primary" />
+            <span>Điểm cập nhật sau khi nộp bài.</span>
           </div>
+        </div>
+      </div>
+
+      {/* ── QUESTION NAV ── */}
+      <div className={`px-4 py-3 border-t flex items-center justify-between gap-3 shrink-0 overflow-x-auto ${
+        isDark ? 'bg-bg-dark/95 border-white/5' : 'bg-white border-slate-200'
+      }`}>
+        <div className={`hidden md:block text-xs font-bold ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
+          {moduleTitle}
+        </div>
+        
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none flex-1 justify-center md:justify-start lg:justify-center px-4">
+          {questions.map((q, idx) => {
+            const isCurrent = idx === currentIdx;
+            const isAnswered = !!userAnswers[q.id];
+            const isFlagged = flaggedQuestions[q.id];
+            return (
+              <button
+                key={q.id}
+                onClick={() => setCurrentIdx(idx)}
+                className={`relative w-8 h-8 rounded flex items-center justify-center text-xs font-bold transition-all cursor-pointer shrink-0 ${
+                  isCurrent
+                    ? 'bg-black text-white shadow-md'
+                    : isAnswered
+                    ? isDark ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-primary/5 text-primary border border-primary/10'
+                    : isDark ? 'bg-white/5 text-text-muted border border-white/5' : 'bg-white text-text-dark-secondary border border-slate-200 border-dashed'
+                }`}
+              >
+                {idx + 1}
+                {isFlagged && (
+                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-accent-gold rounded-sm border-2 border-bg-dark" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={navigatePrev}
+            disabled={currentIdx === 0}
+            className={`px-4 py-2 text-xs font-bold rounded border flex items-center gap-1 transition-all shrink-0 ${
+              currentIdx === 0
+                ? (isDark ? 'bg-white/5 text-white/30 border-white/5 cursor-not-allowed' : 'bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed')
+                : isDark ? 'border-white/10 text-white hover:bg-white/5 cursor-pointer' : 'border-slate-300 text-black hover:bg-slate-50 cursor-pointer'
+            }`}
+          >
+            Back
+          </button>
+          
+          {currentIdx === questions.length - 1 ? (
+            <button
+              onClick={handleManualSubmit}
+              className="px-6 py-2 rounded text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all bg-accent hover:bg-accent-light text-white shadow-md shadow-accent/20 shrink-0"
+            >
+              <span>Nộp bài</span>
+              <CheckSquare className="w-3.5 h-3.5" />
+            </button>
+          ) : (
+            <button
+              onClick={navigateNext}
+              className={`px-6 py-2 text-xs font-bold rounded flex items-center gap-1 transition-all cursor-pointer shrink-0 ${
+                isDark ? 'bg-primary hover:bg-primary-light text-white' : 'bg-primary hover:bg-primary-light text-white shadow-md'
+              }`}
+            >
+              <span className="hidden sm:inline">Next</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
       </div>
 
@@ -431,24 +654,77 @@ export default function ActiveTestScreen({
       {pending && (
         <div
           id="hl-toolbar"
-          className="fixed z-50 bg-[#111] border-2 border-[#4dd9cc] rounded-none py-1.5 px-2 flex items-center gap-1.5 shadow-xl select-none"
+          className={`fixed z-50 rounded-xl py-1.5 px-2 flex items-center gap-1.5 shadow-xl select-none ${
+            isDark ? 'bg-bg-card border border-primary/30' : 'bg-white border border-slate-200 shadow-lg'
+          }`}
           style={{ top: toolbarStyle.top, left: toolbarStyle.left }}
         >
           <button
             onMouseDown={(e) => { e.preventDefault(); confirmHighlight(); }}
-            className="flex items-center gap-1.5 px-2.5 py-1 bg-[#4dd9cc] text-black font-black uppercase tracking-widest rounded-none hover:bg-white text-[9px] cursor-pointer transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-white font-bold rounded-lg hover:bg-primary-light text-[10px] cursor-pointer transition-colors"
           >
             <Paintbrush className="w-3 h-3" />
             Highlight
           </button>
           <button
             onMouseDown={(e) => { e.preventDefault(); dismiss(); }}
-            className="px-2 py-1 text-[9px] font-black text-red-400 hover:text-red-300 uppercase tracking-widest cursor-pointer transition-colors"
+            className="px-2 py-1.5 text-[10px] font-bold text-accent-warm hover:text-accent-warm-light cursor-pointer transition-colors"
           >
             ✕
           </button>
         </div>
       )}
+
+      {/* ── MODALS ── */}
+      {(showSubmitModal || showExitModal) && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className={`w-full max-w-md p-6 rounded-2xl shadow-2xl transform transition-all ${
+            isDark ? 'bg-bg-card border border-white/10 text-text-primary' : 'bg-white border border-slate-200 text-text-dark'
+          }`}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className={`p-2 rounded-full ${showExitModal ? 'bg-accent-warm/10 text-accent-warm' : 'bg-primary/10 text-primary'}`}>
+                <AlertCircle className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold">
+                {showExitModal ? 'Bạn muốn thoát?' : 'Nộp bài thi?'}
+              </h3>
+            </div>
+            
+            <div className={`mb-8 text-sm leading-relaxed ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+              {showExitModal ? (
+                <p>Nếu bạn thoát bây giờ, quá trình làm bài có thể sẽ bị gián đoạn. Bạn có chắc chắn muốn thoát?</p>
+              ) : (
+                <>
+                  <p className="mb-2">Bạn còn <strong>{questions.length - answeredCount}</strong> câu hỏi chưa hoàn thành.</p>
+                  <p>Thời gian làm bài vẫn còn {formatTime(timeLeftSec)}. Bạn có chắc chắn muốn nộp bài sớm không?</p>
+                </>
+              )}
+            </div>
+            
+            <div className="flex items-center justify-end gap-3">
+              <button
+                onClick={() => showExitModal ? setShowExitModal(false) : setShowSubmitModal(false)}
+                className={`px-4 py-2.5 text-sm font-semibold rounded-lg border transition-colors cursor-pointer ${
+                  isDark ? 'border-white/10 hover:bg-white/5' : 'border-slate-200 hover:bg-slate-50'
+                }`}
+              >
+                Quay lại
+              </button>
+              <button
+                onClick={showExitModal ? confirmExit : confirmSubmit}
+                className={`px-5 py-2.5 text-sm font-semibold rounded-lg text-white shadow-md transition-colors cursor-pointer ${
+                  showExitModal 
+                    ? 'bg-accent-warm hover:bg-red-500 shadow-accent-warm/20' 
+                    : 'bg-primary hover:bg-primary-light shadow-primary/20'
+                }`}
+              >
+                {showExitModal ? 'Thoát' : 'Xác nhận nộp bài'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

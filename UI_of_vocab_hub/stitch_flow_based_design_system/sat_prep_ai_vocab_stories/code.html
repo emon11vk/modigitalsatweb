@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Stories - SAT Prep</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(225, 227, 228, 0.5);
+        }
+        .story-highlight {
+            color: #0f5238;
+            font-weight: 700;
+            background-color: #a0f4c8;
+            padding: 0 4px;
+            border-radius: 2px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e1e3e4",
+                      "inverse-surface": "#2e3132",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#2c694e",
+                      "on-primary-container": "#a8e7c5",
+                      "secondary-container": "#a0f4c8",
+                      "on-tertiary-fixed": "#092012",
+                      "on-secondary-container": "#19724f",
+                      "surface-container-low": "#f3f4f5",
+                      "on-surface": "#191c1d",
+                      "on-tertiary-container": "#c6e1ca",
+                      "tertiary-fixed-dim": "#b3cdb7",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#002113",
+                      "secondary": "#0e6c4a",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#4d6553",
+                      "inverse-primary": "#95d4b3",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#364d3c",
+                      "primary-container": "#2d6a4f",
+                      "primary-fixed": "#b1f0ce",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e1e3e4",
+                      "on-primary-fixed": "#002114",
+                      "surface-container-high": "#e7e8e9",
+                      "on-tertiary-fixed-variant": "#354c3b",
+                      "background": "#f8f9fa",
+                      "on-background": "#191c1d",
+                      "outline-variant": "#bfc9c1",
+                      "on-surface-variant": "#404943",
+                      "tertiary-fixed": "#cee9d3",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "primary": "#0f5238",
+                      "outline": "#707973",
+                      "surface-container": "#edeeef",
+                      "secondary-fixed": "#a0f4c8",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#95d4b3",
+                      "surface-bright": "#f8f9fa",
+                      "on-secondary": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "surface-dim": "#d9dadb",
+                      "secondary-fixed-dim": "#85d7ad"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "80px",
+                      "container-max": "1200px",
+                      "md": "24px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "lg": "48px",
+                      "xs": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-lg": ["Inter"],
+                      "headline-xl": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface-container-low dark:bg-inverse-surface shadow-sm sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-md h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary text-3xl">school</span>
+<div class="font-headline-md text-headline-md font-bold text-primary">SAT Prep</div>
+</div>
+<div class="hidden md:flex gap-md items-center">
+<nav class="flex gap-base">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs" href="#">Practice Tests</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs" href="#">Lessons</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary px-sm py-xs" href="#">Vocabulary</a>
+</nav>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">account_circle</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Shared Component - Hidden on mobile) -->
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low p-md gap-base border-r border-outline-variant pt-20">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Alex Mercer</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Daily Goal: 12/15 words</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<div class="px-sm py-xs text-xs font-bold text-outline tracking-wider uppercase mb-xs">Vocabulary Module</div>
+<a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="font-label-md text-label-md">Word Lists</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="font-label-md text-label-md">Flashcards</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-base bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-md text-label-md">AI Stories</span>
+</a>
+<div class="border-t border-outline-variant my-base pt-base"></div>
+<a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Progress</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="border-t border-outline-variant pt-md">
+<a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 p-md md:p-xl max-w-container-max mx-auto">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs text-on-surface-variant mb-md font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors" href="#">SAT Prep</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Vocabulary</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-bold">AI Stories</span>
+</nav>
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">AI Story Generator</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Master high-frequency SAT vocabulary by weaving them into personalized narratives.</p>
+</div>
+<div class="bento-grid">
+<!-- Left Column: Vocab & Settings -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-md">
+<!-- Vocab List Card -->
+<section class="glass-card rounded-xl p-md shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Vocabulary to Use</h2>
+<span class="font-label-sm text-label-sm px-xs py-[2px] bg-primary-container text-on-primary-container rounded">5 selected</span>
+</div>
+<div class="flex flex-wrap gap-xs">
+<div class="px-sm py-xs bg-surface-container rounded-full flex items-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface">Ephemeral</span>
+<span class="material-symbols-outlined text-[16px] text-outline cursor-pointer">close</span>
+</div>
+<div class="px-sm py-xs bg-surface-container rounded-full flex items-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface">Luminous</span>
+<span class="material-symbols-outlined text-[16px] text-outline cursor-pointer">close</span>
+</div>
+<div class="px-sm py-xs bg-surface-container rounded-full flex items-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface">Eloquence</span>
+<span class="material-symbols-outlined text-[16px] text-outline cursor-pointer">close</span>
+</div>
+<div class="px-sm py-xs bg-surface-container rounded-full flex items-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface">Resilient</span>
+<span class="material-symbols-outlined text-[16px] text-outline cursor-pointer">close</span>
+</div>
+<div class="px-sm py-xs bg-surface-container rounded-full flex items-center gap-xs">
+<span class="font-label-md text-label-md text-on-surface">Surreptitious</span>
+<span class="material-symbols-outlined text-[16px] text-outline cursor-pointer">close</span>
+</div>
+<button class="px-sm py-xs border border-dashed border-outline-variant text-outline rounded-full flex items-center gap-xs hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-label-md text-label-md">Add Word</span>
+</button>
+</div>
+</section>
+<!-- Configuration Card -->
+<section class="glass-card rounded-xl p-md shadow-sm flex flex-col gap-md">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-base">Select Genre</label>
+<div class="grid grid-cols-2 gap-base">
+<button class="genre-chip px-md py-sm bg-secondary-container text-on-secondary-container border border-secondary rounded-lg flex items-center justify-center gap-xs transition-all" data-genre="Sci-Fi">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+<span class="font-label-md text-label-md">Sci-Fi</span>
+</button>
+<button class="genre-chip px-md py-sm bg-surface-container-highest text-on-surface-variant border border-transparent rounded-lg flex items-center justify-center gap-xs transition-all hover:bg-surface-variant" data-genre="Romance">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+<span class="font-label-md text-label-md">Romance</span>
+</button>
+<button class="genre-chip px-md py-sm bg-surface-container-highest text-on-surface-variant border border-transparent rounded-lg flex items-center justify-center gap-xs transition-all hover:bg-surface-variant" data-genre="Humor">
+<span class="material-symbols-outlined text-[20px]">sentiment_very_satisfied</span>
+<span class="font-label-md text-label-md">Humor</span>
+</button>
+<button class="genre-chip px-md py-sm bg-surface-container-highest text-on-surface-variant border border-transparent rounded-lg flex items-center justify-center gap-xs transition-all hover:bg-surface-variant" data-genre="Mystery">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="font-label-md text-label-md">Mystery</span>
+</button>
+</div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-base">Custom Theme / Prompt</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-body-md text-body-md placeholder:text-outline" id="story-prompt" placeholder="e.g. A character who finds an ancient artifact..." rows="3"></textarea>
+</div>
+<button class="w-full py-md bg-primary text-white font-label-md text-label-md rounded-lg flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all shadow-md" id="generate-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Generate Story
+                    </button>
+</section>
+</div>
+<!-- Right Column: Story Display -->
+<div class="col-span-12 lg:col-span-7">
+<div class="glass-card rounded-xl shadow-sm h-full flex flex-col min-h-[500px] relative overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-white/50 sticky top-0 z-10">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">auto_stories</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Story Preview</h2>
+</div>
+<div class="flex gap-xs">
+<button class="p-xs hover:bg-surface-container-highest rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">content_copy</span>
+</button>
+<button class="p-xs hover:bg-surface-container-highest rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</button>
+</div>
+</div>
+<div class="p-lg flex-1 overflow-y-auto" id="story-display-area">
+<!-- Initial State -->
+<div class="flex flex-col items-center justify-center h-full text-center gap-md opacity-60" id="empty-state">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline">history_edu</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface-variant">Ready to write?</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Configure your theme and hit generate to see the magic happen.</p>
+</div>
+</div>
+<!-- Content Area (Hidden by default) -->
+<article class="hidden animate-in fade-in duration-700" id="story-content">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-md" id="story-title">The Neon Archive</h3>
+<div class="space-y-md font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<p>
+                                    In the heart of the crystalline nebula, Commander Elara witnessed a spectacle that was truly <span class="story-highlight">luminous</span>. The space station’s walls shimmered with a soft, pulsing glow, reflecting the data streams of a thousand civilizations. Her mission was to protect the <span class="story-highlight">ephemeral</span> history of the stars before the solar wind erased them forever.
+                                </p>
+<p>
+                                    With great <span class="story-highlight">eloquence</span>, she spoke into the log, documenting the beauty of the fading galaxies. Despite the overwhelming silence of the void, Elara remained <span class="story-highlight">resilient</span>. She had spent months making <span class="story-highlight">surreptitious</span> preparations for this final departure, ensuring that the legacy of her people would survive in the silicon memories of the Archive.
+                                </p>
+<p>
+                                    As the thrusters ignited, she looked back one last time. The universe was wide, cold, and beautiful—a story waiting for its next chapter to be told among the constellations.
+                                </p>
+</div>
+</article>
+<!-- Loading State (Hidden) -->
+<div class="hidden flex flex-col items-center justify-center h-full gap-md" id="loading-state">
+<div class="relative w-16 h-16">
+<div class="absolute inset-0 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+</div>
+<p class="font-label-md text-label-md text-primary animate-pulse">AI is crafting your narrative...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (Shared Component) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-low flex justify-around items-center h-16 z-50 border-t border-outline-variant">
+<button class="flex flex-col items-center text-on-surface-variant gap-xs">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dash</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant gap-xs">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-medium">Lessons</span>
+</button>
+<button class="flex flex-col items-center text-primary gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-bold">Stories</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant gap-xs">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</nav>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generate-btn');
+            const emptyState = document.getElementById('empty-state');
+            const loadingState = document.getElementById('loading-state');
+            const storyContent = document.getElementById('story-content');
+            const genreChips = document.querySelectorAll('.genre-chip');
+
+            // Genre selection logic
+            genreChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    genreChips.forEach(c => {
+                        c.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-secondary');
+                        c.classList.add('bg-surface-container-highest', 'text-on-surface-variant', 'border-transparent');
+                    });
+                    chip.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-secondary');
+                    chip.classList.remove('bg-surface-container-highest', 'text-on-surface-variant', 'border-transparent');
+                });
+            });
+
+            // Simulate Generation
+            generateBtn.addEventListener('click', () => {
+                emptyState.classList.add('hidden');
+                storyContent.classList.add('hidden');
+                loadingState.classList.remove('hidden');
+                
+                generateBtn.disabled = true;
+                generateBtn.style.opacity = '0.7';
+
+                setTimeout(() => {
+                    loadingState.classList.add('hidden');
+                    storyContent.classList.remove('hidden');
+                    generateBtn.disabled = false;
+                    generateBtn.style.opacity = '1';
+                    
+                    // Scroll to content
+                    storyContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 2500);
+            });
+        });
+    </script>
+</body></html>

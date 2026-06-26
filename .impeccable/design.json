@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-26T14:30:00Z",
+  "title": "Design System: Mơ Digital SAT",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "SAT Indigo", "canonical": "#6C63FF", "tonalRamp": ["#E0DFFF", "#C2BFFF", "#A39FFF", "#857FFF", "#6C63FF", "#5348E0", "#3B31B8", "#251D91"] },
+      "accent": { "role": "secondary", "displayName": "Progress Teal", "canonical": "#00D4AA", "tonalRamp": ["#CCF6ED", "#99EDDC", "#66E5CC", "#33DDBB", "#00D4AA", "#00B38F", "#008A6E", "#00614D"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Major headers and hero sections." },
+      "body": { "displayName": "Body", "purpose": "Passages, question stems, UI text." },
+      "mono": { "displayName": "Mono", "purpose": "Timers, technical text." }
+    },
+    "shadows": [
+      { "name": "pane-elevation", "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)", "purpose": "Lifts question pane above background." },
+      { "name": "modal-elevation", "value": "0 20px 25px -5px rgba(0, 0, 0, 0.1)", "purpose": "Modal dialogs." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action button for starting tests or submitting.",
+      "html": "<button class=\"ds-btn-primary\">Start Test</button>",
+      "css": ".ds-btn-primary { background: #6C63FF; color: #FFFFFF; padding: 12px 24px; border-radius: 12px; font-family: Inter, sans-serif; font-weight: 600; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2); } .ds-btn-primary:focus-visible { outline: 2px solid #6C63FF; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Mở Điểm Số - Chạm Giấc Mơ Digital SAT",
+    "overview": "Structured but inviting. We use soft lighting and subtle depth to make the strict testing environment feel approachable. The design focuses on eliminating distractions during practice while offering a welcoming, gamified experience when reviewing or studying vocabulary. It explicitly avoids cluttered, noisy UIs, keeping the academic process clear and direct.",
+    "keyCharacteristics": [
+      "Distraction-free testing UI",
+      "Soft, approachable lighting and depth",
+      "High contrast for readability",
+      "Clear, friendly component shapes"
+    ],
+    "rules": [
+      { "name": "The No-Distraction Rule", "body": "During a test attempt, vibrant colors (Teal, Gold, Warm) are strictly minimized to prevent cognitive overload. The interface should feel strictly neutral until the test is submitted.", "section": "colors" },
+      { "name": "The Test Legibility Rule", "body": "Question stems and passages must prioritize readability above all else. Use a comfortable line height and ensure a minimum 4.5:1 contrast ratio.", "section": "typography" },
+      { "name": "The Depth-for-Focus Rule", "body": "Shadows are used structurally to define what the user should be interacting with right now, not decoratively.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do maintain a strict, distraction-free environment during the test itself.",
+      "Do use large tap targets (minimum 44x44px) for all interactive elements.",
+      "Do enforce a split-screen paradigm during testing, keeping the passage visible while answering questions.",
+      "Do use SAT Indigo for the primary actions and Progress Teal to celebrate success."
+    ],
+    "donts": [
+      "Don't include cluttered, noisy UIs with sidebars, footers, or ads during testing.",
+      "Don't use overly playful or cartoonish aesthetics that detract from the seriousness of a standardized test.",
+      "Don't use the 2014-era app look; avoid shadow-heavy or glassmorphism-heavy UI where not structurally needed."
+    ]
+  }
+}

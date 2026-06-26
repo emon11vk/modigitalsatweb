@@ -1,7 +1,7 @@
 export type Theme = 'light' | 'dark';
 
 // 1. Thêm 'review' vào danh sách Screen
-export type Screen = 'login' | 'dashboard' | 'practice' | 'vocabulary' | 'leaderboard' | 'history' | 'review';
+export type Screen = 'login' | 'dashboard' | 'practice' | 'vocabulary' | 'leaderboard' | 'history' | 'review' | 'admin';
 
 export interface Module {
   id: string;
@@ -12,6 +12,9 @@ export interface Module {
   durationMinutes: number;
   status: 'Not Started' | 'Attempted';
   score?: number;
+  folder_id?: string | null;
+  is_locked?: boolean;
+  deadline?: string | null;
 }
 
 export interface Question {
@@ -27,12 +30,21 @@ export interface Question {
   correctAnswer: string[];
   userAnswer?: string;
   passage?: Passage;
+  imageUrl?: string | null;
 }
 
 export interface Passage {
   title: string;
   introduction: string;
   paragraphs: string[];
+}
+
+export interface VocabFolder {
+  id: string;
+  name: string;
+  user_id: string;
+  is_admin_folder: boolean;
+  created_at: string;
 }
 
 export interface VocabularyWord {
@@ -43,6 +55,13 @@ export interface VocabularyWord {
   example: string;
   date: string;
   status: 'Mastered' | 'Learning';
+  folder_id?: string | null;
+  pronunciation?: string;
+  audio_url?: string;
+  sm2_ease_factor?: number;
+  sm2_interval?: number;
+  sm2_repetitions?: number;
+  next_review_date?: string;
 }
 
 export interface StudentRank {
@@ -71,6 +90,7 @@ export interface QuestionResult {
     D: string;
   };
   passage?: Passage;
+  imageUrl?: string | null;
 }
 
 export interface TestAttemptHistory {

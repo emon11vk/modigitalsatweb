@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAT Prep - Vocabulary Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#2c694e",
+                    "on-primary-container": "#a8e7c5",
+                    "secondary-container": "#a0f4c8",
+                    "on-tertiary-fixed": "#092012",
+                    "on-secondary-container": "#19724f",
+                    "surface-container-low": "#f3f4f5",
+                    "on-surface": "#191c1d",
+                    "on-tertiary-container": "#c6e1ca",
+                    "tertiary-fixed-dim": "#b3cdb7",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#002113",
+                    "secondary": "#0e6c4a",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#4d6553",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#364d3c",
+                    "primary-container": "#2d6a4f",
+                    "primary-fixed": "#b1f0ce",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed": "#002114",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-fixed-variant": "#354c3b",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#bfc9c1",
+                    "on-surface-variant": "#404943",
+                    "tertiary-fixed": "#cee9d3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "primary": "#0f5238",
+                    "outline": "#707973",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed": "#a0f4c8",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f8f9fa",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed-dim": "#85d7ad"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "container-max": "1200px",
+                    "md": "24px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant p-md gap-base">
+<div class="flex items-center gap-sm mb-lg px-xs">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">SAT Prep</span>
+</div>
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded-xl mb-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young adult student with a friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAk3OXQOi7D1lIPEX0_iKNrRBdVkDiwihAf5_ZrTKUNeJvAZA3i5hQl0p2XZobdzLvFbaiYtBaVqG-sxKcBmB0o3f1lMP32p0EzGewNrVNFZyEFYuGjcmNJ_ARQDU1mvSGPK9e_kj0KoldkT5qPrS4XHmN-0CaRGf4t9h2Hp0NsUd-mtnNZ7uX9INpmE2WRDYukbXz1Wavasl1qiAAJFuLglUhiWtnmM89TFlBiMcdxW1iGiYSwOP2IF3clql5oklc4vlIvfeq5uNG"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">User Profile</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Daily Goal: 12/15 words</span>
+</div>
+</div>
+<nav class="flex-1 space-y-xs overflow-y-auto">
+<div class="px-xs pb-xs">
+<span class="text-[10px] uppercase font-bold text-outline tracking-widest">Main Platform</span>
+</div>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">SAT Home</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-md text-label-md">Practice Tests</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-label-md">Lessons</span>
+</a>
+<div class="px-xs pt-md pb-xs">
+<span class="text-[10px] uppercase font-bold text-outline tracking-widest">Modules</span>
+</div>
+<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-label-md text-label-md">Vocabulary</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">functions</span>
+<span class="font-label-md text-label-md">Math</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-md text-label-md">Writing</span>
+</a>
+</nav>
+<button class="mt-md w-full bg-primary-container text-white py-sm rounded-lg font-bold flex items-center justify-center gap-xs hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+            Start Review
+        </button>
+<div class="mt-auto pt-md space-y-xs">
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen bg-background p-sm md:p-lg pb-24 md:pb-lg">
+<div class="max-w-container-max mx-auto space-y-md">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs text-on-surface-variant px-xs">
+<a class="font-label-sm text-label-sm hover:text-primary transition-colors" href="#">SAT Prep</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Vocabulary</span>
+</nav>
+<!-- Welcome Banner -->
+<header class="relative overflow-hidden bg-primary-container rounded-xl p-md md:p-lg text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="relative z-10 space-y-xs">
+<h1 class="font-headline-lg text-headline-lg">Welcome back, Lexicographer.</h1>
+<p class="font-body-md text-body-md opacity-90 max-w-xl">Your linguistic growth is an organic journey. Today's progress is paving the way for tomorrow's mastery.</p>
+</div>
+<div class="relative z-10 flex items-center gap-sm bg-white/10 backdrop-blur-md p-sm rounded-lg">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-wider">7 Day Streak</p>
+<p class="font-headline-md text-headline-md">Level 14</p>
+</div>
+</div>
+</header>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md items-start">
+<!-- Daily Progress Tracker (Left - Large) -->
+<div class="lg:col-span-8 space-y-md">
+<section class="bg-white rounded-xl p-md md:p-lg shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Daily Progress</h2>
+<span class="font-label-md text-label-md text-primary bg-secondary-container px-sm py-xs rounded-full">12/15 learned today</span>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-lg">
+<div class="relative inline-flex items-center justify-center">
+<svg class="w-48 h-48">
+<circle class="text-surface-container-highest" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-secondary progress-ring-circle" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.65" stroke-dashoffset="100.53" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-xl text-headline-xl text-primary">80%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Daily Goal</span>
+</div>
+</div>
+<div class="flex-1 space-y-md">
+<div class="p-sm bg-tertiary-fixed text-on-tertiary-fixed rounded-lg border-l-4 border-tertiary flex items-start gap-sm">
+<span class="material-symbols-outlined mt-0.5">tips_and_updates</span>
+<div>
+<p class="font-label-md text-label-md mb-xs">Scientific Retention Tip</p>
+<p class="font-body-md text-body-md">We advise not to exceed 15 words per day. Spaced repetition works best when cognitive load is managed for optimal long-term retention.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-low p-sm rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active Sessions</p>
+<p class="font-headline-md text-headline-md">3</p>
+</div>
+<div class="bg-surface-container-low p-sm rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Time Studied</p>
+<p class="font-headline-md text-headline-md">42m</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Start Bento Section -->
+<section class="space-y-sm">
+<div class="flex items-center justify-between px-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface">Vocabulary Sets</h2>
+<button class="text-primary font-label-md text-label-md hover:underline">View All Sets</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="group relative overflow-hidden rounded-xl bg-white p-sm border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A minimalist architectural photograph of a bright, modern library." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClDaBQwGF8LdoAYCtDqfF4GRqzv5Xdz-7ua7wyygQsNgKfxUIw1epdcGzwhKaG3Bz3rRomYCXTSa-mwMdHFbumVkFWw2NZAmQ-wY5o1_si0_TNP6G8w-JZg3uRfI7EaQPmVNu2LzxIqdyJYLDIoVVBHJ09baG03DZeTS2xM2S0Hs30fB0ccNSKHaATu_ac_QoQhb2VfnE2Z7kh8cUF4y0P30wc0t6A9JsFYp_KjN-3KtfDlCH-iyi6_tyq5eQJu-6mJZAvIXWaBGrd"/>
+</div>
+<div class="flex-1">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Advanced Linguistics</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-sm">48 words · 12 unlearned</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[75%]"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-white p-sm border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A macro shot of vibrant green leaves with dew drops." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnOk2m-o4KVFQLa1kg8I9AmjGLKagDWBB2wK3-uw2zfUTSpScODy9ZNDzWgzoQJj2e1Pvz6fb-YSi3duFbAJNLZKdCTPbjTea-bd0qW0ecXG9j1_igcJvALz_KUuTFmXEQRiWgzi9GM835q67ZkBMgHwYTMgNTEI0Sz8pLyQz1kRsiOwokvxXRWAzWaBK9nPHVeDXkTzeOE1PXXAU211TgMeDNoxNa7u5aw9ywdWkqDJHVOXzR5vhAmi-w2l4WASuy3Q_-kLWpfbw3"/>
+</div>
+<div class="flex-1">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Nature &amp; Ecology</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-sm">32 words · 5 unlearned</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[40%]"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Mastery & Metrics (Right - Sidebar) -->
+<div class="lg:col-span-4 space-y-md">
+<section class="bg-white rounded-xl p-md shadow-sm border border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Mastery Summary</h2>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm bg-surface-container-lowest rounded-lg border border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Mastered</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Retained long-term</p>
+</div>
+</div>
+<span class="font-headline-md text-headline-md text-primary">245</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container-lowest rounded-lg border border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">neurology</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Learning</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active recall phase</p>
+</div>
+</div>
+<span class="font-headline-md text-headline-md text-secondary">82</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container-lowest rounded-lg border border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">history</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Struggling</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Needs reinforcement</p>
+</div>
+</div>
+<span class="font-headline-md text-headline-md text-outline">12</span>
+</div>
+</div>
+</section>
+<!-- Upcoming Review List -->
+<section class="bg-white rounded-xl p-md shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Up Next</h2>
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="py-sm flex items-center justify-between group cursor-pointer">
+<div>
+<p class="font-label-md text-label-md text-primary">Ephemeral</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Adjective · 2h until review</p>
+</div>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-primary transition-colors">edit</span>
+</div>
+<div class="py-sm flex items-center justify-between group cursor-pointer">
+<div>
+<p class="font-label-md text-label-md text-primary">Languid</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Adjective · 4h until review</p>
+</div>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-primary transition-colors">edit</span>
+</div>
+<div class="py-sm flex items-center justify-between group cursor-pointer">
+<div>
+<p class="font-label-md text-label-md text-primary">Pernicious</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Adjective · 6h until review</p>
+</div>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-primary transition-colors">edit</span>
+</div>
+</div>
+<button class="mt-md w-full border border-primary text-primary font-bold py-sm rounded-lg hover:bg-secondary-container transition-colors">
+                            Manage Queue
+                        </button>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface shadow-2xl flex justify-around items-center h-16 px-md z-50">
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] uppercase">SAT Home</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="text-[10px] uppercase">Vocab</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="text-[10px] uppercase">Tests</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] uppercase">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple interactivity for the dashboard
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mousedown', function() {
+                this.classList.add('scale-[0.98]');
+            });
+            card.addEventListener('mouseup', function() {
+                this.classList.remove('scale-[0.98]');
+            });
+        });
+
+        // Atmospheric micro-interaction for the progress circle
+        const circle = document.querySelector('.progress-ring-circle');
+        if (circle) {
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            
+            function setProgress(percent) {
+                const offset = circumference - (percent / 100 * circumference);
+                circle.style.strokeDashoffset = offset;
+            }
+
+            // Animate on load
+            setTimeout(() => setProgress(80), 500);
+        }
+    </script>
+</body></html>

@@ -1,5 +1,6 @@
-import { Trophy, Award, Search, Users, Sparkles } from 'lucide-react';
+import { Trophy, Search, Users, Sparkles, Crown, Medal } from 'lucide-react';
 import { useState } from 'react';
+import { motion } from 'motion/react';
 import { StudentRank, Theme } from '../types';
 
 interface LeaderboardScreenProps {
@@ -11,230 +12,177 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
   const isDark = theme === 'dark';
   const [search, setSearch] = useState('');
 
-  // Extract top 3 for the beautiful premium podium layout
   const top1 = rankings.find(r => r.rank === 1);
   const top2 = rankings.find(r => r.rank === 2);
   const top3 = rankings.find(r => r.rank === 3);
 
-  // Filter others for search
   const filteredRankings = rankings.filter(
     r => r.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const podiumConfig = [
+    { data: top2, rank: 2, label: '2nd', height: 'h-24', avatarSize: 'w-16 h-16 md:w-20 md:h-20', ringColor: 'border-slate-400', bgColor: isDark ? 'bg-white/5' : 'bg-slate-100', pillColor: 'bg-slate-400 text-white' },
+    { data: top1, rank: 1, label: '1st', height: 'h-32', avatarSize: 'w-20 h-20 md:w-24 md:h-24', ringColor: 'border-accent-gold', bgColor: isDark ? 'bg-accent-gold/5' : 'bg-amber-50', pillColor: 'bg-accent-gold text-black' },
+    { data: top3, rank: 3, label: '3rd', height: 'h-20', avatarSize: 'w-14 h-14 md:w-18 md:h-18', ringColor: 'border-amber-700', bgColor: isDark ? 'bg-white/3' : 'bg-amber-50/50', pillColor: 'bg-amber-700 text-white' },
+  ];
+
   return (
     <div className="space-y-8 animate-fade-in">
-      
-      {/* Title */}
-      <div className="pb-4 border-b border-white/5">
-        <h2 className={`text-3xl sm:text-5xl font-black font-display uppercase tracking-tighter leading-none ${isDark ? 'text-white' : 'text-black'}`}>
-          BẢNG VÀNG HỌC VIÊN PRO_
+
+      {/* ── Header ── */}
+      <div>
+        <h2 className={`text-3xl sm:text-4xl font-black font-display tracking-tight ${isDark ? 'text-white' : 'text-text-dark'}`}>
+          <span className="gradient-text-gold">Bảng Xếp Hạng</span>
         </h2>
-        <p className="text-xs sm:text-sm font-mono opacity-50 mt-2">
-          Tôn vinh nỗ lực bền bỉ và bứt phá điểm số xuất sắc của các bạn học viên trên toàn hệ thống.
+        <p className={`text-sm mt-2 ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+          Tôn vinh những học viên xuất sắc nhất trên hệ thống.
         </p>
       </div>
 
-      {/* Top 3 Podium Visualizer - Brutalist style */}
-      <div className="grid grid-cols-3 max-w-2xl mx-auto items-end gap-2 md:gap-6 pt-12 pb-6">
-        
-        {/* Ranked #2 Podium Column */}
-        {top2 && (
-          <div className="flex flex-col items-center">
-            <div className="relative group">
-              <img 
-                src={top2.avatarUrl} 
-                alt={top2.name} 
-                referrerPolicy="no-referrer"
-                className={`w-14 h-14 md:w-20 md:h-20 rounded-none object-cover border-2 ${
-                  isDark ? 'border-white/30' : 'border-black'
-                }`}
-              />
-              <span className="absolute -bottom-2.5 left-1/2 transform -translate-x-1/2 bg-gray-500 text-white text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-none border border-white/20">
-                2ND
-              </span>
-            </div>
-            
-            <div className="text-center mt-4">
-              <h4 className={`text-xs md:text-sm font-black uppercase truncate max-w-[100px] ${isDark ? 'text-white' : 'text-black'}`}>
-                {top2.name}
-              </h4>
-              <p className={`text-xs font-black font-mono mt-0.5 opacity-80`}>
-                {top2.totalScore} Pts
-              </p>
-              <p className="text-[9px] font-mono opacity-50">
-                {top2.testsCompleted} TESTS
-              </p>
-            </div>
-
-            {/* Gray Pillar Podium block */}
-            <div className={`w-full mt-4 h-24 rounded-none text-center flex flex-col justify-end pb-3 text-xs md:text-sm font-black border border-b-0 ${
-              isDark 
-                ? 'bg-black border-white/10 text-white/40' 
-                : 'bg-gray-100 border-black/15 text-black'
-            }`}>
-              SLV
-            </div>
-          </div>
-        )}
-
-        {/* Ranked #1 Champion Podium Column */}
-        {top1 && (
-          <div className="flex flex-col items-center">
-            <div className="relative group">
-              {/* Champion Indicators */}
-              <div className="flex justify-center -mb-1">
-                <Trophy className="w-5 h-5 text-[#4dd9cc] animate-bounce" />
+      {/* ── Top 3 Podium ── */}
+      <div className="grid grid-cols-3 max-w-2xl mx-auto items-end gap-3 md:gap-6 pt-8 pb-4">
+        {podiumConfig.map((item, idx) => {
+          if (!item.data) return <div key={idx} />;
+          const student = item.data;
+          return (
+            <motion.div
+              key={item.rank}
+              className="flex flex-col items-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + idx * 0.15, type: 'spring', stiffness: 100 }}
+            >
+              {/* Avatar */}
+              <div className="relative">
+                {item.rank === 1 && (
+                  <Crown className="w-6 h-6 text-accent-gold absolute -top-5 left-1/2 -translate-x-1/2 animate-float" />
+                )}
+                <div className={`rounded-full p-1 border-2 ${item.ringColor}`}>
+                  <img
+                    src={student.avatarUrl}
+                    alt={student.name}
+                    referrerPolicy="no-referrer"
+                    className={`${item.avatarSize} rounded-full object-cover`}
+                  />
+                </div>
+                <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 text-[9px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full ${item.pillColor}`}>
+                  {item.label}
+                </span>
               </div>
 
-              <img 
-                src={top1.avatarUrl} 
-                alt={top1.name} 
-                referrerPolicy="no-referrer"
-                className="w-16 h-16 md:w-24 md:h-24 rounded-none object-cover border-2 border-[#4dd9cc] shadow-none"
-              />
-              <span className="absolute -bottom-2.5 left-1/2 transform -translate-x-1/2 bg-[#4dd9cc] text-black text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-none leading-none">
-                CHAMP
-              </span>
-            </div>
-            
-            <div className="text-center mt-4">
-              <h4 className={`text-sm md:text-base font-black uppercase truncate max-w-[120px] ${isDark ? 'text-white' : 'text-black'}`}>
-                {top1.name}
-              </h4>
-              <p className="text-xs md:text-sm font-black font-mono text-[#4dd9cc] mt-0.5">
-                {top1.totalScore} PTS
-              </p>
-              <p className="text-[9px] font-mono opacity-50">
-                {top1.testsCompleted} TESTS
-              </p>
-            </div>
+              {/* Info */}
+              <div className="text-center mt-5">
+                <h4 className={`text-xs md:text-sm font-bold truncate max-w-[110px] ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                  {student.name}
+                </h4>
+                <p className={`text-xs font-bold font-mono mt-0.5 ${item.rank === 1 ? 'text-accent-gold' : isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                  {student.totalScore} pts
+                </p>
+                <p className={`text-[10px] mt-0.5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                  {student.testsCompleted} tests
+                </p>
+              </div>
 
-            {/* Championship Golden Pillar Podium block */}
-            <div className={`w-full mt-4 h-32 rounded-none text-center flex flex-col justify-end pb-4 text-xs md:text-sm font-black border border-b-0 ${
-              isDark 
-                ? 'bg-[#4dd9cc]/5 border-[#4dd9cc] text-[#4dd9cc]' 
-                : 'bg-black border-black text-white'
-            }`}>
-              GOLD
-            </div>
-          </div>
-        )}
-
-        {/* Ranked #3 Podium Column */}
-        {top3 && (
-          <div className="flex flex-col items-center">
-            <div className="relative group">
-              <img 
-                src={top3.avatarUrl} 
-                alt={top3.name} 
-                referrerPolicy="no-referrer"
-                className={`w-14 h-14 md:w-20 md:h-20 rounded-none object-cover border-2 ${
-                  isDark ? 'border-amber-700/40' : 'border-black'
-                }`}
-              />
-              <span className="absolute -bottom-2.5 left-1/2 transform -translate-x-1/2 bg-amber-700 text-white text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-none border border-white/15">
-                3RD
-              </span>
-            </div>
-            
-            <div className="text-center mt-4">
-              <h4 className={`text-xs md:text-sm font-black uppercase truncate max-w-[100px] ${isDark ? 'text-white' : 'text-black'}`}>
-                {top3.name}
-              </h4>
-              <p className={`text-xs font-black font-mono mt-0.5 opacity-80`}>
-                {top3.totalScore} Pts
-              </p>
-              <p className="text-[9px] font-mono opacity-50">
-                {top3.testsCompleted} TESTS
-              </p>
-            </div>
-
-            {/* Bronze Pillar Podium block */}
-            <div className={`w-full mt-4 h-20 rounded-none text-center flex flex-col justify-end pb-3 text-xs md:text-sm font-black border border-b-0 ${
-              isDark 
-                ? 'bg-black border-white/10 text-white/40' 
-                : 'bg-[#faf6f0] border-black/15 text-black'
-            }`}>
-              BRZ
-            </div>
-          </div>
-        )}
-
+              {/* Podium block */}
+              <div className={`w-full mt-4 ${item.height} rounded-t-xl text-center flex flex-col justify-end pb-3 text-xs font-bold border border-b-0 ${
+                isDark
+                  ? `${item.bgColor} border-white/5`
+                  : `${item.bgColor} border-slate-200`
+              }`}>
+                <span className={`text-xs font-mono ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+                  #{item.rank}
+                </span>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
-      {/* Ranks Table Section & Filtration Form */}
-      <div className={`p-4 rounded-none border-2 transition-all space-y-4 ${
-        isDark ? 'bg-black border-white/10' : 'bg-white border-black'
+      {/* ── Rankings Table ── */}
+      <div className={`rounded-2xl border overflow-hidden ${
+        isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100 shadow-sm'
       }`}>
-        <div className="flex items-center justify-between flex-wrap gap-4">
+        {/* Table Header */}
+        <div className={`p-4 flex items-center justify-between flex-wrap gap-4 border-b ${
+          isDark ? 'border-white/5' : 'border-slate-100'
+        }`}>
           <div className="relative w-full sm:max-w-xs">
-            <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-500" />
+            <Search className={`absolute left-3 top-2.5 w-4 h-4 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Tìm kiếm học viên..."
-              className={`w-full pl-9 pr-4 py-2 text-xs rounded-none font-mono focus:outline-none transition-colors border ${
-                isDark 
-                  ? 'bg-white/5 border-white/10 text-white focus:border-[#4dd9cc]' 
-                  : 'bg-gray-50 border-black/15 text-gray-900 focus:border-black'
+              className={`w-full pl-10 pr-4 py-2 text-sm rounded-xl transition-all ${
+                isDark
+                  ? 'bg-white/5 border border-white/10 text-white placeholder-text-muted focus:border-primary/50'
+                  : 'bg-slate-50 border border-slate-200 text-text-dark placeholder-slate-400 focus:border-primary/50'
               }`}
             />
           </div>
 
-          <div className="flex items-center gap-1.5 text-[10px] uppercase font-black tracking-widest opacity-60 font-mono">
-            <Users className="w-4 h-4 text-[#4dd9cc]" />
-            <span>HIỂN THỊ {filteredRankings.length} HỌC VIÊN</span>
+          <div className={`flex items-center gap-1.5 text-xs font-semibold ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+            <Users className="w-4 h-4 text-primary" />
+            <span>{filteredRankings.length} học viên</span>
           </div>
         </div>
 
-        {/* Scrollable table ranking log */}
-        <div className="overflow-x-auto select-none rounded-none border border-white/5">
-          <table className="w-full text-left text-xs md:text-sm border-collapse">
+        {/* Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
             <thead>
-              <tr className={`border-b text-gray-400 uppercase text-[9px] font-black tracking-widest ${
-                isDark ? 'bg-white/5 border-white/10' : 'bg-gray-100 border-black/15'
+              <tr className={`text-xs uppercase tracking-wider border-b ${
+                isDark ? 'text-text-muted bg-white/2 border-white/5' : 'text-slate-400 bg-slate-50 border-slate-100'
               }`}>
-                <th className="p-4 text-center w-20">Thứ Hạng</th>
-                <th className="p-4">Học Viên</th>
-                <th className="p-4 text-right">Tổng Điểm</th>
-                <th className="p-4 text-right">Mức Trung Bình</th>
-                <th className="p-4 text-right">Số Lần Luyện Đề (Tests)</th>
+                <th className="px-4 py-3 text-center w-16">Hạng</th>
+                <th className="px-4 py-3">Học Viên</th>
+                <th className="px-4 py-3 text-right">Tổng Điểm</th>
+                <th className="px-4 py-3 text-right hidden md:table-cell">Trung Bình</th>
+                <th className="px-4 py-3 text-right hidden sm:table-cell">Tests</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
-              {filteredRankings.map((student) => {
+            <tbody>
+              {filteredRankings.map((student, idx) => {
                 const isUser = student.isCurrentUser;
-                
+
                 return (
-                  <tr 
+                  <motion.tr
                     key={student.rank}
-                    className={`transition-colors ${
-                      isUser 
-                        ? (isDark ? 'bg-[#4dd9cc]/10 hover:bg-[#4dd9cc]/15' : 'bg-[#4dd9cc]/20 font-semibold')
-                        : (isDark ? 'hover:bg-white/5' : 'hover:bg-gray-50')
+                    className={`transition-colors border-b last:border-b-0 ${
+                      isUser
+                        ? isDark ? 'bg-primary/5 border-primary/10' : 'bg-primary/5 border-primary/5'
+                        : isDark ? 'border-white/3 hover:bg-white/3' : 'border-slate-50 hover:bg-slate-50'
                     }`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: idx * 0.02 }}
                   >
-                    {/* Rank */}
-                    <td className="p-4 text-center font-black font-mono">
-                      {student.rank === 1 ? '🥇 CHAMP' : (student.rank === 2 ? '🥈' : (student.rank === 3 ? '🥉' : `#${student.rank}`))}
+                    <td className="px-4 py-3.5 text-center font-bold font-mono">
+                      {student.rank === 1 ? (
+                        <span className="text-accent-gold">🥇</span>
+                      ) : student.rank === 2 ? (
+                        <span>🥈</span>
+                      ) : student.rank === 3 ? (
+                        <span>🥉</span>
+                      ) : (
+                        <span className={isDark ? 'text-text-muted' : 'text-text-dark-secondary'}>#{student.rank}</span>
+                      )}
                     </td>
- 
-                    {/* Student Info */}
-                    <td className="p-4">
+
+                    <td className="px-4 py-3.5">
                       <div className="flex items-center gap-3">
-                        <img 
-                          src={student.avatarUrl} 
-                          alt={student.name} 
+                        <img
+                          src={student.avatarUrl}
+                          alt={student.name}
                           referrerPolicy="no-referrer"
-                          className="w-8 h-8 rounded-none object-cover border border-white/10 shadow-none"
+                          className="w-8 h-8 rounded-full object-cover border border-white/10"
                         />
-                        <div className="space-y-0.5">
-                          <span className={`font-black flex items-center gap-2 uppercase tracking-wide ${isDark ? 'text-white' : 'text-black'}`}>
+                        <div>
+                          <span className={`font-semibold flex items-center gap-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
                             {student.name}
                             {isUser && (
-                              <span className="inline-flex items-center gap-1 bg-[#4dd9cc] text-black text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-none border border-transparent">
-                                <Sparkles className="w-2.5 h-2.5" /> BẠN (YOU)
+                              <span className="inline-flex items-center gap-1 bg-primary text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                                <Sparkles className="w-2.5 h-2.5" /> You
                               </span>
                             )}
                           </span>
@@ -242,29 +190,24 @@ export default function LeaderboardScreen({ theme, rankings }: LeaderboardScreen
                       </div>
                     </td>
 
-                    {/* Total Score */}
-                    <td className="p-4 text-right font-black font-mono text-[#4dd9cc]">
+                    <td className="px-4 py-3.5 text-right font-bold font-mono text-primary">
                       {student.totalScore}
                     </td>
 
-                    {/* Avg Score */}
-                    <td className={`p-4 text-right font-black font-mono ${isDark ? 'text-white/70' : 'text-black/85'}`}>
-                      {student.avgScore.toFixed(1)} / 160
+                    <td className={`px-4 py-3.5 text-right font-mono hidden md:table-cell ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                      {student.avgScore.toFixed(1)}
                     </td>
 
-                    {/* Completed */}
-                    <td className="p-4 text-right font-black font-mono opacity-50">
+                    <td className={`px-4 py-3.5 text-right font-mono hidden sm:table-cell ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
                       {student.testsCompleted}
                     </td>
-                  </tr>
+                  </motion.tr>
                 );
               })}
             </tbody>
           </table>
         </div>
-
       </div>
-
     </div>
   );
 }

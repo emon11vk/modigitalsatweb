@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAT Prep - Vocabulary Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#2c694e",
+                    "on-primary-container": "#a8e7c5",
+                    "secondary-container": "#a0f4c8",
+                    "on-tertiary-fixed": "#092012",
+                    "on-secondary-container": "#19724f",
+                    "surface-container-low": "#f3f4f5",
+                    "on-surface": "#191c1d",
+                    "on-tertiary-container": "#c6e1ca",
+                    "tertiary-fixed-dim": "#b3cdb7",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#002113",
+                    "secondary": "#0e6c4a",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#4d6553",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#364d3c",
+                    "primary-container": "#2d6a4f",
+                    "primary-fixed": "#b1f0ce",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed": "#002114",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-fixed-variant": "#354c3b",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#bfc9c1",
+                    "on-surface-variant": "#404943",
+                    "tertiary-fixed": "#cee9d3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "primary": "#0f5238",
+                    "outline": "#707973",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed": "#a0f4c8",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f8f9fa",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed-dim": "#85d7ad"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "container-max": "1200px",
+                    "md": "24px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .folder-card-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .folder-card-shadow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface overflow-x-hidden">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col p-md gap-base z-50 hidden md:flex">
+<div class="flex flex-col mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary leading-tight">SAT Prep</h1>
+</div>
+<p class="text-label-sm font-label-sm text-secondary ml-10 flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                Vocabulary Module
+            </p>
+</div>
+<div class="flex items-center gap-sm p-sm mb-md bg-surface-container rounded-lg">
+<img alt="Alex Rivera" class="w-10 h-10 rounded-full border-2 border-primary-fixed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoIjn4FB4cpkCKiUCqgOgjCPYf95v0GQPsn6wDBBFjc8aPSVRQCQQ_fi3s0TreIMsV8iLvii814LDJZ06QfPIG1itfjXqLotyEaGoJarWXyf0iUuvdYX2Wfghb5S8gu7sOq9Jf8-YEg5Xgj5_0-UwLw0dOGEadhL9ZOKegjBf30WXC3ayWCVHbQolmAo5yzz4unc9RXc8wDztDyKvWlpCU_lQaiE9OBnIfD0aBnuR4Zm2e6yLaVe6GHAYEbUlCescxyGJYNQ1xrrTm"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Alex Rivera</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Daily Goal: 12/15 words</p>
+</div>
+</div>
+<div class="flex flex-col gap-xs flex-grow overflow-y-auto">
+<!-- Parent SAT Prep Navigation -->
+<div class="flex flex-col gap-xs mb-md">
+<p class="text-label-sm font-label-sm text-outline px-md mb-1 uppercase tracking-wider">Main Program</p>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">quiz</span>
+<span class="font-label-md text-label-md">Practice Tests</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">menu_book</span>
+<span class="font-label-md text-label-md">Lessons</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">analytics</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+</div>
+<!-- Vocabulary Module Section -->
+<div class="flex flex-col gap-xs bg-surface-container-low/50 p-1 rounded-xl border border-outline-variant/30">
+<p class="text-label-sm font-label-sm text-primary px-md py-1 mb-1 font-bold">VOCABULARY</p>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder</span>
+<span class="font-label-md text-label-md">Folders</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">style</span>
+<span class="font-label-md text-label-md">Flashcards</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">auto_awesome</span>
+<span class="font-label-md text-label-md">AI Stories</span>
+</a>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary-container py-sm rounded-lg font-bold mb-lg hover:brightness-110 transition-all">
+            Start Review
+        </button>
+<div class="border-t border-outline-variant pt-md flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 bg-surface-container-low shadow-sm z-40">
+<div class="flex justify-between items-center w-full px-md h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-md text-headline-md font-bold text-primary md:hidden">SAT Prep</h2>
+<!-- Breadcrumbs -->
+<nav class="hidden md:flex items-center gap-xs text-label-sm font-label-sm text-on-surface-variant">
+<a class="hover:text-primary" href="#">SAT Prep</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Vocabulary</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-bold">Folders</span>
+</nav>
+</div>
+<div class="flex-grow max-w-xl mx-md hidden sm:block">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded-full pl-10 pr-4 py-2 text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search vocabulary folders..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">trending_up</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">account_circle</span>
+<button class="md:hidden material-symbols-outlined text-on-surface-variant">menu</button>
+</div>
+</div>
+</header>
+<!-- Content Section -->
+<div class="p-md md:p-lg max-w-container-max mx-auto">
+<!-- Hero Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md mb-lg">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-xs">Study Folders</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Organize your vocabulary and master new concepts systematically.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-2 border border-outline text-primary font-label-md rounded-lg hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]">file_upload</span>
+                        Import
+                    </button>
+<button class="flex items-center gap-xs px-md py-2 bg-primary text-on-primary font-label-md rounded-lg shadow-sm hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[20px]">create_new_folder</span>
+                        New Folder
+                    </button>
+</div>
+</div>
+<!-- Folders Section: Admin Curated (Renamed to Curated SAT Lists) -->
+<section class="mb-xl">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Curated SAT Lists</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Featured Large Card -->
+<div class="lg:col-span-2 relative h-64 rounded-xl overflow-hidden folder-card-shadow cursor-pointer group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAb7Nag_jzq5-r1d2JiFwhW9oQGmCgNxXH3Enp7xMgq-gRp_F7Ad1Rc0ozG_gWM64jAs14QXgZJV1Mu_8SoU6mWhziXmVopjtv-dym2gkW5KvZNqqCpP4UGP_JceZtyIwBmYw8maK2jWR6XPYn5E5pepQr_9Ez3UofhIpzgoVUHgY4BXbtige-cwxTuI7S4oOE2soNHx6lZTbZPKFCaEq2X1NT0az9XF1mkvI6osIfbNbPuzpjAfOJrZh8K85Sx6GYL8GkOSz2rCbzH')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-md w-full flex justify-between items-end">
+<div>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-label-sm font-label-sm uppercase tracking-wider mb-sm inline-block">Official Masterlist</span>
+<h4 class="font-headline-lg text-white">1000 Common SAT Words</h4>
+<p class="text-white/80 font-body-md">Comprehensive preparation for academic success.</p>
+</div>
+<div class="text-right text-white">
+<p class="font-label-md">1,000 Words</p>
+<p class="font-label-sm opacity-70">Updated 2 days ago</p>
+</div>
+</div>
+</div>
+<!-- Side Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl folder-card-shadow flex flex-col justify-between cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed">medical_services</span>
+</div>
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</div>
+<div>
+<h4 class="font-headline-md text-on-surface mt-md">Medical Terminology</h4>
+<p class="font-body-md text-on-surface-variant mt-xs line-clamp-2">Essential roots, prefixes, and suffixes for healthcare professionals.</p>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="font-label-md text-secondary">450 Words</span>
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary-fixed border border-white"></div>
+<div class="w-6 h-6 rounded-full bg-secondary-fixed border border-white"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Folders Section: Personal -->
+<section>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">folder_shared</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Your Folders</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1: Literary -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl folder-card-shadow cursor-pointer">
+<div class="flex justify-between mb-md">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">folder</span>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded text-label-sm">Active</span>
+</div>
+<h4 class="font-label-md text-lg text-on-surface">Literary Words</h4>
+<div class="mt-lg">
+<div class="flex justify-between text-label-sm text-on-surface-variant mb-1">
+<span>Mastery</span>
+<span>68%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 68%"></div>
+</div>
+</div>
+<div class="mt-md flex justify-between items-center text-label-sm text-outline">
+<span>124 Words</span>
+<span>3h ago</span>
+</div>
+</div>
+<!-- Card 2: GRE Vocab -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl folder-card-shadow cursor-pointer">
+<div class="flex justify-between mb-md">
+<span class="material-symbols-outlined text-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">folder</span>
+</div>
+<h4 class="font-label-md text-lg text-on-surface">GRE Prep 2024</h4>
+<div class="mt-lg">
+<div class="flex justify-between text-label-sm text-on-surface-variant mb-1">
+<span>Mastery</span>
+<span>12%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 12%"></div>
+</div>
+</div>
+<div class="mt-md flex justify-between items-center text-label-sm text-outline">
+<span>840 Words</span>
+<span>1d ago</span>
+</div>
+</div>
+<!-- Card 3: Philosophy -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl folder-card-shadow cursor-pointer">
+<div class="flex justify-between mb-md">
+<span class="material-symbols-outlined text-tertiary-container text-4xl" style="font-variation-settings: 'FILL' 1;">folder</span>
+</div>
+<h4 class="font-label-md text-lg text-on-surface">Philosophy Terms</h4>
+<div class="mt-lg">
+<div class="flex justify-between text-label-sm text-on-surface-variant mb-1">
+<span>Mastery</span>
+<span>92%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="mt-md flex justify-between items-center text-label-sm text-outline">
+<span>45 Words</span>
+<span>5d ago</span>
+</div>
+</div>
+<!-- New Folder Placeholder -->
+<div class="border-2 border-dashed border-outline-variant p-md rounded-xl flex flex-col items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-sm group-hover:bg-primary-fixed">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="font-label-md">Create New Folder</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button (Only on Mobile) -->
+<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-low flex justify-around items-center h-16 z-50 border-t border-outline-variant">
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center gap-xs text-primary font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder</span>
+<span class="text-[10px] font-label-sm">Folders</span>
+</div>
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">style</span>
+<span class="text-[10px] font-label-sm">Flashcards</span>
+</div>
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-[10px] font-label-sm">AI</span>
+</div>
+</nav>
+<script>
+        // Simple search feedback logic
+        const searchInput = document.querySelector('input[type="text"]');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('h4');
+                cards.forEach(cardTitle => {
+                    const parent = cardTitle.closest('.folder-card-shadow');
+                    if (parent) {
+                        if (cardTitle.textContent.toLowerCase().includes(term)) {
+                            parent.style.display = 'flex';
+                        } else {
+                            parent.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body></html>

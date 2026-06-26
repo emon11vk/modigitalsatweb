@@ -1,13 +1,19 @@
-import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle, Sparkles, TrendingUp, Folder, FolderOpen, ChevronDown, ChevronRight, Layers, Image as ImageIcon, Loader2, Flame, Lock, ChevronLeft, Calendar } from 'lucide-react';
+import { motion } from 'motion/react';
 import { Module, Theme } from '../types';
+import { useAdminRole } from '../hooks/useAdminRole';
+import { supabase } from '../supabaseClient';
 
 interface DashboardScreenProps {
   theme: Theme;
   userName: string;
   modules: Module[];
+  folders: { id: string; name: string }[];
   vocabTotal: number;
   vocabMastered: number;
   leaderboardRank: number | null;
+  streak: number;
   onStartModule: (moduleId: string) => void;
   onNavigateToVocab: () => void;
   onNavigateToLeaderboard: () => void;
@@ -17,263 +23,558 @@ export default function DashboardScreen({
   theme,
   userName,
   modules,
+  folders,
   vocabTotal,
   vocabMastered,
   leaderboardRank,
+  streak,
   onStartModule,
   onNavigateToVocab,
   onNavigateToLeaderboard,
 }: DashboardScreenProps) {
   const isDark = theme === 'dark';
 
-  // Metrics calculations
   const attemptedModules = modules.filter(m => m.status === 'Attempted');
   const readingWritingAttempts = attemptedModules.filter(m => m.subject === 'Reading & Writing' && typeof m.score === 'number');
   const averageReadingWritingScore = readingWritingAttempts.length
     ? Math.round(readingWritingAttempts.reduce((sum, item) => sum + (item.score ?? 0), 0) / readingWritingAttempts.length)
     : 0;
-  const totalCompletedCount = attemptedModules.length;
-  const leaderboardRankLabel = leaderboardRank ? `#${leaderboardRank}` : 'N/A';
+  const leaderboardRankLabel = leaderboardRank ? `#${leaderboardRank}` : '—';
+  const vocabPercent = vocabTotal > 0 ? Math.round((vocabMastered / vocabTotal) * 100) : 0;
+
+  const [collapsedFolders, setCollapsedFolders] = useState<Record<string, boolean>>({});
+  const [upcomingIndex, setUpcomingIndex] = useState(0);
+
+  // Lọc ra các đề cần làm trong 7 ngày tới (có deadline, chưa làm, và deadline < now + 7 days)
+  const upcomingExams = modules.filter(m => {
+    if (!m.deadline || m.status === 'Attempted') return false;
+    const deadlineDate = new Date(m.deadline);
+    const now = new Date();
+    const diff = deadlineDate.getTime() - now.getTime();
+    return diff > 0 && diff <= 7 * 24 * 60 * 60 * 1000;
+  });
+
+  useEffect(() => {
+    if (upcomingExams.length <= 1) return;
+    const interval = setInterval(() => {
+      setUpcomingIndex(prev => (prev + 1) % upcomingExams.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [upcomingExams.length]);
+
+  const { isAdmin } = useAdminRole();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isUploadingBanner, setIsUploadingBanner] = useState(false);
+  const [bannerUrl, setBannerUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const { data } = supabase.storage.from('exam-question-images').getPublicUrl('dashboard/welcome-banner.png');
+    if (data?.publicUrl) {
+      const img = new Image();
+      img.onload = () => setBannerUrl(data.publicUrl);
+      img.src = data.publicUrl;
+    }
+  }, []);
+
+  const handleUploadBannerClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!['image/png', 'image/jpeg', 'image/webp', 'image/gif'].includes(file.type)) {
+      alert('Vui lòng chọn ảnh định dạng PNG, JPG, WEBP hoặc GIF.');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Dung lượng ảnh phải nhỏ hơn 5MB.');
+      return;
+    }
+
+    setIsUploadingBanner(true);
+    try {
+      const { error: uploadError } = await supabase.storage
+        .from('exam-question-images')
+        .upload('dashboard/welcome-banner.png', file, { 
+          upsert: true,
+          cacheControl: '0' 
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage.from('exam-question-images').getPublicUrl('dashboard/welcome-banner.png');
+      
+      setBannerUrl(`${data.publicUrl}?t=${Date.now()}`);
+    } catch (err: any) {
+      console.error(err);
+      alert('Lỗi tải ảnh lên: ' + err.message);
+    } finally {
+      setIsUploadingBanner(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
+  };
+
+  const toggleFolder = (folderId: string) => {
+    setCollapsedFolders(prev => ({
+      ...prev,
+      [folderId]: !prev[folderId]
+    }));
+  };
+
+  const getModulesForFolder = (folderId: string | null) => {
+    if (!folderId) return modules.filter(m => !m.folder_id);
+    return modules.filter(m => m.folder_id === folderId);
+  };
+
+  const renderModule = (m: Module, idx: number) => {
+    const isAttempted = m.status === 'Attempted';
+    const isVerbal = m.subject === 'Reading & Writing';
+
+    return (
+      <motion.div
+        key={m.id}
+        className={`group p-5 rounded-2xl border transition-colors flex flex-col md:flex-row md:items-center justify-between gap-4 ${
+          isDark
+            ? 'bg-bg-card border-white/5 hover:border-primary/30'
+            : 'bg-white border-slate-200 hover:border-primary/30'
+        }`}
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.05 + idx * 0.05 }}
+      >
+        {/* Left accent bar */}
+        <div className="flex items-start gap-4">
+          <div className={`w-1 self-stretch rounded-full shrink-0 ${
+            isVerbal ? 'bg-primary' : 'bg-accent-gold'
+          }`} />
+          
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                isVerbal
+                  ? isDark ? 'bg-primary/10 text-primary-light border border-primary/15' : 'bg-primary/5 text-primary border border-primary/10'
+                  : isDark ? 'bg-accent-gold/10 text-accent-gold border border-accent-gold/15' : 'bg-amber-50 text-amber-600 border border-amber-200'
+              }`}>
+                {m.subject}
+              </span>
+              <span className={`text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+                Module {m.moduleNum}
+              </span>
+            </div>
+
+            <h4 className={`text-base font-bold ${isDark ? 'text-white' : 'text-text-dark'}`}>
+              {m.title}
+            </h4>
+
+            <div className={`flex items-center gap-4 text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+              <span className="flex items-center gap-1">
+                <BookOpen className="w-3.5 h-3.5" />
+                {m.questionsCount} câu
+              </span>
+              <span className="flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5" />
+                {m.durationMinutes} phút
+              </span>
+              {m.deadline && (
+                <span className={`flex items-center gap-1 ${
+                  new Date(m.deadline) < new Date() ? 'text-red-500' : 'text-accent'
+                }`}>
+                  <Calendar className="w-3.5 h-3.5" />
+                  {new Date(m.deadline).toLocaleDateString('vi-VN')}
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Status or Start */}
+        <div className="flex items-center gap-3 ml-5 md:ml-0">
+          {m.is_locked ? (
+            <div className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 ${
+              isDark ? 'bg-white/5 text-text-muted' : 'bg-slate-100 text-slate-400'
+            }`}>
+              <Lock className="w-3.5 h-3.5" />
+              Đã khóa
+            </div>
+          ) : isAttempted ? (
+            <div className="flex items-center gap-4">
+              <div className={`text-right`}>
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-accent">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  Đã làm
+                </div>
+                <div className={`text-lg font-black font-mono mt-0.5 ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                  {m.score} <span className="text-xs font-normal text-text-muted">/ 800</span>
+                </div>
+              </div>
+              <motion.button
+                onClick={() => onStartModule(m.id)}
+                className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
+                  isDark ? 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20' : 'bg-primary/5 hover:bg-primary/10 text-primary border border-primary/20'
+                }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Play className="w-3.5 h-3.5 fill-current" />
+                Làm lại
+              </motion.button>
+            </div>
+          ) : (
+            <motion.button
+              onClick={() => onStartModule(m.id)}
+              className="px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 cursor-pointer transition-colors bg-primary hover:bg-primary-light text-white"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Play className="w-3.5 h-3.5 fill-current" />
+              Bắt đầu
+            </motion.button>
+          )}
+        </div>
+      </motion.div>
+    );
+  };
 
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Dynamic Student Banner */}
-      <div 
-        className={`relative overflow-hidden rounded-none p-6 md:p-8 border-2 transition-all duration-300 ${
-          isDark
-            ? 'bg-black border-[#4dd9cc] text-white'
-            : 'bg-[#0a0e1a] border-transparent text-white shadow-md'
+      
+      {/* ── Welcome Banner ── */}
+      <motion.div
+        className={`relative overflow-hidden rounded-2xl border p-8 md:p-10 ${
+          isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
         }`}
+        style={{
+          backgroundImage: bannerUrl ? `url(${bannerUrl})` : undefined,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <div className="absolute right-0 top-0 h-full w-[40%] bg-[radial-gradient(circle_at_top_right,rgba(0,210,255,0.06),transparent_80%)] pointer-events-none" />
-        <div className="relative z-10 max-w-2xl space-y-3">
-          <span 
-            className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#4dd9cc] text-black text-[10px] font-black uppercase tracking-[0.25em]"
+        {bannerUrl && (
+          <div className={`absolute inset-0 z-0 ${isDark ? 'bg-black/60' : 'bg-white/60 backdrop-blur-sm'}`} />
+        )}
+        
+        {isAdmin && (
+          <div className="absolute top-4 right-4 z-20">
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              className="hidden" 
+              accept="image/png, image/jpeg, image/webp, image/gif"
+              onChange={handleFileChange}
+            />
+            <button
+              onClick={handleUploadBannerClick}
+              disabled={isUploadingBanner}
+              className={`p-2 rounded-lg backdrop-blur-md border transition-all ${
+                isDark 
+                  ? 'bg-black/30 border-white/10 hover:bg-black/50 text-white' 
+                  : 'bg-white/50 border-white/20 hover:bg-white/80 text-text-dark'
+              }`}
+              title="Đổi ảnh nền"
+            >
+              {isUploadingBanner ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />}
+            </button>
+          </div>
+        )}
+
+        <div className="relative z-10 max-w-2xl space-y-4">
+          <motion.span
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
           >
-            <Award className="w-3.5 h-3.5" />
-            Bảng Điều Khiển Học Viên
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black font-display uppercase tracking-tighter leading-none">
-            Chào mừng, {userName || 'L. Garcia'}!
+            <Sparkles className="w-3.5 h-3.5" />
+            Bảng Điều Khiển
+          </motion.span>
+
+          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black font-display tracking-tight leading-tight ${
+            isDark ? 'text-white' : 'text-text-dark'
+          }`}>
+            Chào mừng, <span className="text-primary">{userName || 'Học viên'}</span>!
           </h2>
-          <p className="text-xs sm:text-sm font-mono opacity-80 leading-relaxed max-w-xl">
-            Lịch thi SAT Digital đang đến gần. Tranh thủ chinh phục thêm các Module câu hỏi dưới đây hoặc ôn tập từ vựng mỗi ngày.
+
+          <p className={`text-sm md:text-base leading-relaxed max-w-xl ${
+            isDark ? 'text-text-secondary' : 'text-text-dark-secondary'
+          }`}>
+            Lịch thi SAT Digital đang đến gần. Chinh phục thêm các Module bên dưới hoặc ôn tập từ vựng mỗi ngày.
           </p>
         </div>
+      </motion.div>
+
+      {/* ── Metrics Row ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+        {[
+          {
+            label: 'Chuỗi Ngày Học',
+            value: streak,
+            suffix: 'ngày',
+            icon: <Flame className="w-5 h-5" />,
+            color: 'text-orange-500',
+            bgColor: isDark ? 'bg-orange-500/10' : 'bg-orange-50/80',
+            borderColor: isDark ? 'border-orange-500/20' : 'border-orange-500/20',
+            action: null,
+            progress: null,
+            progressColor: '',
+          },
+          {
+            label: 'Từ Vựng Đã Học',
+            value: vocabTotal,
+            suffix: `${vocabMastered} mastered`,
+            icon: <BookOpen className="w-5 h-5" />,
+            color: 'text-accent',
+            bgColor: isDark ? 'bg-accent/5' : 'bg-accent/5',
+            borderColor: isDark ? 'border-accent/15' : 'border-accent/10',
+            action: onNavigateToVocab,
+            progress: vocabPercent,
+            progressColor: 'bg-accent',
+          },
+          {
+            label: 'Hạng Bảng Xếp',
+            value: leaderboardRankLabel,
+            suffix: userName,
+            icon: <Award className="w-5 h-5" />,
+            color: 'text-accent-gold',
+            bgColor: isDark ? 'bg-accent-gold/5' : 'bg-accent-gold/5',
+            borderColor: isDark ? 'border-accent-gold/15' : 'border-accent-gold/10',
+            action: onNavigateToLeaderboard,
+            progress: null,
+            progressColor: '',
+          },
+        ].map((card, idx) => (
+          <motion.div
+            key={idx}
+            className={`p-5 rounded-2xl border transition-colors ${
+              isDark
+                ? `bg-bg-card ${card.borderColor} hover:border-primary/40`
+                : `bg-white ${card.borderColor} hover:border-primary/30`
+            } ${card.action ? 'cursor-pointer' : ''}`}
+            onClick={() => card.action?.()}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 + idx * 0.1 }}
+            whileHover={card.action ? { y: -2 } : {}}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                {card.label}
+              </span>
+              <div className={`p-2 rounded-lg ${card.bgColor} ${card.color}`}>
+                {card.icon}
+              </div>
+            </div>
+
+            <div className="flex items-baseline gap-2">
+              <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                {card.value}
+              </span>
+              <span className={`text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+                {card.suffix}
+              </span>
+            </div>
+
+            {card.progress !== null && (
+              <div className={`mt-4 w-full h-1.5 rounded-full overflow-hidden ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
+                <div
+                  className={`h-full rounded-full ${card.progressColor} transition-all duration-700`}
+                  style={{ width: `${Math.min(card.progress, 100)}%` }}
+                />
+              </div>
+            )}
+
+            {card.action && (
+              <div className={`mt-4 flex items-center gap-1.5 text-xs font-semibold ${card.color}`}>
+                <span>Xem chi tiết</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            )}
+          </motion.div>
+        ))}
       </div>
 
-      {/* Metrics Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-        <div className={`p-5 rounded-none border transition-all duration-200 ${
-          isDark 
-            ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' 
-            : 'bg-white border-black hover:border-black/50'
-        }`}>
-          <div className="flex items-center justify-between mb-3">
-            <span className={`text-[10px] font-black uppercase tracking-[0.15em] opacity-60`}>
-              Điểm Đọc & Viết (Module 1)
-            </span>
-            <BarChart3 className={`w-4 h-4 ${isDark ? 'text-[#4dd9cc]' : 'text-black'}`} />
-          </div>
-          <div className="flex items-baseline gap-2 font-mono">
-            <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-black'}`}>
-              {averageReadingWritingScore} <span className="text-xs font-sans opacity-45">/ 800</span>
-            </span>
-            <span className="text-[10px] uppercase font-black bg-[#4dd9cc]/10 text-[#4dd9cc] px-2 py-0.5">Top 15%</span>
-          </div>
-          {/* Custom neon progress bar */}
-          <div className={`mt-4 w-full h-1 bg-white/10 overflow-hidden`}>
-            <div className="bg-[#4dd9cc] h-full" style={{ width: '85%' }} />
-          </div>
-        </div>
+      {/* ── Main Content Grid ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
 
-        <div className={`p-5 rounded-none border transition-all duration-200 ${
-          isDark 
-            ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' 
-            : 'bg-white border-black hover:border-black/50'
-        }`}>
-          <div className="flex items-center justify-between mb-3">
-            <span className={`text-[10px] font-black uppercase tracking-[0.15em] opacity-60`}>
-              Từ Vựng Đã Học
-            </span>
-            <BookOpen className={`w-4 h-4 text-indigo-400`} />
-          </div>
-          <div className="flex items-baseline gap-2 font-mono">
-            <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-black'}`}>
-              {vocabTotal} TỪ
-            </span>
-            <span className={`text-[10px] uppercase font-black opacity-60`}>
-              {vocabMastered} Mastered
-            </span>
-          </div>
-          <div className="mt-4 text-[10px] uppercase tracking-widest font-black text-[#4dd9cc] hover:underline flex items-center gap-1 cursor-pointer font-mono" onClick={onNavigateToVocab}>
-            <span>Quản lý thẻ ôn tập</span> <ArrowRight className="w-3 h-3" />
-          </div>
-        </div>
-
-        <div className={`p-5 rounded-none border transition-all duration-200 ${
-          isDark 
-            ? 'bg-black border-white/10 hover:border-[#4dd9cc]/50' 
-            : 'bg-white border-black hover:border-black/50'
-        }`}>
-          <div className="flex items-center justify-between mb-3">
-            <span className={`text-[10px] font-black uppercase tracking-[0.15em] opacity-60`}>
-              Hạng Bảng Vàng
-            </span>
-            <Award className={`w-4 h-4 text-amber-400`} />
-          </div>
-          <div className="flex items-baseline gap-2 font-mono">
-            <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-black'}`}>
-              {leaderboardRankLabel}
-            </span>
-            <span className="text-[10px] uppercase font-black opacity-60">{userName}</span>
-          </div>
-          <div className="mt-4 text-[10px] uppercase tracking-widest font-black text-[#4dd9cc] hover:underline flex items-center gap-1 cursor-pointer font-mono" onClick={onNavigateToLeaderboard}>
-            <span>Xem Bảng Xếp Hạng</span> <ArrowRight className="w-3 h-3" />
-          </div>
-        </div>
-      </div>
-
-      {/* Main Study Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        {/* Module List Col (Left 2 cols) */}
+        {/* Module List (Left 2 cols) */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 pb-2 border-b border-white/5">
-            <h3 className={`text-sm font-black uppercase tracking-widest font-display ${isDark ? 'text-white' : 'text-black'}`}>
-              Danh Sách Module Luyện Đề
+          <div className="flex items-center justify-between pb-3">
+            <h3 className={`text-lg font-bold font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+              Danh sách Module
             </h3>
-            <span className="text-[10px] uppercase font-bold tracking-wider opacity-40 font-mono">Chọn một Module để ôn thi trực tuyến</span>
+            <span className={`text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+              {modules.length} đề thi
+            </span>
           </div>
 
-          <div className="space-y-4">
-            {modules.map((m) => {
-              const isAttempted = m.status === 'Attempted';
+          <div className="space-y-6">
+            {folders.map((folder) => {
+              const folderModules = getModulesForFolder(folder.id);
+              const isCollapsed = collapsedFolders[folder.id] ?? true;
+
               return (
-                <div 
-                  key={m.id}
-                  className={`p-5 rounded-none border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${
-                    isDark 
-                      ? 'bg-black border-white/10 hover:border-[#4dd9cc]/40' 
-                      : 'bg-white border-black/15 hover:border-black'
-                  }`}
-                >
-                  <div className="space-y-2.5">
-                    <div className="flex items-center gap-2">
-                      <span className={`px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-none ${
-                        m.subject === 'Reading & Writing' 
-                          ? 'bg-blue-950 text-blue-300 border border-blue-800' 
-                          : 'bg-amber-950 text-amber-300 border border-amber-800'
-                      }`}>
-                        {m.subject}
-                      </span>
-                      <span className="opacity-40 text-[10px] font-mono">| MODULE {m.moduleNum}</span>
-                    </div>
-
-                    <h4 className={`text-lg font-black font-display uppercase tracking-tight ${isDark ? 'text-white' : 'text-black'}`}>
-                      {m.title}
-                    </h4>
-
-                    <div className="flex items-center gap-4 text-[10px] font-mono opacity-55">
-                      <span className="flex items-center gap-1">
-                        <BookOpen className="w-3.5 h-3.5" />
-                        {m.questionsCount} CÂU HỎI
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" />
-                        {m.durationMinutes} PHÚT
+                <div key={folder.id} className="space-y-3">
+                  <div 
+                    className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition-all ${
+                      isDark ? 'bg-bg-card border border-white/5 hover:border-white/10' : 'bg-slate-50 border border-slate-200 hover:border-slate-300'
+                    }`}
+                    onClick={() => toggleFolder(folder.id)}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg ${isDark ? 'bg-primary/20 text-primary-light' : 'bg-primary/10 text-primary'}`}>
+                        {isCollapsed ? <Folder className="w-5 h-5" /> : <FolderOpen className="w-5 h-5" />}
+                      </div>
+                      <h4 className={`text-sm font-bold font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                        {folder.name}
+                      </h4>
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${isDark ? 'bg-white/10 text-text-muted' : 'bg-white text-slate-500 shadow-sm'}`}>
+                        {folderModules.length}
                       </span>
                     </div>
+                    {isCollapsed ? <ChevronRight className={`w-5 h-5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} /> : <ChevronDown className={`w-5 h-5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} />}
                   </div>
 
-                  {/* Status & Control */}
-                  <div className="flex items-center gap-4 border-t pt-3 md:border-t-0 md:pt-0 border-white/5">
-                    {isAttempted ? (
-                      <div className="text-right flex items-center md:flex-col justify-between w-full md:w-auto md:justify-center gap-2">
-                        <div className="text-[10px] font-black uppercase tracking-widest text-emerald-400 flex items-center gap-1 justify-end font-mono">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                          Đã làm
+                  {!isCollapsed && (
+                    <div className="space-y-3 pl-2 border-l-2 border-dashed ml-4 border-slate-200 dark:border-white/10">
+                      {folderModules.length === 0 ? (
+                        <div className={`p-4 text-center text-sm ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
+                          Thư mục trống
                         </div>
-                        <div className={`text-lg font-black font-mono ${isDark ? 'text-white' : 'text-black'}`}>
-                          {m.score} <span className="text-[10px] opacity-40 font-normal">/ 800</span>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-right w-full md:w-auto">
-                        <button
-                          onClick={() => onStartModule(m.id)}
-                          className={`w-full md:w-auto px-5 py-2.5 rounded-none text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer transition-all border ${
-                            isDark
-                              ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-[#4dd9cc]'
-                              : 'bg-black text-white border-black hover:bg-white hover:text-black'
-                          }`}
-                        >
-                          <Play className="w-3.5 h-3.5 fill-current" />
-                          BẮT ĐẦU THI
-                        </button>
-                      </div>
-                    )}
-                  </div>
+                      ) : (
+                        folderModules.map((m, idx) => renderModule(m, idx))
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}
+
+            {/* Root / Uncategorized Modules */}
+            {getModulesForFolder(null).length > 0 && (
+              <div className="space-y-3 pt-4 mt-4 border-t border-dashed border-slate-200 dark:border-white/10">
+                <div className="flex items-center gap-2 mb-4 px-2">
+                  <Layers className={`w-4 h-4 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} />
+                  <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
+                    Đề thi khác
+                  </span>
+                </div>
+                {getModulesForFolder(null).map((m, idx) => renderModule(m, idx))}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Action Widgets Sidebar (Right 1 col) */}
-        <div className="space-y-6">
-          <div className="flex items-center pb-2 border-b border-white/5">
-            <h3 className={`text-sm font-black uppercase tracking-widest font-display ${isDark ? 'text-white' : 'text-black'}`}>
-              Tiện Ích Ôn Luyện
-            </h3>
-          </div>
+        {/* Sidebar Widgets (Right 1 col) */}
+        <div className="space-y-5">
+          <h3 className={`text-lg font-bold font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+            Tiện ích
+          </h3>
 
-          {/* Learn Vocabulary Card Widget */}
-          <div 
+          {/* VocabHub Widget */}
+          <motion.div
             onClick={onNavigateToVocab}
-            className={`group p-6 rounded-none border-2 cursor-pointer transition-all ${
-              isDark 
-                ? 'bg-black border-white/10 hover:border-[#4dd9cc]' 
-                : 'bg-white border-black hover:border-[#4dd9cc]'
+            className={`group p-6 rounded-2xl border-2 cursor-pointer transition-colors ${
+              isDark
+                ? 'bg-bg-card border-white/5 hover:border-primary/30'
+                : 'bg-white border-slate-200 hover:border-primary/30'
             }`}
+            whileHover={{ y: -3 }}
           >
             <div className="flex items-start justify-between">
-              <div className={`p-3 border ${isDark ? 'bg-white/5 border-white/10 text-[#4dd9cc]' : 'bg-black border-transparent text-[#4dd9cc]'}`}>
+              <div className={`p-3 rounded-xl ${isDark ? 'bg-primary/10 text-primary' : 'bg-primary/5 text-primary'}`}>
                 <BookOpen className="w-6 h-6" />
               </div>
-              <span className={`text-[9px] font-black tracking-widest uppercase px-2 py-0.5 bg-indigo-950 text-indigo-300 border border-indigo-800`}>
-                TỪ VỰNG CAO TẦN
+              <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${
+                isDark ? 'bg-accent/10 text-accent border border-accent/15' : 'bg-emerald-50 text-emerald-600 border border-emerald-200'
+              }`}>
+                VocabHub
               </span>
             </div>
-            <h4 className={`text-lg font-black font-display uppercase tracking-tight mt-5 mb-2 group-hover:underline ${isDark ? 'text-white' : 'text-black'}`}>
+
+            <h4 className={`text-base font-bold mt-4 mb-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
               Học Flashcard Từ Vựng
             </h4>
-            <p className="text-xs text-gray-500 font-mono leading-relaxed mb-5">
-              Tổng hợp 250+ từ vựng học thuật SAT cốt lõi thông qua thẻ ghi nhớ thông minh, tự đo lường độ thông thạo.
+            <p className={`text-xs leading-relaxed mb-4 ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+              250+ từ vựng SAT cốt lõi. Thẻ ghi nhớ thông minh với spaced repetition.
             </p>
-            <div className={`flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-black transition-all ${
-              isDark ? 'text-[#4dd9cc] group-hover:translate-x-1.5' : 'text-black group-hover:translate-x-1.5'
-            }`}>
-              <span>Kiểm tra vốn từ ngay</span>
+
+            <div className={`flex items-center gap-1.5 text-xs font-semibold text-primary transition-transform group-hover:translate-x-1`}>
+              <span>Học ngay</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Quick Tips */}
-          <div className={`p-5 rounded-none border ${isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'}`}>
-            <div className="flex gap-3">
-              <AlertCircle className="w-4 h-4 text-[#4dd9cc] shrink-0 mt-0.5" />
-              <div className="space-y-1.5">
-                <h5 className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-black'}`}>Đầu mấu thi SAT:</h5>
-                <p className="text-[11px] text-gray-500 font-mono leading-relaxed">
-                  Đối với các câu hỏi Đọc hiểu, hãy đọc kỹ phần gợi ý bối cảnh (context hint) và câu chứa từ nối phản đề (eg. however, conversely) để nắm bắt chiều rẽ luận điểm nhanh nhất.
-                </p>
+          {/* Upcoming Exams Widget */}
+          <div className={`p-5 rounded-2xl border ${
+            isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100'
+          }`}>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex gap-2 items-center">
+                <div className={`p-2 rounded-lg shrink-0 ${isDark ? 'bg-accent/10 text-accent' : 'bg-emerald-50 text-emerald-500'}`}>
+                  <Calendar className="w-4 h-4" />
+                </div>
+                <h5 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-text-dark'}`}>Sắp tới hạn</h5>
               </div>
+              {upcomingExams.length > 1 && (
+                <div className="flex items-center gap-1">
+                  <button 
+                    onClick={() => setUpcomingIndex(prev => (prev - 1 + upcomingExams.length) % upcomingExams.length)}
+                    className={`p-1 rounded-md transition-colors ${isDark ? 'hover:bg-white/10 text-white' : 'hover:bg-slate-100 text-slate-700'}`}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button 
+                    onClick={() => setUpcomingIndex(prev => (prev + 1) % upcomingExams.length)}
+                    className={`p-1 rounded-md transition-colors ${isDark ? 'hover:bg-white/10 text-white' : 'hover:bg-slate-100 text-slate-700'}`}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="relative overflow-hidden w-full h-[90px]">
+              {upcomingExams.length > 0 ? (
+                <AnimatePresence initial={false}>
+                  <motion.div
+                    key={upcomingIndex}
+                    initial={{ x: 300, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -300, opacity: 0 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    className="absolute inset-0 w-full"
+                  >
+                    <div 
+                      onClick={() => !upcomingExams[upcomingIndex].is_locked && onStartModule(upcomingExams[upcomingIndex].id)}
+                      className={`h-full p-4 rounded-xl border flex flex-col justify-center transition-colors ${
+                        upcomingExams[upcomingIndex].is_locked 
+                          ? isDark ? 'bg-white/5 border-white/5 cursor-not-allowed' : 'bg-slate-50 border-slate-100 cursor-not-allowed'
+                          : isDark ? 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer' : 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer'
+                      }`}
+                    >
+                      <h6 className={`text-sm font-bold truncate ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                        {upcomingExams[upcomingIndex].title}
+                      </h6>
+                      <p className={`text-xs mt-1 flex items-center gap-1.5 ${isDark ? 'text-text-secondary' : 'text-slate-500'}`}>
+                        <Clock className="w-3 h-3" />
+                        Deadline: {new Date(upcomingExams[upcomingIndex].deadline!).toLocaleDateString('vi-VN')}
+                      </p>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              ) : (
+                <div className={`h-full flex items-center justify-center p-4 rounded-xl border border-dashed ${isDark ? 'border-white/10 text-text-muted' : 'border-slate-200 text-slate-400'}`}>
+                  <p className="text-xs text-center">Không có đề nào cần làm trong 7 ngày tới.</p>
+                </div>
+              )}
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   );

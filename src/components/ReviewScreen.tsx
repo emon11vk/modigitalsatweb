@@ -1,14 +1,9 @@
 import { TestAttemptHistory } from '../types';
 import {
-  ArrowLeft,
-  CheckCircle2,
-  XCircle,
-  Calendar,
-  BookOpen,
-  Trophy,
-  BarChart2,
-  AlertCircle,
+  ArrowLeft, CheckCircle2, XCircle, Calendar, BookOpen,
+  Trophy, BarChart2, AlertCircle, Target,
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import MathRenderer from './MathRenderer';
 
 interface ReviewScreenProps {
@@ -17,139 +12,140 @@ interface ReviewScreenProps {
   onBack: () => void;
 }
 
+// ── SVG Progress Ring Component ──
+function ProgressRing({ percent, size = 80, stroke = 6, isDark = true }: { percent: number; size?: number; stroke?: number; isDark?: boolean }) {
+  const radius = (size - stroke) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (percent / 100) * circumference;
+
+  return (
+    <svg width={size} height={size} className="transform -rotate-90">
+      <circle
+        cx={size / 2} cy={size / 2} r={radius}
+        fill="none"
+        stroke={isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}
+        strokeWidth={stroke}
+      />
+      <circle
+        cx={size / 2} cy={size / 2} r={radius}
+        fill="none"
+        stroke="#6C63FF"
+        strokeWidth={stroke}
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+        className="progress-ring-circle"
+      />
+    </svg>
+  );
+}
+
 export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenProps) {
   const isDark = theme === 'dark';
   const isVerbal = attempt.subject === 'Reading & Writing';
-  const subjectLabel = isVerbal ? 'verbal' : 'math';
   const scorePercent = Math.round((attempt.correctCount / attempt.totalCount) * 100);
 
   return (
-    <div className="space-y-6 md:space-y-8">
+    <div className="space-y-6 md:space-y-8 animate-fade-in">
 
-      {/* 1. Back Button */}
+      {/* ── Back Button ── */}
       <button
         onClick={onBack}
-        className={`inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest px-4 py-2 border transition-all duration-200 ${
+        className={`inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border transition-all cursor-pointer ${
           isDark
-            ? 'border-white/20 text-white hover:border-[#4dd9cc] hover:text-[#4dd9cc]'
-            : 'border-black/30 text-black hover:border-black hover:bg-black hover:text-white'
+            ? 'border-white/10 text-text-secondary hover:text-white hover:border-primary/30'
+            : 'border-slate-200 text-text-dark-secondary hover:text-text-dark hover:border-primary/30'
         }`}
       >
         <ArrowLeft className="w-3.5 h-3.5" />
-        Quay lại lịch sử
+        Quay lại
       </button>
 
-      {/* 2. Header Banner */}
-      <div
-        className={`relative overflow-hidden rounded-none p-6 md:p-8 border-2 transition-all duration-300 ${
-          isDark
-            ? 'bg-black border-[#4dd9cc] text-white'
-            : 'bg-[#0a0e1a] border-transparent text-white shadow-md'
+      {/* ── Header Banner ── */}
+      <motion.div
+        className={`relative overflow-hidden rounded-2xl border p-8 md:p-10 ${
+          isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
         }`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
       >
-        <div className="absolute right-0 top-0 h-full w-[40%] bg-[radial-gradient(circle_at_top_right,rgba(0,210,255,0.06),transparent_80%)] pointer-events-none" />
-        <div className="relative z-10 max-w-2xl space-y-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#4dd9cc] text-black text-[10px] font-black uppercase tracking-[0.25em]">
+        <div className="relative z-10 space-y-3">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold">
             <BookOpen className="w-3.5 h-3.5" />
             Xem lại bài làm
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-display uppercase tracking-tight leading-none">
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl font-black font-display tracking-tight leading-tight ${
+            isDark ? 'text-white' : 'text-text-dark'
+          }`}>
             {attempt.moduleTitle}
           </h2>
-          <div className="flex flex-wrap items-center gap-3 pt-1">
-            <span
-              className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 border ${
-                isVerbal
-                  ? 'bg-indigo-950 text-indigo-300 border-indigo-800'
-                  : 'bg-emerald-950 text-emerald-300 border-emerald-800'
-              }`}
-            >
+          <div className="flex flex-wrap items-center gap-3">
+            <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+              isVerbal
+                ? isDark ? 'bg-primary/10 text-primary-light border border-primary/15' : 'bg-primary/5 text-primary border border-primary/10'
+                : isDark ? 'bg-accent-gold/10 text-accent-gold border border-accent-gold/15' : 'bg-amber-50 text-amber-600 border border-amber-200'
+            }`}>
               {attempt.subject}
             </span>
-            <span className="text-[10px] font-bold font-mono opacity-60 flex items-center gap-1 text-white">
-              <Calendar className="w-3 h-3" /> {attempt.dateStr}
+            <span className={`text-xs flex items-center gap-1 ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+              <Calendar className="w-3 h-3" />
+              {attempt.dateStr}
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* 3. Score Summary Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {[
-          {
-            icon: <Trophy className="w-4 h-4" />,
-            label: 'Điểm số',
-            value: `${scorePercent}%`,
-            accent: true,
-          },
-          {
-            icon: <CheckCircle2 className="w-4 h-4" />,
-            label: 'Câu đúng',
-            value: attempt.correctCount,
-            color: isDark ? 'text-emerald-400' : 'text-emerald-600',
-          },
-          {
-            icon: <XCircle className="w-4 h-4" />,
-            label: 'Câu sai',
-            value: attempt.totalCount - attempt.correctCount,
-            color: isDark ? 'text-red-400' : 'text-red-600',
-          },
-          {
-            icon: <BarChart2 className="w-4 h-4" />,
-            label: 'Tổng câu',
-            value: attempt.totalCount,
-            color: isDark ? 'text-gray-300' : 'text-gray-700',
-          },
-        ].map((card, i) => (
-          <div
-            key={i}
-            className={`p-4 border-2 flex flex-col gap-2 ${
-              card.accent
-                ? isDark
-                  ? 'bg-[#4dd9cc]/10 border-[#4dd9cc]'
-                  : 'bg-[#4dd9cc]/10 border-[#4dd9cc]'
-                : isDark
-                ? 'bg-black border-white/10'
-                : 'bg-white border-black'
-            }`}
-          >
-            <div className={`${card.accent ? 'text-[#4dd9cc]' : (card.color ?? '')}`}>
-              {card.icon}
-            </div>
-            <div className={`text-[9px] font-black uppercase tracking-widest font-mono opacity-50 ${isDark ? 'text-white' : 'text-black'}`}>
-              {card.label}
-            </div>
-            <div
-              className={`text-2xl md:text-3xl font-black font-mono ${
-                card.accent ? 'text-[#4dd9cc]' : (card.color ?? (isDark ? 'text-white' : 'text-black'))
-              }`}
-            >
-              {card.value}
+      {/* ── Score Summary ── */}
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {/* Progress Ring Card */}
+        <motion.div
+          className={`col-span-2 md:col-span-1 p-5 rounded-2xl border flex flex-col items-center justify-center gap-2 ${
+            isDark ? 'bg-bg-card border-primary/15' : 'bg-white border-primary/10 shadow-sm'
+          }`}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div className="relative">
+            <ProgressRing percent={scorePercent} size={72} stroke={5} isDark={isDark} />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-lg font-black font-mono text-primary">{scorePercent}%</span>
             </div>
           </div>
+          <span className={`text-[10px] font-semibold uppercase tracking-wider ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+            Tỷ lệ đúng
+          </span>
+        </motion.div>
+
+        {/* Stat Cards */}
+        {[
+          { icon: <Trophy className="w-4 h-4" />, label: 'Điểm số', value: `${scorePercent}%`, color: 'text-primary' },
+          { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Câu đúng', value: attempt.correctCount, color: 'text-accent' },
+          { icon: <XCircle className="w-4 h-4" />, label: 'Câu sai', value: attempt.totalCount - attempt.correctCount, color: 'text-accent-warm' },
+          { icon: <Target className="w-4 h-4" />, label: 'Tổng câu', value: attempt.totalCount, color: isDark ? 'text-text-secondary' : 'text-text-dark-secondary' },
+        ].map((card, i) => (
+          <motion.div
+            key={i}
+            className={`p-4 rounded-2xl border flex flex-col gap-2 ${
+              isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100 shadow-sm'
+            }`}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 + i * 0.05 }}
+          >
+            <div className={card.color}>{card.icon}</div>
+            <span className={`text-[10px] font-semibold uppercase tracking-wider ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+              {card.label}
+            </span>
+            <span className={`text-xl font-black font-mono ${card.color}`}>{card.value}</span>
+          </motion.div>
         ))}
       </div>
 
-      {/* 4. Progress Bar */}
-      <div className={`p-4 border-2 ${isDark ? 'bg-black border-white/10' : 'bg-white border-black'}`}>
-        <div className="flex justify-between items-center mb-2">
-          <span className={`text-[9px] font-black uppercase tracking-widest font-mono ${isDark ? 'text-white/50' : 'text-black/50'}`}>
-            Tỉ lệ đúng
-          </span>
-          <span className="text-[10px] font-black font-mono text-[#4dd9cc]">{scorePercent}%</span>
-        </div>
-        <div className={`w-full h-2 ${isDark ? 'bg-white/10' : 'bg-black/10'}`}>
-          <div
-            className="h-full bg-[#4dd9cc] transition-all duration-700"
-            style={{ width: `${scorePercent}%` }}
-          />
-        </div>
-      </div>
-
-      {/* 5. Questions Section - Digital SAT Format */}
+      {/* ── Questions Section ── */}
       <div className="space-y-4">
-        <h3 className={`text-[11px] font-black uppercase tracking-widest font-mono ${isDark ? 'text-white/60' : 'text-black/60'} mb-4`}>
-          Chi tiết từng câu hỏi — {attempt.totalCount} câu
+        <h3 className={`text-sm font-bold ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+          Chi tiết — {attempt.totalCount} câu hỏi
         </h3>
 
         {attempt.questions && attempt.questions.length > 0 ? (
@@ -157,70 +153,65 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
             const isCorrect = q.correctAnswer.includes(q.userAnswer?.trim() || '');
 
             return (
-              <div
+              <motion.div
                 key={idx}
-                className={`border-2 rounded-none overflow-hidden ${
+                className={`rounded-2xl border overflow-hidden ${
                   isCorrect
-                    ? isDark
-                      ? 'border-emerald-700/60 bg-emerald-950/30'
-                      : 'border-emerald-600/50 bg-emerald-50'
-                    : isDark
-                    ? 'border-red-700/60 bg-red-950/30'
-                    : 'border-red-600/50 bg-red-50'
+                    ? isDark ? 'border-accent/20 bg-accent/3' : 'border-emerald-200 bg-emerald-50/50'
+                    : isDark ? 'border-accent-warm/20 bg-accent-warm/3' : 'border-red-200 bg-red-50/50'
                 }`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.03 }}
               >
                 {/* Question Header */}
-                <div className={`p-4 border-b ${
+                <div className={`px-5 py-3 border-b flex items-center justify-between ${
                   isCorrect
-                    ? isDark
-                      ? 'border-emerald-700/40 bg-emerald-950/20'
-                      : 'border-emerald-600/30 bg-emerald-100/40'
-                    : isDark
-                    ? 'border-red-700/40 bg-red-950/20'
-                    : 'border-red-600/30 bg-red-100/40'
-                } flex items-center justify-between`}>
-                  <span className={`text-[10px] font-black uppercase tracking-widest font-mono ${
-                    isDark ? 'text-white/70' : 'text-black/70'
-                  }`}>
-                    CÂU {idx + 1}
+                    ? isDark ? 'border-accent/10 bg-accent/5' : 'border-emerald-100 bg-emerald-50'
+                    : isDark ? 'border-accent-warm/10 bg-accent-warm/5' : 'border-red-100 bg-red-50'
+                }`}>
+                  <span className={`text-xs font-semibold ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                    Câu {idx + 1}
                   </span>
                   {isCorrect ? (
-                    <span className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-emerald-500">
-                      <CheckCircle2 className="w-3.5 h-3.5" /> ĐÚNG
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-accent">
+                      <CheckCircle2 className="w-3.5 h-3.5" /> Đúng
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-red-500">
-                      <XCircle className="w-3.5 h-3.5" /> SAI
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-accent-warm">
+                      <XCircle className="w-3.5 h-3.5" /> Sai
                     </span>
                   )}
                 </div>
 
-                <div className="p-5 space-y-5">
-                  {/* Passage for this question (if available) */}
+                <div className="p-5 space-y-4">
+                  {/* Passage */}
                   {q.passage && (
-                    <div className={`p-4 border ${isDark ? 'border-white/10 bg-black/40' : 'border-black/10 bg-white/60'}`}>
-                      <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
-                        📖 Đoạn văn bản
-                      </div>
+                    <div className={`p-4 rounded-xl border ${isDark ? 'border-white/5 bg-white/2' : 'border-slate-100 bg-white'}`}>
+                      <span className={`text-[10px] font-semibold uppercase tracking-wider block mb-2 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                        📖 Đoạn văn
+                      </span>
                       {q.passage.title && (
-                        <h4 className={`text-sm font-black uppercase tracking-tight mb-2 ${isDark ? 'text-white/90' : 'text-black/90'}`}>
+                        <h4 className={`text-sm font-bold mb-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
                           {q.passage.title}
                         </h4>
                       )}
                       {q.passage.introduction && (
                         <MathRenderer
                           content={q.passage.introduction}
-                          className={`text-xs font-mono mb-3 leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}
+                          className={`text-xs mb-2 leading-relaxed ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}
                           isDark={isDark}
+                          disableMath={!!q.passage}
                         />
                       )}
-                      <div className="space-y-3">
+                      <div className="space-y-2">
                         {q.passage.paragraphs?.map((para, pidx) => (
                           <MathRenderer
                             key={pidx}
                             content={para}
-                            className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}
+                            className={`text-xs leading-relaxed ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}
                             isDark={isDark}
+                            disableMath={!!q.passage}
                           />
                         ))}
                       </div>
@@ -230,110 +221,86 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                   {/* Question Text */}
                   {q.questionText && (
                     <div>
-                      <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+                      <span className={`text-[10px] font-semibold uppercase tracking-wider block mb-2 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
                         Câu hỏi
-                      </div>
-                      <div className={`text-sm font-mono leading-relaxed ${isDark ? 'text-white/85' : 'text-black/85'}`}>
-                        <MathRenderer
-                          content={q.questionText}
-                          className="w-full"
-                          isDark={isDark}
-                        />
-                      </div>
+                      </span>
+                      <MathRenderer
+                        content={q.questionText}
+                        className={`text-sm font-medium leading-relaxed ${isDark ? 'text-text-primary' : 'text-text-dark'}`}
+                        isDark={isDark}
+                        disableMath={!!q.passage}
+                      />
                     </div>
                   )}
 
-                  {/* Options Grid (for MCQ only) */}
-                  {q.options && q.question_type === 'mcq' && (
-                    <div>
-                      <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-3 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
-                        Các đáp án
-                      </div>
-                      <div className="grid grid-cols-1 gap-2">
-                        {['A', 'B', 'C', 'D'].map((letter) => {
-                          const optionText = q.options?.[letter as keyof typeof q.options];
-                          const isUserAnswer = q.userAnswer === letter;
-                          const isCorrectAnswer = q.correctAnswer.includes(letter);
-                          const shouldHighlightGreen = isUserAnswer && isCorrect;
-                          const shouldHighlightRed = isUserAnswer && !isCorrect;
-                          const shouldShowCorrectAnswer = !isCorrect && isCorrectAnswer;
+                  {/* MCQ Options */}
+                  {q.options && Object.values(q.options).some(val => val !== null && val !== '' && val !== 'null') && (
+                    <div className="space-y-2">
+                      <span className={`text-[10px] font-semibold uppercase tracking-wider block mb-1 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                        Đáp án
+                      </span>
+                      {['A', 'B', 'C', 'D'].map((letter) => {
+                        const optionText = q.options?.[letter as keyof typeof q.options];
+                        const isUserAnswer = q.userAnswer === letter;
+                        const isCorrectAnswer = q.correctAnswer.includes(letter);
 
-                          let borderClass = '';
-                          let bgClass = '';
-                          let textColorClass = '';
+                        let style = '';
+                        if (isUserAnswer && isCorrect) {
+                          style = isDark
+                            ? 'border-accent/40 bg-accent/5 text-accent'
+                            : 'border-emerald-400 bg-emerald-50 text-emerald-800';
+                        } else if (isUserAnswer && !isCorrect) {
+                          style = isDark
+                            ? 'border-accent-warm/40 bg-accent-warm/5 text-accent-warm'
+                            : 'border-red-400 bg-red-50 text-red-800';
+                        } else if (!isCorrect && isCorrectAnswer) {
+                          style = isDark
+                            ? 'border-accent/40 bg-accent/5 text-accent'
+                            : 'border-emerald-400 bg-emerald-50 text-emerald-800';
+                        } else {
+                          style = isDark
+                            ? 'border-white/5 bg-white/2 text-text-secondary'
+                            : 'border-slate-100 bg-white text-text-dark-secondary';
+                        }
 
-                          if (shouldHighlightGreen) {
-                            borderClass = isDark
-                              ? 'border-emerald-600/80 border-2'
-                              : 'border-emerald-600 border-2';
-                            bgClass = isDark
-                              ? 'bg-emerald-950/50'
-                              : 'bg-emerald-100/80';
-                            textColorClass = isDark ? 'text-emerald-300' : 'text-emerald-800';
-                          } else if (shouldHighlightRed) {
-                            borderClass = isDark
-                              ? 'border-red-600/80 border-2'
-                              : 'border-red-600 border-2';
-                            bgClass = isDark
-                              ? 'bg-red-950/50'
-                              : 'bg-red-100/80';
-                            textColorClass = isDark ? 'text-red-300' : 'text-red-800';
-                          } else if (shouldShowCorrectAnswer) {
-                            borderClass = isDark
-                              ? 'border-emerald-600/80 border-2'
-                              : 'border-emerald-600 border-2';
-                            bgClass = isDark
-                              ? 'bg-emerald-950/50'
-                              : 'bg-emerald-100/80';
-                            textColorClass = isDark ? 'text-emerald-300' : 'text-emerald-800';
-                          } else {
-                            borderClass = isDark
-                              ? 'border-white/20'
-                              : 'border-black/20';
-                            bgClass = isDark
-                              ? 'bg-black/30'
-                              : 'bg-white/40';
-                            textColorClass = isDark ? 'text-white/60' : 'text-black/60';
-                          }
-
-                          return (
-                            <div
-                              key={letter}
-                              className={`p-3 border transition-all ${borderClass} ${bgClass}`}
-                            >
-                              <div className="flex items-start gap-3">
-                                <span className={`text-sm font-black font-mono mt-0.5 shrink-0 ${textColorClass}`}>
-                                  {letter}
-                                </span>
-                                <span className={`text-sm font-mono leading-relaxed ${textColorClass}`}>
-                                  {optionText || '—'}
-                                </span>
-                              </div>
+                        return (
+                          <div key={letter} className={`p-3 rounded-xl border transition-all ${style}`}>
+                            <div className="flex items-start gap-3">
+                              <span className="text-sm font-bold font-mono shrink-0">{letter}</span>
+                              <span className="text-sm leading-relaxed">{optionText || '—'}</span>
+                              {isUserAnswer && isCorrect && <CheckCircle2 className="w-4 h-4 text-accent shrink-0 ml-auto" />}
+                              {isUserAnswer && !isCorrect && <XCircle className="w-4 h-4 text-accent-warm shrink-0 ml-auto" />}
+                              {!isUserAnswer && isCorrectAnswer && !isCorrect && <CheckCircle2 className="w-4 h-4 text-accent shrink-0 ml-auto" />}
                             </div>
-                          );
-                        })}
-                      </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
 
-                  {/* User Answer and Correct Answer (for SPR) */}
-                  {q.question_type === 'spr' && (
-                    <div className="space-y-4">
-                      <div className={`p-3 border-2 ${isCorrect ? (isDark ? 'border-emerald-600/60 bg-emerald-950/30' : 'border-emerald-600/50 bg-emerald-50') : (isDark ? 'border-red-600/60 bg-red-950/30' : 'border-red-600/50 bg-red-50')}`}>
-                        <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+                  {/* SPR Answer */}
+                  {(!q.options || !Object.values(q.options).some(val => val !== null && val !== '' && val !== 'null')) && (
+                    <div className="space-y-3">
+                      <div className={`p-3 rounded-xl border ${
+                        isCorrect
+                          ? isDark ? 'border-accent/30 bg-accent/5' : 'border-emerald-200 bg-emerald-50'
+                          : isDark ? 'border-accent-warm/30 bg-accent-warm/5' : 'border-red-200 bg-red-50'
+                      }`}>
+                        <span className={`text-[10px] font-semibold uppercase tracking-wider block mb-1 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
                           Đáp án bạn nhập
-                        </div>
-                        <p className={`text-sm font-mono font-bold ${isCorrect ? (isDark ? 'text-emerald-300' : 'text-emerald-800') : (isDark ? 'text-red-300' : 'text-red-800')}`}>
+                        </span>
+                        <p className={`text-sm font-mono font-bold ${
+                          isCorrect ? 'text-accent' : 'text-accent-warm'
+                        }`}>
                           {q.userAnswer || '(Trống)'}
                         </p>
                       </div>
-
                       {!isCorrect && (
-                        <div className={`p-3 border-2 border-emerald-600/60 bg-emerald-950/30`}>
-                          <div className={`text-[9px] font-black uppercase tracking-widest font-mono mb-2 text-white/50`}>
+                        <div className={`p-3 rounded-xl border ${isDark ? 'border-accent/30 bg-accent/5' : 'border-emerald-200 bg-emerald-50'}`}>
+                          <span className={`text-[10px] font-semibold uppercase tracking-wider block mb-1 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
                             ✓ Đáp án đúng
-                          </div>
-                          <p className={`text-sm font-mono font-bold text-emerald-300`}>
+                          </span>
+                          <p className="text-sm font-mono font-bold text-accent">
                             {q.correctAnswer.join(', ')}
                           </p>
                         </div>
@@ -341,50 +308,44 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                     </div>
                   )}
 
-                  {/* Explanation (if available) */}
+                  {/* Explanation */}
                   {q.explanation && (
-                    <div
-                      className={`p-3 border-l-4 border-[#4dd9cc] ${
-                        isDark ? 'bg-[#4dd9cc]/5' : 'bg-[#4dd9cc]/5'
-                      }`}
-                    >
-                      <div className="text-[9px] font-black uppercase tracking-widest font-mono text-[#4dd9cc] mb-2">
+                    <div className={`p-4 rounded-xl border border-primary/20 ${isDark ? 'bg-primary/5' : 'bg-primary/5'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-primary block mb-2">
                         💡 Giải thích
-                      </div>
-                      <p className={`text-xs font-mono leading-relaxed ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+                      </span>
+                      <p className={`text-xs leading-relaxed ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
                         {q.explanation}
                       </p>
                     </div>
                   )}
                 </div>
-              </div>
+              </motion.div>
             );
           })
         ) : (
-          /* Fallback: no per-question data stored */
-          <div
-            className={`text-center py-12 border-2 border-dashed ${
-              isDark ? 'border-white/10 bg-black/20 text-gray-500' : 'border-black/15 bg-white text-gray-500'
-            }`}
-          >
-            <AlertCircle className="w-8 h-8 mx-auto opacity-30 mb-3 text-[#4dd9cc]" />
-            <p className="text-xs uppercase tracking-widest font-black font-mono">Không có dữ liệu chi tiết câu hỏi</p>
-            <p className="text-xs text-gray-400 mt-2 font-mono opacity-60">
+          <div className={`text-center py-16 rounded-2xl border-2 border-dashed ${
+            isDark ? 'border-white/10' : 'border-slate-200'
+          }`}>
+            <AlertCircle className={`w-10 h-10 mx-auto mb-3 ${isDark ? 'text-primary/30' : 'text-primary/20'}`} />
+            <p className={`text-sm font-semibold ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+              Không có dữ liệu chi tiết
+            </p>
+            <p className={`text-xs mt-1 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
               Bài làm này được lưu trước khi tính năng xem lại được bật.
             </p>
           </div>
         )}
       </div>
 
-      {/* 6. Footer Notice */}
-      <div className={`p-5 border ${isDark ? 'bg-black border-white/10' : 'bg-gray-50 border-black/15'}`}>
-        <div className="flex gap-3">
-          <AlertCircle className="w-4 h-4 text-[#4dd9cc] shrink-0 mt-0.5" />
-          <p className="text-xs text-gray-500 font-mono leading-relaxed">
-            Đây là kết quả được ghi nhận từ{' '}
-            <strong className={isDark ? 'text-white' : 'text-black'}>lần làm bài đầu tiên</strong>. Kết quả này không thể thay đổi và phản ánh năng lực tiếp thu tự nhiên của bạn tại thời điểm làm bài.
-          </p>
-        </div>
+      {/* ── Footer Notice ── */}
+      <div className={`p-5 rounded-2xl border flex gap-3 ${
+        isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100'
+      }`}>
+        <AlertCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+        <p className={`text-xs leading-relaxed ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+          Kết quả từ <strong className={isDark ? 'text-white' : 'text-text-dark'}>lần làm đầu tiên</strong> — phản ánh năng lực thực tế tại thời điểm làm bài.
+        </p>
       </div>
     </div>
   );

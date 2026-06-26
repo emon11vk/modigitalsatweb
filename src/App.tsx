@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'; // Đã thêm useCallback ở đây
+import { useState, useEffect, useCallback } from 'react';
 import {
   Theme,
   Screen,
@@ -8,10 +8,13 @@ import {
   TestAttemptHistory,
   Question,
   Passage,
-  QuestionResult
+  QuestionResult,
+  VocabFolder
 } from './types';
 
 import { supabase } from './supabaseClient';
+import { fetchWordData } from './utils/dictionaryAPI';
+import { calculateSM2 } from './utils/sm2';
 
 // Component Imports
 import LoginScreen from './components/LoginScreen';
@@ -21,6 +24,7 @@ import VocabularyScreen from './components/VocabularyScreen';
 import LeaderboardScreen from './components/LeaderboardScreen';
 import HistoryScreen from './components/HistoryScreen';
 import ReviewScreen from './components/ReviewScreen';
+import AdminScreen from './components/AdminScreen';
 
 // Icon Imports
 import {
@@ -32,8 +36,11 @@ import {
   BookOpen,
   GraduationCap,
   CheckCircle2,
-  History
+  History,
+  ShieldAlert
 } from 'lucide-react';
+
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<any>(null);
@@ -43,10 +50,12 @@ export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('dashboard');
 
   const [modules, setModules] = useState<Module[]>([]);
+  const [folders, setFolders] = useState<{ id: string; name: string }[]>([]);
   const [activeQuestions, setActiveQuestions] = useState<Question[]>([]);
   const [activePassage, setActivePassage] = useState<Passage | undefined>(undefined);
 
   const [words, setWords] = useState<VocabularyWord[]>([]);
+  const [vocabFolders, setVocabFolders] = useState<VocabFolder[]>([]);
   const [rankings, setRankings] = useState<StudentRank[]>([]);
   const [attemptHistory, setAttemptHistory] = useState<TestAttemptHistory[]>([]);
 
@@ -60,6 +69,70 @@ export default function App() {
   } | null>(null);
 
   const [selectedAttempt, setSelectedAttempt] = useState<TestAttemptHistory | null>(null);
+
+  // ─── Streak Calculation ──────────────────────────────────────────────────────
+  const calculateStreak = useCallback(() => {
+    const dates = new Set<string>();
+
+    attemptHistory.forEach(h => {
+      const parts = h.dateStr.split('/');
+      if (parts.length === 3) {
+        dates.add(`${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`);
+      }
+    });
+
+    words.forEach(w => {
+      const d = new Date(w.date);
+      if (!isNaN(d.getTime())) {
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        dates.add(`${year}-${month}-${day}`);
+      }
+    });
+
+    const sortedDates = Array.from(dates).sort((a, b) => b.localeCompare(a));
+    if (sortedDates.length === 0) return 0;
+
+    let streak = 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    const yesterdayStr = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+
+    let currentDateStr = '';
+    
+    if (sortedDates[0] === todayStr) {
+      streak = 1;
+      currentDateStr = yesterdayStr;
+    } else if (sortedDates[0] === yesterdayStr) {
+      streak = 1;
+      const dayBefore = new Date(yesterday);
+      dayBefore.setDate(dayBefore.getDate() - 1);
+      currentDateStr = `${dayBefore.getFullYear()}-${String(dayBefore.getMonth() + 1).padStart(2, '0')}-${String(dayBefore.getDate()).padStart(2, '0')}`;
+    } else {
+      return 0;
+    }
+
+    for (let i = 1; i < sortedDates.length; i++) {
+      if (sortedDates[i] === currentDateStr) {
+        streak++;
+        const prev = new Date(currentDateStr);
+        prev.setDate(prev.getDate() - 1);
+        currentDateStr = `${prev.getFullYear()}-${String(prev.getMonth() + 1).padStart(2, '0')}-${String(prev.getDate()).padStart(2, '0')}`;
+      } else if (sortedDates[i] > currentDateStr) {
+         continue;
+      } else {
+        break;
+      }
+    }
+
+    return streak;
+  }, [attemptHistory, words]);
 
   // ─── Hàm gọi chi tiết bài test (Được tối ưu bằng useCallback để tránh lỗi render/build) ───
   const handleViewAttemptDetails = useCallback(async (attempt: TestAttemptHistory) => {
@@ -85,7 +158,7 @@ export default function App() {
       const questionIds = answersData.map((ans: any) => ans.question_id);
       const { data: questionsData, error: questionsError } = await supabase
         .from('questions')
-        .select('id, text, correct_answer, options, passage_paragraphs, passage_intro, passage_title, question_type')
+        .select('id, text, correct_answer, options, passage_paragraphs, passage_intro, passage_title, question_type, image_url')
         .in('id', questionIds);
 
       if (questionsError) throw questionsError;
@@ -100,15 +173,16 @@ export default function App() {
         correctAnswer: questionMap.get(ans.question_id)?.correct_answer || [],
         isCorrect: ans.is_correct,
         options: questionMap.get(ans.question_id)?.options,
-        passage: questionMap.get(ans.question_id)?.passage_paragraphs
+        passage: questionMap.get(ans.question_id)?.passage_paragraphs && questionMap.get(ans.question_id)?.passage_paragraphs !== 'null'
           ? {
-              title: questionMap.get(ans.question_id)?.passage_title || 'Reading Text',
-              introduction: questionMap.get(ans.question_id)?.passage_intro || '',
+              title: questionMap.get(ans.question_id)?.passage_title === 'null' ? '' : (questionMap.get(ans.question_id)?.passage_title || 'Reading Text'),
+              introduction: questionMap.get(ans.question_id)?.passage_intro === 'null' ? '' : (questionMap.get(ans.question_id)?.passage_intro || ''),
               paragraphs: Array.isArray(questionMap.get(ans.question_id)?.passage_paragraphs)
-                ? questionMap.get(ans.question_id)?.passage_paragraphs
-                : [questionMap.get(ans.question_id)?.passage_paragraphs]
+                ? questionMap.get(ans.question_id)?.passage_paragraphs.filter((p: any) => p !== 'null')
+                : [questionMap.get(ans.question_id)?.passage_paragraphs].filter((p: any) => p !== 'null')
             }
-          : undefined
+          : undefined,
+        imageUrl: questionMap.get(ans.question_id)?.image_url || null
       }));
 
       // Find first question with passage for overall passage display
@@ -174,6 +248,16 @@ export default function App() {
       if (!currentUser) return;
 
       try {
+        // ===== Fetch Folders =====
+        const { data: folderData, error: folderError } = await supabase
+          .from('exam_folders')
+          .select('id, name')
+          .order('created_at', { ascending: true });
+        
+        if (!folderError && folderData) {
+          setFolders(folderData);
+        }
+
         // ===== Fetch Modules =====
         const { data: modData, error: modError } = await supabase
           .from('modules')
@@ -192,9 +276,24 @@ export default function App() {
               questionsCount: m.questions_count,
               durationMinutes: m.duration_minutes,
               status: 'Not Started' as const,
-              score: undefined
+              score: undefined,
+              folder_id: m.folder_id,
+              is_locked: m.is_locked,
+              deadline: m.deadline
             }))
           );
+        }
+
+        // ===== Fetch Vocab Folders =====
+        const { data: vFolderData, error: vFolderError } = await supabase
+          .from('vocab_folders')
+          .select('*')
+          .or(`user_id.eq.${currentUser.id},is_admin_folder.eq.true`)
+          .order('created_at', { ascending: true });
+          
+        if (vFolderError) console.error('Error fetching vocab folders:', vFolderError);
+        if (vFolderData) {
+          setVocabFolders(vFolderData);
         }
 
         // ===== Fetch Vocabulary =====
@@ -219,12 +318,19 @@ export default function App() {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
-              })
+              }),
+              folder_id: v.folder_id,
+              pronunciation: v.pronunciation,
+              audio_url: v.audio_url,
+              sm2_ease_factor: v.sm2_ease_factor,
+              sm2_interval: v.sm2_interval,
+              sm2_repetitions: v.sm2_repetitions,
+              next_review_date: v.next_review_date
             }))
           );
         }
 
-        // ===== Fetch Test History (Chỉ lấy sườn thông tin cơ bản để tránh sập server) =====
+        // ===== Fetch Test History =====
         const { data: histData, error: histError } = await supabase
           .from('test_history')
           .select(`
@@ -255,7 +361,7 @@ export default function App() {
               correctCount: h.correct_count,
               totalCount: h.total_count,
               dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
-              questions: [], // Tạm thời để trống, tải lazy-loading khi click xem bài làm
+              questions: [],
               passage: undefined
             } as TestAttemptHistory;
           });
@@ -309,7 +415,6 @@ export default function App() {
 
   const handleStartModule = async (moduleId: string) => {
     try {
-      // Fetch all questions for this module
       const { data: questionsData, error: questionsError } = await supabase
         .from('questions')
         .select('*')
@@ -327,36 +432,34 @@ export default function App() {
         return;
       }
 
-      // Format questions: ensure all required fields are present
       const formattedQs: Question[] = questionsData.map((q: any) => ({
         id: q.id,
         text: q.text,
         question_type: q.question_type || 'mcq',
         options: q.options,
         correctAnswer: q.correct_answer,
-        passage: q.passage_paragraphs
+        passage: q.passage_paragraphs && q.passage_paragraphs !== 'null'
           ? {
-              title: q.passage_title || 'Reading Text',
-              introduction: q.passage_intro || '',
+              title: q.passage_title === 'null' ? '' : (q.passage_title || 'Reading Text'),
+              introduction: q.passage_intro === 'null' ? '' : (q.passage_intro || ''),
               paragraphs: Array.isArray(q.passage_paragraphs)
-                ? q.passage_paragraphs
-                : [q.passage_paragraphs]
+                ? q.passage_paragraphs.filter((p: any) => p !== 'null')
+                : [q.passage_paragraphs].filter((p: any) => p !== 'null')
             }
-          : undefined
+          : undefined,
+        imageUrl: q.image_url || null
       }));
 
-      // Set all questions
       setActiveQuestions(formattedQs);
 
-      // Set shared passage (from first question if exists)
-      const firstWithPassage = questionsData.find((q: any) => q.passage_paragraphs);
+      const firstWithPassage = questionsData.find((q: any) => q.passage_paragraphs && q.passage_paragraphs !== 'null');
       if (firstWithPassage) {
         setActivePassage({
-          title: firstWithPassage.passage_title || 'Reading Text',
-          introduction: firstWithPassage.passage_intro || '',
+          title: firstWithPassage.passage_title === 'null' ? '' : (firstWithPassage.passage_title || 'Reading Text'),
+          introduction: firstWithPassage.passage_intro === 'null' ? '' : (firstWithPassage.passage_intro || ''),
           paragraphs: Array.isArray(firstWithPassage.passage_paragraphs)
-            ? firstWithPassage.passage_paragraphs
-            : [firstWithPassage.passage_paragraphs]
+            ? firstWithPassage.passage_paragraphs.filter((p: any) => p !== 'null')
+            : [firstWithPassage.passage_paragraphs].filter((p: any) => p !== 'null')
         });
       }
 
@@ -464,7 +567,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
               correctAnswer: correctAnswers,
               isCorrect: correctAnswers.includes(userAnswer),
               options: q.options,
-              passage: q.passage
+              passage: q.passage,
+              imageUrl: q.imageUrl
             };
           }),
           passage: activePassage
@@ -519,6 +623,9 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
     if (!currentUser) return;
 
     try {
+      // Auto fetch pronunciation and audio
+      const dictData = await fetchWordData(wordData.term);
+
       const { data, error } = await supabase
         .from('vocabulary')
         .insert({
@@ -527,7 +634,10 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
           type: wordData.type,
           definition: wordData.definition,
           example: wordData.example,
-          status: 'Learning'
+          status: 'Learning',
+          folder_id: wordData.folder_id || null,
+          pronunciation: dictData.pronunciation || '',
+          audio_url: dictData.audioUrl || ''
         })
         .select()
         .single();
@@ -551,13 +661,95 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
               month: 'short',
               day: 'numeric',
               year: 'numeric'
-            })
+            }),
+            folder_id: data.folder_id,
+            pronunciation: data.pronunciation,
+            audio_url: data.audio_url,
+            sm2_ease_factor: data.sm2_ease_factor,
+            sm2_interval: data.sm2_interval,
+            sm2_repetitions: data.sm2_repetitions,
+            next_review_date: data.next_review_date
           },
           ...prev
         ]);
       }
     } catch (err) {
       console.error('Fatal error adding word:', err);
+    }
+  };
+
+  const handleAddVocabFolder = async (name: string) => {
+    if (!currentUser) return;
+    try {
+      const { data, error } = await supabase
+        .from('vocab_folders')
+        .insert({ name, user_id: currentUser.id })
+        .select()
+        .single();
+      
+      if (error) {
+        alert('Lỗi khi tạo thư mục');
+        return;
+      }
+      setVocabFolders(prev => [...prev, data]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteVocabFolder = async (id: string) => {
+    try {
+      await supabase.from('vocab_folders').delete().eq('id', id);
+      setVocabFolders(prev => prev.filter(f => f.id !== id));
+      // update words to remove folder_id
+      setWords(prev => prev.map(w => w.folder_id === id ? { ...w, folder_id: null } : w));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleRateWord = async (id: string, quality: number) => {
+    const word = words.find((w) => w.id === id);
+    if (!word) return;
+
+    const sm2Result = calculateSM2(
+      quality, 
+      word.sm2_ease_factor, 
+      word.sm2_interval, 
+      word.sm2_repetitions
+    );
+
+    const newStatus = quality >= 3 && sm2Result.interval > 21 ? 'Mastered' : 'Learning';
+
+    try {
+      const { error } = await supabase
+        .from('vocabulary')
+        .update({
+          status: newStatus,
+          sm2_ease_factor: sm2Result.easeFactor,
+          sm2_interval: sm2Result.interval,
+          sm2_repetitions: sm2Result.repetitions,
+          next_review_date: sm2Result.nextReviewDate.toISOString()
+        })
+        .eq('id', id);
+
+      if (error) {
+        console.error('Error updating word SM2:', error);
+        return;
+      }
+
+      setWords((prev) =>
+        prev.map((w) => (w.id === id ? { 
+          ...w, 
+          status: newStatus as 'Learning'|'Mastered',
+          sm2_ease_factor: sm2Result.easeFactor,
+          sm2_interval: sm2Result.interval,
+          sm2_repetitions: sm2Result.repetitions,
+          next_review_date: sm2Result.nextReviewDate.toISOString()
+        } : w))
+      );
+    } catch (err) {
+      console.error('Fatal error rating word:', err);
     }
   };
 
@@ -610,17 +802,40 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
     localStorage.removeItem('modigitalsat_currentScreen');
   };
 
+  // ─── Keyboard Navigation ───────────────────────────────────────────────────
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        document.activeElement?.tagName === 'INPUT' ||
+        document.activeElement?.tagName === 'TEXTAREA' ||
+        document.activeElement?.tagName === 'SELECT'
+      ) return;
+
+      if (currentScreen === 'practice' || currentScreen === 'login') return;
+
+      if (e.key === '1') setCurrentScreen('dashboard');
+      if (e.key === '2') setCurrentScreen('vocabulary');
+      if (e.key === '3') setCurrentScreen('leaderboard');
+      if (e.key === '4') setCurrentScreen('history');
+      if (e.key === '5') setCurrentScreen('admin');
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentScreen]);
+
   // ─── Loading state ────────────────────────────────────────────────────────────
   if (loadingAuth) {
     return (
-      <div
-        className={`min-h-screen flex items-center justify-center font-mono text-sm tracking-widest ${
-          theme === 'dark'
-            ? 'bg-[#0a0e1a] text-[#4dd9cc]'
-            : 'bg-white text-black'
-        }`}
-      >
-        ĐANG TẢI...
+      <div className={`min-h-screen flex items-center justify-center ${
+        theme === 'dark' ? 'bg-bg-dark' : 'bg-bg-light'
+      }`}>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <span className={`text-sm font-medium ${theme === 'dark' ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+            Đang tải...
+          </span>
+        </div>
       </div>
     );
   }
@@ -643,6 +858,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
         theme={theme}
         moduleId={activeModuleId}
         moduleTitle={modules.find((m) => m.id === activeModuleId)?.title || ''}
+        subject={modules.find((m) => m.id === activeModuleId)?.subject || ''}
+        durationMinutes={modules.find((m) => m.id === activeModuleId)?.durationMinutes || 32}
         questions={activeQuestions}
         passage={activePassage}
         onExit={() => {
@@ -657,31 +874,28 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
   // ─── Main layout variables ───────────────────────────────────────────────────
   const isDark = theme === 'dark';
 
+  const navItems = [
+    { key: 'dashboard' as Screen, icon: <LayoutDashboard className="w-4 h-4" />, label: 'Trang chủ' },
+    { key: 'vocabulary' as Screen, icon: <BookOpen className="w-4 h-4" />, label: 'Từ vựng' },
+    { key: 'leaderboard' as Screen, icon: <Award className="w-4 h-4" />, label: 'Xếp hạng' },
+    { key: 'history' as Screen, icon: <History className="w-4 h-4" />, label: 'Lịch sử' },
+    { key: 'admin' as Screen, icon: <ShieldAlert className="w-4 h-4" />, label: 'Admin' },
+  ];
+
   // ─── Main render ─────────────────────────────────────────────────────────────
   return (
-    <div
-      className={`min-h-screen font-sans flex flex-col justify-between transition-colors duration-300 ${
-        isDark
-          ? 'bg-[#0a0e1a] text-[#e8ecf4]'
-          : 'bg-[#FAFAFA] text-[#0a0e1a]'
-      }`}
-    >
-      {/* Background decoration */}
-      {isDark && (
-        <div className="absolute top-1/4 right-0 text-[300px] font-black leading-none tracking-tighter opacity-[0.02] pointer-events-none select-none font-display">
-          SAT
-        </div>
-      )}
+    <div className={`min-h-screen font-sans flex flex-col transition-colors duration-300 ${
+      isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
+    }`}>
 
-      {/* Header */}
-      <header
-        className={`px-4 py-3 sm:py-4 md:px-8 border-b sticky top-0 z-40 backdrop-blur-md transition-all ${
-          isDark
-            ? 'bg-[#0a0e1a]/95 border-[rgba(77,217,204,0.15)]'
-            : 'bg-white/95 border-black/10'
-        }`}
-      >
+      {/* ── Header ── */}
+      <header className={`px-4 py-3 md:px-8 border-b sticky top-0 z-40 transition-all ${
+        isDark
+          ? 'bg-bg-dark/80 backdrop-blur-xl border-white/5'
+          : 'bg-white/80 backdrop-blur-xl border-slate-200/50'
+      }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          
           {/* Logo */}
           <div
             className="flex items-center gap-3 cursor-pointer group"
@@ -694,71 +908,19 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
               setCurrentScreen('dashboard');
             }}
           >
-            <div
-              className={`p-1.5 border transition-all ${
-                isDark
-                  ? 'bg-black border-[rgba(77,217,204,0.2)] text-[#4dd9cc]'
-                  : 'bg-[#0a0e1a] border-transparent text-[#4dd9cc]'
-              }`}
-            >
-              <GraduationCap className="w-5 h-5" />
+            <div className={`relative flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <img src="/logo.png" alt="Mơ Digital SAT" className="h-16 sm:h-20 w-auto object-contain relative z-10 drop-shadow-md" />
             </div>
-            <div>
-              <h1 className="text-base sm:text-lg font-black tracking-tighter flex items-center gap-2 uppercase font-display select-none">
-                <span
-                  className={isDark ? 'text-[#4dd9cc] animate-pulse' : 'text-black'}
-                  style={
-                    isDark
-                      ? {
-                          textShadow:
-                            '0 0 6px #4dd9cc, 0 0 15px rgba(77,217,204,0.6)'
-                        }
-                      : undefined
-                  }
-                >
-                  Mơ.DigitalSat
-                </span>
-                <span
-                  className="bg-[#4dd9cc] text-black text-[9px] font-black tracking-[0.2em] px-2 py-0.5 rounded-none font-sans"
-                  style={
-                    isDark ? { boxShadow: '0 0 10px rgba(77,217,204,0.8)' } : undefined
-                  }
-                >
-                  PRO
-                </span>
-              </h1>
-            </div>
+            <h1 className="text-base sm:text-xl font-black font-display tracking-tight select-none">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500 drop-shadow-sm">Mơ Digital SAT</span>
+            </h1>
           </div>
 
           {/* Navigation */}
-          <nav className="flex items-center gap-1 sm:gap-2">
-            {(
-              [
-                {
-                  key: 'dashboard' as Screen,
-                  icon: <LayoutDashboard className="w-3.5 h-3.5" />,
-                  label: 'BẢNG ĐIỀU KHIỂN'
-                },
-                {
-                  key: 'vocabulary' as Screen,
-                  icon: <BookOpen className="w-3.5 h-3.5" />,
-                  label: 'TỪ VỰNG SAT'
-                },
-                {
-                  key: 'leaderboard' as Screen,
-                  icon: <Award className="w-3.5 h-3.5" />,
-                  label: 'BẢNG VÀNG'
-                },
-                {
-                  key: 'history' as Screen,
-                  icon: <History className="w-3.5 h-3.5" />,
-                  label: 'LỊCH SỬ'
-                }
-              ] as const
-            ).map(({ key, icon, label }) => {
-              const isActive =
-                currentScreen === key ||
-                (key === 'history' && currentScreen === 'review');
+          <nav className={`hidden md:flex items-center gap-1 p-1 rounded-xl ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
+            {navItems.map(({ key, icon, label }) => {
+              const isActive = currentScreen === key || (key === 'history' && currentScreen === 'review');
               return (
                 <button
                   key={key}
@@ -770,72 +932,96 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
                     }
                     setCurrentScreen(key);
                   }}
-                  className={`px-3 py-2 text-[10px] md:text-[11px] font-black tracking-[0.18em] uppercase transition-all duration-150 cursor-pointer border ${
+                  className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer flex items-center gap-2 ${
                     isActive
-                      ? isDark
-                        ? 'bg-[#4dd9cc] text-black border-[#4dd9cc]'
-                        : 'bg-[#0a0e1a] text-white border-[#0a0e1a]'
+                      ? 'bg-primary text-white shadow-md shadow-primary/20'
                       : isDark
-                      ? 'border-transparent text-white/50 hover:text-white hover:border-[rgba(77,217,204,0.2)]'
-                      : 'border-transparent text-black/50 hover:text-black hover:border-black/5'
+                      ? 'text-text-muted hover:text-white hover:bg-white/5'
+                      : 'text-text-dark-secondary hover:text-text-dark hover:bg-white'
                   }`}
                 >
-                  <span className="inline-flex items-center gap-1.5">
-                    {icon}
-                    <span className="hidden sm:inline">{label}</span>
+                  {icon}
+                  <span>{label}</span>
+                  <span className={`hidden lg:inline-flex items-center justify-center ml-1 w-4 h-4 text-[9px] rounded font-mono ${
+                    isActive
+                      ? 'bg-white/20 text-white/90'
+                      : isDark ? 'bg-white/5 text-text-muted/50' : 'bg-slate-200/50 text-slate-400'
+                  }`}>
+                    {navItems.findIndex(i => i.key === key) + 1}
                   </span>
                 </button>
               );
             })}
           </nav>
 
-          {/* Right controls */}
+          {/* Mobile Nav */}
+          <nav className="flex md:hidden items-center gap-1">
+            {navItems.map(({ key, icon }) => {
+              const isActive = currentScreen === key || (key === 'history' && currentScreen === 'review');
+              return (
+                <button
+                  key={key}
+                  onClick={() => {
+                    if (key !== 'history' && currentScreen === 'review') {
+                      setSelectedAttempt(null);
+                      localStorage.removeItem('modigitalsat_attemptId');
+                      localStorage.removeItem('modigitalsat_currentScreen');
+                    }
+                    setCurrentScreen(key);
+                  }}
+                  className={`p-2.5 rounded-lg transition-all cursor-pointer ${
+                    isActive
+                      ? 'bg-primary text-white shadow-md shadow-primary/20'
+                      : isDark ? 'text-text-muted hover:text-white' : 'text-text-dark-secondary hover:text-text-dark'
+                  }`}
+                >
+                  {icon}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Right Controls */}
           <div className="flex items-center gap-2">
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className={`p-2 transition-colors cursor-pointer border ${
+              className={`p-2 rounded-lg border transition-all cursor-pointer ${
                 isDark
-                  ? 'border-[rgba(77,217,204,0.2)] bg-[#0a0e1a] text-[#4dd9cc] hover:bg-[rgba(77,217,204,0.1)]'
-                  : 'border-black/10 bg-white text-black hover:bg-black/5'
+                  ? 'border-white/10 bg-white/5 text-text-secondary hover:text-primary hover:border-primary/20'
+                  : 'border-slate-200 bg-white text-text-dark-secondary hover:text-primary hover:border-primary/20'
               }`}
               title="Đổi theme"
             >
-              {isDark ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
             {/* User info */}
-            <div
-              className={`hidden md:flex items-center gap-2 px-3 py-1.5 border ${
-                isDark ? 'bg-black border-[rgba(77,217,204,0.15)]' : 'bg-white border-black/10'
-              }`}
-            >
+            <div className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg border ${
+              isDark ? 'bg-white/5 border-white/5' : 'bg-white border-slate-200'
+            }`}>
               <img
                 src={
                   currentUser?.user_metadata?.avatar_url ||
-                  'https://ui-avatars.com/api/?name=User&background=random'
+                  'https://ui-avatars.com/api/?name=User&background=6C63FF&color=fff'
                 }
                 alt="Avatar"
                 referrerPolicy="no-referrer"
-                className="w-5 h-5 rounded-none object-cover border border-white/20"
+                className="w-6 h-6 rounded-full object-cover"
               />
-              <span className="text-[10px] font-bold tracking-widest uppercase opacity-75 truncate max-w-[100px]">
+              <span className={`text-xs font-medium truncate max-w-[100px] ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
                 {currentUser?.user_metadata?.full_name ||
                   currentUser?.email?.split('@')[0]}
               </span>
             </div>
 
-            {/* Logout button */}
+            {/* Logout */}
             <button
               onClick={handleLogout}
-              className={`p-2 border hover:text-red-500 transition-colors cursor-pointer ${
+              className={`p-2 rounded-lg border transition-all cursor-pointer ${
                 isDark
-                  ? 'border-[rgba(77,217,204,0.15)] bg-[#0a0e1a] text-white/50'
-                  : 'border-black/10 bg-white text-black/50'
+                  ? 'border-white/10 bg-white/5 text-text-muted hover:text-accent-warm hover:border-accent-warm/20'
+                  : 'border-slate-200 bg-white text-slate-400 hover:text-accent-warm hover:border-accent-warm/20'
               }`}
               title="Đăng xuất"
             >
@@ -845,16 +1031,18 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 transition-all">
+      {/* ── Main Content ── */}
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10">
         {currentScreen === 'dashboard' && (
           <DashboardScreen
             theme={theme}
             userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
             modules={modules}
+            folders={folders}
             vocabTotal={words.length}
             vocabMastered={words.filter(w => w.status === 'Mastered').length}
             leaderboardRank={rankings.find(r => r.isCurrentUser)?.rank ?? null}
+            streak={calculateStreak()}
             onStartModule={handleStartModule}
             onNavigateToVocab={() => setCurrentScreen('vocabulary')}
             onNavigateToLeaderboard={() => setCurrentScreen('leaderboard')}
@@ -865,9 +1053,13 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
           <VocabularyScreen
             theme={theme}
             words={words}
+            folders={vocabFolders}
             onAddWord={handleAddWord}
             onDeleteWord={handleDeleteWord}
             onToggleStatus={handleToggleStatus}
+            onRateWord={handleRateWord}
+            onAddFolder={handleAddVocabFolder}
+            onDeleteFolder={handleDeleteVocabFolder}
           />
         )}
 
@@ -894,81 +1086,89 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             onBack={handleBackFromReview}
           />
         )}
+
+        {currentScreen === 'admin' && (
+          <AdminScreen theme={theme} />
+        )}
       </main>
 
-      {/* Footer */}
+      {/* ── Footer ── */}
       <footer className={`border-t py-6 text-center select-none ${
-        isDark ? 'border-[rgba(77,217,204,0.15)] text-white/30' : 'border-black/10 text-black/40'
+        isDark ? 'border-white/5 text-text-muted' : 'border-slate-100 text-slate-400'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 text-[10px] uppercase tracking-[0.25em] font-bold space-y-1.5">
-          <p>© 2026 Mơ-DigitalSat / SAT Prep Pro. All Rights Reserved.</p>
-          <p className="opacity-40 tracking-[0.1em] text-[8px] font-sans">
-            Hệ thống định tuyến dữ liệu & tối ưu hóa học thuật đạt tiêu chuẩn kiểm khảo quốc tế.
-          </p>
+        <div className="max-w-7xl mx-auto px-4 text-xs">
+          <p>© 2026 Mơ Digital SAT. All Rights Reserved.</p>
         </div>
       </footer>
 
-      {/* Popup Score */}
-      {testResult && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
-          <div className={`w-full max-w-md rounded-none border-2 transform transition-all p-6 md:p-8 text-center space-y-6 ${
-            isDark ? 'bg-[#0a0e1a] border-[#4dd9cc] text-white' : 'bg-white border-black text-black'
-          }`}>
-            <div className="flex justify-center">
-              <div className={`inline-flex items-center justify-center w-12 h-12 border ${
-                isDark
-                  ? 'bg-black border-[rgba(77,217,204,0.5)] text-[#4dd9cc]'
-                  : 'bg-black border-transparent text-[#4dd9cc]'
-              }`}>
-                <CheckCircle2 className="w-7 h-7" />
+      {/* ── Score Popup ── */}
+      <AnimatePresence>
+        {testResult && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className={`w-full max-w-md rounded-2xl p-8 text-center space-y-6 ${
+                isDark ? 'bg-bg-card border border-primary/15' : 'bg-white border border-slate-200 shadow-2xl'
+              }`}
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 30 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+            >
+              {/* Icon */}
+              <div className="flex justify-center">
+                <div className="p-4 rounded-2xl bg-primary/10 text-primary">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#4dd9cc] bg-[rgba(77,217,204,0.1)] py-1 px-3 inline-block">
-                HOÀN THÀNH BÀI KIỂM TRA
-              </span>
-              <h3 className="text-2xl font-black font-display tracking-tight uppercase leading-none">
-                {testResult.moduleTitle}
-              </h3>
-              <p className="text-xs opacity-60 leading-relaxed px-2 font-mono">
-                Kết quả bài làm đã được đối lưu và cập nhật tự động lên hệ thống Bảng Vàng học thuật.
-              </p>
-            </div>
-
-            <div className={`p-5 border rounded-none ${
-              isDark ? 'bg-black border-[rgba(77,217,204,0.15)]' : 'bg-gray-50 border-black/15'
-            }`}>
-              <div className="text-[10px] opacity-40 uppercase tracking-widest font-black">
-                Điểm đạt được của bạn
-              </div>
-              <div className="text-4xl sm:text-5xl font-black font-display text-white mt-2">
-                <span className="text-[#4dd9cc]">{testResult.earnedScore}</span>
-                <span className="text-xs opacity-40 font-sans tracking-normal ml-2">/ 800 PTS</span>
-              </div>
-              <div className="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono">
-                <span className="opacity-50">SỐ CÂU ĐÚNG:</span>
-                <span className="font-bold text-[#4dd9cc]">
-                  {testResult.correctCount} / {testResult.totalCount}
+              {/* Title */}
+              <div className="space-y-2">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+                  Hoàn thành
                 </span>
+                <h3 className={`text-xl font-black font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                  {testResult.moduleTitle}
+                </h3>
+                <p className={`text-xs ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                  Kết quả đã được cập nhật lên bảng xếp hạng.
+                </p>
               </div>
-            </div>
 
-            <div>
-              <button
+              {/* Score Display */}
+              <div className={`p-6 rounded-xl ${isDark ? 'bg-white/5 border border-white/5' : 'bg-slate-50 border border-slate-100'}`}>
+                <div className={`text-xs uppercase tracking-wider font-semibold mb-2 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                  Điểm đạt được
+                </div>
+                <div className="text-4xl font-black font-display">
+                  <span className="text-primary">{testResult.earnedScore}</span>
+                  <span className={`text-sm ml-2 font-normal ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>/ 800</span>
+                </div>
+                <div className={`mt-4 pt-4 border-t flex justify-between items-center text-xs ${isDark ? 'border-white/5' : 'border-slate-200'}`}>
+                  <span className={isDark ? 'text-text-muted' : 'text-slate-400'}>Số câu đúng</span>
+                  <span className="font-bold text-primary">
+                    {testResult.correctCount} / {testResult.totalCount}
+                  </span>
+                </div>
+              </div>
+
+              {/* Close Button */}
+              <motion.button
                 onClick={() => setTestResult(null)}
-                className={`w-full py-3.5 font-black uppercase tracking-widest text-xs cursor-pointer transition-all border ${
-                  isDark
-                    ? 'bg-[#4dd9cc] text-black border-[#4dd9cc] hover:bg-black hover:text-white hover:border-white/20'
-                    : 'bg-black text-white border-black hover:bg-transparent hover:text-black'
-                }`}
+                className="w-full py-3.5 rounded-xl font-bold text-sm cursor-pointer transition-all bg-primary hover:bg-primary-light text-white shadow-lg shadow-primary/20"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
               >
-                Trở lại Trang chính
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+                Trở lại trang chủ
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
