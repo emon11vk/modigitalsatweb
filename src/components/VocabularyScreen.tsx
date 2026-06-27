@@ -62,16 +62,64 @@ export default function VocabularyScreen({
   const [mcqOptions, setMcqOptions] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
+  // 3 AM Study Day Logic
+  const studyDayStart = useMemo(() => {
+    const now = new Date();
+    const start = new Date(now);
+    if (now.getHours() < 3) {
+      start.setDate(start.getDate() - 1);
+    }
+    start.setHours(3, 0, 0, 0);
+    return start.getTime();
+  }, []);
+
   // Session Tracking
-  const [sessionStudiedWordIds, setSessionStudiedWordIds] = useState<Set<string>>(new Set());
+  const [sessionStudiedWordIds, setSessionStudiedWordIds] = useState<Set<string>>(() => {
+    try {
+      const stored = localStorage.getItem('ai_story_studied_words');
+      if (stored) {
+        const parsed: Record<string, number> = JSON.parse(stored);
+        
+        const now = new Date();
+        const start = new Date(now);
+        if (now.getHours() < 3) {
+          start.setDate(start.getDate() - 1);
+        }
+        start.setHours(3, 0, 0, 0);
+        const currentStudyDayStart = start.getTime();
+        
+        const validIds = Object.entries(parsed)
+          .filter(([_, timestamp]) => timestamp >= currentStudyDayStart)
+          .map(([id]) => id);
+        
+        return new Set(validIds);
+      }
+    } catch (e) {
+      console.error('Error parsing ai_story_studied_words', e);
+    }
+    return new Set();
+  });
+
+  const addStudiedWord = (id: string) => {
+    setSessionStudiedWordIds(prev => {
+      const next = new Set(prev).add(id);
+      try {
+        const stored = localStorage.getItem('ai_story_studied_words');
+        const parsed: Record<string, number> = stored ? JSON.parse(stored) : {};
+        parsed[id] = Date.now();
+        localStorage.setItem('ai_story_studied_words', JSON.stringify(parsed));
+      } catch (e) {}
+      return next;
+    });
+  };
+
   const [sessionNewWordsCount, setSessionNewWordsCount] = useState(0);
   const [isStudyRestWarningOpen, setIsStudyRestWarningOpen] = useState(false);
 
   // Daily limit logic
-  const todayStr = new Date().toLocaleDateString('en-US');
   const wordsLearnedToday = useMemo(() => {
-    return words.filter(w => new Date(w.date).toLocaleDateString('en-US') === todayStr).length;
-  }, [words, todayStr]);
+    return words.filter(w => new Date(w.date).getTime() >= studyDayStart).length;
+  }, [words, studyDayStart]);
 
   const handleCreateWord = (e: React.FormEvent) => {
     e.preventDefault();
@@ -186,7 +234,7 @@ export default function VocabularyScreen({
   const handleRateWord = (quality: number) => {
     const currentWord = learningQueue[currentWordIndex];
     if (currentWord) {
-      setSessionStudiedWordIds(prev => new Set(prev).add(currentWord.id));
+      addStudiedWord(currentWord.id);
       if (!currentWord.sm2_repetitions || currentWord.sm2_repetitions === 0) {
         setSessionNewWordsCount(prev => {
           const next = prev + 1;
@@ -204,7 +252,7 @@ export default function VocabularyScreen({
   const handleMarkAsKnown = () => {
     const currentWord = learningQueue[currentWordIndex];
     if (currentWord) {
-      setSessionStudiedWordIds(prev => new Set(prev).add(currentWord.id));
+      addStudiedWord(currentWord.id);
       if (!currentWord.sm2_repetitions || currentWord.sm2_repetitions === 0) {
         setSessionNewWordsCount(prev => {
           const next = prev + 1;
@@ -249,8 +297,8 @@ export default function VocabularyScreen({
 
   // Filter words studied today (either reviewed in this session or created today)
   const wordsForStory = useMemo(() => {
-    return words.filter(w => sessionStudiedWordIds.has(w.id) || new Date(w.date).toLocaleDateString('en-US') === todayStr);
-  }, [words, sessionStudiedWordIds, todayStr]);
+    return words.filter(w => sessionStudiedWordIds.has(w.id) || new Date(w.date).getTime() >= studyDayStart);
+  }, [words, sessionStudiedWordIds, studyDayStart]);
 
   // Active Learning View Rendering
   if (activeLearningFolderId !== null && learningQueue.length > 0) {
