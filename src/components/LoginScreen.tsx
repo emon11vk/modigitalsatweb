@@ -100,7 +100,7 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
             transition={{ duration: 0.5 }}
           >
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
-            <img src="/logo.png" alt="Mơ Digital SAT Logo" className="w-28 h-28 lg:w-32 lg:h-32 object-contain relative z-10 drop-shadow-2xl" />
+            <img src="/logo.png" alt="Mơ Digital SAT Logo" className="w-56 h-56 lg:w-72 lg:h-72 object-contain relative z-10 drop-shadow-2xl" />
           </motion.div>
 
           <h1 className="text-5xl xl:text-6xl font-black font-display tracking-tighter leading-none">
@@ -146,7 +146,7 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
           <div className="text-center mb-8 lg:hidden">
             <div className="inline-flex items-center justify-center mb-4 relative">
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl opacity-60"></div>
-              <img src="/logo.png" alt="Mơ Digital SAT Logo" className="w-24 h-24 object-contain relative z-10 drop-shadow-xl" />
+              <img src="/logo.png" alt="Mơ Digital SAT Logo" className="w-48 h-48 object-contain relative z-10 drop-shadow-xl" />
             </div>
             <h1 className="text-3xl font-black font-display tracking-tighter">
               <span className="text-primary">Mơ Digital SAT</span>
