@@ -146,6 +146,16 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes burn {
+  0%, 100% { transform: scale(1) rotate(-3deg); opacity: 0.9; }
+  50% { transform: scale(1.15) rotate(3deg); opacity: 1; }
+}
+
+.animate-burn {
+  animation: burn 1s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
 .animate-fade-in {
   animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

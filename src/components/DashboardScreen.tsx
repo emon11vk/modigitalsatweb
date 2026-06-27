@@ -329,7 +329,7 @@ export default function DashboardScreen({
             label: 'Chuỗi Ngày Học',
             value: streak,
             suffix: 'ngày',
-            icon: <Flame className="w-5 h-5" />,
+            icon: <Flame className="w-5 h-5 animate-burn" fill="currentColor" />,
             color: 'text-orange-500',
             bgColor: isDark ? 'bg-orange-500/10' : 'bg-orange-50/80',
             borderColor: isDark ? 'border-orange-500/20' : 'border-orange-500/20',
