@@ -579,7 +579,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
         // Cập nhật Bảng Vàng (Leaderboard)
         const currentRank = rankings.find((r) => r.isCurrentUser);
         if (currentRank) {
-          const newTotal = currentRank.totalScore + earnedScore;
+          const newTotal = currentRank.totalScore + (correctCount * 10);
           const newTests = currentRank.testsCompleted + 1;
           const newAvg = newTotal / newTests;
 
