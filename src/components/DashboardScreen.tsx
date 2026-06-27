@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle, Sparkles, TrendingUp, Folder, FolderOpen, ChevronDown, ChevronRight, Layers, Image as ImageIcon, Loader2, Flame, Lock, ChevronLeft, Calendar } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Module, Theme } from '../types';
 import { useAdminRole } from '../hooks/useAdminRole';
 import { supabase } from '../supabaseClient';
