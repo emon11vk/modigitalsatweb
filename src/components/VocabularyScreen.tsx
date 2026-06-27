@@ -56,6 +56,11 @@ export default function VocabularyScreen({
   const [mcqOptions, setMcqOptions] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
+  // Session Tracking
+  const [sessionStudiedWordIds, setSessionStudiedWordIds] = useState<Set<string>>(new Set());
+  const [sessionNewWordsCount, setSessionNewWordsCount] = useState(0);
+  const [isStudyRestWarningOpen, setIsStudyRestWarningOpen] = useState(false);
+
   // Daily limit logic
   const todayStr = new Date().toLocaleDateString('en-US');
   const wordsLearnedToday = useMemo(() => {
@@ -166,6 +171,16 @@ export default function VocabularyScreen({
   const handleRateWord = (quality: number) => {
     const currentWord = learningQueue[currentWordIndex];
     if (currentWord) {
+      setSessionStudiedWordIds(prev => new Set(prev).add(currentWord.id));
+      if (!currentWord.sm2_repetitions || currentWord.sm2_repetitions === 0) {
+        setSessionNewWordsCount(prev => {
+          const next = prev + 1;
+          if (next === 15) {
+            setIsStudyRestWarningOpen(true);
+          }
+          return next;
+        });
+      }
       onRateWord(currentWord.id, quality);
     }
     nextWord();
@@ -174,6 +189,16 @@ export default function VocabularyScreen({
   const handleMarkAsKnown = () => {
     const currentWord = learningQueue[currentWordIndex];
     if (currentWord) {
+      setSessionStudiedWordIds(prev => new Set(prev).add(currentWord.id));
+      if (!currentWord.sm2_repetitions || currentWord.sm2_repetitions === 0) {
+        setSessionNewWordsCount(prev => {
+          const next = prev + 1;
+          if (next === 15) {
+            setIsStudyRestWarningOpen(true);
+          }
+          return next;
+        });
+      }
       onToggleStatus(currentWord.id); // Toggle status to Mastered
     }
     nextWord();
@@ -534,6 +559,11 @@ export default function VocabularyScreen({
     );
   }
 
+  // Filter words studied today (either reviewed in this session or created today)
+  const wordsForStory = useMemo(() => {
+    return words.filter(w => sessionStudiedWordIds.has(w.id) || new Date(w.date).toLocaleDateString('en-US') === todayStr);
+  }, [words, sessionStudiedWordIds, todayStr]);
+
   // Dashboard View (Image 3)
   return (
     <div className="space-y-8 animate-fade-in pb-20">
@@ -770,8 +800,56 @@ export default function VocabularyScreen({
         )}
       </AnimatePresence>
 
+      {/* ── Study Limit Warning Modal ── */}
+      <AnimatePresence>
+        {isStudyRestWarningOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[70]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className={`w-full max-w-md rounded-2xl p-8 ${isDark ? 'bg-bg-card border border-primary/15' : 'bg-white border border-slate-200 shadow-2xl'}`}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h3 className={`text-lg font-bold font-display flex items-center gap-2 text-orange-500`}>
+                  <AlertTriangle className="w-6 h-6" />
+                  Nên nghỉ ngơi thôi!
+                </h3>
+              </div>
+              <div className={`text-sm ${isDark ? 'text-slate-300' : 'text-slate-700'} mb-6 space-y-2`}>
+                <p>Bạn đã học được 15 từ vựng mới toanh trong phiên này rồi.</p>
+                <p>Học nhồi nhét quá nhiều từ mới cùng lúc sẽ làm giảm hiệu quả ghi nhớ. Hãy nghỉ ngơi một chút cho não bộ "tiêu hóa" nhé!</p>
+              </div>
+              <div className="flex justify-end gap-3">
+                <button 
+                  onClick={() => setIsStudyRestWarningOpen(false)} 
+                  className={`px-4 py-2 rounded-xl text-sm font-medium ${isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'} transition-colors cursor-pointer`}
+                >
+                  Vẫn tiếp tục
+                </button>
+                <button 
+                  onClick={() => {
+                    setIsStudyRestWarningOpen(false);
+                    setActiveLearningFolderId(null);
+                    setLearningQueue([]);
+                  }} 
+                  className="px-5 py-2 rounded-xl text-sm font-bold bg-primary text-white hover:bg-primary-light transition-colors cursor-pointer"
+                >
+                  Nghỉ ngơi ngay
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── AI Story Modal ── */}
-      <AIStoryModal theme={theme} words={words} isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} />
+      <AIStoryModal theme={theme} words={wordsForStory} isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} />
     </div>
   );
 }
