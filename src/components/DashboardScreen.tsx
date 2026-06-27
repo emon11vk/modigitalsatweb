@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle, Sparkles, TrendingUp, Folder, FolderOpen, ChevronDown, ChevronRight, Layers, Image as ImageIcon, Loader2, Flame, Lock, ChevronLeft, Calendar, Edit2, Settings } from 'lucide-react';
+import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle, Sparkles, TrendingUp, Folder, FolderOpen, ChevronDown, ChevronRight, Layers, Image as ImageIcon, Loader2, Flame, Lock, ChevronLeft, Calendar, Edit2, Settings, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Module, Theme } from '../types';
 import { useAdminRole } from '../hooks/useAdminRole';
@@ -192,6 +192,7 @@ export default function DashboardScreen({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isUploadingBanner, setIsUploadingBanner] = useState(false);
   const [bannerUrl, setBannerUrl] = useState<string | null>(null);
+  const [bannerAlignment, setBannerAlignment] = useState<string>('center');
 
   useEffect(() => {
     const { data } = supabase.storage.from('exam-question-images').getPublicUrl('dashboard/welcome-banner.png');
@@ -200,7 +201,50 @@ export default function DashboardScreen({
       img.onload = () => setBannerUrl(data.publicUrl);
       img.src = data.publicUrl;
     }
+
+    const fetchBannerConfig = async () => {
+      const { data: configData } = supabase.storage.from('exam-question-images').getPublicUrl('dashboard/banner-config.png');
+      if (configData?.publicUrl) {
+        try {
+          const res = await fetch(`${configData.publicUrl}?t=${Date.now()}`);
+          if (res.ok) {
+            const text = await res.text();
+            const json = JSON.parse(text);
+            if (json.alignment) setBannerAlignment(json.alignment);
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+    };
+    fetchBannerConfig();
   }, []);
+
+  const handleUpdateBannerAlignment = async (pos: string) => {
+    setBannerAlignment(pos);
+    try {
+      const blob = new Blob([JSON.stringify({ alignment: pos })], { type: 'image/png' });
+      await supabase.storage
+        .from('exam-question-images')
+        .upload('dashboard/banner-config.png', blob, {
+          upsert: true,
+          cacheControl: '0'
+        });
+    } catch (e) {
+      console.error('Lỗi lưu cấu hình banner:', e);
+    }
+  };
+
+  const handleDeleteBanner = async () => {
+    if (!window.confirm('Bạn có chắc chắn muốn xóa ảnh nền này?')) return;
+    try {
+      await supabase.storage.from('exam-question-images').remove(['dashboard/welcome-banner.png']);
+      setBannerUrl(null);
+    } catch (e) {
+      console.error('Lỗi xóa ảnh:', e);
+      alert('Lỗi xóa ảnh');
+    }
+  };
 
   const handleUploadBannerClick = () => {
     fileInputRef.current?.click();
@@ -377,7 +421,7 @@ export default function DashboardScreen({
         style={{
           backgroundImage: bannerUrl ? `url(${bannerUrl})` : undefined,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: bannerAlignment,
         }}
       >
         {bannerUrl && (
@@ -385,7 +429,7 @@ export default function DashboardScreen({
         )}
         
         {isAdmin && (
-          <div className="absolute top-4 right-4 z-20">
+          <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
             <input 
               type="file" 
               ref={fileInputRef} 
@@ -393,6 +437,39 @@ export default function DashboardScreen({
               accept="image/png, image/jpeg, image/webp, image/gif"
               onChange={handleFileChange}
             />
+            {bannerUrl && (
+              <>
+                <div className={`flex items-center p-1 rounded-lg backdrop-blur-md border transition-all ${
+                  isDark ? 'bg-black/30 border-white/10 text-white' : 'bg-white/50 border-white/20 text-text-dark'
+                }`}>
+                  {['top', 'center', 'bottom'].map(pos => (
+                    <button
+                      key={pos}
+                      onClick={() => handleUpdateBannerAlignment(pos)}
+                      className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${
+                        bannerAlignment === pos 
+                          ? 'bg-primary text-white shadow-sm' 
+                          : 'hover:bg-black/10 dark:hover:bg-white/10'
+                      }`}
+                      title={`Căn ${pos === 'top' ? 'trên' : pos === 'center' ? 'giữa' : 'dưới'}`}
+                    >
+                      {pos === 'top' ? 'Trên' : pos === 'center' ? 'Giữa' : 'Dưới'}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={handleDeleteBanner}
+                  className={`p-2 rounded-lg backdrop-blur-md border transition-all ${
+                    isDark 
+                      ? 'bg-red-500/20 border-red-500/30 hover:bg-red-500/40 text-red-400' 
+                      : 'bg-red-50 border-red-200 hover:bg-red-100 text-red-500'
+                  }`}
+                  title="Xóa ảnh nền"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </>
+            )}
             <button
               onClick={handleUploadBannerClick}
               disabled={isUploadingBanner}
