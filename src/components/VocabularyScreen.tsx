@@ -247,6 +247,11 @@ export default function VocabularyScreen({
     return example.replace(regex, '______');
   };
 
+  // Filter words studied today (either reviewed in this session or created today)
+  const wordsForStory = useMemo(() => {
+    return words.filter(w => sessionStudiedWordIds.has(w.id) || new Date(w.date).toLocaleDateString('en-US') === todayStr);
+  }, [words, sessionStudiedWordIds, todayStr]);
+
   // Active Learning View Rendering
   if (activeLearningFolderId !== null && learningQueue.length > 0) {
     const currentWord = learningQueue[currentWordIndex];
@@ -573,11 +578,6 @@ export default function VocabularyScreen({
       </div>
     );
   }
-
-  // Filter words studied today (either reviewed in this session or created today)
-  const wordsForStory = useMemo(() => {
-    return words.filter(w => sessionStudiedWordIds.has(w.id) || new Date(w.date).toLocaleDateString('en-US') === todayStr);
-  }, [words, sessionStudiedWordIds, todayStr]);
 
   // Dashboard View (Image 3)
   return (
