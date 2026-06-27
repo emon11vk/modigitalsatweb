@@ -19,6 +19,25 @@ interface DashboardScreenProps {
   onNavigateToLeaderboard: () => void;
 }
 
+const getDeadlineInfo = (deadlineStr: string) => {
+  try {
+    const nowVN = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' }));
+    const deadlineVN = new Date(new Date(deadlineStr).toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' }));
+    const startOfNowVN = new Date(nowVN.getFullYear(), nowVN.getMonth(), nowVN.getDate());
+    const startOfDeadlineVN = new Date(deadlineVN.getFullYear(), deadlineVN.getMonth(), deadlineVN.getDate());
+    const diffDays = Math.round((startOfDeadlineVN.getTime() - startOfNowVN.getTime()) / (1000 * 60 * 60 * 24));
+    
+    let text = '';
+    if (diffDays > 0) text = `(còn ${diffDays} ngày)`;
+    else if (diffDays === 0) text = `(hôm nay)`;
+    else text = `(quá hạn)`;
+
+    return { diffDays, text };
+  } catch (err) {
+    return { diffDays: 0, text: '' };
+  }
+};
+
 export default function DashboardScreen({
   theme,
   userName,
@@ -178,14 +197,17 @@ export default function DashboardScreen({
                 <Clock className="w-3.5 h-3.5" />
                 {m.durationMinutes} phút
               </span>
-              {m.deadline && (
-                <span className={`flex items-center gap-1 ${
-                  new Date(m.deadline) < new Date() ? 'text-red-500' : 'text-accent'
-                }`}>
-                  <Calendar className="w-3.5 h-3.5" />
-                  {new Date(m.deadline).toLocaleDateString('vi-VN')}
-                </span>
-              )}
+              {m.deadline && (() => {
+                const { diffDays, text } = getDeadlineInfo(m.deadline);
+                return (
+                  <span className={`flex items-center gap-1 ${
+                    diffDays < 0 ? 'text-red-500' : 'text-accent'
+                  }`}>
+                    <Calendar className="w-3.5 h-3.5" />
+                    {new Date(m.deadline).toLocaleDateString('vi-VN')} {text}
+                  </span>
+                );
+              })()}
             </div>
           </div>
         </div>
@@ -284,15 +306,7 @@ export default function DashboardScreen({
         )}
 
         <div className="relative z-10 max-w-2xl space-y-4">
-          <motion.span
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            Bảng Điều Khiển
-          </motion.span>
+
 
           <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black font-display tracking-tight leading-tight ${
             isDark ? 'text-white' : 'text-text-dark'
@@ -562,7 +576,7 @@ export default function DashboardScreen({
                       </h6>
                       <p className={`text-xs mt-1 flex items-center gap-1.5 ${isDark ? 'text-text-secondary' : 'text-slate-500'}`}>
                         <Clock className="w-3 h-3" />
-                        Deadline: {new Date(upcomingExams[upcomingIndex].deadline!).toLocaleDateString('vi-VN')}
+                        Deadline: {new Date(upcomingExams[upcomingIndex].deadline!).toLocaleDateString('vi-VN')} {getDeadlineInfo(upcomingExams[upcomingIndex].deadline!).text}
                       </p>
                     </div>
                   </motion.div>

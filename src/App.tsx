@@ -708,6 +708,53 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
     }
   };
 
+  const handleCloneFolder = async (folderId: string, adminUserId: string) => {
+    if (!currentUser) return;
+
+    try {
+      // 1. Gọi RPC chạy ngầm trên Supabase Server (An toàn tuyệt đối)
+      const { data: copiedWords, error: rpcError } = await supabase.rpc('clone_admin_folder', {
+        p_folder_id: folderId,
+        p_admin_id: adminUserId,
+        p_user_id: currentUser.id
+      });
+
+      if (rpcError) throw rpcError;
+      
+      if (!copiedWords || copiedWords.length === 0) {
+        alert('Thư mục này hiện đang trống hoặc không có từ mới để sao chép.');
+        return;
+      }
+
+      // 2. Cập nhật state UI
+      setWords(prev => [
+        ...copiedWords.map((v: any) => ({
+          id: v.id,
+          term: v.term,
+          type: v.type,
+          definition: v.definition,
+          example: v.example || '',
+          status: v.status as 'Learning' | 'Mastered',
+          date: new Date(v.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+          folder_id: v.folder_id,
+          pronunciation: v.pronunciation,
+          audio_url: v.audio_url,
+          sm2_ease_factor: v.sm2_ease_factor,
+          sm2_interval: v.sm2_interval,
+          sm2_repetitions: v.sm2_repetitions,
+          next_review_date: v.next_review_date
+        })),
+        ...prev
+      ]);
+
+      alert(`Đã sao chép ${copiedWords.length} từ vựng về máy thành công!`);
+
+    } catch (err: any) {
+      console.error('Error cloning folder:', err);
+      alert('Có lỗi xảy ra khi sao chép thư mục: ' + err.message);
+    }
+  };
+
   const handleRateWord = async (id: string, quality: number) => {
     const word = words.find((w) => w.id === id);
     if (!word) return;
@@ -1060,6 +1107,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             onRateWord={handleRateWord}
             onAddFolder={handleAddVocabFolder}
             onDeleteFolder={handleDeleteVocabFolder}
+            onCloneFolder={handleCloneFolder}
+            currentUserId={currentUser?.id}
           />
         )}
 

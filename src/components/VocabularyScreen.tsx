@@ -14,6 +14,8 @@ interface VocabularyScreenProps {
   onRateWord: (id: string, quality: number) => void;
   onAddFolder: (name: string) => void;
   onDeleteFolder: (id: string) => void;
+  onCloneFolder: (folderId: string, adminUserId: string) => void;
+  currentUserId: string;
 }
 
 export default function VocabularyScreen({
@@ -25,9 +27,13 @@ export default function VocabularyScreen({
   onToggleStatus,
   onRateWord,
   onAddFolder,
-  onDeleteFolder
+  onDeleteFolder,
+  onCloneFolder,
+  currentUserId
 }: VocabularyScreenProps) {
   const isDark = theme === 'dark';
+
+  const [cloningFolderId, setCloningFolderId] = useState<string | null>(null);
 
   // Modals
   const [isWordModalOpen, setIsWordModalOpen] = useState(false);
@@ -127,6 +133,15 @@ export default function VocabularyScreen({
     const toReview = folderWords.filter(w => w.status === 'Learning' && (!w.next_review_date || new Date(w.next_review_date).getTime() <= now)).length;
     const learning = folderWords.filter(w => w.status === 'Learning').length;
     return { total: folderWords.length, mastered, toReview, learning };
+  };
+
+  const handleCloneClick = async (folderId: string, adminUserId: string) => {
+    setCloningFolderId(folderId);
+    try {
+      await onCloneFolder(folderId, adminUserId);
+    } finally {
+      setCloningFolderId(null);
+    }
   };
 
   const setupNextWord = (word: VocabularyWord) => {
@@ -642,7 +657,7 @@ export default function VocabularyScreen({
                   <h4 className={`text-lg font-bold leading-tight ${isDark ? 'text-white' : 'text-slate-800'}`}>
                     {folder.name}
                   </h4>
-                  {!folder.is_admin_folder && (
+                  {!folder.is_admin_folder && folder.user_id === currentUserId && (
                     <button onClick={() => onDeleteFolder(folder.id)} className="text-red-500/50 hover:text-red-500 transition-colors p-1 cursor-pointer">
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -650,7 +665,7 @@ export default function VocabularyScreen({
                 </div>
                 
                 <div className={`flex items-center gap-2 text-sm font-medium mb-4 ${isDark ? 'text-text-secondary' : 'text-slate-500'}`}>
-                  <BookOpen className="w-4 h-4" /> {stats.total} từ vựng
+                  <BookOpen className="w-4 h-4" /> {folder.is_admin_folder && folder.user_id !== currentUserId && stats.total === 0 ? 'Admin List' : `${stats.total} từ vựng`}
                 </div>
                 
                 <div className="mt-auto space-y-2">
@@ -664,16 +679,35 @@ export default function VocabularyScreen({
                   </div>
                 </div>
 
-                <button 
-                  onClick={() => startLearningFolder(folder.id)}
-                  className={`mt-4 w-full py-2 rounded-xl text-sm font-bold border transition-colors cursor-pointer ${
-                    isDark 
-                      ? 'border-primary text-primary hover:bg-primary/10' 
-                      : 'border-primary text-primary hover:bg-primary/5'
-                  }`}
-                >
-                  Học tiếp
-                </button>
+                {folder.is_admin_folder && folder.user_id !== currentUserId && stats.total === 0 ? (
+                  <button 
+                    onClick={() => handleCloneClick(folder.id, folder.user_id)}
+                    disabled={cloningFolderId === folder.id}
+                    className={`mt-4 w-full py-2 rounded-xl text-sm font-bold border transition-colors cursor-pointer flex items-center justify-center gap-2 ${
+                      isDark 
+                        ? 'border-accent text-accent hover:bg-accent/10' 
+                        : 'border-accent-dark text-accent-dark hover:bg-accent/5'
+                    } ${cloningFolderId === folder.id ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  >
+                    {cloningFolderId === folder.id ? (
+                      <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></span>
+                    ) : (
+                      <FolderPlus className="w-4 h-4" />
+                    )}
+                    Sao chép về máy
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => startLearningFolder(folder.id)}
+                    className={`mt-4 w-full py-2 rounded-xl text-sm font-bold border transition-colors cursor-pointer ${
+                      isDark 
+                        ? 'border-primary text-primary hover:bg-primary/10' 
+                        : 'border-primary text-primary hover:bg-primary/5'
+                    }`}
+                  >
+                    Học tiếp
+                  </button>
+                )}
               </div>
             );
           })}

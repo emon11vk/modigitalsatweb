@@ -7,10 +7,10 @@
   --font-mono: "JetBrains Mono", monospace;
 
   /* ─── Midnight Aurora Palette ─── */
-  --color-primary: #6C63FF;
-  --color-primary-light: #8B83FF;
-  --color-primary-dark: #5046E5;
-  --color-primary-glow: rgba(108, 99, 255, 0.4);
+  --color-primary: #0EA5E9;
+  --color-primary-light: #38BDF8;
+  --color-primary-dark: #0284C7;
+  --color-primary-glow: rgba(14, 165, 233, 0.4);
 
   --color-accent: #00D4AA;
   --color-accent-light: #34EDCA;
@@ -36,7 +36,7 @@
   --color-text-dark: #0F172A;
   --color-text-dark-secondary: #475569;
 
-  --color-border-glass: rgba(108, 99, 255, 0.15);
+  --color-border-glass: rgba(14, 165, 233, 0.15);
   --color-border-subtle: rgba(255, 255, 255, 0.06);
   --color-border-light: rgba(15, 23, 42, 0.1);
 
@@ -49,7 +49,7 @@
 @utility glass {
   background: rgba(17, 24, 39, 0.6);
   backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(108, 99, 255, 0.12);
+  border: 1px solid rgba(14, 165, 233, 0.12);
 }
 
 @utility glass-light {
@@ -61,7 +61,7 @@
 @utility glass-card {
   background: rgba(17, 24, 39, 0.5);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(108, 99, 255, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.1);
 }
 
 @utility glass-card-light {
@@ -71,7 +71,7 @@
 }
 
 @utility glow-primary {
-  box-shadow: 0 0 20px rgba(108, 99, 255, 0.15), 0 0 60px rgba(108, 99, 255, 0.05);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.15), 0 0 60px rgba(14, 165, 233, 0.05);
 }
 
 @utility glow-accent {
@@ -193,7 +193,7 @@
 /* ─── Gradient Backgrounds ─── */
 .gradient-mesh-dark {
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(0, 212, 170, 0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 40% 80%, rgba(255, 107, 107, 0.04) 0%, transparent 50%),
     #0B0F1A;
@@ -201,7 +201,7 @@
 
 .gradient-mesh-light {
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(0, 212, 170, 0.04) 0%, transparent 50%),
     #F8FAFC;
 }
@@ -216,7 +216,7 @@
 
 /* ─── Dot Grid Pattern ─── */
 .dot-grid {
-  background-image: radial-gradient(rgba(108, 99, 255, 0.15) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -234,20 +234,20 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(108, 99, 255, 0.2);
+  background: rgba(14, 165, 233, 0.2);
   border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(108, 99, 255, 0.4);
+  background: rgba(14, 165, 233, 0.4);
 }
 
 /* ─── Text Selection ─── */
 ::selection {
-  background-color: rgba(108, 99, 255, 0.3) !important;
+  background-color: rgba(14, 165, 233, 0.3) !important;
   color: #F1F5F9 !important;
 }
 ::-moz-selection {
-  background-color: rgba(108, 99, 255, 0.3) !important;
+  background-color: rgba(14, 165, 233, 0.3) !important;
   color: #F1F5F9 !important;
 }
 mark::selection {
@@ -270,5 +270,5 @@ mark::selection {
 /* ─── Smooth focus rings ─── */
 input:focus, textarea:focus, select:focus, button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.4);
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.4);
 }
