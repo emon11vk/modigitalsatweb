@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle, Sparkles, TrendingUp, Folder, FolderOpen, ChevronDown, ChevronRight, Layers, Image as ImageIcon, Loader2, Flame, Lock, ChevronLeft, Calendar } from 'lucide-react';
+import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle, Sparkles, TrendingUp, Folder, FolderOpen, ChevronDown, ChevronRight, Layers, Image as ImageIcon, Loader2, Flame, Lock, ChevronLeft, Calendar, Edit2, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Module, Theme } from '../types';
 import { useAdminRole } from '../hooks/useAdminRole';
@@ -38,6 +38,13 @@ const getDeadlineInfo = (deadlineStr: string) => {
   }
 };
 
+const getYoutubeId = (url?: string) => {
+  if (!url) return null;
+  const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+};
+
 export default function DashboardScreen({
   theme,
   userName,
@@ -63,6 +70,106 @@ export default function DashboardScreen({
 
   const [collapsedFolders, setCollapsedFolders] = useState<Record<string, boolean>>({});
   const [upcomingIndex, setUpcomingIndex] = useState(0);
+
+  const [cardConfigs, setCardConfigs] = useState<Record<string, { youtubeUrl?: string; imageTimestamp?: number }>>({});
+  const [editingCardId, setEditingCardId] = useState<string | null>(null);
+  const [editYoutubeUrl, setEditYoutubeUrl] = useState('');
+  const [editImageFile, setEditImageFile] = useState<File | null>(null);
+  const [isSavingCardConfig, setIsSavingCardConfig] = useState(false);
+
+  useEffect(() => {
+    const fetchConfigs = async () => {
+      const { data } = supabase.storage.from('exam-question-images').getPublicUrl('dashboard/card-configs.png');
+      if (data?.publicUrl) {
+        try {
+          const res = await fetch(`${data.publicUrl}?t=${Date.now()}`);
+          if (res.ok) {
+            const text = await res.text();
+            const json = JSON.parse(text);
+            setCardConfigs(json);
+          }
+        } catch (e) {
+          console.error('Lỗi tải cấu hình cards:', e);
+        }
+      }
+    };
+    fetchConfigs();
+  }, []);
+
+  const handleSaveCardConfig = async () => {
+    if (!editingCardId) return;
+    setIsSavingCardConfig(true);
+    try {
+      let timestamp = cardConfigs[editingCardId]?.imageTimestamp;
+      
+      if (editImageFile) {
+        timestamp = Date.now();
+        const { error } = await supabase.storage
+          .from('exam-question-images')
+          .upload(`dashboard/${editingCardId}-banner.png`, editImageFile, {
+            upsert: true,
+            cacheControl: '0'
+          });
+        if (error) throw error;
+      }
+
+      const newConfigs = {
+        ...cardConfigs,
+        [editingCardId]: {
+          youtubeUrl: editYoutubeUrl,
+          imageTimestamp: timestamp
+        }
+      };
+
+      const blob = new Blob([JSON.stringify(newConfigs)], { type: 'image/png' });
+      const { error: configError } = await supabase.storage
+        .from('exam-question-images')
+        .upload('dashboard/card-configs.png', blob, {
+          upsert: true,
+          cacheControl: '0'
+        });
+
+      if (configError) throw configError;
+
+      setCardConfigs(newConfigs);
+      setEditingCardId(null);
+      setEditImageFile(null);
+      setEditYoutubeUrl('');
+    } catch (err: any) {
+      alert('Lỗi lưu cấu hình: ' + err.message);
+    } finally {
+      setIsSavingCardConfig(false);
+    }
+  };
+
+  const handleClearCardConfig = async () => {
+    if (!editingCardId) return;
+    if (!window.confirm('Bạn có chắc chắn muốn xóa tất cả ảnh và video của thẻ này?')) return;
+    setIsSavingCardConfig(true);
+    try {
+      const newConfigs = { ...cardConfigs };
+      delete newConfigs[editingCardId];
+
+      const blob = new Blob([JSON.stringify(newConfigs)], { type: 'image/png' });
+      const { error: configError } = await supabase.storage
+        .from('exam-question-images')
+        .upload('dashboard/card-configs.png', blob, {
+          upsert: true,
+          cacheControl: '0'
+        });
+
+      if (configError) throw configError;
+
+      setCardConfigs(newConfigs);
+      setEditingCardId(null);
+      setEditImageFile(null);
+      setEditYoutubeUrl('');
+    } catch (err: any) {
+      alert('Lỗi xóa cấu hình: ' + err.message);
+    } finally {
+      setIsSavingCardConfig(false);
+    }
+  };
 
   // Lọc ra các đề cần làm trong 7 ngày tới (có deadline, chưa làm, và deadline < now + 7 days)
   const upcomingExams = modules.filter(m => {
@@ -160,9 +267,6 @@ export default function DashboardScreen({
             ? 'bg-bg-card border-white/5 hover:border-primary/30'
             : 'bg-white border-slate-200 hover:border-primary/30'
         }`}
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.05 + idx * 0.05 }}
       >
         {/* Left accent bar */}
         <div className="flex items-start gap-4">
@@ -239,6 +343,7 @@ export default function DashboardScreen({
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15, ease: [0.25, 1, 0.5, 1] }}
               >
                 <Play className="w-3.5 h-3.5 fill-current" />
                 Làm lại
@@ -250,6 +355,7 @@ export default function DashboardScreen({
               className="px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 cursor-pointer transition-colors bg-primary hover:bg-primary-light text-white"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15, ease: [0.25, 1, 0.5, 1] }}
             >
               <Play className="w-3.5 h-3.5 fill-current" />
               Bắt đầu
@@ -261,7 +367,7 @@ export default function DashboardScreen({
   };
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8">
       
       {/* ── Welcome Banner ── */}
       <motion.div
@@ -273,9 +379,6 @@ export default function DashboardScreen({
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
       >
         {bannerUrl && (
           <div className={`absolute inset-0 z-0 ${isDark ? 'bg-black/60' : 'bg-white/60 backdrop-blur-sm'}`} />
@@ -326,6 +429,7 @@ export default function DashboardScreen({
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
         {[
           {
+            id: 'streak',
             label: 'Chuỗi Ngày Học',
             value: streak,
             suffix: 'ngày',
@@ -338,6 +442,7 @@ export default function DashboardScreen({
             progressColor: '',
           },
           {
+            id: 'vocab',
             label: 'Từ Vựng Đã Học',
             value: vocabTotal,
             suffix: `${vocabMastered} mastered`,
@@ -350,6 +455,7 @@ export default function DashboardScreen({
             progressColor: 'bg-accent',
           },
           {
+            id: 'leaderboard',
             label: 'Hạng Bảng Xếp',
             value: leaderboardRankLabel,
             suffix: userName,
@@ -361,55 +467,132 @@ export default function DashboardScreen({
             progress: null,
             progressColor: '',
           },
-        ].map((card, idx) => (
-          <motion.div
-            key={idx}
-            className={`p-5 rounded-2xl border transition-colors ${
-              isDark
-                ? `bg-bg-card ${card.borderColor} hover:border-primary/40`
-                : `bg-white ${card.borderColor} hover:border-primary/30`
-            } ${card.action ? 'cursor-pointer' : ''}`}
-            onClick={() => card.action?.()}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 + idx * 0.1 }}
-            whileHover={card.action ? { y: -2 } : {}}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
-                {card.label}
-              </span>
-              <div className={`p-2 rounded-lg ${card.bgColor} ${card.color}`}>
-                {card.icon}
-              </div>
-            </div>
+        ].map((card, idx) => {
+          const config = cardConfigs[card.id];
+          const bannerUrl = config?.imageTimestamp 
+            ? supabase.storage.from('exam-question-images').getPublicUrl(`dashboard/${card.id}-banner.png`).data.publicUrl + `?t=${config.imageTimestamp}`
+            : null;
 
-            <div className="flex items-baseline gap-2">
-              <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
-                {card.value}
-              </span>
-              <span className={`text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
-                {card.suffix}
-              </span>
-            </div>
+          let displayUrl = bannerUrl;
+          if (!displayUrl && config?.youtubeUrl) {
+            const ytId = getYoutubeId(config.youtubeUrl);
+            if (ytId) {
+              displayUrl = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
+            }
+          }
 
-            {card.progress !== null && (
-              <div className={`mt-4 w-full h-1.5 rounded-full overflow-hidden ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
-                <div
-                  className={`h-full rounded-full ${card.progressColor} transition-all duration-700`}
-                  style={{ width: `${Math.min(card.progress, 100)}%` }}
-                />
-              </div>
-            )}
+          return (
+            <motion.div
+              key={idx}
+              className={`p-5 rounded-2xl border transition-all duration-200 relative group overflow-hidden flex flex-col justify-between ${
+                isDark
+                  ? `bg-bg-card ${card.borderColor} hover:border-primary/40`
+                  : `bg-white ${card.borderColor} hover:border-primary/30`
+              } ${card.action ? 'cursor-pointer hover:-translate-y-[2px] hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.05)]' : ''}`}
+              onClick={() => card.action?.()}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                    {card.label}
+                  </span>
+                  <div className={`p-2 rounded-lg ${card.bgColor} ${card.color}`}>
+                    {card.icon}
+                  </div>
+                </div>
 
-            {card.action && (
-              <div className={`mt-4 flex items-center gap-1.5 text-xs font-semibold ${card.color}`}>
-                <span>Xem chi tiết</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <div className="flex items-baseline gap-2">
+                  <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                    {card.value}
+                  </span>
+                  <span className={`text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+                    {card.suffix}
+                  </span>
+                </div>
+
+                {card.progress !== null && (
+                  <div className={`mt-4 w-full h-1.5 rounded-full overflow-hidden ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
+                    <div
+                      className={`h-full rounded-full ${card.progressColor} transition-all duration-700`}
+                      style={{ width: `${Math.min(card.progress, 100)}%` }}
+                    />
+                  </div>
+                )}
               </div>
-            )}
-          </motion.div>
-        ))}
+
+              <div className="mt-4 flex flex-col gap-3 justify-end h-full">
+                {card.action && (
+                  <div className={`flex items-center gap-1.5 text-xs font-semibold ${card.color}`}>
+                    <span>Xem chi tiết</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+                )}
+
+                {/* Banner / Video Thumbnail Section */}
+                {(displayUrl || config?.youtubeUrl || isAdmin) && (
+                  <div 
+                    className={`relative rounded-xl overflow-hidden aspect-[21/9] border ${isDark ? 'border-white/5' : 'border-slate-100'} ${displayUrl || config?.youtubeUrl ? '' : 'bg-slate-100 dark:bg-white/5 border-dashed cursor-pointer'} group/video shrink-0`}
+                    onClick={(e) => {
+                       if (isAdmin && !displayUrl && !config?.youtubeUrl) {
+                          e.stopPropagation();
+                          setEditingCardId(card.id);
+                          setEditYoutubeUrl(config?.youtubeUrl || '');
+                          setEditImageFile(null);
+                       } else if (!config?.youtubeUrl && card.action) {
+                          card.action();
+                       }
+                    }}
+                  >
+                    {config?.youtubeUrl ? (
+                      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden rounded-xl">
+                        <iframe
+                          className="absolute top-1/2 left-1/2 w-[130%] aspect-video max-w-none -translate-x-1/2 -translate-y-1/2"
+                          src={`https://www.youtube.com/embed/${getYoutubeId(config.youtubeUrl)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeId(config.youtubeUrl)}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3`}
+                          title="Background Video"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        ></iframe>
+                      </div>
+                    ) : displayUrl ? (
+                      <img 
+                        src={displayUrl} 
+                        alt={card.label} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover/video:scale-105 z-0" 
+                        onError={(e) => {
+                          if (e.currentTarget.src.includes('maxresdefault.jpg')) {
+                             e.currentTarget.src = e.currentTarget.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
+                          } else {
+                             (e.currentTarget as HTMLImageElement).style.opacity = '0';
+                          }
+                        }}
+                      />
+                    ) : isAdmin ? (
+                      <div className="w-full h-full flex flex-col items-center justify-center text-[10px] sm:text-xs text-slate-400 gap-1.5 hover:text-primary transition-colors">
+                        <ImageIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span className="text-center px-2">Thêm ảnh/video</span>
+                      </div>
+                    ) : null}
+
+                    {/* Admin Edit Button */}
+                    {isAdmin && (
+                      <button 
+                        className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 px-2 py-1 bg-black/60 hover:bg-black/90 rounded-lg text-white text-[10px] sm:text-xs font-medium backdrop-blur-md transition-opacity flex items-center gap-1 z-10 cursor-pointer pointer-events-auto ${config?.youtubeUrl ? 'opacity-80 hover:opacity-100' : 'opacity-0 group-hover/video:opacity-100'}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          setEditingCardId(card.id);
+                          setEditYoutubeUrl(config?.youtubeUrl || '');
+                          setEditImageFile(null);
+                        }}
+                      >
+                         <Edit2 className="w-3 h-3" /> Sửa
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* ── Main Content Grid ── */}
@@ -492,12 +675,11 @@ export default function DashboardScreen({
           {/* VocabHub Widget */}
           <motion.div
             onClick={onNavigateToVocab}
-            className={`group p-6 rounded-2xl border-2 cursor-pointer transition-colors ${
+            className={`group p-6 rounded-2xl border-2 cursor-pointer transition-all duration-200 ${
               isDark
-                ? 'bg-bg-card border-white/5 hover:border-primary/30'
-                : 'bg-white border-slate-200 hover:border-primary/30'
+                ? 'bg-bg-card border-white/5 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
+                : 'bg-white border-slate-200 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
             }`}
-            whileHover={{ y: -3 }}
           >
             <div className="flex items-start justify-between">
               <div className={`p-3 rounded-xl ${isDark ? 'bg-primary/10 text-primary' : 'bg-primary/5 text-primary'}`}>
@@ -557,10 +739,10 @@ export default function DashboardScreen({
                 <AnimatePresence initial={false}>
                   <motion.div
                     key={upcomingIndex}
-                    initial={{ x: 300, opacity: 0 }}
+                    initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -300, opacity: 0 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    exit={{ x: -20, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                     className="absolute inset-0 w-full"
                   >
                     <div 
@@ -590,6 +772,95 @@ export default function DashboardScreen({
           </div>
         </div>
       </div>
+
+      {/* ── Edit Card Config Modal ── */}
+      <AnimatePresence>
+        {editingCardId && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setEditingCardId(null)}
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className={`relative w-full max-w-md p-6 rounded-2xl shadow-2xl border ${isDark ? 'bg-bg-card border-white/10' : 'bg-white border-slate-200'}`}
+            >
+              <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                Cập nhật Ảnh / Video 
+              </h3>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className={`block text-sm font-medium mb-1.5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                    Ảnh đại diện (Thumbnail)
+                  </label>
+                  <input 
+                    type="file" 
+                    accept="image/*"
+                    onChange={(e) => setEditImageFile(e.target.files?.[0] || null)}
+                    className={`block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold transition-colors cursor-pointer ${
+                      isDark 
+                        ? 'text-slate-300 file:bg-white/10 file:text-white hover:file:bg-white/20' 
+                        : 'text-slate-700 file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200'
+                    }`}
+                  />
+                  {editImageFile && (
+                     <p className="text-xs text-emerald-500 mt-2 font-medium">Đã chọn: {editImageFile.name}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-1.5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                    Link YouTube (Tùy chọn)
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="https://youtube.com/..."
+                    value={editYoutubeUrl}
+                    onChange={(e) => setEditYoutubeUrl(e.target.value)}
+                    className={`w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
+                      isDark 
+                        ? 'bg-black/20 border-white/10 text-white placeholder:text-slate-500' 
+                        : 'bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400'
+                    }`}
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-dashed border-slate-200 dark:border-white/10">
+                <button 
+                  onClick={handleClearCardConfig}
+                  disabled={isSavingCardConfig}
+                  className="px-3 py-2 rounded-xl text-sm font-semibold text-red-500 hover:bg-red-50 hover:dark:bg-red-500/10 transition-colors disabled:opacity-50"
+                >
+                  Xóa thiết lập
+                </button>
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={() => setEditingCardId(null)}
+                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${isDark ? 'hover:bg-white/10 text-slate-300' : 'hover:bg-slate-100 text-slate-600'}`}
+                  >
+                    Hủy
+                  </button>
+                  <button 
+                    onClick={handleSaveCardConfig}
+                    disabled={isSavingCardConfig}
+                    className="px-5 py-2 rounded-xl text-sm font-bold bg-primary hover:bg-primary-light text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  >
+                    {isSavingCardConfig ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                    {isSavingCardConfig ? 'Đang lưu...' : 'Lưu thay đổi'}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
