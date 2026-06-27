@@ -314,11 +314,7 @@ export default function App() {
               definition: v.definition,
               example: v.example,
               status: v.status as 'Learning' | 'Mastered',
-              date: new Date(v.created_at).toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              }),
+              date: v.created_at,
               folder_id: v.folder_id,
               pronunciation: v.pronunciation,
               audio_url: v.audio_url,
@@ -657,11 +653,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             definition: data.definition,
             example: data.example || '',
             status: data.status as 'Learning' | 'Mastered',
-            date: new Date(data.created_at).toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric'
-            }),
+            date: data.created_at,
             folder_id: data.folder_id,
             pronunciation: data.pronunciation,
             audio_url: data.audio_url,
@@ -735,7 +727,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
           definition: v.definition,
           example: v.example || '',
           status: v.status as 'Learning' | 'Mastered',
-          date: new Date(v.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+          date: v.created_at,
           folder_id: v.folder_id,
           pronunciation: v.pronunciation,
           audio_url: v.audio_url,
