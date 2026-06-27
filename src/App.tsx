@@ -1191,16 +1191,16 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
               {/* Score Display */}
               <div className={`p-6 rounded-xl ${isDark ? 'bg-white/5 border border-white/5' : 'bg-slate-50 border border-slate-100'}`}>
                 <div className={`text-xs uppercase tracking-wider font-semibold mb-2 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
-                  Điểm đạt được
+                  Số câu đúng
                 </div>
                 <div className="text-4xl font-black font-display">
-                  <span className="text-primary">{testResult.earnedScore}</span>
-                  <span className={`text-sm ml-2 font-normal ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>/ 800</span>
+                  <span className="text-primary">{testResult.correctCount}</span>
+                  <span className={`text-sm ml-2 font-normal ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>/ {testResult.totalCount}</span>
                 </div>
                 <div className={`mt-4 pt-4 border-t flex justify-between items-center text-xs ${isDark ? 'border-white/5' : 'border-slate-200'}`}>
-                  <span className={isDark ? 'text-text-muted' : 'text-slate-400'}>Số câu đúng</span>
+                  <span className={isDark ? 'text-text-muted' : 'text-slate-400'}>Tỷ lệ đúng</span>
                   <span className="font-bold text-primary">
-                    {testResult.correctCount} / {testResult.totalCount}
+                    {Math.round((testResult.correctCount / testResult.totalCount) * 100)}%
                   </span>
                 </div>
               </div>
