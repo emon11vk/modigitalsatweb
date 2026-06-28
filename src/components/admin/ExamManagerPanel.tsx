@@ -31,7 +31,9 @@ interface ExamManagerPanelProps {
 interface ExamFolder {
   id: string;
   name: string;
-  created_at: string;
+  parent_id?: string | null;
+  category?: 'course' | 'general';
+  created_at?: string;
 }
 
 interface ExamRow {
@@ -62,6 +64,8 @@ export default function ExamManagerPanel({
   // Folder creation
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
   const [newFolderName, setNewFolderName] = useState('');
+  const [newFolderCategory, setNewFolderCategory] = useState<'course' | 'general'>('course');
+  const [newFolderParentId, setNewFolderParentId] = useState<string | null>(null);
   
   // Drag and Drop
   const [draggedExamId, setDraggedExamId] = useState<string | null>(null);
@@ -182,7 +186,11 @@ export default function ExamManagerPanel({
     try {
       const { data, error } = await supabase
         .from('exam_folders')
-        .insert({ name: newFolderName.trim() })
+        .insert({ 
+          name: newFolderName.trim(),
+          category: newFolderParentId ? undefined : newFolderCategory,
+          parent_id: newFolderParentId || null
+        })
         .select()
         .single();
       
@@ -193,6 +201,7 @@ export default function ExamManagerPanel({
       if (data) {
         setFolders((prev) => [...prev, data]);
         setNewFolderName('');
+        setNewFolderParentId(null);
         setIsCreatingFolder(false);
       }
     } catch (err: any) {
@@ -295,7 +304,7 @@ export default function ExamManagerPanel({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.04 }}
       draggable
-      onDragStart={(e) => handleDragStart(e, exam.id)}
+      onDragStart={(e: any) => handleDragStart(e, exam.id)}
       onDragEnd={handleDragEnd}
       className={`rounded-2xl border p-4 transition-all cursor-grab active:cursor-grabbing ${
         isDark
@@ -478,18 +487,45 @@ export default function ExamManagerPanel({
             }`}
           >
             <FolderPlus className={`w-5 h-5 ${isDark ? 'text-primary' : 'text-primary'}`} />
-            <input
-              type="text"
-              autoFocus
-              value={newFolderName}
-              onChange={(e) => setNewFolderName(e.target.value)}
-              placeholder="Folder Name (e.g. Verbal)"
-              className={`flex-1 px-4 py-2 rounded-xl text-sm border outline-none transition-all ${
-                isDark
-                  ? 'bg-black/20 border-white/10 text-white focus:border-primary/50'
-                  : 'bg-white border-slate-200 text-text-dark focus:border-primary/50'
-              }`}
-            />
+            <div className="flex-1 flex flex-col gap-2 w-full">
+              <input
+                type="text"
+                autoFocus
+                value={newFolderName}
+                onChange={(e) => setNewFolderName(e.target.value)}
+                placeholder="Folder Name (e.g. Verbal)"
+                className={`w-full px-4 py-2 rounded-xl text-sm border outline-none transition-all ${
+                  isDark
+                    ? 'bg-black/20 border-white/10 text-white focus:border-primary/50'
+                    : 'bg-white border-slate-200 text-text-dark focus:border-primary/50'
+                }`}
+              />
+              <div className="flex gap-2 w-full">
+                <select
+                  value={newFolderCategory}
+                  onChange={(e) => setNewFolderCategory(e.target.value as 'course' | 'general')}
+                  className={`flex-1 px-3 py-2 rounded-xl text-sm border outline-none transition-all ${
+                    isDark ? 'bg-black/20 border-white/10 text-white' : 'bg-white border-slate-200 text-text-dark'
+                  }`}
+                  disabled={newFolderParentId !== null}
+                >
+                  <option value="course">Course</option>
+                  <option value="general">General</option>
+                </select>
+                <select
+                  value={newFolderParentId || ''}
+                  onChange={(e) => setNewFolderParentId(e.target.value || null)}
+                  className={`flex-1 px-3 py-2 rounded-xl text-sm border outline-none transition-all ${
+                    isDark ? 'bg-black/20 border-white/10 text-white' : 'bg-white border-slate-200 text-text-dark'
+                  }`}
+                >
+                  <option value="">-- No Parent (Root) --</option>
+                  {folders.map(f => (
+                    <option key={f.id} value={f.id}>{f.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
               <button
                 type="submit"
@@ -570,8 +606,10 @@ export default function ExamManagerPanel({
                         {folder.name}
                         {isCollapsed ? <ChevronRight className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
                       </h4>
-                      <p className={`text-[11px] mt-0.5 ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
-                        {folderExams.length} {folderExams.length === 1 ? 'exam' : 'exams'}
+                      <p className={`text-[11px] mt-0.5 flex gap-2 ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
+                        <span>{folderExams.length} {folderExams.length === 1 ? 'exam' : 'exams'}</span>
+                        <span className="uppercase text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">{folder.category || 'general'}</span>
+                        {folder.parent_id && <span className="text-[10px]">↳ Child of {folders.find(f => f.id === folder.parent_id)?.name}</span>}
                       </p>
                     </div>
                   </div>

@@ -9,7 +9,8 @@ import {
   Question,
   Passage,
   QuestionResult,
-  VocabFolder
+  VocabFolder,
+  ExamFolder
 } from './types';
 
 import { supabase } from './supabaseClient';
@@ -25,6 +26,7 @@ import LeaderboardScreen from './components/LeaderboardScreen';
 import HistoryScreen from './components/HistoryScreen';
 import ReviewScreen from './components/ReviewScreen';
 import AdminScreen from './components/AdminScreen';
+import PracticeScreen from './components/PracticeScreen';
 
 // Icon Imports
 import {
@@ -50,7 +52,7 @@ export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('dashboard');
 
   const [modules, setModules] = useState<Module[]>([]);
-  const [folders, setFolders] = useState<{ id: string; name: string }[]>([]);
+  const [folders, setFolders] = useState<ExamFolder[]>([]);
   const [activeQuestions, setActiveQuestions] = useState<Question[]>([]);
   const [activePassage, setActivePassage] = useState<Passage | undefined>(undefined);
 
@@ -251,7 +253,7 @@ export default function App() {
         // ===== Fetch Folders =====
         const { data: folderData, error: folderError } = await supabase
           .from('exam_folders')
-          .select('id, name')
+          .select('id, name, parent_id, category')
           .order('created_at', { ascending: true });
 
         if (!folderError && folderData) {
@@ -853,6 +855,7 @@ export default function App() {
       if (currentScreen === 'practice' || currentScreen === 'login') return;
 
       if (e.key === '1') setCurrentScreen('dashboard');
+      if (e.key === 'p') setCurrentScreen('practice_hub'); // Use 'p' or similar if needed, or leave practice out of hotkeys
       if (e.key === '2') setCurrentScreen('vocabulary');
       if (e.key === '3') setCurrentScreen('leaderboard');
       if (e.key === '4') setCurrentScreen('history');
@@ -914,6 +917,7 @@ export default function App() {
 
   const navItems = [
     { key: 'dashboard' as Screen, icon: <LayoutDashboard className="w-4 h-4" />, label: 'Trang chủ' },
+    { key: 'practice_hub' as Screen, icon: <GraduationCap className="w-4 h-4" />, label: 'Practice' },
     { key: 'vocabulary' as Screen, icon: <BookOpen className="w-4 h-4" />, label: 'Từ vựng' },
     { key: 'leaderboard' as Screen, icon: <Award className="w-4 h-4" />, label: 'Xếp hạng' },
     { key: 'history' as Screen, icon: <History className="w-4 h-4" />, label: 'Lịch sử' },

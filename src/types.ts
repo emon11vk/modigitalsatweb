@@ -1,7 +1,15 @@
 export type Theme = 'light' | 'dark';
 
-// 1. Thêm 'review' vào danh sách Screen
-export type Screen = 'login' | 'dashboard' | 'practice' | 'vocabulary' | 'leaderboard' | 'history' | 'review' | 'admin';
+// 1. Thêm 'review' và 'practice_hub' vào danh sách Screen
+export type Screen = 'login' | 'dashboard' | 'practice_hub' | 'practice' | 'vocabulary' | 'leaderboard' | 'history' | 'review' | 'admin';
+
+export interface ExamFolder {
+  id: string;
+  name: string;
+  parent_id?: string | null;
+  category?: 'course' | 'general';
+  created_at?: string;
+}
 
 export interface Module {
   id: string;
