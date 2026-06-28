@@ -105,7 +105,7 @@ export default function App() {
     const yesterdayStr = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
 
     let currentDateStr = '';
-    
+
     if (sortedDates[0] === todayStr) {
       streak = 1;
       currentDateStr = yesterdayStr;
@@ -125,7 +125,7 @@ export default function App() {
         prev.setDate(prev.getDate() - 1);
         currentDateStr = `${prev.getFullYear()}-${String(prev.getMonth() + 1).padStart(2, '0')}-${String(prev.getDate()).padStart(2, '0')}`;
       } else if (sortedDates[i] > currentDateStr) {
-         continue;
+        continue;
       } else {
         break;
       }
@@ -175,19 +175,19 @@ export default function App() {
         options: questionMap.get(ans.question_id)?.options,
         passage: questionMap.get(ans.question_id)?.passage_paragraphs && questionMap.get(ans.question_id)?.passage_paragraphs !== 'null'
           ? {
-              title: questionMap.get(ans.question_id)?.passage_title === 'null' ? '' : (questionMap.get(ans.question_id)?.passage_title || 'Reading Text'),
-              introduction: questionMap.get(ans.question_id)?.passage_intro === 'null' ? '' : (questionMap.get(ans.question_id)?.passage_intro || ''),
-              paragraphs: Array.isArray(questionMap.get(ans.question_id)?.passage_paragraphs)
-                ? questionMap.get(ans.question_id)?.passage_paragraphs.filter((p: any) => p !== 'null')
-                : [questionMap.get(ans.question_id)?.passage_paragraphs].filter((p: any) => p !== 'null')
-            }
+            title: questionMap.get(ans.question_id)?.passage_title === 'null' ? '' : (questionMap.get(ans.question_id)?.passage_title || 'Reading Text'),
+            introduction: questionMap.get(ans.question_id)?.passage_intro === 'null' ? '' : (questionMap.get(ans.question_id)?.passage_intro || ''),
+            paragraphs: Array.isArray(questionMap.get(ans.question_id)?.passage_paragraphs)
+              ? questionMap.get(ans.question_id)?.passage_paragraphs.filter((p: any) => p !== 'null')
+              : [questionMap.get(ans.question_id)?.passage_paragraphs].filter((p: any) => p !== 'null')
+          }
           : undefined,
         imageUrl: questionMap.get(ans.question_id)?.image_url || null
       }));
 
       // Find first question with passage for overall passage display
       const firstWithPassage = questions.find((q: any) => q.passage);
-      
+
       setSelectedAttempt({
         ...attempt,
         questions,
@@ -253,7 +253,7 @@ export default function App() {
           .from('exam_folders')
           .select('id, name')
           .order('created_at', { ascending: true });
-        
+
         if (!folderError && folderData) {
           setFolders(folderData);
         }
@@ -290,7 +290,7 @@ export default function App() {
           .select('*')
           .or(`user_id.eq.${currentUser.id},is_admin_folder.eq.true`)
           .order('created_at', { ascending: true });
-          
+
         if (vFolderError) console.error('Error fetching vocab folders:', vFolderError);
         if (vFolderData) {
           setVocabFolders(vFolderData);
@@ -436,12 +436,12 @@ export default function App() {
         correctAnswer: q.correct_answer,
         passage: q.passage_paragraphs && q.passage_paragraphs !== 'null'
           ? {
-              title: q.passage_title === 'null' ? '' : (q.passage_title || 'Reading Text'),
-              introduction: q.passage_intro === 'null' ? '' : (q.passage_intro || ''),
-              paragraphs: Array.isArray(q.passage_paragraphs)
-                ? q.passage_paragraphs.filter((p: any) => p !== 'null')
-                : [q.passage_paragraphs].filter((p: any) => p !== 'null')
-            }
+            title: q.passage_title === 'null' ? '' : (q.passage_title || 'Reading Text'),
+            introduction: q.passage_intro === 'null' ? '' : (q.passage_intro || ''),
+            paragraphs: Array.isArray(q.passage_paragraphs)
+              ? q.passage_paragraphs.filter((p: any) => p !== 'null')
+              : [q.passage_paragraphs].filter((p: any) => p !== 'null')
+          }
           : undefined,
         imageUrl: q.image_url || null
       }));
@@ -467,7 +467,7 @@ export default function App() {
     }
   };
 
-const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | string>) => {
+  const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | string>) => {
     if (!activeModuleId || !currentUser) return;
 
     const module = modules.find((m: any) => m.id === activeModuleId);
@@ -678,7 +678,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
         .insert({ name, user_id: currentUser.id })
         .select()
         .single();
-      
+
       if (error) {
         alert('Lỗi khi tạo thư mục');
         return;
@@ -712,7 +712,7 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
       });
 
       if (rpcError) throw rpcError;
-      
+
       if (!copiedWords || copiedWords.length === 0) {
         alert('Thư mục này hiện đang trống hoặc không có từ mới để sao chép.');
         return;
@@ -752,9 +752,9 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
     if (!word) return;
 
     const sm2Result = calculateSM2(
-      quality, 
-      word.sm2_ease_factor, 
-      word.sm2_interval, 
+      quality,
+      word.sm2_ease_factor,
+      word.sm2_interval,
       word.sm2_repetitions
     );
 
@@ -778,9 +778,9 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
       }
 
       setWords((prev) =>
-        prev.map((w) => (w.id === id ? { 
-          ...w, 
-          status: newStatus as 'Learning'|'Mastered',
+        prev.map((w) => (w.id === id ? {
+          ...w,
+          status: newStatus as 'Learning' | 'Mastered',
           sm2_ease_factor: sm2Result.easeFactor,
           sm2_interval: sm2Result.interval,
           sm2_repetitions: sm2Result.repetitions,
@@ -866,9 +866,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
   // ─── Loading state ────────────────────────────────────────────────────────────
   if (loadingAuth) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${
-        theme === 'dark' ? 'bg-bg-dark' : 'bg-bg-light'
-      }`}>
+      <div className={`min-h-screen flex items-center justify-center ${theme === 'dark' ? 'bg-bg-dark' : 'bg-bg-light'
+        }`}>
         <div className="flex flex-col items-center gap-4">
           <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
           <span className={`text-sm font-medium ${theme === 'dark' ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
@@ -923,18 +922,16 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
 
   // ─── Main render ─────────────────────────────────────────────────────────────
   return (
-    <div className={`min-h-screen font-sans flex flex-col transition-colors duration-300 ${
-      isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
-    }`}>
+    <div className={`min-h-screen font-sans flex flex-col transition-colors duration-300 ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
+      }`}>
 
       {/* ── Header ── */}
-      <header className={`px-4 py-3 md:px-8 border-b sticky top-0 z-40 transition-all ${
-        isDark
+      <header className={`px-4 py-3 md:px-8 border-b sticky top-0 z-40 transition-all ${isDark
           ? 'bg-bg-dark/80 backdrop-blur-xl border-white/5'
           : 'bg-white/80 backdrop-blur-xl border-slate-200/50'
-      }`}>
+        }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          
+
           {/* Logo */}
           <div
             className="flex items-center gap-3 cursor-pointer group"
@@ -971,21 +968,19 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
                     }
                     setCurrentScreen(key);
                   }}
-                  className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                    isActive
+                  className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer flex items-center gap-2 ${isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20'
                       : isDark
-                      ? 'text-text-muted hover:text-white hover:bg-white/5'
-                      : 'text-text-dark-secondary hover:text-text-dark hover:bg-white'
-                  }`}
+                        ? 'text-text-muted hover:text-white hover:bg-white/5'
+                        : 'text-text-dark-secondary hover:text-text-dark hover:bg-white'
+                    }`}
                 >
                   {icon}
                   <span>{label}</span>
-                  <span className={`hidden lg:inline-flex items-center justify-center ml-1 w-4 h-4 text-[9px] rounded font-mono ${
-                    isActive
+                  <span className={`hidden lg:inline-flex items-center justify-center ml-1 w-4 h-4 text-[9px] rounded font-mono ${isActive
                       ? 'bg-white/20 text-white/90'
                       : isDark ? 'bg-white/5 text-text-muted/50' : 'bg-slate-200/50 text-slate-400'
-                  }`}>
+                    }`}>
                     {navItems.findIndex(i => i.key === key) + 1}
                   </span>
                 </button>
@@ -1008,11 +1003,10 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
                     }
                     setCurrentScreen(key);
                   }}
-                  className={`p-2.5 rounded-lg transition-all cursor-pointer ${
-                    isActive
+                  className={`p-2.5 rounded-lg transition-all cursor-pointer ${isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20'
                       : isDark ? 'text-text-muted hover:text-white' : 'text-text-dark-secondary hover:text-text-dark'
-                  }`}
+                    }`}
                 >
                   {icon}
                 </button>
@@ -1025,20 +1019,18 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg border transition-all cursor-pointer ${
-                isDark
+              className={`p-2 rounded-lg border transition-all cursor-pointer ${isDark
                   ? 'border-white/10 bg-white/5 text-text-secondary hover:text-primary hover:border-primary/20'
                   : 'border-slate-200 bg-white text-text-dark-secondary hover:text-primary hover:border-primary/20'
-              }`}
+                }`}
               title="Đổi theme"
             >
               {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
             {/* User info */}
-            <div className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg border ${
-              isDark ? 'bg-white/5 border-white/5' : 'bg-white border-slate-200'
-            }`}>
+            <div className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg border ${isDark ? 'bg-white/5 border-white/5' : 'bg-white border-slate-200'
+              }`}>
               <img
                 src={
                   currentUser?.user_metadata?.avatar_url ||
@@ -1057,11 +1049,10 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             {/* Logout */}
             <button
               onClick={handleLogout}
-              className={`p-2 rounded-lg border transition-all cursor-pointer ${
-                isDark
+              className={`p-2 rounded-lg border transition-all cursor-pointer ${isDark
                   ? 'border-white/10 bg-white/5 text-text-muted hover:text-accent-warm hover:border-accent-warm/20'
                   : 'border-slate-200 bg-white text-slate-400 hover:text-accent-warm hover:border-accent-warm/20'
-              }`}
+                }`}
               title="Đăng xuất"
             >
               <LogOut className="w-4 h-4" />
@@ -1134,9 +1125,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
       </main>
 
       {/* ── Footer ── */}
-      <footer className={`border-t py-6 text-center select-none ${
-        isDark ? 'border-white/5 text-text-muted' : 'border-slate-100 text-slate-400'
-      }`}>
+      <footer className={`border-t py-6 text-center select-none ${isDark ? 'border-white/5 text-text-muted' : 'border-slate-100 text-slate-400'
+        }`}>
         <div className="max-w-7xl mx-auto px-4 text-xs">
           <p>© 2026 Mơ Digital SAT. All Rights Reserved.</p>
         </div>
@@ -1152,9 +1142,8 @@ const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | 
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className={`w-full max-w-md rounded-2xl p-8 text-center space-y-6 ${
-                isDark ? 'bg-bg-card border border-primary/15' : 'bg-white border border-slate-200 shadow-2xl'
-              }`}
+              className={`w-full max-w-md rounded-2xl p-8 text-center space-y-6 ${isDark ? 'bg-bg-card border border-primary/15' : 'bg-white border border-slate-200 shadow-2xl'
+                }`}
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 30 }}

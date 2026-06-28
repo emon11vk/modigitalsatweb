@@ -300,6 +300,55 @@ export default function VocabularyScreen({
     return words.filter(w => sessionStudiedWordIds.has(w.id) || new Date(w.date).getTime() >= studyDayStart);
   }, [words, sessionStudiedWordIds, studyDayStart]);
 
+  const studyRestWarningModal = (
+    <AnimatePresence>
+      {isStudyRestWarningOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[70]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className={`w-full max-w-md rounded-2xl p-8 ${isDark ? 'bg-bg-card border border-primary/15' : 'bg-white border border-slate-200 shadow-2xl'}`}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className={`text-lg font-bold font-display flex items-center gap-2 text-orange-500`}>
+                <AlertTriangle className="w-6 h-6" />
+                Nên nghỉ ngơi thôi!
+              </h3>
+            </div>
+            <div className={`text-sm ${isDark ? 'text-slate-300' : 'text-slate-700'} mb-6 space-y-2`}>
+              <p>Bạn đã học được 15 từ vựng mới toanh trong phiên này rồi.</p>
+              <p>Học nhồi nhét quá nhiều từ mới cùng lúc sẽ làm giảm hiệu quả ghi nhớ. Hãy nghỉ ngơi một chút cho não bộ "tiêu hóa" nhé!</p>
+            </div>
+            <div className="flex justify-end gap-3">
+              <button 
+                onClick={() => setIsStudyRestWarningOpen(false)} 
+                className={`px-4 py-2 rounded-xl text-sm font-medium ${isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'} transition-colors cursor-pointer`}
+              >
+                Vẫn tiếp tục
+              </button>
+              <button 
+                onClick={() => {
+                  setIsStudyRestWarningOpen(false);
+                  setActiveLearningFolderId(null);
+                  setLearningQueue([]);
+                }} 
+                className="px-5 py-2 rounded-xl text-sm font-bold bg-primary text-white hover:bg-primary-light transition-colors cursor-pointer"
+              >
+                Nghỉ ngơi ngay
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
   // Active Learning View Rendering
   if (activeLearningFolderId !== null && learningQueue.length > 0) {
     const currentWord = learningQueue[currentWordIndex];
@@ -623,6 +672,8 @@ export default function VocabularyScreen({
             </div>
           )}
         </div>
+        
+        {studyRestWarningModal}
       </div>
     );
   }
@@ -883,52 +934,7 @@ export default function VocabularyScreen({
       </AnimatePresence>
 
       {/* ── Study Limit Warning Modal ── */}
-      <AnimatePresence>
-        {isStudyRestWarningOpen && (
-          <motion.div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[70]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className={`w-full max-w-md rounded-2xl p-8 ${isDark ? 'bg-bg-card border border-primary/15' : 'bg-white border border-slate-200 shadow-2xl'}`}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            >
-              <div className="flex items-center justify-between mb-6">
-                <h3 className={`text-lg font-bold font-display flex items-center gap-2 text-orange-500`}>
-                  <AlertTriangle className="w-6 h-6" />
-                  Nên nghỉ ngơi thôi!
-                </h3>
-              </div>
-              <div className={`text-sm ${isDark ? 'text-slate-300' : 'text-slate-700'} mb-6 space-y-2`}>
-                <p>Bạn đã học được 15 từ vựng mới toanh trong phiên này rồi.</p>
-                <p>Học nhồi nhét quá nhiều từ mới cùng lúc sẽ làm giảm hiệu quả ghi nhớ. Hãy nghỉ ngơi một chút cho não bộ "tiêu hóa" nhé!</p>
-              </div>
-              <div className="flex justify-end gap-3">
-                <button 
-                  onClick={() => setIsStudyRestWarningOpen(false)} 
-                  className={`px-4 py-2 rounded-xl text-sm font-medium ${isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'} transition-colors cursor-pointer`}
-                >
-                  Vẫn tiếp tục
-                </button>
-                <button 
-                  onClick={() => {
-                    setIsStudyRestWarningOpen(false);
-                    setActiveLearningFolderId(null);
-                    setLearningQueue([]);
-                  }} 
-                  className="px-5 py-2 rounded-xl text-sm font-bold bg-primary text-white hover:bg-primary-light transition-colors cursor-pointer"
-                >
-                  Nghỉ ngơi ngay
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {studyRestWarningModal}
 
       {/* ── AI Story Modal ── */}
       <AIStoryModal theme={theme} words={wordsForStory} isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} />
