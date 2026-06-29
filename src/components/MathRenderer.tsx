@@ -31,8 +31,74 @@ export default function MathRenderer({ content, className = '', isDark = true, d
 
     try {
       let processedContent = content;
-      // Auto-wrap raw LaTeX if no $ exists but it contains explicit math commands (excluding _ to prevent wrapping text)
-      if (!processedContent.includes('$')) {
+      
+      if (!disableMath && !processedContent.includes('$')) {
+        // Pre-process common ascii math
+        processedContent = processedContent.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}');
+        processedContent = processedContent.replace(/<=/g, '\\le ');
+        processedContent = processedContent.replace(/>=/g, '\\ge ');
+
+        let tokens = processedContent.split(/(\s+)/);
+        let isMathToken = (t: string) => {
+          if (!t.trim()) return false;
+          if (/^[\^=<>≤≥]+$/.test(t)) return true;
+          if (/\\(?:le|ge|sqrt|frac|pi|theta|alpha|beta|pm|times|div)/.test(t)) return true;
+          if (t.includes('^') || t.includes('=')) return true;
+          if (/^[()+\-*/.,?]+$/.test(t)) return true; // pure operators/punctuation
+          if (/^[()]*[-+]?\d*\.?\d+[(),.?]*$/.test(t)) return true; // numbers with parens/punct
+          if (/^[()]*[a-zA-Z][().,?]*$/.test(t)) return true; // single letters with parens/punct
+          return false;
+        };
+
+        let isAllMath = tokens.every(t => !t.trim() || isMathToken(t));
+        
+        if (isAllMath && processedContent.length < 100) {
+          processedContent = `$${processedContent}$`;
+        } else {
+          let result = '';
+          let currentMathSeq: string[] = [];
+          let currentHasStrong = false;
+
+          let isStrongMathToken = (t: string) => /[\^=<>≤≥]|\\(?:le|ge|sqrt|frac|pi|theta|alpha|beta)/.test(t);
+
+          const flushMath = () => {
+            if (currentMathSeq.length > 0) {
+              let seqStr = currentMathSeq.join('');
+              if (currentHasStrong) {
+                let trailingSpace = seqStr.match(/\s+$/)?.[0] || '';
+                let core = seqStr.substring(0, seqStr.length - trailingSpace.length);
+                let punctuation = '';
+                let match = core.match(/[.,?]+$/);
+                if (match) {
+                  punctuation = match[0];
+                  core = core.substring(0, core.length - punctuation.length);
+                }
+                result += `$${core}$${punctuation}${trailingSpace}`;
+              } else {
+                result += seqStr;
+              }
+              currentMathSeq = [];
+              currentHasStrong = false;
+            }
+          };
+
+          for (let token of tokens) {
+            if (token.trim() === '') {
+              if (currentMathSeq.length > 0) currentMathSeq.push(token);
+              else result += token;
+            } else if (isMathToken(token)) {
+              currentMathSeq.push(token);
+              if (isStrongMathToken(token)) currentHasStrong = true;
+            } else {
+              flushMath();
+              result += token;
+            }
+          }
+          flushMath();
+          processedContent = result;
+        }
+      } else if (!processedContent.includes('$')) {
+        // Fallback for verbal/other if they happen to have explicit LaTeX
         if (/(\\(frac|left|right|sqrt|sum|int|alpha|beta|theta|pi|mu|sigma|Delta|text|textbf|pm|times|div|approx|neq|leq|geq))/.test(processedContent)) {
           processedContent = `$${processedContent}$`;
         }
