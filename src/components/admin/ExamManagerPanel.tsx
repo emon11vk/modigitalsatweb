@@ -262,6 +262,7 @@ export default function ExamManagerPanel({
 
   const handleDragOver = (e: React.DragEvent, folderId: string | null) => {
     e.preventDefault(); // Necessary to allow dropping
+    e.stopPropagation();
     e.dataTransfer.dropEffect = 'move';
     if (dragOverFolderId !== folderId) {
       setDragOverFolderId(folderId);
@@ -270,11 +271,13 @@ export default function ExamManagerPanel({
 
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setDragOverFolderId(null);
   };
 
   const handleDrop = async (e: React.DragEvent, folderId: string | null) => {
     e.preventDefault();
+    e.stopPropagation();
     setDragOverFolderId(null);
     
     if (!draggedExamId) return;
