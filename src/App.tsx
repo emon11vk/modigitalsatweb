@@ -254,7 +254,7 @@ export default function App() {
         const { data: folderData, error: folderError } = await supabase
           .from('exam_folders')
           .select('id, name, parent_id, category')
-          .order('created_at', { ascending: true });
+          .order('created_at', { ascending: false });
 
         if (!folderError && folderData) {
           setFolders(folderData);
@@ -264,7 +264,7 @@ export default function App() {
         const { data: modData, error: modError } = await supabase
           .from('modules')
           .select('*')
-          .order('module_num', { ascending: true });
+          .order('created_at', { ascending: true });
 
         if (modError) console.error('Error fetching modules:', modError);
 
@@ -291,7 +291,7 @@ export default function App() {
           .from('vocab_folders')
           .select('*')
           .or(`user_id.eq.${currentUser.id},is_admin_folder.eq.true`)
-          .order('created_at', { ascending: true });
+          .order('created_at', { ascending: false });
 
         if (vFolderError) console.error('Error fetching vocab folders:', vFolderError);
         if (vFolderData) {

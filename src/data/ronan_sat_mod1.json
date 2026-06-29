@@ -1,0 +1,659 @@
+{
+  "examTitle": "RONAN SAT - 2023 May INT A",
+  "subject": "Reading & Writing",
+  "sections": [
+    {
+      "sectionName": "Module 1",
+      "questions": [
+        {
+          "type": "mcq",
+          "passage": "The following text is from John Matheus’s 1925 novel Fog. The story happens in a city where heavy fog has set in.\n\nThe little conductor stood on tiptoe in an effort to keep one hand on the signal rope, craning his neck in a vain and dissatisfied endeavor to pierce the miasma of the fog. The motorman chafed in his box, thinking of the drudging lot of the laboring man. He registered discontent.",
+          "questionText": "As used in the text, what does the word \"registered\" most nearly mean?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "enrolled"
+            },
+            {
+              "key": "B",
+              "text": "valued"
+            },
+            {
+              "key": "C",
+              "text": "disregarded"
+            },
+            {
+              "key": "D",
+              "text": "displayed"
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "The Istiqlal Mosque in Jakarta, Indonesia, is a massive mosque that can accommodate approximately 200,000 people at once, making it an __________ sight to behold.",
+          "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "idealized"
+            },
+            {
+              "key": "B",
+              "text": "intricate"
+            },
+            {
+              "key": "C",
+              "text": "imposing"
+            },
+            {
+              "key": "D",
+              "text": "illusory"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Although fewer companies trade their stocks on the Tehran Stock Exchange in Tehran, Iran, than on the stock exchanges in London, Mumbai, or Tokyo, the Tehran Stock Exchange has the advantage of focusing on local companies and thus reflecting economic circumstances that are __________ Iran. This sensitivity to unique, rapidly evolving local conditions benefits the companies and investors alike.",
+          "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "irrelevant to"
+            },
+            {
+              "key": "B",
+              "text": "prohibitive in"
+            },
+            {
+              "key": "C",
+              "text": "distinctive to"
+            },
+            {
+              "key": "D",
+              "text": "unchanging in"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Sarah Marquis, who walked 16,000 kilometers across Asia, Siberia, and Australia, undoubtedly accomplished much, but to __________ a lasting historical legacy for oneself, almost nothing is more effective than being the first to do something. For example, people will always remember that Anesia Pinheiro Machado was the first female pilot in Brazil to carry passengers and the first to make stunt flights.",
+          "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "recognize"
+            },
+            {
+              "key": "B",
+              "text": "undermine"
+            },
+            {
+              "key": "C",
+              "text": "constrain"
+            },
+            {
+              "key": "D",
+              "text": "establish"
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "In a study by Mika R. Moran, Daniel A. Rodriguez, and colleagues, residents of Caracas, Venezuela, and of Fortaleza, Brazil, were surveyed about parks in their cities. Of the 1,043 respondents from Caracas, 44.7% indicated that they use the city's parks, and of the 938 respondents from Fortaleza, 35.7% indicated using city parks. **It may be tempting to assume the difference is due to different levels of access to parks: however, given that the percentage of Caracas respondents who reported living within a 10-minute walk of a park was much lower than that reported by Fortaleza respondents, greater proximity alone can’t explain the difference in park use.**",
+          "questionText": "Which choice best describes the function of the underlined portion in the text as a whole?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "It introduces a counterexample to the scenario described earlier in the text."
+            },
+            {
+              "key": "B",
+              "text": "It provides context to help understand the scope of the researchers' survey."
+            },
+            {
+              "key": "C",
+              "text": "It marks a shift from a discussion of the researchers’ conclusion to a discussion of their methods."
+            },
+            {
+              "key": "D",
+              "text": "It presents a potential explanation for the team's findings that the text goes on to refute."
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "The following text is from Jerome K. Jerom’s 1889 novel Three Men in a Boat.\n\nWe are creatures of the sun, we men and women. We love light and life. That is why we crowd into the towns and cities, and the country grows more and more deserted every year. In the sunlight—in the daytime, when Nature is alive and busy all around us, we like the open hillsides and the deep woods well enough: but in the night, when our Mother Earth has gone to sleep, and left us waking, oh! the world seems so lonesome, and we get frightened, like children in a silent house. Then we sit and sob, and long for the gas-lit streets, and the sound of human voices, and the answering throb of human life.",
+          "questionText": "Which choice best states the main purpose of the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "To indicate that crowded areas can cause people to feel as though they are children again"
+            },
+            {
+              "key": "B",
+              "text": "To caution people not to be so quick to dismiss the natural beauty that can be found in rural areas"
+            },
+            {
+              "key": "C",
+              "text": "To address common traits that motivate many people to choose to live in urban environments"
+            },
+            {
+              "key": "D",
+              "text": "To illustrate the idea that most people tend to prefer hillsides in the country to certain aspects of towns and cities"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Text 1\nThe poet Audre Lorde once claimed that poetry is the most inexpensive of art forms to practice. While people who pursue other art forms—sculpture, architecture, long form prose—require large blocks of uninterrupted time as well as money to complete their work, poets can write, as Lorde said, \"between shifts, in the hospital pantry, on the subway, and on scraps of surplus paper.\" So poets can make worthwhile art even if they must earn their living in another way.\n\nText 2\nAny assessment of the state of contemporary poetry must reckon with the professionalization of the field. While it is possible in theory for anyone to publish in Virginia Quarterly Review, Kenyon Review, or a similar major poetry outlet, many people who do so have professional training in poetry and extensive practice writing it, which requires time not often available to those who must also work full-time jobs. Thus, financial security indirectly affects which people become poets.",
+          "questionText": "Based on the texts, how would Lorde (Text 1) most likely respond to the argument presented in Text 2?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "By indicating that those poets who publish in major poetry journals are most likely to be able to earn a living by writing poetry"
+            },
+            {
+              "key": "B",
+              "text": "By pointing out that people can produce valuable poetry in other circumstances than those described by the author of Text 2"
+            },
+            {
+              "key": "C",
+              "text": "By suggesting that those artists who specialize in more financially rewarding artistic forms are unlikely to also be successful as poets"
+            },
+            {
+              "key": "D",
+              "text": "By asserting that people often work full-time jobs in order to afford the professional training described in Text 2"
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Falcons and horses can see in three dimensions (3D), which helps them perceive distance and depth. Octopuses and squid are thought to lack 3D vision. Many researchers once thought the same about cuttlefish, but Trevor Wardill and his team wanted to test whether this assumption was true. The team studied how cuttlefish wearing 3D glasses reacted to 3D images of shrimp (a favorite prey) projected on a tank wall. Cuttlefish changed their striking position to match the 3D images, suggesting that their vision is more like that of falcons and horses than that of octopuses or squid.",
+          "questionText": "Which choice best describes the main idea of the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Cuttlefish eyes are much more complex than those of falcons or horses."
+            },
+            {
+              "key": "B",
+              "text": "Wardill's team designed 3D glasses for cuttlefish."
+            },
+            {
+              "key": "C",
+              "text": "Before completing their study, Wardill's team thought that cuttlefish have 3D vision, but horses may not."
+            },
+            {
+              "key": "D",
+              "text": "The findings of Wardill's team's study suggest that, like falcons and horses, cuttlefish may also have 3D vision."
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "President Richard Nixon is most famous for his participation in the 1970s Watergate political scandal a convoluted tale of criminality and eroded ethics involving a constellation of associates such as White House Counsel Chuck Colson and White House Counsel John Dean. But Nixon’s legacy is complex: he has been praised for his role in creating the Environmental Protection Agency, and he once made an attempt at reforming United States health care policy that is arguably a precursor to the Affordable Care Act, which became law during the Barack Obama administration.",
+          "questionText": "Which choice best states the main idea of the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Chuck Colson and John Dean were significant figures in the presidency of Richard Nixon."
+            },
+            {
+              "key": "B",
+              "text": "Richard Nixon is commonly linked with an infamous historical event, but this overshadows some of his notable achievements."
+            },
+            {
+              "key": "C",
+              "text": "Some of Richard Nixon’s policies influenced the policies of later presidential administrations."
+            },
+            {
+              "key": "D",
+              "text": "Richard Nixon’s reputation is primarily due to the actions of his associates."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "The Yellow Admiral, first published in 1996, is a novel in Patrick O'Brian's Aubrey / Maturin series, which includes twenty books plus an unfinished fragment of a twenty-first. Like the rest of the books in the series, The Yellow Admiral has a rather abrupt ending, but the following book, The Hundred Days, picks up neatly where The Yellow Admiral leaves off. Thus, the sudden ending is only an issue if one considers the books as independent texts—the Aubrey / Maturin series is best thought of as a single incredibly long work, similar to other multivolume stories, such as Marcel Proust's In Search of Lost Time.",
+          "questionText": "Which choice best states the main idea of the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Over time, the Aubrey / Maturin series has acquired the same eminence among critics as works like In Search of Lost Time that have similar structures."
+            },
+            {
+              "key": "B",
+              "text": "A certain understanding of the structures of the novels in the Aubrey / Maturin series is helpful if one wishes to appreciate the series."
+            },
+            {
+              "key": "C",
+              "text": "Many readers find the Aubrey / Maturin novels to be remarkably entertaining despite flaws in the novels' structures."
+            },
+            {
+              "key": "D",
+              "text": "The Yellow Admiral and The Hundred Days are two of the most complex of O'Brian's novels due in part to their unconventional structures."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "The following text is from Mary Shelley’s 1818 novel Frankenstein. Victor Frankenstein, who narrates this portion of text, describes the state of scientific knowledge as he began his own study of the natural world.\n\nThe untaught peasant beheld the elements around him and was acquainted with their practical uses. The most learned philosopher knew little more. He had partially unveiled the face of Nature, but her immortal lineaments were still a wonder and a mystery. He might dissect, anatomize, and give names; but, not to speak of a final cause, causes in their secondary and tertiary grades were utterly unknown to him. I had gazed upon the fortifications and impediments that seemed to keep human beings from entering the citadel of nature, and rashly and ignorantly I had repined.",
+          "questionText": "Which choice best describes the main idea of the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Victor became disappointed in science when he realized that the practical knowledge laypeople have of nature is often deeper than the scientific understanding."
+            },
+            {
+              "key": "B",
+              "text": "Victor was impressed by the layperson’s practical understanding of nature but thought science provided a clearer understanding."
+            },
+            {
+              "key": "C",
+              "text": "Victor was immediately impressed by the advantages of the scientific approach to understanding natural phenomena."
+            },
+            {
+              "key": "D",
+              "text": "Victor thinks that conventional scientific approaches to understanding natural phenomena will not yield the answers he seeks."
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "The following text is adapted from Anton Chekhov’s 1899 play Uncle Vanya. Professor Serebrakoff retires and moves to his country estate, which Vanya manages with the help of Sonia, the professor’s daughter from a previous marriage. Chekhov portrays the professor as being someone adjusting to living at the country estate, as is evident when",
+          "questionText": "Which quotation from Uncle Vanya most effectively illustrates the claim?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Professor Serebrakoff says, \"I am a book-worm and a scholar, and am unfamiliar with practical affairs. I cannot, I find, dispense with the help of well-informed people.\""
+            },
+            {
+              "key": "B",
+              "text": "Professor Serebrakoff says to Helena, \"My darling, don't leave me alone with [Vanya]. He will begin to lecture me.\""
+            },
+            {
+              "key": "C",
+              "text": "Professor Serebrakoff says to Helena, \"I am used to my library and the lecture hall and to the esteem and admiration of my colleagues. Now I suddenly find myself plunged into this wilderness (the cottage), condemned to see the same stupid people from morning till night and listen to their futile conversations.\""
+            },
+            {
+              "key": "D",
+              "text": "Vanya says to Professor Serebrakoff, \"You write on art without knowing anything about it. Those books of yours which I used to admire are not worth one copper kopeck. You are a hoax!\""
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Cane is a 1923 novel by Jean Toomer. In one portion of the novel, Toomer uses figurative language to connect the narrator’s urban environment of Washington, DC, and the rural South of the narrator’s past, writing __________",
+          "questionText": "Which quotation from Cane most effectively illustrates the claim?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "“The [train] engines of this valley have a whistle, the echoes of which sound like iterated gasps and sobs. I always think of them as crude music.”"
+            },
+            {
+              "key": "B",
+              "text": "“And when the wind is from the South, soil of my homeland falls like a fertile shower upon the lean streets of [Washington, DC]”"
+            },
+            {
+              "key": "C",
+              "text": "“I sang, with a strange quiver in my voice, a promise-song.”"
+            },
+            {
+              "key": "D",
+              "text": "“The young trees had not outgrown their boxes then. V Street [in Washington, DC] was lined with them.”"
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Many believe that lullabies, characterized by their less steady beat, contain some acoustic features that are universally calming to infants. In a study, Constance M. Bainbridge and colleagues played both a lullaby sung in the Western Nahuatl language and a non-lullaby sung in the Serbian language to a group of infants. The researchers also measured the infants' heart rates, as a reduced heart rate is considered a measure of relaxation. They claim that the lullaby did indeed relax the infants.",
+          "questionText": "Which finding, if true, would most directly support Bainbridge and colleagues' claim?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "The heart rates of infants in the study were more irregular during the lullabies than during non-lullabies."
+            },
+            {
+              "key": "B",
+              "text": "Parents of infants in the study chose the lullaby over the non-lullaby when asked which song they use to calm their child."
+            },
+            {
+              "key": "C",
+              "text": "Infants' heart rates were substantially lower during the lullaby than during the non-lullaby."
+            },
+            {
+              "key": "D",
+              "text": "Both the song in Western Nahuatl and the song in Serbian were sung by a female singer."
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "The Cherokee Nation, the Seminole Nation, and the more than thirty other tribes in Oklahoma operate numerous businesses and collectively generate billions of dollars in revenue. In fact, when the tribes' activity is regarded as a single industry, its contribution to the Oklahoma economy in 2017 __________\n\nIndustry / Approximate contribution\nReal estate / $18,314,700,000\nTribal economic activity / $7,312,400,000\nAdministration / waste / $5,830,600,000",
+          "questionText": "Which choice uses data from the table to most effectively complete the comparison?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "surpassed the contribution made by administration / waste but fell short of that made by real estate."
+            },
+            {
+              "key": "B",
+              "text": "exceeded the contribution made by both administration / waste and real estate."
+            },
+            {
+              "key": "C",
+              "text": "was greater than the contribution made by real estate but equal to that made by administration / waste."
+            },
+            {
+              "key": "D",
+              "text": "was lower than the contribution made by either administration / waste or real estate."
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "Water flowing around an obstruction creates vortices (patterns of swirls) of varying size; by detecting the vortices, fish can determine the size and position of the obstruction. Testing by Yuzo R. Yanagisuru, Otar Akanyeti, and James C. Liao using models of three head shapes—narrow (low ratio of width to length), intermediate, and wide (high ratio of width to length)—showed that for large vortices, fish with intermediate heads would be better able than narrow-headed fish to distinguish between vortices and general turbulence in the water. A second research team has therefore hypothesized that in low-visibility conditions, intermediate-headed fish will be more likely than narrow-headed fish to detect obstructions that create large vortices.",
+          "questionText": "Which finding, if true, would most directly support the second research team’s hypothesis?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "A study using obstructions that created large vortices in low-visibility conditions found that the narrow-headed lake sturgeon (Acipenser fulvescens) bumped into obstructions more often than the intermediate-headed dusky smooth-hound (Mustelus canis) did."
+            },
+            {
+              "key": "B",
+              "text": "A study using obstructions that created large vortices in low-visibility conditions found that the lake sturgeon (Acipenser fulvescens), which has a relatively narrow head, bumped into more than half of the obstructions."
+            },
+            {
+              "key": "C",
+              "text": "A study using obstructions that created large vortices in low-visibility conditions found that some specimens of the intermediate-headed dusky smooth-hound (Mustelus canis) bumped into the obstructions more often than other specimens of the same fish did."
+            },
+            {
+              "key": "D",
+              "text": "A study using obstructions that created large vortices in low-visibility conditions found that the intermediate-headed dusky smooth-hound (Mustelus canis) avoided more than half of the obstructions."
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "In a college course on urban affairs, a student asserts that increased traffic congestion in the 1990s in the United States was present both in very large cities such as New York City, New York, and smaller areas such as Albuquerque, New Mexico, Jacksonville, Florida, and Boise, Idaho; though those smaller area may have been less affected by traffic congestion than very large cities, this congestion also worsened in them over time.\n\n(See graph for Annual Average Hours of Highway Traffic Delay per Auto Commuter)",
+          "questionText": "Which choice best describes data from the graph that support the student’s claim?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "In at least one of the four urban areas shown, the amount of traffic delay was less than 20 hours per commuter per year at one point between 1990 and 2000."
+            },
+            {
+              "key": "B",
+              "text": "While the annual number of hours of traffic delay per commuter was always lower in the Boise, Idaho, area than in the New York City, New York, area for each year between 1990 and 2000, the amount of traffic delay rose in both areas during this period."
+            },
+            {
+              "key": "C",
+              "text": "Even though the amount of traffic delay per commuter per year was greater in the Albuquerque, New Mexico, area than in the New York City, New York, area throughout the period from 1990 to 2000, the amounts were nearly identical in 1996."
+            },
+            {
+              "key": "D",
+              "text": "In 1992, the amount of traffic delay in the New York City, New York, area was less than 30 hours per commuter per year."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Esther Sanye-Mengual, Kathrin Specht, and their team surveyed three groups of people in Bologna, Italy—leaders of urban agriculture projects, stakeholders in urban agriculture (e.g., food researchers and urban farming associations), and the general public—to compare their views about the extent to which urban agriculture contributes to 25 social or ecological services that the team identified. The researchers used these ratings to rank the services for each group, with a rank of 1 indicating the service judged to contribute the most. Reviewing the rankings, a city planner concludes that both stakeholders and the general public regard the improvement of attitudes and outlooks as an important benefit of urban agriculture.\n\nRankings of selected social or ecological services by group (rank of 1 = highest)\nSocial or ecological service / Project leaders / Stakeholders / General public\nimprovement of attitudes and outlooks / 8 / 1 / 4\nprovision of food / 4 / 15 / 8\nprovision of raw materials / 22 / 25 / 15\nimprovement of physical health / 5 / 4 / 7\nenhancement of pollination / 1 / 7 / 12",
+          "questionText": "Which choice best describes data in the table that support the city planner's conclusion?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "The improvement of physical health was ranked lower for the general public than it was for project leaders."
+            },
+            {
+              "key": "B",
+              "text": "The provision of raw materials was ranked higher for the general public than was the improvement of attitudes and outlooks."
+            },
+            {
+              "key": "C",
+              "text": "The improvement of attitudes and outlooks was ranked higher for stakeholders than it was for the general public."
+            },
+            {
+              "key": "D",
+              "text": "The improvement of attitudes and outlooks was ranked higher for the general public than were the other four services."
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Some scientists have suggested that as ocean temperatures rise, many fish and corals found in the shallow zone (less than 30 meters below the surface) could take refuge in the cooler, darker mesophotic zone (30 to 150 meters below the surface). However, it isn't clear that all such species will be able to tolerate mesophotic conditions. In 2018, Luiz Rocha and colleagues studied stony corals in the two zones in Caribbean and Indo-Pacific waters. Based on the depths at which those corals are now found, the species that seems least suited to a full migration to the mesophotic zone is __________\n\nSpecies / Minimum depth (meters) / Maximum depth (meters)\nPlerogyra discus / 8 / 15\nAcropora echinata / 8 / 25\nPsammocora albopicta / 1 / 28\nAgaricia undata / 20 / 80",
+          "questionText": "Which choice most effectively uses data from the table to complete the statement?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Agaricia undata, because its minimum depth of 20 meters is in the shallow zone."
+            },
+            {
+              "key": "B",
+              "text": "Plerogyra discus, because its maximum depth of 15 meters is furthest from the mesophotic zone."
+            },
+            {
+              "key": "C",
+              "text": "Acropora echinata, because its maximum depth of 25 meters is close to but doesn’t reach the mesophotic zone."
+            },
+            {
+              "key": "D",
+              "text": "Psammocora albopicta, because its minimum depth of 1 meter is the shallowest of those listed."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Like many other fruit-eating birds on the Hawaiian island of Oahu, the red-whiskered bulbul helps forest plants spread by dropping seeds from the plants’ fruits in different spots (a process called seed dispersal). Ecologists have found that fruit-eating birds disperse some seeds from native plants at risk of extinction in the wild, such as the lapalapa tree. However, the birds disperse a higher number of seeds from night-blooming jessamine shrubs and other non-native plants with large populations, likely because there are so many more of those plants for them to choose from. Therefore, it isn't surprising that __________",
+          "questionText": "Which choice most logically completes the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "on Oahu, the rate of population increase is higher for non-native plants than it is for vulnerable native forest plants, like lapalapa trees."
+            },
+            {
+              "key": "B",
+              "text": "night-blooming jessamine shrubs and other non-native forest plants only recently began to outnumber native forest plants in the wild."
+            },
+            {
+              "key": "C",
+              "text": "on Oahu, native plants, such as the lapalapa tree, are already growing in most of the spots where red-whiskered bulbuls would be likely to drop plant seeds on Oahu."
+            },
+            {
+              "key": "D",
+              "text": "the lapalapa tree and the night-blooming jessamine shrub are the plant species most in danger of going extinct in the wild."
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "The Harlem Renaissance, which gave us great literary works like May Miller’s play The Bog Guide and nonliterary works like James Van Der Zee’s photograph Couple, Harlem, is often said to have ended in the 1930s shortly after the Great Depression began. But some scholars argue that the Harlem Renaissance never really ended because it continues to shape culture in the United States today. These scholars therefore suggest that __________",
+          "questionText": "Which choice most logically completes the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "if a cultural movement has both literary and nonliterary innovations, then it is likely to be influential."
+            },
+            {
+              "key": "B",
+              "text": "if a cultural movement is very innovative, then it is unlikely to be able to sustain itself for long."
+            },
+            {
+              "key": "C",
+              "text": "if the literary works of a cultural movement are influential, then it doesn't matter whether the nonliterary works are."
+            },
+            {
+              "key": "D",
+              "text": "if the influence of a cultural movement continues, then in some sense the movement itself continues."
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "Architects looking for inspiration may examine photographs of iconic buildings such as the Forbidden City in Beijing. A two-dimensional photograph, however, cannot capture how a building interacts with its surroundings, whether by complementing, blending in with, or perhaps even clashing with sights and activities nearby. An image of the Forbidden City thus __________",
+          "questionText": "Which choice most logically completes the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "serves to exaggerate the building's historical importance."
+            },
+            {
+              "key": "B",
+              "text": "fails to convey the full impact of the building's design and structure."
+            },
+            {
+              "key": "C",
+              "text": "misrepresents how the building is perceived by people who have never visited Beijing."
+            },
+            {
+              "key": "D",
+              "text": "conceals the subtle deterioration of the building's materials."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Some studies can be done well with relatively little money. For example, a marketing study simply trying to identify the average amount customers spend per transaction at an online retailer has a straightforward central question that doesn't require many years of data collection. But it is much more expensive to conduct a longitudinal study like the Household, Income and Labour Dynamics in Australia Survey (HILDA), which looks at data for 25,000 people in Australia to find trends in economic well-being that can take a long time to develop. This requires lots of funding because __________",
+          "questionText": "Which choice most logically completes the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "marketing studies are not likely to require data from very many individuals."
+            },
+            {
+              "key": "B",
+              "text": "data from 25,000 people may not be enough to reveal significant trends in economic well-being."
+            },
+            {
+              "key": "C",
+              "text": "long-term trends in economic well-being are hard to find without collecting data over many years."
+            },
+            {
+              "key": "D",
+              "text": "long-term trends in marketing can be found without examining many years of data."
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Most US states and territories have had at least one woman serve as governor. In Nebraska, for example, Governor Kay A. Orr took office on January 9, 1987. In fact, the number of states and territories that have had only male governors __________ almost every year.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "is shrinking"
+            },
+            {
+              "key": "B",
+              "text": "shrink"
+            },
+            {
+              "key": "C",
+              "text": "are shrinking"
+            },
+            {
+              "key": "D",
+              "text": "have been shrinking"
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "Occurring in the constellation Coma Berenices, 38 million light-years from Earth, SN 1940B was a __________ explosion of a massive star, which blasts large amounts of radiation, heavy elements, and debris into space—that was first detected by American astronomer Josef Johnson.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "supernova, the"
+            },
+            {
+              "key": "B",
+              "text": "supernova. The"
+            },
+            {
+              "key": "C",
+              "text": "supernova—the"
+            },
+            {
+              "key": "D",
+              "text": "supernova: the"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Established in 1933 for the specific purpose of stabilizing the US banking system, __________ helped the nation recover from the Great Depression.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "the US government's many ways, just one of which was the Emergency Banking Act (EBA)."
+            },
+            {
+              "key": "B",
+              "text": "many ways, just one of which was the Emergency Banking Act (EBA), were how the US government"
+            },
+            {
+              "key": "C",
+              "text": "the US government in many ways, just one of which was the Emergency Banking Act (EBA)."
+            },
+            {
+              "key": "D",
+              "text": "the Emergency Banking Act (EBA) was just one of many ways the US government"
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "As a behavioral economist, Ai Hisano of Kyoto University recognizes that people sometimes make irrational economic decisions. Hisano's research can thus address anomalies that neoclassical economic __________ assume that people are consistently rational decision-makers—cannot explain.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "models which"
+            },
+            {
+              "key": "B",
+              "text": "models which,"
+            },
+            {
+              "key": "C",
+              "text": "models—which"
+            },
+            {
+              "key": "D",
+              "text": "models, which"
+            }
+          ],
+          "correctAnswer": "C"
+        }
+      ]
+    }
+  ]
+}

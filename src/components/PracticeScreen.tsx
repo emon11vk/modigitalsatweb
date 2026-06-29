@@ -11,7 +11,7 @@ interface PracticeScreenProps {
 
 export default function PracticeScreen({ theme, folders, modules, onStartTest }: PracticeScreenProps) {
   const isDark = theme === 'dark';
-  const [activeCategory, setActiveCategory] = useState<'course' | 'general'>('course');
+  const [activeCategory, setActiveCategory] = useState<'course' | 'general'>('general');
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
   const [expandedFolders, setExpandedFolders] = useState<Record<string, boolean>>({});
 
@@ -136,16 +136,6 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
             {/* Custom Toggle mimicking the top adaptive options */}
             <div className={`flex p-1 rounded-2xl border-2 ${isDark ? 'bg-black/20 border-white/10' : 'bg-slate-100 border-slate-200'}`}>
               <button
-                onClick={() => { setActiveCategory('course'); setSelectedFolderId(null); }}
-                className={`px-6 py-3 rounded-xl text-sm font-bold transition-all ${
-                  activeCategory === 'course'
-                    ? isDark ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'bg-primary text-white shadow-md'
-                    : isDark ? 'text-text-muted hover:text-white' : 'text-slate-500 hover:text-slate-800'
-                }`}
-              >
-                Mơ digital SAT Course
-              </button>
-              <button
                 onClick={() => { setActiveCategory('general'); setSelectedFolderId(null); }}
                 className={`px-6 py-3 rounded-xl text-sm font-bold transition-all ${
                   activeCategory === 'general'
@@ -154,6 +144,16 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
                 }`}
               >
                 General
+              </button>
+              <button
+                onClick={() => { setActiveCategory('course'); setSelectedFolderId(null); }}
+                className={`px-6 py-3 rounded-xl text-sm font-bold transition-all ${
+                  activeCategory === 'course'
+                    ? isDark ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'bg-primary text-white shadow-md'
+                    : isDark ? 'text-text-muted hover:text-white' : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                Mơ digital SAT Course
               </button>
             </div>
           </div>
@@ -172,20 +172,22 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
           </div>
           
           <div className="space-y-1.5 max-h-[60vh] overflow-y-auto pr-1 custom-scrollbar">
-            <button
-              onClick={() => setSelectedFolderId(null)}
-              className={`w-full flex items-center px-3 py-2.5 text-sm font-bold transition-all rounded-lg border-2 ${
-                selectedFolderId === null
-                  ? isDark 
-                    ? 'bg-primary border-primary text-white' 
-                    : 'bg-primary border-primary text-white shadow-md'
-                  : isDark
-                    ? 'bg-transparent border-white/5 text-text-secondary hover:bg-white/5 hover:border-white/10'
-                    : 'bg-transparent border-slate-200/50 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
-              }`}
-            >
-              All Tests
-            </button>
+            {activeCategory !== 'general' && (
+              <button
+                onClick={() => setSelectedFolderId(null)}
+                className={`w-full flex items-center px-3 py-2.5 text-sm font-bold transition-all rounded-lg border-2 ${
+                  selectedFolderId === null
+                    ? isDark 
+                      ? 'bg-primary border-primary text-white' 
+                      : 'bg-primary border-primary text-white shadow-md'
+                    : isDark
+                      ? 'bg-transparent border-white/5 text-text-secondary hover:bg-white/5 hover:border-white/10'
+                      : 'bg-transparent border-slate-200/50 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
+                }`}
+              >
+                All Tests
+              </button>
+            )}
             
             {folderTree.map(node => renderFolderNode(node, 0))}
             

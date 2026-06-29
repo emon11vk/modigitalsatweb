@@ -1,0 +1,659 @@
+{
+  "examTitle": "RONAN SAT - 2023 May INT A",
+  "subject": "Reading & Writing",
+  "sections": [
+    {
+      "sectionName": "Module 2",
+      "questions": [
+        {
+          "type": "mcq",
+          "passage": "The following text is from a 1955 translation of Samuel Beckett's 1951 novel Molloy (translated by the author and Patrick Bowles). In the text, Molloy has arrived at the town ramparts, an elevated walkway atop the city walls.\n\nAnd having cleared the ramparts I had to confess the sky was clearing, prior to its winding in the other shroud, night. Yes, the great cloud was ravelling, discovering here and there a pale and dying sky, and the sun, already down, was manifest in the livid tongues of fire darting towards the zenith, falling and darting again, ever more pale and languid, and doomed no sooner lit to be extinguished.",
+          "questionText": "As used in the text, what does the word \"manifest\" most nearly mean?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Dwindling"
+            },
+            {
+              "key": "B",
+              "text": "Realized"
+            },
+            {
+              "key": "C",
+              "text": "Situated"
+            },
+            {
+              "key": "D",
+              "text": "Perceptible"
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "Zygomorphic (bilaterally symmetric) flowers remain open and functional on average 1.1 days longer than actinomorphic (radially symmetric) flowers do. Ruby E. Stephens and colleagues claim that this extended period could be __________ the relatively small pool of potential pollinators available to zygomorphic flowers and the greater chance at successful pollination that remaining open affords them.",
+          "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "attributed to"
+            },
+            {
+              "key": "B",
+              "text": "converted by"
+            },
+            {
+              "key": "C",
+              "text": "analogous to"
+            },
+            {
+              "key": "D",
+              "text": "magnified by"
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "Despite stated claims of global relevance, much major research on income inequality performed in the 2010s suffered from a myopic focus on a few countries in North America and Western Europe, partly due to limited data availability. Researchers would later __________ this shortcoming after gaining new access to administrative records located in nations in Asia, such as India, and Eastern Europe, such as Hungary.",
+          "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "presuppose"
+            },
+            {
+              "key": "B",
+              "text": "categorize"
+            },
+            {
+              "key": "C",
+              "text": "validate"
+            },
+            {
+              "key": "D",
+              "text": "mitigate"
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "The following text is from Anne Spencer's 1922 poem \"Translation.\"\n\nWe trekked into a far country,\nMy friend and I.\nOur deeper content was never spoken,\nBut each knew all the other said.\nHe told me how calm his soul was laid\nBy the lack of anvil and strife.\n\"The wooing kestrel,\" I said, \"mutes his mating-note\nTo please the harmony of this sweet silence.\"",
+          "questionText": "Which choice best describes the function of the reference to \"anvil and strife\" in the text as a whole?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "It symbolizes the speaker's friend's view that meaningful work and social engagement are core components of a fulfilling life."
+            },
+            {
+              "key": "B",
+              "text": "It illustrates how the speaker and her friend can feel a close connection even though they do not talk about their feelings."
+            },
+            {
+              "key": "C",
+              "text": "It emphasizes an opposition between nature and the relationship of the speaker and her friend."
+            },
+            {
+              "key": "D",
+              "text": "It represents a strong contrast to the speaker's friend's current experience of tranquility."
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "The scenario of a dwarf mongoose engaging in territorial conflict with an outgroup dwarf mongoose illustrates a major dimension of social life across animal species, from the solitary to those with complex sociality: **intraspecific contact with perceived outsiders.** Though one prominent hypothesis posits that sophisticated cognitive adaptations are primarily driven by the demands of various behaviors within established social groups (e.g., cooperative response to predation), interactions with same-species outsiders arguably contribute comparably by favoring nuanced analysis (e.g., evaluation of relative physical status).",
+          "questionText": "Which choice best describes the function of the underlined portion in the text as a whole?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "It establishes that perceiving an individual of the same species as an outsider exemplifies the kind of analysis mentioned later in the text."
+            },
+            {
+              "key": "B",
+              "text": "It identifies a particular type of social interaction whose relevance to higher cognition in animals is the overall focus of the text."
+            },
+            {
+              "key": "C",
+              "text": "It narrows the text's focus from the full complement of social life dimensions across species to one applicable to only a subset of species."
+            },
+            {
+              "key": "D",
+              "text": "It defines a scientific term central to the text's discussion of the role of complex sociality in driving cognitive adaptations in animals."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Despite potential independent confirmation, the apparent detection in 2020 of phosphine (PH3)—a gas that on Earth almost exclusively derives from biological sources—in Venus's cloud deck remains controversial, in part because Venus is thought to be uninhabitable. To evaluate such a finding's plausibility, William Bains et al. modeled multiple abiotic PH3 pathways, including geochemical, atmospheric, and photochemical reactions, but none adequately explain the observed levels of PH3. If Venusian PH3 does exist, it would indicate insufficiencies in the current consensus on Venus's chemistry.",
+          "questionText": "Which choice best describes the overall structure of the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "It introduces an unexpected observation of a particular gas in Venus's atmosphere, presents an effort to investigate possible mechanisms that could explain that observation, and then notes an implication of that investigation's findings."
+            },
+            {
+              "key": "B",
+              "text": "It explains why the consensus view of a particular gas in Venus's atmosphere has recently become controversial, expands on a scientific team's reasons for questioning that consensus, and then suggests that future observations of Venus's atmosphere will likely be needed to settle the controversy."
+            },
+            {
+              "key": "C",
+              "text": "It compares the levels of a particular gas on Venus and Earth, sketches the chemical processes that account for differences in these levels, and then addresses some of the practical challenges of studying the presence of this gas on Venus more closely."
+            },
+            {
+              "key": "D",
+              "text": "It outlines recent efforts to confirm the presence of a particular gas in Venus's atmosphere, summarizes a research team's evaluations of those efforts' methodological shortcomings, and then explains why that team remains skeptical of the gas's future detection."
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "The synthesis of novel superheavy elements, such as meitnerium (Mt), has led theorists to consider the feasibility of synthesizing all possible chemical compounds. In 2022, Guillermo Restrepo calculated the historical rates at which newly discovered compounds have entered the scientific literature, expanding the \"chemical space.\" **Using a conservative estimate of the number of viable compounds and assuming a doubling of the historical pace of discovery,** Restrepo found that under these hypothetical conditions, all potential compounds could be synthesized and documented by 2050.",
+          "questionText": "Which choice best describes the function of the underlined portion in the text as a whole?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "It makes a comparison between the past and current rates at which new chemical compounds have entered the scientific literature."
+            },
+            {
+              "key": "B",
+              "text": "It introduces information that helps explain why the synthesis of superheavy elements has rapidly expanded the chemical space."
+            },
+            {
+              "key": "C",
+              "text": "It provides details about the qualification later in the sentence regarding the prospect of cataloging the full range of possible chemical compounds."
+            },
+            {
+              "key": "D",
+              "text": "It emphasizes the point implicitly made earlier in the text that human inefficiency is the primary constraint on the expansion of the chemical space."
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Animals use many objects as tools to achieve goals more easily. Such goals include grooming, finding food, and protecting themselves. For a long time, people thought tool use was unique to primates. Elephants and other animals, though, have busted the myth that tool use requires hands. Inventively, elephants use branches to scratch themselves. Woodpecker finches also get creative. They use cactus spines to pry insects from hiding places.",
+          "questionText": "Which choice best states the main idea of the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Unlike primates, elephants are exceptionally skillful at using different tools."
+            },
+            {
+              "key": "B",
+              "text": "Contrary to long-held beliefs, primates aren't the only animals to use tools."
+            },
+            {
+              "key": "C",
+              "text": "There are many myths about tool use that researchers are starting to challenge."
+            },
+            {
+              "key": "D",
+              "text": "Animals find it difficult to use objects as tools."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Political scientists have asserted that by providing succinct and clear information about candidates and issues, campaign advertisements should reduce the differences in political knowledge observed between groups of voters. Cognitive scientists have noted, however, that existing domain knowledge facilitates the acquisition of new information in that domain. Valentino et al. shed light on this issue by presenting control ads or ads for George W. Bush or Al Gore (candidates in the 2000 US presidential election) to participants with low or high existing political knowledge, then quizzing participants on their understanding of both candidates' positions.\n\n(See graph: Post-treatment Performance of Low- and High-Knowledge Participants)\n\nTaken together, information in the text and graph best support which conclusion about the campaign ads used in the study by Valentino et al.?",
+          "questionText": "",
+          "choices": [
+            {
+              "key": "A",
+              "text": "They appear to have benefited high-knowledge participants more than they benefited low-knowledge participants, which lends more support to the view advanced by political scientists than to the view advanced by cognitive scientists."
+            },
+            {
+              "key": "B",
+              "text": "They appear to have had an effect contrary to the effect that political scientists expect campaign ads to have, possibly due to the phenomenon that cognitive scientists have identified."
+            },
+            {
+              "key": "C",
+              "text": "They appear to have worsened the problem that political scientists claim that campaign ads should alleviate, possibly because the phenomenon identified by cognitive scientists appears not to have occurred."
+            },
+            {
+              "key": "D",
+              "text": "They appear to have had the result that political scientists predict that campaign ads will have, but only for high-knowledge participants, which is what cognitive scientists would expect."
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Domestic sheep's wild ancestor, the mouflon, has a coarse outer coat and an inner coat of wool fiber that is finer in diameter and therefore much softer. In some domestic breeds, such as the Spanish Merino, the outer fiber is only marginally coarser than the inner, and the wool is soft overall. Thus, Merino wool is ideal for delicate garments worn against the skin. Meanwhile, the Navajo-Churro has been selected to retain the marked distinction between outer and inner fiber that the Merino has lost. Being coarser than Merino wool overall, Navajo-Churro wool yields a more durable yarn, which Diné (Navajo) weavers use in their celebrated rugs. Yet a comparison of the fiber characteristics of all three sheep reveals that __________\n\nFiber Characteristics of Mouflon, Navajo-Churro, and Spanish Merino Sheep\nType of sheep / Diameter of outer coat fibers / Diameter of inner coat fibers\nSpanish Merino / 19-24 / 17-21\nNavajo-Churro / 35 or higher / 10-35\nMouflon / 150 / 15",
+          "questionText": "Which choice most effectively uses data from the table to complete the text?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "the Navajo-Churro more closely resembles its ancestor, the mouflon, in the uniform softness of its inner fiber, while the Merino more closely resembles the mouflon in the variable diameter of its outer fiber."
+            },
+            {
+              "key": "B",
+              "text": "domestication resulted in a counterintuitive increase in the inner fiber's minimum diameter, making the inner fiber of the Merino and the Navajo-Churro less suitable for delicate garments than the mouflon's inner fiber is."
+            },
+            {
+              "key": "C",
+              "text": "the domestication of the mouflon and the subsequent selection process that produced the Merino and the Navajo-Churro resulted in greater softness of outer and inner fiber alike."
+            },
+            {
+              "key": "D",
+              "text": "the selection process that enabled the Navajo-Churro to retain its somewhat coarse outer fiber also resulted in inner fiber that, at its softest, is softer than either the mouflon's or the Merino's inner fiber."
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "If a planet orbits in close proximity to a star and lacks an atmosphere, the planet can become so hot that magma oceans form on its surface. For three planets that could plausibly harbor magma oceans, the table shows mass, density (expressed as the ratio of the material's volume at its current density to its maximum possible density, with higher numbers indicating lower densities), and surface temperature according to a model that assumes the absence of atmosphere.\n\nPlanet / Mass (Earth masses) / Density ratio / Temperature (kelvins)\nHD 80653 b / 5.6 / 7.4 / 2,300\nKepler-10 b / 3.6 / 6.0 / 2,130\nK2-265 b / 0.8 / 7.1 / 1,400\n\nWhich choice best describes how data in the table for HD 80653 b would likely differ if it had an atmosphere?",
+          "questionText": "",
+          "choices": [
+            {
+              "key": "A",
+              "text": "It would have a mass below 5.6 Earth masses."
+            },
+            {
+              "key": "B",
+              "text": "Its surface temperature would be around 1,400 kelvins."
+            },
+            {
+              "key": "C",
+              "text": "It would have a mass above 5.6 Earth masses."
+            },
+            {
+              "key": "D",
+              "text": "Its surface temperature would be below 2,300 kelvins."
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "Piezoelectric harvesters convert kinetic energy (resonance) to electrical energy, precluding the need for external electrical sources. The vibration of a spacecraft, for example, can provide sufficient energy to power many of its sensors piezoelectrically. A newly designed piezoelectric harvester incorporating a highly conductive carbon-fiber-reinforced polymer (CFRP) electrode has been shown to provide steady energy loads during resonance, an absolute prerequisite for wireless communication devices to be powered piezoelectrically.",
+          "questionText": "Which finding, if true, would most directly support the text's claim about wireless communication devices?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "The near-constant kinetic vibration of a spacecraft makes it possible to power its wireless communication devices using only non-CFRP piezoelectric harvesters."
+            },
+            {
+              "key": "B",
+              "text": "The high conductivity of the CFRP is what makes the energy output from a piezoelectric harvester sufficient for wireless communication devices."
+            },
+            {
+              "key": "C",
+              "text": "Intermittent or unpredictable electrical supply undermines the efficacy of wireless communication devices."
+            },
+            {
+              "key": "D",
+              "text": "The CFRP electrode is incompatible with most wireless communication devices."
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "In a study by Mika R. Moran, Daniel A. Rodriguez, and colleagues, residents of Mexico City, Mexico, and Bogotá, Colombia, were surveyed about parks in their cities. Of the 562 respondents from Mexico City, 77.6% indicated that they use the city's parks, and of the 1,121 respondents from Bogotá, 71.9% indicated using city parks. Given that the percentage of respondents who reported having access to desired nonpark amenities was much lower in Mexico City than in Bogotá, the difference in park use can't be explained by Mexico City residents having more access to desired nonpark amenities near parks.",
+          "questionText": "The text makes which point about the difference between the proportions of Mexico City residents and Bogotá residents using parks?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "It is caused by something other than the parks' proximity to other desirable amenities."
+            },
+            {
+              "key": "B",
+              "text": "It was greater than the researchers conducting the study expected."
+            },
+            {
+              "key": "C",
+              "text": "It is the result of the difference in the number of respondents in each city."
+            },
+            {
+              "key": "D",
+              "text": "It was calculated using sources that predate the survey."
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "Cut, bent, and welded from discarded metal materials, the sculptures of London-based Nigerian artist Sokari Douglas Camp are meant to challenge viewers to consider their own relationships to material __________ her thought-provoking works in the 1993 exhibition Steel Clothes and Ornamentation at the Redfern Gallery in London were no different.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "wastes;"
+            },
+            {
+              "key": "B",
+              "text": "wastes and to"
+            },
+            {
+              "key": "C",
+              "text": "wastes,"
+            },
+            {
+              "key": "D",
+              "text": "wastes"
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "A recipient of the Othmer Gold Medal and the Davy Medal from the Royal Society, __________ known as femtochemistry when he devised an optical spectroscopy technique that allowed researchers to study ultrafast chemical reactions occurring within molecules.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "the result of chemist Ahmed Zewail's expansion of the limits of measurability was the introduction of a new scientific discipline"
+            },
+            {
+              "key": "B",
+              "text": "the introduction of a new scientific discipline by chemist Ahmed Zewail led to the expansion of the limits of measurability"
+            },
+            {
+              "key": "C",
+              "text": "the limits of measurability were expanded by chemist Ahmed Zewail who introduced a new scientific discipline"
+            },
+            {
+              "key": "D",
+              "text": "chemist Ahmed Zewail expanded the limits of measurability and introduced a new scientific discipline"
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "What is the origin of the word “pessimism”? Interestingly, __________. It first appears in a letter by English author Samuel Taylor Coleridge.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "it was invented by an author."
+            },
+            {
+              "key": "B",
+              "text": "it was invented by an author?"
+            },
+            {
+              "key": "C",
+              "text": "wasn’t it invented by an author."
+            },
+            {
+              "key": "D",
+              "text": "was it invented by an author."
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "After much debate, __________ finally made a decision: the judges for the 1974 Nobel Prize in Literature would award Eyvind Johnson of Sweden with that year’s prize “for a narrative art, far-seeing in lands and ages, in the service of freedom.”",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "you"
+            },
+            {
+              "key": "B",
+              "text": "it"
+            },
+            {
+              "key": "C",
+              "text": "anyone"
+            },
+            {
+              "key": "D",
+              "text": "they"
+            }
+          ],
+          "correctAnswer": "D"
+        },
+        {
+          "type": "mcq",
+          "passage": "Today, the Michelin Guide is widely known as the arbiter of fine dining, with its coveted 3-star rating being awarded to top restaurants like Xin Rong Ji in Beijing. However, few know the guide started as a marketing gimmick in 1900, when brothers Andre and Edouard Michelin sought to increase profits for their tire company by encouraging their customers to __________ their cars across France, visiting the guide’s recommended hotels and restaurants along the way.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "drive."
+            },
+            {
+              "key": "B",
+              "text": "drive"
+            },
+            {
+              "key": "C",
+              "text": "drive:"
+            },
+            {
+              "key": "D",
+              "text": "drive;"
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "Pinon Chapter is one of the 110 chapters of the Navajo Nation (Naabeeho Bincihdsdzo). The chapter, known as Be'ek'id Bas Ahoodzdni in the Navajo language (Dine Bizaad), was the subject of a profile __________ in the Navajo Times on December 12, 2013.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "appearing"
+            },
+            {
+              "key": "B",
+              "text": "appears"
+            },
+            {
+              "key": "C",
+              "text": "has appeared"
+            },
+            {
+              "key": "D",
+              "text": "appeared"
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "Writer Silvia Moreno-Garcia’s love of short fiction began when she read a collection of Edgar Allan Poe stories as a child, and she later would become a prolific short story writer herself, publishing pieces like “In the Details” (2015) and “To See Pedro Infante” (2014). Yet she's best __________ especially since her 2020 novel Mexican Gothic reached the New York Times Best Sellers list—as a novelist.",
+          "questionText": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "known"
+            },
+            {
+              "key": "B",
+              "text": "known:"
+            },
+            {
+              "key": "C",
+              "text": "known—"
+            },
+            {
+              "key": "D",
+              "text": "known;"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "In 1931, scientists first isolated a sample of the steroid hormone androsterone, which they knew existed in animals—and, they assumed, only in animals. __________ researchers would find androsterone in Swiss cheese plants (Monstera deliciosa), but this discovery wouldn't come until decades later.",
+          "questionText": "Which choice completes the text with the most logical transition?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "For example,"
+            },
+            {
+              "key": "B",
+              "text": "Eventually,"
+            },
+            {
+              "key": "C",
+              "text": "In other words,"
+            },
+            {
+              "key": "D",
+              "text": "Earlier,"
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "The first documented use of the English word “muzzle” is attributed to poet Geoffrey Chaucer’s 1385 work “The Knight's Tale.” However, Chaucer didn't write in Modern English; __________ he wrote in what we now call Middle English, which was commonly used during the period.",
+          "questionText": "Which choice completes the text with the most logical transition?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "as a result,"
+            },
+            {
+              "key": "B",
+              "text": "similarly,"
+            },
+            {
+              "key": "C",
+              "text": "rather,"
+            },
+            {
+              "key": "D",
+              "text": "finally,"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "The moon Leda orbits Jupiter in the same direction that the planet rotates. __________ Leda’s orbit is described as prograde. Ananke, another of Jupiter’s moons, orbits in the opposite direction, so its orbit is described with the opposite term: retrograde.",
+          "questionText": "Which choice completes the text with the most logical transition?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "In reality,"
+            },
+            {
+              "key": "B",
+              "text": "Nevertheless,"
+            },
+            {
+              "key": "C",
+              "text": "Hence,"
+            },
+            {
+              "key": "D",
+              "text": "Next,"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "As part of a study, participants were asked to list animals they thought of as “charismatic,” which was defined as “attractive, fascinating, or appealing.” Researchers compiled the responses into a single list and found that the cheetah and the blue whale both landed in the top twenty. __________ no animal outranked the tiger.",
+          "questionText": "Which choice completes the text with the most logical transition?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "In other words,"
+            },
+            {
+              "key": "B",
+              "text": "As a result,"
+            },
+            {
+              "key": "C",
+              "text": "Still,"
+            },
+            {
+              "key": "D",
+              "text": "For example,"
+            }
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "type": "mcq",
+          "passage": "Shonte Tucker has worked at NASA’s famed Jet Propulsion Laboratory (JPL), one of the world’s leading facilities for robotic space exploration. __________ Tucker worked as a systems engineer on the JPL’s Mars 2020 Perseverance rover team, which improved upon the 2011 Curiosity rover design by adding a coring drill to the robot that could collect rock samples for later analysis.",
+          "questionText": "Which choice completes the text with the most logical transition?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Conversely,"
+            },
+            {
+              "key": "B",
+              "text": "Specifically,"
+            },
+            {
+              "key": "C",
+              "text": "Finally,"
+            },
+            {
+              "key": "D",
+              "text": "Nevertheless,"
+            }
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "type": "mcq",
+          "passage": "While researching a topic, a student has taken the following notes:\n• Jean-Michel Basquiat was an American artist who produced more than two thousand drawings and paintings.\n• His work Thin in the Old was completed in 1986 and sold at auction in 2020.\n• Thin in the Old is composed of acrylic, oil, and paper collage on wood and measures 3,028 square inches in area.\n• His work Victor was completed in 1987 and sold at auction in 2017.\n• Victor is composed of acrylic, oil stick, and crayon on canvas and measures 9,432 square inches in area.",
+          "questionText": "Which choice most effectively uses relevant information from the notes to emphasize how the two works are similar?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Composed by artist Jean-Michel Basquiat in 1986 and 1987, respectively, both Thin in the Old and Victor use acrylic paint as a medium."
+            },
+            {
+              "key": "B",
+              "text": "Artist Jean-Michel Basquiat completed Thin in the Old in 1986, and Victor followed in 1987."
+            },
+            {
+              "key": "C",
+              "text": "Artist Jean-Michel Basquiat’s work Thin in the Old is composed of acrylic, oil, and paper collage, while Victor is composed of acrylic, oil stick, and crayon."
+            },
+            {
+              "key": "D",
+              "text": "Between artist Jean-Michel Basquiat's works Victor and Thin in the Old, the former is the larger of the two."
+            }
+          ],
+          "correctAnswer": "A"
+        },
+        {
+          "type": "mcq",
+          "passage": "While researching a topic, a student has taken the following notes:\n• The Mohs scale of mineral hardness is a ten-point scale that orders minerals by hardness based on their ability to scratch other minerals.\n• Minerals with larger numbers are harder than minerals with smaller numbers and can leave visible scratches on them.\n• Minerals with smaller numbers are softer than minerals with larger numbers and cannot leave visible scratches on them.\n• The mineral talc has a Mohs scale number of 1.\n• The mineral fluorite has a Mohs scale number of 4.\n• The mineral topaz has a Mohs scale number of 8.",
+          "questionText": "The student wants to compare the hardness of talc and topaz. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+          "choices": [
+            {
+              "key": "A",
+              "text": "Topaz can leave visible scratches on fluorite, which is why topaz has a higher number than fluorite on the Mohs scale of mineral hardness."
+            },
+            {
+              "key": "B",
+              "text": "The Mohs scale of mineral hardness can be used to order fluorite, talc, and topaz by their ability to scratch other minerals."
+            },
+            {
+              "key": "C",
+              "text": "A mineral with a Mohs number of 4, like fluorite, is harder than one with a Mohs number of 1, like talc."
+            },
+            {
+              "key": "D",
+              "text": "Topaz can leave visible scratches on talc, which means that topaz is harder than talc."
+            }
+          ],
+          "correctAnswer": "D"
+        }
+      ]
+    }
+  ]
+}

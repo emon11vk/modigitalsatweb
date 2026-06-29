@@ -98,7 +98,7 @@ export default function ExamManagerPanel({
       const { data, error } = await supabase
         .from('exams')
         .select('*')
-        .order('updated_at', { ascending: false });
+        .order('created_at', { ascending: true });
 
       if (error) throw error;
 
