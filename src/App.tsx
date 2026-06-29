@@ -855,11 +855,11 @@ export default function App() {
       if (currentScreen === 'practice' || currentScreen === 'login') return;
 
       if (e.key === '1') setCurrentScreen('dashboard');
-      if (e.key === 'p') setCurrentScreen('practice_hub'); // Use 'p' or similar if needed, or leave practice out of hotkeys
-      if (e.key === '2') setCurrentScreen('vocabulary');
-      if (e.key === '3') setCurrentScreen('leaderboard');
-      if (e.key === '4') setCurrentScreen('history');
-      if (e.key === '5') setCurrentScreen('admin');
+      if (e.key === '2') setCurrentScreen('practice_hub');
+      if (e.key === '3') setCurrentScreen('vocabulary');
+      if (e.key === '4') setCurrentScreen('leaderboard');
+      if (e.key === '5') setCurrentScreen('history');
+      if (e.key === '6') setCurrentScreen('admin');
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -1080,6 +1080,15 @@ export default function App() {
             onStartModule={handleStartModule}
             onNavigateToVocab={() => setCurrentScreen('vocabulary')}
             onNavigateToLeaderboard={() => setCurrentScreen('leaderboard')}
+          />
+        )}
+
+        {currentScreen === 'practice_hub' && (
+          <PracticeScreen
+            theme={theme}
+            folders={folders}
+            modules={modules}
+            onStartTest={handleStartModule}
           />
         )}
 
