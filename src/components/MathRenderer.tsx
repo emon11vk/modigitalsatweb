@@ -37,6 +37,10 @@ export default function MathRenderer({ content, className = '', isDark = true, d
         processedContent = processedContent.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}');
         processedContent = processedContent.replace(/<=/g, '\\le ');
         processedContent = processedContent.replace(/>=/g, '\\ge ');
+        processedContent = processedContent.replace(/\(\s*([^()]+)\s*\)\s*\/\s*\(\s*([^()]+)\s*\)/g, '\\frac{$1}{$2}');
+        processedContent = processedContent.replace(/\b(\d+)\s*\/\s*(\d+)\b/g, '\\frac{$1}{$2}');
+        processedContent = processedContent.replace(/\^(\d{2,})/g, '^{$1}');
+        processedContent = processedContent.replace(/\^\(([^)]+)\)/g, '^{$1}');
 
         let tokens = processedContent.split(/(\s+)/);
         let isMathToken = (t: string) => {
@@ -47,6 +51,14 @@ export default function MathRenderer({ content, className = '', isDark = true, d
           if (/^[()+\-*/.,?]+$/.test(t)) return true; // pure operators/punctuation
           if (/^[()]*[-+]?\d*\.?\d+[(),.?]*$/.test(t)) return true; // numbers with parens/punct
           if (/^[()]*[a-zA-Z][().,?]*$/.test(t)) return true; // single letters with parens/punct
+          if (/^[a-zA-Z0-9()+\-*/.,?]+$/.test(t)) {
+            // e.g. 7p, 5x, (6/7)p, (x-4)
+            if (!/[\d()+\*/\\]/.test(t)) {
+              if (/^[a-zA-Z]-[a-zA-Z][.,?]*$/.test(t)) return true;
+              return false;
+            }
+            return true;
+          }
           return false;
         };
 
@@ -59,7 +71,12 @@ export default function MathRenderer({ content, className = '', isDark = true, d
           let currentMathSeq: string[] = [];
           let currentHasStrong = false;
 
-          let isStrongMathToken = (t: string) => /[\^=<>≤≥]|\\(?:le|ge|sqrt|frac|pi|theta|alpha|beta)/.test(t);
+          let isStrongMathToken = (t: string) => {
+            if (/[\^=<>≤≥]|\\(?:le|ge|sqrt|frac|pi|theta|alpha|beta)/.test(t)) return true;
+            if (/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9()]+[.,?]*$/.test(t)) return true; // e.g. 7p, 5x
+            if (/(?:[a-zA-Z].*[\+\-\*/])|(?:[\+\-\*/].*[a-zA-Z])/.test(t)) return true; // e.g. x-4, x+y
+            return false;
+          };
 
           const flushMath = () => {
             if (currentMathSeq.length > 0) {
