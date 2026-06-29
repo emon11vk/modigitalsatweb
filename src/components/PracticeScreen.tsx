@@ -227,7 +227,7 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
                 >
                   <div className="flex-1">
                     <p className={`text-[10px] font-black uppercase tracking-wider mb-1 ${isDark ? 'text-primary/80' : 'text-primary/80'}`}>
-                      Practice Test
+                      {module.folder_id ? (folders.find(f => f.id === module.folder_id)?.name || 'PRACTICE TEST') : 'PRACTICE TEST'}
                     </p>
                     <h4 className="text-lg font-black font-display leading-tight mb-4">
                       {module.title}

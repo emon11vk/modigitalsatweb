@@ -320,6 +320,16 @@ export default function ExamManagerPanel({
     return acc;
   }, {} as Record<string, ExamRow[]>);
 
+  const getTotalExamsForFolder = (folderId: string): number => {
+    const directExams = (examsByFolder[folderId] || []).length;
+    const childFolders = folders.filter(f => f.parent_id === folderId);
+    let childExams = 0;
+    for (const child of childFolders) {
+      childExams += getTotalExamsForFolder(child.id);
+    }
+    return directExams + childExams;
+  };
+
   const renderExamCard = (exam: ExamRow, index: number) => (
     <motion.div
       key={exam.id}
@@ -446,6 +456,7 @@ export default function ExamManagerPanel({
     const isDragOver = dragOverFolderId === folder.id;
     const isCollapsed = collapsedFolders[folder.id] ?? true;
     const isEditing = editingFolderId === folder.id;
+    const totalExams = getTotalExamsForFolder(folder.id);
     
     return (
       <div 
@@ -462,14 +473,14 @@ export default function ExamManagerPanel({
       >
         {/* Folder Header */}
         <div 
-          className={`group flex items-center justify-between p-4 border-b cursor-pointer transition-colors ${
+          className={`group flex items-center justify-between border-b cursor-pointer transition-colors ${
             isDark ? 'border-white/5 bg-white/5 hover:bg-white/10' : 'border-slate-100 bg-slate-50/50 hover:bg-slate-100/50'
-          }`}
+          } ${depth > 0 ? 'p-3' : 'p-4'}`}
           onClick={() => !isEditing && toggleFolder(folder.id)}
         >
           <div className="flex items-center gap-3 flex-1">
-            <div className={`p-2 rounded-lg ${isDark ? 'bg-primary/20 text-primary' : 'bg-primary/10 text-primary'}`}>
-              {isCollapsed ? <Folder className="w-4 h-4" /> : <FolderOpen className="w-4 h-4" />}
+            <div className={`rounded-lg ${isDark ? 'bg-primary/20 text-primary' : 'bg-primary/10 text-primary'} ${depth > 0 ? 'p-1.5' : 'p-2'}`}>
+              {isCollapsed ? <Folder className={depth > 0 ? 'w-3.5 h-3.5' : 'w-4 h-4'} /> : <FolderOpen className={depth > 0 ? 'w-3.5 h-3.5' : 'w-4 h-4'} />}
             </div>
             <div className="flex-1">
               {isEditing ? (
@@ -489,14 +500,14 @@ export default function ExamManagerPanel({
                   <button onClick={() => setEditingFolderId(null)} className={`px-2 py-1 text-xs font-semibold rounded-md ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'}`}>Cancel</button>
                 </div>
               ) : (
-                <h4 className={`font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                <h4 className={`font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-text-dark'} ${depth > 0 ? 'text-sm' : 'text-base'}`}>
                   {folder.name}
                   {isCollapsed ? <ChevronRight className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
                 </h4>
               )}
               {!isEditing && (
                 <p className={`text-[11px] mt-0.5 flex gap-2 items-center flex-wrap ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
-                  <span>{folderExams.length} {folderExams.length === 1 ? 'exam' : 'exams'}</span>
+                  <span>{totalExams} {totalExams === 1 ? 'exam' : 'exams'}</span>
                   {childFolders.length > 0 && <span>• {childFolders.length} child {childFolders.length === 1 ? 'folder' : 'folders'}</span>}
                   <span className="uppercase text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">{folder.category || 'general'}</span>
                 </p>
