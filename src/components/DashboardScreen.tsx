@@ -9,7 +9,7 @@ interface DashboardScreenProps {
   theme: Theme;
   userName: string;
   modules: Module[];
-  folders: { id: string; name: string }[];
+  folders: { id: string; name: string; parent_id?: string | null; category?: string }[];
   vocabTotal: number;
   vocabMastered: number;
   leaderboardRank: number | null;
@@ -687,45 +687,54 @@ export default function DashboardScreen({
           </div>
 
           <div className="space-y-6">
-            {folders.map((folder) => {
-              const folderModules = getModulesForFolder(folder.id);
-              const isCollapsed = collapsedFolders[folder.id] ?? true;
+            {folders.filter(f => !f.parent_id).map((folder) => {
+              const renderFolder = (f: { id: string; name: string; parent_id?: string | null; category?: string }, depth: number = 0) => {
+                const folderModules = getModulesForFolder(f.id);
+                const isCollapsed = collapsedFolders[f.id] ?? true;
+                const childFolders = folders.filter(child => child.parent_id === f.id);
 
-              return (
-                <div key={folder.id} className="space-y-3">
-                  <div 
-                    className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition-all ${
-                      isDark ? 'bg-bg-card border border-white/5 hover:border-white/10' : 'bg-slate-50 border border-slate-200 hover:border-slate-300'
-                    }`}
-                    onClick={() => toggleFolder(folder.id)}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${isDark ? 'bg-primary/20 text-primary-light' : 'bg-primary/10 text-primary'}`}>
-                        {isCollapsed ? <Folder className="w-5 h-5" /> : <FolderOpen className="w-5 h-5" />}
-                      </div>
-                      <h4 className={`text-sm font-bold font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
-                        {folder.name}
-                      </h4>
-                      <span className={`text-xs px-2 py-0.5 rounded-full ${isDark ? 'bg-white/10 text-text-muted' : 'bg-white text-slate-500 shadow-sm'}`}>
-                        {folderModules.length}
-                      </span>
-                    </div>
-                    {isCollapsed ? <ChevronRight className={`w-5 h-5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} /> : <ChevronDown className={`w-5 h-5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} />}
-                  </div>
-
-                  {!isCollapsed && (
-                    <div className="space-y-3 pl-2 border-l-2 border-dashed ml-4 border-slate-200 dark:border-white/10">
-                      {folderModules.length === 0 ? (
-                        <div className={`p-4 text-center text-sm ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
-                          Thư mục trống
+                return (
+                  <div key={f.id} className={`space-y-3 ${depth > 0 ? 'mt-3 ml-4 border-l-2 border-dashed border-slate-200 dark:border-white/10 pl-4' : ''}`}>
+                    <div 
+                      className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition-all ${
+                        isDark ? 'bg-bg-card border border-white/5 hover:border-white/10' : 'bg-slate-50 border border-slate-200 hover:border-slate-300'
+                      }`}
+                      onClick={() => toggleFolder(f.id)}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2 rounded-lg ${isDark ? 'bg-primary/20 text-primary-light' : 'bg-primary/10 text-primary'}`}>
+                          {isCollapsed ? <Folder className="w-5 h-5" /> : <FolderOpen className="w-5 h-5" />}
                         </div>
-                      ) : (
-                        folderModules.map((m, idx) => renderModule(m, idx))
-                      )}
+                        <h4 className={`text-sm font-bold font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                          {f.name}
+                        </h4>
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${isDark ? 'bg-white/10 text-text-muted' : 'bg-white text-slate-500 shadow-sm'}`}>
+                          {folderModules.length}
+                        </span>
+                      </div>
+                      {isCollapsed ? <ChevronRight className={`w-5 h-5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} /> : <ChevronDown className={`w-5 h-5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} />}
                     </div>
-                  )}
-                </div>
-              );
+
+                    {!isCollapsed && (
+                      <div className={`space-y-3 ${depth === 0 ? 'pl-2 border-l-2 border-dashed ml-4 border-slate-200 dark:border-white/10' : ''}`}>
+                        {childFolders.length > 0 && (
+                          <div className="space-y-3 mb-3">
+                            {childFolders.map(child => renderFolder(child, depth + 1))}
+                          </div>
+                        )}
+                        {folderModules.length === 0 && childFolders.length === 0 ? (
+                          <div className={`p-4 text-center text-sm ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
+                            Thư mục trống
+                          </div>
+                        ) : (
+                          folderModules.map((m, idx) => renderModule(m, idx))
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              };
+              return renderFolder(folder, 0);
             })}
 
             {/* Root / Uncategorized Modules */}

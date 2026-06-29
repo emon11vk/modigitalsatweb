@@ -61,6 +61,10 @@ export default function ExamManagerPanel({
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
+  // Folder editing
+  const [editingFolderId, setEditingFolderId] = useState<string | null>(null);
+  const [editFolderName, setEditFolderName] = useState('');
+
   // Folder creation
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
   const [newFolderName, setNewFolderName] = useState('');
@@ -222,6 +226,22 @@ export default function ExamManagerPanel({
       setExams((prev) => prev.map(e => e.folder_id === folderId ? { ...e, folder_id: null } : e));
     } catch (err) {
       console.error('Error deleting folder:', err);
+    }
+  }
+
+  async function handleSaveFolderName(folderId: string) {
+    if (!editFolderName.trim()) return;
+    try {
+      const { error } = await supabase
+        .from('exam_folders')
+        .update({ name: editFolderName.trim() })
+        .eq('id', folderId);
+      if (error) throw error;
+      setFolders(prev => prev.map(f => f.id === folderId ? { ...f, name: editFolderName.trim() } : f));
+      setEditingFolderId(null);
+    } catch (err) {
+      console.error('Error updating folder:', err);
+      alert('Failed to update folder name');
     }
   }
 
@@ -417,6 +437,125 @@ export default function ExamManagerPanel({
     </motion.div>
   );
 
+  const renderFolder = (folder: ExamFolder, depth: number = 0) => {
+    const folderExams = examsByFolder[folder.id] || [];
+    const childFolders = folders.filter(f => f.parent_id === folder.id);
+    const isDragOver = dragOverFolderId === folder.id;
+    const isCollapsed = collapsedFolders[folder.id] ?? true;
+    const isEditing = editingFolderId === folder.id;
+    
+    return (
+      <div 
+        key={folder.id}
+        onDragOver={(e) => handleDragOver(e, folder.id)}
+        onDragLeave={handleDragLeave}
+        onDrop={(e) => handleDrop(e, folder.id)}
+        className={`rounded-2xl border transition-all overflow-hidden ${depth > 0 ? 'mb-2' : ''} ${
+          isDark
+            ? `bg-bg-card border-white/10 ${isDragOver ? 'border-primary bg-primary/5 ring-2 ring-primary/20' : ''}`
+            : `bg-white border-slate-200 shadow-sm ${isDragOver ? 'border-primary bg-primary/5 ring-2 ring-primary/20' : ''}`
+        }`}
+        style={{ marginLeft: depth > 0 ? `${depth * 1.5}rem` : 0 }}
+      >
+        {/* Folder Header */}
+        <div 
+          className={`group flex items-center justify-between p-4 border-b cursor-pointer transition-colors ${
+            isDark ? 'border-white/5 bg-white/5 hover:bg-white/10' : 'border-slate-100 bg-slate-50/50 hover:bg-slate-100/50'
+          }`}
+          onClick={() => !isEditing && toggleFolder(folder.id)}
+        >
+          <div className="flex items-center gap-3 flex-1">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-primary/20 text-primary' : 'bg-primary/10 text-primary'}`}>
+              {isCollapsed ? <Folder className="w-4 h-4" /> : <FolderOpen className="w-4 h-4" />}
+            </div>
+            <div className="flex-1">
+              {isEditing ? (
+                <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                  <input 
+                    type="text" 
+                    value={editFolderName}
+                    onChange={e => setEditFolderName(e.target.value)}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') handleSaveFolderName(folder.id);
+                      if (e.key === 'Escape') setEditingFolderId(null);
+                    }}
+                    autoFocus
+                    className={`px-3 py-1 text-sm rounded-md border outline-none ${isDark ? 'bg-black/30 border-white/20 text-white focus:border-primary/50' : 'bg-white border-slate-300 text-black focus:border-primary/50'}`}
+                  />
+                  <button onClick={() => handleSaveFolderName(folder.id)} className="px-2 py-1 text-xs font-semibold bg-primary text-white rounded-md hover:bg-primary-hover">Save</button>
+                  <button onClick={() => setEditingFolderId(null)} className={`px-2 py-1 text-xs font-semibold rounded-md ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'}`}>Cancel</button>
+                </div>
+              ) : (
+                <h4 className={`font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                  {folder.name}
+                  {isCollapsed ? <ChevronRight className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+                </h4>
+              )}
+              {!isEditing && (
+                <p className={`text-[11px] mt-0.5 flex gap-2 items-center flex-wrap ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
+                  <span>{folderExams.length} {folderExams.length === 1 ? 'exam' : 'exams'}</span>
+                  {childFolders.length > 0 && <span>• {childFolders.length} child {childFolders.length === 1 ? 'folder' : 'folders'}</span>}
+                  <span className="uppercase text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">{folder.category || 'general'}</span>
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setEditingFolderId(folder.id);
+                setEditFolderName(folder.name);
+              }}
+              className={`p-2 rounded-xl transition-all cursor-pointer ${
+                isDark
+                  ? 'text-text-muted hover:text-blue-400 hover:bg-blue-400/10'
+                  : 'text-blue-400 hover:text-blue-600 hover:bg-blue-50'
+              }`}
+              title="Edit Folder Name"
+            >
+              <Edit3 className="w-4 h-4" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDeleteFolder(folder.id);
+              }}
+              className={`p-2 rounded-xl transition-all cursor-pointer ${
+                isDark
+                  ? 'text-text-muted hover:text-red-400 hover:bg-red-400/10'
+                  : 'text-red-400 hover:text-red-600 hover:bg-red-50'
+              }`}
+              title="Delete Folder"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Folder Contents */}
+        {!isCollapsed && (
+          <div className={`p-3 space-y-2 min-h-[80px] ${folderExams.length === 0 && childFolders.length === 0 ? 'flex items-center justify-center' : ''}`}>
+            {childFolders.length > 0 && (
+              <div className="space-y-2 mb-2">
+                {childFolders.map(child => renderFolder(child, depth + 1))}
+              </div>
+            )}
+            {folderExams.length > 0 ? (
+              folderExams.map((exam, i) => renderExamCard(exam, i))
+            ) : childFolders.length === 0 ? (
+              <p className={`text-xs text-center py-6 border-2 border-dashed rounded-xl ${
+                isDark ? 'border-white/10 text-white/30' : 'border-slate-200 text-slate-400'
+              }`}>
+                {isDragOver ? 'Drop exam here' : 'Drag exams here'}
+              </p>
+            ) : null}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -573,80 +712,7 @@ export default function ExamManagerPanel({
         <div className="space-y-6">
           
           {/* Render Folders */}
-          {folders.map(folder => {
-            const folderExams = examsByFolder[folder.id] || [];
-            const isDragOver = dragOverFolderId === folder.id;
-            const isCollapsed = collapsedFolders[folder.id] ?? true;
-            
-            return (
-              <div 
-                key={folder.id}
-                onDragOver={(e) => handleDragOver(e, folder.id)}
-                onDragLeave={handleDragLeave}
-                onDrop={(e) => handleDrop(e, folder.id)}
-                className={`rounded-2xl border transition-all overflow-hidden ${
-                  isDark
-                    ? `bg-bg-card border-white/10 ${isDragOver ? 'border-primary bg-primary/5 ring-2 ring-primary/20' : ''}`
-                    : `bg-white border-slate-200 shadow-sm ${isDragOver ? 'border-primary bg-primary/5 ring-2 ring-primary/20' : ''}`
-                }`}
-              >
-                {/* Folder Header */}
-                <div 
-                  className={`flex items-center justify-between p-4 border-b cursor-pointer transition-colors ${
-                    isDark ? 'border-white/5 bg-white/5 hover:bg-white/10' : 'border-slate-100 bg-slate-50/50 hover:bg-slate-100/50'
-                  }`}
-                  onClick={() => toggleFolder(folder.id)}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${isDark ? 'bg-primary/20 text-primary' : 'bg-primary/10 text-primary'}`}>
-                      {isCollapsed ? <Folder className="w-4 h-4" /> : <FolderOpen className="w-4 h-4" />}
-                    </div>
-                    <div>
-                      <h4 className={`font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
-                        {folder.name}
-                        {isCollapsed ? <ChevronRight className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
-                      </h4>
-                      <p className={`text-[11px] mt-0.5 flex gap-2 ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
-                        <span>{folderExams.length} {folderExams.length === 1 ? 'exam' : 'exams'}</span>
-                        <span className="uppercase text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">{folder.category || 'general'}</span>
-                        {folder.parent_id && <span className="text-[10px]">↳ Child of {folders.find(f => f.id === folder.parent_id)?.name}</span>}
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDeleteFolder(folder.id);
-                    }}
-                    className={`p-2 rounded-xl transition-all cursor-pointer opacity-0 hover:opacity-100 focus:opacity-100 group-hover:opacity-100 ${
-                      isDark
-                        ? 'text-text-muted hover:text-red-400 hover:bg-red-400/10'
-                        : 'text-red-400 hover:text-red-600 hover:bg-red-50'
-                    }`}
-                    style={{ opacity: folderExams.length === 0 ? 1 : undefined }}
-                    title="Delete Folder"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Folder Contents */}
-                {!isCollapsed && (
-                  <div className={`p-3 space-y-2 min-h-[80px] ${folderExams.length === 0 ? 'flex items-center justify-center' : ''}`}>
-                    {folderExams.length > 0 ? (
-                      folderExams.map((exam, i) => renderExamCard(exam, i))
-                    ) : (
-                      <p className={`text-xs text-center py-6 border-2 border-dashed rounded-xl ${
-                        isDark ? 'border-white/10 text-white/30' : 'border-slate-200 text-slate-400'
-                      }`}>
-                        {isDragOver ? 'Drop exam here' : 'Drag exams here'}
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          {folders.filter(f => !f.parent_id).map(folder => renderFolder(folder))}
 
           {/* Render Unassigned Exams */}
           {(unassignedExams.length > 0 || folders.length > 0) && (
