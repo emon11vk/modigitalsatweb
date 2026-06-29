@@ -68,7 +68,15 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
     };
 
     const targetFolderIds = getFolderIdsRecursive(selectedFolderId);
-    return modules.filter(m => m.folder_id && targetFolderIds.includes(m.folder_id));
+    const filtered = modules.filter(m => m.folder_id && targetFolderIds.includes(m.folder_id));
+    console.log('DEBUG_PRACTICE:', {
+      totalModules: modules.length,
+      selectedFolderId,
+      targetFolderIds,
+      filteredCount: filtered.length,
+      modulesSample: modules.slice(0, 3)
+    });
+    return filtered;
   }, [modules, selectedFolderId, folders, categoryFolders]);
 
   const renderFolderNode = (node: any, level: number = 0) => {
