@@ -45,16 +45,21 @@ export default function MathRenderer({ content, className = '', isDark = true, d
         let tokens = processedContent.split(/(\s+)/);
         let isMathToken = (t: string) => {
           if (!t.trim()) return false;
-          if (/^[\^=<>≤≥]+$/.test(t)) return true;
+          if (/^[\^=<>≤≥{}[\]]+$/.test(t)) return true;
           if (/\\(?:le|ge|sqrt|frac|pi|theta|alpha|beta|pm|times|div)/.test(t)) return true;
           if (t.includes('^') || t.includes('=')) return true;
-          if (/^[()+\-*/.,?]+$/.test(t)) return true; // pure operators/punctuation
-          if (/^[()]*[-+]?\d*\.?\d+[(),.?]*$/.test(t)) return true; // numbers with parens/punct
-          if (/^[()]*[a-zA-Z][().,?]*$/.test(t)) return true; // single letters with parens/punct
-          if (/^[a-zA-Z0-9()+\-*/.,?]+$/.test(t)) {
+          if (/^[()+\-*/.,?{}[\]]+$/.test(t)) return true; // pure operators/punctuation
+          if (/^[(){}[\]]*[-+]?\d*\.?\d+[(),.?{}[\]]*$/.test(t)) return true; // numbers with parens/punct
+          if (/^[(){}[\]]*[a-zA-Z][().,?{}[\]]*$/.test(t)) return true; // single letters with parens/punct
+          if (/^[a-zA-Z0-9()+\-*/.,?{}[\]]+$/.test(t)) {
             // e.g. 7p, 5x, (6/7)p, (x-4)
             if (!/[\d()+\*/\\]/.test(t)) {
               if (/^[a-zA-Z]-[a-zA-Z][.,?]*$/.test(t)) return true;
+              
+              let word = t.replace(/[.,?]/g, '').toLowerCase();
+              if (['sin', 'cos', 'tan', 'log', 'ln', 'max', 'min'].includes(word)) return true;
+              if (word.length === 2 && !['am','an','as','at','be','by','do','go','he','hi','if','in','is','it','me','my','no','of','on','or','so','to','up','us','we'].includes(word)) return true;
+              
               return false;
             }
             return true;
@@ -72,8 +77,8 @@ export default function MathRenderer({ content, className = '', isDark = true, d
           let currentHasStrong = false;
 
           let isStrongMathToken = (t: string) => {
-            if (/[\^=<>≤≥]|\\(?:le|ge|sqrt|frac|pi|theta|alpha|beta)/.test(t)) return true;
-            if (/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9()]+[.,?]*$/.test(t)) return true; // e.g. 7p, 5x
+            if (/[\^=<>≤≥]|\\(?:le|ge|sqrt|frac|pi|theta|alpha|beta|pm|times|div)/.test(t)) return true;
+            if (/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9(){}[\]]+[.,?]*$/.test(t)) return true; // e.g. 7p, 5x
             if (/(?:[a-zA-Z].*[\+\-\*/])|(?:[\+\-\*/].*[a-zA-Z])/.test(t)) return true; // e.g. x-4, x+y
             return false;
           };
@@ -101,8 +106,13 @@ export default function MathRenderer({ content, className = '', isDark = true, d
 
           for (let token of tokens) {
             if (token.trim() === '') {
-              if (currentMathSeq.length > 0) currentMathSeq.push(token);
-              else result += token;
+              if (token.includes('\n')) {
+                flushMath();
+                result += token;
+              } else {
+                if (currentMathSeq.length > 0) currentMathSeq.push(token);
+                else result += token;
+              }
             } else if (isMathToken(token)) {
               currentMathSeq.push(token);
               if (isStrongMathToken(token)) currentHasStrong = true;
@@ -144,7 +154,14 @@ export default function MathRenderer({ content, className = '', isDark = true, d
 
         if (part.startsWith('$$') && part.endsWith('$$')) {
           // Display math
-          const mathContent = part.slice(2, -2).trim();
+          let mathContent = part.slice(2, -2).trim();
+          mathContent = mathContent.replace(/<=/g, '\\le ');
+          mathContent = mathContent.replace(/>=/g, '\\ge ');
+          mathContent = mathContent.replace(/\(\s*([^()]+)\s*\)\s*\/\s*\(\s*([^()]+)\s*\)/g, '\\frac{$1}{$2}');
+          mathContent = mathContent.replace(/\b(\d+)\s*\/\s*(\d+)\b/g, '\\frac{$1}{$2}');
+          mathContent = mathContent.replace(/\^(\d{2,})/g, '^{$1}');
+          mathContent = mathContent.replace(/\^\(([^)]+)\)/g, '^{$1}');
+          
           const div = document.createElement('div');
           div.style.margin = '1em 0';
           div.style.textAlign = 'center';
@@ -162,7 +179,14 @@ export default function MathRenderer({ content, className = '', isDark = true, d
           containerRef.current?.appendChild(div);
         } else if (part.startsWith('$') && part.endsWith('$') && part.length > 1) {
           // Inline math
-          const mathContent = part.slice(1, -1).trim();
+          let mathContent = part.slice(1, -1).trim();
+          mathContent = mathContent.replace(/<=/g, '\\le ');
+          mathContent = mathContent.replace(/>=/g, '\\ge ');
+          mathContent = mathContent.replace(/\(\s*([^()]+)\s*\)\s*\/\s*\(\s*([^()]+)\s*\)/g, '\\frac{$1}{$2}');
+          mathContent = mathContent.replace(/\b(\d+)\s*\/\s*(\d+)\b/g, '\\frac{$1}{$2}');
+          mathContent = mathContent.replace(/\^(\d{2,})/g, '^{$1}');
+          mathContent = mathContent.replace(/\^\(([^)]+)\)/g, '^{$1}');
+          
           if (mathContent) {
             const span = document.createElement('span');
             span.style.display = 'inline';
@@ -201,6 +225,7 @@ export default function MathRenderer({ content, className = '', isDark = true, d
       style={{
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
+        whiteSpace: 'pre-wrap',
       }}
     />
   );
