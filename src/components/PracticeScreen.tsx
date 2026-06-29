@@ -79,6 +79,15 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
     return filtered;
   }, [modules, selectedFolderId, folders, categoryFolders]);
 
+  const getRootFolderName = (folderId: string | null) => {
+    if (!folderId) return 'PRACTICE TEST';
+    let current = folders.find(f => f.id === folderId);
+    while (current && current.parent_id) {
+      current = folders.find(f => f.id === current.parent_id);
+    }
+    return current ? current.name : 'PRACTICE TEST';
+  };
+
   const renderFolderNode = (node: any, level: number = 0) => {
     const isExpanded = expandedFolders[node.id];
     const isSelected = selectedFolderId === node.id;
@@ -92,15 +101,15 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
               toggleFolder(node.id);
             }
           }}
-          className={`w-full flex items-center justify-between px-3 py-2 text-sm font-semibold transition-all rounded-lg border-2 ${
+          className={`w-full flex items-center justify-between px-3 font-semibold transition-all rounded-lg border-2 ${
             isSelected
               ? isDark 
                 ? 'bg-primary/20 border-primary text-primary' 
                 : 'bg-primary/10 border-primary text-primary'
               : isDark
-                ? 'bg-transparent border-white/5 text-text-secondary hover:bg-white/5 hover:border-white/10'
-                : 'bg-transparent border-slate-200/50 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
-          }`}
+                ? `bg-transparent ${level === 0 ? 'border-white/5' : 'border-transparent'} text-text-secondary hover:bg-white/5 hover:border-white/10`
+                : `bg-transparent ${level === 0 ? 'border-slate-200/50' : 'border-transparent'} text-slate-600 hover:bg-slate-50 hover:border-slate-300`
+          } ${level > 0 ? 'py-1.5 text-xs' : 'py-2 text-sm'}`}
           style={{ paddingLeft: `${level * 12 + 12}px` }}
         >
           <div className="flex items-center gap-2 truncate">
@@ -180,22 +189,20 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
           </div>
           
           <div className="space-y-1.5 max-h-[60vh] overflow-y-auto pr-1 custom-scrollbar">
-            {activeCategory !== 'general' && (
-              <button
-                onClick={() => setSelectedFolderId(null)}
-                className={`w-full flex items-center px-3 py-2.5 text-sm font-bold transition-all rounded-lg border-2 ${
-                  selectedFolderId === null
-                    ? isDark 
-                      ? 'bg-primary border-primary text-white' 
-                      : 'bg-primary border-primary text-white shadow-md'
-                    : isDark
-                      ? 'bg-transparent border-white/5 text-text-secondary hover:bg-white/5 hover:border-white/10'
-                      : 'bg-transparent border-slate-200/50 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
-                }`}
-              >
-                All Tests
-              </button>
-            )}
+            <button
+              onClick={() => setSelectedFolderId(null)}
+              className={`w-full flex items-center px-3 py-2.5 text-sm font-bold transition-all rounded-lg border-2 ${
+                selectedFolderId === null
+                  ? isDark 
+                    ? 'bg-primary border-primary text-white' 
+                    : 'bg-primary border-primary text-white shadow-md'
+                  : isDark
+                    ? 'bg-transparent border-white/5 text-text-secondary hover:bg-white/5 hover:border-white/10'
+                    : 'bg-transparent border-slate-200/50 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
+              }`}
+            >
+              All Tests
+            </button>
             
             {folderTree.map(node => renderFolderNode(node, 0))}
             
@@ -227,7 +234,7 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
                 >
                   <div className="flex-1">
                     <p className={`text-[10px] font-black uppercase tracking-wider mb-1 ${isDark ? 'text-primary/80' : 'text-primary/80'}`}>
-                      {module.folder_id ? (folders.find(f => f.id === module.folder_id)?.name || 'PRACTICE TEST') : 'PRACTICE TEST'}
+                      {getRootFolderName(module.folder_id)}
                     </p>
                     <h4 className="text-lg font-black font-display leading-tight mb-4">
                       {module.title}
