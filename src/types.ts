@@ -9,6 +9,8 @@ export interface ExamFolder {
   parent_id?: string | null;
   category?: 'course' | 'general';
   created_at?: string;
+  is_locked?: boolean;
+  allowed_users?: string[];
 }
 
 export interface Module {
@@ -22,6 +24,7 @@ export interface Module {
   score?: number;
   folder_id?: string | null;
   is_locked?: boolean;
+  allowed_users?: string[];
   deadline?: string | null;
 }
 

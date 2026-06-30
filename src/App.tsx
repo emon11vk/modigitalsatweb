@@ -253,7 +253,7 @@ export default function App() {
         // ===== Fetch Folders =====
         const { data: folderData, error: folderError } = await supabase
           .from('exam_folders')
-          .select('id, name, parent_id, category')
+          .select('id, name, parent_id, category, is_locked, allowed_users')
           .order('created_at', { ascending: false });
 
         if (!folderError && folderData) {
@@ -281,6 +281,7 @@ export default function App() {
               score: undefined,
               folder_id: m.folder_id,
               is_locked: m.is_locked,
+              allowed_users: m.allowed_users,
               deadline: m.deadline
             }))
           );
@@ -1071,6 +1072,7 @@ export default function App() {
           <DashboardScreen
             theme={theme}
             userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
+            userEmail={currentUser?.email || ''}
             modules={modules}
             folders={folders}
             vocabTotal={words.length}
@@ -1088,6 +1090,8 @@ export default function App() {
             theme={theme}
             folders={folders}
             modules={modules}
+            userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
+            userEmail={currentUser?.email || ''}
             onStartTest={handleStartModule}
           />
         )}

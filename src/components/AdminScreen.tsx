@@ -7,6 +7,7 @@ import ExamEditorPanel from './admin/ExamEditorPanel';
 import ExamManagerPanel from './admin/ExamManagerPanel';
 import AdminManagementPanel from './admin/AdminManagementPanel';
 import AdminVocabPanel from './admin/AdminVocabPanel';
+import StudentTrackerPanel from './admin/StudentTrackerPanel';
 import {
   ShieldAlert,
   LayoutDashboard,
@@ -25,7 +26,7 @@ interface AdminScreenProps {
   theme: Theme;
 }
 
-type AdminTab = 'dashboard' | 'editor' | 'manager' | 'vocab' | 'admins';
+type AdminTab = 'dashboard' | 'editor' | 'manager' | 'vocab' | 'students' | 'admins';
 
 export default function AdminScreen({ theme }: AdminScreenProps) {
   const isDark = theme === 'dark';
@@ -101,9 +102,14 @@ export default function AdminScreen({ theme }: AdminScreenProps) {
       icon: <BookOpen className="w-4 h-4" />,
     },
     {
+      key: 'students',
+      label: 'Học Viên',
+      icon: <Users className="w-4 h-4" />,
+    },
+    {
       key: 'admins',
       label: 'Admin Access',
-      icon: <Users className="w-4 h-4" />,
+      icon: <ShieldAlert className="w-4 h-4" />,
       rootOnly: true,
     },
   ];
@@ -240,6 +246,10 @@ export default function AdminScreen({ theme }: AdminScreenProps) {
 
         {activeTab === 'vocab' && (
           <AdminVocabPanel theme={theme} userEmail={email ?? ''} />
+        )}
+
+        {activeTab === 'students' && (
+          <StudentTrackerPanel theme={theme} />
         )}
 
         {activeTab === 'admins' && (

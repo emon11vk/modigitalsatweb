@@ -8,8 +8,9 @@ import { supabase } from '../supabaseClient';
 interface DashboardScreenProps {
   theme: Theme;
   userName: string;
+  userEmail: string;
   modules: Module[];
-  folders: { id: string; name: string; parent_id?: string | null; category?: string }[];
+  folders: { id: string; name: string; parent_id?: string | null; category?: string; is_locked?: boolean; allowed_users?: string[] }[];
   vocabTotal: number;
   vocabMastered: number;
   leaderboardRank: number | null;
@@ -59,6 +60,15 @@ export default function DashboardScreen({
   onNavigateToLeaderboard,
 }: DashboardScreenProps) {
   const isDark = theme === 'dark';
+
+  const isItemLocked = (is_locked?: boolean, allowed_users?: string[]) => {
+    if (!is_locked) return false;
+    if (!allowed_users || allowed_users.length === 0) return true;
+    const emailMatch = allowed_users.some(u => u.toLowerCase() === userEmail.toLowerCase());
+    const nameMatch = allowed_users.some(u => u.toLowerCase() === userName.toLowerCase());
+    return !(emailMatch || nameMatch);
+  };
+
 
   const attemptedModules = modules.filter(m => m.status === 'Attempted');
   const readingWritingAttempts = attemptedModules.filter(m => m.subject === 'Reading & Writing' && typeof m.score === 'number');
@@ -303,6 +313,14 @@ export default function DashboardScreen({
     const isAttempted = m.status === 'Attempted';
     const isVerbal = m.subject === 'Reading & Writing';
 
+    let moduleLocked = isItemLocked(m.is_locked, m.allowed_users);
+    if (m.folder_id) {
+      const parentFolder = folders.find(f => f.id === m.folder_id);
+      if (parentFolder && isItemLocked(parentFolder.is_locked, parentFolder.allowed_users)) {
+        moduleLocked = true;
+      }
+    }
+
     return (
       <motion.div
         key={m.id}
@@ -362,7 +380,7 @@ export default function DashboardScreen({
 
         {/* Right: Status or Start */}
         <div className="flex items-center gap-3 ml-5 md:ml-0">
-          {m.is_locked ? (
+          {moduleLocked ? (
             <div className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 ${
               isDark ? 'bg-white/5 text-text-muted' : 'bg-slate-100 text-slate-400'
             }`}>
@@ -703,7 +721,7 @@ export default function DashboardScreen({
                     >
                       <div className="flex items-center gap-3">
                         <div className={`p-2 rounded-lg ${isDark ? 'bg-primary/20 text-primary-light' : 'bg-primary/10 text-primary'}`}>
-                          {isCollapsed ? <Folder className="w-5 h-5" /> : <FolderOpen className="w-5 h-5" />}
+                          {isItemLocked(f.is_locked, f.allowed_users) ? <Lock className={`w-5 h-5 ${isDark ? 'text-red-400' : 'text-red-500'}`} /> : (isCollapsed ? <Folder className="w-5 h-5" /> : <FolderOpen className="w-5 h-5" />)}
                         </div>
                         <h4 className={`text-sm font-bold font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
                           {f.name}
@@ -832,9 +850,19 @@ export default function DashboardScreen({
                     className="absolute inset-0 w-full"
                   >
                     <div 
-                      onClick={() => !upcomingExams[upcomingIndex].is_locked && onStartModule(upcomingExams[upcomingIndex].id)}
+                      onClick={() => {
+                        let locked = isItemLocked(upcomingExams[upcomingIndex].is_locked, upcomingExams[upcomingIndex].allowed_users);
+                        if (upcomingExams[upcomingIndex].folder_id) {
+                          const pFolder = folders.find(f => f.id === upcomingExams[upcomingIndex].folder_id);
+                          if (pFolder && isItemLocked(pFolder.is_locked, pFolder.allowed_users)) {
+                            locked = true;
+                          }
+                        }
+                        if (!locked) onStartModule(upcomingExams[upcomingIndex].id);
+                      }}
                       className={`h-full p-4 rounded-xl border flex flex-col justify-center transition-colors ${
-                        upcomingExams[upcomingIndex].is_locked 
+                        (isItemLocked(upcomingExams[upcomingIndex].is_locked, upcomingExams[upcomingIndex].allowed_users) || 
+                        (upcomingExams[upcomingIndex].folder_id && folders.find(f => f.id === upcomingExams[upcomingIndex].folder_id) && isItemLocked(folders.find(f => f.id === upcomingExams[upcomingIndex].folder_id)?.is_locked, folders.find(f => f.id === upcomingExams[upcomingIndex].folder_id)?.allowed_users)))
                           ? isDark ? 'bg-white/5 border-white/5 cursor-not-allowed' : 'bg-slate-50 border-slate-100 cursor-not-allowed'
                           : isDark ? 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer' : 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer'
                       }`}

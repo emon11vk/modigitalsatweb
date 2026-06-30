@@ -4,16 +4,27 @@ import { ChevronDown, ChevronRight, Folder, FolderOpen, Play, Search, Graduation
 
 interface PracticeScreenProps {
   theme: Theme;
+  userName: string;
+  userEmail: string;
   folders: ExamFolder[];
   modules: Module[];
   onStartTest: (moduleId: string) => void;
 }
 
-export default function PracticeScreen({ theme, folders, modules, onStartTest }: PracticeScreenProps) {
+export default function PracticeScreen({ theme, userName, userEmail, folders, modules, onStartTest }: PracticeScreenProps) {
   const isDark = theme === 'dark';
   const [activeCategory, setActiveCategory] = useState<'course' | 'general'>('general');
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
   const [expandedFolders, setExpandedFolders] = useState<Record<string, boolean>>({});
+
+  const isItemLocked = (is_locked?: boolean, allowed_users?: string[]) => {
+    if (!is_locked) return false;
+    if (!allowed_users || allowed_users.length === 0) return true;
+    const emailMatch = allowed_users.some(u => u.toLowerCase() === userEmail.toLowerCase());
+    const nameMatch = allowed_users.some(u => u.toLowerCase() === userName.toLowerCase());
+    return !(emailMatch || nameMatch);
+  };
+
 
   // Toggle folder expansion
   const toggleFolder = (folderId: string) => {
@@ -225,7 +236,16 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {displayModules.map(module => (
+              {displayModules.map(module => {
+                let moduleLocked = isItemLocked(module.is_locked, module.allowed_users);
+                if (module.folder_id) {
+                  const parentFolder = folders.find(f => f.id === module.folder_id);
+                  if (parentFolder && isItemLocked(parentFolder.is_locked, parentFolder.allowed_users)) {
+                    moduleLocked = true;
+                  }
+                }
+                
+                return (
                 <div 
                   key={module.id} 
                   className={`flex flex-col p-5 rounded-3xl border-2 transition-all hover:-translate-y-1 ${
@@ -252,18 +272,26 @@ export default function PracticeScreen({ theme, folders, modules, onStartTest }:
                     </div>
                   </div>
                   
-                  <button
-                    onClick={() => onStartTest(module.id)}
-                    className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all border-2 ${
-                      isDark
-                        ? 'bg-primary border-primary text-white hover:bg-primary-hover hover:border-primary-hover'
-                        : 'bg-primary border-primary text-white hover:bg-primary-hover hover:border-primary-hover shadow-md'
-                    }`}
-                  >
-                    START <Play className="w-4 h-4" />
-                  </button>
+                  {moduleLocked ? (
+                    <div className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold border-2 ${
+                      isDark ? 'bg-white/5 border-white/10 text-text-muted' : 'bg-slate-50 border-slate-200 text-slate-400'
+                    }`}>
+                      LOCKED
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => onStartTest(module.id)}
+                      className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all border-2 ${
+                        isDark
+                          ? 'bg-primary border-primary text-white hover:bg-primary-hover hover:border-primary-hover'
+                          : 'bg-primary border-primary text-white hover:bg-primary-hover hover:border-primary-hover shadow-md'
+                      }`}
+                    >
+                      START <Play className="w-4 h-4" />
+                    </button>
+                  )}
                 </div>
-              ))}
+              )})}
             </div>
           )}
         </div>
