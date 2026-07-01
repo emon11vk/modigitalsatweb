@@ -81,7 +81,7 @@
     ],
     "correct_answer": "C",
     "type": "multiple_choice",
-    "passage": "11x + 14y <= 115\nAnthony will spend at most $115 to purchase x small cheese pizzas and y large cheese pizzas for a team dinner. The given inequality represents this situation."
+    "passage": "11x + 14y <= 115 Anthony will spend at most $115 to purchase x small cheese pizzas and y large cheese pizzas for a team dinner. The given inequality represents this situation."
   },
   {
     "position": 9,
@@ -133,7 +133,7 @@
     ],
     "correct_answer": "B",
     "type": "multiple_choice",
-    "passage": "y > 2x - 1\n2x > 5"
+    "passage": "y > 2x - 1 2x > 5"
   },
   {
     "position": 13,
@@ -219,7 +219,7 @@
     ],
     "correct_answer": "D",
     "type": "multiple_choice",
-    "passage": "y <= x\ny <= -x"
+    "passage": "y <= x y <= -x"
   },
   {
     "position": 20,
@@ -232,7 +232,7 @@
     ],
     "correct_answer": "A",
     "type": "multiple_choice",
-    "passage": "H = 120p + 60\nThe Karvonen formula above shows the relationship between Alice's target heart rate H, in beats per minute (bpm), and the intensity level p of different activities. When p = 0, Alice has a resting heart rate. When p = 1, Alice has her maximum heart rate. It is recommended that p be between 0.5 and 0.85 for Alice when she trains."
+    "passage": "H = 120p + 60 The Karvonen formula above shows the relationship between Alice's target heart rate H, in beats per minute (bpm), and the intensity level p of different activities. When p = 0, Alice has a resting heart rate. When p = 1, Alice has her maximum heart rate. It is recommended that p be between 0.5 and 0.85 for Alice when she trains."
   },
   {
     "position": 21,

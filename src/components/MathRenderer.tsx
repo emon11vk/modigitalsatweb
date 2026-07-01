@@ -132,12 +132,14 @@ export default function MathRenderer({ content, className = '', isDark = true, d
       }
 
       // Parse and render math formulas
-      // We prevent inline math from matching across sentence boundaries (. ? !) to avoid pairing currency $ with stray $
-      const regex = /(\$\$[\s\S]*?\$\$|\$(?!\s)(?:(?!\.\s|\?\s|\!\s)[^$\n])*?(?:[^\s$])?\$)/g;
+      // We require inline math to start without space and end without space,
+      // which properly avoids matching pairs of currency amounts as math.
+      // We also allow inline math to span across newlines.
+      const regex = /(\$\$[\s\S]*?\$\$|\$(?!\s)(?:[^$]*?[^\s$])?\$)/g;
       const hasMath = regex.test(processedContent);
       
       // Reset regex for actual parsing (test consumes the regex)
-      const parseRegex = /(\$\$[\s\S]*?\$\$|\$(?!\s)(?:(?!\.\s|\?\s|\!\s)[^$\n])*?(?:[^\s$])?\$)/g;
+      const parseRegex = /(\$\$[\s\S]*?\$\$|\$(?!\s)(?:[^$]*?[^\s$])?\$)/g;
       
       if (!hasMath) {
         // No math formulas, just render as plain text
