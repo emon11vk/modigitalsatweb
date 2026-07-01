@@ -49,6 +49,7 @@ const getYoutubeId = (url?: string) => {
 export default function DashboardScreen({
   theme,
   userName,
+  userEmail,
   modules,
   folders,
   vocabTotal,

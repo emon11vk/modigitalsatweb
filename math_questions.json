@@ -1,0 +1,250 @@
+[
+  {
+    "position": 1,
+    "question_text": "If the value of y is -4, what is the greatest possible value of x?",
+    "choices": [],
+    "correct_answer": "-14",
+    "type": "student_produced_response",
+    "passage": "A number x is at most 2 less than 3 times the value of y."
+  },
+  {
+    "position": 2,
+    "question_text": "What is the maximum number of team members who can join the team, if the company can spend $925 for the bowling team?",
+    "choices": [],
+    "correct_answer": "5",
+    "type": "student_produced_response",
+    "passage": "A company decides to sponsor an employee bowling team. The cost to form the team is $180 per team member plus a onetime $25 team-registration fee."
+  },
+  {
+    "position": 3,
+    "question_text": "Which point (x, y) is a solution to the given inequality in the xy-plane?",
+    "choices": [
+      "A. (-4, 0)",
+      "B. (0, 5)",
+      "C. (2, 1)",
+      "D. (2, -1)"
+    ],
+    "correct_answer": "A",
+    "type": "multiple_choice",
+    "passage": "y < -4x + 4"
+  },
+  {
+    "position": 4,
+    "question_text": "Which of the following inequalities represents all possible weights w, in pounds, for the elephant 365 days after birth?",
+    "choices": [
+      "A. 400 < w < 600",
+      "B. 565 < w < 930",
+      "C. 730 < w < 1,095",
+      "D. 930 < w < 1,295"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "passage": "A certain elephant weighs 200 pounds at birth and gains more than 2 but less than 3 pounds per day during its first year."
+  },
+  {
+    "position": 5,
+    "question_text": "What is the greatest number of attendees possible without exceeding the budget?",
+    "choices": [],
+    "correct_answer": "25",
+    "type": "student_produced_response",
+    "passage": "An event planner is planning a party. It costs the event planner a onetime fee of $35 to rent the venue and $10.25 per attendee. The event planner has a budget of $300."
+  },
+  {
+    "position": 6,
+    "question_text": "If the value of y is 3, what is the greatest possible value of x?",
+    "choices": [],
+    "correct_answer": "-2",
+    "type": "student_produced_response",
+    "passage": "A number x is at most 17 less than 5 times the value of y."
+  },
+  {
+    "position": 7,
+    "question_text": "which includes a 7% sales tax. Which of the following is closest to the maximum possible price per chair, before sales tax, the business owner could pay based on this budget?",
+    "choices": [
+      "A. $148.15",
+      "B. $161.53",
+      "C. $172.84",
+      "D. $184.94"
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "passage": "A business owner plans to purchase the same model of chair for each of the 81 employees. The total budget to spend on these chairs is $14,000,"
+  },
+  {
+    "position": 8,
+    "question_text": "Which of the following is the best interpretation of 14y in this context?",
+    "choices": [
+      "A. The amount, in dollars, Anthony will spend on each large cheese pizza",
+      "B. The amount, in dollars, Anthony will spend on each small cheese pizza",
+      "C. The total amount, in dollars, Anthony will spend on large cheese pizzas",
+      "D. The total amount, in dollars, Anthony will spend on small cheese pizzas"
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "passage": "11x + 14y <= 115\nAnthony will spend at most $115 to purchase x small cheese pizzas and y large cheese pizzas for a team dinner. The given inequality represents this situation."
+  },
+  {
+    "position": 9,
+    "question_text": "The shaded region shown represents the solutions to which inequality? (Graph passes through (0, -1) and (-2, 5))",
+    "choices": [
+      "A. y < -1 + 3x",
+      "B. y < -1 - 3x",
+      "C. y > -1 + 3x",
+      "D. y > -1 - 3x"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "passage": null
+  },
+  {
+    "position": 10,
+    "question_text": "Which inequality is true for all values of c, where c represents any pinching force, in newtons, recorded for these wild coconut crabs?",
+    "choices": [
+      "A. c <= 87.1",
+      "B. c >= 120.3",
+      "C. 43.5 <= c <= 60.1",
+      "D. 87.1 <= c <= 120.3"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "passage": "A biologist recorded the pinching force of wild coconut crabs. The lowest pinching force recorded was 87.1 newtons and the highest pinching force recorded was 120.3 newtons."
+  },
+  {
+    "position": 11,
+    "question_text": "Which inequality represents this situation?",
+    "choices": [
+      "A. 2x + 100 <= 210",
+      "B. 2x + 100 >= 210",
+      "C. 2x + 50 <= 210",
+      "D. 2x + 50 >= 210"
+    ],
+    "correct_answer": "A",
+    "type": "multiple_choice",
+    "passage": "The length of a rectangle is 50 inches and the width is x inches. The perimeter is at most 210 inches."
+  },
+  {
+    "position": 12,
+    "question_text": "Which of the following consists of the y-coordinates of all the points that satisfy the system of inequalities above?",
+    "choices": [
+      "A. y > 6",
+      "B. y > 4",
+      "C. y > 5/2",
+      "D. y > 3/2"
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "passage": "y > 2x - 1\n2x > 5"
+  },
+  {
+    "position": 13,
+    "question_text": "Which inequality is true for all values of c, where c represents any pinching force, in newtons, recorded for these wild coconut crabs?",
+    "choices": [
+      "A. c <= 86.2",
+      "B. c >= 121.4",
+      "C. 43.1 <= c <= 60.7",
+      "D. 86.2 <= c <= 121.4"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "passage": "A biologist recorded the pinching force of wild coconut crabs. The lowest pinching force recorded was 86.2 newtons and the highest pinching force recorded was 121.4 newtons."
+  },
+  {
+    "position": 14,
+    "question_text": "If a student has completed 42 credit hours, what is the minimum number of additional credit hours the student is required to complete to earn a bachelor's degree at this university?",
+    "choices": [
+      "A. 162",
+      "B. 120",
+      "C. 78",
+      "D. 20"
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "passage": "To earn a bachelor's degree at a certain university, students are required to complete at least 120 credit hours."
+  },
+  {
+    "position": 15,
+    "question_text": "Which inequality represents all possibilities for the total amount of money x, in dollars, in Imani's account after 10 months of deposits this year?",
+    "choices": [
+      "A. x <= 300",
+      "B. x >= 600",
+      "C. 170 <= x <= 620",
+      "D. 470 <= x <= 770"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "passage": "At the beginning of the year, Imani has $170 in her account. Each month this year, she will deposit between $30 and $60 into the account."
+  },
+  {
+    "position": 16,
+    "question_text": "If x >= -8 represents all solutions to the inequality ax - 12 <= 36, where a is a constant, what is the greatest possible value of a?",
+    "choices": [],
+    "correct_answer": "-6",
+    "type": "student_produced_response",
+    "passage": null
+  },
+  {
+    "position": 17,
+    "question_text": "For which of the following tables are all the values of x and their corresponding values of y solutions to the given inequality?",
+    "choices": [
+      "A. x: 2, 4, 6 | y: 26, 90, 86",
+      "B. x: 2, 4, 6 | y: 26, 56, 86",
+      "C. x: 2, 4, 6 | y: 43, 73, 103",
+      "D. x: 2, 4, 6 | y: 26, 73, 86"
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "passage": "y < 15x + 13"
+  },
+  {
+    "position": 18,
+    "question_text": "What is the maximum number of 120-pound packages that the helicopter can carry per trip?",
+    "choices": [
+      "A. 2",
+      "B. 4",
+      "C. 5",
+      "D. 6"
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "passage": "A cargo helicopter delivers only 100-pound packages and 120-pound packages. For each delivery trip, the helicopter must carry at least 10 packages, and the total weight of the packages can be at most 1,100 pounds."
+  },
+  {
+    "position": 19,
+    "question_text": "Which of the following ordered pairs (x,y) is a solution to the system of inequalities above?",
+    "choices": [
+      "A. (1, 0)",
+      "B. (-1, 0)",
+      "C. (0, 1)",
+      "D. (0, -1)"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "passage": "y <= x\ny <= -x"
+  },
+  {
+    "position": 20,
+    "question_text": "Which of the following inequalities describes Alice's target training heart rate?",
+    "choices": [
+      "A. 120 <= H <= 162",
+      "B. 102 <= H <= 120",
+      "C. 60 <= H <= 162",
+      "D. 60 <= H <= 102"
+    ],
+    "correct_answer": "A",
+    "type": "multiple_choice",
+    "passage": "H = 120p + 60\nThe Karvonen formula above shows the relationship between Alice's target heart rate H, in beats per minute (bpm), and the intensity level p of different activities. When p = 0, Alice has a resting heart rate. When p = 1, Alice has her maximum heart rate. It is recommended that p be between 0.5 and 0.85 for Alice when she trains."
+  },
+  {
+    "position": 21,
+    "question_text": "For which of the following tables are all the values of x and their corresponding values of y solutions to the given inequality?",
+    "choices": [
+      "A. x: 3, 5, 8 | y: 13, 27, 48",
+      "B. x: 3, 5, 8 | y: 17, 31, 52",
+      "C. x: 3, 5, 8 | y: 21, 27, 52",
+      "D. x: 3, 5, 8 | y: 21, 35, 56"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "passage": "y > 7x - 4"
+  }
+]
