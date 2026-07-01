@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Theme } from '../../types';
+import { Theme, TestAttemptHistory } from '../../types';
 import { supabase } from '../../supabaseClient';
 import { Search, Loader2, User, BookOpen, ChevronLeft, ChevronRight, X, Clock, Target, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import ReviewScreen from '../ReviewScreen';
 
 interface StudentTrackerPanelProps {
   theme: Theme;
@@ -43,6 +44,7 @@ export default function StudentTrackerPanel({ theme }: StudentTrackerPanelProps)
   const [history, setHistory] = useState<StudentHistory[]>([]);
   const [loadingHistory, setLoadingHistory] = useState(false);
   const [historySearchQuery, setHistorySearchQuery] = useState('');
+  const [detailedAttempt, setDetailedAttempt] = useState<TestAttemptHistory | null>(null);
 
   useEffect(() => {
     fetchStudents();
@@ -55,9 +57,9 @@ export default function StudentTrackerPanel({ theme }: StudentTrackerPanelProps)
       if (error) throw error;
       setStudents(data || []);
     } catch (err: any) {
-      console.error('Error fetching students:', err);
+      console.error('Error fetching students:', JSON.stringify(err, null, 2), err);
       // Fallback message if RPC is not created yet
-      if (err.message?.includes('function public.admin_get_students() does not exist')) {
+      if (err.code === 'PGRST202' || err.message?.includes('function public.admin_get_students() does not exist') || err.message?.includes('schema cache')) {
         alert('Vui lòng chạy file add-student-tracker-rpc.sql trên Supabase SQL Editor để cập nhật Database.');
       }
     } finally {
@@ -70,12 +72,83 @@ export default function StudentTrackerPanel({ theme }: StudentTrackerPanelProps)
     setLoadingHistory(true);
     setHistorySearchQuery('');
     setHistory([]);
+    setDetailedAttempt(null);
     try {
       const { data, error } = await supabase.rpc('admin_get_student_history', { p_student_id: student.id });
       if (error) throw error;
       setHistory(data || []);
     } catch (err) {
       console.error('Error fetching student history:', err);
+    } finally {
+      setLoadingHistory(false);
+    }
+  };
+
+  const handleViewAttemptDetails = async (attempt: StudentHistory) => {
+    const baseAttempt: TestAttemptHistory = {
+      attemptId: attempt.id,
+      moduleId: attempt.module_id,
+      moduleTitle: attempt.module_title,
+      subject: attempt.subject as any,
+      correctCount: attempt.correct_count,
+      totalCount: attempt.total_count,
+      dateStr: new Date(attempt.created_at).toLocaleString('vi-VN'),
+    };
+
+    try {
+      setLoadingHistory(true);
+      const { data: answersData, error: answersError } = await supabase
+        .rpc('admin_get_attempt_details', { p_history_id: attempt.id });
+
+      if (answersError) {
+        if (answersError.code === 'PGRST202' || answersError.message?.includes('admin_get_attempt_details')) {
+          alert('Vui lòng copy và chạy lại file add-student-tracker-rpc.sql mới nhất trên Supabase SQL Editor để cập nhật hệ thống.');
+          return;
+        }
+        throw answersError;
+      }
+      
+      if (!answersData || answersData.length === 0) {
+        // Show the ReviewScreen with an empty array, which will trigger its beautiful empty state
+        setDetailedAttempt({
+          ...baseAttempt,
+          questions: [],
+          passage: undefined
+        });
+        return;
+      }
+
+      const questions = answersData.map((ans: any) => ({
+        id: ans.question_id,
+        questionText: ans.question_text || '',
+        question_type: ans.question_type || 'mcq',
+        userAnswer: ans.user_answer,
+        correctAnswer: ans.correct_answer || [],
+        isCorrect: ans.is_correct,
+        options: ans.options,
+        passage: ans.passage_paragraphs && ans.passage_paragraphs !== 'null'
+          ? {
+            title: ans.passage_title === 'null' ? '' : (ans.passage_title || 'Reading Text'),
+            introduction: ans.passage_intro === 'null' ? '' : (ans.passage_intro || ''),
+            paragraphs: Array.isArray(ans.passage_paragraphs)
+              ? ans.passage_paragraphs.filter((p: any) => p !== 'null')
+              : [ans.passage_paragraphs].filter((p: any) => p !== 'null')
+          }
+          : undefined,
+        imageUrl: ans.image_url || null,
+        explanation: ans.explanation
+      }));
+
+      const firstWithPassage = questions.find((q: any) => q.passage);
+
+      setDetailedAttempt({
+        ...baseAttempt,
+        questions,
+        passage: firstWithPassage?.passage
+      });
+    } catch (err: any) {
+      console.error('Error fetching details:', JSON.stringify(err, null, 2), err);
+      alert('Lỗi khi tải chi tiết bài làm — vui lòng thử lại.');
     } finally {
       setLoadingHistory(false);
     }
@@ -284,7 +357,13 @@ export default function StudentTrackerPanel({ theme }: StudentTrackerPanelProps)
                   </div>
                 </div>
                 <button 
-                  onClick={() => setSelectedStudent(null)}
+                  onClick={() => {
+                    if (detailedAttempt) {
+                      setDetailedAttempt(null);
+                    } else {
+                      setSelectedStudent(null);
+                    }
+                  }}
                   className={`p-2 rounded-xl transition-colors ${isDark ? 'bg-white/5 hover:bg-white/10 text-white' : 'bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-800'}`}
                 >
                   <X className="w-5 h-5" />
@@ -292,29 +371,33 @@ export default function StudentTrackerPanel({ theme }: StudentTrackerPanelProps)
               </div>
 
               {/* Modal Toolbar */}
-              <div className={`px-6 py-4 border-b shrink-0 flex items-center justify-between ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
-                <div className="relative w-full max-w-md">
-                  <Search className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/30' : 'text-slate-400'}`} />
-                  <input
-                    type="text"
-                    placeholder="Tìm kiếm theo tên đề thi..."
-                    value={historySearchQuery}
-                    onChange={(e) => setHistorySearchQuery(e.target.value)}
-                    className={`w-full pl-9 pr-4 py-2 rounded-xl text-sm outline-none transition-all border ${
-                      isDark
-                        ? 'bg-black/30 border-white/10 text-white focus:border-primary/50'
-                        : 'bg-slate-50 border-slate-200 text-text-dark focus:border-primary/50'
-                    }`}
-                  />
+              {!detailedAttempt && (
+                <div className={`px-6 py-4 border-b shrink-0 flex items-center justify-between ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
+                  <div className="relative w-full max-w-md">
+                    <Search className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/30' : 'text-slate-400'}`} />
+                    <input
+                      type="text"
+                      placeholder="Tìm kiếm theo tên đề thi..."
+                      value={historySearchQuery}
+                      onChange={(e) => setHistorySearchQuery(e.target.value)}
+                      className={`w-full pl-9 pr-4 py-2 rounded-xl text-sm outline-none transition-all border ${
+                        isDark
+                          ? 'bg-black/30 border-white/10 text-white focus:border-primary/50'
+                          : 'bg-slate-50 border-slate-200 text-text-dark focus:border-primary/50'
+                      }`}
+                    />
+                  </div>
+                  <span className={`text-xs font-semibold px-3 py-1.5 rounded-lg ${isDark ? 'bg-white/5 text-text-muted' : 'bg-slate-100 text-slate-500'}`}>
+                    {filteredHistory.length} kết quả
+                  </span>
                 </div>
-                <span className={`text-xs font-semibold px-3 py-1.5 rounded-lg ${isDark ? 'bg-white/5 text-text-muted' : 'bg-slate-100 text-slate-500'}`}>
-                  {filteredHistory.length} kết quả
-                </span>
-              </div>
+              )}
 
               {/* Modal Content */}
               <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
-                {loadingHistory ? (
+                {detailedAttempt ? (
+                  <ReviewScreen theme={theme} attempt={detailedAttempt} onBack={() => setDetailedAttempt(null)} />
+                ) : loadingHistory ? (
                   <div className="flex flex-col items-center justify-center py-20">
                     <Loader2 className="w-8 h-8 animate-spin text-primary" />
                     <p className={`mt-3 text-sm ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>Đang tải lịch sử bài thi...</p>
@@ -334,7 +417,8 @@ export default function StudentTrackerPanel({ theme }: StudentTrackerPanelProps)
                     {filteredHistory.map((item) => (
                       <div 
                         key={item.id}
-                        className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl border transition-all hover:-translate-y-0.5 ${
+                        onClick={() => handleViewAttemptDetails(item)}
+                        className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl border transition-all hover:-translate-y-0.5 cursor-pointer ${
                           isDark ? 'bg-bg-card border-white/10 hover:border-primary/30' : 'bg-white border-slate-200 hover:border-primary/30 hover:shadow-sm'
                         }`}
                       >
