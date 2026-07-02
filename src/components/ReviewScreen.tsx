@@ -1,7 +1,7 @@
 import { TestAttemptHistory } from '../types';
 import {
   ArrowLeft, CheckCircle2, XCircle, Calendar, BookOpen,
-  Trophy, BarChart2, AlertCircle, Target,
+  Trophy, BarChart2, AlertCircle, Target, Clock,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import MathRenderer from './MathRenderer';
@@ -119,7 +119,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
 
         {/* Stat Cards */}
         {[
-          { icon: <Trophy className="w-4 h-4" />, label: 'Điểm số', value: `${scorePercent}%`, color: 'text-primary' },
+          { icon: <Clock className="w-4 h-4" />, label: 'Hoàn thành', value: attempt.dateStr, color: 'text-primary' },
           { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Câu đúng', value: attempt.correctCount, color: 'text-accent' },
           { icon: <XCircle className="w-4 h-4" />, label: 'Câu sai', value: attempt.totalCount - attempt.correctCount, color: 'text-accent-warm' },
           { icon: <Target className="w-4 h-4" />, label: 'Tổng câu', value: attempt.totalCount, color: isDark ? 'text-text-secondary' : 'text-text-dark-secondary' },
@@ -137,7 +137,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
             <span className={`text-[10px] font-semibold uppercase tracking-wider ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
               {card.label}
             </span>
-            <span className={`text-xl font-black font-mono ${card.color}`}>{card.value}</span>
+            <span className={`font-black font-mono ${card.color} ${String(card.value).length > 10 ? 'text-sm md:text-base' : 'text-xl'}`}>{card.value}</span>
           </motion.div>
         ))}
       </div>

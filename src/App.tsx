@@ -264,7 +264,7 @@ export default function App() {
         const { data: modData, error: modError } = await supabase
           .from('modules')
           .select('*')
-          .order('id', { ascending: true });
+          .order('module_num', { ascending: true });
 
         if (modError) console.error('Error fetching modules:', modError);
 

@@ -500,20 +500,36 @@ export default function ExamEditorPanel({
                         {/* Passage (collapsible) */}
                         {(q.passage || q.passage === '') && (
                           <div>
-                            <button
-                              onClick={() => togglePassage(passageKey)}
-                              className={`flex items-center gap-1.5 text-[11px] font-semibold transition-all cursor-pointer ${
-                                isDark ? 'text-text-muted hover:text-text-secondary' : 'text-slate-400 hover:text-slate-600'
-                              }`}
-                            >
-                              <BookOpen className="w-3.5 h-3.5" />
-                              Passage
-                              {passageCollapsed ? (
-                                <ChevronRight className="w-3 h-3" />
-                              ) : (
-                                <ChevronDown className="w-3 h-3" />
+                            <div className="flex items-center justify-between mb-2">
+                              <button
+                                onClick={() => togglePassage(passageKey)}
+                                className={`flex items-center gap-1.5 text-[11px] font-semibold transition-all cursor-pointer ${
+                                  isDark ? 'text-text-muted hover:text-text-secondary' : 'text-slate-400 hover:text-slate-600'
+                                }`}
+                              >
+                                <BookOpen className="w-3.5 h-3.5" />
+                                Passage
+                                {passageCollapsed ? (
+                                  <ChevronRight className="w-3 h-3" />
+                                ) : (
+                                  <ChevronDown className="w-3 h-3" />
+                                )}
+                              </button>
+                              {!passageCollapsed && (
+                                <button
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
+                                    dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'passage', value: flatten(q.passage) } });
+                                  }}
+                                  className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                    isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                  }`}
+                                >
+                                  Làm phẳng
+                                </button>
                               )}
-                            </button>
+                            </div>
                             {!passageCollapsed && (
                               <textarea
                                 value={typeof q.passage === 'string' ? q.passage : ''}
@@ -542,10 +558,24 @@ export default function ExamEditorPanel({
 
                         {/* Question Text */}
                         <div>
-                          <label className={`flex items-center gap-1.5 text-[11px] font-semibold mb-1.5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
-                            <Type className="w-3.5 h-3.5" />
-                            Question Text
-                          </label>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <label className={`flex items-center gap-1.5 text-[11px] font-semibold ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                              <Type className="w-3.5 h-3.5" />
+                              Question Text
+                            </label>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
+                                dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'questionText', value: flatten(q.questionText) } });
+                              }}
+                              className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                              }`}
+                            >
+                              Làm phẳng
+                            </button>
+                          </div>
                           <textarea
                             value={q.questionText}
                             onChange={(e) =>
@@ -601,10 +631,26 @@ export default function ExamEditorPanel({
                             </>
                           ) : (
                             <>
-                              <label className={`flex items-center gap-1.5 text-[11px] font-semibold mb-2 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
-                                <CircleDot className="w-3.5 h-3.5" />
-                                Answer Choices
-                              </label>
+                              <div className="flex items-center justify-between mb-2">
+                                <label className={`flex items-center gap-1.5 text-[11px] font-semibold ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                                  <CircleDot className="w-3.5 h-3.5" />
+                                  Answer Choices
+                                </label>
+                                <button
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
+                                    q.choices.forEach((choice, cIdx) => {
+                                      if (choice.text) dispatch({ type: 'UPDATE_CHOICE_TEXT', payload: { sectionIndex: sIdx, questionIndex: qIdx, choiceIndex: cIdx, text: flatten(choice.text) } });
+                                    });
+                                  }}
+                                  className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                    isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                  }`}
+                                >
+                                  Làm phẳng
+                                </button>
+                              </div>
                               <div className="space-y-2">
                                 {q.choices.map((choice, cIdx) => (
                                   <div key={cIdx} className="flex items-center gap-2">
@@ -681,10 +727,24 @@ export default function ExamEditorPanel({
 
                         {/* Explanation */}
                         <div>
-                          <label className={`flex items-center gap-1.5 text-[11px] font-semibold mb-1.5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
-                            <MessageSquare className="w-3.5 h-3.5" />
-                            Explanation (optional)
-                          </label>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <label className={`flex items-center gap-1.5 text-[11px] font-semibold ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                              <MessageSquare className="w-3.5 h-3.5" />
+                              Explanation (optional)
+                            </label>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
+                                dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'explanation', value: flatten(q.explanation) } });
+                              }}
+                              className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                              }`}
+                            >
+                              Làm phẳng
+                            </button>
+                          </div>
                           <textarea
                             value={q.explanation}
                             onChange={(e) =>
