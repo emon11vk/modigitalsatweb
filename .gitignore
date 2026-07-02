@@ -6,3 +6,11 @@ coverage/
 *.log
 .env*
 !.env.example
+__pycache__/
+*.py
+*.cjs
+*.mjs
+english_questions.json
+math_questions.json
+mod_1_verbal.json
+mod_2_verbal.json

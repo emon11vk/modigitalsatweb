@@ -351,9 +351,16 @@ export default function ExamManagerPanel({
     setDraggedExamId(null);
   };
 
-  const filteredExams = exams.filter((e) =>
-    e.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const isSearching = searchQuery.trim().length > 0;
+  const searchLower = searchQuery.toLowerCase();
+
+  const filteredExams = isSearching
+    ? exams.filter((e) => e.title.toLowerCase().includes(searchLower))
+    : exams;
+
+  const filteredFolders = isSearching
+    ? folders.filter((f) => f.name.toLowerCase().includes(searchLower))
+    : [];
 
   // Group exams
   const unassignedExams = filteredExams.filter(e => !e.folder_id);
@@ -857,7 +864,52 @@ export default function ExamManagerPanel({
         <div className="flex items-center justify-center py-16">
           <RefreshCw className="w-6 h-6 text-primary animate-spin" />
         </div>
-      ) : filteredExams.length === 0 && folders.length === 0 ? (
+      ) : isSearching ? (
+        <div className="space-y-6">
+          {filteredFolders.length > 0 && (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 px-2 mb-3">
+                <Folder className={`w-4 h-4 ${isDark ? 'text-white/40' : 'text-slate-400'}`} />
+                <h4 className={`text-sm font-semibold ${isDark ? 'text-white/60' : 'text-slate-500'}`}>
+                  Matching Folders
+                </h4>
+              </div>
+              <div className="space-y-2">
+                {filteredFolders.map(folder => renderFolder(folder, 0))}
+              </div>
+            </div>
+          )}
+
+          {filteredExams.length > 0 && (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 px-2 mb-3">
+                <Database className={`w-4 h-4 ${isDark ? 'text-white/40' : 'text-slate-400'}`} />
+                <h4 className={`text-sm font-semibold ${isDark ? 'text-white/60' : 'text-slate-500'}`}>
+                  Matching Exams
+                </h4>
+              </div>
+              <div className="space-y-2">
+                {filteredExams.map((exam, i) => renderExamCard(exam, i))}
+              </div>
+            </div>
+          )}
+
+          {filteredFolders.length === 0 && filteredExams.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`text-center py-16 rounded-2xl border ${
+                isDark ? 'bg-bg-card border-white/10' : 'bg-white border-slate-200'
+              }`}
+            >
+              <Database className={`w-10 h-10 mx-auto mb-3 ${isDark ? 'text-white/10' : 'text-slate-200'}`} />
+              <p className={`text-sm font-semibold ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                No matching exams or folders found
+              </p>
+            </motion.div>
+          )}
+        </div>
+      ) : exams.length === 0 && folders.length === 0 ? (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -867,7 +919,7 @@ export default function ExamManagerPanel({
         >
           <Database className={`w-10 h-10 mx-auto mb-3 ${isDark ? 'text-white/10' : 'text-slate-200'}`} />
           <p className={`text-sm font-semibold ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
-            {searchQuery ? 'No matching exams found' : 'No exams or folders yet'}
+            No exams or folders yet
           </p>
         </motion.div>
       ) : (

@@ -1,17 +1,33 @@
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
+import { createClient } from '@supabase/supabase-js'
+import dotenv from 'dotenv'
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL;
-const supabaseKey = process.env.VITE_SUPABASE_SERVICE_ROLE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+dotenv.config()
+
+const supabaseUrl = process.env.VITE_SUPABASE_URL
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY
+
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 async function check() {
-  const { data: folders, error: fError } = await supabase.from('vocab_folders').select('*').eq('is_admin_folder', true);
-  console.log('Folders:', folders, fError);
-  
-  if (folders && folders.length > 0) {
-    const { data: words, error: wError } = await supabase.from('vocabulary').select('*').eq('folder_id', folders[0].id);
-    console.log(`Words in folder ${folders[0].name}:`, words?.length, wError);
+  const { data: questions } = await supabase.from('questions').select('*')
+  console.log("total questions:", questions?.length)
+  if (questions) {
+    const bee = questions.find(q => JSON.stringify(q).includes('bee'))
+    if (bee) {
+      console.log("Found bee:", JSON.stringify(bee, null, 2))
+    } else {
+      console.log("Bee not found in questions")
+    }
+  }
+
+  const { data: exam_q } = await supabase.from('exam_questions').select('*')
+  console.log("total exam_q:", exam_q?.length)
+  if (exam_q) {
+    const bee = exam_q.find(q => JSON.stringify(q).includes('bee'))
+    if (bee) {
+      console.log("Found bee:", JSON.stringify(bee, null, 2))
+    }
   }
 }
-check();
+
+check()
