@@ -337,6 +337,7 @@ export default function App() {
             module_id,
             correct_count,
             total_count,
+            time_spent_sec,
             created_at,
             modules (
               title,
@@ -359,6 +360,7 @@ export default function App() {
               subject: h.modules?.subject || 'Unknown',
               correctCount: h.correct_count,
               totalCount: h.total_count,
+              timeSpentSec: h.time_spent_sec,
               dateStr: new Date(h.created_at).toLocaleDateString('en-GB'),
               questions: [],
               passage: undefined
@@ -470,7 +472,7 @@ export default function App() {
     }
   };
 
-  const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | string>) => {
+  const handleFinishTest = async (answers: Record<number, 'A' | 'B' | 'C' | 'D' | string>, timeSpentSec?: number) => {
     if (!activeModuleId || !currentUser) return;
 
     const module = modules.find((m: any) => m.id === activeModuleId);
@@ -512,7 +514,8 @@ export default function App() {
             user_id: currentUser.id,
             module_id: activeModuleId,
             correct_count: correctCount,
-            total_count: totalCount
+            total_count: totalCount,
+            time_spent_sec: timeSpentSec
           })
           .select()
           .single();
@@ -554,6 +557,7 @@ export default function App() {
           subject: module.subject,
           correctCount,
           totalCount,
+          timeSpentSec,
           dateStr: `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`,
           questions: activeQuestions.map((q) => {
             const userAnswer = answers[q.id];

@@ -45,6 +45,13 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
   const isVerbal = attempt.subject === 'Reading & Writing';
   const scorePercent = Math.round((attempt.correctCount / attempt.totalCount) * 100);
 
+  const formatTime = (seconds?: number) => {
+    if (seconds == null) return '--:--';
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
   return (
     <div className="space-y-6 md:space-y-8 animate-fade-in">
 
@@ -119,7 +126,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
 
         {/* Stat Cards */}
         {[
-          { icon: <Clock className="w-4 h-4" />, label: 'Hoàn thành', value: attempt.dateStr, color: 'text-primary' },
+          { icon: <Clock className="w-4 h-4" />, label: 'Thời gian làm', value: formatTime(attempt.timeSpentSec), color: 'text-primary' },
           { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Câu đúng', value: attempt.correctCount, color: 'text-accent' },
           { icon: <XCircle className="w-4 h-4" />, label: 'Câu sai', value: attempt.totalCount - attempt.correctCount, color: 'text-accent-warm' },
           { icon: <Target className="w-4 h-4" />, label: 'Tổng câu', value: attempt.totalCount, color: isDark ? 'text-text-secondary' : 'text-text-dark-secondary' },

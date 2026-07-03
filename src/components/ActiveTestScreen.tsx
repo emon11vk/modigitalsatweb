@@ -106,7 +106,7 @@ interface ActiveTestScreenProps {
   durationMinutes?: number;
   questions: Question[];
   passage?: Passage;
-  onFinishTest: (answers: Record<number, string>) => void;
+  onFinishTest: (answers: Record<number, string>, timeSpentSec: number) => void;
   onExit: () => void;
 }
 
@@ -199,7 +199,7 @@ export default function ActiveTestScreen({
   useEffect(() => {
     if (timeLeftSec === 0 && !hasSubmitted) {
       setHasSubmitted(true);
-      onFinishTest(latestAnswers.current);
+      onFinishTest(latestAnswers.current, durationMinutes * 60);
     }
   }, [timeLeftSec, hasSubmitted, onFinishTest]);
 
@@ -247,7 +247,7 @@ export default function ActiveTestScreen({
   const navigatePrev = () => { if (currentIdx > 0) setCurrentIdx(currentIdx - 1); };
   const navigateNext = () => { if (currentIdx < questions.length - 1) setCurrentIdx(currentIdx + 1); };
   const handleManualSubmit = () => { setShowSubmitModal(true); };
-  const confirmSubmit = () => { if (!hasSubmitted) { setHasSubmitted(true); onFinishTest(userAnswers); setShowSubmitModal(false); } };
+  const confirmSubmit = () => { if (!hasSubmitted) { setHasSubmitted(true); const timeSpentSec = (durationMinutes * 60) - timeLeftSec; onFinishTest(userAnswers, timeSpentSec); setShowSubmitModal(false); } };
   const handleExitRequest = () => { setShowExitModal(true); };
   const confirmExit = () => { setShowExitModal(false); onExit(); };
 

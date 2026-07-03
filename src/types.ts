@@ -112,8 +112,7 @@ export interface TestAttemptHistory {
   correctCount: number;
   totalCount: number;
   dateStr: string;
-  // 3. Thêm mảng questions để ReviewScreen có dữ liệu render
-  questions?: QuestionResult[];
-  // 4. Thêm passage để có thể xem lại trong ReviewScreen
-  passage?: Passage;
+  timeSpentSec?: number; // 3. Thời gian hoàn thành bài thi (tính bằng giây)
+  questions?: QuestionResult[]; // 4. Thêm mảng questions để ReviewScreen có dữ liệu render
+  passage?: Passage; // 5. Thêm passage để có thể xem lại trong ReviewScreen
 }

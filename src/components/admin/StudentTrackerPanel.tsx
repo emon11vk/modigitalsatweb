@@ -27,6 +27,7 @@ interface StudentHistory {
   subject: string;
   correct_count: number;
   total_count: number;
+  time_spent_sec?: number;
 }
 
 const ITEMS_PER_PAGE = 20;
@@ -92,6 +93,7 @@ export default function StudentTrackerPanel({ theme }: StudentTrackerPanelProps)
       subject: attempt.subject as any,
       correctCount: attempt.correct_count,
       totalCount: attempt.total_count,
+      timeSpentSec: attempt.time_spent_sec,
       dateStr: new Date(attempt.created_at).toLocaleString('vi-VN'),
     };
 
