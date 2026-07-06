@@ -931,7 +931,7 @@ export default function App() {
 
   // ─── Main render ─────────────────────────────────────────────────────────────
   return (
-    <div className={`min-h-screen font-sans flex flex-col transition-colors duration-300 ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
+    <div className={`min-h-screen font-sans flex flex-col transition-colors duration-300 print:block print:min-h-0 print:h-auto ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
       }`}>
 
       {/* ── Header ── */}
@@ -1071,7 +1071,7 @@ export default function App() {
       </header>
 
       {/* ── Main Content ── */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 print:p-0 print:max-w-none">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 print:block print:p-0 print:max-w-none print:h-auto">
         {currentScreen === 'dashboard' && (
           <DashboardScreen
             theme={theme}
