@@ -935,7 +935,7 @@ export default function App() {
       }`}>
 
       {/* ── Header ── */}
-      <header className={`px-4 py-3 md:px-8 border-b sticky top-0 z-40 transition-all ${isDark
+      <header className={`px-4 py-3 md:px-8 border-b sticky top-0 z-40 transition-all print:hidden ${isDark
           ? 'bg-bg-dark/80 backdrop-blur-xl border-white/5'
           : 'bg-white/80 backdrop-blur-xl border-slate-200/50'
         }`}>
@@ -1071,7 +1071,7 @@ export default function App() {
       </header>
 
       {/* ── Main Content ── */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 print:p-0 print:max-w-none">
         {currentScreen === 'dashboard' && (
           <DashboardScreen
             theme={theme}
@@ -1146,7 +1146,7 @@ export default function App() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className={`border-t py-6 text-center select-none ${isDark ? 'border-white/5 text-text-muted' : 'border-slate-100 text-slate-400'
+      <footer className={`border-t py-6 text-center select-none print:hidden ${isDark ? 'border-white/5 text-text-muted' : 'border-slate-100 text-slate-400'
         }`}>
         <div className="max-w-7xl mx-auto px-4 text-xs">
           <p>© 2026 Mơ Digital SAT. All Rights Reserved.</p>

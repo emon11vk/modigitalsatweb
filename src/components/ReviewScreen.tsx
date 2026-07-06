@@ -58,7 +58,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
     <div className="space-y-6 md:space-y-8 animate-fade-in">
 
       {/* ── Top Actions ── */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between print:hidden">
         <button
           onClick={onBack}
           className={`inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border transition-all cursor-pointer ${
@@ -364,7 +364,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
       </div>
 
       {/* ── Footer Notice ── */}
-      <div className={`p-5 rounded-2xl border flex gap-3 ${
+      <div className={`p-5 rounded-2xl border flex gap-3 print:hidden ${
         isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100'
       }`}>
         <AlertCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />

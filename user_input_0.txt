@@ -1,0 +1,23 @@
+<USER_REQUEST>
+/goal hãy biến các file này thành từng file json theo module
+từ web và data trên supabase hãy biến nó thành các file json match với web của tôi
+(hãy phân biệt rõ cái nào nằm ở passage cái nào nằm ở question text nhé)
+yêu cầu: Nội dung file json phải giống 100% với file pdf đã được cấp , hãy kiểm tra đi lại nhiều lần cho đến khi nào giống hết 100% thì thôi - ( ở trong đấy chưa có đáp án nên hãy cung cấp đáp án luôn)
+/goal nhắc lại : phải giống 100% mới thôi  
+- ở trong project có thể có những thứ bạn cần , có thể tái sử dụng 
+
+- Không cần hỏi để làm - cứ làm luôn đi - không cần ask gì cả
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-07-03T21:32:25+07:00.
+
+The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:
+
+/goal is a [Slash Command]:
+The user has marked this task with /goal, indicating that this task is intended to run for a long time without user input, e.g. overnight. You should be extra thorough and only stop when you are confident the goal has been completely fulfilled. The system will force you to continue execution, prompting you to audit your work until completion.
+/goal is a [Slash Command]:
+The user has marked this task with /goal, indicating that this task is intended to run for a long time without user input, e.g. overnight. You should be extra thorough and only stop when you are confident the goal has been completely fulfilled. The system will force you to continue execution, prompting you to audit your work until completion.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.1 Pro (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
