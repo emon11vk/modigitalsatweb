@@ -1,10 +1,11 @@
 import { TestAttemptHistory } from '../types';
 import {
   ArrowLeft, CheckCircle2, XCircle, Calendar, BookOpen,
-  Trophy, BarChart2, AlertCircle, Target, Clock,
+  Trophy, BarChart2, AlertCircle, Target, Clock, Download,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import MathRenderer from './MathRenderer';
+import { useAdminRole } from '../hooks/useAdminRole';
 
 interface ReviewScreenProps {
   theme: 'light' | 'dark';
@@ -41,6 +42,7 @@ function ProgressRing({ percent, size = 80, stroke = 6, isDark = true }: { perce
 }
 
 export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenProps) {
+  const { isAdmin } = useAdminRole();
   const isDark = theme === 'dark';
   const isVerbal = attempt.subject === 'Reading & Writing';
   const scorePercent = Math.round((attempt.correctCount / attempt.totalCount) * 100);
@@ -55,18 +57,34 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
   return (
     <div className="space-y-6 md:space-y-8 animate-fade-in">
 
-      {/* ── Back Button ── */}
-      <button
-        onClick={onBack}
-        className={`inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border transition-all cursor-pointer ${
-          isDark
-            ? 'border-white/10 text-text-secondary hover:text-white hover:border-primary/30'
-            : 'border-slate-200 text-text-dark-secondary hover:text-text-dark hover:border-primary/30'
-        }`}
-      >
-        <ArrowLeft className="w-3.5 h-3.5" />
-        Quay lại
-      </button>
+      {/* ── Top Actions ── */}
+      <div className="flex items-center justify-between">
+        <button
+          onClick={onBack}
+          className={`inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border transition-all cursor-pointer ${
+            isDark
+              ? 'border-white/10 text-text-secondary hover:text-white hover:border-primary/30'
+              : 'border-slate-200 text-text-dark-secondary hover:text-text-dark hover:border-primary/30'
+          }`}
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          Quay lại
+        </button>
+
+        {isAdmin && (
+          <button
+            onClick={() => window.print()}
+            className={`inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border transition-all cursor-pointer ${
+              isDark
+                ? 'border-primary/30 text-primary hover:bg-primary/10 bg-primary/5'
+                : 'border-primary/30 text-primary hover:bg-primary/10 bg-primary/5'
+            }`}
+          >
+            <Download className="w-3.5 h-3.5" />
+            Tải PDF
+          </button>
+        )}
+      </div>
 
       {/* ── Header Banner ── */}
       <motion.div
