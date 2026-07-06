@@ -364,7 +364,7 @@ export default function DashboardScreen({
                 <Clock className="w-3.5 h-3.5" />
                 {m.durationMinutes} phút
               </span>
-              {m.deadline && (() => {
+              {!isAttempted && m.deadline && (() => {
                 const { diffDays, text } = getDeadlineInfo(m.deadline);
                 return (
                   <span className={`flex items-center gap-1 ${
@@ -393,7 +393,7 @@ export default function DashboardScreen({
               <div className={`text-right`}>
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-accent">
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  Đã làm
+                  Đã hoàn thành
                 </div>
                 <div className={`text-lg font-black font-mono mt-0.5 ${isDark ? 'text-white' : 'text-text-dark'}`}>
                   {m.score} <span className="text-xs font-normal text-text-muted">/ 800</span>

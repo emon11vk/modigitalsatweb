@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Theme, ExamFolder, Module } from '../types';
-import { ChevronDown, ChevronRight, Folder, FolderOpen, Play, Search, GraduationCap } from 'lucide-react';
+import { ChevronDown, ChevronRight, Folder, FolderOpen, Play, Search, GraduationCap, CheckCircle2 } from 'lucide-react';
 
 interface PracticeScreenProps {
   theme: Theme;
@@ -244,6 +244,7 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
                     moduleLocked = true;
                   }
                 }
+                const isAttempted = module.status === 'Attempted';
                 
                 return (
                 <div 
@@ -277,6 +278,25 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
                       isDark ? 'bg-white/5 border-white/10 text-text-muted' : 'bg-slate-50 border-slate-200 text-slate-400'
                     }`}>
                       LOCKED
+                    </div>
+                  ) : isAttempted ? (
+                    <div className={`w-full flex items-center justify-between gap-2 p-2 rounded-xl border-2 ${
+                      isDark ? 'border-white/5 bg-white/5' : 'border-slate-100 bg-slate-50'
+                    }`}>
+                       <div className="flex flex-col pl-2">
+                          <span className="text-[10px] font-bold text-accent uppercase flex items-center gap-1"><CheckCircle2 className="w-3 h-3"/> Đã hoàn thành</span>
+                          <span className="text-sm font-black font-mono mt-0.5">{module.score} <span className="text-[10px] font-normal text-slate-400">/ 800</span></span>
+                       </div>
+                       <button
+                         onClick={() => onStartTest(module.id)}
+                         className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                           isDark
+                             ? 'bg-primary/20 text-primary hover:bg-primary/30'
+                             : 'bg-primary/10 text-primary hover:bg-primary/20 shadow-sm'
+                         }`}
+                       >
+                         Làm lại <Play className="w-3 h-3" />
+                       </button>
                     </div>
                   ) : (
                     <button

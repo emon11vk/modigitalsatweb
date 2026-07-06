@@ -368,6 +368,17 @@ export default function App() {
           });
 
           setAttemptHistory(mapped);
+
+          // Cập nhật trạng thái cho các module đã làm
+          setModules(prev => prev.map(m => {
+            const attempt = mapped.find(h => h.moduleId === m.id);
+            if (attempt) {
+              const multiplier = 600 / attempt.totalCount;
+              const earnedScore = Math.round(200 + attempt.correctCount * multiplier);
+              return { ...m, status: 'Attempted' as const, score: earnedScore };
+            }
+            return m;
+          }));
         }
 
         // ===== Fetch Leaderboard =====
