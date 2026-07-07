@@ -272,6 +272,18 @@ export default function ActiveTestScreen({
     return () => window.removeEventListener('keydown', handleKeyDown);
   });
 
+  // Auto-scroll pagination to active question
+  useEffect(() => {
+    const activeBtn = document.getElementById(`nav-btn-${currentIdx}`);
+    if (activeBtn) {
+      activeBtn.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [currentIdx]);
+
   const toolbarStyle = pending ? {
     top: Math.max(pending.y - 50, 8),
     left: Math.min(pending.x + 8, (typeof window !== 'undefined' ? window.innerWidth : 800) - 210),
@@ -610,6 +622,7 @@ export default function ActiveTestScreen({
             return (
               <button
                 key={q.id}
+                id={`nav-btn-${idx}`}
                 onClick={() => setCurrentIdx(idx)}
                 className={`relative w-8 h-8 rounded flex items-center justify-center text-xs font-bold transition-all cursor-pointer shrink-0 ${
                   isCurrent
