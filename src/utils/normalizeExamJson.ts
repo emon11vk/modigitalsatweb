@@ -3,6 +3,7 @@ export interface NormalizedExam {
   id?: string;
   durationMinutes?: number;
   subject?: string;
+  folder_id?: string | null;
 }
 
 export interface NormalizedChoice {

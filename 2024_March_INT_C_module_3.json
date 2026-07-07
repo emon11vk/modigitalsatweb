@@ -1,0 +1,339 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "What is the maximum number of trees planted on one of these 4\nplots of land?",
+    "options": {
+      "A": "80",
+      "B": "75",
+      "C": "65",
+      "D": "59"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "At the time of posting a video, a social media channel had\nsubscribers. Each day for five days after the video was posted, the\nnumber of subscribers doubled from the number the previous\nday. Which equation gives the total number of subscribers, , to\nthe channel  days after the video was posted?\n1\n2\n67\nn\nd",
+    "options": {
+      "A": "n = (67)d",
+      "B": "n = 67(2)d",
+      "C": "n = (67) +\n2\nd",
+      "D": "n = 67\n​\n(2\n1)\nd"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A certain truck can tow a trailer if the combined weight of the\ntrailer and the packages it contains is no more than \npounds.\nWhat is the maximum number of packages this truck can tow in a\ntrailer with a weight of \npounds if each package weighs \npounds?\n5,600\n600\n130",
+    "options": {
+      "A": "38",
+      "B": "39",
+      "C": "43",
+      "D": "44"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which table gives three values of  and their corresponding\nvalues of \n for function \n?\n4\nx\nq(x)\nq(x) = 21(3 )\nx\nx\nq(x)\nx\nq(x)\nx\nq(x)\nx\nq(x)\n​3\n1",
+    "options": {
+      "A": "-1\n7\n0\n21\n1\n63",
+      "B": "-1\n18\n0\n21\n1\n24",
+      "C": "-1\n63\n0\n21\n1\n7",
+      "D": "-1\n0\n1\n1\n3\n3"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For the linear function , the graph of \n in the \n-plane\nhas a slope of  and passes through the point \n. Which\nequation defines ?\n5\nf\ny = f(x)\nxy\n​3\n2\n(15, 14)\nf",
+    "options": {
+      "A": "f(x) =\n​x +\n3\n2\n​\n15\n14",
+      "B": "f(x) =\n​x +\n3\n2\n​\n3\n17",
+      "C": "f(x) =\n​x +\n3\n2\n14",
+      "D": "f(x) =\n​x +\n3\n2\n4"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Function  is defined by the given equation. The function  is\ndefined by \n. What is the -coordinate of\nthe -intercept of the graph of \n in the \n-plane?\n6\nf(x) = 7x −5\nf\ng\ng(x) = f(x) −(5x −2)\nx\nx\ny = g(x)\nxy",
+    "options": {
+      "A": "7/12",
+      "B": "5/7",
+      "C": "3/2",
+      "D": "7/2"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The given equation \n relates the positive numbers ,\n, and . Which equation correctly expresses  in terms of  and \n?\n7\nx = 4a(b + 3)\na\nb\nx\na\nb\nx",
+    "options": {
+      "A": "a =\n​ −\n4\nx\n(b + 3)",
+      "B": "a =\n​\n4(b + 3)\nx",
+      "C": "a = 4x(b + 3)",
+      "D": "a =\n​\nx\n4(b + 3)"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "An object is kicked from a platform. The equation \n represents this situation, where  is the height of the\nobject above the ground, in meters,  seconds after it is kicked.\nWhich number represents the height, in meters, from which the\nobject was kicked?\n8\nh = −4.9t +\n2\n13t + 15\nh\nt",
+    "options": {
+      "A": "0",
+      "B": "4.9",
+      "C": "13",
+      "D": "15"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The given equations are graphed in the \n-plane. How many\nsolutions \n does the system of three equations have?\n9\nx + 6y = −14\n2x + 12y = 39\n5x + 30y = 0\nxy\n(x, y)",
+    "options": {
+      "A": "Zero",
+      "B": "Exactly one",
+      "C": "Exactly two",
+      "D": "Infinitely many"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which point \n is a solution to the given system of inequalities\nin the \n-plane?\n10\ny ≤x + 2\ny ≥−5x −3\n(x, y)\nxy",
+    "options": {
+      "A": "(0, −6)",
+      "B": "(0, 6)",
+      "C": "(−6, 0)",
+      "D": "(6, 0)"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The length of the diagonal of a square is \n units. What is the\narea, in square units, of the square?\n11\n​\n2\n124",
+    "options": {
+      "A": "62",
+      "B": "248",
+      "C": "3,844",
+      "D": "7,688"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "If \n, what is the value of \n?\n12\n​2\n4 +\n​ =\n2\n3(7 −x)\n​\n3\n5(7 −x)\n7 −x",
+    "options": {},
+    "correct_answer": [
+      "-60"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The floor of a business office has an area of \n square meters.\nAn architect creates a scale model of the floor, where the length of\neach side is \n times the length of the actual side. What is the\narea, in square meters, of the scale model?\n13\n1, 575\n1/15",
+    "options": {
+      "A": "7",
+      "B": "15",
+      "C": "105",
+      "D": "175"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "\\How many solutions are there to\nthe given system of equations?\n14\ny = 2x −\n2\n16x + 37 y + 4 = 0",
+    "options": {
+      "A": "There is exactly 1 solution.",
+      "B": "There are exactly 2 solutions.",
+      "C": "There are exactly 3 solutions.",
+      "D": "There are no solutions."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which expression is equivalent to \n?\n15\n​ +\nx −10\ny + 13\n​\nx y −10xy\n2\ny(x −10)",
+    "options": {
+      "A": "​\nx −10x\n2\nxy + 13x −10",
+      "B": "​\nx −10x\n2\nxy + 14x −10",
+      "C": "​\nx −10\nxy + 14x + 10",
+      "D": "y + 14"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A polygon has exactly \n sides. If the measure of each of the \ninterior angles of this polygon is \n, what is the value of ?\n16\n95\n95\n(180p)∘\np",
+    "options": {},
+    "correct_answer": [
+      "93/95"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The speed of particle A is \n of the speed of particle C and\nthe speed of particle C is \n of the speed of particle B. Which\nexpression represents the value of \n in terms of ?\n17\n6,600%\n0.004%\na + b\nc",
+    "options": {
+      "A": "25,066c",
+      "B": "6,850c",
+      "C": "6,604c",
+      "D": "3,160c"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function  is defined by \n. For what value of  is\n?\n18\ng\ng(x) = 8x\nx\ng(x) = 242",
+    "options": {},
+    "correct_answer": [
+      "30.25"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": ". The given expression can be\nrewritten as \n. What is the value of \n?\n19\n−16(3x −4) +\n2\n4(3x −2)2\nax +\n2\nbx + c\na + b + c",
+    "options": {
+      "A": "-48",
+      "B": "-24",
+      "C": "-12",
+      "D": "-3"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Circles  and \n are graphed in the \n-plane. Circle  is\nrepresented by the equation \n and\nintersects the -axis at the point \n. Circle \n has its center at\n and has a radius of the same length as circle . Which\nequation represents circle \n?\n20\nA\nB\nxy\nA\n(x −9) +\n2\n(y + 9) =\n2\n81\nx\n(r, s)\nB\n(r, s)\nA\nB",
+    "options": {
+      "A": "x +\n2\n(y −9) =\n2\n81",
+      "B": "x +\n2\n(y + 9) =\n2\n81",
+      "C": "(x −9) +\n2\ny =\n2\n81",
+      "D": "(x + 9) +\n2\ny =\n2\n81"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The graph of \n is shown. Which equation defines\nfunction ?\n21\ny = f(x) + 4\nf\nf(x) = −6 +\nx\n1\nf(x) = −6 +\nx\n5\nf(x) = −6 +\nx\n8\nf(x) = −6 +\nx\n9",
+    "options": {
+      "A": "f(x) = −6 +\nx\n1",
+      "B": "f(x) = −6 +\nx\n5",
+      "C": "f(x) = −6 +\nx\n8",
+      "D": "f(x) = −6 +\nx\n9"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Note: Figure not drawn to scale.\nIn the figure, triangle \n is congruent to triangle \n, where\n corresponds to . The measure of angle \n is \n. What is\nthe measure, in degrees, of angle \n?\n22\nAEG\nCFD\nE\nF\nABF\n46∘\nDCF",
+    "options": {
+      "A": "23",
+      "B": "44",
+      "C": "46",
+      "D": "67"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

@@ -1,0 +1,683 @@
+No Test Material On This Page
+
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+32
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+33
+CONTINUE
+
+A choir of 
+ singers has 
+ members who sing bass. If one singer
+from the choir is selected at random, what is the probability of
+selecting a singer who sings bass?
+A)
+B)
+C)
+D)
+A store owner recorded the number of units of a certain product
+that were sold per day for 
+ days. What is the minimum number
+of units this product sold per day for these 
+ days?
+1
+48
+12
+​
+48
+1
+​
+48
+12
+​
+60
+12
+​
+48
+36
+2
+28
+28
+PDF version from learn.ronansat.com. Happy practicing!
+34
+CONTINUE
+
+The function  estimates the temperature, in degrees Fahrenheit (
+), in a certain city one day in January, where  is the number of
+hours after 
+ a.m. and 
+. Which statement is the best
+interpretation of 
+ in this context?
+A)
+ hours after 
+ a.m., the function estimates that the
+temperature is 
+.
+B)
+ hours before 
+ a.m., the function estimates that the
+temperature decreased 
+.
+C)
+ hours after 
+ a.m., the function estimates that the
+temperature decreased 
+.
+D)
+ hours before 
+ a.m., the function estimates that the
+temperature is 
+.
+The graph of the function  in the 
+-plane, where 
+, has
+-intercepts of 
+, 
+, and 
+. Which of the following
+must be true?
+A)
+B)
+C)
+D)
+3
+T
+F
+∘
+x
+10
+1 ≤x ≤7
+T(5) = 21
+5
+10
+21 F
+∘
+5
+10
+21 F
+∘
+5
+10
+21 F
+∘
+5
+10
+21 F
+∘
+4
+f
+xy
+y = f(x)
+x
+(−5, 0) (3, 0)
+(6, 0)
+f(0) = −5
+f(0) = 3
+f(5) = 0
+f(6) = 0
+PDF version from learn.ronansat.com. Happy practicing!
+35
+CONTINUE
+
+If 
+ and 
+, what is the value of 
+?
+A)
+B)
+C)
+D)
+A botanist wants to plant certain types of oak trees and pine trees
+in a 
+-foot-long row. Each of these oak trees requires 
+ feet of
+space to grow, and each of these pine trees requires 
+ feet of
+space to grow. The equation 
+ models the
+possible number of oak trees, , and pine trees, , that the
+botanist can plant. Which graph represents this relationship?
+A)
+Graph with intercepts 
+ and 
+B)
+Graph with intercepts 
+ and 
+C)
+Graph of a line with a positive slope
+D)
+Graph with intercepts 
+ and 
+5
+f(x) = x + 2
+g(x) = 2x
+3f(−5) −
+g(−5)
+−19
+−3
+1
+7
+6
+600
+40
+30
+40x + 30y = 600
+x
+y
+(15, 0)
+(0, 20)
+(20, 0)
+(0, 15)
+(10, 0)
+(0, 10)
+PDF version from learn.ronansat.com. Happy practicing!
+36
+CONTINUE
+
+The number of bacteria in a liquid medium doubles every day.
+There are 
+ bacteria in the liquid medium at the start of an
+observation. Which of the following represents the number of
+bacteria, , in the liquid medium  days after the start of the
+observation?
+A)
+B)
+C)
+D)
+For a certain isotope, at the end of every 
+-year period, the mass
+of a sample of the isotope has decayed to half its mass at the
+beginning of the 
+-year period. The function \displaystyle
+s(t)=216(0.5)^{rac{t}{29}} gives the approximate mass of this
+isotope, in grams, that remains  years after a 
+-gram sample
+starts to decay. Which statement is the best interpretation of 
+ in this context?
+A)
+The mass of the sample is approximately 
+ grams  years
+after the sample starts to decay.
+B)
+The mass of the sample is approximately 
+ grams  
+-year
+periods after the sample starts to decay.
+C)
+The mass of the sample is approximately  grams 
+ 
+-year
+periods after the sample starts to decay.
+D)
+The mass of the sample is approximately  grams 
+ years
+after the sample starts to decay.
+7
+72, 000
+y
+t
+y =
+​(72,000)
+2
+1
+t
+y = 2(72,000)t
+y = 72,000
+​
+(2
+1)
+t
+y = 72,000(2)t
+8
+29
+29
+t
+216
+s(3 ⋅
+29) = 27
+27
+3
+27
+3 29
+3
+27 29
+3
+27
+PDF version from learn.ronansat.com. Happy practicing!
+37
+CONTINUE
+
+In the figure shown, line  is parallel to line , and both lines are
+intersected by line . If 
+, 
+, and 
+where  is a constant, what is the value of ?
+The functions  and  are given: 
+, 
+. In function ,  is a constant. If 
+, what is the value of ?
+9
+r
+s
+t
+x = 2w + 24 y = 5w + 29
+7w = a
+a
+a
+10
+f
+g
+f(x) = x + 4 g(x) = 3x −
+2
+rx + 48
+g r
+f(x) ⋅g(x) = 3x +
+3
+192
+r
+PDF version from learn.ronansat.com. Happy practicing!
+38
+CONTINUE
+
+Which quadratic equation has exactly one distinct real solution?
+A)
+B)
+C)
+D)
+The positive number  is 
+ of the number , and  is 
+of the number . What is the value of 
+ in terms of ?
+A)
+B)
+C)
+D)
+11
+x −
+2
+22 = 0
+x −
+2
+11x = 0
+x −
+2
+11x + 121 = 0
+x −
+2
+22x + 121 = 0
+12
+a
+2, 800%
+c
+c
+20%
+b
+a −b
+c
+23c
+140c
+560c
+2,240c
+PDF version from learn.ronansat.com. Happy practicing!
+39
+CONTINUE
+
+A circle is inscribed in a square such that the circumference of the
+circle touches the midpoint of each side of the square. The length
+of the diagonal of the square is 
+ units. What is the area, in
+square units, of the circle?
+A)
+B)
+C)
+D)
+Lines  and  are graphed in the 
+-plane. The graph of line  has
+a slope of  and an -intercept at 
+. Line  is the result of
+translating the graph of line  down  units. What is the -
+coordinate of the -intercept of the graph of line ?
+13
+176
+3,872π
+7,744π
+15,488π
+30,976π
+14
+h
+k
+xy
+h
+​3
+5
+x
+(17, 0)
+k
+h
+4
+y
+y
+k
+PDF version from learn.ronansat.com. Happy practicing!
+40
+CONTINUE
+
+For each of two rectangles, the ratio of the rectangle's length to its
+width is 
+ to . The width of rectangle 
+ is 
+ times the width
+of rectangle 
+. How does the length of rectangle 
+ compare to
+the length of rectangle 
+?
+A)
+The length of rectangle 
+ is 
+ times the length of rectangle
+.
+B)
+The length of rectangle 
+ is  times the length of rectangle 
+.
+C)
+The length of rectangle 
+ is 
+ times the length of
+rectangle 
+.
+D)
+The length of rectangle 
+ is 
+ times the length of rectangle
+.
+What is the solution to the given equation 
+?
+A)
+B)
+C)
+D)
+15
+10
+5
+X
+16.5
+Y
+X
+Y
+X
+0.5
+Y
+X
+2
+Y
+X
+16.5
+Y
+X
+33
+Y
+16
+k + 21 = 63
+3
+42
+84
+1,323
+PDF version from learn.ronansat.com. Happy practicing!
+41
+CONTINUE
+
+Point 
+ lies on a unit circle in the 
+-plane and has coordinates
+. Point  is the center of the circle and has coordinates
+. Point 
+ also lies on the unit circle, and the measure of
+angle 
+ is 
+ radians. If the coordinates of point 
+ are
+, where  and  are constants, what is the value of ?
+A)
+B)
+C)
+D)
+Rectangle 
+ is similar to rectangle 
+. The area of
+rectangle 
+ is 
+ square inches, and the area of rectangle
+ is 
+ square inches. The length of the longest side of
+rectangle 
+ is 
+ inches. What is the length, in inches, of
+the longest side of rectangle 
+?
+A)
+B)
+C)
+D)
+17
+N
+xy
+(1, 0)
+O
+(0, 0)
+M
+NOM
+​
+3
+272π
+M
+(a, b)
+a
+b
+a
+​2
+1
+​
+2
+​3
+−
+​2
+1
+−
+​
+2
+​3
+18
+ABCD
+EFGH
+ABCD
+648
+EFGH
+72
+ABCD
+36
+EFGH
+4
+9
+12
+36
+PDF version from learn.ronansat.com. Happy practicing!
+42
+CONTINUE
+
+For each real number , which of the following points lies on the
+graph of each equation in the 
+-plane for the given system?
+, 
+.
+A)
+B)
+C)
+D)
+In the given expression 
+,  is a positive integer. If
+ is a factor of the expression, where  and  are positive
+integers, what is the greatest possible value of ?
+19
+r
+xy
+2x + 5y = 3 8x + 20y = 12
+r,  −
+​ +
+​
+(
+2
+5r
+2
+3)
+r, 
+​ +
+​
+(
+5
+2r
+5
+3)
+​ + 3,  −
+​ + 12
+(4
+r
+4
+r
+)
+−
+​ +
+​,  r
+(
+2
+5r
+2
+3
+)
+20
+34z
++
+14
+bz +
+7
+70 b
+qz +
+7
+r
+q
+r
+b
+PDF version from learn.ronansat.com. Happy practicing!
+43
+CONTINUE
+
+If 
+, the value of 
+ is between which of the
+following pairs of values?
+A)
+ and 
+B)
+ and 
+C)
+ and 
+D)
+ and 
+A computer repair specialist charges $160 for the first two hours
+of repair plus $40 for each additional hour. The total cost for 
+hours of repair is given by a function , where 
+. Which
+function  gives the total cost?
+A computer repair specialist charges $160 for the first two hours
+of repair plus $40 for each additional hour. The total cost for 
+hours of repair is given by a function  where 
+. Which
+function  gives the total cost?
+A)
+B)
+C)
+D)
+21
+​ =
+5
+x −4
+​
+7
+x −4
+x −4
+−7
+−5
+−3
+3
+3.5
+4.5
+4.75
+7.25
+22
+x
+f
+x ≥2
+f
+x
+f
+x ≥2
+f
+f(x) = 40x + 80
+f(x) = 40x + 160
+f(x) = 60x
+f(x) = 60x + 160
+PDF version from learn.ronansat.com. Happy practicing!
+44
+CONTINUE
+
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+45
+

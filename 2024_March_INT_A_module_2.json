@@ -1,0 +1,280 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "Line q in the xy-plane has a slope of 1/7 and passes through the point (0, 60). Which equation defines line q?",
+    "options": {
+      "A": "y = 1/7x - 60",
+      "B": "y = 1/7x - 53",
+      "C": "y = 1/7x + 60",
+      "D": "y = 1/7x + 53"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function g is defined by g(x) = -7x + 80. What is the value of g(x) when x = -2?",
+    "options": {
+      "A": "66",
+      "B": "71",
+      "C": "78",
+      "D": "94"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Each face of a fair 12-sided die is labeled with a number from 1 through 12, with a different number appearing on each face. If the die is rolled one time, what is the probability of rolling a 2?",
+    "options": {
+      "A": "1/12",
+      "B": "2/12",
+      "C": "3/12",
+      "D": "10/12"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the given equation, k is a constant. The equation 6x + 28 = 6x + k has infinitely many solutions. What is the value of k?",
+    "options": {},
+    "correct_answer": ["28"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Jasmin grows bean pods in her garden. This year, she harvested 490 bean pods and saved 10% of them to plant next year. How many of the harvested bean pods did Jasmin save to plant next year?",
+    "options": {
+      "A": "39",
+      "B": "49",
+      "C": "57",
+      "D": "59"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A triathlon is a multisport race consisting of three different consecutive events. A triathlon participant plans to complete the cycling event with an average speed of 19,008 yards per hour. What is this average speed, in miles per hour? (1 mile = 1,760 yards)",
+    "options": {},
+    "correct_answer": ["10.8"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Dan bought some apples and oranges. The apples cost $0.79 per pound, and the oranges cost $0.99 per pound. If Dan spent $24.93 in total and bought twice as many pounds of oranges as pounds of apples, how many pounds of oranges did Dan buy?",
+    "options": {
+      "A": "9",
+      "B": "9.5",
+      "C": "18",
+      "D": "22.16"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Triangle R has an area of 80 square centimeters (cm^2). Square S has side lengths of 4 cm. What is the total area of triangle R and square S, in cm^2?",
+    "options": {
+      "A": "42",
+      "B": "44",
+      "C": "84",
+      "D": "96"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The solution to the given system of equations is (x, y). What is the value of x? y = 3x + 4, y = 2x + 9",
+    "options": {
+      "A": "4",
+      "B": "5",
+      "C": "9",
+      "D": "13"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The scatterplot shows the relationship between two variables, x and y. Which of the following equations is the most appropriate linear model for the data shown?",
+    "options": {
+      "A": "y = -2x",
+      "B": "y = -x",
+      "C": "y = x",
+      "D": "y = 2x"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A rectangle has a length that is 24 times its width. The function y = (24w)(w) represents this situation, where y is the area, in square feet, of the rectangle and w > 0. Which of the following is the best interpretation of 24w in this context?",
+    "options": {
+      "A": "The length of the rectangle, in feet",
+      "B": "The area of the rectangle, in square feet",
+      "C": "The difference between the length and the width of the rectangle, in feet",
+      "D": "The width of the rectangle, in feet"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f(x) = 1,300(0.5)^{\\frac{x}{14}} models the intensity of a beam, f(x), in number of photons, x millimeters below the surface of a certain material. According to the model, what is the number of photons in the beam when it is at the surface of the material?",
+    "options": {
+      "A": "2",
+      "B": "13",
+      "C": "14",
+      "D": "1,300"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The gas mileage of a certain car is 22 miles per gallon when driven on the highway. If the car begins with 8 gallons of gas in the tank, which function predicts the amount of gas remaining in the tank, f(d), after the car is driven d miles on the highway?",
+    "options": {
+      "A": "f(d) = d/22 - 8",
+      "B": "f(d) = d - 8",
+      "C": "f(d) = 8 - d/22",
+      "D": "f(d) = 8 - d"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In triangle DEF, the measure of angle D is 46° and the measure of angle E is 104°. In triangle RST, the measure of angle R is 46° and the measure of angle S is 104°. Which of the following additional pieces of information is needed to determine whether triangle DEF is similar to triangle RST?",
+    "options": {
+      "A": "The measure of angle F",
+      "B": "The measure of angle T",
+      "C": "The measure of angle F and the measure of angle T",
+      "D": "No additional information is needed."
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "What is the slope of the graph of y = 1/5(19x + 19) + 7x in the xy-plane?",
+    "options": {},
+    "correct_answer": ["10.8"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "One of the two equations in a system of linear equations is given: y = -4x - 2. The system has no solution. Which of the following could be the second equation in this system?",
+    "options": {
+      "A": "y = 1/4 x - 2",
+      "B": "y = -4x - 8",
+      "C": "y = 4x + 8",
+      "D": "y = -1/4 x + 2"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A linear model estimates the population of a city from 1992 to 2016. The model estimates the population was 61 thousand in 1992, 217 thousand in 2012, and x thousand in 2016. To the nearest whole number, what is the value of x?",
+    "options": {},
+    "correct_answer": ["248"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the given system of equations, a is a positive integer constant. The system has no real solutions. y = -1.5, y = x^2 + 4x + a. What is the least possible value of a?",
+    "options": {},
+    "correct_answer": ["3"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the triangle shown, RS = \\sqrt{133}. What is the value of sin R?",
+    "options": {},
+    "correct_answer": ["0.5"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "How many distinct real solutions does the given equation have? (x + 13)^2 + 26(x + 13) + 169 = 0",
+    "options": {
+      "A": "Exactly one",
+      "B": "Exactly two",
+      "C": "Infinitely many",
+      "D": "Zero"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The graph of the given equation is a circle in the xy-plane. The point (a, b) lies on the circle. (x + 3)^2 + (y - 19)^2 = 144. Which of the following is a possible value for a?",
+    "options": {
+      "A": "-16",
+      "B": "-13",
+      "C": "12",
+      "D": "19"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by the given equation f(x) = 8(7)^x. If g(x) = f(x + 2), which of the following equations defines the function g?",
+    "options": {
+      "A": "g(x) = 16(7)^x",
+      "B": "g(x) = 392(7)^x",
+      "C": "g(x) = 16(14)^x",
+      "D": "g(x) = 64(49)^x"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

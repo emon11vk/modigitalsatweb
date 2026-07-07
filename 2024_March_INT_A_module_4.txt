@@ -1,0 +1,964 @@
+No Test Material On This Page
+
+Reading and Writing
+44 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important reading and writing skills. Read
+each passage and question carefully, and then choose the best answer to the question based on
+the passage(s).
+Line  in the 
+-plane has a slope of  and passes through the
+point 
+. Which equation defines line ?
+A)
+B)
+C)
+D)
+The function  is defined by 
+. What is the value
+of 
+ when 
+?
+A)
+B)
+66
+C)
+71
+D)
+94
+1
+q
+xy
+​7
+1
+(0, 60)
+q
+y =
+​x −
+7
+1
+60
+y =
+​x −
+7
+1
+53
+y =
+​x +
+7
+1
+60
+y =
+​x +
+7
+1
+53
+2
+g
+g(x) = −7x + 80
+g(x)
+x = −2
+​
+7
+78
+PDF version from learn.ronansat.com. Happy practicing!
+61
+CONTINUE
+
+Each face of a fair 12-sided die is labeled with a number from 1
+through 12, with a different number appearing on each face. If the
+die is rolled one time, what is the probability of rolling a 2?
+A)
+B)
+C)
+D)
+In the given equation,  is a constant. The equation has infinitely
+many solutions. What is the value of ?
+3
+​
+12
+1
+​
+12
+2
+​
+12
+10
+​
+12
+11
+4
+6x + 28 = 6x + k
+k
+k
+PDF version from learn.ronansat.com. Happy practicing!
+62
+CONTINUE
+
+Jasmin grows bean pods in her garden. This year, she harvested
+490 bean pods and saved 10% of them to plant next year. How
+many of the harvested bean pods did Jasmin save to plant next
+year?
+A)
+39
+B)
+49
+C)
+57
+D)
+59
+A triathlon is a multisport race consisting of three different
+consecutive events. A triathlon participant plans to complete the
+cycling event with an average speed of 19,008 yards per hour.
+What is this average speed, in miles per hour? (
+)
+5
+6
+1 mile =
+1, 760 yards
+PDF version from learn.ronansat.com. Happy practicing!
+63
+CONTINUE
+
+Dan bought some apples and oranges. The apples cost $0.79 per
+pound, and the oranges cost $0.99 per pound. If Dan spent $24.93
+in total and bought twice as many pounds of oranges as pounds of
+apples, how many pounds of oranges did Dan buy?
+A)
+9
+B)
+9.5
+C)
+18
+D)
+22.16
+Triangle  has an area of 80 square centimeters (
+). Square 
+has side lengths of 4 cm. What is the total area of triangle  and
+square , in 
+?
+A)
+42
+B)
+44
+C)
+84
+D)
+96
+7
+8
+R
+cm2
+S
+R
+S
+cm2
+PDF version from learn.ronansat.com. Happy practicing!
+64
+CONTINUE
+
+The solution to the given system of equations is 
+. What is the
+value of ?
+A)
+4
+B)
+5
+C)
+9
+D)
+13
+The scatterplot shows the relationship between two variables, 
+and . Which of the following equations is the most appropriate
+linear model for the data shown?
+A)
+B)
+C)
+D)
+9
+y = 3x + 4
+y = 2x + 9
+(x, y)
+x
+10
+x
+y
+y = −2x
+y = −x
+y = x
+y = 2x
+PDF version from learn.ronansat.com. Happy practicing!
+65
+CONTINUE
+
+A rectangle has a length that is 24 times its width. The function
+ represents this situation, where  is the area, in
+square feet, of the rectangle and 
+. Which of the following is
+the best interpretation of 
+ in this context?
+A)
+The length of the rectangle, in feet
+B)
+The area of the rectangle, in square feet
+C)
+The difference between the length and the width of the
+rectangle, in feet
+D)
+The width of the rectangle, in feet
+The function  models the intensity of a beam, 
+, in number
+of photons,  millimeters below the surface of a certain material.
+According to the model, what is the number of photons in the
+beam when it is at the surface of the material?
+A)
+2
+B)
+13
+C)
+14
+D)
+1,300
+11
+y = (24w)(w)
+y
+w > 0
+24w
+12
+f(x) = 1, 300(0.5)
+​
+14
+x
+f
+f(x)
+x
+PDF version from learn.ronansat.com. Happy practicing!
+66
+CONTINUE
+
+The gas mileage of a certain car is 22 miles per gallon when driven
+on the highway. If the car begins with 8 gallons of gas in the tank,
+which function predicts the amount of gas remaining in the tank,
+, after the car is driven  miles on the highway?
+A)
+B)
+C)
+D)
+In triangle 
+, the measure of angle 
+ is 
+ and the measure
+of angle  is 
+. In triangle 
+, the measure of angle  is 
+and the measure of angle  is 
+. Which of the following
+additional pieces of information is needed to determine whether
+triangle 
+ is similar to triangle 
+?
+A)
+The measure of angle 
+B)
+The measure of angle 
+C)
+The measure of angle  and the measure of angle 
+D)
+No additional information is needed.
+13
+f(d)
+d
+f(d) =
+​ −
+22
+d
+8
+f(d) = d −8
+f(d) = 8 −
+​
+22
+d
+f(d) = 8 −d
+14
+DEF
+D
+46∘
+E
+104∘
+RST
+R
+46∘
+S
+104∘
+DEF
+RST
+F
+T
+F
+T
+PDF version from learn.ronansat.com. Happy practicing!
+67
+CONTINUE
+
+What is the slope of the graph of 
+ in the
+-plane?
+One of the two equations in a system of linear equations is given.
+The system has no solution. Which of the following could be the
+second equation in this system?
+A)
+B)
+C)
+D)
+15
+y =
+​(19x +
+5
+1
+19) + 7x
+xy
+16
+y = −4x −2
+y =
+​x −
+4
+1
+2
+y = −4x −8
+y = 4x + 8
+y = −
+​x +
+4
+1
+2
+PDF version from learn.ronansat.com. Happy practicing!
+68
+CONTINUE
+
+A linear model estimates the population of a city from 1992 to
+2016. The model estimates the population was 61 thousand in
+1992, 217 thousand in 2012, and  thousand in 2016. To the
+nearest whole number, what is the value of ?
+In the given system of equations,  is a positive integer constant.
+The system has no real solutions. What is the least possible value
+of ?
+17
+x
+x
+18
+y = −1.5
+y = x +
+2
+4x + a
+a
+a
+PDF version from learn.ronansat.com. Happy practicing!
+69
+CONTINUE
+
+In the triangle shown, 
+. What is the value of 
+?
+A)
+B)
+C)
+D)
+How many distinct real solutions does the given equation have?
+A)
+Exactly one
+B)
+Exactly two
+C)
+Infinitely many
+D)
+Zero
+19
+RS =
+​
+133
+sin R
+​
+26
+​
+182
+​
+​
+182
+​
+133
+​
+​
+133
+7
+​
+7
+​
+182
+20
+(x + 13) +
+2
+26(x + 13) + 169 = 0
+PDF version from learn.ronansat.com. Happy practicing!
+70
+CONTINUE
+
+The graph of the given equation is a circle in the 
+-plane. The
+point 
+ lies on the circle. Which of the following is a possible
+value for ?
+A)
+-16
+B)
+-13
+C)
+12
+D)
+19
+The function  is defined by the given equation. If 
+, which of the following equations defines the function ?
+A)
+B)
+C)
+D)
+21
+(x + 3) +
+2
+(y −19) =
+2
+144
+xy
+(a, b)
+a
+22
+f(x) = 8(7)x
+f
+g(x) = f(x +
+2)
+g
+g(x) = 16(7)x
+g(x) = 392(7)x
+g(x) = 16(14)x
+g(x) = 64(49)x
+PDF version from learn.ronansat.com. Happy practicing!
+71
+CONTINUE
+
+The graph of 
+ is shown in the 
+-plane. What is the
+value of 
+?
+A)
+-4
+B)
+0
+C)
+D)
+4
+Which expression is equivalent to 
+?
+A)
+B)
+C)
+D)
+23
+y = f(x)
+xy
+f(0)
+​
+10
+3
+24
+(7nr +
+2
+2nr) + (5n r +
+2
+4nr)
+12n r +
+2 2
+6nr
+12n r +
+3 3
+6n r
+2 2
+7nr +
+2
+5n r +
+2
+6nr
+35n r +
+3 3
+8n r
+2 2
+PDF version from learn.ronansat.com. Happy practicing!
+72
+CONTINUE
+
+The given equation relates the distinct positive numbers , , and
+. Which equation correctly expresses  in terms of  and ?
+A)
+B)
+C)
+D)
+In the given equation,  is a constant. The equation has no
+solution. What is the value of ?
+A)
+2
+B)
+C)
+60
+D)
+25
+v = −
+​
+123x
+w
+v w
+x
+w
+v
+x
+w = −123vx
+w = −
+​
+123v
+x
+w = −
+​
+x
+123v
+w = v + 123x
+26
+−3x + 6rx = 54
+r
+r
+​2
+1
+​9
+1
+PDF version from learn.ronansat.com. Happy practicing!
+73
+CONTINUE
+
+A real estate company offers a series of three webinars. 3,750
+people attended the first webinar. 54% of the people who attended
+the first webinar attended the second webinar, and 36% of the
+people who attended the first and second webinars attended the
+third webinar. How many people attended all three webinars?
+The graph of 
+ is shown. What is the -intercept of the
+graph of 
+?
+A)
+B)
+C)
+D)
+27
+28
+y = f(x)
+y
+y = f(x) + 11
+(0, −10)
+(0, 12)
+(1, 11)
+(−11, 1)
+PDF version from learn.ronansat.com. Happy practicing!
+74
+CONTINUE
+
+The function  is defined by 
+. What value of 
+satisfies 
+?
+A)
+-32
+B)
+6
+C)
+8
+D)
+150
+If 
+, what is the value of
+?
+29
+f
+f(x) = ∣x −6x∣
+a
+f(2) −f(a) = −30
+30
+−7(13 −5x) + 3 = −8(13 −5x) + 25
+13 −5x
+PDF version from learn.ronansat.com. Happy practicing!
+75
+CONTINUE
+
+The minimum value of  is 4 less than 8 times another number .
+Which inequality shows the possible values of ?
+A)
+B)
+C)
+D)
+The shaded region shown represents the solutions to the
+inequality 
+, where  is a constant. What is the value of ?
+A)
+95
+B)
+5
+C)
+-5
+D)
+-95
+31
+x
+n
+x
+x ≤8n −4
+x ≥8n −4
+x ≤4 −8n
+x ≥4 −8n
+32
+−19y < c
+c
+c
+PDF version from learn.ronansat.com. Happy practicing!
+76
+CONTINUE
+
+At a constant temperature, a scuba diver combines two different
+concentrations of nitrox mix (oxygen-nitrogen gas mixture) to fill
+a tank to a total pressure of 90 atmospheres (atm), of which 37%
+is contributed by oxygen. Nitrox mix A contributes  atm of
+pressure to the tank, of which 22% is contributed by oxygen.
+Nitrox mix B contributes  atm of pressure to the tank, of which
+49% is contributed by oxygen. Which system of equations
+represents this situation?
+A)
+, 
+B)
+, 
+C)
+, 
+D)
+, 
+The graph of the equation 
+ is shown, where  is a
+constant. What is the value of ?
+A)
+-8
+B)
+-7
+C)
+7
+D)
+8
+33
+x
+y
+x + y = 90 0.22x + 0.49y = 0.37(90)
+x + y = 90 0.49x + 0.22y = 0.37(90)
+x + y = 0.37(90) 0.22x + 0.49y = 90
+x + y = 0.37(90) 0.49x + 0.22y = 90
+34
+y = 2 +
+x
+k
+k
+k
+PDF version from learn.ronansat.com. Happy practicing!
+77
+CONTINUE
+
+A certain town has an area of 3.51 square miles. What is the area,
+in square yards, of this town? 
+A)
+501
+B)
+6,178
+C)
+882,507
+D)
+10,872,576
+The function  gives the product of a number, , and a number
+that is 7 more than . Which equation defines ?
+A)
+B)
+C)
+D)
+35
+1 mile = 1,760 yards
+(
+)
+36
+f
+x
+x
+f
+f(x) = x +
+2
+x + 7
+f(x) = x +
+2
+7
+f(x) = x +
+2
+7x
+f(x) = x +
+2
+7x + 7
+PDF version from learn.ronansat.com. Happy practicing!
+78
+CONTINUE
+
+The function 
+ gives a toy car's height above
+the ground 
+, in inches,  seconds after it started moving on
+an elevated track, where 
+. Which of the following is
+the best interpretation of the vertex of the graph of 
+ in
+the 
+-plane?
+A)
+The toy car's minimum height was 4 inches above the
+ground.
+B)
+The toy car's minimum height was 6 inches above the
+ground.
+C)
+The toy car's height was 4 inches above the ground when it
+started moving.
+D)
+The toy car's height was 6 inches above the ground when it
+started moving.
+One of the factors of 
+ is 
+, where  is a
+positive constant. What is the smallest possible value of ?
+37
+f(x) =
+​(x −
+8
+1
+6) +
+2
+4
+f(x)
+x
+0 ≤x ≤10
+y = f(x)
+xy
+38
+5x +
+3
+105x +
+2
+540x
+x + b
+b
+b
+PDF version from learn.ronansat.com. Happy practicing!
+79
+CONTINUE
+
+Kenny engages in up to 3 types of exercise each week for a total of
+6 hours while training for a triathlon. Kenny swims for the same
+number of minutes each week. The equation 
+represents the situation where Kenny bikes for  minutes during a
+week and runs for any remaining training time , in minutes. If
+this equation is graphed in the 
+-plane, which statement is the
+best interpretation of the -intercept of the graph?
+A)
+During a week when Kenny doesn't run, he bikes for 190
+minutes.
+B)
+During a week when Kenny doesn't bike, he runs for 190
+minutes.
+C)
+Each week, Kenny bikes and runs for a total of 190 minutes.
+D)
+During a week when Kenny swims for 190 minutes, he bikes
+for 170 minutes.
+Two lines intersect at exactly one point, forming two acute angles
+and two obtuse angles. The measure of one of these angles is
+. Which of the following could NOT be the sum of
+the measures of any two of these angles?
+A)
+B)
+C)
+D)
+39
+y = 360 −x −170
+x
+y
+xy
+x
+40
+(9x −110)∘
+(−18x + 220)∘
+(−18x + 580)∘
+(18x −220)∘
+180∘
+PDF version from learn.ronansat.com. Happy practicing!
+80
+CONTINUE
+
+In the given equation,  is a positive constant. The product of the
+solutions to the equation is 64. What is the value of ?
+Frequency Tables for Data Sets A, B, C, and D
+Value
+A
+B
+C
+D
+1
+0
+10
+20
+25
+2
+0
+10
+10
+5
+3
+10
+10
+10
+5
+4
+10
+10
+10
+5
+5
+10
+10
+0
+5
+6
+40
+10
+0
+5
+7
+10
+10
+10
+5
+8
+10
+10
+10
+5
+9
+10
+10
+10
+5
+10
+0
+10
+20
+25
+Each of the following frequency tables represents a data set.
+Which of these frequency tables represents the data set with the
+smallest standard deviation?
+A)
+Data set A
+B)
+Data set B
+C)
+Data set C
+D)
+Data set D
+41
+​(5x +
+8
+5
+8)(x +
+​)(x −
+5k + 8
+​) =
+5k + 8
+0
+k
+k
+42
+PDF version from learn.ronansat.com. Happy practicing!
+81
+CONTINUE
+
+The table gives the volumes of two similar right circular cylinders.
+Cylinder A has volume 
+ cubic units, and cylinder B has
+volume 
+ cubic units.
+Cylinder
+Volume (cubic units)
+A
+B
+The table shows the volume of two similar solids, right circular
+cylinder A and right circular cylinder B. The radius of right
+circular cylinder A is 3 units. The surface area of right circular
+cylinder A is 
+ square units, and the surface area of right circular
+cylinder B is 
+ square units, where  and  are constants. What
+is the value of 
+? (The surface area of a right circular cylinder
+with radius  and height  is 
+.)
+Function  is a quadratic function. The graph of 
+ in the
+-plane has a vertex at 
+, contains the point 
+,
+and has a -intercept at 
+. The graph of 
+ has a -
+intercept at 
+. What is the positive difference between  and 
+?
+43
+72π
+4608π
+72π
+4608π
+kπ
+nπ
+k
+n
+n −k
+r
+h
+2πr +
+2
+2πrh
+44
+f
+y = f(x)
+xy
+(−5, −8)
+(−6, −10)
+y
+(0, a)
+y = 6 −f(x)
+y
+(0, b)
+a
+b
+PDF version from learn.ronansat.com. Happy practicing!
+82
+CONTINUE
+
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+83
+

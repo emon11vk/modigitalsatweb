@@ -1,0 +1,492 @@
+No Test Material On This Page
+
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+32
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+33
+CONTINUE
+
+In the figure, line (n) intersects lines (r) and (s). Line (r) is parallel
+to line (s). What is the value of (x)?
+During a portion of a flight, a small airplane's cruising speed
+varied between 125 miles per hour and 135 miles per hour. Which
+inequality best represents this situation, where  is the cruising
+speed, in miles per hour, during this portion of the flight?
+A)
+B)
+C)
+D)
+1
+2
+s
+s ≤10
+s ≤125
+s ≤135
+125 ≤s ≤135
+PDF version from learn.ronansat.com. Happy practicing!
+34
+CONTINUE
+
+If 
+, what is the value of 
+?
+A)
+4
+B)
+12
+C)
+28
+D)
+32
+Which expression is equivalent to 
+?
+A)
+B)
+C)
+D)
+3
+5x = 4
+40x
+4
+(x +
+3
+4x −
+2
+3x) + 5(x +
+2
+8)
+x +
+3
+9x −
+2
+3x + 40
+x +
+3
+4x −
+2
+3x + 40
+x +
+3
+8x −
+2
+3x + 40
+x +
+3
+5x −
+2
+3x + 40
+PDF version from learn.ronansat.com. Happy practicing!
+35
+CONTINUE
+
+The function  is defined by 
+. What is the value of
+?
+The function  is defined by 
+. For what value of  does
+?
+5
+f
+f(x) = x +
+3
+14
+f(2)
+6
+g
+g(x) =
+​2
+x
+x
+g(x) = 624
+PDF version from learn.ronansat.com. Happy practicing!
+36
+CONTINUE
+
+The scatterplot shows the relationship between two variables, 
+and . Which of the following equations is the most appropriate
+linear model for the data shown?
+A)
+B)
+C)
+D)
+The function 
+ gives a toy car's height above
+the ground 
+, in inches,  seconds after it started moving on
+an elevated track, where 
+. Which of the following is
+the best interpretation of the vertex of the graph of 
+ in
+the 
+-plane?
+A)
+The toy car's minimum height was 5 inches above the
+ground.
+B)
+The toy car's minimum height was 4 inches above the
+ground.
+C)
+The toy car's height was 5 inches above the ground when it
+started moving.
+D)
+The toy car's height was 4 inches above the ground when it
+started moving.
+7
+x
+y
+y = 0.8 + 8.7x
+y = 0.8 −8.7x
+y = 8.7 + 0.8x
+y = 8.7 −0.8x
+8
+f(x) =
+​(x −
+9
+1
+4) +
+2
+5
+f(x)
+x
+0 ≤x ≤10
+y = f(x)
+xy
+PDF version from learn.ronansat.com. Happy practicing!
+37
+CONTINUE
+
+For the given equation, which table gives three values of  and
+their corresponding values of ?
+A)
+: 0, 5, 10; : 14, 21, 28
+B)
+: 0, 5, 10; : 28, 21, 14
+C)
+: 14, 21, 28; : 0, 5, 10
+D)
+: 14, 21, 28; : 10, 5, 0
+A chemist combines water and isopropanol to make a mixture
+with a volume of 
+ milliliters (mL). The volume of isopropanol
+in the mixture is 
+ mL. What is the volume of water, in mL, in
+the mixture? (Assume that the volume of the mixture is the sum
+of the volumes of water and isopropanol before they were mixed.)
+9
+7x −5y = −70
+x
+y
+x
+y
+x
+y
+x
+y
+x
+y
+10
+45
+10
+PDF version from learn.ronansat.com. Happy practicing!
+38
+CONTINUE
+
+The solution to the given system of equations is 
+. What is the
+value of ?
+A)
+-7
+B)
+0
+C)
+4
+D)
+11
+A company has a customer loyalty program. In January 2018,
+there were 1,600 customers enrolled in the loyalty program. For
+the next 24 months after January 2018, the total number of
+customers enrolled in the loyalty program each month was 5%
+greater than the total number enrolled the previous month.
+Which equation gives the total number of customers, , enrolled
+in the company's loyalty program 
+ months after January 2018,
+where 
+?
+A)
+B)
+C)
+D)
+11
+y = −
+​x
+7
+1
+y =
+​x
+11
+1
+(x, y)
+x
+12
+c
+m
+m ≤24
+c = 1, 600(0.05)m
+c = 1, 600(1.05)m
+c = 1, 600(1.5)m
+c = 1, 600(5)m
+PDF version from learn.ronansat.com. Happy practicing!
+39
+CONTINUE
+
+The function 
+ gives the number of bacteria
+in a population  minutes after an initial observation. How much
+time, in minutes, does it take for the number of bacteria in the
+population to double?
+One of two equations in a system of linear equations is given. The
+system has infinitely many solutions. What is the slope of the
+graph of the second equation?
+A)
+B)
+C)
+D)
+13
+f(t) = 10,000(2)
+​
+850
+t
+t
+14
+y =
+​x +
+7
+5
+9
+−
+​5
+7
+−
+​7
+5
+​7
+5
+​5
+7
+PDF version from learn.ronansat.com. Happy practicing!
+40
+CONTINUE
+
+If 
+, what is the value of 
+?
+A)
+0
+B)
+3
+C)
+4
+D)
+6
+Raheem bought 9 shirts that were each the same price. He used a
+coupon for $54 off the entire purchase. The cost for the entire
+purchase after using the coupon was $108. What was the original
+price, in dollars, for 1 shirt?
+15
+x −4 = 0
+x −
+2
+3x
+16
+PDF version from learn.ronansat.com. Happy practicing!
+41
+CONTINUE
+
+In right triangle ABC, angles A and B are acute, side AC has a
+length of 21.2, and 
+. What is the length of side BC,
+rounded to the nearest tenth?
+A)
+3.5
+B)
+4.6
+C)
+127.2
+D)
+449.4
+What is the minimum value of the given function?
+A)
+4
+B)
+7
+C)
+11
+D)
+15
+17
+tan B =
+​6
+1
+18
+f(x) = (x −4) +
+2
+11
+PDF version from learn.ronansat.com. Happy practicing!
+42
+CONTINUE
+
+Point F lies on a unit circle in the 
+-plane and has coordinates
+. Point G is the center of the circle and has coordinates 
+. Point H also lies on the circle and has coordinates 
+, where
+ is a constant. Which of the following could be the positive
+measure of angle FGH, in radians?
+A)
+B)
+C)
+D)
+The solution to the given system of equations is 
+. What is the
+value of 
+?
+19
+xy
+(1, 0)
+(0, 0)
+(−1, y)
+y
+​
+2
+25π
+​
+2
+27π
+22π
+23π
+20
+​(s +
+4
+1
+4t) = 544
+7s −8t = 1, 192
+(s, t)
+s −t
+PDF version from learn.ronansat.com. Happy practicing!
+43
+CONTINUE
+
+Line  is shown in the 
+-plane. Line  (not shown) is
+perpendicular to line  and passes through the point 
+.
+What is the -coordinate of the -intercept of line ?
+A)
+B)
+C)
+D)
+Right rectangular prism 
+ is similar to right rectangular prism 
+.
+The surface area of right rectangular prism 
+ is
+, and the surface area of right
+rectangular prism 
+ is 
+. The volume of right
+rectangular prism 
+ is 
+. What is
+the sum of the volumes, in 
+, of right rectangular prism 
+ and
+right rectangular prism 
+?
+21
+k
+xy
+j
+k
+(7, 15)
+y
+y
+j
+−
+​
+4
+47
+−
+​2
+3
+​5
+4
+​
+4
+25
+22
+X
+Y
+X
+59 square centimeters (cm )
+2
+Y
+1, 475 cm2
+Y
+1, 500 cubic centimeters (cm )
+3
+cm3
+X
+Y
+PDF version from learn.ronansat.com. Happy practicing!
+44
+CONTINUE
+
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+45
+

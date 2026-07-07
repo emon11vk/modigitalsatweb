@@ -1,0 +1,329 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "Choir Section\nNumber of Singers\nBass\n12\nOther\n36\nA choir of 48 singers has 12 members who sing bass. If one singer from the choir is selected at random, what is the probability of selecting a singer who sings bass?",
+    "options": {
+      "A": "1/48",
+      "B": "1/12",
+      "C": "12/48",
+      "D": "36/48"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A store owner recorded the number of units of a certain product that were sold per day for 28 days. What is the minimum number of units of this product sold per day for these 28 days?",
+    "options": {},
+    "correct_answer": [
+      "80"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function T estimates the temperature, in degrees Fahrenheit (F), in a certain city one day in January, where x is the number of hours after 10 a.m. and 1 \u2264 x \u2264 7. Which statement is the best interpretation of T(5) = 21 in this context?",
+    "options": {
+      "A": "5 hours after 10 a.m., the function estimates that the temperature is 21\u00b0F.",
+      "B": "5 hours before 10 a.m., the function estimates that the temperature decreased 21\u00b0F.",
+      "C": "5 hours after 10 a.m., the function estimates that the temperature decreased 21\u00b0F.",
+      "D": "5 hours before 10 a.m., the function estimates that the temperature is 21\u00b0F."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The graph of the function f in the xy-plane, where y = f(x), has x-intercepts of (-5,0), (3, 0), and (6,0). Which of the following must be true?",
+    "options": {
+      "A": "f(0) = -5",
+      "B": "f(0) = 3",
+      "C": "f(5) = 0",
+      "D": "f(6) = 0"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If f(x) = x + 2 and g(x) = 2x, what is the value of 3f(-5) - g(-5)?",
+    "options": {
+      "A": "-19",
+      "B": "-3",
+      "C": "1",
+      "D": "7"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A botanist wants to plant certain types of oak trees and pine trees in a row. Each of these oak trees requires 40 feet of space to grow, and each of these pine trees requires 30 feet of space to grow. The equation 40x + 30y = 600 models the possible number of oak trees, x, and pine trees, y that the botanist can plant. Which graph represents this relationship?",
+    "options": {
+      "A": "Graph A",
+      "B": "Graph B",
+      "C": "Graph C",
+      "D": "Graph D"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The number of bacteria in a liquid medium doubles every day. There are 72,000 bacteria in the liquid medium at the start of an observation. Which of the following represents the number of bacteria, y, in the liquid medium t days after the start of the observation?",
+    "options": {
+      "A": "y = 1/2(72,000)^t",
+      "B": "y = 2(72,000)^t",
+      "C": "y = 72,000(1/2)^t",
+      "D": "y = 72,000(2)^t"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For a certain isotope, at the end of every 29-year period, the mass of a sample of the isotope has decayed to half its mass at the beginning of the 29-year period. The function s(t) = 216(0.5)^{t/29} gives the approximate mass of this isotope, in grams, that remains t years after a 216-gram sample starts to decay. Which statement is the best interpretation of s(3 \\cdot 29) = 27 in this context?",
+    "options": {
+      "A": "The mass of the sample is approximately 27 grams 3 years after the sample starts to decay.",
+      "B": "The mass of the sample is approximately 27 grams 3 29-year periods after the sample starts to decay.",
+      "C": "The mass of the sample is approximately 3 grams 27 29-year periods after the sample starts to decay.",
+      "D": "The mass of the sample is approximately 87 grams 3 29-year periods after the sample starts to decay."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the figure shown, line r is parallel to line s, and both lines are intersected by line t. If x = 2w + 24, y = 5w + 29 and 7w = a, where a is a constant, what is the value of a?",
+    "options": {},
+    "correct_answer": [
+      "127"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The functions f and g are given. In function g, r is a constant. If f(x) = x + 4, g(x) = 3x^2 + rx + 48, and f(x) \\cdot g(x) = 3x^3 + 192, what is the value of r?",
+    "options": {},
+    "correct_answer": [
+      "-12"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which quadratic equation has exactly one distinct real solution?",
+    "options": {
+      "A": "x^2 - 22 = 0",
+      "B": "x^2 - 11x = 0",
+      "C": "x^2 - 11x + 121 = 0",
+      "D": "x^2 - 22x + 121 = 0"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The positive number a is 2,800% of the number c, and c is 20% of the number b. What is the value of a - b in terms of c?",
+    "options": {
+      "A": "23c",
+      "B": "140c",
+      "C": "560c",
+      "D": "2,240c"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A circle is inscribed in a square such that the circumference of the circle touches the midpoint of each side of the square. The length of the diagonal of the square is 176 units. What is the area, in square units, of the circle?",
+    "options": {
+      "A": "3,872\u03c0",
+      "B": "7,744\u03c0",
+      "C": "15,488\u03c0",
+      "D": "30,976\u03c0"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Lines h and k are graphed in the xy-plane. The graph of line h has a slope of 3/5 and an x-intercept at (17,0). Line k is the result of translating the graph of line h down 4 units. What is the y-coordinate of the y-intercept of the graph of line k?",
+    "options": {},
+    "correct_answer": [
+      "-71/5"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For each of two rectangles, the ratio of the rectangle's length to its width is 10 to 5. The width of rectangle X is 16.5 times the width of rectangle Y. How does the length of rectangle X compare to the length of rectangle Y?",
+    "options": {
+      "A": "The length of rectangle X is 0.5 times the length of rectangle Y.",
+      "B": "The length of rectangle X is 2 times the length of rectangle Y.",
+      "C": "The length of rectangle X is 16.5 times the length of rectangle Y.",
+      "D": "The length of rectangle X is 33 times the length of rectangle Y."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the solution to the given equation?\nk + 21 = 63",
+    "options": {
+      "A": "3",
+      "B": "42",
+      "C": "84",
+      "D": "1,323"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Point N lies on a unit circle in the xy-plane and has coordinates (1,0). Point O is the center of the circle and has coordinates (0,0). Point M also lies on the unit circle, and the measure of angle NOM is 272\u03c0/3 radians. If the coordinates of point M are (a, b), where a and b are constants, what is the value of a?",
+    "options": {
+      "A": "1/2",
+      "B": "\u221a3/2",
+      "C": "-1/2",
+      "D": "-\u221a3/2"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Rectangle ABCD is similar to rectangle EFGH. The area of rectangle ABCD is 648 square inches, and the area of rectangle EFGH is 72 square inches. The length of the longest side of rectangle ABCD is 36 inches. What is the length, in inches, of the longest side of rectangle EFGH?",
+    "options": {
+      "A": "4",
+      "B": "9",
+      "C": "12",
+      "D": "36"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For each real number r, which of the following points lies on the graph of each equation in the xy-plane for the given system?\n2x + 5y = 3\n8x + 20y = 12",
+    "options": {
+      "A": "(r, -2r/5 + 3/2)",
+      "B": "(r, 2r/5 + 3/5)",
+      "C": "(4r + 3, -r/4 + 12)",
+      "D": "(-5r/2 + 3/2, r)"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the given expression 34z^{14} + bz^7 + 70, b is a positive integer. If qz^7 + r is a factor of the expression, where q and r are positive integers, what is the greatest possible value of b?",
+    "options": {},
+    "correct_answer": [
+      "2381"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If (x - 4) / 5 = (x - 4) / 7, the value of x - 4 is between which of the following pairs of values?",
+    "options": {
+      "A": "-7 and -5",
+      "B": "-3 and 3",
+      "C": "3.5 and 4.5",
+      "D": "4.75 and 7.25"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A computer repair specialist charges $160 for the first two hours of repair plus an hourly fee for each additional hour. The total cost for 4 hours of repair is $240. Which function f gives the total cost, in dollars, for x hours of repair, where x \u2265 2?",
+    "options": {
+      "A": "f(x) = 40x + 80",
+      "B": "f(x) = 40x + 160",
+      "C": "f(x) = 60x",
+      "D": "f(x) = 60x + 160"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

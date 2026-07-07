@@ -1,0 +1,487 @@
+No Test Material On This Page
+
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+32
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+33
+CONTINUE
+
+Choir Section
+Number of Singers
+Bass
+12
+Other
+36
+A choir of 48 singers has 12 members who sing bass. If one singer
+from the choir is selected at random, what is the probability of
+selecting a singer who sings bass?
+A)
+B)
+C)
+D)
+A store owner recorded the number of units of a certain product
+that were sold per day for 28 days. What is the minimum number
+of units of this product sold per day for these 28 days?
+1
+​
+48
+36
+​
+48
+12
+​3
+1
+​
+12
+48
+2
+PDF version from learn.ronansat.com. Happy practicing!
+34
+CONTINUE
+
+The function T estimates the temperature, in degrees Fahrenheit
+(F), in a certain city one day in January, where x is the number of
+hours after 10 a.m. and 
+. Which statement is the best
+interpretation of 
+ in this context?
+A)
+5 hours after 10 a.m., the function estimates that the
+temperature is 
+.
+B)
+5 hours before 10 a.m., the function estimates that the
+temperature decreased 
+.
+C)
+5 hours after 10 a.m., the function estimates that the
+temperature decreased 
+.
+D)
+5 hours before 10 a.m., the function estimates that the
+temperature is 
+.
+The graph of the function f in the xy-plane, where 
+, has
+x-intercepts of (-5,0), (3, 0), and (6,0). Which of the following
+must be true?
+A)
+B)
+C)
+D)
+3
+T(x) = 61 −8x
+1 ≤x ≤7
+T(5) = 21
+21 F
+∘
+21 F
+∘
+21 F
+∘
+21 F
+∘
+4
+y = f(x)
+f(0) = −5
+f(0) = 3
+f(5) = 0
+f(6) = 0
+PDF version from learn.ronansat.com. Happy practicing!
+35
+CONTINUE
+
+If 
+ and 
+ what is the value of 
+?
+A)
+-19
+B)
+-3
+C)
+1
+D)
+7
+A botanist wants to plant certain types of oak trees and pine trees
+in a row. Each of these oak trees requires 40 feet of space to grow,
+and each of these pine trees requires 30 feet of space to grow. The
+equation 
+ models the possible number of oak
+trees, x, and pine trees, y that the botanist can plant. Which graph
+represents this relationship?
+A)
+Graph A
+B)
+Graph B
+C)
+Graph C
+D)
+Graph D
+5
+f(x) = x + 2
+g(x) = 2x
+3f(−5) −
+g(−5)
+6
+40x + 30y = 600
+PDF version from learn.ronansat.com. Happy practicing!
+36
+CONTINUE
+
+The number of bacteria in a liquid medium doubles every day.
+There are 72,000 bacteria in the liquid medium at the start of an
+observation. Which of the following represents the number of
+bacteria, y, in the liquid medium t days after the start of the
+observation?
+A)
+B)
+C)
+D)
+For a certain isotope, at the end of every 29-year period, the mass
+of a sample of the isotope has decayed to half its mass at the
+beginning of the 29-year period. The function 
+gives the approximate mass of this isotope, in grams, that remains
+t years after a 216-gram sample starts to decay. Which statement
+is the best interpretation of 
+ in this context?
+A)
+The mass of the sample is approximately 27 grams 3 years
+after the sample starts to decay.
+B)
+The mass of the sample is approximately 27 grams 3 29-year
+periods after the sample starts to decay.
+C)
+The mass of the sample is approximately 3 grams 27 29-year
+periods after the sample starts to decay.
+D)
+The mass of the sample is approximately 87 grams 3 29-year
+periods after the sample starts to decay.
+7
+y =
+​(72,000)
+2
+1
+t
+y = 2(72,000)t
+y = 72,000
+​
+(2
+1)
+t
+y = 72,000(2)t
+8
+s(t) = 216(0.5)
+​
+29
+t
+s(3 ⋅29) = 27
+PDF version from learn.ronansat.com. Happy practicing!
+37
+CONTINUE
+
+In the figure shown, line r is parallel to line s, and both lines are
+intersected by line t. If 
+, 
+ and 
+where a is a constant, what is the value of a?
+The functions f and g are given. In function g, r is a constant. If
+, what is the value of r?
+9
+x = 2w + 24 y = 5w + 29
+7w = a
+10
+f(x) = x + 4
+g(x) = 3x −
+2
+rx + 48
+f(x) ⋅g(x) = 3x +
+3
+192
+PDF version from learn.ronansat.com. Happy practicing!
+38
+CONTINUE
+
+Which quadratic equation has exactly one distinct real solution?
+A)
+B)
+C)
+D)
+The positive number  is 2,800% of the number , and  is 20% of
+the number . What is the value of 
+ in terms of ?
+A)
+B)
+C)
+D)
+11
+x −
+2
+22 = 0
+x −
+2
+11x = 0
+x −
+2
+11x + 121 = 0
+x −
+2
+22x + 121 = 0
+12
+a
+c
+c
+b
+a −b
+c
+23c
+140c
+560c
+2,240c
+PDF version from learn.ronansat.com. Happy practicing!
+39
+CONTINUE
+
+A circle is inscribed in a square such that the circumference of the
+circle touches the midpoint of each side of the square. The length
+of the diagonal of the square is 176 units. What is the area, in
+square units, of the circle?
+A)
+B)
+C)
+D)
+Lines h and k are graphed in the xy-plane. The graph of line h has
+a slope of  and an x-intercept at (17,0). Line k is the result of
+translating the graph of line h down 4 units. What is the y-
+coordinate of the y-intercept of the graph of line k?
+13
+3,872π
+7,744π
+15,488π
+30,976π
+14
+​3
+5
+PDF version from learn.ronansat.com. Happy practicing!
+40
+CONTINUE
+
+For each of two rectangles, the ratio of the rectangle's length to its
+width is 10 to 5. The width of rectangle X is 16.5 times the width
+of rectangle Y. How does the length of rectangle X compare to the
+length of rectangle Y?
+A)
+The length of rectangle X is 0.5 times the length of rectangle
+Y.
+B)
+The length of rectangle X is 2 times the length of rectangle Y.
+C)
+The length of rectangle X is 16.5 times the length of rectangle
+Y.
+D)
+The length of rectangle X is 33 times the length of rectangle
+Y.
+What is the solution to the given equation?
+A)
+3
+B)
+42
+C)
+84
+D)
+1,323
+15
+16
+k + 21 = 63
+PDF version from learn.ronansat.com. Happy practicing!
+41
+CONTINUE
+
+Point N lies on a unit circle in the xy-plane and has coordinates
+(1,0). Point O is the center of the circle and has coordinates (0,0).
+Point M also lies on the unit circle, and the measure of angle
+NOM is 
+ radians. If the coordinates of point M are (a, b),
+where a and b are constants, what is the value of a?
+A)
+B)
+C)
+D)
+Rectangle ABCD is similar to rectangle EFGH. The area of
+rectangle ABCD is 648 square inches, and the area of rectangle
+EFGH is 72 square inches. The length of the longest side of
+rectangle ABCD is 36 inches. What is the length, in inches, of the
+longest side of rectangle EFGH?
+A)
+4
+B)
+9
+C)
+12
+D)
+36
+17
+​
+3
+272π
+​2
+1
+​
+2
+​3
+−
+​2
+1
+−
+​
+2
+​3
+18
+PDF version from learn.ronansat.com. Happy practicing!
+42
+CONTINUE
+
+For each real number r, which of the following points lies on the
+graph of each equation in the xy-plane for the given system?
+A)
+B)
+C)
+D)
+In the given expression, b is a positive integer. If 
+ is a
+factor of the expression, where q and r are positive integers, what
+is the greatest possible value of b?
+19
+2x + 5y = 3
+8x + 20y = 12
+r, −
+​ +
+(
+2
+5r
+2
+3)
+r,
+​ +
+​
+(
+5
+2r
+5
+3)
+​ + 3, −
+​ + 12
+(4
+r
+4
+r
+)
+−
+​ +
+​, r
+(
+2
+5r
+2
+3
+)
+20
+34z
++
+14
+bz +
+7
+70
+qz +
+7
+r
+PDF version from learn.ronansat.com. Happy practicing!
+43
+CONTINUE
+
+If 
+ the value of 
+ is between which of the
+following pairs of values?
+A)
+-7 and -5
+B)
+-3 and 3
+C)
+3.5 and 4.5
+D)
+4.75 and 7.25
+A computer repair specialist charges $160 for the first two hours
+of repair plus an hourly fee for each additional hour. The total
+cost for 4 hours of repair is $240. Which function  gives the total
+cost, in dollars, for  hours of repair, where 
+?
+A)
+B)
+C)
+D)
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+21
+​ =
+5
+x −4
+​
+7
+x −4
+x −4
+22
+f
+x
+x ≥2
+f(x) = 40x + 80
+f(x) = 40x + 160
+f(x) = 60x
+f(x) = 60x + 160
+PDF version from learn.ronansat.com. Happy practicing!
+44
+

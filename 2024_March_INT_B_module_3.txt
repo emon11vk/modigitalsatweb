@@ -1,0 +1,444 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+47
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+48
+CONTINUE
+
+Which expression is equivalent to 
+?
+A)
+16
+B)
+C)
+D)
+The graph of a system of a linear and a quadratic equation is
+shown.
+Which system of equations is represented by the graph?
+A)
+, 
+B)
+, 
+C)
+, 
+D)
+, 
+1
+(9x +
+2
+9) −(2x )
+2
+11x +
+2
+9
+7x −
+2
+9
+7x +
+2
+9
+2
+y = −3x y = x +
+2
+6
+y = −3x y = x −
+2
+6
+y = 3x y = x +
+2
+6
+y = 3x y = x −
+2
+6
+PDF version from learn.ronansat.com. Happy practicing!
+49
+CONTINUE
+
+In triangle 
+, the measure of angle  is 
+, the measure of
+angle 
+ is 
+ and the measure of angle  is 
+. What is the
+value of ?
+A)
+45
+B)
+59
+C)
+62
+D)
+118
+The table shows the linear relationship between the number of
+cars, , and the maximum number of passengers and crew, .
+Number of cars
+Maximum number of passengers and crew
+3
+111
+6
+216
+10
+356
+Which equation represents the linear relationship between  and
+?
+A)
+B)
+C)
+D)
+3
+ABC
+A
+31∘
+B
+90∘
+C
+(
+​)
+2
+k ∘
+k
+4
+c
+p
+c
+p
+35c −p = −6
+35c −p = 6
+35p −c = −6
+35p −c = 6
+PDF version from learn.ronansat.com. Happy practicing!
+50
+CONTINUE
+
+What is the -coordinate of the -intercept of the graph of
+ in the 
+-plane?
+A)
+-90
+B)
+-85
+C)
+-22
+D)
+-17
+At the start, the pressure was 18 psi. It doubled every 29 minutes.
+Which equation represents this situation, where  is the pressure
+inside the container  minutes after the start?
+A)
+B)
+C)
+D)
+5
+y
+y
+g(x) = 5(16x −17)
+xy
+6
+y
+t
+y = 18(2)t/29
+y = 18(29)2t
+y = 18(x + 29)2
+y = 18x +
+2
+29
+PDF version from learn.ronansat.com. Happy practicing!
+51
+CONTINUE
+
+What is the sum of the solutions to the given equation?
+What is the -intercept of 
+ in the 
+-plane?
+A)
+B)
+C)
+D)
+7
+∣x −8∣+ 72 = 88
+8
+y
+y = −(8) −
+x
+38
+xy
+(0, −39)
+(0, −37)
+(0, −38)
+(0, −46)
+PDF version from learn.ronansat.com. Happy practicing!
+52
+CONTINUE
+
+One solution to the given equation can be written as 
+ where  is a constant. What is the value of ?
+A data set of the orbital periods, in days, for 13 moons is shown in
+the dot plot. An additional moon with an orbital period of 621
+days is then added to the data set.
+Which statement best compares the mean and median of the new
+data set to the mean and median of the original data set?
+A)
+Mean equal, Median equal
+B)
+Mean equal, Median less
+C)
+Mean less, Median less
+D)
+Mean less, Median equal
+9
+x +
+2
+9x + 6 = 0
+x =
+​
+2
+−9 +
+​k
+k
+k
+10
+PDF version from learn.ronansat.com. Happy practicing!
+53
+CONTINUE
+
+The function  is defined by 
+. For what value of  is
+?
+Four consecutive odd integers: 
+. The
+product of 14 and the fourth (
+) is at most 23 less than the
+sum of the first ( ) and third (
+).
+Which inequality represents this situation?
+A)
+B)
+C)
+D)
+11
+g
+g(x) = 9x
+x
+g(x) = 632
+12
+x, x + 2, x + 4, x + 6
+x + 6
+x
+x + 4
+14(x + 4) ≥23 −(x + (x + 3))
+14(x + 6) ≤x + (x + 4) −23
+14(x + 6) ≥23 −(x + 4)
+14(x + 6) ≤x −(x + 4) −23
+PDF version from learn.ronansat.com. Happy practicing!
+54
+CONTINUE
+
+If 
+, which equation must also be true?
+A)
+B)
+C)
+D)
+Quadratic function  has vertex at 
+ and passes through
+.
+What is the value of 
+?
+A)
+90
+B)
+146
+C)
+224
+D)
+258
+13
+10 +
+​ =
+5
+6(7 −x)
+​
+3
+4(7 −x)
+7 −x = 148
+7 −x = 75
+x −7 = 148
+x −7 = −75
+14
+f
+(1, 6)
+(2, 34)
+f(−2) −f(0)
+PDF version from learn.ronansat.com. Happy practicing!
+55
+CONTINUE
+
+Line  passes through 
+ and 
+. Line  defined by
+ has infinitely many solutions with line .
+What is the value of 
+?
+Triangles 
+ and 
+ are similar. Each side of 
+ is 3
+times 
+. Area of 
+ is 170.
+What is the area, in square inches, of triangle 
+?
+15
+g
+(−12, 14)
+(0, 2)
+k
+195x + py = w
+g
+p + w
+16
+ABC
+DEF
+ABC
+DEF
+ABC
+DEF
+PDF version from learn.ronansat.com. Happy practicing!
+56
+CONTINUE
+
+After 60% of original objects were removed, 300 remained.
+How many objects were removed from the group?
+A)
+180
+B)
+450
+C)
+500
+D)
+750
+Data set: 12, 12, 18, 24, 29
+What is the median of the data set shown?
+17
+18
+PDF version from learn.ronansat.com. Happy practicing!
+57
+CONTINUE
+
+System: 
+ and 
+ has two distinct real
+solutions.
+Which of the following could be the value of ?
+A)
+7
+B)
+11
+C)
+95/8
+D)
+17
+The perimeter of an isosceles right triangle is 
+.
+What is the length, in inches, of the hypotenuse of this triangle?
+A)
+13
+B)
+C)
+26
+D)
+19
+y = x −c
+y = −2(x −12)2
+c
+20
+26 + 26
+​2
+13
+​2
+26
+​2
+PDF version from learn.ronansat.com. Happy practicing!
+58
+CONTINUE
+
+ and 
+.
+For what value of  is 
+ equal to ?
+Rate: 10.7 meters per second squared. (
+).
+What is this rate, in miles per minute squared, rounded to the
+nearest tenth?
+A)
+0.4
+B)
+23.9
+C)
+150.4
+D)
+286.9
+21
+n, k > 1
+​ =
+2 n5
+​
+5 k4
+a
+n4a−1
+k
+22
+1 mile = 1,609 meters
+PDF version from learn.ronansat.com. Happy practicing!
+59
+CONTINUE
+
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+60
+

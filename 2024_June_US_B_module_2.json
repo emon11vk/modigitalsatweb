@@ -1,0 +1,314 @@
+[
+  {
+    "question_type": "spr",
+    "text": "In the figure, line (n) intersects lines (r) and (s). Line (r) is parallel to line (s). What is the value of (x)?",
+    "options": {},
+    "correct_answer": [
+      "119"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "During a portion of a flight, a small airplane's cruising speed varied between 125 miles per hour and 135 miles per hour. Which inequality best represents this situation, where s is the cruising speed, in miles per hour, during this portion of the flight?",
+    "options": {
+      "A": "s ≤10",
+      "B": "s ≤125",
+      "C": "s ≤135",
+      "D": "125 ≤s ≤135"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If 5x = 4, what is the value of 40x?",
+    "options": {
+      "A": "4",
+      "B": "12",
+      "C": "28",
+      "D": "32"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which expression is equivalent to (x^3 + 4x^2 - 3x) + 5(x^2 + 8)?",
+    "options": {
+      "A": "x^3 + 9x^2 - 3x + 40",
+      "B": "x^3 + 4x^2 - 3x + 40",
+      "C": "x^3 + 8x^2 - 3x + 40",
+      "D": "x^3 + 5x^2 - 3x + 40"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function f is defined by f(x) = x^3 + 14. What is the value of f(2)?",
+    "options": {},
+    "correct_answer": [
+      "22"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function g is defined by g(x) = x/2. For what value of x does g(x) = 624?",
+    "options": {},
+    "correct_answer": [
+      "1248"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The scatterplot shows the relationship between two variables, x and y. Which of the following equations is the most appropriate linear model for the data shown?",
+    "options": {
+      "A": "y = 0.8 + 8.7x",
+      "B": "y = 0.8 - 8.7x",
+      "C": "y = 8.7 + 0.8x",
+      "D": "y = 8.7 - 0.8x"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f(x) = 1/9(x - 4)^2 + 5 gives a toy car's height above the ground y, in inches, x seconds after it started moving on an elevated track, where 0 ≤ x ≤ 10. Which of the following is the best interpretation of the vertex of the graph of y = f(x) in the xy-plane?",
+    "options": {
+      "A": "The toy car's minimum height was 5 inches above the ground.",
+      "B": "The toy car's minimum height was 4 inches above the ground.",
+      "C": "The toy car's height was 5 inches above the ground when it started moving.",
+      "D": "The toy car's height was 4 inches above the ground when it started moving."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For the given equation 7x - 5y = -70, which table gives three values of x and their corresponding values of y?",
+    "options": {
+      "A": "x: 0, 5, 10; y: 14, 21, 28",
+      "B": "x: 0, 5, 10; y: 28, 21, 14",
+      "C": "x: 14, 21, 28; y: 0, 5, 10",
+      "D": "x: 14, 21, 28; y: 10, 5, 0"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A chemist combines water and isopropanol to make a mixture with a volume of 45 milliliters (mL). The volume of isopropanol in the mixture is 10 mL. What is the volume of water, in mL, in the mixture? (Assume that the volume of the mixture is the sum of the volumes of water and isopropanol before they were mixed.)",
+    "options": {},
+    "correct_answer": [
+      "35"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The solution to the given system of equations is (x, y). What is the value of x?\ny = -1/7 x\ny = 1/11 x",
+    "options": {
+      "A": "-7",
+      "B": "0",
+      "C": "4",
+      "D": "11"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A company has a customer loyalty program. In January 2018, there were 1,600 customers enrolled in the loyalty program. For the next 24 months after January 2018, the total number of customers enrolled in the loyalty program each month was 5% greater than the total number enrolled the previous month. Which equation gives the total number of customers, c, enrolled in the company's loyalty program m months after January 2018, where m ≤ 24?",
+    "options": {
+      "A": "c = 1,600(0.05)^m",
+      "B": "c = 1,600(1.05)^m",
+      "C": "c = 1,600(1.5)^m",
+      "D": "c = 1,600(5)^m"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function f(t) = 10,000(2)^{t/850} gives the number of bacteria in a population t minutes after an initial observation. How much time, in minutes, does it take for the number of bacteria in the population to double?",
+    "options": {},
+    "correct_answer": [
+      "850"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "One of two equations in a system of linear equations is given as y = 5/7 x + 9. The system has infinitely many solutions. What is the slope of the graph of the second equation?",
+    "options": {
+      "A": "-7/5",
+      "B": "-5/7",
+      "C": "5/7",
+      "D": "7/5"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If x - 4 = 0, what is the value of x^2 - 3x?",
+    "options": {
+      "A": "0",
+      "B": "3",
+      "C": "4",
+      "D": "6"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Raheem bought 9 shirts that were each the same price. He used a coupon for  off the entire purchase. The cost for the entire purchase after using the coupon was . What was the original price, in dollars, for 1 shirt?",
+    "options": {},
+    "correct_answer": [
+      "18"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In right triangle ABC, angles A and B are acute, side AC has a length of 21.2, and tan B = 1/6. What is the length of side BC, rounded to the nearest tenth?",
+    "options": {
+      "A": "3.5",
+      "B": "4.6",
+      "C": "127.2",
+      "D": "449.4"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the minimum value of the given function f(x) = (x - 4)^2 + 11?",
+    "options": {
+      "A": "4",
+      "B": "7",
+      "C": "11",
+      "D": "15"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Point F lies on a unit circle in the xy-plane and has coordinates (1, 0). Point G is the center of the circle and has coordinates (0, 0). Point H also lies on the circle and has coordinates (-1, y), where y is a constant. Which of the following could be the positive measure of angle FGH, in radians?",
+    "options": {
+      "A": "25π/2",
+      "B": "27π/2",
+      "C": "22π",
+      "D": "23π"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The solution to the given system of equations is (s, t). What is the value of s - t?\n1/4 (s + 4t) = 544\n7s - 8t = 1,192",
+    "options": {},
+    "correct_answer": [
+      "226"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Line k is shown in the xy-plane. Line j (not shown) is perpendicular to line k and passes through the point (7, 15). What is the y-coordinate of the y-intercept of line j?",
+    "options": {
+      "A": "-47/4",
+      "B": "-3/2",
+      "C": "4/5",
+      "D": "25/4"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Right rectangular prism X is similar to right rectangular prism Y. The surface area of right rectangular prism X is 59 square centimeters (cm^2), and the surface area of right rectangular prism Y is 1,475 cm^2. The volume of right rectangular prism Y is 1,500 cubic centimeters (cm^3). What is the sum of the volumes, in cm^3, of right rectangular prism X and right rectangular prism Y?",
+    "options": {},
+    "correct_answer": [
+      "1512"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

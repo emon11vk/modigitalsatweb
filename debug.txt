@@ -1,0 +1,297 @@
+--- Q1 D to Q2 Passage ---
+replaced
+Whether the reign of a French monarch such as Charles VIII or
+Henry II was considered historically significant or, conversely,
+relatively __________ its trajectory was shaped by questions of
+legitimacy and therefore cannot be understood without a
+corollary understanding of the factors that allowed the monarch
+to assert a claim to the throne successfully.
+--- Q2 D to Q3 Passage ---
+genuine
+Barring major archaeological discoveries, we are unlikely to ever
+have __________ account of ancient Egypt under the female
+pharaoh Hatshepsut, as much of the evidence of her reign was
+deliberately destroyed by her successors.
+--- Q3 D to Q4 Passage ---
+a questionable
+The Roc-aux-Sorciers frieze—a group of relief carvings of animals
+found in what is now France and dating from around 14,000 years
+ago—is sometimes said to be emotionally powerful despite its age,
+but in fact the frieze is __________ precisely because of its age. It
+is the link of shared humanity with the artist across so many
+centuries that gives the Roc-aux-Sorciers frieze such resonance.
+--- Q4 D to Q5 Passage ---
+affecting
+Amsterdam has high pedestrian traffic, but simply replicating a
+feature of Amsterdam associated with walkability—e.g., its high
+number of relatively short blocks—may be insufficient to induce
+increased walking in other cities. As urbanist Mariela Alfonzo
+argues, our understanding of individuals' decision-making about
+whether to walk is insufficiently robust: some studies emphasize
+the role of climate conditions, others the role of recreational
+amenities, and so on, but walking decisions are made in complex
+contexts in which multiple conditions and needs inform
+individuals' choices.
+--- Q5 D to Q6 Passage ---
+It elaborates on a claim presented earlier in the sentence.
+Text 1
+Scholarship today overrepresents formal experimentation, such as
+William Carlos Williams's use of minimalistic, image-based
+structures, well beyond the degree to which it actually influenced
+US poetry during the modernist period (roughly 1900–1945).
+Meanwhile, the work of Countee Cullen, who relied on
+conventional poetic forms associated with previous literary
+periods, attracts woefully little attention from scholars of
+modernism.
+Text 2
+Distant reading, or computer-assisted quantitative analysis of
+massive collections of digitized texts, can reveal stylistic elements
+that have heretofore escaped notice, despite being shared by
+numerous texts from the modernist period. For too long, scholars
+have focused on experimental versus conventional poetic forms,
+inhibiting inquiry into other points of stylistic correspondence
+among poems that would enrich our understanding of the
+modernist canon.
+--- Q6 D to Q7 Passage ---
+As complementing the study of other stylistic features that
+distinguish the modernist period
+In her 1998 book Blues Legacies and Black Feminism, Angela Y.
+Davis bases her analysis in part on recordings of songs sung in the
+1920s by Gertrude "Ma" Rainey and Bessie Smith. Davis focuses
+on how Rainey and Smith improvised the lyrics—replacing the
+original lines with mischievous jokes and wordplay. Davis's work
+was particularly labor intensive because in order to transcribe, or
+write down, the lyrics as Rainey and Smith sang them, Davis had
+to listen repeatedly to the vinyl recordings, which weren't very
+clear.
+--- Q7 D to Q8 Passage ---
+There were few, if any, reliable transcriptions of Smith's and
+Rainey's improvised lyrics when Davis began her research.
+Rafael Núñez and colleagues studied how members of the Yupno,
+an Indigenous group in Papua New Guinea, conceptualize time.
+The researchers recorded Yupno speakers explaining certain
+temporal words and phrases, such as abjuk, a present-oriented
+expression that translates to "now," and coded each speaker's
+manual gestures. Previous research has found a tendency in many
+cultures to make temporal distinctions using spatial concepts and
+gestures, particularly along egocentric axes (i.e., relative to the
+orientation of the speaker): for instance, English speakers often
+refer to the front/back axis to describe events in time. In an
+anthropology paper, a student claims that the tendency toward
+ego-based conceptualizations of time is universal.
+--- Q8 D to Q9 Passage ---
+Although Yupno speakers and English speakers both use
+gestures to indicate orientation in time, Yupno speakers tend
+to use fewer gestures overall when speaking than English
+speakers do.
+Neurobiologists Laura Cuaya, Raúl Hernández-Perez, and
+colleagues investigated the language detection abilities of eighteen
+dogs. The researchers monitored the brain activity of Bran (a
+border collie), Alma (a mixed breed), and other dogs while the
+animals listened to three recordings: one of The Little Prince
+being read in Spanish, the second in Hungarian, and a third made
+up of short, randomly selected fragments of the first two,
+scrambled so that they didn't resemble human speech. Each dog
+was familiar with either Spanish or Hungarian, but not both. The
+team concluded that differences in dogs' anatomical features may
+affect their ability to distinguish speech from nonspeech.
+--- Q9 D to Q10 Passage ---
+Compared with longer-headed dogs, shorter-headed dogs
+showed a greater difference in brain activity when hearing
+the language they were accustomed to than when hearing the
+other language.
+The onsets of growing seasons in Alaska have been shifting earlier,
+potentially enabling increased carbon dioxide (
+) absorption
+through greater productivity of mooseberry (Viburnum edule)
+plants and other vegetation, but also potentially enabling
+increased
+output through greater heterotrophic respiration (
+generated by the activity of soil microorganisms).
+Hydrologist Yonghong Yi and her colleagues modeled seasonal
+changes in net
+in Alaska in a landscape grid of  square
+kilometer (
+) cells and again in a grid of
+cells, which
+are finer resolutions than most models of net
+have achieved.
+The researchers concluded that variations in the landscape affect
+net
+in ways that most models are too coarse to capture.
+--- Q10 D to Q11 Passage ---
+When seasonal fluxes in average
+absorption and
+Indigenous songs can be repositories of ecological information,
+from Yi songs about the natural environment to Tlingit songs
+about wildlife encounters. Kwakwaka'wakw song keeper
+Kwaxsistalla Wathl'thla aided research by ethnobiologist Dana
+Lepofsky et al. by contributing songs that reference creating
+terraced intertidal gardens to foster the healthy development of
+clams, a staple in the Kwakwaka'wakw people's diet. Such
+structures date as far back as 3,500 years ago. Intriguingly,
+analysis of local paleoecological marine bivalve records has
+revealed significant increases in clam size and productivity as
+clam garden practices became more prevalent and harvesting
+pressure increased—a finding that bolsters the notion that
+__________
+--- Q11 D to Q12 Passage ---
+contemporary Kwakwaka'wakw people have only minimally
+deviated from the clam-gardening practices described in the
+people's songs.
+Saeed M.Z.A. Tarabieh conducted a study of consumer attitudes
+toward Jordanian food and beverage companies and found that
+for consumers who value environmental conservation, their
+likelihood of purchasing a product decreased when their
+perception of the product's risk of causing environmental harm
+increased. Subsequently, other researchers conducted a study of
+various demographic groups in China, investigating participants'
+intentions to purchase a new television, and found that, on
+average, rural residents had the highest perception among all the
+demographic groups in the study of the environmental risks of the
+TV. Assuming that the results of Tarabieh's study are broadly
+applicable, this finding suggests that __________
+--- Q12 D to Q13 Passage ---
+rural residents might be less likely than participants in the
+other demographic groups to purchase the TV.
+Quasars such as APM 08279-5255, located in the Lynx
+constellation—are extremely luminous galactic nuclei powered by
+supermassive black holes, some of which are known to have
+developed within the first billion years of the formation of the
+universe. Based on simulations they conducted, astrophysicists
+Daniel Whalen, Muhammad Latif, and colleagues concluded that
+these early quasars developed partly as a result of rare
+convergences of gases in space without the need for ultraviolet
+backgrounds or other extreme and implausible environmental
+conditions that models of the early universe have included to
+account for the presence of these quasars. If this conclusion is
+correct, it suggests that __________
+--- Q13 D to Q14 Passage ---
+previous models of the early universe may have
+underemphasized the importance of ultraviolet backgrounds
+to quasar formation.
+The present-day city of Nakhchivan, Azerbaijan, was for years the
+capital of the Nakhchivan Autonomous Soviet Socialist Republic,
+one of many nominally autonomous republics within the Soviet
+Union. Like __________ peer autonomous Soviet socialist
+republics, the Nakhchivan Republic was established along
+ethnolinguistic lines: most of the republic's residents spoke
+Azerbaijani.
+--- Q14 D to Q15 Passage ---
+it's
+Jordan's constitution, enacted in 1952, contains just one of the six
+constitutional features that enhance judicial independence, as
+identified by legal scholars James Melton and Tom Ginsburg.
+After 1985, such de jure judicial independence became more
+prevalent, as exemplified in Croatia's constitution, enacted in
+1991 and __________ four of these features.
+--- Q15 D to Q16 Passage ---
+contains
+The Limón technique, developed by Mexican-born dancer and
+choreographer José Limón, is known for its emphasis on breath
+control and its interplay of weight and __________ dancers may
+explore, for example, the moment of mid-air suspension at the
+top of a jump.
+--- Q16 D to Q17 Passage ---
+weightlessness which
+Chondrites are stony meteorites that are undifferentiated—that is,
+their contents have not melted and separated into distinct layers.
+They are __________ many chondrites experience aqueous
+alteration as a result of exposure to fluids, as well as fracturing,
+veining, and localized melting due to collisions with other objects.
+--- Q17 D to Q18 Passage ---
+pristine, though.
+Named for the year in which it was detected by American
+astronomers, SN 2020fqv was a supernova (the explosion of a
+massive __________ in the constellation Virgo. 60 million light-
+years from Earth, the transient yet powerful blast propelled
+particles and debris into space at extremely high speeds.
+--- Q18 D to Q19 Passage ---
+star), occurring
+Over the years, dozens of architectural and archaeological sites
+important to Hawaiian history and culture, such as the Haena
+Archeological Complex and the Bank of Hawaii-Haiku Branch,
+have been added to the Hawai'i Register of Historic Places, and
+each year, a review board of experts that includes sociologist
+Alton Okinaka and architect Katie Stephens gathers to
+__________ which sites to add next to the growing registry.
+--- Q19 D to Q20 Passage ---
+select
+Not all plants benefit equally or from the same kind of
+__________ cucumber and marigold, for example, benefit from
+endomycorrhizal associations; many tree species, such as pine and
+oak, benefit from ectomycorrhizal associations; and plants in the
+Brassica family, such as rutabaga, don't benefit from mycorrhizae
+at all.
+--- Q20 D to Q21 Passage ---
+mycorrhizae;
+Those who looked up at the right time on September 9, 1904,
+would have witnessed a total solar eclipse, during which the Moon
+completely blocks the Sun. __________ stargazers on December
+25, 1935, would have seen an annular solar eclipse, during which
+the Moon blocks most of the Sun and causes it to look like a ring
+of light.
+--- Q21 D to Q22 Passage ---
+Indeed,
+With many elements, like neon, scientists were able to isolate a
+relatively pure sample of the substance shortly after discovering its
+existence—but this wasn't the case with all elements. __________
+the isolation process took years. The element erbium, for instance,
+was discovered in 1843 but not isolated until 1934.
+--- Q22 D to Q23 Passage ---
+Moreover,
+In Tino Villanueva's 2016 poem "Field of Moving Colors
+Layered," the poet contemplates a painting that has inspired him:
+Alberto Valdés's 1965 work Untitled. The painting, which features
+overlapping geometric shapes, fuels the poem's exploration of
+temporality and identity. __________ in responding to Valdés's
+artwork, Villanueva's poem reflects on the relationship between
+poetry and other art forms.
+--- Q23 D to Q24 Passage ---
+What's more,
+While researching a topic, a student has taken the following notes:
+• Grimanesa Amoros is a Peruvian American artist.
+• She is well known for her large-scale LED light sculptures.
+• Substancial (Phase 4) debuted in 2007 at the Hudson River
+Community Health Center in Peekskill, New York.
+• It is made of iridescent multicolored LED domes.
+• It occupies 2,816 cubic feet of space.
+--- Q24 D to Q25 Passage ---
+In 2007, Grimanesa Amoros debuted Substancial (Phase 4)
+in Peekskill, New York.
+While researching a topic, a student has taken the following notes:
+• Ynés Mexía was a Mexican American botanist.
+• Between 1917 and 1938, she collected over 150,000 botanical
+samples throughout the Americas.
+• She collected a sample of Achyrocline vauthieriana in Minas
+Gerais, Brazil, on May 3, 1930.
+• She collected a sample of Vernonia liatroides in Jalisco, Mexico,
+on February 14, 1927.
+• These specimens are members of the Asteraceae family.
+• They can now be viewed online at the C.V. Starr Virtual
+Herbarium.
+--- Q25 D to Q26 Passage ---
+Ynés Mexía collected a sample of Achyrocline vauthieriana
+in May of 1930, after collecting Vernonia liatroides in
+February of 1927.
+While researching a topic, a student has taken the following notes:
+• Thailand's annual Songkran Water Festival is held each April.
+• It marks Songkran, the traditional Thai New Year.
+• People splash and spray each other for fun at the festival's
+community-wide water fights.
+• In Bangkok, thousands gather along Silom Road for the city's
+largest water fight.
+• In Chiang Mai, thousands gather at a historical monument
+called the Tha Phae Gate for the city's largest water fight.
+--- Q26 D to Q27 Passage ---
+In both Bangkok and Chiang Mai, thousands gather to
+celebrate Songkran with water fights.
+While researching a topic, a student has taken the following notes:
+• In a 2012 study, Dybzinski and Tilman tested the effect of plant
+litter on seedling emergence in a grassland setting.
+• Plant litter includes dead leaves and other plant material.
+• The test site was a flooded grassland in the United States.
+• It was in a temperate midlatitude climate.
+• The researchers found that in these environmental conditions
+the presence of plant litter had a negative effect on seedling
+emergence.

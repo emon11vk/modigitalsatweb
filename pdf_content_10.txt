@@ -1,3 +1,0 @@
-' in content:
-                import red
-`                matches = re.findall(r'==Start of PDF==(.*?)

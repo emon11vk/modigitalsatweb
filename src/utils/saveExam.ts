@@ -20,6 +20,7 @@ export async function saveExam(
       title: state.exam.title,
       created_by: currentUserEmail,
       updated_at: new Date().toISOString(),
+      folder_id: state.exam.folder_id || null,
     };
     if (state.exam.id) {
       examPayload.id = state.exam.id;
@@ -216,7 +217,7 @@ export async function loadExam(
     dispatch({
       type: 'LOAD_EXISTING_EXAM',
       payload: {
-        exam: { id: exam.id, title: exam.title },
+        exam: { id: exam.id, title: exam.title, folder_id: exam.folder_id },
         sections: normalizedSections,
       },
     });

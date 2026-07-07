@@ -1,0 +1,540 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+46
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+47
+CONTINUE
+
+For the linear function ,  is a constant and 
+. What is
+the value of ?
+Data set A: 5, 8, 11, 11, 14, 20
+Data set B: 5, 8, 11, 11, 14, 20, 41
+Two data sets are shown. Which statement best compares the
+medians of the data sets?
+A)
+The median of data set A is greater than the median of data
+set B.
+B)
+The median of data set A is less than the median of data set
+B.
+C)
+The medians of data sets A and B are equal.
+D)
+There is not enough information to compare the medians.
+1
+f(x) = 8x + b
+f b
+f(0) = 11
+b
+2
+PDF version from learn.ronansat.com. Happy practicing!
+48
+CONTINUE
+
+To estimate the proportion of a population that has a certain
+characteristic, a random sample was selected from the population.
+Based on the sample, it is estimated that the proportion of the
+population that has the characteristic is 
+, with an associated
+margin of error of 
+. Based on this estimate and margin of
+error, which of the following is the most appropriate conclusion
+about the proportion of the population that has the characteristic?
+A)
+It is plausible that the proportion is between 0.12 and 0.28.
+B)
+It is plausible that the proportion is less than 0.12.
+C)
+The proportion is exactly 0.2.
+D)
+It is plausible that the proportion is greater than 0.28.
+The shaded region shown represents solutions to an inequality.
+Which ordered pair 
+ is a solution to this inequality?
+A)
+B)
+C)
+D)
+3
+0.2
+0.08
+4
+(x, y)
+(−8, 0)
+(0, 8)
+(0, −8)
+(8, 0)
+PDF version from learn.ronansat.com. Happy practicing!
+49
+CONTINUE
+
+4
+0
+12
+1
+22
+For the quadratic function , the table shows three values of  and
+their corresponding values of 
+. Which equation defines 
+?
+A)
+B)
+C)
+D)
+The graph gives the estimated population , in thousands, of a
+town  years since 2007, where 
+. Which of the
+following best describes the increase in the estimated population
+from 
+ to 
+?
+A)
+The estimated population at 
+ is 3.5 times the estimated
+population at 
+.
+B)
+The estimated population at 
+ is 2.5 times the estimated
+population at 
+.
+C)
+The estimated population at 
+ is 1.5 times the estimated
+population at 
+.
+D)
+The estimated population at 
+ is 0.5 times the estimated
+population at 
+.
+5
+x
+f(x)
+−1
+f
+x
+f(x)
+f(x)
+f(x) = 5x +
+2
+5x + 12
+f(x) = 9x +
+2
+x + 12
+f(x) = 9x −
+2
+x + 12
+f(x) = x +
+2
+9x + 12
+6
+y
+x
+0 ≤x ≤5
+x = 0
+x = 1
+x = 1
+x = 0
+x = 1
+x = 0
+x = 1
+x = 0
+x = 1
+x = 0
+PDF version from learn.ronansat.com. Happy practicing!
+50
+CONTINUE
+
+The function  estimates the temperature, in degrees Fahrenheit (
+), in a certain city one day in January, where  is the number of
+hours after 10 a.m. and 
+. According to the function,
+what was the estimated decrease in temperature each hour, in 
+,
+in this city during this time period?
+A)
+4
+B)
+8
+C)
+54
+D)
+62
+In the triangle shown, what is the value of ?
+A)
+22
+B)
+C)
+D)
+132
+7
+T(x) = 62 −8x
+T
+F
+∘
+x
+1 ≤x ≤5
+F
+∘
+8
+x
+22
+​3
+66
+​3
+PDF version from learn.ronansat.com. Happy practicing!
+51
+CONTINUE
+
+There is a proportional relationship between  and . If 
+when 
+, then what is the value of  when 
+?
+A)
+1,716
+B)
+1,872
+C)
+3,276
+D)
+3,328
+A cube has a volume of 79,507 cubic units. What is the surface
+area, in square units, of the cube?
+9
+p
+t
+p = 2, 340
+t = 3, 120
+p
+t = 2, 496
+10
+PDF version from learn.ronansat.com. Happy practicing!
+52
+CONTINUE
+
+In the given equation,  is a constant. If the equation has no
+solution, what is the value of ?
+A)
+B)
+C)
+D)
+The function 
+ is defined as 17 more than 3 times a number .
+If 
+ is graphed in the 
+-plane, what is the best
+interpretation of the -intercept?
+A)
+When 
+, the number is 
+B)
+When the number is 0, 
+C)
+For each increase of 1 in the value of the number, 
+increases by 3.
+D)
+The value of 
+ increases for each increase of 3 in the value
+of the number.
+11
+​ =
+5
+8(cx + 3)
+4x −3
+c
+c
+−
+​2
+5
+−
+​5
+2
+​5
+2
+​2
+5
+12
+f(x)
+x
+y = f(x)
+xy
+y
+f(x) = 0
+−
+​
+3
+17
+f(x) = 17
+f(x)
+f(x)
+PDF version from learn.ronansat.com. Happy practicing!
+53
+CONTINUE
+
+The given equation relates the variables  and , where  and  are
+greater than 1. Which equation correctly expresses  in terms of 
+?
+A)
+B)
+C)
+D)
+A proposal for a construction project was included on a city
+election ballot. A TV news report stated that 8 times as many
+people voted in favor of the proposal as people who voted against
+it. An internet article reported that 24,500 more people voted in
+favor of the proposal than voted against it. Based on these data,
+how many people voted against the proposal?
+13
+​ −
+c
+2
+​ =
+d
+7
+5
+c
+d
+c
+d
+d
+c
+d =
+​
+7(2 −5c)
+c
+d = 2 −5c
+7c
+d =
+​
+c
+7(2 −5c)
+d =
+7c
+2 −5c
+14
+PDF version from learn.ronansat.com. Happy practicing!
+54
+CONTINUE
+
+The function  is defined by 
+. What is the value of
+?
+A)
+44
+B)
+52
+C)
+88
+D)
+484
+In the given equation, 
+ and 
+. If 
+, where  is a
+constant, what is the value of ?
+15
+f
+f(x) = 4x2
+f(11)
+16
+​ =
+5 p2
+t
+​4
+3
+p > 1
+t > 1
+t = p2n−1
+n
+n
+PDF version from learn.ronansat.com. Happy practicing!
+55
+CONTINUE
+
+The equation 
+, where  is a constant, has exactly one
+solution. Which of the following could be the value of ?
+A)
+ only
+B)
+ or 
+C)
+ only
+D)
+ only
+In the given equation,  is a positive integer. The equation has no
+real solution. What is the largest possible value of ?
+17
+4∣x −3∣= k
+k
+​4
+k
+−3
+−3
+3
+0
+3
+18
+−4x +
+2
+bx −25 = 0
+b
+b
+PDF version from learn.ronansat.com. Happy practicing!
+56
+CONTINUE
+
+The function  is defined by 
+ where  and 
+are integer constants and 
+. The functions  and  are
+equivalent to function , where  and 
+ are constants. Which of
+the following equations displays the -coordinate of the -
+intercept of the graph of 
+ in the 
+-plane as a constant
+or coefficient?
+I. 
+II. 
+A)
+I only
+B)
+II only
+C)
+I and II
+D)
+Neither I nor II
+The cost of renting a piece of construction equipment for up to 5
+days is $230 for the first day and $115 for each additional day.
+Which of the following equations gives the cost , in dollars, of
+renting the equipment for  days, where  is a positive integer
+and 
+?
+A)
+B)
+C)
+D)
+19
+f
+f(x) = a(3.1 +
+x
+3.1 )
+b
+a
+b
+0 < a < b
+g
+h
+f
+k
+m
+y
+y
+y = f(x)
+xy
+g(x) = a(3.1 +
+x
+k)
+h(x) = a(3.1) +
+x
+m
+20
+y
+x
+x
+x ≤5
+y = 230x + 115
+y = 230x −115
+y = 115x + 230
+y = 115x + 115
+PDF version from learn.ronansat.com. Happy practicing!
+57
+CONTINUE
+
+The mass of object A is 498% of the mass of object B, and the mass
+of object A is 0.830% of the mass of object C. If the mass of object
+C is % of the mass of object B, what is the value of ?
+For triangle PQR and triangle STU, angles P and S each measure
+. 
+ and 
+. Which additional piece(s) of
+information is(are) sufficient to prove that triangle PQR is similar
+to triangle STU?
+I. The length of 
+ is  the length of 
+II. The length of 
+ is  the length of 
+A)
+I is sufficient, but II is not.
+B)
+II is sufficient, but I is not.
+C)
+I is sufficient, and II is sufficient.
+D)
+Neither I nor II is sufficient.
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+21
+p
+p
+22
+30∘QR = 16
+TU = 12
+​
+PQ
+​3
+4
+ST
+PR
+​3
+4
+SU
+PDF version from learn.ronansat.com. Happy practicing!
+58
+

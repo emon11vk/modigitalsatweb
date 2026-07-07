@@ -1,0 +1,280 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "The scatterplot shows the relationship between two variables, x and y. A line of best fit is also shown.\nWhich of the following equations best represents the line of best fit shown?",
+    "options": {
+      "A": "y = 2.6 + 1.9x",
+      "B": "y = 2.6 - 1.9x",
+      "C": "y = -2.6 + 1.9x",
+      "D": "y = -2.6 - 1.9x"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the solution (x, y) to the given system of equations?\n2x - 3y = 4\nx = 8",
+    "options": {
+      "A": "(8, 4)",
+      "B": "(8, -9)",
+      "C": "(8, -4)",
+      "D": "(8, 9)"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What value of x is the solution to the equation 8x + 56 = 36x?",
+    "options": {
+      "A": "-2",
+      "B": "11/2",
+      "C": "1/2",
+      "D": "2"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If 4(x + 3) = 3(x + 3) + 56, what is the value of x + 3?",
+    "options": {
+      "A": "-3",
+      "B": "53",
+      "C": "56",
+      "D": "59"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function f is defined by f(x) = 7/10 x + 63. What is the value of f(20)?",
+    "correct_answer": ["77"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = 2 + \\sqrt{x}. What is the value of f(100)?",
+    "options": {
+      "A": "0",
+      "B": "12",
+      "C": "27",
+      "D": "52"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Triangles ABC and DEF are congruent, where A corresponds to D, and B and E are right angles. The measure of angle A is 17^\\circ. What is the measure, in degrees, of angle F?",
+    "correct_answer": ["73"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "At a convention center, there are a total of 250 visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is 0.44, and the probability of selecting a visitor who is located in room B is 0.32.\nHow many visitors are located in room C?",
+    "options": {
+      "A": "24",
+      "B": "30",
+      "C": "35",
+      "D": "60"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The given function g(m) = -0.05m + 12.4 models the number of gallons of gasoline remaining in a full gas tank in a car after driving m miles.\nAccording to the model, about how many gallons of gasoline are used to drive each mile?",
+    "options": {
+      "A": "0.05",
+      "B": "12.4",
+      "C": "20",
+      "D": "248.0"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the center of the circle in the xy-plane defined by the equation (x - 4)^2 + (y + 3)^2 = 16?",
+    "options": {
+      "A": "(-4, 3)",
+      "B": "(-4, -3)",
+      "C": "(4, -3)",
+      "D": "(4, 3)"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A conservation scientist implemented a program to reduce a certain invasive insect population in an area. The given function f(x) = 3,000(0.75)^x estimates this insect species population x years after 2008, where x \\leq 8.\nWhich of the following is the best interpretation of 3,000 in this context?",
+    "options": {
+      "A": "The estimated percent decrease in the insect population for this species and area every 8 years after 2008",
+      "B": "The estimated percent decrease in the insect population for this species and area each year after 2008",
+      "C": "The estimated insect population for this species and area 8 years after 2008",
+      "D": "The estimated initial insect population for this species and area in 2008"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Line r in the xy-plane is defined by the equation 4x - 9y = 5.\nLine s is parallel to line r.\nWhat is the slope of line s?",
+    "options": {
+      "A": "9",
+      "B": "4",
+      "C": "9/4",
+      "D": "4/9"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The cost to rent a bus from Company X is $950 for the first 3 hours and an additional $50 per hour for each hour after the first 3 hours.\nIf the total cost to rent the bus from Company X for t hours, where t > 3, is $1,100, which equation represents this situation?",
+    "options": {
+      "A": "950(t - 3) + 50t = 1,100",
+      "B": "950(3t) + 50t = 1,100",
+      "C": "950 + 50(3t) = 1,100",
+      "D": "950 + 50(t - 3) = 1,100"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The given equation y = -1/2 x + 29 models a company's active projects over 6 months, where y is the estimated number of active projects x months after the end of April 2013, where 0 \\leq x \\leq 6.\nWhich statement is the best interpretation of the y-intercept of the graph of this equation in the xy-plane?",
+    "options": {
+      "A": "At the end of April 2013, the estimated number of active projects was 0.",
+      "B": "At the end of April 2013, the estimated number of active projects was 29.",
+      "C": "At the end of May 2013, the estimated number of active projects was 0.",
+      "D": "At the end of May 2013, the estimated number of active projects was 29."
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Odalys ordered mulch and river rock, which cost a total of $242.\nThe given equation 22.5x + 26.75y = 242 represents the relationship between the number of cubic yards of mulch, x, and the number of tons of river rock, y, Odalys ordered.\nHow much more, in dollars, did a ton of river rock cost Odalys than a cubic yard of mulch?",
+    "correct_answer": ["4.25"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A hemisphere is half of a sphere. If a hemisphere has a radius of 86 inches, which of the following is closest to the volume, in cubic inches, of this hemisphere?",
+    "options": {
+      "A": "15,500",
+      "B": "62,000",
+      "C": "999,100",
+      "D": "1,332,200"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "An object is kicked from a platform. The equation h = -4.9t^2 + 5t + 12 represents this situation, where h is the height of the object above the ground, in meters, t seconds after it is kicked.\nWhich number represents the height, in meters, from which the object was kicked?",
+    "options": {
+      "A": "0",
+      "B": "4.9",
+      "C": "5",
+      "D": "12"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In \\triangle ABC, \\angle B is a right angle and the length of BC is 260 millimeters. If \\cos A = 3/5, what is the length, in millimeters, of AB?",
+    "options": {
+      "A": "325",
+      "B": "260",
+      "C": "195",
+      "D": "65"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "On average, each year from 2005 to 2015 the number of pheasants counted per mile of road decreased by 3.5% of the number of pheasants per mile of road the previous year. In 2005, there were 6.29 pheasants per mile.\nWhich of the following best approximates the number of pheasants per mile of road in 2015?",
+    "options": {
+      "A": "0.965(6.29)^{10}",
+      "B": "1.035(6.29)^{10}",
+      "C": "6.29(0.035)^{10}",
+      "D": "6.29(0.965)^{10}"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A sample of wood is cut in the shape of a cube with an edge length of 2.00 centimeters.\nIf this cube has a mass of 4.48 grams, what is the density of this cube, in grams per cubic centimeter?",
+    "correct_answer": ["0.56"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The table shows two values of x and their corresponding values of y. The graph of the linear equation passes through the point (1/3, a). (Based on the table: x = -13, y = -28 and x = 6, y = 48).\nWhat is the value of a?",
+    "correct_answer": ["76/3", "25.33"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which system of linear equations has no solution?",
+    "options": {
+      "A": "-7x + 8y = -3 and 7x - 8y = 3",
+      "B": "7x - 8y = 3 and 8x + 9y = 4",
+      "C": "-7x + 8y = 3 and 7x - 8y = 3",
+      "D": "7x - 8y = 3 and -21x + 24y = -9"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

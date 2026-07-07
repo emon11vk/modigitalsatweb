@@ -1,6 +1,0 @@
-')
-if idx != -1:
-    print(f"Found in DB at offset {idx}")
-    
-    # Extract around it
-    end_idx = content.rfind(b'

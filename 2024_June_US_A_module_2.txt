@@ -1,0 +1,500 @@
+No Test Material On This Page
+
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+33
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+34
+CONTINUE
+
+Note: Figure not drawn to scale.
+In the figure, line  intersects lines  and . Line  is parallel to
+line . What is the value of ?
+During a portion of a flight, a small airplane's cruising speed
+varied between 180 miles per hour and 190 miles per hour. Which
+inequality best represents this situation, where  is the cruising
+speed, in miles per hour, during this portion of the flight?
+A)
+B)
+C)
+D)
+1
+n
+r
+s
+r
+s
+x
+2
+s
+s ≤10
+s ≤180
+s ≤190
+180 ≤s ≤190
+PDF version from learn.ronansat.com. Happy practicing!
+35
+CONTINUE
+
+If 
+ what is the value of 
+?
+A)
+3
+B)
+9
+C)
+18
+D)
+27
+In the 
+-plane, the graph of the given equation is a circle. If this
+circle is inscribed in a square, what is the perimeter of the square?
+A)
+18
+B)
+36
+C)
+72
+D)
+144
+3
+4x = 6
+12x
+4
+x −
+2
+6x + y −
+2
+12y −36 = 0
+xy
+PDF version from learn.ronansat.com. Happy practicing!
+36
+CONTINUE
+
+Which expression is equivalent to 
+?
+A)
+B)
+C)
+D)
+The function  is defined by 
+. What is the value of
+?
+5
+(x +
+3
+6x −
+2
+8x) + 8(x +
+2
+4)
+x +
+3
+4x −
+2
+8x + 32
+x +
+3
+14x −
+2
+8x + 32
+x +
+3
+8x −
+2
+8x + 32
+x +
+3
+6x −
+2
+8x + 32
+6
+f
+f(x) = x +
+3
+17
+f(2)
+PDF version from learn.ronansat.com. Happy practicing!
+37
+CONTINUE
+
+The function  is defined by 
+. For what value of  does
+?
+The scatterplot shows the relationship between two variables, 
+and . Which of the following equations is the most appropriate
+linear model for the data shown?
+A)
+B)
+C)
+D)
+7
+g
+g(x) =
+​2
+x
+x
+g(x) = 244
+8
+x
+y
+y = 0.8 + 8.7x
+y = 0.8 −8.7x
+y = 8.7 + 0.8x
+y = 8.7 −0.8x
+PDF version from learn.ronansat.com. Happy practicing!
+38
+CONTINUE
+
+For the given equation, which table gives three values of  and
+their corresponding values of ?
+A)
+0
+5
+4
+10
+8
+15
+B)
+0
+15
+4
+10
+8
+5
+C)
+5
+0
+10
+4
+15
+8
+D)
+5
+8
+10
+4
+15
+0
+A chemist combines water and isopropanol to make a mixture
+with a volume of 
+ milliliters (mL). The volume of isopropanol
+in the mixture is 
+ mL. What is the volume of water, in mL, in
+the mixture? (Assume that the volume of the mixture is the sum
+of the volumes of water and isopropanol before they were mixed.)
+9
+5x −4y = −20
+x
+y
+x
+y
+x
+y
+x
+y
+x
+y
+10
+52
+10
+PDF version from learn.ronansat.com. Happy practicing!
+39
+CONTINUE
+
+The solution to the given system of equations is 
+. What is the
+value of ?
+A)
+3
+B)
+0
+C)
+2
+D)
+5
+A company has a customer loyalty program. In January 2018,
+there were 900 customers enrolled in the loyalty program. For the
+next 24 months after January 2018, the total number of customers
+enrolled in the loyalty program each month was 2% greater than
+the total number enrolled the previous month. Which equation
+gives the total number of customers, , enrolled in the company's
+loyalty program 
+ months after January 2018, where 
+?
+A)
+B)
+C)
+D)
+11
+y = −
+​x
+3
+1
+y =
+​x
+5
+1
+(x, y)
+x
+12
+c
+m
+m ≤24
+c = 900(0.02)m
+c = 900(1.02)m
+c = 900(1.2)m
+c = 900(2)m
+PDF version from learn.ronansat.com. Happy practicing!
+40
+CONTINUE
+
+The function 
+ gives the number of bacteria
+in a population  minutes after an initial observation. How much
+time, in minutes, does it take for the number of bacteria in the
+population to double?
+One of two equations in a system of linear equations is given. The
+system has infinitely many solutions. What is the slope of the
+graph of the second equation?
+A)
+B)
+C)
+D)
+13
+f(t) = 10, 000(2)
+​
+350
+t
+t
+14
+y =
+​x +
+8
+3
+7
+−
+​3
+8
+−
+​8
+3
+​8
+3
+​3
+8
+PDF version from learn.ronansat.com. Happy practicing!
+41
+CONTINUE
+
+If 
+, what is the value of 
+?
+A)
+9
+B)
+6
+C)
+4
+D)
+0
+The function  is defined by 
+,
+where  is a constant. In the 
+-plane, the graph of 
+passes through the point 
+. What is the value of 
+?
+A)
+-140
+B)
+-2
+C)
+11
+D)
+80
+15
+x −
+2
+6x −9 = 0
+x −
+2
+6x
+16
+f
+f(x) = (x −5)(x −8)(x + k)
+k
+xy
+y = f(x)
+(−2, 0)
+f(0)
+PDF version from learn.ronansat.com. Happy practicing!
+42
+CONTINUE
+
+Line  is shown in the 
+-plane. Line  (not shown) is
+perpendicular to line  and passes through the point 
+.
+Which equation defines line ?
+A)
+B)
+C)
+D)
+What is the median of the data set shown?
+17
+k
+xy
+j
+k
+(−12, −19)
+j
+y =
+​x −
+3
+2
+11
+y =
+​x −
+3
+2
+27
+y =
+​x −
+2
+3
+11
+y =
+​x −
+2
+3
+27
+18
+12, 12, 18, 24, 29
+PDF version from learn.ronansat.com. Happy practicing!
+43
+CONTINUE
+
+In right triangle ABC, angles A and B are acute, side AC has a
+length of 21.7, and 
+. What is the length of side BC,
+rounded to the nearest tenth?
+A)
+470.9
+B)
+173.6
+C)
+4.7
+D)
+2.7
+A rectangular banner has an area of 2,500 square inches. A copy
+of the banner is made in which the length and width of the
+original banner are each increased by 40%. What is the area of the
+copy, in square inches?
+A)
+2,540
+B)
+2,580
+C)
+3,500
+D)
+4,900
+19
+tan B =
+​8
+1
+20
+PDF version from learn.ronansat.com. Happy practicing!
+44
+CONTINUE
+
+What is the minimum value of the given function?
+A)
+2
+B)
+7
+C)
+9
+D)
+11
+Point F lies on a unit circle in the 
+-plane and has coordinates
+. Point G is the center of the circle and has coordinates 
+. Point H also lies on the circle and has coordinates 
+, where
+ is a constant. Which of the following could be the positive
+measure of angle FGH, in radians?
+A)
+B)
+C)
+D)
+21
+f(x) = (x −2) +
+2
+9
+22
+xy
+(1, 0)
+(0, 0)
+(−1, y)
+y
+​
+2
+27π
+​
+2
+29π
+24π
+25π
+PDF version from learn.ronansat.com. Happy practicing!
+45
+CONTINUE
+
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+46
+

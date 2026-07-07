@@ -1,0 +1,552 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+47
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+48
+CONTINUE
+
+Which of the following is a graph of a decreasing exponential
+function?
+A)
+Graph A
+B)
+Graph B
+C)
+Graph C
+D)
+Graph D
+What is the -intercept of the graph of 
+ in the
+-plane?
+A)
+B)
+C)
+D)
+1
+2
+y
+y = 2x +
+2
+6x + 3
+xy
+(0, 2)
+(0, 3)
+(0, 6)
+(0, 9)
+PDF version from learn.ronansat.com. Happy practicing!
+49
+CONTINUE
+
+The product of a positive number  and the number that is 1 less
+than  is equal to 342. What is the value of ?
+A)
+0.5
+B)
+19
+C)
+341
+D)
+343
+A cylinder has a diameter of 14 inches and a height of 8 inches.
+What is the volume, in cubic inches, of the cylinder?
+A)
+B)
+C)
+D)
+3
+x
+x
+x
+4
+112π
+392π
+1,568π
+3,136π
+PDF version from learn.ronansat.com. Happy practicing!
+50
+CONTINUE
+
+In the given system of equations,  is a constant. The graphs of the
+equations in the given system intersect at exactly one point, 
+,
+in the 
+-plane. What is the value of ?
+A)
+-8
+B)
+-6
+C)
+6
+D)
+8
+In triangle PQR, 
+ is extended to point S. The measure of
+ is 
+ and the measure of 
+ is 
+. What is the
+measure of 
+?
+A)
+B)
+C)
+D)
+5
+y = 2x −
+2
+23x + 64
+y = x + a
+a
+(x, y)
+xy
+x
+6
+​
+QR
+∠PQR
+142∘
+∠PRS
+166∘
+∠QPR
+24∘
+14∘
+19∘
+8∘
+PDF version from learn.ronansat.com. Happy practicing!
+51
+CONTINUE
+
+Eli used wax to make candles. The function 
+approximates the weight, in ounces, of wax Eli had remaining
+after making  candles. Which statement is the best interpretation
+of the -intercept of the graph of 
+ in the 
+-plane in this
+context?
+A)
+Eli had approximately 15 ounces of wax when he began to
+make the candles.
+B)
+Eli used approximately 15 ounces of wax for each candle.
+C)
+Eli had approximately 60 ounces of wax when he began to
+make the candles.
+D)
+Eli used approximately 60 ounces of wax for each candle.
+The given equation relates the positive variables 
+, and 
+.
+Which equation correctly expresses 
+ in terms of 
+, and ?
+A)
+B)
+C)
+D)
+7
+f(x) = −15x + 60
+x
+y
+y = f(x)
+xy
+8
+ak =
+​(7 +
+12
+b
+m)
+a, b, k
+m
+m
+a, b
+k
+m =
+​
+b
+12(ak −7)
+m = ak −7 −
+​
+12
+b
+m = ak −
+​
+12
+7b
+m =
+​ −
+b
+12ak
+7
+PDF version from learn.ronansat.com. Happy practicing!
+52
+CONTINUE
+
+The function  is defined by 
+. What is the value of 
+when 
+ is equal to 10,000?
+A)
+B)
+1
+C)
+3
+D)
+4
+If 
+ and 
+, what is the value of ?
+A)
+B)
+C)
+D)
+9
+g
+g(x) = 103x−1
+x
+g(x)
+​3
+5
+10
+​ =
+y
+x
+3
+​ =
+ty
+5x
+135
+t
+​9
+1
+​3
+1
+9
+3
+PDF version from learn.ronansat.com. Happy practicing!
+53
+CONTINUE
+
+A piece of string with a length of 35 inches is cut into two parts.
+One part has a length of  inches, and the other part has a length
+of  inches. The value of  is 5 more than 2 times the value of .
+What is the value of ?
+Which equation has no solution?
+A)
+B)
+C)
+D)
+11
+x
+y
+x
+y
+x
+12
+−19x −
+​ =
+7
+1
+−19x −
+​7
+1
+−19x −
+​ =
+7
+1
+−19x +
+​7
+1
+−19x −
+​ =
+7
+1
+19x −
+​7
+1
+−19x −
+​ =
+7
+1
+19x +
+​7
+1
+PDF version from learn.ronansat.com. Happy practicing!
+54
+CONTINUE
+
+The function  gives the temperature, in degrees Fahrenheit, that
+corresponds to a temperature of  kelvins. If a temperature
+increased by 
+ kelvins, by how much did the temperature
+increase, in degrees Fahrenheit?
+A)
+15.84
+B)
+47.84
+C)
+475.83
+D)
+507.83
+An environmental scientist is investigating the volatility of 175
+organic compounds by finding the boiling point of each
+compound. The mean boiling point of all 175 compounds is 167
+degrees Celsius. The scientist classifies each of these compounds
+as either semivolatile or volatile. Of the 175 compounds, 50
+compounds were classified as semivolatile, and these 50
+compounds have a mean boiling point of 327 degrees Celsius. The
+remaining 125 compounds were classified as volatile. What is the
+mean boiling point, in degrees Celsius, of the 125 compounds
+classified as volatile compounds?
+13
+F(x) =
+​(x −
+5
+9
+273.15) + 32
+F
+x
+8.80
+14
+PDF version from learn.ronansat.com. Happy practicing!
+55
+CONTINUE
+
+Line  is defined by 
+. Line  is parallel to line  in the
+-plane and passes through the point 
+. Which equation
+defines line ?
+A)
+B)
+C)
+D)
+For the given function , the value of 
+ increases by 
+ for
+every increase of  by 6. What is the value of ?
+A)
+30
+B)
+41
+C)
+60
+D)
+69
+15
+k
+y = 6x + 5
+j
+k
+xy
+(0, 11)
+j
+y = 6x + 11
+y = 11x + 5
+y = −6x + 11
+y = −11x + 5
+16
+f(x) = 24(1.30)
+​3
+x
+f
+f(x)
+p%
+x
+p
+PDF version from learn.ronansat.com. Happy practicing!
+56
+CONTINUE
+
+A carpenter charges a flat rate of $234 for the first 3 hours of work
+and $65 for each additional hour of work. Which equation gives
+the total amount , in dollars, that the carpenter charges for 
+hours of work, where 
+?
+A)
+B)
+C)
+D)
+For what value of  is the given expression equivalent to 
+where 
+?
+17
+y
+x
+x > 3
+y = 65x + 39
+y = 234x + 65
+y = 65x + 234
+y = 234x + 429
+18
+​(
+​)
+5 119n
+6 119n 2
+x
+(119n)x
+n > 1
+PDF version from learn.ronansat.com. Happy practicing!
+57
+CONTINUE
+
+Distribution of age and assigned group for 105 participants
+Group
+0–9 years
+10–19 years
+20+ years
+Total
+Group A
+19
+5
+11
+35
+Group B
+4
+23
+8
+35
+Group C
+26
+8
+1
+35
+Total
+49
+36
+20
+105
+The table summarizes the distribution of age and assigned group
+for 105 participants in a study. One of these participants will be
+selected at random. What is the probability of selecting a
+participant from group A, given that the participant is at least 10
+years of age?
+A)
+B)
+C)
+D)
+Table:
+: -20, -8, 10
+: 4, 0, 6
+-20
+4
+-8
+0
+10
+6
+The table shows three values of  and their corresponding values
+of 
+, where 
+ and  is a linear function. What is
+the -intercept of the graph of 
+ in the 
+-plane?
+A)
+B)
+C)
+D)
+19
+​7
+2
+​7
+3
+​
+35
+19
+​7
+6
+20
+x
+g(x)
+x
+g(x)
+x
+g(x)
+g(x) = x + 5
+f(x)
+f
+y
+y = f(x)
+xy
+(0, −8)
+(0, 5)
+(0, 8)
+(0, 40)
+PDF version from learn.ronansat.com. Happy practicing!
+58
+CONTINUE
+
+The mass of object A is 
+ of the mass of object B, and the
+mass of object A is 
+ of the mass of object C. If the mass of
+object C is 
+ of the mass of object B, what is the value of 
+?
+In the given equation,  is a constant. If the equation has exactly
+one solution, what is the value of ?
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+21
+483%
+0.069%
+p%
+​
+1, 000
+p
+22
+​ =
+cx
+1
+​ +
+152
+x
+​c
+1
+c
+c
+PDF version from learn.ronansat.com. Happy practicing!
+59
+

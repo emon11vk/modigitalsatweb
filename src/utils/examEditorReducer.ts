@@ -48,6 +48,10 @@ export type ExamEditorAction =
       payload: string;
     }
   | {
+      type: 'UPDATE_EXAM_FOLDER';
+      payload: string | null;
+    }
+  | {
       type: 'UPDATE_SECTION_NAME';
       payload: { sectionIndex: number; name: string };
     }
@@ -159,6 +163,15 @@ export function examEditorReducer(
       return {
         ...state,
         exam: { ...state.exam, subject: action.payload },
+        status: 'ready',
+      };
+    }
+
+    case 'UPDATE_EXAM_FOLDER': {
+      if (!state.exam) return state;
+      return {
+        ...state,
+        exam: { ...state.exam, folder_id: action.payload },
         status: 'ready',
       };
     }

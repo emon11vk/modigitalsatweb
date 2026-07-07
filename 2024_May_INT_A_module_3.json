@@ -1,0 +1,285 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "If 2x = 10, what is the value of 4x?",
+    "options": {
+      "A": "7",
+      "B": "10",
+      "C": "12",
+      "D": "20"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is an equation of the graph shown?",
+    "options": {
+      "A": "y = x + 12",
+      "B": "y = -x + 12",
+      "C": "y = 2x + 12",
+      "D": "y = -2x + 12"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The table shows the exponential relationship between the number of years, x, since Hana started training in pole vault, and the estimated height h(x), in meters, of her best pole vault for that year. Which of the following functions best represents this relationship, where x <= 4?",
+    "options": {
+      "A": "h(x) = 1.20(0.25)^x",
+      "B": "h(x) = 1.20(1.25)^x",
+      "C": "h(x) = 1.25(0.20)^x",
+      "D": "h(x) = 1.25(1.20)^x"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "How many distinct real solutions does the given equation have?\nx^2 = 2,601",
+    "options": {
+      "A": "Zero",
+      "B": "Exactly one",
+      "C": "Exactly two",
+      "D": "Infinitely many"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function P(x) = 533(1.011)^x models the population of a certain town each year from 1951 through 1966, where x is the number of years after 1951. Which of the following is the best interpretation of \"P(5) is approximately equal to 563\" in this context?",
+    "options": {
+      "A": "The population of the town is estimated to be approximately 5 greater in 1956 than in 1951.",
+      "B": "The population of the town is estimated to be approximately 563 in 1956.",
+      "C": "The population of the town is estimated to be approximately 5 times greater in 1956 than in 1951.",
+      "D": "The population of the town is estimated to increase by approximately 563 every 5 years between 1951 and 1966."
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The table shows the distribution of people in a certain city by age group. If a person in this city is selected at random, which of the following is closest to the probability of selecting a person who is greater than 65 years old, given that the person is at least 18 years old?",
+    "options": {
+      "A": "0.21",
+      "B": "0.29",
+      "C": "0.45",
+      "D": "0.56"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For a certain rectangular region, the ratio of its length to its width is 7 to 4. If the width of the rectangular region increases by 10 units, how must the length change to maintain this ratio?",
+    "options": {
+      "A": "It must decrease by 7 units.",
+      "B": "It must increase by 7 units.",
+      "C": "It must increase by 17.5 units.",
+      "D": "It must decrease by 17.5 units."
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The expression (9x - 28)(15x + 4) is equivalent to the expression ax^2 + bx + c, where a, b, and c are constants. What is the value of b?",
+    "options": {},
+    "correct_answer": ["-384"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Rectangles ABCD and EFGH are similar. The length of each side of EFGH is 6 times the length of the corresponding side of ABCD. The area of ABCD is 96 square units. What is the area, in square units, of EFGH?",
+    "options": {
+      "A": "16",
+      "B": "36",
+      "C": "576",
+      "D": "3,456"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Data set A: 8, 11, 12, 15, 21, 27\nData set B: 9, 12, 13, 16, 22, h\nData sets A and B each consist of 6 values as shown, where h is a constant. If the standard deviation of data set A is greater than the standard deviation of data set B, which of the following could be the value of h?\nI. 23\nII. 28\nIII. 29",
+    "options": {
+      "A": "I only",
+      "B": "III only",
+      "C": "I and II",
+      "D": "II or III"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A certain open star cluster contains M-type stars and K-type stars. The estimated total mass of M-type and K-type stars in this open star cluster is 132,778 quettagrams. The graph shown models the possible combinations of the number of M-type stars, x, and K-type stars, y, that could be in this open star cluster if all the M-type stars have the same estimated mass and all the K-type stars have the same estimated mass. Based on the graph, which of the following is closest to the estimated mass, in quettagrams, of each M-type star in this cluster?",
+    "options": {
+      "A": "828",
+      "B": "973",
+      "C": "52,992",
+      "D": "79,786"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function f is defined by f(x) = (x - 9)(x - 6)(x - 5). In the xy-plane, the graph of y = g(x) is the result of translating the graph of y = f(x) up 4 units. What is the value of g(0)?",
+    "options": {},
+    "correct_answer": ["-266"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "At a depth of h meters below the surface, the estimated total pressure P1, in kilopascals (kPa), a diver experienced is given by P1 = 10h + 101, which is a combination of estimated water pressure and estimated atmospheric pressure. After maintaining a certain depth, the diver descended d additional meters. The estimated total pressure P2 in kPa, the diver experienced after descending these d additional meters is given by P2 = 10d + 311. Which of the following is the best interpretation of 311 in this context?",
+    "options": {
+      "A": "The estimated total pressure, in kPa, the diver experienced at a depth of d meters",
+      "B": "The estimated increase in the total pressure, in kPa, the diver experienced for each increase in the depth by 1 meter",
+      "C": "The estimated increase in the total pressure, in kPa, the diver experienced for each increase in the depth by d meters",
+      "D": "The estimated total pressure, in kPa, the diver experienced when the diver began to descend d additional meters"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A circle has diameters AC and BD. The circumference of the circle is 84\\pi, and the length of arc AB is 2 times the length of arc BC. What is the length of arc DA?",
+    "options": {
+      "A": "2\\pi",
+      "B": "14\\pi",
+      "C": "21\\pi",
+      "D": "28\\pi"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In triangle XYZ, angle Y is a right angle, the measure of angle Z is 39 degrees, and the length of YZ is 22 units. If the area, in square units, of triangle XYZ can be represented by the expression k * tan(39 degrees), where k is a constant, what is the value of k?",
+    "options": {},
+    "correct_answer": ["242"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In right triangle RST, the sum of the measures of angle R and angle S is 90 degrees. The value of sin(R) is 3\\sqrt{13}/17. What is the value of cos(S)?",
+    "options": {
+      "A": "3\\sqrt{13}/17",
+      "B": "4\\sqrt{51}/17",
+      "C": "13\\sqrt{51}/17",
+      "D": "3\\sqrt{17}/17"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The composition of an animal is defined as the muscles, bones, and fat of the animal. A scientist studied the composition of one young swamp buffalo and determined the buffalo had 133 kilograms of muscle, which made up approximately 65.9% of its composition. Of the remaining composition of this buffalo, approximately 46.2% was bone, and the remainder was fat. Based on these approximations, to the nearest tenth, how many kilograms of this buffalo's composition was bone?",
+    "options": {},
+    "correct_answer": ["31.8"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which of the following expressions has a factor of x + 2b, where b is a positive integer constant?",
+    "options": {
+      "A": "3x^2 + 9x + 18b",
+      "B": "3x^2 + 24x + 18b",
+      "C": "3x^2 + 30x + 18b",
+      "D": "3x^2 + 39x + 18b"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "One of the equations in a system of two linear equations is given by 31(x - n) = 31y + 31n, where n is a positive constant. The system has no solution. Which equation could be the second equation in this system?",
+    "options": {
+      "A": "3x - 3y = 6n",
+      "B": "3x + 3y = 3n",
+      "C": "3x + 3y = 6n",
+      "D": "3x - 3y = 3n"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The cost of renting a piece of equipment is $64n for the first day and $32n for each additional day, where n is a positive integer. Which of the following functions gives the cost C(x), in dollars, of renting this equipment for x days, where x is a positive integer?",
+    "options": {
+      "A": "C(x) = 32nx + 32n",
+      "B": "C(x) = 32nx + 64n",
+      "C": "C(x) = 64nx - 32n",
+      "D": "C(x) = 32n"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In triangle ABC and triangle DEF, sides AB and DE each have a side length of 6 inches, and angles A and D each have an angle measure of 40 degrees. Which of the following additional pieces of information is(are) sufficient to prove whether triangle ABC is congruent to triangle DEF?\nI. The measures of angles B and C are equal.\nII. The lengths of sides AC and DF are equal.\nIII. The lengths of sides BC and EF are equal.",
+    "options": {
+      "A": "I is sufficient, but II and III are not.",
+      "B": "II is sufficient, but I and III are not.",
+      "C": "III is sufficient, but I and II are not.",
+      "D": "II is sufficient and III is sufficient, but I is not."
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "If 2 + 2/(1 - x) = 3/(-2(1 - x)), what is the value of 1 - x?",
+    "options": {},
+    "correct_answer": ["-7/4"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

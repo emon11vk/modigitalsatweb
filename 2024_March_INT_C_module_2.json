@@ -1,0 +1,280 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "A veterinarian recommends that each day a certain cat should eat 14 calories per pound of the cat's weight, plus an additional 31 calories. Which equation represents this situation, where c is the total number of calories the veterinarian recommends the cat should eat each day if the cat's weight is x pounds?",
+    "options": {
+      "A": "c = 14x + 31",
+      "B": "c = 31x + 14",
+      "C": "c = 31x",
+      "D": "c = 45x"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Each side of square A has a length of 13 inches. Each side of square A is multiplied by a scale factor of 3 to create square B. What is the length, in inches, of each side of square B?",
+    "options": {
+      "A": "39",
+      "B": "16",
+      "C": "13",
+      "D": "10"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If x > 0 and y is 24% of x, which expression represents x in terms of y?",
+    "options": {
+      "A": "100y/24",
+      "B": "24y/100",
+      "C": "y/24",
+      "D": "24y"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A remotely operated vehicle (ROV) is used for underwater ocean research. When the ROV is at a depth of 31 fathoms, what is the ROV's depth in feet? (1 fathom = 6 feet)",
+    "options": {},
+    "correct_answer": ["186"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function g is defined by g(x) = \\sqrt{8x + 1}. What is the value of g(10)?",
+    "options": {
+      "A": "8/9",
+      "B": "9/8",
+      "C": "9",
+      "D": "81"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = \\frac{1}{2}(x + 10). What is the value of f(8)?",
+    "options": {
+      "A": "36",
+      "B": "20",
+      "C": "18",
+      "D": "9"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the value of cos A in the triangle shown?",
+    "options": {
+      "A": "42/43",
+      "B": "43/42",
+      "C": "1/43",
+      "D": "1/42"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f(x) = 240,000(1.22)^x gives a company's predicted annual revenue, in dollars, x years after the company started selling clothes online, where 0 < x <= 10. What is the best interpretation of the statement \"f(5) is approximately equal to 648,650\" in this context?",
+    "options": {
+      "A": "5 years after the company started selling clothes online, its predicted annual revenue is approximately 648,650 dollars.",
+      "B": "5 years after the company started selling clothes online, its predicted annual revenue will have increased by a total of approximately 648,650 dollars.",
+      "C": "When the company's predicted annual revenue is approximately 648,650 dollars, it is 5 times the predicted annual revenue for the previous year.",
+      "D": "When the company's predicted annual revenue is approximately 648,650 dollars, it is 5% greater than the predicted annual revenue for the previous year."
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "How many solutions does the equation 7x + 11 = 4x + 3x + 12 have?",
+    "options": {
+      "A": "Exactly one",
+      "B": "Exactly two",
+      "C": "Infinitely many",
+      "D": "Zero"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The solution to the given system of equations is (x, y). What is the value of 18y?\n6x + 9y = 78\n6x + 27y = 186",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "108",
+      "D": "264"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "During hibernation, American black bears do not eat or replenish calories. A certain black bear weighed 322 pounds when entering hibernation and lost weight at a rate of 0.7 pound per day. At this rate, how many days after entering hibernation did the black bear weigh 280 pounds?",
+    "options": {},
+    "correct_answer": ["60"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The graph models the population, in thousands, of a town x years since 2004, where 0 < x < 15. Which statement is the best interpretation of the point (1, 3.21)?",
+    "options": {
+      "A": "In 2004, the estimated population of the town was 3,210.",
+      "B": "In 2005, the estimated population of the town was 3,210.",
+      "C": "In 2018, the estimated population of the town was 3,210.",
+      "D": "In 2019, the estimated population of the town was 3,210."
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The area of triangle ABC is 60 square centimeters. What is the height h, in centimeters, of this triangle?",
+    "options": {
+      "A": "6",
+      "B": "10",
+      "C": "12",
+      "D": "24"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A machine fills bags with approximately 11 ounces of walnuts. To test the accuracy of the filling process, 330 bags of walnuts were selected at random and weighed. Based on the sample, it is estimated that the average weight of all bags of walnuts filled by the machine in an 8-hour period is 11.17 ounces, with an associated margin of error of 0.2 ounce. Which of the following is the best interpretation of this estimate?",
+    "options": {
+      "A": "Plausible values for the average weight of all bags of walnuts filled by the machine are between 10.97 ounces and 11.37 ounces.",
+      "B": "Plausible values for the average weight of all bags of walnuts filled by the machine are less than 10.97 ounces or greater than 11.37 ounces.",
+      "C": "The average weight of all bags of walnuts filled by the machine is less than 11.02 ounces.",
+      "D": "The average weight of all bags of walnuts filled by the machine is greater than 11.02 ounces."
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The graph of the linear equation 6x + By = 42 is shown, where B is a constant. What is the value of B?",
+    "options": {},
+    "correct_answer": ["7"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The scatterplot shows the relationship between two variables, x and y. A line of best fit is also shown. Which of the following best represents the line of best fit shown?",
+    "options": {
+      "A": "y = 163.26 + 0.02x",
+      "B": "y = 163.26 + 0.66x",
+      "C": "y = 163.26 + 55.62x",
+      "D": "y = 163.26 + 65.62x"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the xy-plane, a line passes through the point (0, 0) and is parallel to the line represented by the equation y = 6x. If this line also passes through the point (4, d), what is the value of d?",
+    "options": {},
+    "correct_answer": ["24"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Circle A in the xy-plane has the equation (x + 9)^2 + (y - 9)^2 = 4. Circle B has the same center as circle A. The radius of circle B is two times the radius of circle A. The equation defining circle B in the xy-plane is (x + 9)^2 + (y - 9)^2 = k, where k is a constant. What is the value of k?",
+    "options": {},
+    "correct_answer": ["16"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A triangular prism has a height of 5 centimeters (cm) and a volume of 115 cm^3. What is the area, in cm^2, of the base of the prism? (The volume of a triangular prism is equal to Bh, where B is the area of the base and h is the height of the prism)",
+    "options": {},
+    "correct_answer": ["23"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A family has money in an account for renting movies online. Each time the family rents a movie, the cost of the rental is withdrawn from the account, and each rental costs the same amount of money. The function f(m) = 32 - 4m gives the amount of money, in dollars, in the account after the family has rented m movies. Which of the following represents the amount of money, in dollars, withdrawn from the account each time the family rents a movie?",
+    "options": {
+      "A": "m",
+      "B": "4",
+      "C": "32",
+      "D": "32 - 4m"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = 44(0.21)^x. For any positive integer n, the value of f(n) is p% less than the value of f(n-1). What is the value of p?",
+    "options": {
+      "A": "79",
+      "B": "56",
+      "C": "44",
+      "D": "21"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "One of the two equations in a system of linear equations is given. The system has no solution. Which equation could be the second equation in the system?\n2x = 16y - 20",
+    "options": {
+      "A": "x = 4y",
+      "B": "x = 4y + 1/2",
+      "C": "x = 8y - 10",
+      "D": "x = 8y + 1/2"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

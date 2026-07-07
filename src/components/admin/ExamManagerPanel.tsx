@@ -157,6 +157,55 @@ export default function ExamManagerPanel({
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (!draggedExamId) return;
+
+    let scrollInterval: any = null;
+
+    const handleDragOverScroll = (e: DragEvent) => {
+      const edgeThreshold = 100;
+      const maxScrollSpeed = 20;
+
+      const y = e.clientY;
+      const windowHeight = window.innerHeight;
+
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+        scrollInterval = null;
+      }
+
+      if (y < edgeThreshold) {
+        const speed = maxScrollSpeed * (1 - y / edgeThreshold);
+        scrollInterval = setInterval(() => {
+          window.scrollBy(0, -speed);
+        }, 16);
+      } else if (y > windowHeight - edgeThreshold) {
+        const distanceFromEdge = windowHeight - y;
+        const speed = maxScrollSpeed * (1 - distanceFromEdge / edgeThreshold);
+        scrollInterval = setInterval(() => {
+          window.scrollBy(0, speed);
+        }, 16);
+      }
+    };
+
+    const cleanup = () => {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+      }
+    };
+
+    window.addEventListener('dragover', handleDragOverScroll);
+    window.addEventListener('drop', cleanup);
+    window.addEventListener('dragend', cleanup);
+
+    return () => {
+      cleanup();
+      window.removeEventListener('dragover', handleDragOverScroll);
+      window.removeEventListener('drop', cleanup);
+      window.removeEventListener('dragend', cleanup);
+    };
+  }, [draggedExamId]);
+
   async function handleDelete(examId: string) {
     setDeletingId(examId);
     const success = await deleteExam(examId);

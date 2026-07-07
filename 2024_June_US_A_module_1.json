@@ -1,0 +1,488 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "As used in the text, what does the word \"placed\" most nearly mean?",
+    "options": {
+      "A": "Estimated",
+      "B": "Modified",
+      "C": "Contracted",
+      "D": "Arranged"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "The following text is from Charles Chesnutt's 1905 novel The Colonel's Dream. Mr. French and Mr. Kirby work together.",
+    "passage_paragraphs": [
+      "Mr. French, the senior partner, who sat opposite Kirby, was an older man-a safe guess would have placed him somewhere in the debatable ground between forty and fifty; of a good height, as could be seen even from the seated figure, the upper part of which was held erect with the unconscious ease which one associates with military training."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "implement",
+      "B": "disseminate",
+      "C": "circumvent",
+      "D": "corroborate"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "The results of randomized clinical trials testing the efficacy of common medical interventions sometimes fail to __________ conclusions that practitioners reach based on their real-world observations of patients. While there are several possible reasons for this, one is that practitioners may overlook confounding variables that account for the results they attribute to the interventions in question."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "enduring",
+      "B": "uncertain",
+      "C": "deserving",
+      "D": "conspicuous"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Dervla Murphy, who cycled solo through Europe, Iran, Afghanistan, Pakistan, and India, undoubtedly accomplished much, but her place in our historical memory is perhaps more __________ than that of a noteworthy \"first\" such as Ynes Mexia, who was the first to discover the botanical genus Mexianthus, a deed for which she will always be remembered."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "exploiting",
+      "B": "stabilizing",
+      "C": "monetizing",
+      "D": "precipitating"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In the 2010s, the price of vintage My Little Pony figures rose dramatically, which had the counterintuitive effect of __________ demand: buyers who hadn't previously wanted to purchase old toys suddenly thronged the market, believing prices would continue to rise and the toys could be resold later at a profit."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best states the main purpose of the text?",
+    "options": {
+      "A": "To note a potential concern about the findings of a scientific study",
+      "B": "To discuss an aspect of ocean acidification that is frequently overlooked",
+      "C": "To present a debate between two research teams about a cause of ocean acidification",
+      "D": "To explain how the behavior of a fish species has changed over time"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In 2011 Brynn M. Devine and colleagues published a study concluding that ocean acidification has a strong effect on the behavior of Cheilodipterus quinquelineatus, a species of fish. However, Devine and colleagues' study relied on a mean sample size of only about 25 fish. In a 2022 review of various scientists' conclusions about the impacts of ocean acidification on fish behavior, Timothy D. Clark and colleagues caution that relying on such a relatively small sample size can increase the potential for biased analysis. Such analysis, in turn, can contribute to reports of exaggerated effects."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes the function of the underlined portion in the text as a whole?",
+    "options": {
+      "A": "It establishes that criticism of the CEP was limited to a few individuals in the Southern Christian Leadership Conference.",
+      "B": "It underscores the extent of the CEP's impact on the Civil Rights Movement of the 1960s.",
+      "C": "It illustrates the CEP organizers' efforts to educate participants on a wide variety of topics.",
+      "D": "It suggests that CEP attendees held a diverse array of opinions about the Southern Christian Leadership Conference's political philosophy."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Historians have argued that a crucial component of the Civil Rights Movement's success in the 1960s was the Southern Christian Leadership Conference's Citizen Education Program (CEP), which invited promising activists from across the South to its one-week training sessions in Dorchester, Georgia. Led by experienced organizers such as Dorothy Cotton and Septima Clark, CEP attendees—more than 7,000 in all—participated in workshops on topics ranging from public speaking to legal doctrine before returning home and using their newly acquired knowledge to spearhead local civil rights initiatives."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes the overall structure of the text?",
+    "options": {
+      "A": "It presents a scientific observation, describes a contrast between that observation and other observations, and then explains why those other observations should not be considered credible.",
+      "B": "It describes an astronomical finding, discusses competing theories about that finding that the author regards as flawed, and then describes new evidence that supports an alternative theory.",
+      "C": "It discusses a physical process, evaluates possible causes of that process, and then states that a persuasive account of the process has yet to be put forward.",
+      "D": "It introduces a natural phenomenon, refutes two potential explanations for that phenomenon, and then presents a third explanation for that phenomenon that the author regards as plausible."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Asteroid 6478 Gault has experienced intermittent mass loss since at least 2013, but in contrast to some other asteroids with repeated mass-loss episodes, 6478 Gault has not lost mass at its perihelion (the closest point of its orbit to the Sun), and thus the loss is not attributable to solar energy-driven ice vaporization. And as Jane X. Luu et al. point out, the singular nature of impact ejection makes it untenable as an account of multiple loss episodes of similar duration over several years. Instead, Luu et al. are likely correct that 6478 Gault is shedding mass due to rotational instability."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Based on the texts, how would the author of Text 2 most likely respond to the claim about Sula advanced by the author of Text 1?",
+    "options": {
+      "A": "By arguing that Morrison displays a thorough knowledge of historical details in Sula",
+      "B": "By asserting that dissatisfaction with describing Sula as historical fiction reflects a misunderstanding of the genre",
+      "C": "By conceding that the genre of historical fiction contains many works that are less sophisticated than Sula is",
+      "D": "By claiming that the author of Text 1 has underestimated the richness and complexity of Sula"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Text 1\nToni Morrison's 1973 novel Sula, a tale of two women's lives set in small-town Ohio from the 1910s to the 1960s, has been described as historical fiction. While it's inarguable that Morrison's book takes place in the past rather than in her own time, Sula is much richer and more complicated than the mere re-creation of the past suggested by the term \"historical fiction.\"\n\nText 2\nSome literary critics dismiss historical fiction as a shallow genre in which writers show off their knowledge of period details rather than tell meaningful stories. But historical fiction can be used to explore profound themes and complex characters; in fact, many writers find that writing about the past gives them a creative freedom they'd lack if they wrote about the present."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Based on the texts, how would Rubayet Bin Mostafiz and colleagues (Text 2) most likely respond to the information presented in Text 1?",
+    "options": {
+      "A": "They would encourage engineers in southern and central Georgia to insert vapor barriers between new structures' foundations and the surrounding soil.",
+      "B": "They would argue that engineers in southern and central Georgia have misjudged the effectiveness of the techniques they use to reduce the effects of expansive soil.",
+      "C": "They would suggest that engineers in southern and central Georgia consider the cost of reinforcing the vapor barriers between existing structural foundations and the soil.",
+      "D": "They would recommend that engineers in southern and central Georgia measure the moisture level in the soil beneath proposed structures before beginning construction."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Text 1\nIn southern and central Georgia, many buildings and other structures rest on soil that is expansive, meaning that it swells or shrinks as its moisture level changes. Civil engineer Jay X. Wang has noted that the effects of expansive soil appear slowly in the form of gradually growing cracks in foundations, walls, and pavements. Because these effects are incremental and can generally be repaired (though at some cost), structures in southern and central Georgia are typically not built to resist them.\n\nText 2\nIn a 2021 study, Rubayet Bin Mostafiz and colleagues calculated that in the state of Louisiana alone, the annual cost of damage caused by expansive soils reaches nearly $90 million. But they note that this damage can be mitigated: building vapor barriers between structural foundations and the soil can significantly reduce the effects of soil swelling and shrinking."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which finding, if true, would most directly weaken the student's claim?",
+    "options": {
+      "A": "The majority of the most prevalent dog breeds have limited activity in the gene that regulates IGF-1 production.",
+      "B": "The degree of size variation among dogs is greater than that of any other land-based mammal.",
+      "C": "Some breeds with small body sizes and low IGF-1 concentrations have a different version of the gene regulating IGF-1 production than do Havaneses.",
+      "D": "The gene that regulates IGF-1 production is not the only gene that influences body size in dogs but is the only such gene that shows within-breed version consistency."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Geneticist Elaine Ostrander led an international collaboration in which Norbert Benecke and other researchers investigated the evolutionary history of size variation in modern dogs. The researchers identified multiple versions of the gene regulating the production of IGF-1 (insulin-like growth factor 1) in dogs and found that dogs of the same breed consistently share the same version of the gene. In a discussion of the study, a student hypothesizes that small breeds of dogs (for example, Havaneses) must share a version that represses IGF-1 production that would otherwise confer larger body size."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which quotation from a literary scholar would most directly support the claim in the underlined portion of the text?",
+    "options": {
+      "A": "\"The logic of the realistic plot of My Name Is Red is repeatedly and productively disrupted by the presence of imagery and situations drawn from Turkish folklore.\"",
+      "B": "\"While My Name Is Red alternates between realistic and antirealistic modes of representation, details suggesting the influence of Turkish folklore nevertheless occur throughout the novel.\"",
+      "C": "\"Although Turkish folklore clearly informs the style and occasionally antirealistic plot of My Name Is Red, the novel also shows the inarguable influence of the magical realist tradition of Latin America.\"",
+      "D": "\"Like many works in the Latin American magical realist tradition, My Name Is Red is indebted to antirealistic elements in the folkloric tradition of Turkey.\""
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Scholars cite Pedro Páramo, the 1955 novel by Mexican author Juan Rulfo, as a foundational text of magical realism, the Latin American style of fiction in which antirealistic plot devices often borrowed from the folkloric traditions of Indigenous and colonial societies in the Americas are deployed in an otherwise realistic mode of representation typical of the modern novel. This style has exerted a decisive influence on authors around the world, including Orhan Pamuk, whose 2001 novel My Name Is Red resembles classic magical realist novels in its juxtaposition of literary realism with folklore-namely, that of Turkey."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which statement about Iliffe and other Africanist scholars is best supported by information in the text?",
+    "options": {
+      "A": "They likely make use of different types of evidence than historians of capitalism typically rely on.",
+      "B": "They likely have a different view about which activities should be considered capitalist in nature than historians of capitalism do.",
+      "C": "They likely differ from historians of capitalism in the methods they use to derive longitudinal economic data from archival records.",
+      "D": "They likely view capitalism as having been more beneficial for Africa than historians of capitalism do."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Fernand Braudel and other historians of capitalism rarely discuss domestic capitalism in Africa before the period of European colonization, implicitly presenting capitalism as external to and imposed on Africa. John Iliffe and other Africanist scholars have shown, however, that in parts of Africa, institutionally protected private land ownership, the existence of salaried labor, and other features of capitalism predated colonization. One reason for this discrepancy is that historians of capitalism tend to focus on longitudinal economic data drawn from archival records, which do not exist for much of precolonial Africa."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "recognize that Indigenous languages likely have more unique expressions that represent ecological knowledge than represent other types of information.",
+      "B": "acknowledge that Indigenous songs are largely but not entirely composed using phrases taken from spoken language.",
+      "C": "incorporate the preservation of songs into their broader efforts to protect Indigenous languages.",
+      "D": "analyze musical similarities in the songs of the Warlpiri and Sakha people."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Indigenous songs are an important resource for ecological information. Songs of the Warlpiri people in Yuendumu, Australia, convey information about wild edible seeds, and the songs of the Sakha people in Siberia, Russia, address the effects of climate change on local ecosystems. There have been efforts made to preserve Indigenous languages over the years-e.g., the United Nations' International Decade of Indigenous Languages (2022-2032). However, such attempts have typically focused on spoken language despite the fact that some expressions in these languages appear only in songs. Therefore, if those involved in such efforts want to ensure that a comprehensive range of information is secured, they must __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "few of the studies conducted in North America have been able to measure dissolved organic carbon and mercury levels with the same level of precision as in Guédron, Tisserand, and colleagues' study.",
+      "B": "the mercury levels reported in Guédron, Tisserand, and colleagues' study were much higher than those reported in the study by Hamelin and colleagues even though the dissolved organic carbon levels reported in the two studies were approximately the same.",
+      "C": "Guédron, Tisserand, and colleagues' study may have inadvertently measured a different characteristic of bodies of fresh water than their levels of dissolved organic carbon and mercury.",
+      "D": "Guédron, Tisserand, and colleagues' finding may differ from the findings of other studies due to a difference in environmental circumstances that affects the relationship between dissolved organic carbon and mercury in fresh water."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In a 2014 study that took place in Laos, Stéphane Guédron, Delphine Tisserand, and colleagues found a negative association between levels of dissolved organic carbon and mercury in bodies of fresh water. It may seem reasonable to be skeptical of this finding, since most other studies, such as research conducted in 2015 in Canada by Stéphanie Hamelin and colleagues, have found that dissolved organic carbon and mercury levels rise together. Like the latter study, however, most studies of the topic have been conducted in North America, and many of those study sites have similar characteristics to one another, suggesting that __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "although Opechona sp. and C. kanabus both require Pacific herring as a host, C. kanabus was more adversely affected by warming-driven changes in the Pacific herring population than Opechona sp.",
+      "B": "a parasite's sensitivity to warming temperatures is positively correlated with the number of unique vertebrate species it depends on throughout its life cycle.",
+      "C": "warming-induced population changes among Puget Sound vertebrates may have suppressed some parasite populations, but there were no changes among the eight studied host species that affected two-host parasite abundance.",
+      "D": "population size and density of the eight fish species examined in the study were likely largely unaffected by rising sea temperatures."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "As complex life cycle parasites, Opechona sp. and Cucullanellus kanabus require multiple host species throughout their development. Extrapolating from parasite counts on Pacific herring and seven other fish species collected from Puget Sound from 1880 to 2019, Chelsea Wood et al. found that the abundance of three-host parasites, such as Opechona sp., negatively correlated with rising average annual sea temperatures; the abundance of two-host parasites, such as C. kanabus, was largely stable. Noting that fish and other marine vertebrates are especially vulnerable to climate change, Wood et al. observed that all three-host parasites in the study depend on at least two vertebrate species, while all two-host parasites depend on only one, suggesting that __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "the researchers theorize that moths, mistaking nighttime lights for the Sun, continually try to reorient their bodies while flying near such lights.",
+      "B": "the researchers' theory is that moths mistake nighttime lights for the Sun, continually trying to reorient their bodies while flying near such lights.",
+      "C": "moths continually try to reorient their bodies while flying near nighttime lights, the researchers theorize, mistaking such lights for the Sun.",
+      "D": "moths mistake nighttime lights for the Sun and continually try to reorient their bodies while flying near such lights, the researchers theorize."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Entomologists Yash Sondhi and Samuel Fabian have tried to explain why moths fly erratically around light sources at night. Knowing that flying insects keep their backs pointed toward sunlight during the day, __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "hemisphere,",
+      "B": "hemisphere;",
+      "C": "hemisphere and",
+      "D": "hemisphere"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In Antarctica, the Syowa East observatory site monitors activity in the upper atmosphere of the southern __________ in Finland, another observatory site, Hankasalmi, monitors the sky of the northern hemisphere. Together, they are part of the Super Dual Auroral Radar Network-or SuperDARN, as space physicists like Mark Lester call it."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "spectrum while",
+      "B": "spectrum, while",
+      "C": "spectrum:",
+      "D": "spectrum"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Butterfly is a 1988 painting by the Japanese artist Ay-O. Like many of Ay-O's paintings, Butterfly, which portrays a swimmer performing the butterfly stroke, attempts to make use of the entire visual light __________ sporting rainbow-striped goggles, the rainbow-hued swimmer splashes through a wavy rainbow of water."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "groups and established",
+      "B": "groups established",
+      "C": "groups, established",
+      "D": "groups. Established"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "The 20th century saw the founding of many Latino advocacy __________ to protect and advance the rights of Latino Americans, both the Orden Hijos de América (1921) and the Partido Nacional de La Raza Unida (1970) contributed to the history of US civil rights."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "has pledged",
+      "B": "pledges",
+      "C": "is pledging",
+      "D": "pledging"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Albania, Hungary, and the other member nations of the North Atlantic Treaty Organization, or NATO, share a commitment to the principle of collective defense, each NATO member __________ to defend the others if necessary."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "nations: Hungary",
+      "B": "nations: Hungary,",
+      "C": "nations Hungary",
+      "D": "nations. Hungary"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "The Organisation for Economic Co-operation and Development (OECD) tracks comparative price list data for its thirty-eight member countries. For instance, in July 2021, a hypothetical basket of goods priced at 100 US dollars (USD) in the United States would have cost 54 USD and 110 USD in fellow OECD __________ and Luxembourg, respectively."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical transition?",
+    "options": {
+      "A": "Granted,",
+      "B": "Furthermore,",
+      "C": "Thus,",
+      "D": "By contrast,"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Modernista architects championed nature in their designs. __________ the dramatic archways and botanical glasswork of Palau Mornau, a Modernista private home designed by Manuel Raspall, couldn't exactly grow in a forest. Still, one sees natural influences in Raspall's penchant for curves (rather than right angles) and plant- and animal-inspired flourishes."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical transition?",
+    "options": {
+      "A": "By contrast,",
+      "B": "Next,",
+      "C": "In addition,",
+      "D": "That is,"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In a 2005 study by Mellado et al., the researchers determined the ratio of three different plant subtypes within the diet of sheep: graminoids, forbs, and browse. __________ the researchers determined the relative quantities of the plants the animal consumed."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most effectively uses relevant information from the notes to emphasize the size of the sculpture?",
+    "options": {
+      "A": "Richard Serra is an American artist known for his large metal sculptures.",
+      "B": "Richard Serra's Gutter Corner Splash: Night Shift is made of lead.",
+      "C": "Gutter Corner Splash: Night Shift—a large metal sculpture by artist Richard Serra—stretches roughly 2 feet wide and 9 feet tall.",
+      "D": "American artist Richard Serra creates large sculptures from metals such as lead."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• Richard Serra is an American artist.\n• He is known for his large metal sculptures.\n• His sculpture Gutter Corner Splash: Night Shift is roughly 2 feet wide and 9 feet tall.\n• It is made from lead."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to identify the painting for which Picasso won a Carnegie Prize gold medal. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Picasso won a Carnegie Prize gold medal for the painting Portrait of Mme. Picasso.",
+      "B": "The Carnegie Museum of Art awarded Picasso a gold medal in 1930.",
+      "C": "The Carnegie Prize is an international art competition administered by the Carnegie Museum of Art in Pittsburgh, Pennsylvania.",
+      "D": "In 1930, an artist from Spain won a Carnegie Prize gold medal for a painting."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• Artist Pablo Picasso of Spain won a Carnegie Prize gold medal in 1930.\n• The Carnegie Prize is an international art competition.\n• It is administered by the Carnegie Museum of Art in Pittsburgh, Pennsylvania.\n• Picasso's winning artwork was a painting entitled Portrait of Mme. Picasso."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to provide a specific example of onomatopoeia. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Differences in how languages are structured can cause variations in the words used in different languages to represent the same sound.",
+      "B": "The Japanese word \"doki doki\" both imitates and represents the sound of a heartbeat.",
+      "C": "The languages of German and Japanese use different words to represent the sound of a heartbeat.",
+      "D": "The term \"onomatopoeia,\" which refers to words that imitate the sound they represent, combines the Greek words for \"name\" and \"to make.\""
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• Onomatopoeias are words that imitate the sounds they represent.\n• Onomatopoeias used to represent the same sound often vary from language to language.\n• This variation is due in part to differences in how languages are structured.\n• \"Ba-dumm\" is a German onomatopoeia that represents the sound of a heartbeat.\n• \"Doki doki\" is a Japanese onomatopoeia that represents the sound of a heartbeat.\n• The term \"onomatopoeia\" combines the Greek words for \"name\" (onoma) and \"to make\" (poiein)."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most effectively uses relevant information from the notes to make and support a generalization about symbols on flags?",
+    "options": {
+      "A": "Papua New Guinea's flag includes a raggiana bird-of-paradise, a symbol that is important to that country's national identity.",
+      "B": "The flags of some countries include symbols of animals; Papua New Guinea's, for example, includes a raggiana bird-of-paradise.",
+      "C": "Many countries feature symbols on their flags, and the study of these designs is known as vexillology.",
+      "D": "Vexillology is the study of flags; accordingly, vexillologists are interested in flags from around the world."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• Vexillology is the study of flags.\n• The flags of many countries include symbols like animals, plants, or landforms.\n• These symbols often represent an aspect of the region's history, culture, or landscape.\n• The flag of Papua New Guinea includes a raggiana bird-of-paradise.\n• The flag of El Salvador includes a palm branch."
+    ]
+  }
+]

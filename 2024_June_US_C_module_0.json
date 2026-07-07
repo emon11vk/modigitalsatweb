@@ -1,0 +1,319 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "What is the solution (x, y) to the given system of equations?\n3x + 5y = 21\ny = 3",
+    "options": {
+      "A": "(3, 7)",
+      "B": "(12/5, 3)",
+      "C": "(3, 4)",
+      "D": "(2, 3)"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What are all possible solutions to the given equation?\n(v - 12)(v - 3) = 0",
+    "options": {
+      "A": "-12 and 3",
+      "B": "-12 and 9",
+      "C": "-3 and 12",
+      "D": "3 and 12"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function f is defined by f(x) = 135x - 20. What is the value of f(x) when x = 4?",
+    "options": {},
+    "correct_answer": [
+      "520"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In the figure shown, line m is parallel to line n, and line k intersects both lines. Which of the following statements is true?",
+    "options": {
+      "A": "q = 135",
+      "B": "r = 135",
+      "C": "s = 135",
+      "D": "t = 135"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = -5x^2 - 7. What is the value of f(-1)?",
+    "options": {
+      "A": "-12",
+      "B": "-2",
+      "C": "2",
+      "D": "12"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the given system of equations, a is a positive integer constant. The system has no real solutions. What is the least possible value of a?\ny = -0.5\ny = x^2 + 10x + a",
+    "options": {},
+    "correct_answer": [
+      "25"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The expression (6x^2)(3x^3) is equivalent to bx^5, where b is a constant. What is the value of b?",
+    "options": {},
+    "correct_answer": [
+      "18"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A teacher is creating an assignment worth 28 points. The assignment will consist of questions worth 1 point and questions worth 2 points. Which equation represents this situation, where x represents the number of 1-point questions and y represents the number of 2-point questions?",
+    "options": {
+      "A": "3xy = 28",
+      "B": "3(x + y) = 28",
+      "C": "2x + y = 28",
+      "D": "x + 2y = 28"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The scatterplot shows the relationship between two variables, x and y. A line of best fit is also shown. Which of the following is closest to the slope of the line of best fit shown?",
+    "options": {
+      "A": "-10.95",
+      "B": "-0.79",
+      "C": "0.79",
+      "D": "10.95"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Triangle XYZ shown is a right triangle. Which of the following has the same value as sin X?",
+    "options": {
+      "A": "cos Y",
+      "B": "cos X",
+      "C": "tan Y",
+      "D": "tan X"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Sam opened a savings account at a bank. The table shows the exponential relationship between the time t, in years, since Sam opened the account and the total amount n, in dollars, in the account. If Sam made no additional deposits or withdrawals, which of the following equations best represents the relationship between t and n?\n\nTime (years) | Total amount (dollars)\n0 | 867.00\n1 | 870.47\n2 | 873.95",
+    "options": {
+      "A": "n = 0.004(1 + 867)^t",
+      "B": "n = 867(1 + 0.004)^t",
+      "C": "n = (1 + 0.004)^t",
+      "D": "n = (1 + 867)^t"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If 6(8 - 2z) + 3 = 5(8 - 2z) + 19, what is the value of 8 - 2z?",
+    "options": {
+      "A": "-16",
+      "B": "-4",
+      "C": "4",
+      "D": "16"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The table shows four values of x and their corresponding values of y. There is a linear relationship between x and y. Which of the following equations represents this relationship?\n\nx | y\n-12 | 94\n-6 | 70\n6 | 22\n12 | -2",
+    "options": {
+      "A": "24x + 6y = 46",
+      "B": "24x + 6y = 276",
+      "C": "6x - 24y = 46",
+      "D": "6x + 24y = 276"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In the given system of equations, a is a constant. The graphs of the equations in the given system intersect at exactly one point, (x, y), in the xy-plane. What is the value of x?\ny = 2x^2 - 19x + 40\ny = x + a",
+    "options": {
+      "A": "-10",
+      "B": "-5",
+      "C": "5",
+      "D": "10"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Line p in the xy-plane is defined by y = x + 3 and passes through the points (a, 0) and (0, b), where a and b are constants. What is the value of a?",
+    "options": {},
+    "correct_answer": [
+      "-3"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f(t) = 80,000(2)^(t/700) gives the number of bacteria in a population t minutes after an initial observation. How much time, in minutes, does it take for the number of bacteria in the population to double?",
+    "options": {
+      "A": "2",
+      "B": "700",
+      "C": "1,580",
+      "D": "80,000"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Square P has a side length of x inches. Square Q has a perimeter that is 32 inches greater than the perimeter of square P. The function f gives the area of square Q, in square inches. Which of the following defines f?",
+    "options": {
+      "A": "f(x) = (x + 8)^2",
+      "B": "f(x) = (x + 32)^2",
+      "C": "f(x) = (32x + 8)^2",
+      "D": "f(x) = (32x + 32)^2"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "How many solutions does the given system of equations have?\n3.5x + 1.2y = 8\n17.5x + 6y = 40",
+    "options": {
+      "A": "Exactly one",
+      "B": "Exactly two",
+      "C": "Infinitely many",
+      "D": "Zero"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Circle A has a radius of r and circle B has a radius of 47r. The area of circle B is how many times the area of circle A?",
+    "options": {},
+    "correct_answer": [
+      "2209"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function g is defined by g(x) = (x + 17)(t - x), where t is a constant. In the xy-plane, the graph of y = g(x) passes through the point (23, 0). What is the value of g(0)?",
+    "options": {},
+    "correct_answer": [
+      "391"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A circle in the xy-plane has a diameter with endpoints (a, 11) and (a, d), where a and d are constants. An equation of this circle is (x - a)^2 + (y - 17)^2 = r^2, where r is a positive constant. What is the value of d?",
+    "options": {
+      "A": "5",
+      "B": "12",
+      "C": "17",
+      "D": "23"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "For the linear function r(x), the table shows three values of x and their corresponding values of r(x). Function r is defined by r(x) = ax + b, where a and b are constants. What is the value of a + b?\n\nx | r(x)\n-41 | -6\n-21 | 0\n-1 | 6",
+    "options": {},
+    "correct_answer": [
+      "6.6"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

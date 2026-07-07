@@ -913,6 +913,7 @@ export default function App() {
     return (
       <ActiveTestScreen
         theme={theme}
+        toggleTheme={toggleTheme}
         moduleId={activeModuleId}
         moduleTitle={modules.find((m) => m.id === activeModuleId)?.title || ''}
         subject={modules.find((m) => m.id === activeModuleId)?.subject || ''}

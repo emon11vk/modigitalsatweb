@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   ChevronLeft, ChevronRight, Flag, Timer, Eye, EyeOff,
-  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle, Send
+  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle, Send, Sun, Moon
 } from 'lucide-react';
 import { Question, Passage, Theme } from '../types';
 import MathRenderer from './MathRenderer';
@@ -100,6 +100,7 @@ function useHighlight(containerRef: React.RefObject<HTMLDivElement | null>) {
 
 interface ActiveTestScreenProps {
   theme: Theme;
+  toggleTheme?: () => void;
   moduleId: string;
   moduleTitle: string;
   subject?: string;
@@ -112,6 +113,7 @@ interface ActiveTestScreenProps {
 
 export default function ActiveTestScreen({
   theme,
+  toggleTheme,
   moduleId,
   moduleTitle,
   subject = '',
@@ -332,6 +334,17 @@ export default function ActiveTestScreen({
             {showTimer ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
 
+          {toggleTheme && (
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg border transition-all cursor-pointer ${
+                isDark ? 'border-white/10 text-text-muted hover:text-primary' : 'border-slate-200 text-slate-400 hover:text-primary'
+              }`}
+            >
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+          )}
+
           {/* Submit */}
           <button
             onClick={handleManualSubmit}
@@ -475,7 +488,7 @@ export default function ActiveTestScreen({
                       : isDark ? 'text-text-muted hover:text-white' : 'text-slate-500 hover:text-black'
                   }`}
                 >
-                  <Flag className={`w-4 h-4 ${flaggedQuestions[currentQuestion.id] ? 'fill-current' : ''}`} />
+                  <Flag className={`w-4 h-4 ${flaggedQuestions[currentQuestion.id] ? 'fill-red-500 text-red-500' : ''}`} />
                   Mark for Review
                 </button>
               </div>
@@ -589,7 +602,7 @@ export default function ActiveTestScreen({
           {moduleTitle}
         </div>
         
-        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none flex-1 justify-center md:justify-start lg:justify-center px-4">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none flex-1 justify-start px-4">
           {questions.map((q, idx) => {
             const isCurrent = idx === currentIdx;
             const isAnswered = !!userAnswers[q.id];
@@ -608,7 +621,7 @@ export default function ActiveTestScreen({
               >
                 {idx + 1}
                 {isFlagged && (
-                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-accent-gold rounded-sm border-2 border-bg-dark" />
+                  <Flag className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 text-red-500 fill-red-500 drop-shadow-sm" />
                 )}
               </button>
             );

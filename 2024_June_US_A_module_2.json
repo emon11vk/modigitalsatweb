@@ -1,0 +1,324 @@
+[
+  {
+    "question_type": "spr",
+    "text": "Note: Figure not drawn to scale.\nIn the figure, line n intersects lines r and s. Line r is parallel to line s. What is the value of x?",
+    "options": {},
+    "correct_answer": [
+      "110"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "During a portion of a flight, a small airplane's cruising speed varied between 180 miles per hour and 190 miles per hour. Which inequality best represents this situation, where s is the cruising speed, in miles per hour, during this portion of the flight?",
+    "options": {
+      "A": "s <= 10",
+      "B": "s <= 180",
+      "C": "s <= 190",
+      "D": "180 <= s <= 190"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If 4x = 6 what is the value of 12x?",
+    "options": {
+      "A": "3",
+      "B": "9",
+      "C": "18",
+      "D": "27"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In the xy-plane, the graph of the given equation is a circle. If this circle is inscribed in a square, what is the perimeter of the square?\nx^2 - 6x + y^2 - 12y - 36 = 0",
+    "options": {
+      "A": "18",
+      "B": "36",
+      "C": "72",
+      "D": "144"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which expression is equivalent to (x^3 + 6x^2 - 8x) + 8(x^2 + 4)?",
+    "options": {
+      "A": "x^3 + 4x^2 - 8x + 32",
+      "B": "x^3 + 14x^2 - 8x + 32",
+      "C": "x^3 + 8x^2 - 8x + 32",
+      "D": "x^3 + 6x^2 - 8x + 32"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function f is defined by f(x) = x^3 + 17. What is the value of f(2)?",
+    "options": {},
+    "correct_answer": [
+      "25"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function g is defined by g(x) = x/2. For what value of x does g(x) = 244?",
+    "options": {},
+    "correct_answer": [
+      "488"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The scatterplot shows the relationship between two variables, x and y. Which of the following equations is the most appropriate linear model for the data shown?",
+    "options": {
+      "A": "y = 0.8 + 8.7x",
+      "B": "y = 0.8 - 8.7x",
+      "C": "y = 8.7 + 0.8x",
+      "D": "y = 8.7 - 0.8x"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For the given equation, which table gives three values of x and their corresponding values of y?\n5x - 4y = -20",
+    "options": {
+      "A": "x: 0, 4, 8 | y: 5, 10, 15",
+      "B": "x: 0, 4, 8 | y: 15, 10, 5",
+      "C": "x: 5, 10, 15 | y: 0, 4, 8",
+      "D": "x: 5, 10, 15 | y: 8, 4, 0"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A chemist combines water and isopropanol to make a mixture with a volume of 52 milliliters (mL). The volume of isopropanol in the mixture is 10 mL. What is the volume of water, in mL, in the mixture? (Assume that the volume of the mixture is the sum of the volumes of water and isopropanol before they were mixed.)",
+    "options": {},
+    "correct_answer": [
+      "42"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The solution to the given system of equations is (x, y). What is the value of x?\ny = -1/3 x\ny = 1/5 x",
+    "options": {
+      "A": "3",
+      "B": "0",
+      "C": "2",
+      "D": "5"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A company has a customer loyalty program. In January 2018, there were 900 customers enrolled in the loyalty program. For the next 24 months after January 2018, the total number of customers enrolled in the loyalty program each month was 2% greater than the total number enrolled the previous month. Which equation gives the total number of customers, c, enrolled in the company's loyalty program m months after January 2018, where m <= 24?",
+    "options": {
+      "A": "c = 900(0.02)^m",
+      "B": "c = 900(1.02)^m",
+      "C": "c = 900(1.2)^m",
+      "D": "c = 900(2)^m"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function f(t) = 10,000(2)^{t/350} gives the number of bacteria in a population t minutes after an initial observation. How much time, in minutes, does it take for the number of bacteria in the population to double?",
+    "options": {},
+    "correct_answer": [
+      "350"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "One of two equations in a system of linear equations is given. The system has infinitely many solutions. What is the slope of the graph of the second equation?\ny = 3/8 x + 7",
+    "options": {
+      "A": "-3/8",
+      "B": "-8/3",
+      "C": "8/3",
+      "D": "3/8"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If x^2 - 6x - 9 = 0, what is the value of x^2 - 6x?",
+    "options": {
+      "A": "9",
+      "B": "6",
+      "C": "4",
+      "D": "0"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = (x - 5)(x - 8)(x + k), where k is a constant. In the xy-plane, the graph of y = f(x) passes through the point (-2, 0). What is the value of f(0)?",
+    "options": {
+      "A": "-140",
+      "B": "-2",
+      "C": "11",
+      "D": "80"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Line j is shown in the xy-plane. Line k (not shown) is perpendicular to line j and passes through the point (-12, -19). Which equation defines line k?",
+    "options": {
+      "A": "y = 2/3 x - 11",
+      "B": "y = 2/3 x - 27",
+      "C": "y = 3/2 x - 11",
+      "D": "y = 3/2 x - 27"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "What is the median of the data set shown?\n12, 12, 18, 24, 29",
+    "options": {},
+    "correct_answer": [
+      "18"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In right triangle ABC, angles A and B are acute, side AC has a length of 21.7, and tan B = 1/8. What is the length of side BC, rounded to the nearest tenth?",
+    "options": {
+      "A": "470.9",
+      "B": "173.6",
+      "C": "4.7",
+      "D": "2.7"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A rectangular banner has an area of 2,500 square inches. A copy of the banner is made in which the length and width of the original banner are each increased by 40%. What is the area of the copy, in square inches?",
+    "options": {
+      "A": "2,540",
+      "B": "2,580",
+      "C": "3,500",
+      "D": "4,900"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the minimum value of the given function?\nf(x) = (x - 2)^2 + 9",
+    "options": {
+      "A": "2",
+      "B": "7",
+      "C": "9",
+      "D": "11"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Point F lies on a unit circle in the xy-plane and has coordinates (1, 0). Point G is the center of the circle and has coordinates (0, 0). Point H also lies on the circle and has coordinates (-1, y), where y is a constant. Which of the following could be the positive measure of angle FGH, in radians?",
+    "options": {
+      "A": "27π/2",
+      "B": "29π/2",
+      "C": "24π",
+      "D": "25π"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

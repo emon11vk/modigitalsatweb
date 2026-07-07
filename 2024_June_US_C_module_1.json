@@ -1,0 +1,275 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "An object's average acceleration, in meters per second squared, is the change in the object's speed, in meters per second, divided by the time during which the change occurred, in seconds. A certain object's speed changes by 22 meters per second in 8 seconds. What is this object's average acceleration, in meters per second squared, during this time period?",
+    "options": {
+      "A": "0.38",
+      "B": "2.75",
+      "C": "14",
+      "D": "30"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A solution to the given system of equations is (x, y). What is a possible value of x?\n\ny = x + 47\ny = (x + 47)^2",
+    "options": {
+      "A": "47",
+      "B": "1",
+      "C": "0",
+      "D": "-46"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The given function f(x) = 50x + 8 estimates the distance a train has traveled, in kilometers, from a station in a certain city x hours after crossing the city border. What is the best interpretation of 8 in this context?",
+    "options": {
+      "A": "Between the station and the city border the train traveled an estimated total distance of 8 kilometers.",
+      "B": "Between the station and the city border the train traveled at an estimated speed of 8 kilometers per hour.",
+      "C": "After crossing the city border the train traveled at an estimated speed of 8 kilometers per hour.",
+      "D": "After crossing the city border the train traveled an estimated total distance of 8 kilometers."
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What value of x is the solution to the given equation?\n\n1/6 (x + 2) - 1/5 (x + 2) = -5",
+    "options": {
+      "A": "-7",
+      "B": "-2",
+      "C": "148",
+      "D": "270"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function g is defined by g(x) = 3/4 x - 18. What is the y-coordinate of the y-intercept of the graph of y = g(x) in the xy-plane?",
+    "options": {},
+    "correct_answer": ["-18"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Two students are playing a game. In the first round, Player 1 answers 33 questions. If an answer is correct, Player 1 earns 1 point. If an answer is incorrect, Player 2 will earn 1 point instead. The graph shows y = f(x), where y is the number of points Player 2 will earn when x is the number of points Player 1 earns. Which of the following is the best interpretation of the point (33, 0) in this context?",
+    "options": {
+      "A": "When Player 1 earns 33 points, Player 2 will earn 0 points.",
+      "B": "When Player 1 earns 33 points, Player 2 will earn 33 points.",
+      "C": "When Player 1 earns 0 points, Player 2 will earn 33 points.",
+      "D": "When Player 1 earns 0 points, Player 2 will earn 0 points."
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which expression is a factor of 7x^2 + 5x - 18?",
+    "options": {
+      "A": "x - 2",
+      "B": "x + 9",
+      "C": "7x - 9",
+      "D": "7x + 2"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The graph shows the momentum y, in newton-seconds, of an object x seconds after the object started moving for 0 <= x <= 8. What is the average rate of change, in newton-seconds per second, in the momentum of the object from x = 2 to x = 6?",
+    "options": {},
+    "correct_answer": ["1.25"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "How many distinct real solutions does the given equation have?\n\n(x + 81)^2 = -256",
+    "options": {
+      "A": "Exactly one",
+      "B": "Exactly two",
+      "C": "Infinitely many",
+      "D": "Zero"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the sum of the solutions to the given equation?\n\n|x - 6| = 13",
+    "options": {
+      "A": "0",
+      "B": "12",
+      "C": "19",
+      "D": "26"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The manager of a gym selected a sample of 130 members at random to estimate the percentage of the gym's members that would continue to pay for a membership if the price increased. From the survey, the manager estimates that 82% of the gym's members would continue to pay for a membership if the price increased, with an associated margin of error of 6.39%. If the survey is repeated with a random sample of 278 members and the results are calculated in the same way, which of the following will be the most likely effect of using the larger random sample compared to the smaller random sample?",
+    "options": {
+      "A": "The margin of error will be lower.",
+      "B": "The margin of error will be higher.",
+      "C": "The estimate of the percentage of the gym's members that would continue to pay for a membership if the price increased will be lower.",
+      "D": "The estimate of the percentage of the gym's members that would continue to pay for a membership if the price increased will be higher."
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Raheem bought 9 shirts that were each the same price. He used a coupon for $54 off the entire purchase. The cost for the entire purchase after using the coupon was $108. What was the original price, in dollars, of one shirt?",
+    "options": {},
+    "correct_answer": ["18"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The maximum temperature on April 1, in degrees Fahrenheit (F), was recorded each year at a certain weather station for 11 years. The histogram summarizes the records. The temperature of 78.2 F is removed from this data set to create a new data set of 10 temperatures. Which of the following statements must be true?\n\nI. The mean of the new data set is less than the mean of the original data set.\nII. The median of the new data set is less than the median of the original data set.",
+    "options": {
+      "A": "I only",
+      "B": "II only",
+      "C": "Both I and II",
+      "D": "Neither I nor II"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "For the positive quantities h, j, and k, 94% of h is equivalent to 47% of j, and j is equivalent to 30% of k. What percentage of k is h? (Disregard the % sign when entering your answer.)",
+    "options": {},
+    "correct_answer": ["15"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For the exponential function f, the value of f(1) is k, where k is a constant. Which of the following equivalent forms of the function f shows the value of k as the coefficient or base?",
+    "options": {
+      "A": "f(x) = 50(1.4)^{x-1}",
+      "B": "f(x) = 70(1.4)^x",
+      "C": "f(x) = 98(1.4)^{x+1}",
+      "D": "f(x) = 137.2(1.4)^{x-2}"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In triangle PQR, the measure of angle P is (3x + 5)°, the measure of angle Q is (2x + 9)°, and the measure of angle R is (4y + 5)°. If side QR is extended through point R to point S, and the measure of angle PRS is 9y°, what is the value of x + y?",
+    "options": {},
+    "correct_answer": ["39"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The triangle inequality theorem states that the sum of the lengths of any two sides of a triangle must be greater than the length of the third side. If a triangle has side lengths of 5 and 13, which inequality represents the possible lengths, x, of the third side?",
+    "options": {
+      "A": "x < 18",
+      "B": "x > 8",
+      "C": "8 < x < 18",
+      "D": "x < 8 or x > 18"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A right circular cone has a volume of 2,700π cubic centimeters and a base area of 225π square centimeters. What is the slant height, in centimeters, of this cone?",
+    "options": {
+      "A": "12",
+      "B": "15",
+      "C": "36",
+      "D": "39"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A quadratic function models the height, in feet, of an object above the ground in terms of the time, in seconds, after the object was launched. According to the model, the object was launched from a height of 0 feet and reached its maximum height of 1,600 feet 10 seconds after it was launched. Based on the model, what was the height, in feet, of the object 15 seconds after it was launched?",
+    "options": {},
+    "correct_answer": ["1200"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The cost of renting a power washer is $92 for the first day and $46 for each additional day. Which of the following functions gives the cost C(d), in dollars, of renting the power washer for d days, where d is a positive integer?",
+    "options": {
+      "A": "C(d) = 46d + 46",
+      "B": "C(d) = 46d + 92",
+      "C": "C(d) = 92d - 46",
+      "D": "C(d) = 92d + 128"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = ax + b/c, where a, b, and c are constants. If the graph of y = f(x) in the xy-plane passes through the points (0, -12) and (2, 0), and b is an integer greater than 1, which of the following could be the value of a?",
+    "options": {
+      "A": "3",
+      "B": "6",
+      "C": "8",
+      "D": "12"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Right rectangular prism X is similar to right rectangular prism Y. The surface area of right rectangular prism X is 58 square centimeters (cm2), and the surface area of right rectangular prism Y is 1,450 cm2. The volume of right rectangular prism Y is 1,500 cubic centimeters (cm3). What is the sum of the volumes, in cm3, of right rectangular prism X and right rectangular prism Y?",
+    "options": {},
+    "correct_answer": ["1512"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

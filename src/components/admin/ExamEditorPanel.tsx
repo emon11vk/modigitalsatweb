@@ -6,6 +6,7 @@ import {
 } from '../../utils/examEditorReducer';
 import { normalizeExamJson } from '../../utils/normalizeExamJson';
 import { saveExam, loadExam } from '../../utils/saveExam';
+import { supabase } from '../../supabaseClient';
 import ImageUploadSlot from './ImageUploadSlot';
 import {
   FileJson,
@@ -51,6 +52,13 @@ export default function ExamEditorPanel({
     new Set()
   );
   const [loadingExisting, setLoadingExisting] = useState(!!examId);
+  const [folders, setFolders] = useState<any[]>([]);
+
+  useEffect(() => {
+    supabase.from('exam_folders').select('id, name, parent_id, category').then(({ data }) => {
+      if (data) setFolders(data);
+    });
+  }, []);
 
   useEffect(() => {
     if (examId) {
@@ -301,6 +309,29 @@ export default function ExamEditorPanel({
             >
               <option value="Reading & Writing" className={isDark ? "bg-bg-dark text-white" : "bg-white text-text-dark"}>Đọc & Viết (Verbal)</option>
               <option value="Math" className={isDark ? "bg-bg-dark text-white" : "bg-white text-text-dark"}>Toán Học (Math)</option>
+            </select>
+          </div>
+          <div className="w-32 shrink-0">
+            <label className={`text-[10px] uppercase tracking-wider font-semibold mb-1.5 block ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+              Thư mục
+            </label>
+            <select
+              value={state.exam?.folder_id || ''}
+              onChange={(e) =>
+                dispatch({ type: 'UPDATE_EXAM_FOLDER', payload: e.target.value || null })
+              }
+              className={`w-full text-base font-bold font-display bg-transparent border-b-2 pb-[5px] transition-colors focus:outline-none cursor-pointer truncate ${
+                isDark
+                  ? 'text-white border-white/10 focus:border-primary'
+                  : 'text-text-dark border-slate-200 focus:border-primary'
+              }`}
+            >
+              <option value="" className={isDark ? "bg-bg-dark text-white" : "bg-white text-text-dark"}>-- Trống --</option>
+              {folders.map(f => (
+                <option key={f.id} value={f.id} className={isDark ? "bg-bg-dark text-white" : "bg-white text-text-dark"}>
+                  {f.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="w-24 shrink-0">

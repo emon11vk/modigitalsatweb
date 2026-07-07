@@ -1,0 +1,590 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+46
+CONTINUE
+
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+47
+CONTINUE
+
+What is the maximum number of trees planted on one of these 4
+plots of land?
+A)
+80
+B)
+75
+C)
+65
+D)
+59
+At the time of posting a video, a social media channel had 
+subscribers. Each day for five days after the video was posted, the
+number of subscribers doubled from the number the previous
+day. Which equation gives the total number of subscribers, , to
+the channel  days after the video was posted?
+A)
+B)
+C)
+D)
+1
+2
+67
+n
+d
+n = (67)d
+n = 67(2)d
+n = (67) +
+2
+d
+n = 67
+​
+(2
+1)
+d
+PDF version from learn.ronansat.com. Happy practicing!
+48
+CONTINUE
+
+A certain truck can tow a trailer if the combined weight of the
+trailer and the packages it contains is no more than 
+ pounds.
+What is the maximum number of packages this truck can tow in a
+trailer with a weight of 
+ pounds if each package weighs 
+pounds?
+A)
+38
+B)
+39
+C)
+43
+D)
+44
+Which table gives three values of  and their corresponding
+values of 
+ for function 
+?
+A)
+-1
+7
+0
+21
+1
+63
+B)
+-1
+18
+0
+21
+1
+24
+C)
+-1
+63
+0
+21
+1
+7
+D)
+-1
+0
+1
+1
+3
+3
+5,600
+600
+130
+4
+x
+q(x)
+q(x) = 21(3 )
+x
+x
+q(x)
+x
+q(x)
+x
+q(x)
+x
+q(x)
+​3
+1
+PDF version from learn.ronansat.com. Happy practicing!
+49
+CONTINUE
+
+For the linear function , the graph of 
+ in the 
+-plane
+has a slope of  and passes through the point 
+. Which
+equation defines ?
+A)
+B)
+C)
+D)
+Function  is defined by the given equation. The function  is
+defined by 
+. What is the -coordinate of
+the -intercept of the graph of 
+ in the 
+-plane?
+A)
+7/12
+B)
+5/7
+C)
+3/2
+D)
+7/2
+5
+f
+y = f(x)
+xy
+​3
+2
+(15, 14)
+f
+f(x) =
+​x +
+3
+2
+​
+15
+14
+f(x) =
+​x +
+3
+2
+​
+3
+17
+f(x) =
+​x +
+3
+2
+14
+f(x) =
+​x +
+3
+2
+4
+6
+f(x) = 7x −5
+f
+g
+g(x) = f(x) −(5x −2)
+x
+x
+y = g(x)
+xy
+PDF version from learn.ronansat.com. Happy practicing!
+50
+CONTINUE
+
+The given equation 
+ relates the positive numbers ,
+, and . Which equation correctly expresses  in terms of  and 
+?
+A)
+B)
+C)
+D)
+An object is kicked from a platform. The equation 
+ represents this situation, where  is the height of the
+object above the ground, in meters,  seconds after it is kicked.
+Which number represents the height, in meters, from which the
+object was kicked?
+A)
+0
+B)
+4.9
+C)
+13
+D)
+15
+7
+x = 4a(b + 3)
+a
+b
+x
+a
+b
+x
+a =
+​ −
+4
+x
+(b + 3)
+a =
+​
+4(b + 3)
+x
+a = 4x(b + 3)
+a =
+​
+x
+4(b + 3)
+8
+h = −4.9t +
+2
+13t + 15
+h
+t
+PDF version from learn.ronansat.com. Happy practicing!
+51
+CONTINUE
+
+The given equations are graphed in the 
+-plane. How many
+solutions 
+ does the system of three equations have?
+A)
+Zero
+B)
+Exactly one
+C)
+Exactly two
+D)
+Infinitely many
+Which point 
+ is a solution to the given system of inequalities
+in the 
+-plane?
+A)
+B)
+C)
+D)
+9
+x + 6y = −14
+2x + 12y = 39
+5x + 30y = 0
+xy
+(x, y)
+10
+y ≤x + 2
+y ≥−5x −3
+(x, y)
+xy
+(0, −6)
+(0, 6)
+(−6, 0)
+(6, 0)
+PDF version from learn.ronansat.com. Happy practicing!
+52
+CONTINUE
+
+The length of the diagonal of a square is 
+ units. What is the
+area, in square units, of the square?
+A)
+62
+B)
+248
+C)
+3,844
+D)
+7,688
+If 
+, what is the value of 
+?
+11
+​
+2
+124
+​2
+12
+4 +
+​ =
+2
+3(7 −x)
+​
+3
+5(7 −x)
+7 −x
+PDF version from learn.ronansat.com. Happy practicing!
+53
+CONTINUE
+
+The floor of a business office has an area of 
+ square meters.
+An architect creates a scale model of the floor, where the length of
+each side is 
+ times the length of the actual side. What is the
+area, in square meters, of the scale model?
+A)
+7
+B)
+15
+C)
+105
+D)
+175
+\ 
+\How many solutions are there to
+the given system of equations?
+A)
+There is exactly 1 solution.
+B)
+There are exactly 2 solutions.
+C)
+There are exactly 3 solutions.
+D)
+There are no solutions.
+13
+1, 575
+1/15
+14
+y = 2x −
+2
+16x + 37 y + 4 = 0
+PDF version from learn.ronansat.com. Happy practicing!
+54
+CONTINUE
+
+Which expression is equivalent to 
+?
+A)
+B)
+C)
+D)
+A polygon has exactly 
+ sides. If the measure of each of the 
+interior angles of this polygon is 
+, what is the value of ?
+15
+​ +
+x −10
+y + 13
+​
+x y −10xy
+2
+y(x −10)
+​
+x −10x
+2
+xy + 13x −10
+​
+x −10x
+2
+xy + 14x −10
+​
+x −10x
+2
+xy + 14x + 10
+​
+x −10
+y + 14
+16
+95
+95
+(180p)∘
+p
+PDF version from learn.ronansat.com. Happy practicing!
+55
+CONTINUE
+
+The speed of particle A is 
+ of the speed of particle C and
+the speed of particle C is 
+ of the speed of particle B. Which
+expression represents the value of 
+ in terms of ?
+A)
+25,066c
+B)
+6,850c
+C)
+6,604c
+D)
+3,160c
+The function  is defined by 
+. For what value of  is
+?
+17
+6,600%
+0.004%
+a + b
+c
+18
+g
+g(x) = 8x
+x
+g(x) = 242
+PDF version from learn.ronansat.com. Happy practicing!
+56
+CONTINUE
+
+. The given expression can be
+rewritten as 
+. What is the value of 
+?
+A)
+-48
+B)
+-24
+C)
+-12
+D)
+-3
+Circles  and 
+ are graphed in the 
+-plane. Circle  is
+represented by the equation 
+ and
+intersects the -axis at the point 
+. Circle 
+ has its center at
+ and has a radius of the same length as circle . Which
+equation represents circle 
+?
+A)
+B)
+C)
+D)
+19
+−16(3x −4) +
+2
+4(3x −2)2
+ax +
+2
+bx + c
+a + b + c
+20
+A
+B
+xy
+A
+(x −9) +
+2
+(y + 9) =
+2
+81
+x
+(r, s)
+B
+(r, s)
+A
+B
+x +
+2
+(y −9) =
+2
+81
+x +
+2
+(y + 9) =
+2
+81
+(x −9) +
+2
+y =
+2
+81
+(x + 9) +
+2
+y =
+2
+81
+PDF version from learn.ronansat.com. Happy practicing!
+57
+CONTINUE
+
+The graph of 
+ is shown. Which equation defines
+function ?
+A)
+B)
+C)
+D)
+Note: Figure not drawn to scale.
+In the figure, triangle 
+ is congruent to triangle 
+, where
+ corresponds to . The measure of angle 
+ is 
+. What is
+the measure, in degrees, of angle 
+?
+A)
+B)
+C)
+D)
+21
+y = f(x) + 4
+f
+f(x) = −6 +
+x
+1
+f(x) = −6 +
+x
+5
+f(x) = −6 +
+x
+8
+f(x) = −6 +
+x
+9
+22
+AEG
+CFD
+E
+F
+ABF
+46∘
+DCF
+23
+44
+46
+67
+PDF version from learn.ronansat.com. Happy practicing!
+58
+CONTINUE
+
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+59
+

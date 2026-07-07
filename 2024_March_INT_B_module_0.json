@@ -1,0 +1,490 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "As used in the text, what does the word \"featured\" most nearly mean?",
+    "options": {
+      "A": "Approved",
+      "B": "Displayed",
+      "C": "Questioned",
+      "D": "Examined"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "The following text is from Darcie Little Badger's 2021 novel A Snake Falls to Earth. Nina is looking at old family photographs",
+    "passage_paragraphs": [
+      "Nina couldn't stop looking at the sepia-toned photograph in an oak frame. Propped on the window ledge, it featured a portrait of Great-Great-Grandmother Rosita as a young woman."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "As used in the text, what does the word \"surveyed\" most nearly mean?",
+    "options": {
+      "A": "Praised",
+      "B": "Organized",
+      "C": "Examined",
+      "D": "Converted"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "The following text is from Mark Twain's 1876 novel The Adventures of Tom Sawyer. Tom, a child, has been told by his aunt to paint their house's fence.",
+    "passage_paragraphs": [
+      "Tom appeared on the sidewalk with a bucket of whitewash and a long-handled brush. He surveyed the fence, and all gladness left him and a deep melancholy settled down upon his spirit. Thirty yards of board fence nine feet high."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "sensitive",
+      "B": "objective",
+      "C": "irrelevant",
+      "D": "biased"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Politicians routinely claim that journalists are __________, but while it's true that some journalists allow their own views to creep into their reporting more than others do, most journalists make a good faith effort to be neutral in their reporting."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "comprehensive",
+      "B": "interdependent",
+      "C": "tenuous",
+      "D": "unyielding"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "The Nile River delta system is located in Northern Egypt, where the river drains into the Mediterranean Sea, and is shaped by __________ factors: for example, the geography of the coastline influences sedimentary deposition, which over time alters coastal geography."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "conceal",
+      "B": "symbolize",
+      "C": "match",
+      "D": "diminish"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Few religious buildings can be said to __________ the astonishing size of Djamaa el Djazair in Algeria, which, with the capacity to accommodate approximately 120,000 people at once, is one of the largest mosques in the world."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best states the main purpose of the text?",
+    "options": {
+      "A": "To explain a problem that the narrator has overcome",
+      "B": "To give a reason why the narrator is excited to start middle school",
+      "C": "To discuss a movie that the narrator saw in a theater",
+      "D": "To describe an activity that the narrator finds amusing"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "The following text is adapted from Jason Reynolds's 2016 novel Ghost. The narrator, who is in middle school, is at a bus stop.",
+    "passage_paragraphs": [
+      "I just go there [to the bus stop] to look at the people working out. See the gym across the street has this big window like the whole wall is a window and they have those machines that make you feel like you walking up steps and so everybody just be facing the bus stop, looking all crazy like they're about to pass out. And trust me, there ain't nothing funnier than that. So I check that out for a little while like it's some kind of movie. The About to Pass Out Show, starring stair stepper person one through ten."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes the function of the underlined sentence?",
+    "options": {
+      "A": "It highlights several important members of the National Association of Black Journalists.",
+      "B": "It emphasizes challenges that the National Association of Black Journalists faces.",
+      "C": "It summarizes the purpose of founding the National Association of Black Journalists.",
+      "D": "It lists the achievements of the National Association of Black Journalists."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In 1827, Rev. John Wilk and other free Black men in New York City founded Freedom's Journal: America's first Black-owned and operated newspaper. Wilk's accomplishment is just one example of the rich history of Black journalism in the United States. That history is preserved by the National Association of Black Journalists, which was founded in Washington, DC, in 1975 to support Black media professionals and honor people like Wilk."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes the overall structure of the text?",
+    "options": {
+      "A": "The text explains the general differences between the vision of sheep and barn owls, then introduces a study of praying mantises' vision.",
+      "B": "The text discusses 3D vision in sheep and barn owls, then introduces a study about this kind of vision in praying mantises.",
+      "C": "The text describes how sheep and barn owls see, then presents a study about praying mantises that challenges the accuracy of that description.",
+      "D": "The text reviews the similarities in how sheep and barn owls see, then provides details of a study about praying mantises to confirm these similarities."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Sheep and barn owls see in three dimensions (3D) by combining two images in their brains, one from each eye. This produces a sense of depth, helping the animals judge how close or far away an object is. Researchers have investigated 3D vision in praying mantises as well. In one study, Vivek Nityananda and his team fitted mantises' faces with two different color filters, one covering each eye, much like the filters in 3D glasses once worn at movies. By observing the mantises' reaction to projected images, the team confirmed that mantises do indeed have 3D vision, but it's unlike that of other animals."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "According to the text, what is one difference between the English words \"coyote\" and \"iguana\"?",
+    "options": {
+      "A": "\"Coyote\" is known for being Indigenous in origin, while \"iguana\" is mistakenly regarded as Spanish in origin.",
+      "B": "\"Coyote\" changed in meaning significantly when English borrowed the word from Spanish, whereas \"iguana\" retained its original meaning.",
+      "C": "\"Coyote\" can be traced to the Nahuatl language, while \"iguana\" can be traced to the Taino language.",
+      "D": "\"Coyote\" entered English recently, but \"iguana\" entered English many centuries ago."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "\"Coyote\" is one example of an English word that has an Indigenous origin. The word came to English indirectly from coyote, the Spanish word for the wild canine species. Spanish had borrowed it from Nahuatl, an Indigenous language of Central Mexico, in which the word's original form is coyotl. \"Iguana\" also has an Indigenous origin and entered English through Spanish. But in this case, the original source was Taino, a language of the Caribbean islands, in which the word for the group of related lizard species is iwana."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best states the main idea of the text?",
+    "options": {
+      "A": "Although archaeologists have learned much about Izapa over years of research, they have only recently found the smaller settlements that surrounded it.",
+      "B": "Cultural ceremonies in Izapa seem to have played a more important role for its residents than those in smaller surrounding settlements did.",
+      "C": "Researchers have inferred that Izapa was related to the smaller settlements that surrounded it based in part on the similarity of their construction.",
+      "D": "Researchers have determined that the arrangement of Izapa's structures was based on those of other nearby settlements."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In present-day Chiapas, Mexico, archaeologist Robert Rosenswig, remote-sensing specialist Ricardo Lopez Torrijos, and colleagues have located ~41 smaller settlements surrounding the ancient Mesoamerican city of Izapa. The researchers have concluded that these settlements were culturally linked to Izapa because each of the settlements is the same age and configured in the same manner as Izapa, with a pyramid to the north and a plaza to the south. Their shared structural orientation suggests that residents of the settlements likely performed some of the same cultural ceremonies as residents in Izapa did."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes data from the table that weaken the student's claim?",
+    "options": {
+      "A": "Instructions Not Included had higher lifetime earnings than Pan's Labyrinth did, even though Pan's Labyrinth was recognized by the Oscars.",
+      "B": "Although both Crouching Tiger, Hidden Dragon and Amélie were recognized by the Oscars, Crouching Tiger, Hidden Dragon had higher lifetime earnings.",
+      "C": "The Girl Who Played with Fire was not recognized by the Oscars but had much higher opening weekend earnings than Crouching Tiger, Hidden Dragon, which was recognized by the Oscars.",
+      "D": "Although both Hero and The Girl Who Played with Fire were directed by well-known figures, neither film was recognized by the Oscars."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Many films in a language other than English grow to be financially successful over the course of their time in movie theaters in the United States, but some become immediate successes in their opening weekends. Such success is driven by many factors like advertising, genre popularity, and the fame of the actors and directors. A student claims that opening weekend earnings can reliably predict whether a film will be nominated for an Oscar: films that draw large audiences at the beginning of their release are the most likely contenders to earn these coveted award nominations.",
+      "Non-English Films: Earnings and Oscar Nominations\nFilm Title\nOpening\nWeekend\nEarnings\n($M)\nLifetime\nEarnings\n($M)\nOscar\nNominated?\nAmélie\n1.2\n18.4\nYes\nHero\n8.7\n42.1\nNo\nCrouching\nTiger, Hidden\nDragon\n2.5\n24.9\nYes\nThe Girl Who\nPlayed with\nFire\n11.3\n55.6\nNo\nPan's\nLabyrinth\n0.8\n12.7\nYes\nInstructions\nNot Included\n14.6\n67.3\nNo"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes data from the table that support Pötzelsberger and colleagues' conclusion?",
+    "options": {
+      "A": "Austria reported 51 damaging fungus species, which is a greater number of them than either Poland or Lithuania reported.",
+      "B": "Poland reported 25 damaging fungus species and 105 damaging insect species, while both Austria and Lithuania reported a greater number of damaging fungus species than insect species.",
+      "C": "Austria reported 51 damaging fungus species, whereas Lithuania reported 7 damaging insect species.",
+      "D": "Austria and Lithuania both reported fewer damaging insect species than damaging fungus species, whereas Poland reported 105 fungus species and only 25 insect species."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Elisabeth Pötzelsberger and colleagues gathered data on 23 non-native tree species grown in Europe. They analyzed reports from Austria, Poland, and Lithuania about the number of these species grown in those countries as well as the numbers of insect and fungus species that damage those trees. The researchers concluded that in only one of these countries are there more insect species than fungus species that pose risks to these trees."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which finding, if true, would most directly support the researcher's claim?",
+    "options": {
+      "A": "In a town that installed left-turn signals at all busy intersections, seven out of ten survey respondents agreed with the statement \"the streets in my community are easier to navigate by motor vehicle than before.\"",
+      "B": "After a city eliminated left turns at busy intersections, a package-delivery company reports that its drivers have been able to reach more addresses in the city daily, on average, and therefore deliver more packages there annually.",
+      "C": "Statistics reveal that school buses in a city that eliminated left turns at most intersections took on average two minutes longer to complete their routes after the restriction took effect than they did before.",
+      "D": "A traffic study of intersections in a large city shows that on average drivers wait longer to make a left turn at intersections without left-turn signals than at intersections with such signals."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In countries with right-hand traffic, drivers who want to make a left turn at a traffic intersection with stoplights have to wait for either a gap in oncoming traffic or a designated left-turn signal to turn green. At busy intersections, this often causes a backup of vehicles waiting to turn left or being prevented from proceeding by left-turning vehicles in front of them. Transportation researcher Vikash V. Gayah claims that in urban areas eliminating the option to turn left at busy intersections—both with and without dedicated left-turn signals—would improve traffic flow and, as a result, reduce overall travel times even if such a restriction would require drivers to sometimes travel a slightly longer distance."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes data in the table that support the researcher's claim?",
+    "options": {
+      "A": "Spirit Lake had fewer days of ice in the winter of 1980-81 than it did in the winter of 2005-06.",
+      "B": "Näckten had more days of ice in the winter of 1980-81 than it did in the winter of 2005-06.",
+      "C": "Näckten is at a higher latitude than Lake Kegonsa and typically had fewer days of ice per winter than Lake Kegonsa did.",
+      "D": "Näckten is at a higher latitude than Lake Kegonsa and typically had more days of ice per winter than Lake Kegonsa did."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "It is common for freshwater lakes near or above a latitude of 45° north of the equator, like Lake Stechlin in Germany, to accumulate surface ice in winter. A study from 1980 to 2006 showed that, in general, the number of days per winter that such lakes have measurable amounts of surface ice is declining. However, a researcher claimed that some lakes have instead seen an increase in the duration of ice.",
+      "Days per Winter That Lakes Have Surface Ice\nLake\nLatitude (degrees)\n1980–81\n1985–86\n1990–91\n1995–96\n2000–01\n2005–06\nSpirit Lake\n43.46\n102\n135\n121\n134\n147\n126\nLake Kegonsa\n42.97\n94\n116\n104\n113\n124\n101\nNäckten\n62.913\n177\n168\n144\n174\n133\n134"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "it's useful at present for Maryland to distinguish between invasive and native species in some instances but not in the case of the flathead catfish.",
+      "B": "Maryland should coordinate with other states to protect their native species from invasive species.",
+      "C": "Maryland was previously home to some flathead catfish but they were outcompeted by invading species.",
+      "D": "states such as Maryland may need to reevaluate their classifications of species."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "The state of Maryland has designated the flathead catfish as an invasive species that could outcompete some of the state's native species. Many other states draw similar distinctions between invasive and native species. But researchers Alejandro Camacho and Jason McLachlan have pointed out that Earth's climate is changing in ways that challenge such designations. Climate changes may cause animals to leave their current ranges and establish new ones. Climate changes may also create good habitats in areas where a species couldn't live previously. These observations suggest that __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "struggled",
+      "B": "had struggled",
+      "C": "struggle",
+      "D": "were struggling"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "To coders like Black Girls Code founder Kimberly Bryant, the computer programming languages C# and S-Lang have a clear difference: the former is an object-oriented language while the latter is not. Because both languages require highly technical knowledge to understand, though, laypeople __________ to distinguish between them."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "reaches",
+      "B": "reach",
+      "C": "reaching",
+      "D": "to reach"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "On Humphreys Peak, which __________ an elevation of 12,637 feet, one can find the highest point in Arizona."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "the limits of measurability were expanded by chemist Ahmed Zewail who introduced a new scientific discipline",
+      "B": "chemist Ahmed Zewail expanded the limits of measurability and introduced a new scientific discipline",
+      "C": "the introduction of a new scientific discipline by chemist Ahmed Zewail led to the expansion of the limits of measurability",
+      "D": "the result of chemist Ahmed Zewail's expansion of the limits of measurability was the introduction of a new scientific discipline"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "A recipient of the King Faisal International Prize and the Othmer Gold Medal, __________ known as femtochemistry when he devised an optical spectroscopy technique that allowed researchers to study ultrafast chemical reactions occurring within molecules."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "coalition",
+      "B": "coalition,",
+      "C": "coalition:",
+      "D": "coalition—"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "\"Coalition\" is the term for a group of male lions, and across the Greater Kruger National Park in South Africa, many coalitions vie for territory. Between 2010 and 2018, the lions of the Majingilane __________ including Dark Mane, Golden Mane, and Scar-Nose—thrived within a part of the park called the Londolozi Game Reserve."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "having positioned",
+      "B": "positioning",
+      "C": "by positioning",
+      "D": "have positioned"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Several advantages—the ability to react strongly with chip components, to avoid interference from other waves, and to be confined within tiny circuits—__________ acoustic waves as a promising alternative to electrical waves for transmitting data on computer chips; as a result, researchers are invested in developing more acoustic wave-based chips."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "researchers: while",
+      "B": "researchers",
+      "C": "researchers, while",
+      "D": "researchers. While"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Like much scientific research, a noted 2021 study of moon jellyfish published in Proceedings of the Royal Society B reflects the combined efforts and expertise of multiple __________ Brad Gemmell is listed first, Kevin Du Clos, Kelly Sutherland, and other coauthors also made important contributions to the study."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical transition?",
+    "options": {
+      "A": "As a result,",
+      "B": "By contrast,",
+      "C": "In the end,",
+      "D": "For instance,"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Broadcasting from the Spirit Lake Tribe's lands in North Dakota, the Native-run radio station KABU 90.7 FM serves its local Dakota-speaking community in several ways. __________, it broadcasts local news and music and also hosts programming in the Dakota language."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to identify the institution in which Spike is housed. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Spike is housed at the New Mexico Museum of Natural History in Albuquerque, New Mexico.",
+      "B": "Spike is the nickname of a dinosaur fossil specimen belonging to the genus Pentaceratops.",
+      "C": "Albuquerque, New Mexico, is home to a Pentaceratops fossil specimen nicknamed Spike.",
+      "D": "The Pentaceratops fossil specimen Spike lived more than 65 million years ago, in the Late Cretaceous period."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• Spike is the nickname of a dinosaur fossil specimen from the Late Cretaceous period.\n• The Late Cretaceous period ended more than 65 million years ago.\n• Spike is a member of the genus Pentaceratops.\n• Spike is housed at the New Mexico Museum of Natural History.\n• The New Mexico Museum of Natural History is in Albuquerque, New Mexico."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to correct a misunderstanding that Euramerica formed before Rodinia. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Rodinia and Euramerica were both supercontinents, single landmasses made up of most or all of the Earth's continents.",
+      "B": "Rodinia formed about 1.1 billion years ago, long before Euramerica's formation about 300 million years ago.",
+      "C": "Forming and breaking apart over hundreds of millions of years, supercontinents are made up of most or all of Earth's continents.",
+      "D": "Euramerica and Rodinia formed at different times in Earth's history."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• A supercontinent is a single landmass made up of most or all of Earth's continents.\n• Over time, continents merge together to form supercontinents, which then break apart.\n• This process is believed to take hundreds of millions of years and is known as the supercontinent cycle.\n• Rodinia and Euramerica were supercontinents.\n• Rodinia formed about 1.1 billion years ago.\n• Euramerica formed about 300 million years ago."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to identify the combined carrying capacity of Malaysia's merchant ships in 2021. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "The carrying capacity of a merchant ship is also known as its deadweight tonnage.",
+      "B": "In 2021, Malaysia had 1,769 merchant ships hired to carry cargo or passengers.",
+      "C": "The combined carrying capacity of Malaysia's merchant ships was 10.2 million tons in 2021.",
+      "D": "There were a total of 1,769 merchant ships (ships hired to carry cargo or passengers) registered in Malaysia in 2021."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• A merchant ship is any ship hired to carry cargo or passengers.\n• A ship's carrying capacity is also known as its deadweight tonnage (DWT).\n• In 2021, there were a total of 1,769 merchant ships registered in Malaysia.\n• The combined DWT of these ships was 10.2 million tons."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to contrast the two NWRs. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "While the Mason Neck NWR is in Virginia, on the Atlantic coast, the Bitter Creek NWR is in California, on the Pacific coast.",
+      "B": "Some NWRs were established specifically to protect endangered species such as the California condor.",
+      "C": "Both the Mason Neck NWR and the Bitter Creek NWR were established to protect endangered species.",
+      "D": "The US has designated more than 500 areas NWRs, including the Mason Neck NWR in Virginia."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• The United States has designated more than 500 areas National Wildlife Refuges (NWRs).\n• Some NWRs were established specifically to protect endangered species.\n• The Mason Neck NWR is a 2,276-acre area in Virginia, on the Atlantic coast.\n• It was established to protect the endangered bald eagle.\n• The Bitter Creek NWR is a 14,054-acre area in California, on the Pacific coast.\n• It was established to protect the endangered California condor."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to explain why a day in the French Republican calendar's month of Messidor was named Mulet. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "When the French Republican calendar was developed during the French Revolution, the fifth of Messidor was named Mulet.",
+      "B": "The month of Messidor was divided into three weeks of ten days each, and one of those days was named Mulet.",
+      "C": "Developed during the French Revolution, the French Republican calendar has twelve months, including Messidor.",
+      "D": "Each day of the French Republican calendar year honors an aspect of rural life, which is why the fifth of Messidor is named after an animal, the mule."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• The French Republican calendar was developed during the French Revolution.\n• It had twelve months divided into three weeks of ten days each, followed by five supplemental days.\n• Each day was named after a plant, animal, agricultural tool, or mineral as a way of honoring an aspect of rural life.\n• Messidor is the tenth month of the French Republican calendar.\n• The fifth day of Messidor is named Mulet, which means \"mule.\""
+    ]
+  }
+]

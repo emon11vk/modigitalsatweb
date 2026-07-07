@@ -1,0 +1,508 @@
+[
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Economist Jingting Fan argues that the effects of international trade may display spatial variation at sub-national levels. For instance, imported goods may reduce expenses for a country's average consumer, but for consumers living far from ports, high intranational transport costs could __________ the price advantages associated with imports."
+    ],
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "misconstrue",
+      "B": "underestimate",
+      "C": "nullify",
+      "D": "denigrate"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "As discussed by scholar Anna Mladentseva, many artworks produced in the mid-1990s to the early 2000s exclusively for exhibition on the internet, such as Sinae Kim's Genesis (2001), have become inaccessible because viewing them requires the use of __________ software (most notably Adobe Flash, discontinued in 2021)."
+    ],
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "extraneous",
+      "B": "arcane",
+      "C": "defunct",
+      "D": "ubiquitous"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Proposals to raise the age at which retirees begin receiving government transfers of funds are generally discussed in terms of the effects on transfer recipients, but Andria Smythe has argued that delaying such transfers could __________ wealth creation among working adults by lengthening the period in which they are providing financial support to their nonworking parents."
+    ],
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "disparage",
+      "B": "compound",
+      "C": "outstrip",
+      "D": "stymie"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "In the 2010s, the price of vintage He-Man action figures rose dramatically, which had the counterintuitive effect of __________ demand: buyers who hadn't previously wanted to purchase old action figures thronged the market, believing prices would continue to rise and the toys could be resold later at a profit."
+    ],
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "exploiting",
+      "B": "appraising",
+      "C": "engendering",
+      "D": "monetizing"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "In 2015 Filipa Faleiro and colleagues published a study concluding that ocean acidification has a strong effect on the behavior of Hippocampus guttulatus, a species of fish. However, Faleiro and colleagues' study relied on a mean sample size of only 6 fish. In a 2022 review of various scientists' conclusions about the impacts of ocean acidification on fish behavior, Jeff C. Clements and colleagues caution that relying on such a relatively small sample size can increase the potential for biased analysis. Such analysis, in turn, can contribute to reports of exaggerated effects."
+    ],
+    "text": "Which choice best describes the overall structure of the text?",
+    "options": {
+      "A": "It presents the result of a study, then raises a potential concern related to that result.",
+      "B": "It summarizes a problem that scientists are investigating, then provides a possible solution to that problem.",
+      "C": "It states a similarity between two scientific studies, then notes a difference between them.",
+      "D": "It describes a characteristic of a fish species, then explains why that characteristic is noteworthy."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Researchers César A. Hidalgo, Elisa Castañer, and Andres Sevtsuk created a computer model to predict the mix of movie theaters, gyms, and other businesses found in a given neighborhood. How we define a neighborhood and its boundaries is subjective, so the team used a clustering algorithm to locate dense groupings of amenities that represent human-identified neighborhoods like Boston's Harvard Square. The predictive model, which incorporates this algorithm, is sure to be invaluable in determining the optimal mix of a city's amenities."
+    ],
+    "text": "Which choice best describes the function of the underlined sentence in the text as a whole?",
+    "options": {
+      "A": "It praises an algorithm's accuracy in identifying neighborhood boundaries.",
+      "B": "It emphasizes the potential utility of the team's model.",
+      "C": "It suggests a difficulty associated with analyzing neighborhoods that the research team attempted to overcome.",
+      "D": "It summarizes trends in recent urban development in Boston."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Yingguang Frank Chan and colleagues have explored how convergent evolution—a phenomenon that occurs when the same trait evolves independently in two reproductively separate lineages—can result from a genetic mechanism shared by both lineages. Meanwhile, Patricia J. Wittkopp and colleagues have investigated how convergence occurs through different genetic mechanisms, but the relative prevalence of convergence through shared and different genetic processes is still poorly understood. This motivated biologists Delbert A. Green II and Cassandra G. Extavour to evaluate both types of convergence in a single study for their 2012 paper."
+    ],
+    "text": "Which choice best states the main purpose of the text?",
+    "options": {
+      "A": "To summarize Green and Extavour's criticism of the study by Chan and colleagues",
+      "B": "To suggest that Green and Extavour's conclusions would be more persuasive if they incorporated findings from the studies by Chan and colleagues and Wittkopp and colleagues",
+      "C": "To situate Green and Extavour's study in the context of their field",
+      "D": "To argue that Green and Extavour's study revealed a previously unrecognized issue that evolutionary biologists need to address"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Text 1\nScholarship today overrepresents experimentally fragmented narrative structures, such as that of Jean Toomer's Cane, beyond the degree to which they actually influenced fiction in the United States during the modernist period (roughly 1900-1945). Meanwhile, Ellen Glasgow's Barren Ground, whose coherent, linear narrative structure recalls the fiction of previous centuries, attracts woefully little attention from scholars of modernism.",
+      "Text 2\nDistant reading, or computer-assisted quantitative analysis of massive collections of digitized texts, can reveal stylistic elements that have heretofore escaped notice, despite being shared by numerous texts from the modernist period. For too long, scholars have focused on narrative fragmentation versus coherence, inhibiting inquiry into other points of stylistic correspondence among works that would enrich our understanding of the modernist canon."
+    ],
+    "text": "Based on the texts, both the author of Text 1 and the author of Text 2 would most likely agree with which statement about scholarship on the modernist period in the United States?",
+    "options": {
+      "A": "At present, it only partially captures the stylistic dimensions of the fiction written in the period.",
+      "B": "Its primary methods for analyzing fiction written in the period are growing obsolete as computer technology advances.",
+      "C": "Instead of engaging in unproductive debates, it should work to rehabilitate the reputations of neglected modernist works.",
+      "D": "It must widen its focus to include aspects of modernist fiction beyond style, a productive but overrepresented site of inquiry."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Why do some people with high incomes vote for politicians supporting higher taxes on those with high incomes like themselves? Economists Benjamin Enke et al. propose that values are a luxury good: that is, the higher one's income, the more weight one has the liberty to assign to one's values when voting. Thus, Enke et al. suggest that although the behavior of high-income earners who advocate for higher taxes may seem counterintuitive, such people likely do so because they feel enabled by their economic security to take a stance they think is morally correct."
+    ],
+    "text": "Which choice best states the main idea of the text?",
+    "options": {
+      "A": "A group of economists asserts that people with relatively high incomes are consequently enabled to take certain considerations into account when voting.",
+      "B": "According to a group of economists, politicians who support higher taxes on those with high incomes must convince a sufficient number of people with such incomes to vote against their material interest if the politicians are to be elected.",
+      "C": "A team of economists finds that people who vote for higher taxes on those with high incomes are likely to think their moral values coincide with their material interests.",
+      "D": "According to a team of economists, the higher a voter's income, the more likely that voter's values are to conflict with their material interests."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "There Is Confusion is a 1924 novel by Jessie Redmon Fauset. In the novel, the narrator portrays the character Joanna as someone who admires ambition in other people to the exclusion of all other qualities:"
+    ],
+    "text": "Which quotation from There Is Confusion most effectively illustrates the claim?",
+    "options": {
+      "A": "\"Joanna was mightily interested in people who had a 'purpose' in life. Otherwise not at all.\"",
+      "B": "\"Joanna was like her father not only so far as ambition was concerned but also in her willingness to work.\"",
+      "C": "\"She had a good sense of logic, a strong power of concentration, and a remarkably retentive and visualizing memory.\"",
+      "D": "\"Indeed from the very beginning Joanna showed her preference for her father.\""
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Some herbicides contain copper oxide nanoparticles (CuO-NPs), which can leach into waterways and soils via wastewater. In a 2012 study, Chengfang Pang and colleagues found that CuO-NPs can accumulate in the bodies of New Zealand mud snails (Potamopyrgus antipodarum). While bioaccumulation of manufactured nanoparticles may be inherently worrisome, it has been hypothesized that CuO-NP bioaccumulation in invertebrates like P. antipodarum could serve a valuable proxy role, obviating the need for manufacturers to conduct costly and intrusive sampling of vertebrate species—such as African clawed frogs (Xenopus laevis), commonly used in regulatory compliance testing for nanoparticle bioaccumulation, as environmental protection laws currently require."
+    ],
+    "text": "Which finding, if true, would most directly support the hypothesis presented in the text?",
+    "options": {
+      "A": "Compared with X. laevis, P. antipodarum can tolerate significantly higher CuO-NP concentrations without displaying any negative effects.",
+      "B": "It is easier to detect low and harmless concentrations of CuO-NPs in P. antipodarum than it is to detect high and harmful concentrations of CuO-NPs in X. laevis.",
+      "C": "CuO-NP concentrations in P. antipodarum tend to vary more from individual to individual than do CuO-NP concentrations in X. laevis when the species are exposed to similar levels of CuO-NPs.",
+      "D": "In comparable environments, P. antipodarum and X. laevis display comparable rates of CuO-NP uptake."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Neurobiologists Laura Cuaya, Raúl Hernández-Pérez, and colleagues investigated the language detection abilities of eighteen dogs of various ages. The researchers monitored the brain activity of Odin (a 54-month-old border collie), Bingo (a 37-month-old mixed breed), and other dogs while the animals listened to three recordings: one of The Little Prince being read in Spanish, the second in Hungarian, and a third made up of short, randomly selected fragments of the first two, scrambled so that they didn't resemble human speech. Each of the dogs was familiar with either Spanish or Hungarian, but not both. The team concluded that the younger the dog, the worse it may be at differentiating between familiar and unfamiliar languages."
+    ],
+    "text": "Which finding from the study, if true, would most directly support the team's conclusion?",
+    "options": {
+      "A": "Although the dogs' general hearing sensitivity declined with age, dogs of all ages showed more brain activity in response to hearing the language they were accustomed to than in response to hearing the other language.",
+      "B": "As the age of the dog scanned decreased, so did the amount of brain activity in response to hearing the language the dog was accustomed to or the other language, but not in response to hearing the scrambled recording.",
+      "C": "Dogs showed a different pattern of brain activity when hearing the language they were accustomed to than when hearing the other language, and the difference in brain activity decreased as the age of the dog scanned decreased.",
+      "D": "The similarity between the pattern of brain activity a dog showed in response to hearing the scrambled recording and the pattern it showed in response to hearing the language it was not accustomed to was lowest among younger dogs."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Quasars—such as J0313-1806, located in the Eridanus constellation—are extremely luminous galactic nuclei powered by supermassive black holes. Quasars range in age, with approximately 200 of them known to have developed within the first billion years of the formation of the universe. Scientific researchers have long wondered how any quasars could have formed so early in the universe's evolution given that conditions are believed to have been ill-suited to their creation, which suggests that __________"
+    ],
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "J0313-1806 is likely less massive than quasars that formed more than a billion years after the beginnings of the universe.",
+      "B": "J0313-1806 is thought to have formed less than a billion years after the beginnings of the universe.",
+      "C": "some aspect of the scientific understanding of quasar formation or the early universe may be incomplete.",
+      "D": "quasars that formed in the early universe are likely not as luminous as those that formed later."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "To combat predation by Arizona myotis and other insectivorous bats, many moth species, including Cycnia tenera, emit ultrasonic pulses that, in some cases, disrupt the echolocation bats rely on for foraging. Some scientists have hypothesized that this capability evolved because it imposes a lower metabolic cost than does the alternative mechanism of producing chemicals that render moths noxious to bats. Nicholas T. Homziak et al. investigated the acoustic properties of moths' ultrasonic responses to audio of bat echolocation and then assessed the palatability of the ultrasound-producing moths. They found that several moth genera that emit ultrasonic pulses capable of disrupting bat echolocation are unpalatable to bats, suggesting that __________"
+    ],
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "most genera of moths that produce ultrasound capable of disrupting bat echolocation do so primarily for purposes other than evading capture by Arizona myotis and other predators.",
+      "B": "the hypothesis about the development of this ultrasonic defense likely does not account for all instances of the trait in moths.",
+      "C": "although previous findings about Cycnia tenera are consistent with the hypothesis about the low metabolic cost of producing noxious chemicals, the ability to disrupt bat echolocation and unpalatability are not mutually exclusive traits.",
+      "D": "further investigations into moths' ability to protect themselves by disrupting bat echolocation will likely find that moth genera relying on this mechanism are also generally inedible to bats."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Researchers Tony Bolden and Tammy Kernodle have lent their expertise on Black history and music to an important new __________ Timeline of African American Music, a digital resource that traces the development of individual musical genres (such as gospel and soul) while also revealing the connections between them."
+    ],
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "initiative the",
+      "B": "initiative: the",
+      "C": "initiative; the",
+      "D": "initiative. The"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "The Austronesian language family includes Acehnese, Ilocano, and some 1,200 other languages throughout the Pacific, making it one of the largest language families in the world and of keen interest to __________ of Yale University."
+    ],
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "linguist, Isidore Dyen",
+      "B": "linguist: Isidore Dyen",
+      "C": "linguist Isidore Dyen",
+      "D": "linguist, Isidore Dyen,"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Located on the island of Gotland in Sweden, the city of Visby was a member of a powerful mercantile alliance that dominated northern European trade between the 13th and 17th __________ Hanseatic League, a loose confederation of cities from eleven modern-day countries that has been described as a precursor to today's European Union."
+    ],
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "centuries the",
+      "B": "centuries: the",
+      "C": "centuries. The",
+      "D": "centuries; the"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Nicholas Galanin is known for using video and photography to explore questions of authenticity in the identification and presentation of Native art. The acclaimed Tlingit/Aleut artist was awarded a 2013 fellowship by the Eiteljorg Museum, whose extensive collection of artworks by Indigenous peoples of the Americas and other artists of the American West __________ among the best in the world."
+    ],
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "rank",
+      "B": "ranks",
+      "C": "are ranked",
+      "D": "have been ranked"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Many of the world's most famous animals have lived in the Greater Kruger National Park in South Africa. Between 2006 and 2012, for instance, the __________ prowled the park as part of the dominant Mapogo coalition (band of male lions)."
+    ],
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "lions Kinky Tail and Mr. T,",
+      "B": "lions, Kinky Tail and Mr. T,",
+      "C": "lions, Kinky Tail and Mr. T",
+      "D": "lions Kinky Tail and Mr. T"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Star actress Kiki Omeili, who has appeared in 47 Nollywood films, is one of numerous luminaries to be pictured in Nigerian portraitist Iké Udé's exhibition Nollywood Portraits. __________ referred to Nollywood—Nigeria's $3 billion film industry—as \"Africa's vivid mirror par excellence,\" honors its legacy with his vivid classical portraits of Omeili and her peers."
+    ],
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "Udé",
+      "B": "Udé, having",
+      "C": "Udé, has",
+      "D": "Udé has"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Today, the Michelin Guide is widely known as the arbiter of fine dining, but when it was created in 1900, it was little more than a marketing gimmick: brothers Andre and Edouard Michelin sought to increase profits for their tire company by encouraging their customers to drive across France, visiting the guide's recommended hotels and restaurants along the way. Nevertheless, the guide soon grew in __________ modest French eateries were replaced with some of the most esteemed restaurants from around the world, including Hajime in Osaka and Kitcho Arashiyama in Kyoto."
+    ],
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "influence and",
+      "B": "influence",
+      "C": "influence, and",
+      "D": "influence,"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "With many elements, like osmium, scientists were able to isolate a relatively pure sample of the substance shortly after discovering its existence. __________ this wasn't the case with all elements. The process of isolating magnesium, for example, took years—53, to be precise."
+    ],
+    "text": "Which choice completes the text with the most logical transition?",
+    "options": {
+      "A": "Likewise,",
+      "B": "Granted,",
+      "C": "In other words,",
+      "D": "For this reason,"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "Newer offshore wind turbines often outperform older models. For example, Denmark's offshore wind farm, built in 1995, has wind turbines that generate about 1 megawatt (MW) of electricity each. __________ China's Jiangsu Qidong offshore wind farm, built in 2021, has turbines that can generate about 6 MW of electricity each."
+    ],
+    "text": "Which choice completes the text with the most logical transition?",
+    "options": {
+      "A": "Granted,",
+      "B": "In contrast,",
+      "C": "For this reason,",
+      "D": "Eventually,"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:",
+      "• Raymond is the nickname of a dinosaur fossil specimen from the Late Cretaceous period.",
+      "• The Late Cretaceous period ended more than 65 million years ago.",
+      "• Raymond is a member of the genus Triceratops.",
+      "• Raymond is on display at the National Museum of Nature and Science.",
+      "• The National Museum of Nature and Science is in Tokyo, Japan."
+    ],
+    "text": "The student wants to specify Raymond's location. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Tokyo, Japan, is home to the National Museum of Nature and Science, which displays a dinosaur fossil specimen from the Late Cretaceous period.",
+      "B": "Raymond is on display at the National Museum of Nature and Science in Tokyo, Japan.",
+      "C": "Raymond lived in the Late Cretaceous period, which ended more than 65 million years ago.",
+      "D": "Raymond is the nickname of a dinosaur fossil specimen belonging to the genus Triceratops."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:",
+      "• In a 2005 study, Rotundo and Aguiar tested the effect of plant litter on seedling emergence in a grassland setting.",
+      "• Plant litter includes dead leaves and other plant material.",
+      "• The test site was a dry grassland in Argentina.",
+      "• It was in a midlatitude/semidesert climate.",
+      "• The researchers found that in these environmental conditions the presence of plant litter had a positive effect on seedling emergence."
+    ],
+    "text": "Which choice most effectively uses information from the notes to specify the characteristics of the test site?",
+    "options": {
+      "A": "The test was conducted in Argentina, in a dry grassland with a midlatitude/semidesert climate.",
+      "B": "A study on the effects of plant litter on seedling emergence was conducted by Rotundo and Aguiar in 2005.",
+      "C": "The researchers studied seedlings' ability to sprout above ground and begin photosynthesis, given the presence of plant litter and certain environmental conditions.",
+      "D": "In a 2005 study, Rotundo and Aguiar found that the presence of plant litter had a positive effect on seedling emergence."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:",
+      "• Merle Oberon (1911-1979) was an actress born in Mumbai (then known as Bombay), India.",
+      "• She was of Indian, Maori, and Irish heritage.",
+      "• She was the first Indian-born actress to be nominated for an Academy Award.",
+      "• Early in her career, she played many nameless, uncredited roles, such as her role in The Three Passions (1928).",
+      "• Later, she played many named, credited roles, such as Empress Josephine in Désirée (1954)."
+    ],
+    "text": "Which choice most effectively uses relevant information from the notes to begin a narrative about Merle Oberon's life?",
+    "options": {
+      "A": "In 1954, Merle Oberon played the role of Empress Josephine in the film Désirée.",
+      "B": "Merle Oberon appeared in many films, including The Three Passions (1928) and Désirée (1954), and was the first Indian-born actress to be nominated for an Academy Award.",
+      "C": "Though she would go on to receive credit in many films, Merle Oberon also played nameless, uncredited roles in many films, such as in the movie The Three Passions (1928).",
+      "D": "Merle Oberon's story begins in Mumbai (then known as Bombay), India, in 1911."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  },
+  {
+    "question_type": "mcq",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:",
+      "• Louis Ballard was a classical composer and citizen of the Quapaw Tribe.",
+      "• He sought to synthesize Western classical music with elements of various Native musical traditions.",
+      "• Ballard's composition Pan Indian Rhythms incorporates Ute notched sticks, a traditional Native instrument.",
+      "• Ethnomusicologist Tara Browner writes that Ballard's classical music \"relies on Indigenous instruments, rhythms, forms....and other musical elements.\""
+    ],
+    "text": "The student wants to connect the quotation from Browner to a specific composition. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Discussing Ballard's body of works, Browner observes that it relies on elements of various Native musical traditions.",
+      "B": "Browner notes that Ballard's music \"relies on Indigenous instruments, rhythms, forms....and other musical elements,\" further indicating that it synthesizes Western classical music with elements of various Native music traditions.",
+      "C": "Consistent with Browner's observation that Ballard's music \"relies on Indigenous instruments, rhythms, forms....and other musical elements,\" Pan Indian Rhythms incorporates Ute notched sticks.",
+      "D": "Browner's writing discusses Ballard, the classical music composer responsible for Pan Indian Rhythms."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": ""
+  }
+]

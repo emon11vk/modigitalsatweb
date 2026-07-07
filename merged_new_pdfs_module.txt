@@ -1,0 +1,885 @@
+Question ID: e0bd4f8a
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Expression of Ideas
+Transitions
+Easy
+Question
+In 1942, the 1,500-mile Alaska Highway was constructed in under nine months, largely due to the skilled work of nearly 4,000 African American
+soldiers from US Army engineering regiments. The soldiers’ contribution was overlooked for decades. ______ in 2017, lawmakers declared
+October 25 a day of recognition—“Alaska Highway Day”—for the troops who helped build this critical roadway.
+Which choice completes the text with the most logical transition?
+Answer
+A. Lastly,
+B. Then,
+C. Similarly,
+D. For example,
+Correct Answer: B
+Rationale
+Choice B is the best answer. "Then" logically signals that the event described in this sentence—lawmakers’ 2017 declaration of Alaska Highway
+Day—is par t of a chronological sequence of events, occurring after the decades-long period in which the soldiers’ contribution was overlooked.
+Choice A is incorrect because "lastly" illogically signals that this sentence presents the last of a series of points or reasons. Instead, it describes
+a later event occurring in a chronological sequence of events. Choice C is incorrect because "similarly" illogically signals that the information in
+this sentence is similar to the previous information about the soldiers’ contribution being overlooked for decades. Instead, it describes an event
+occurring after that decades-long period. Choice D is incorrect because "for example" illogically signals that this sentence provides an example
+illustrating the previous information about the soldiers’ contribution being overlooked for decades. Instead, it describes an event occurring after
+that decades-long period.
+
+Question ID: 660d50dc
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Expression of Ideas
+Transitions
+Easy
+Question
+Samuel Coleridge-Taylor was a prominent classical music composer from England who toured the US three times in the early 1900s. The child of
+a West African father and an English mother, Coleridge-Taylor emphasized his mixed-race ancestry. For example, he referred to himself as Anglo-
+African. ______ he incorporated the sounds of traditional African music into his classical music compositions.
+Which choice completes the text with the most logical transition?
+Answer
+A. In addition,
+B. Actually,
+C. However,
+D. Regardless,
+Correct Answer: A
+Rationale
+Choice A is the best answer. “In addition” logically signals that the detail in this sentence—that Coleridge-Taylor included traditional African
+music in his classical compositions—adds to the information in the previous sentence. Specifically, the previous sentence indicates one way in
+which Coleridge-Taylor emphasized his mixed-race ancestry, and the claim that follows indicates a second, additional way.
+Choice B is incorrect because “actually” illogically signals that the detail in this sentence is surprising in light of the information in the previous
+sentence. Instead, the detail adds to the information, indicating a second, additional way in which Coleridge-Taylor emphasized his mixed-race
+ancestry. Choice C is incorrect because “however” illogically signals that the detail in this sentence contrasts with the information in the previous
+sentence. Instead, the detail adds to the information, indicating a second, additional way in which Coleridge-Taylor emphasized his mixed-race
+ancestry. Choice D is incorrect because “regardless” illogically signals that the detail in this sentence is true despite the information in the
+previous sentence. Instead, the detail adds to the information, indicating a second, additional way in which Coleridge-Taylor emphasized his
+mixed-race ancestry.
+
+Question ID: a40c7aa3
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Expression of Ideas
+Transitions
+Medium
+Question
+Most of the planets that have been discovered outside our solar system orbit G-type stars, like our Sun. In 2014, ______ researchers identified a
+planet orbiting KEL
+T
+-9, a B-type star more than twice as massive and nearly twice as hot as the Sun. Called KEL
+T
+-9b, it is one of the hottest
+planets ever discovered.
+Which choice completes the text with the most logical transition?
+Answer
+A. likewise,
+B. however,
+C. therefore,
+D. for example,
+Correct Answer: B
+Rationale
+Choice B is the best answer. The word “however” logically signals that the information in this sentence about the planet KEL
+T
+-9b—that it orbits a
+B-type star—contrasts with the previous information about planets discovered outside our solar system. Most of these planets orbit G-type stars,
+not B-type stars.
+Choice A is incorrect because “likewise” illogically signals that the information about the planet KEL
+T
+-9b is similar to the previous information
+about most planets outside our solar system. Instead, it contrasts with that information. Choice C is incorrect because “therefore” illogically
+signals that the information about the planet KEL
+T
+-9b is a result of the previous information about most planets outside our solar system.
+Instead, it contrasts with that information. Choice D is incorrect because “for example” illogically signals that the information about the planet
+KEL
+T
+-9b is an example of the previous information about most planets outside our solar system. Instead, it contrasts with that information.
+
+Question ID: cf11282b
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Expression of Ideas
+Transitions
+Medium
+Question
+Scientists were able to isolate a relatively pure sample of selenium in 1817, the same year they first discovered the element’s existence. ______
+the isolation process took longer for molybdenum, which was isolated in its pure form three years after scientists first discovered it.
+Which choice completes the text with the most logical transition?
+Answer
+A. By contrast,
+B. Thus,
+C. Similarly,
+D. For instance,
+Correct Answer: A
+Rationale
+Choice A is the best answer. "By contrast" logically signals that the information in this sentence—that isolating molybdenum was a relatively long
+process—contrasts with the previous information that isolating selenium was a shor t process.
+Choice B is incorrect because "thus" illogically signals that the information in this sentence is a result of the previous information about
+selenium’s shor t isolation process. Instead, the sentence presents contrasting information about molybdenum’s longer isolation process. Choice
+C is incorrect because "similarly" illogically signals that the information in this sentence is similar to the previous information about selenium’s
+shor t isolation process. Instead, the sentence presents contrasting information about molybdenum’s longer isolation process. Choice D is
+incorrect because "for instance" illogically signals that the information in this sentence exemplifies the previous information about selenium’s
+shor t isolation process. Instead, the sentence presents contrasting information about molybdenum’s longer isolation process.
+
+Question ID: c78620ba
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Expression of Ideas
+Transitions
+Easy
+Question
+In 1968, US Congressman John Conyers introduced a bill to establish a national holiday in honor of Dr. Mar tin Luther King Jr. The bill didn’t make
+it to a vote, but Conyers was determined. He teamed up with Shirley Chisholm, the first Black woman to be elected to Congress, and they
+resubmitted the bill every session for the next fifteen years. ______ in 1983, the bill passed.
+Which choice completes the text with the most logical transition?
+Answer
+A. Instead,
+B. Likewise,
+C. Finally,
+D. Additionally,
+Correct Answer: C
+Rationale
+Choice C is the best answer. “Finally” logically signals that the bill passing—following many attempts between 1968 and 1983—is the final,
+concluding event in the sequence described in the previous sentences. 
+Choice A is incorrect because “instead” illogically signals that the bill passing is an alternative to one of the events described in the previous
+sentences. Instead, it is the final event in the sequence. Choice B is incorrect because “likewise” illogically signals that the bill passing is similar
+to one of the events described in the previous sentences. Instead, it is the final event in the sequence. Choice D is incorrect because
+“additionally” illogically signals that the bill passing is merely another event described along with the events of the previous sentences. Instead, it
+is the final, concluding event in the sequence.
+
+Question ID: 20733eac
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Expression of Ideas
+Transitions
+Easy
+Question
+It has long been thought that humans first crossed a land bridge into the Americas approximately 13,000 years ago. ______ based on radiocarbon
+dating of samples uncovered in Mexico, a research team recently suggested that humans may have arrived more than 30,000 years ago—much
+earlier than previously thought.
+Which choice completes the text with the most logical transition?
+Answer
+A. As a result,
+B. Similarly,
+C. However,
+D. In conclusion, 
+Correct Answer: C
+Rationale
+Choice C is the best answer. “However” logically signals that the theory discussed in this sentence—that humans may have arrived in the
+Americas over 30,000 years ago—contrasts with the previously discussed theory that humans arrived around 13,000 years ago.
+Choice A is incorrect because “as a result” illogically signals that the theory in this sentence is the result of the theory discussed in the previous
+sentence. Instead, this theory contrasts with the previous one. Choice B is incorrect because “similarly” illogically signals that the theory in this
+sentence is similar to the theory discussed in the previous sentence. Instead, this theory contrasts with the previous one. Choice D is incorrect
+because “in conclusion” illogically signals that the theory in this sentence concludes or summarizes the discussion of the previous theory.
+Instead, this theory contrasts with the previous one.
+
+Question ID: 92fe0ed7
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Expression of Ideas
+Transitions
+Easy
+Question
+Geoscientists have long considered Hawaii’s Mauna Loa volcano to be Ear th’s largest shield volcano by volume, measuring approximately 74,000
+cubic kilometers. ______ according to a 2020 study by local geoscientist Michael Garcia, Hawaii’s Pūhāhonu shield volcano is significantly larger,
+boasting a volume of about 148,000 cubic kilometers.
+Which choice completes the text with the most logical transition?
+Answer
+A. Secondly,
+B. Consequently,
+C. Moreover,
+D. However,
+Correct Answer: D
+Rationale
+Choice D is the best answer. “However” logically signals that this sentence, which indicates that the Pūhāhonu volcano may be larger than the
+Mauna Loa volcano, offers a contrast to or refutation of the previous assumption that Mauna Loa is the largest shield volcano.
+Choice A is incorrect because “secondly” illogically signals that this sentence merely offers an additional or secondary point concerning the
+previous assumption that Mauna Loa is the largest shield volcano. Instead, the sentence offers a contrast to or refutation of that assumption.
+Choice B is incorrect because “consequently” illogically signals that this sentence offers a result or consequence of the previous assumption
+that Mauna Loa is the largest shield volcano. Instead, the sentence offers a contrast to or refutation of that assumption. Choice C is incorrect
+because “moreover” illogically signals that this sentence merely adds to the previous assumption that Mauna Loa is the largest shield volcano.
+Instead, the sentence offers a contrast to or refutation of that assumption.
+
+
+
+Question ID: de55ec71
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+Generations of mystery and horror ______ have been influenced by the dark, gothic stories of celebrated American author Edgar Allan Poe (1809–
+1849).
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. writers
+B. writers,
+C. writers—
+D. writers;
+Correct Answer: A
+Rationale
+Choice A is the best answer. The convention being tested is punctuation between a subject and a verb. When, as in this case, a subject
+(“Generations of mystery and horror writers”) is immediately followed by a verb (“have been influenced”), no punctuation is needed.
+Choice B is incorrect because no punctuation is needed between the subject and the verb. Choice C is incorrect because no punctuation is
+needed between the subject and the verb. Choice D is incorrect because no punctuation is needed between the subject and the verb.
+
+Question ID: e38b3e4f
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Form, Structure, and
+Sense
+Easy
+Question
+The radiation that ______ during the decay of radioactive atomic nuclei is known as gamma radiation.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. occurs
+B. have occurred
+C. occur
+D. are occurring
+Correct Answer: A
+Rationale
+Choice A is the best answer. The convention being tested is subject-verb agreement. The singular verb "occurs" agrees in number with the
+singular subject "radiation.
+"
+Choice B is incorrect because the plural verb "have occurred" doesn’t agree in number with the singular subject "radiation.
+" Choice C is incorrect
+because the plural verb "occur" doesn’t agree in number with the singular subject "radiation.
+" Choice D is incorrect because the plural verb "are
+occurring" doesn’t agree in number with the singular subject "radiation.
+"
+
+Question ID: 89fbc3eb
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Medium
+Question
+The Mission 66 initiative, which was approved by Congress in 1956, represented a major investment in the infrastructure of overburdened
+national ______ it prioritized physical improvements to the parks’ roads, utilities, employee housing, and visitor facilities while also establishing
+educational programming for the public.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. parks and
+B. parks
+C. parks;
+D. parks,
+Correct Answer: C
+Rationale
+Choice C is the best answer. The convention being tested is the coordination of main clauses within a sentence. This choice uses a semicolon to
+correctly join the first main clause (“The Mission…parks”) and the second main clause that begins with “it.
+”
+Choice A is incorrect. When coordinating two longer main clauses such as these, it’s conventional to use a comma before the coordinating
+conjunction. Choice B is incorrect because it results in a run-on sentence. The two main clauses are fused without punctuation and/or a
+conjunction. Choice D is incorrect because it results in a comma splice. Without a conjunction following it, a comma can’t be used in this way to
+join two main clauses.
+
+Question ID: 960dec02
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Hard
+Question
+A recent study tracked the number of bee species present in twenty-seven New York apple orchards over a ten-year period. ______ found that
+when wild growth near an orchard was cleared, the number of different bee species visiting the orchard decreased. 
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. Entomologist Heather Grab:
+B. Entomologist, Heather Grab,
+C. Entomologist Heather Grab
+D. Entomologist Heather Grab,
+Correct Answer: C
+Rationale
+Choice C is the best answer. The convention being tested is punctuation use between a name and title and between a subject and a verb. No
+punctuation is needed between the proper noun “Heather Grab” and “entomologist,
+” the title that describes Grab. Additionally, no punctuation is
+needed between the sentence’s subject (“Entomologist Heather Grab”) and the main verb (“found”) that indicates what Grab did.
+Choice A is incorrect because no punctuation is needed between the subject and the verb. Choice B is incorrect because no punctuation is
+needed. Setting the entomologist’s name off with commas suggests that it could be removed without affecting the coherence of the sentence,
+which isn’t the case. Choice D is incorrect because no punctuation is needed between the subject and the verb.
+
+Question ID: 4b0c7b62
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+The algaita is a double reed wind instrument from West Africa. The reed of a wind instrument is the mouthpiece ______ A double reed contains
+two pieces of cane that vibrate and produce sound as air passes between them.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. where sound is made?
+B. where is sound made.
+C. where sound is made.
+D. where is sound made?
+Correct Answer: C
+Rationale
+Choice C is the best answer. The convention being tested is end-of-sentence punctuation. This choice correctly uses a period to punctuate a
+declarative sentence ("the reed of a wind instrument is the mouthpiece") that ends with a prepositional phrase ("where sound is made").
+Choice A is incorrect. It’s unconventional to use a question mark to punctuate a declarative sentence. Choice B is incorrect. The structure
+requires that the sentence continue as a declarative clause, not end with an interrogative clause. Choice D is incorrect. The structure requires
+that the sentence continue as a declarative clause and end with a period, not end with an interrogative clause and a question mark.
+
+Question ID: 3580533b
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Form, Structure, and
+Sense
+Easy
+Question
+In recent years, economists around the world have created new tools that quantify the overall well-being of a country’s citizens. Economists in
+India, for example, use an Ease of Living Index. This tool ______ economic potential, sustainability, and citizens’ quality of life.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. measures
+B. had measured
+C. would have measured
+D. will have been measuring
+Correct Answer: A
+Rationale
+Choice A is the best answer. The previous sentence tells us how economists in India "use" a cer tain tool, while this sentence describes general
+facts about that tool. To express general facts (and also to match the simple present tense of "use"), we should use the simple present tense
+form "measures.
+"
+Choice B is incorrect. This choice uses the past perfect tense, but the previous sentence tells us that the tool is currently used to measure things,
+so the past tense doesn’t make sense for this verb. Choice C is incorrect. This choice uses the future perfect conditional tense, but the previous
+sentence tells us that the tool is currently used to measure things, so the future tense doesn’t make sense for this verb. Choice D is incorrect.
+This choice uses the future perfect continuous tense, but the previous sentence tells us that the tool is currently used to measure things, so the
+future tense doesn’t make sense for this verb.
+
+Question ID: e62241b7
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Form, Structure, and
+Sense
+Easy
+Question
+What is the correct pronunciation of Kiribati? In the Gilber tese language spoken by residents of the island nation, the letter combination -ti makes
+the -s sound; as a result, the country’s name ______ pronounced “Kiribas.
+”
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. are
+B. have been
+C. are being
+D. is
+Correct Answer: D
+Rationale
+Choice D is the best answer. The convention being tested is subject-verb agreement. The singular verb "is" agrees in number with the singular
+subject "the country’s name.
+"
+Choice A is incorrect because the plural verb "are" doesn’t agree in number with the singular subject "the country’s name.
+" Choice B is incorrect
+because the plural verb "have been" doesn’t agree in number with the singular subject "the country’s name.
+" Choice C is incorrect because the
+plural verb "are being" doesn’t agree in number with the singular subject "the country’s name.
+"
+
+Question ID: 7f226b4b
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Medium
+Question
+In a 2023 study, researchers documented a fascinating behavior in the aquatic plant Elodea densa. When exposed to low levels of light, the
+plant’s ______ the cellular organs that generate energy from light—reshuffled to form a tightly packed, glass-like surface ideal for collecting more
+light.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. chloroplasts
+B. chloroplasts;
+C. chloroplasts,
+D. chloroplasts—
+Correct Answer: D
+Rationale
+Choice D is the best answer. The convention being tested is the punctuation of a supplementary element within a sentence. The dash after
+"chloroplasts" pairs with the dash after "from light" to separate the supplementary element "the cellular organs that generate energy from light"
+from the rest of the sentence. This supplementary element functions to define the term "chloroplasts,
+" and the pair of dashes indicates that this
+element could be removed without affecting the grammatical coherence of the sentence.
+Choice A is incorrect because it fails to use appropriate punctuation to separate the supplementary element from the rest of the sentence.
+Choice B is incorrect because a semicolon can’t be paired with a dash in this way to separate the supplementary element from the rest of the
+sentence. Choice C is incorrect because a comma can’t be paired with a dash in this way to separate the supplementary element from the rest of
+the sentence.
+
+Question ID: b7363ba2
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Form, Structure, and
+Sense
+Easy
+Question
+Mathematician and meteorologist Edward Lorenz used the metaphor of the “butterfly effect” to explain how seemingly minor events can have
+major impacts on future weather. According to Lorenz’s metaphor, the wind from a butterfly flapping ______ in Brazil might eventually grow into a
+storm elsewhere across the globe.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. its wings
+B. its wings’
+C. it’s wing’s
+D. it’s wings’
+Correct Answer: A
+Rationale
+Choice A is the best answer. The conventions being tested are the use of possessive determiners and plural nouns. The singular possessive
+determiner "its" and the plural noun "wings" correctly indicate that the butterfly has multiple wings.
+Choice B is incorrect because the context requires the plural noun "wings,
+" not the plural possessive noun "wings’.
+" Choice C is incorrect because
+the context requires the singular possessive determiner "its" and the plural noun "wings,
+" not the contraction "it’s" and the singular possessive
+noun "wing’s.
+" Choice D is incorrect because the context requires the singular possessive determiner "its" and the plural noun "wings,
+" not the
+contraction "it’s" and the plural possessive noun "wings’.
+"
+
+Question ID: 333b2b65
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+While one requires oxygen and one does ______ and anaerobic respiration are both forms of cellular respiration—that is, they are processes by
+which cells break down glucose to use as energy.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. not aerobic
+B.  not. Aerobic
+C. not, aerobic
+D.  not; aerobic
+Correct Answer: C
+Rationale
+Choice C is the best answer. A comma is the appropriate way to link the dependent clause “While...not” and the independent clause that follows.
+Choice A is incorrect. This choice creates a run-on sentence error. “While...not” is a dependent clause, which must be separated from the
+independent clause that follows with some sor t of punctuation. Choice B is incorrect. This choice creates a sentence fragment. “While one
+requires oxygen and one does not” isn’t an independent clause, so it can’t stand alone as a complete sentence. Choice D is incorrect. This choice
+creates a punctuation error. “While one requires oxygen and one does not” isn’t an independent clause, so it can’t be linked to the clause that
+follows with a semicolon.
+
+Question ID: 7f48b098
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Medium
+Question
+Photosynthesis, the mechanism by which plants use sunlight to turn carbon dioxide and water into ______ is fueled in par t by an enzyme called
+Photosystem II that harvests energy-giving electrons from water molecules.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. nutrients
+B. nutrients and
+C. nutrients,
+D. nutrients—
+Correct Answer: C
+Rationale
+Choice C is the best answer. The convention being tested is the punctuation of a supplementary element within a sentence. The comma after
+“nutrients” pairs with the comma after “photosynthesis” to separate the supplementary element “the mechanism by which plants use sunlight to
+turn carbon dioxide and water into nutrients” from the rest of the sentence. This supplementary element functions to define the term
+“photosynthesis,
+” and the pair of commas indicates that this element could be removed without affecting the grammatical coherence of the
+sentence.
+Choice A is incorrect because it fails to use appropriate punctuation to separate the supplementary element from the rest of the sentence.
+Choice B is incorrect because a conjunction can’t be paired with a comma in this way to separate the supplementary element from the rest of the
+sentence. Choice D is incorrect because a dash can’t be paired with a comma in this way to separate the supplementary element from the rest of
+the sentence.
+
+Question ID: 035fd57e
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Form, Structure, and
+Sense
+Easy
+Question
+The rough frog is a species of amphibian native to Australia. Currently, the frog’s range ______ par ts of nor thern New South Wales and
+southeastern Queensland.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. includes
+B. included
+C. will have included
+D. had included
+Correct Answer: A
+Rationale
+Choice A is the best answer. The convention being tested is the use of verbs to express tense in a sentence. In this choice, the present tense verb
+“includes,
+” used in conjunction with the word “currently,
+” correctly indicates that the frog’s current range includes par ts of nor thern New South
+Wales and southeastern Queensland.
+Choice B is incorrect because the past tense verb “included” doesn’t indicate that the frog’s range currently includes par ts of nor thern New South
+Wales and southeastern Queensland. Choice C is incorrect because the future perfect tense “will have included” doesn’t indicate that the frog’s
+range currently includes par ts of nor thern New South Wales and southeastern Queensland. Choice D is incorrect because the past perfect tense
+“had included” doesn’t indicate that the frog’s range currently includes par ts of nor thern New South Wales and southeastern Queensland.
+
+Question ID: 148be4da
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+Human-made (synthetic) fibers used in clothes and many other consumer products are more durable than most natural plant ______ the
+manufacture of synthetic fibers requires toxic chemical solvents that can pollute air and water.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. fibers,
+B. fibers but
+C. fibers
+D. fibers, but
+Correct Answer: D
+Rationale
+Choice D is the best answer. The convention being tested is the coordination of main clauses within a sentence. This choice correctly uses a
+comma and the coordinating conjunction “but” to join the first main clause (“Human-made...fibers”) and the second main clause (“the
+manufacture...water”).
+Choice A is incorrect because it results in a comma splice. Without a conjunction following it, a comma can’t be used in this way to join two main
+clauses. Choice B is incorrect because when coordinating two longer main clauses such as these, it’s conventional to use a comma before the
+coordinating conjunction. Choice C is incorrect because it results in a run-on sentence. The two main clauses are fused without punctuation
+and/or a conjunction. 
+
+Question ID: 6fece68e
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+Emperor Ashoka ruled the Maurya Empire in South Asia from roughly 270 to 232 BCE. He is known for enforcing a moral code called the Law of
+Piety, which established the sanctity of animal ______ the just treatment of the elderly, and the abolition of the slave trade.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. life
+B. life;
+C. life:
+D. life,
+Correct Answer: D
+Rationale
+Choice D is the best answer. Notice that "the sanctity of animal life" is the first item in a list of three things. We must use a comma to separate
+the first two items in the list, just as a comma is used to separate "the just treatment of the elderly" and "the abolition of the slave trade.
+"
+Choice A is incorrect. This choice creates a punctuation error. Notice that "the sanctity of animal life" is the first item in a list of three things. To
+appropriately format the list, we need punctuation to separate each item. Choice B is incorrect. This choice creates a punctuation error. Notice
+that "the sanctity of animal life" is the first item in a list of three things. While semicolons are sometimes used to separate list items, this list uses
+commas to separate the other list items, and lists must use the same punctuation throughout. Choice C is incorrect. This choice creates a
+punctuation error. Notice that "the sanctity of animal life" is the first item in a list of three things. While colons can be used to introduce lists, they
+can’t be used to separate items within a list.
+
+Question ID: 1724dac2
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+A subseasonal weather forecast attempts to predict weather conditions three to four weeks in ______ its predictions are therefore more shor t-
+term than those of the seasonal forecast, which attempts to predict the weather more than a month in advance.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. advance,
+B. advance
+C. advance;
+D. advance and
+Correct Answer: C
+Rationale
+Choice C is the best answer. The clause “A subseasonal…advance” and the clause “its predictions…forecast” are both independent clauses, so
+using a semicolon to separate them is grammatically correct. 
+Choice A is incorrect. This choice creates a run-on sentence error. The clause “A subseasonal…advance” and the clause “its predictions…
+forecast” are both independent clauses, so a comma is not enough to separate them. Choice B is incorrect. This choice creates a run-on
+sentence error. The clause “A subseasonal…advance” and the clause “its predictions…forecast” are both independent clauses, so they need to be
+separated with specific punctuation (a period, a semi-colon, a colon, a dash, or a comma + a coordinating conjunction). Choice D is incorrect.
+This choice creates a run-on sentence error. The clause “A subseasonal…advance” and the clause “its predictions…forecast” are both
+independent clauses, so the word “and” by itself is not enough to separate them. There would need to be a comma before “and” for this choice to
+work. 
+
+Question ID: 77e06a09
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Medium
+Question
+Between 322 and 184 BCE, the Maurya Empire established a complex economic system that, through trade and centralized ______ funded major
+infrastructure projects throughout the Indian subcontinent. This included the building of many roads, canals, and hospitals.   
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. taxation:
+B. taxation,
+C. taxation—
+D. taxation
+Correct Answer: B
+Rationale
+Choice B is the best answer. The convention being tested is the use of punctuation within a sentence. The comma after "taxation" pairs with the
+comma after "that" to separate the supplementary element "through trade and centralized taxation" from the rest of the sentence. This
+supplementary element functions to identify the funding source of the Mauryan economy, and the pair of commas indicates that this element
+could be removed without affecting the grammatical coherence of the sentence.
+Choice A is incorrect because a colon can’t be paired with a comma in this way to separate the supplementary element from the rest of the
+sentence. Choice C is incorrect because a dash can’t be paired with a comma in this way to separate the supplementary element from the rest of
+the sentence. Choice D is incorrect because it fails to use appropriate punctuation to separate the supplementary element from the rest of the
+sentence.
+
+Question ID: 1aa3f174
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Medium
+Question
+The Mesoamerican city of Teotihuacan featured a uniquely egalitarian urban housing infrastructure. Built between the first and seventh centuries
+CE, Teotihuacan housed its residents (as many as 200,000, by some ______ in a complex of comfor table apar tments of comparable size.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. estimates)
+B. estimates),
+C. estimates—
+D. estimates
+Correct Answer: A
+Rationale
+Choice A is the best answer. The convention being tested is the use of punctuation within a sentence. This choice correctly completes the
+parenthetical element "as many as 200,000, by some estimates" with a closing parenthesis, pairing with the opening parenthesis that appears
+earlier in the sentence. This parenthetical element functions to specify the number of residents, and the use of parentheses indicates that this
+element could be removed without affecting the grammatical coherence of the sentence.
+Choice B is incorrect. While this choice completes the parenthetical element with a closing parenthesis, no comma is needed before the
+prepositional phrases ("in...size") that provide essential information about where the residents were housed. Choice C is incorrect because a
+dash can’t be paired with an opening parenthesis in this way to separate the parenthetical element from the rest of the sentence. Choice D is
+incorrect because it doesn’t close the parenthetical element that was opened earlier in the sentence.
+
+Question ID: a3e87535
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Medium
+Question
+Julia Alvarez’s 1994 novel In the Time of the Butterflies, a fictionalized account of the lives of the Mirabal ______ can serve as a star ting point for
+those wanting to explore how the rule of dictator Rafael Trujillo
+has been represented in Dominican American literature. 
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. sisters, and
+B. sisters and
+C. sisters,
+D. sisters
+Correct Answer: C
+Rationale
+Choice C is the best answer. The convention being tested is the punctuation of a supplementary element within a sentence. The comma after
+"sisters" pairs with the comma after "Butterflies" to separate the supplementary element "a fictionalized account of the lives of the Mirabal
+sisters" from the rest of the sentence. This supplementary element functions to describe the novel In the Time of the Butterflies, and the pair of
+commas indicates that this element could be removed without affecting the grammatical coherence of the sentence.
+Choice A is incorrect because a comma and conjunction can’t be used in this way to separate the supplementary element from the rest of the
+sentence. Choice B is incorrect because it fails to use appropriate punctuation to separate the supplementary element from the rest of the
+sentence. Choice D is incorrect because it fails to use appropriate punctuation to separate the supplementary element from the rest of the
+sentence.
+
+Question ID: a1e0c981
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+In her book The Woman Warrior: Memoirs of a Girlhood Among Ghosts, author Maxine Hong Kingston examines themes ______ childhood,
+womanhood, and Chinese American identity by inter twining autobiography and mythology.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. of:
+B.  of
+C. of—
+D. of,
+Correct Answer: B
+Rationale
+Choice B is the best answer. “Themes of childhood” is one noun phrase, with “themes of” implicitly carrying over to the other items on the list
+(“themes of childhood, [themes of] womanhood, and [themes of] Chinese American identity”).  
+Choice A is incorrect. This choice inappropriately breaks up the introduction of a list. Also, “In her book…themes of” is not an independent clause,
+thanks to the dangling “of” at the end, so it can’t precede a colon. Choice C is incorrect. This choice inappropriately breaks up the introduction of
+a list. Also, “In her book…themes of” is not an independent clause, thanks to the dangling “of” at the end, so it can’t precede a single dash. Choice
+D is incorrect. This choice inappropriately breaks up the introduction of a list. “Themes of” implicitly carries over to each item on the list (“themes
+of childhood, [themes of] womanhood, and [themes of] Chinese American identity”), so we don’t want to use a comma to separate it. 
+
+Question ID: b35cefb7
+Assessment
+Test
+Domain
+Skill
+Difficulty
+SAT
+Reading and Writing
+Standard English
+Conventions
+Boundaries
+Easy
+Question
+The fine, powdery substance that covers the Moon’s surface is called regolith. Because regolith is both readily available and high in oxygen
+______ scientists have wondered whether it could be used as a potential source of oxygen for future lunar settlements.
+Which choice completes the text so that it conforms to the conventions of Standard English?
+Answer
+A. content and
+B. content,
+C. content
+D. content, and
+Correct Answer: B
+Rationale
+Choice B is the best answer. The convention being tested is punctuation between a subordinate clause and a main clause. This choice correctly
+uses a comma to mark the boundary between the subordinate clause (“Because...content”) and the main clause (“scientists...settlements”).
+Choice A is incorrect. Joining the subordinate clause (“Because...content”) and the clause that follows (“scientists...settlements”) with the
+conjunction “and” results in an ungrammatical sentence that lacks a main clause. Choice C is incorrect because it fails to mark the boundary
+between the subordinate clause and the main clause with appropriate punctuation. Choice D is incorrect. Joining the subordinate clause
+(“Because...content”) and the clause that follows (“scientists...settlements”) with a comma and the conjunction “and” results in an
+ungrammatical sentence that lacks a main clause.
+

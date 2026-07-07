@@ -1,0 +1,280 @@
+[
+  {
+    "question_type": "spr",
+    "text": "For the linear function f(x) = 8x + b, b is a constant and f(0) = 11. What is the value of b?",
+    "options": {},
+    "correct_answer": ["11"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Data set A: 5, 8, 11, 11, 14, 20\nData set B: 5, 8, 11, 11, 14, 20, 41\nTwo data sets are shown. Which statement best compares the medians of the data sets?",
+    "options": {
+      "A": "The median of data set A is greater than the median of data set B.",
+      "B": "The median of data set A is less than the median of data set B.",
+      "C": "The medians of data sets A and B are equal.",
+      "D": "There is not enough information to compare the medians."
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "To estimate the proportion of a population that has a certain characteristic, a random sample was selected from the population. Based on the sample, it is estimated that the proportion of the population that has the characteristic is 0.2, with an associated margin of error of 0.08. Based on this estimate and margin of error, which of the following is the most appropriate conclusion about the proportion of the population that has the characteristic?",
+    "options": {
+      "A": "It is plausible that the proportion is between 0.12 and 0.28.",
+      "B": "It is plausible that the proportion is less than 0.12.",
+      "C": "The proportion is exactly 0.2.",
+      "D": "It is plausible that the proportion is greater than 0.28."
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The shaded region shown represents solutions to an inequality. Which ordered pair (x, y) is a solution to this inequality?",
+    "options": {
+      "A": "(-8, 0)",
+      "B": "(0, 8)",
+      "C": "(0, -8)",
+      "D": "(8, 0)"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For the quadratic function f, the table shows three values of x and their corresponding values of f(x). Which equation defines f(x)?\nx = -1, f(x) = 4\nx = 0, f(x) = 12\nx = 1, f(x) = 22",
+    "options": {
+      "A": "f(x) = 5x^2 + 5x + 12",
+      "B": "f(x) = 9x^2 + x + 12",
+      "C": "f(x) = 9x^2 - x + 12",
+      "D": "f(x) = x^2 + 9x + 12"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The graph gives the estimated population y, in thousands, of a town x years since 2007, where 0 <= x <= 5. Which of the following best describes the increase in the estimated population from x = 0 to x = 1?",
+    "options": {
+      "A": "The estimated population at x = 1 is 3.5 times the estimated population at x = 0.",
+      "B": "The estimated population at x = 1 is 2.5 times the estimated population at x = 0.",
+      "C": "The estimated population at x = 1 is 1.5 times the estimated population at x = 0.",
+      "D": "The estimated population at x = 1 is 0.5 times the estimated population at x = 0."
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function T(x) = 62 - 8x estimates the temperature, in degrees Fahrenheit, in a certain city one day in January, where x is the number of hours after 10 a.m. and 1 <= x <= 5. According to the function, what was the estimated decrease in temperature each hour, in degrees Fahrenheit, in this city during this time period?",
+    "options": {
+      "A": "4",
+      "B": "8",
+      "C": "54",
+      "D": "62"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In the triangle shown, what is the value of x?",
+    "options": {
+      "A": "22",
+      "B": "22\\sqrt{3}",
+      "C": "66\\sqrt{3}",
+      "D": "132"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "There is a proportional relationship between p and t. If p = 2,340 when t = 3,120, then what is the value of p when t = 2,496?",
+    "options": {
+      "A": "1,716",
+      "B": "1,872",
+      "C": "3,276",
+      "D": "3,328"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A cube has a volume of 79,507 cubic units. What is the surface area, in square units, of the cube?",
+    "options": {},
+    "correct_answer": ["11094"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In the given equation 8(cx + 3)/5 = 4x - 3, c is a constant. If the equation has no solution, what is the value of c?",
+    "options": {
+      "A": "-2/5",
+      "B": "-5/2",
+      "C": "5/2",
+      "D": "2/5"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f(x) is defined as 17 more than 3 times a number x. If y = f(x) is graphed in the xy-plane, what is the best interpretation of the y-intercept?",
+    "options": {
+      "A": "When f(x) = 0, the number x is -17/3.",
+      "B": "When the number x is 0, f(x) = 17.",
+      "C": "For each increase of 1 in the value of the number x, f(x) increases by 3.",
+      "D": "The value of f(x) increases for each increase of 3 in the value of the number x."
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The given equation 2/c - 5 = 7/d relates the variables c and d, where c and d are greater than 1. Which equation correctly expresses d in terms of c?",
+    "options": {
+      "A": "d = 7(2 - 5c)/c",
+      "B": "d = (2 - 5c)/(7c)",
+      "C": "d = c/(7(2 - 5c))",
+      "D": "d = 7c/(2 - 5c)"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "A proposal for a construction project was included on a city election ballot. A TV news report stated that 8 times as many people voted in favor of the proposal as people who voted against it. An internet article reported that 24,500 more people voted in favor of the proposal than voted against it. Based on these data, how many people voted against the proposal?",
+    "options": {},
+    "correct_answer": ["3500"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = 4x^2. What is the value of f(11)?",
+    "options": {
+      "A": "44",
+      "B": "52",
+      "C": "88",
+      "D": "484"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the given equation, \\sqrt[5]{p^2} = t^{3/4}, p > 1 and t > 1. If t = p^{2n-1}, where n is a constant, what is the value of n?",
+    "options": {},
+    "correct_answer": ["23/30"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The equation 4|x - 3| = k, where k is a constant, has exactly one solution. Which of the following could be the value of k?",
+    "options": {
+      "A": "-3 only",
+      "B": "-3 or 3",
+      "C": "0 only",
+      "D": "3 only"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the given equation -4x^2 + bx - 25 = 0, b is a positive integer. The equation has no real solution. What is the largest possible value of b?",
+    "options": {},
+    "correct_answer": ["19"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f is defined by f(x) = a(3.1)^{x+b} where a and b are integer constants and 0 < a < b. The functions g and h are equivalent to function f, where k and m are constants. Which of the following equations displays the y-coordinate of the y-intercept of the graph of y = f(x) in the xy-plane as a constant or coefficient?\nI. g(x) = a(3.1)^{x+k}\nII. h(x) = m(3.1)^x",
+    "options": {
+      "A": "I only",
+      "B": "II only",
+      "C": "I and II",
+      "D": "Neither I nor II"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The cost of renting a piece of construction equipment for up to 5 days is $230 for the first day and $115 for each additional day. Which of the following equations gives the cost y, in dollars, of renting the equipment for x days, where x is a positive integer and x <= 5?",
+    "options": {
+      "A": "y = 230x + 115",
+      "B": "y = 230x - 115",
+      "C": "y = 115x + 230",
+      "D": "y = 115x + 115"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The mass of object A is 498% of the mass of object B, and the mass of object A is 0.830% of the mass of object C. If the mass of object C is p% of the mass of object B, what is the value of p?",
+    "options": {},
+    "correct_answer": ["60000"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "For triangle PQR and triangle STU, angles P and S each measure 30^\\circ. QR = 16 and TU = 12. Which additional piece(s) of information is(are) sufficient to prove that triangle PQR is similar to triangle STU?\nI. The length of PQ is 3/4 the length of ST\nII. The length of PR is 3/4 the length of SU",
+    "options": {
+      "A": "I is sufficient, but II is not.",
+      "B": "II is sufficient, but I is not.",
+      "C": "I is sufficient, and II is sufficient.",
+      "D": "Neither I nor II is sufficient."
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]

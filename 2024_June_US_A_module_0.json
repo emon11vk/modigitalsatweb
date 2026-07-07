@@ -1,0 +1,488 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "invented",
+      "B": "prevented",
+      "C": "rated",
+      "D": "replaced"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Portable video game consoles and wireless speakers tend to contain batteries that can't be easily __________. Environmental policy researcher Jean-Pierre Schweitzer warns that because new batteries can't be put in once the old ones no longer work, the gadgets stop functioning and are usually disposed of as trash."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "As used in the text, what does the word \"recall\" most nearly mean?",
+    "options": {
+      "A": "Forget",
+      "B": "Remember",
+      "C": "Deny",
+      "D": "Begin"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "The following text is adapted from Kenneth Grahame's 1908 novel The Wind in the Willows. The Mole is dazed after briefly meeting a stranger while traveling with a friend.",
+    "passage_paragraphs": [
+      "[The] Mole stood still a moment, held in thought. As one wakened suddenly from a beautiful dream, who struggles to recall it, and can re-capture nothing but a dim sense of the beauty of it, the beauty! Till that, too, fades away in its turn."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "modest about",
+      "B": "dispassionate in",
+      "C": "adept at",
+      "D": "lighthearted about"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "There is no doubt that Irving Langmuir must have proved himself to be extraordinarily __________ understanding some of the most advanced concepts in the field of chemistry-in 1932 his remarkable talent and hard work was recognized when he was awarded the Nobel Prize in Chemistry for \"his discoveries and investigations in surface chemistry.\""
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": {
+      "A": "unknown",
+      "B": "impressive",
+      "C": "focused",
+      "D": "variable"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Economists have long observed that firms in related industries tend to cluster in the same area, as is the case in Leeds, UK, where many thread and yarn spinning firms as well as textile weaving firms are located. The factors causing such clustering are __________ what drives firms in certain industries to cluster may not be especially relevant among other industries."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best states the main purpose of the text?",
+    "options": {
+      "A": "To demonstrate that Babou and Darius aren't very interested in going to new places",
+      "B": "To emphasize that Darius has been looking forward to an event",
+      "C": "To suggest that Babou is planning to visit Darius in the United States soon",
+      "D": "To show that Babou affects the way Darius thinks of himself"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "The following text is adapted from Adib Khorram's 2018 novel Darius the Great Is Not Okay. Darius, a teenager from the United States, is visiting his grandparents, Babou and Mamou, in Iran. They are preparing for a holiday celebration.",
+    "passage_paragraphs": [
+      "I felt like a tourist. But Babou fussed with my cap a little more, even though Mamou had already gotten it settled. He looked me in the eye from time to time, like he was looking for something, and thought maybe just maybe I had it in me after all. Babou hummed to himself as he smoothed out my shoulder seams and rested his hands on them. \"I am glad you are here to see this, Darioush-jan.\" Maybe I wasn't such a tourist."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes the function of the underlined portion in the text as a whole?",
+    "options": {
+      "A": "It emphasizes the simplicity of infrared heating technologies.",
+      "B": "It explains why conventional heating methods are popular in commercial applications and proposes a shift away from these methods.",
+      "C": "It suggests that there are possible flaws in infrared heating technologies that have not yet been well researched.",
+      "D": "It identifies an advantage that infrared heating has over conventional thermal preservation methods."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "The food industry has long used thermal technologies to preserve food in large batches. Recent advancements in infrared heating were made through research in Mexico on the preservation of bean flour. Infrared heating is generally considered to be an improvement over more conventional thermal preservation methods: whereas conventional methods transfer energy from the surface of a food to its interior, infrared heating uses high-intensity infrared light to generate heat within the food itself, thus reducing industrial cooking times."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best states the main idea of the text?",
+    "options": {
+      "A": "Time of day and butterfly color seem to have less influence on butterfly behavior than the location where the butterflies are studied does.",
+      "B": "A recent study suggested that butterflies' coloring seems to be less relevant to their behavior than time of day.",
+      "C": "Collaboration between professional scientists and members of the public is especially useful when studying the behavior of butterflies and other flying insects.",
+      "D": "A large study suggested that butterfly color and time of day might influence the behavior of certain butterflies."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In a large community science effort, biologist Abbigail Merrill and colleagues collaborated with hundreds of students and other amateur science enthusiasts for more than three years to study how butterfly color and time of day relate to butterfly behavior. They found that butterfly color might influence behavior more than butterfly size does, and that butterflies were observed to feed more often in the morning than at any other time of day."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best states the main idea of the text?",
+    "options": {
+      "A": "Richard Nixon's reputation is primarily due to the actions of his associates.",
+      "B": "Some of Richard Nixon's policies influenced the policies of later presidential administrations.",
+      "C": "Jeb Stuart Magruder and Rose Mary Woods were significant figures in the presidency of Richard Nixon.",
+      "D": "Richard Nixon is commonly linked with an infamous historical event, but this overshadows some of his notable achievements."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "President Richard Nixon is most famous for his participation in the 1970s Watergate political scandal, a convoluted tale of criminality and eroded ethics involving a constellation of associates such as political operative Jeb Stuart Magruder and Nixon's secretary Rose Mary Woods. But Nixon's legacy is complex: he has been praised for his role in affirming the sovereignty of tribal nations, and he once made an attempt at reforming United States health care policy that is arguably a precursor to the Affordable Care Act, which became law during the Barack Obama administration."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most effectively uses data from the graph to complete the text?",
+    "options": {
+      "A": "Brazil exceeded the percentage exported by Argentina for the first time.",
+      "B": "Brazil increased from the previous marketing year but remained lower than the percentage exported by the United States.",
+      "C": "the United States reached its highest point during the five marketing years.",
+      "D": "Argentina decreased from the previous marketing year but remained the highest among the three countries."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Argentina, Brazil, and the United States are among the world's leading producers of maize (corn), and each country exports a certain percentage of maize each marketing year, which runs from March to February in Argentina and Brazil and from September to August in the United States. A student is researching those percentages and finds that for the marketing year 2012/2013, the percentage of maize exported by __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which quotation from a study of California agriculture best supports the student's claim?",
+    "options": {
+      "A": "\"The usefulness of irrigation infrastructure in California today cannot be overstated, since it is the most common means of conveying water for agricultural purposes.\"",
+      "B": "\"Natural humidity, which renders irrigation unnecessary or reduces its importance in the northern reaches of California, gradually decreases toward the sun-scorched but nonetheless fertile valleys of the southern part of the state.\"",
+      "C": "\"Sprinkler irrigation systems are a contemporary way of irrigating that requires machinery to spray water in all directions. These are currently used throughout the United States and are especially prevalent in California.\"",
+      "D": "\"The irrigation system developed by the Hohokam people in the 7th century CE in what is now Arizona was simple, but this system applied hydraulic engineering design features that are in use today throughout California.\""
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "A student is writing a research paper on the history of irrigation in the United States, situating the development of Hume Lake (created in Fresno County, California, in 1908) in a larger historical context. The student claims that California's climate renders irrigation an essential component of agriculture in some parts of the state but not in others."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice best describes data from the graph that support Martinez and colleagues hypothesis?",
+    "options": {
+      "A": "In the maple-leaf grape, frost grape, and July grape, all the leaf pairs show opposite-side orientation.",
+      "B": "Although the number of leaf pairs showing same-side orientation is fairly high in the July grape, it is much lower in both the maple-leaf grape and frost grape.",
+      "C": "Although the exact ratio varies by species, the maple-leaf grape, frost grape, and July grape all show more leaf pairs with opposite-side orientations than with same-side orientations.",
+      "D": "The number of leaf pairs showing opposite-side orientation is fairly high in the maple-leaf grape, but not as high as it is in the July grape."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Auxins are a class of hormones that influence plant growth, including leaf orientation (the tendency of leaves to be larger on one side of their long central axis than the other). University of California, Berkeley biologist Ciera Martinez and colleagues noted that in certain plants in which leaves grow in pairs, auxins will typically be concentrated in opposite sides of each leaf in the pair (e.g., on the left side of one leaf in the pair and the right side of the other). Accordingly, they hypothesized that paired leaves should tend to show opposite-side orientation, and they tested their hypothesis by examining paired leaves from several species of grapevines."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most effectively uses data from the table to complete the assertion?",
+    "options": {
+      "A": "crop yields with tilling have ranged from 2,693 kilograms per hectare for winter barley to 4,860 kilograms per hectare for winter wheat.",
+      "B": "Gevan Behnke and colleagues found a similar association in a study using soybeans.",
+      "C": "a study using winter wheat yielded 4,860 kilograms per hectare with tilling and only 3,910 kilograms per hectare without tilling.",
+      "D": "R.K. Jat and colleagues reported an even larger positive effect of tilling on the yield of maize."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Danijel Jug and colleagues found that tilling—the practice of turning soil with hoes, plows, or other machines before planting crops—was associated with an increased yield of winter wheat. But some studies of other crops have found the opposite effect, raising the question of whether the increase in yield found by Jug and colleagues is specific to their study crop. However, this doesn't seem to be the case:\n__________\nStudies of the Effects of Tilling vs. No Tilling on Crop Yields\nAuthors\nCrop\nCrop yield with tilling (kilograms per hectare)\nCrop yield with no tilling (kilograms per hectare)\nDanijel Jug and colleagues\nwinter wheat\n4,860\n3,910\nCarlos Cantero-Martinez and colleagues\nwinter barley\n2,693\n3,136\nR.K. Jat and colleagues\nmaize\n3,000\n5,200\nGevan Behnke and colleagues\nsoybeans\n4,285\n3,798"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "Ballard should not have claimed that Empire of the Sun is based on real events.",
+      "B": "the real-world counterparts of other characters in Empire of the Sun are hard to identify.",
+      "C": "Empire of the Sun is less of an imaginative achievement than it actually is.",
+      "D": "critics disagree about whether Empire of the Sun shows greater originality than works without autobiographical elements."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "J.G. Ballard's 1984 novel Empire of the Sun contains elements drawn from Ballard's own life there are many parallels between the experiences of the novel's protagonist, Jim Graham, and those of Ballard and as a result Empire of the Sun is regularly described as an autobiographical novel. This characterization can be useful, but it also presents drawbacks in terms of how the work is perceived, as it may lead readers to believe that Ballard merely fictionalized true events, which, in an artistic field where creativity and inventiveness are prized, can suggest that __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice most logically completes the text?",
+    "options": {
+      "A": "aerospace tubing will have similar magnetic properties to stainless steel used to manufacture induction cookers.",
+      "B": "both aerospace tubing and dishwashers will have a face-centered cubic crystalline structure, but stainless steel used to manufacture aerospace tubing will have less nickel than stainless steel used to manufacture dishwashers will.",
+      "C": "aerospace tubing will have a concentration of manganese greater than 10.5%, while stainless steel used to manufacture dishwashers will not.",
+      "D": "aerospace tubing will have less manganese in its composition than stainless steel used to manufacture dishwashers will."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "All stainless steel contains varying amounts of iron, carbon, and corrosion-inhibiting chromium. However ferritic stainless steel, often used for induction cookers, contains a higher percentage of chromium (at least 10.5%) than does austenitic stainless steel and a higher concentration of iron, which is responsible for its magnetic properties. Unlike ferritic stainless steel, austenitic stainless steel has a face-centered cubic crystalline structure resulting from the addition of nickel to the alloy. Austenitic stainless steel has two subtypes: the 300 series, often used for aerospace tubing, and the 200 series, which has less nickel and more manganese than the 300 series and is used for dishwashers. Thus, stainless steel used to manufacture __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "Soto would see in her neighborhood?",
+      "B": "would Soto see in her neighborhood?",
+      "C": "would Soto see in her neighborhood.",
+      "D": "Soto would see in her neighborhood."
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In her large-scale sculpture Casa-Isla, artist Edra Soto included references to her childhood in Puerto Rico. For example, the sculpture's steel panels have a crisscrossing pattern inspired by the iron gates __________"
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "stratigraphy—the",
+      "B": "stratigraphy, the",
+      "C": "stratigraphy: the",
+      "D": "stratigraphy (the"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "By analyzing the level of radioactive decay within a fossil specimen, scientists can establish the age of that fossil with a high degree of precision. When radioactive elements aren't present, scientists turn to __________ analysis of Earth's sediment layers (strata)—to estimate how old a fossil is based on the age of the strata in which the fossil is found."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "create",
+      "B": "to create",
+      "C": "created",
+      "D": "is creating"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "As an object-oriented computer programming language, Perl is used by coders like Black Girls Code founder Kimberly Bryant __________ programs by manipulating \"objects\" (that is, specifically defined variables or combinations of variables) into interacting with each other. Conversely, Pascal, used in software development and educational instruction, is not an object-oriented language."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "towns, that dot the island of Puerto Rico,",
+      "B": "towns that dot the island of Puerto Rico",
+      "C": "towns that dot the island of Puerto Rico,",
+      "D": "towns, that dot the island of Puerto Rico"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Many of the cities and __________ are known by nicknames that correspond to one of their notable features, like landscape, climate, famous residents, or chief exports. For example, the Puerto Rican municipality of Hatillo has also been called \"the Blue Coast of Puerto Rico,\" a nickname that alludes to what the area is well known for: the pristine blue ocean that surrounds it."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "have been",
+      "B": "are",
+      "C": "were",
+      "D": "is"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Anthony van Dyck, a Flemish mannerist painter whose works are distinctive for their precise yet exaggerated details, __________ frequently included in the seventeenth-century art movement the Antwerp School, whose members were known for depicting rural life in the Low Countries."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "was",
+      "B": "will have been",
+      "C": "being",
+      "D": "is"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "Recognized as a National Heritage Area by the United States Congress in 1996, the Rivers of Steel National Heritage Area __________ a region of Pennsylvania that has long been known for its unique natural, cultural, and historical attributes."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "options": {
+      "A": "combines",
+      "B": "combine",
+      "C": "combining",
+      "D": "is combining"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "As a behavioral economist, Francesca Gino of Harvard Business School examines human economic behavior through a lens that, __________ psychology and economics, illuminates how and why (and to what effect) people make particular choices."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical transition?",
+    "options": {
+      "A": "Nowadays,",
+      "B": "Still,",
+      "C": "Conversely,",
+      "D": "Fittingly,"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "In his essay \"Of Smells,\" French philosopher Michel de Montaigne explores a relatively light subject, but he addresses heavier fare in \"Of the Punishment of Cowardice.\" Regardless of subject matter, Montaigne works to question his own perspective throughout his essays. __________ his personal motto was \"What do I know?\""
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "Which choice completes the text with the most logical transition?",
+    "options": {
+      "A": "On the other hand,",
+      "B": "Similarly,",
+      "C": "Then,",
+      "D": "As a result,"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "The World Cup of men's soccer, one of the biggest sporting events on the planet, brought 32 national teams from six continents to the host country, Brazil, in 2014. The event, which is held every four years, has expanded greatly since it was played in Italy in 1934. __________ the World Cup included only 16 teams, most from Europe and the Americas."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to emphasize how far the infantrymen traveled. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "The 125th anniversary of the infantrymen's journey was in 2022.",
+      "B": "The US infantrymen rode their bicycles from Montana to Missouri, traveling a total of 1,900 miles.",
+      "C": "The goal of the 1897 journey was to test the idea of forming a military bicycle corps.",
+      "D": "Over a century later, Erick Cedeno honored the infantrymen by reenacting their 1897 journey."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• In 1897, twenty Black US Army infantrymen rode bicycles from Montana to Missouri.\n• The 1,900-mile journey took forty-one days.\n• The goal was to test the idea of forming a military bicycle corps.\n• In 2022, Erick Cedeño, a Black long-distance cyclist, reenacted the journey.\n• Cedeño wanted to honor the infantrymen on the journey's 125th anniversary."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to describe where Fung is in the photograph to an audience already familiar with Kang and Fung. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Dominique Fung is in a photograph by Mary Kang, a portrait photographer based in New York City and Austin, Texas.",
+      "B": "Mary Kang is a photographer based in both New York City and Austin, Texas.",
+      "C": "In Kang's portrait of her, Fung is seated on the floor, with five of her paintings resting against the wall behind her.",
+      "D": "Five paintings by artist Dominique Fung can be seen in the background of Mary Kang's photograph."
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• Mary Kang is a Korean American portrait photographer.\n• She is based in New York City and in Austin, Texas.\n• One of Kang's photographs features artist Dominique Fung.\n• In the portrait, Fung is seated on the floor.\n• Five of Fung's paintings are resting against the wall behind her."
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to emphasize the global rank of Somalia's youth population. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "Africa's high population of young people is due in part to the high percentage of young people in Somalia.",
+      "B": "With 46.4 percent of its population under fifteen years of age, Somalia has the sixth-largest population for that age range in the world.",
+      "C": "Making up roughly 40 percent of the continent's total population, Africa's under-fifteen population offers \"an opportunity for the continent's growth,\" according to the UN.",
+      "D": "\"Only if these new generations are fully empowered to realise their best potential,\" says the UN, will Africa's high percentage of young people lead to the continent's growth."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• Somalia is a country in East Africa.\n• A high percentage of Somalia's population (46.4 percent) is under fifteen years old.\n• It has the sixth-largest under-fifteen population in the world.\n• Roughly 40 percent of Africa's population is under fifteen years old-the highest of any continent.\n• According to the United Nations (UN), Africa's \"high number of young people is an opportunity for the continent's growth-but only if these new generations are fully empowered to realise their best potential.\""
+    ]
+  },
+  {
+    "question_type": "mcq",
+    "text": "The student wants to explain what Svetlana Boym writes about in chapter 3. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "options": {
+      "A": "After exploring nostalgia in the 1993 sci-fi action movie Jurassic Park, Svetlana Boym goes on to discuss the nostalgic home décor of Russian émigrés.",
+      "B": "Literary theorist Svetlana Boym explores nostalgia in the 1993 sci-fi action movie Jurassic Park in chapter 3 of her book.",
+      "C": "As Svetlana Boym writes in the sixteenth chapter of her book, \"Their rooms filled with diasporic souvenirs are not altars to their unhappiness, but rather places for communication.\"",
+      "D": "Svetlana Boym's The Future of Nostalgia explores the concept of nostalgia from various angles."
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": [
+      "While researching a topic, a student has taken the following notes:\n• The Future of Nostalgia is a scholarly book by literary theorist Svetlana Boym.\n• The book explores the concept of nostalgia from various angles.\n• Chapter 3 explores nostalgia in the 1993 sci-fi action movie Jurassic Park.\n• Chapter 16 discusses the nostalgic home décor of Russian émigrés.\n• In chapter 16, Boym writes, \"Their rooms filled with diasporic souvenirs are not altars to their unhappiness, but rather places for communication.\""
+    ]
+  }
+]

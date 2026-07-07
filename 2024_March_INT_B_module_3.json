@@ -1,0 +1,275 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "Which expression is equivalent to (9x^2 + 9) - (2x^2)?",
+    "options": {
+      "A": "11x^2 + 9",
+      "B": "11x^2 - 9",
+      "C": "7x^2 - 9",
+      "D": "7x^2 + 9"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The graph of a system of a linear and a quadratic equation is shown. Which system of equations is represented by the graph?",
+    "options": {
+      "A": "y = -3x, y = x^2 + 6",
+      "B": "y = -3x, y = x^2 - 6",
+      "C": "y = 3x, y = x^2 + 6",
+      "D": "y = 3x, y = x^2 - 6"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In triangle ABC, the measure of angle A is 31\u00b0, the measure of angle B is 90\u00b0 and the measure of angle C is k\u00b0. What is the value of k?",
+    "options": {
+      "A": "45",
+      "B": "59",
+      "C": "62",
+      "D": "118"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The table shows the linear relationship between the number of cars, c, and the maximum number of passengers and crew, p. Which equation represents the linear relationship between c and p?",
+    "options": {
+      "A": "35c - p = -6",
+      "B": "35c - p = 6",
+      "C": "35p - c = -6",
+      "D": "35p - c = 6"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the y-coordinate of the y-intercept of the graph of g(x) = 5(16^x - 17) in the xy-plane?",
+    "options": {
+      "A": "-90",
+      "B": "-85",
+      "C": "-22",
+      "D": "-17"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "At the start, the pressure was 18 psi. It doubled every 29 minutes. Which equation represents this situation, where y is the pressure inside the container t minutes after the start?",
+    "options": {
+      "A": "y = 18(2)^{t/29}",
+      "B": "y = 18(29)^{2t}",
+      "C": "y = 18(x + 29)^2",
+      "D": "y = 18x + 29"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "What is the sum of the solutions to the given equation? |x - 8| + 72 = 88",
+    "options": {},
+    "correct_answer": ["16"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "What is the y-intercept of y = -(8)^x - 38 in the xy-plane?",
+    "options": {
+      "A": "(0, -39)",
+      "B": "(0, -37)",
+      "C": "(0, -38)",
+      "D": "(0, -46)"
+    },
+    "correct_answer": ["A"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "One solution to the given equation x^2 + 9x + 6 = 0 can be written as (-9 + \\sqrt{k})/2 where k is a constant. What is the value of k?",
+    "options": {},
+    "correct_answer": ["57"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A data set of the orbital periods, in days, for 13 moons is shown in the dot plot. An additional moon with an orbital period of 621 days is then added to the data set. Which statement best compares the mean and median of the new data set to the mean and median of the original data set?",
+    "options": {
+      "A": "Mean equal, Median equal",
+      "B": "Mean equal, Median less",
+      "C": "Mean less, Median less",
+      "D": "Mean less, Median equal"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The function g is defined by g(x) = 9x. For what value of x is g(x) = 632?",
+    "options": {},
+    "correct_answer": ["632/9"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Four consecutive odd integers: x, x + 2, x + 4, x + 6. The product of 14 and the fourth (x + 6) is at most 23 less than the sum of the first (x) and third (x + 4). Which inequality represents this situation?",
+    "options": {
+      "A": "14(x + 4) >= 23 - (x + (x + 3))",
+      "B": "14(x + 6) <= x + (x + 4) - 23",
+      "C": "14(x + 6) >= 23 - (x + 4)",
+      "D": "14(x + 6) <= x - (x + 4) - 23"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "If 10 + 6(7 - x) / 3 = 5, which equation must also be true?",
+    "options": {
+      "A": "7 - x = 148",
+      "B": "7 - x = 75",
+      "C": "x - 7 = 148",
+      "D": "x - 7 = -75"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Quadratic function f has vertex at (1, 6) and passes through (2, 34). What is the value of f(-2) - f(0)?",
+    "options": {
+      "A": "90",
+      "B": "146",
+      "C": "224",
+      "D": "258"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Line g passes through (-12, 14) and (0, 2). Line k defined by 195x + py = w has infinitely many solutions with line g. What is the value of p + w?",
+    "options": {},
+    "correct_answer": ["585"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Triangles ABC and DEF are similar. Each side of ABC is 3 times DEF. Area of ABC is 170. What is the area, in square inches, of triangle DEF?",
+    "options": {},
+    "correct_answer": ["170/9"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "After 60% of original objects were removed, 300 remained. How many objects were removed from the group?",
+    "options": {
+      "A": "180",
+      "B": "450",
+      "C": "500",
+      "D": "750"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Data set: 12, 12, 18, 24, 29. What is the median of the data set shown?",
+    "options": {},
+    "correct_answer": ["18"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "System: y = x - c and y = -2(x - 12)^2 has two distinct real solutions. Which of the following could be the value of c?",
+    "options": {
+      "A": "7",
+      "B": "11",
+      "C": "95/8",
+      "D": "17"
+    },
+    "correct_answer": ["D"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The perimeter of an isosceles right triangle is 26 + 26\\sqrt{2}. What is the length, in inches, of the hypotenuse of this triangle?",
+    "options": {
+      "A": "13",
+      "B": "13\\sqrt{2}",
+      "C": "26",
+      "D": "26\\sqrt{2}"
+    },
+    "correct_answer": ["C"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "For what value of a is n^{4a-1}/k equal to n^{5/2}/k^{4/5} ?",
+    "options": {},
+    "correct_answer": ["7/8"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "Rate: 10.7 meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (1 mile = 1609 meters)",
+    "options": {
+      "A": "0.4",
+      "B": "23.9",
+      "C": "150.4",
+      "D": "286.9"
+    },
+    "correct_answer": ["B"],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]
