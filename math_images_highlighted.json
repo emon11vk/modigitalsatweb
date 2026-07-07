@@ -1,0 +1,317 @@
+[
+  {
+    "question_type": "mcq",
+    "text": "f(x) = ax^2 + 4x + c\n\nIn the given quadratic function, a and c are constants. The graph of y = f(x) in the xy-plane is a parabola that opens upward and has a vertex at the point (h, k), where h and k are constants. If k < 0 and f(-9) = f(3), which of the following must be true?\nI. c < 0\nII. a >= 1",
+    "options": {
+      "A": "I only",
+      "B": "II only",
+      "C": "I and II",
+      "D": "Neither I nor II"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A rectangle has a length of x units and a width of (x - 15) units. If the rectangle has an area of 76 square units, what is the value of x?",
+    "options": {
+      "A": "4",
+      "B": "19",
+      "C": "23",
+      "D": "76"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "y = x^2 - 4x + 4\ny = 4 - x\n\nIf the ordered pair (x, y) satisfies the system of equations above, what is one possible value of x?",
+    "options": {},
+    "correct_answer": [
+      "0",
+      "3"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "x^2 + y + 10 = 10\n8x + 16 - y = 0\n\nThe solution to the given system of equations is (x, y). What is the value of x?",
+    "options": {
+      "A": "-16",
+      "B": "-4",
+      "C": "2",
+      "D": "8"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "f(x) = x^5 + 9x + 17\n\nFor the given function f, the graph of y = f(x) in the xy-plane passes through the point (0, b), where b is a constant. What is the value of b?",
+    "options": {},
+    "correct_answer": [
+      "17"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "In the xy-plane, what is the y-coordinate of the point of intersection of the graphs of y = (x - 1)^2 and y = 2x - 3?",
+    "options": {},
+    "correct_answer": [
+      "1"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "-x^2 + bx - 676 = 0\n\nIn the given equation, b is a positive integer. The equation has no real solution. What is the greatest possible value of b?",
+    "options": {},
+    "correct_answer": [
+      "51"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "Function f is defined by f(x) = -a^x + b, where a and b are constants. In the xy-plane, the graph of y = f(x) - 15 has a y-intercept at (0, -99/7). The product of a and b is 65/7. What is the value of a?",
+    "options": {},
+    "correct_answer": [
+      "5"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The area of a rectangular banner is 2,661 square inches. The banner's length x, in inches, is 24 inches longer than its width, in inches. Which equation represents this situation?",
+    "options": {
+      "A": "0 = x^2 - 24x - 2,661",
+      "B": "0 = x^2 - 24x + 2,661",
+      "C": "0 = x^2 + 24x - 2,661",
+      "D": "0 = x^2 + 24x + 2,661"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "f(x) = (x - 14)(x + 19)\n\nThe function f is defined by the given equation. For what value of x does f(x) reach its minimum?",
+    "options": {
+      "A": "-266",
+      "B": "-19",
+      "C": "-33/2",
+      "D": "-5/2"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "y + k = x + 26\ny - k = x^2 - 5x\n\nIn the given system of equations, k is a constant. The system has exactly one distinct real solution. What is the value of k?",
+    "options": {},
+    "correct_answer": [
+      "17.5",
+      "35/2"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "2x^2 - 4x = t\n\nIn the equation above, t is a constant. If the equation has no real solutions, which of the following could be the value of t?",
+    "options": {
+      "A": "-3",
+      "B": "-1",
+      "C": "1",
+      "D": "3"
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The solutions to x^2 + 6x + 7 = 0 are r and s, where r < s. The solutions to x^2 + 8x + 8 = 0 are t and u, where t < u. The solutions to x^2 + 14x + c = 0, where c is a constant, are r + t and s + u. What is the value of c?",
+    "options": {},
+    "correct_answer": [
+      "31"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "f(t) = 55t - 2t^2\n\nThe function f is defined by the given equation. The function g is defined by g(t) = f(t) + 3. Which expression represents the maximum value of g(t)?",
+    "options": {
+      "A": "3 + (55/2)^2",
+      "B": "3 + 2(55/4)^2",
+      "C": "3 - 2(55/4)^2",
+      "D": "3 - (55/2)^2"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "spr",
+    "text": "The graph of the function f, defined by f(x) = -1/2(x - 4)^2 + 10, is shown in the xy-plane above. If the function g (not shown) is defined by g(x) = -x + 10, what is one possible value of a such that f(a) = g(a)?",
+    "options": {},
+    "correct_answer": [
+      "2",
+      "8"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The function f(x) = 1/3(x - 7)^2 + 3 gives a metal ball's height above the ground f(x), in inches, x seconds after it started moving on a track, where 0 <= x <= 10. Which of the following is the best interpretation of the vertex of the graph of y = f(x) in the xy-plane?",
+    "options": {
+      "A": "The metal ball's minimum height was 3 inches above the ground.",
+      "B": "The metal ball's minimum height was 7 inches above the ground.",
+      "C": "The metal ball's height was 3 inches above the ground when it started moving.",
+      "D": "The metal ball's height was 7 inches above the ground when it started moving."
+    },
+    "correct_answer": [
+      "A"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "x^2 / sqrt(x^2 - c^2) = c^2 / sqrt(x^2 - c^2) + 39\n\nIn the given equation, c is a positive constant. Which of the following is one of the solutions to the given equation?",
+    "options": {
+      "A": "-c",
+      "B": "-c^2 - 39^2",
+      "C": "-sqrt(39^2 - c^2)",
+      "D": "-sqrt(c^2 + 39^2)"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "In the xy-plane, a parabola has vertex (9, -14) and intersects the x-axis at two points. If the equation of the parabola is written in the form y = ax^2 + bx + c, where a, b, and c are constants, which of the following could be the value of a + b + c?",
+    "options": {
+      "A": "-23",
+      "B": "-19",
+      "C": "-14",
+      "D": "-12"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A quadratic function models the height, in feet, of an object above the ground in terms of the time, in seconds, after the object is launched off an elevated surface. The model indicates the object has an initial height of 10 feet above the ground and reaches its maximum height of 1,034 feet above the ground 8 seconds after being launched. Based on the model, what is the height, in feet, of the object above the ground 10 seconds after being launched?",
+    "options": {
+      "A": "234",
+      "B": "778",
+      "C": "970",
+      "D": "1,014"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The equation below represents a profit function used by an event coordinator at a city museum. In the equation, P represents profit earned, x represents paid admissions (x > 0), and y is any rental discount that is offered. Which of the following represents y in terms of x and P?\n\nP = -1.6x^2 + 2.6xy - 11.4",
+    "options": {
+      "A": "y = (1.6xP + 11.4) / 2.6x",
+      "B": "y = (P + 1.6x^2 + 11.4) / 2.6x",
+      "C": "y = (1.6x^2 + 11.4) / 2.6x",
+      "D": "y = (P + sqrt(2.6x)) / 11.4"
+    },
+    "correct_answer": [
+      "B"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "A baseball is thrown into the air with an initial velocity of 64 feet per second. The formula h(t) = 64t - 16t^2 provides the height, h, of the baseball after t seconds.\n\nTo the nearest tenth of a second, how much time has elapsed when the ball is 41 feet above the ground?",
+    "options": {
+      "A": "3.2",
+      "B": "2.1 and 3.6",
+      "C": "0.8",
+      "D": "0.8 and 3.2"
+    },
+    "correct_answer": [
+      "D"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  },
+  {
+    "question_type": "mcq",
+    "text": "The functions f and g, defined by f(x) = 6x^2 - 24 and g(x) = -6x^2 + 24, are graphed in the xy-plane below. The graphs intersect at the points (c, 0) and (-c, 0). What is the value of c?",
+    "options": {
+      "A": "-2",
+      "B": "0",
+      "C": "2",
+      "D": "4"
+    },
+    "correct_answer": [
+      "C"
+    ],
+    "passage_title": "",
+    "passage_intro": "",
+    "passage_paragraphs": []
+  }
+]
