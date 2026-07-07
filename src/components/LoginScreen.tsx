@@ -32,11 +32,12 @@ export default function LoginScreen({ theme, onLoginSuccess, toggleTheme }: Logi
       setIsLoading(true);
       setHasError(false);
       
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const options = isLocalhost ? { redirectTo: window.location.origin + window.location.pathname } : undefined;
+
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: {
-          redirectTo: window.location.origin + window.location.pathname,
-        },
+        options,
       });
 
       if (error) {
