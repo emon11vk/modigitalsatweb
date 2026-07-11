@@ -110,6 +110,7 @@ export async function saveExam(
         module_num: moduleNum,
         questions_count: totalQuestions,
         duration_minutes: state.exam?.durationMinutes ?? 32,
+        folder_id: state.exam.folder_id || null,
       });
 
       // Delete existing legacy questions
