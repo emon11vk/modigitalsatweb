@@ -160,7 +160,7 @@ export default function App() {
       const questionIds = answersData.map((ans: any) => ans.question_id);
       const { data: questionsData, error: questionsError } = await supabase
         .from('questions')
-        .select('id, text, correct_answer, options, passage_paragraphs, passage_intro, passage_title, question_type, image_url')
+        .select('id, text, correct_answer, options, passage_paragraphs, passage_intro, passage_title, question_type, image_url, explanation')
         .in('id', questionIds);
 
       if (questionsError) throw questionsError;
