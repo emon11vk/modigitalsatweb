@@ -339,9 +339,11 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                       <span className="text-[10px] font-bold uppercase tracking-wider text-primary block mb-2">
                         💡 Giải thích
                       </span>
-                      <p className={`text-xs leading-relaxed ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
-                        {q.explanation}
-                      </p>
+                      <MathRenderer
+                        content={q.explanation}
+                        className={`text-xs leading-relaxed ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}
+                        isDark={isDark}
+                      />
                     </div>
                   )}
                 </div>

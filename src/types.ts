@@ -42,6 +42,7 @@ export interface Question {
   userAnswer?: string;
   passage?: Passage;
   imageUrl?: string | null;
+  explanation?: string;
 }
 
 export interface Passage {

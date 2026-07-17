@@ -160,7 +160,7 @@ export default function App() {
       const questionIds = answersData.map((ans: any) => ans.question_id);
       const { data: questionsData, error: questionsError } = await supabase
         .from('questions')
-        .select('id, text, correct_answer, options, passage_paragraphs, passage_intro, passage_title, question_type, image_url')
+        .select('id, text, correct_answer, options, passage_paragraphs, passage_intro, passage_title, question_type, image_url, explanation')
         .in('id', questionIds);
 
       if (questionsError) throw questionsError;
@@ -184,7 +184,8 @@ export default function App() {
               : [questionMap.get(ans.question_id)?.passage_paragraphs].filter((p: any) => p !== 'null')
           }
           : undefined,
-        imageUrl: questionMap.get(ans.question_id)?.image_url || null
+        imageUrl: questionMap.get(ans.question_id)?.image_url || null,
+        explanation: questionMap.get(ans.question_id)?.explanation || ''
       }));
 
       // Find first question with passage for overall passage display
@@ -459,7 +460,8 @@ export default function App() {
               : [q.passage_paragraphs].filter((p: any) => p !== 'null')
           }
           : undefined,
-        imageUrl: q.image_url || null
+        imageUrl: q.image_url || null,
+        explanation: q.explanation || ''
       }));
 
       setActiveQuestions(formattedQs);
@@ -582,7 +584,8 @@ export default function App() {
               isCorrect: correctAnswers.includes(userAnswer),
               options: q.options,
               passage: q.passage,
-              imageUrl: q.imageUrl
+              imageUrl: q.imageUrl,
+              explanation: q.explanation
             };
           }),
           passage: activePassage
