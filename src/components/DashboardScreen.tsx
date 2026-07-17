@@ -707,7 +707,7 @@ export default function DashboardScreen({
 
           <div className="space-y-6">
             {folders.filter(f => !f.parent_id && f.category === 'course').map((folder) => {
-              const renderFolder = (f: { id: string; name: string; parent_id?: string | null; category?: string }, depth: number = 0) => {
+              const renderFolder = (f: { id: string; name: string; parent_id?: string | null; category?: string; is_locked?: boolean; allowed_users?: string[] }, depth: number = 0) => {
                 const folderModules = getModulesForFolder(f.id);
                 const isCollapsed = collapsedFolders[f.id] ?? true;
                 const childFolders = folders.filter(child => child.parent_id === f.id);

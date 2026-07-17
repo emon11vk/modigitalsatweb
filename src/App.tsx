@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import {
   Theme,
   Screen,
@@ -49,7 +50,8 @@ export default function App() {
   const [loadingAuth, setLoadingAuth] = useState(true);
 
   const [theme, setTheme] = useState<Theme>('dark');
-  const [currentScreen, setCurrentScreen] = useState<Screen>('dashboard');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [modules, setModules] = useState<Module[]>([]);
   const [folders, setFolders] = useState<ExamFolder[]>([]);
@@ -140,7 +142,7 @@ export default function App() {
   const handleViewAttemptDetails = useCallback(async (attempt: TestAttemptHistory) => {
     if (attempt.questions && attempt.questions.length > 0) {
       setSelectedAttempt(attempt);
-      setCurrentScreen('review');
+      navigate('/review');
       return;
     }
 
@@ -196,7 +198,7 @@ export default function App() {
         questions,
         passage: firstWithPassage?.passage
       });
-      setCurrentScreen('review');
+      navigate('/review');
     } catch (err) {
       console.error('Error fetching attempt details:', err);
       alert('Lỗi khi tải chi tiết bài làm — vui lòng thử lại.');
@@ -219,11 +221,11 @@ export default function App() {
 
   // ─── Persist review screen to localStorage ───────────────────────────────────
   useEffect(() => {
-    if (selectedAttempt && currentScreen === 'review' && selectedAttempt.attemptId) {
+    if (selectedAttempt && location.pathname === '/review' && selectedAttempt.attemptId) {
       localStorage.setItem('modigitalsat_attemptId', selectedAttempt.attemptId);
       localStorage.setItem('modigitalsat_currentScreen', 'review');
     }
-  }, [selectedAttempt, currentScreen]);
+  }, [selectedAttempt, location.pathname]);
 
   // ─── Restore review screen from localStorage after data loads ────────────────
   useEffect(() => {
@@ -415,12 +417,12 @@ export default function App() {
   // ─── Handlers ────────────────────────────────────────────────────────────────
   const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
 
-  const handleLogin = () => setCurrentScreen('dashboard');
+  const handleLogin = () => navigate('/dashboard');
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setCurrentUser(null);
-    setCurrentScreen('login' as Screen);
+    navigate('/login');
     setSelectedAttempt(null);
     localStorage.removeItem('modigitalsat_attemptId');
     localStorage.removeItem('modigitalsat_currentScreen');
@@ -478,7 +480,7 @@ export default function App() {
       }
 
       setActiveModuleId(moduleId);
-      setCurrentScreen('practice');
+      navigate('/practice');
     } catch (err) {
       console.error('Failed to start module', err);
       alert('Không thể bắt đầu đề thi — vui lòng thử lại.');
@@ -627,7 +629,7 @@ export default function App() {
         subject: module.subject,
         moduleTitle: module.title
       });
-      setCurrentScreen('dashboard');
+      navigate('/dashboard');
       setActiveModuleId(null);
 
     } catch (err) {
@@ -857,7 +859,7 @@ export default function App() {
 
   const handleBackFromReview = () => {
     setSelectedAttempt(null);
-    setCurrentScreen('history');
+    navigate('/history');
     localStorage.removeItem('modigitalsat_attemptId');
     localStorage.removeItem('modigitalsat_currentScreen');
   };
@@ -871,19 +873,19 @@ export default function App() {
         document.activeElement?.tagName === 'SELECT'
       ) return;
 
-      if (currentScreen === 'practice' || currentScreen === 'login') return;
+      if (location.pathname === '/practice' || location.pathname === '/login') return;
 
-      if (e.key === '1') setCurrentScreen('dashboard');
-      if (e.key === '2') setCurrentScreen('practice_hub');
-      if (e.key === '3') setCurrentScreen('vocabulary');
-      if (e.key === '4') setCurrentScreen('leaderboard');
-      if (e.key === '5') setCurrentScreen('history');
-      if (e.key === '6') setCurrentScreen('admin');
+      if (e.key === '1') navigate('/dashboard');
+      if (e.key === '2') navigate('/practice_hub');
+      if (e.key === '3') navigate('/vocabulary');
+      if (e.key === '4') navigate('/leaderboard');
+      if (e.key === '5') navigate('/history');
+      if (e.key === '6') navigate('/admin');
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentScreen]);
+  }, [location.pathname]);
 
   // ─── Loading state ────────────────────────────────────────────────────────────
   if (loadingAuth) {
@@ -903,16 +905,18 @@ export default function App() {
   // ─── Login screen ─────────────────────────────────────────────────────────────
   if (!currentUser) {
     return (
-      <LoginScreen
+      <Routes>
+        <Route path="*" element={<LoginScreen
         theme={theme}
         onLoginSuccess={handleLogin}
         toggleTheme={toggleTheme}
-      />
+      />} />
+      </Routes>
     );
   }
 
   // ─── Active test screen ───────────────────────────────────────────────────────
-  if (currentScreen === 'practice' && activeModuleId) {
+  if (location.pathname === '/practice' && activeModuleId) {
     return (
       <ActiveTestScreen
         theme={theme}
@@ -924,7 +928,7 @@ export default function App() {
         questions={activeQuestions}
         passage={activePassage}
         onExit={() => {
-          setCurrentScreen('dashboard');
+          navigate('/dashboard');
           setActiveModuleId(null);
         }}
         onFinishTest={handleFinishTest}
@@ -936,12 +940,12 @@ export default function App() {
   const isDark = theme === 'dark';
 
   const navItems = [
-    { key: 'dashboard' as Screen, icon: <LayoutDashboard className="w-4 h-4" />, label: 'Trang chủ' },
-    { key: 'practice_hub' as Screen, icon: <GraduationCap className="w-4 h-4" />, label: 'Practice' },
-    { key: 'vocabulary' as Screen, icon: <BookOpen className="w-4 h-4" />, label: 'Từ vựng' },
-    { key: 'leaderboard' as Screen, icon: <Award className="w-4 h-4" />, label: 'Xếp hạng' },
-    { key: 'history' as Screen, icon: <History className="w-4 h-4" />, label: 'Lịch sử' },
-    { key: 'admin' as Screen, icon: <ShieldAlert className="w-4 h-4" />, label: 'Admin' },
+    { path: '/dashboard', icon: <LayoutDashboard className="w-4 h-4" />, label: 'Trang chủ' },
+    { path: '/practice_hub', icon: <GraduationCap className="w-4 h-4" />, label: 'Practice' },
+    { path: '/vocabulary', icon: <BookOpen className="w-4 h-4" />, label: 'Từ vựng' },
+    { path: '/leaderboard', icon: <Award className="w-4 h-4" />, label: 'Xếp hạng' },
+    { path: '/history', icon: <History className="w-4 h-4" />, label: 'Lịch sử' },
+    { path: '/admin', icon: <ShieldAlert className="w-4 h-4" />, label: 'Admin' },
   ];
 
   // ─── Main render ─────────────────────────────────────────────────────────────
@@ -960,12 +964,12 @@ export default function App() {
           <div
             className="flex items-center gap-3 cursor-pointer group"
             onClick={() => {
-              if (currentScreen === 'review') {
+              if (location.pathname === '/review') {
                 setSelectedAttempt(null);
                 localStorage.removeItem('modigitalsat_attemptId');
                 localStorage.removeItem('modigitalsat_currentScreen');
               }
-              setCurrentScreen('dashboard');
+              navigate('/dashboard');
             }}
           >
             <div className={`relative flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
@@ -979,18 +983,18 @@ export default function App() {
 
           {/* Navigation */}
           <nav className={`hidden md:flex items-center gap-1 p-1 rounded-xl ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
-            {navItems.map(({ key, icon, label }) => {
-              const isActive = currentScreen === key || (key === 'history' && currentScreen === 'review');
+            {navItems.map(({ path, icon, label }) => {
+              const isActive = location.pathname === path || (path === '/history' && location.pathname === '/review');
               return (
                 <button
-                  key={key}
+                  key={path}
                   onClick={() => {
-                    if (key !== 'history' && currentScreen === 'review') {
+                    if (path !== '/history' && location.pathname === '/review') {
                       setSelectedAttempt(null);
                       localStorage.removeItem('modigitalsat_attemptId');
                       localStorage.removeItem('modigitalsat_currentScreen');
                     }
-                    setCurrentScreen(key);
+                    navigate(path);
                   }}
                   className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer flex items-center gap-2 ${isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20'
@@ -1005,7 +1009,7 @@ export default function App() {
                       ? 'bg-white/20 text-white/90'
                       : isDark ? 'bg-white/5 text-text-muted/50' : 'bg-slate-200/50 text-slate-400'
                     }`}>
-                    {navItems.findIndex(i => i.key === key) + 1}
+                    {navItems.findIndex(i => i.path === path) + 1}
                   </span>
                 </button>
               );
@@ -1014,18 +1018,18 @@ export default function App() {
 
           {/* Mobile Nav */}
           <nav className="flex md:hidden items-center gap-1">
-            {navItems.map(({ key, icon }) => {
-              const isActive = currentScreen === key || (key === 'history' && currentScreen === 'review');
+            {navItems.map(({ path, icon }) => {
+              const isActive = location.pathname === path || (path === '/history' && location.pathname === '/review');
               return (
                 <button
-                  key={key}
+                  key={path}
                   onClick={() => {
-                    if (key !== 'history' && currentScreen === 'review') {
+                    if (path !== '/history' && location.pathname === '/review') {
                       setSelectedAttempt(null);
                       localStorage.removeItem('modigitalsat_attemptId');
                       localStorage.removeItem('modigitalsat_currentScreen');
                     }
-                    setCurrentScreen(key);
+                    navigate(path);
                   }}
                   className={`p-2.5 rounded-lg transition-all cursor-pointer ${isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20'
@@ -1087,77 +1091,86 @@ export default function App() {
 
       {/* ── Main Content ── */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 print:block print:p-0 print:max-w-none print:h-auto">
-        {currentScreen === 'dashboard' && (
-          <DashboardScreen
-            theme={theme}
-            userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
-            userEmail={currentUser?.email || ''}
-            modules={modules}
-            folders={folders}
-            vocabTotal={words.length}
-            vocabMastered={words.filter(w => w.status === 'Mastered').length}
-            leaderboardRank={rankings.find(r => r.isCurrentUser)?.rank ?? null}
-            streak={calculateStreak()}
-            onStartModule={handleStartModule}
-            onNavigateToVocab={() => setCurrentScreen('vocabulary')}
-            onNavigateToLeaderboard={() => setCurrentScreen('leaderboard')}
-          />
-        )}
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/dashboard" element={
+            <DashboardScreen
+              theme={theme}
+              userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
+              userEmail={currentUser?.email || ''}
+              modules={modules}
+              folders={folders}
+              vocabTotal={words.length}
+              vocabMastered={words.filter(w => w.status === 'Mastered').length}
+              leaderboardRank={rankings.find(r => r.isCurrentUser)?.rank ?? null}
+              streak={calculateStreak()}
+              onStartModule={handleStartModule}
+              onNavigateToVocab={() => navigate('/vocabulary')}
+              onNavigateToLeaderboard={() => navigate('/leaderboard')}
+            />
+          } />
 
-        {currentScreen === 'practice_hub' && (
-          <PracticeScreen
-            theme={theme}
-            folders={folders}
-            modules={modules}
-            userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
-            userEmail={currentUser?.email || ''}
-            onStartTest={handleStartModule}
-          />
-        )}
+          <Route path="/practice_hub" element={
+            <PracticeScreen
+              theme={theme}
+              folders={folders}
+              modules={modules}
+              userName={currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'Học viên'}
+              userEmail={currentUser?.email || ''}
+              onStartTest={handleStartModule}
+            />
+          } />
 
-        {currentScreen === 'vocabulary' && (
-          <VocabularyScreen
-            theme={theme}
-            words={words}
-            folders={vocabFolders}
-            onAddWord={handleAddWord}
-            onDeleteWord={handleDeleteWord}
-            onToggleStatus={handleToggleStatus}
-            onRateWord={handleRateWord}
-            onAddFolder={handleAddVocabFolder}
-            onDeleteFolder={handleDeleteVocabFolder}
-            onCloneFolder={handleCloneFolder}
-            currentUserId={currentUser?.id}
-          />
-        )}
+          <Route path="/vocabulary" element={
+            <VocabularyScreen
+              theme={theme}
+              words={words}
+              folders={vocabFolders}
+              onAddWord={handleAddWord}
+              onDeleteWord={handleDeleteWord}
+              onToggleStatus={handleToggleStatus}
+              onRateWord={handleRateWord}
+              onAddFolder={handleAddVocabFolder}
+              onDeleteFolder={handleDeleteVocabFolder}
+              onCloneFolder={handleCloneFolder}
+              currentUserId={currentUser?.id}
+            />
+          } />
 
-        {currentScreen === 'leaderboard' && (
-          <LeaderboardScreen
-            theme={theme}
-            rankings={rankings}
-          />
-        )}
+          <Route path="/leaderboard" element={
+            <LeaderboardScreen
+              theme={theme}
+              rankings={rankings}
+            />
+          } />
 
-        {currentScreen === 'history' && (
-          <HistoryScreen
-            theme={theme}
-            history={attemptHistory}
-            onStartPractice={() => setCurrentScreen('dashboard')}
-            onViewDetails={handleViewAttemptDetails}
-          />
-        )}
+          <Route path="/history" element={
+            <HistoryScreen
+              theme={theme}
+              history={attemptHistory}
+              onStartPractice={() => navigate('/dashboard')}
+              onViewDetails={handleViewAttemptDetails}
+            />
+          } />
 
-        {currentScreen === 'review' && selectedAttempt && (
-          <ReviewScreen
-            theme={theme}
-            attempt={selectedAttempt}
-            onBack={handleBackFromReview}
-          />
-        )}
+          <Route path="/review" element={
+            selectedAttempt ? (
+              <ReviewScreen
+                theme={theme}
+                attempt={selectedAttempt}
+                onBack={handleBackFromReview}
+              />
+            ) : (
+              <Navigate to="/history" replace />
+            )
+          } />
 
-        {currentScreen === 'admin' && (
-          <AdminScreen theme={theme} />
-        )}
+          <Route path="/admin" element={
+            <AdminScreen theme={theme} />
+          } />
+          
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
       </main>
 
       {/* ── Footer ── */}
