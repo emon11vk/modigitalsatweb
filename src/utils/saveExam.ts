@@ -131,7 +131,8 @@ export async function saveExam(
             passage_title: section.name,
             passage_intro: '',
             passage_paragraphs: q.passage ? [q.passage] : [],
-            image_url: q.imageUrl || null
+            image_url: q.imageUrl || null,
+            explanation: q.explanation || null
           });
         }
       }
