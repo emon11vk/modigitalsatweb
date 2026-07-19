@@ -1148,6 +1148,8 @@ export default function App() {
             <HistoryScreen
               theme={theme}
               history={attemptHistory}
+              folders={folders}
+              modules={modules}
               onStartPractice={() => navigate('/dashboard')}
               onViewDetails={handleViewAttemptDetails}
             />

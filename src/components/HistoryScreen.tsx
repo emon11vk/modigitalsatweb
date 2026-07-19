@@ -1,15 +1,17 @@
-import { TestAttemptHistory, Theme } from '../types';
-import { History, Calendar, CheckCircle2, ChevronRight, BookOpen, AlertCircle, BarChart3 } from 'lucide-react';
+import { TestAttemptHistory, Theme, ExamFolder, Module } from '../types';
+import { History, Calendar, CheckCircle2, ChevronRight, BookOpen, AlertCircle, BarChart3, Folder } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface HistoryScreenProps {
   theme: Theme;
   history: TestAttemptHistory[];
+  folders?: ExamFolder[];
+  modules?: Module[];
   onStartPractice: () => void;
   onViewDetails: (attempt: TestAttemptHistory) => void;
 }
 
-export default function HistoryScreen({ theme, history, onStartPractice, onViewDetails }: HistoryScreenProps) {
+export default function HistoryScreen({ theme, history, folders = [], modules = [], onStartPractice, onViewDetails }: HistoryScreenProps) {
   const isDark = theme === 'dark';
 
   return (
@@ -67,6 +69,10 @@ export default function HistoryScreen({ theme, history, onStartPractice, onViewD
             const isVerbal = attempt.subject === 'Reading & Writing';
             const scorePercent = Math.round((attempt.correctCount / attempt.totalCount) * 100);
 
+            const moduleItem = modules.find(m => m.id === attempt.moduleId);
+            const folder = folders.find(f => f.id === moduleItem?.folder_id);
+            const folderName = folder ? folder.name : 'Đề thi khác';
+
             return (
               <motion.div
                 key={attempt.moduleId + '-' + index}
@@ -108,9 +114,16 @@ export default function HistoryScreen({ theme, history, onStartPractice, onViewD
                     <h4 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-text-dark'}`}>
                       {attempt.moduleTitle}
                     </h4>
-                    <p className={`text-xs ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
-                      Lần làm đầu tiên
-                    </p>
+                    <div className={`text-xs flex items-center gap-1.5 mt-0.5 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
+                      <span>Lần làm đầu tiên</span>
+                      {folderName && (
+                        <>
+                          <span className="w-1 h-1 rounded-full bg-current opacity-50" />
+                          <Folder className="w-3 h-3 opacity-70" />
+                          <span className="truncate max-w-[120px] sm:max-w-[180px]">{folderName}</span>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
 
