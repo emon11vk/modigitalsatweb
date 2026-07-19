@@ -756,18 +756,7 @@ export default function DashboardScreen({
               return renderFolder(folder, 0);
             })}
 
-            {/* Root / Uncategorized Modules */}
-            {getModulesForFolder(null).length > 0 && (
-              <div className="space-y-3 pt-4 mt-4 border-t border-dashed border-slate-200 dark:border-white/10">
-                <div className="flex items-center gap-2 mb-4 px-2">
-                  <Layers className={`w-4 h-4 ${isDark ? 'text-text-muted' : 'text-slate-400'}`} />
-                  <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>
-                    Đề thi khác
-                  </span>
-                </div>
-                {getModulesForFolder(null).map((m, idx) => renderModule(m, idx))}
-              </div>
-            )}
+
           </div>
         </div>
 
