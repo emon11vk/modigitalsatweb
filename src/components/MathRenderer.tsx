@@ -9,9 +9,35 @@ interface MathRendererProps {
   disableMath?: boolean;
 }
 
+// Helper to render basic HTML tags securely
+function renderBasicHtml(text: string, parentNode: HTMLElement | null) {
+  if (!parentNode) return;
+  const regex = /(<\/?(?:u|b|i|strong|em)>)/gi;
+  const parts = text.split(regex);
+  let currentParent = parentNode;
+  
+  parts.forEach(part => {
+    if (!part) return;
+    const lowerPart = part.toLowerCase();
+    if (['<u>', '<b>', '<i>', '<strong>', '<em>'].includes(lowerPart)) {
+      const tag = lowerPart.replace(/[<>]/g, '');
+      const el = document.createElement(tag);
+      currentParent.appendChild(el);
+      currentParent = el;
+    } else if (['</u>', '</b>', '</i>', '</strong>', '</em>'].includes(lowerPart)) {
+      const tag = lowerPart.replace(/[<>/]/g, '').toUpperCase();
+      if (currentParent.tagName === tag && currentParent.parentElement && currentParent !== parentNode) {
+        currentParent = currentParent.parentElement;
+      }
+    } else {
+      currentParent.appendChild(document.createTextNode(part));
+    }
+  });
+}
+
 /**
  * Parses text for inline ($...$) and display ($$...$$) math and renders using KaTeX
- * Falls back to plain text rendering if content has no math formulas
+ * Falls back to basic HTML rendering for u, b, i tags if content has no math formulas
  */
 export default function MathRenderer({ content, className = '', isDark = true, disableMath = false }: MathRendererProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,13 +45,15 @@ export default function MathRenderer({ content, className = '', isDark = true, d
   useEffect(() => {
     if (!containerRef.current || !content) {
       if (containerRef.current) {
-        containerRef.current.textContent = content || '';
+        containerRef.current.innerHTML = '';
+        if (content) renderBasicHtml(content, containerRef.current);
       }
       return;
     }
 
     if (disableMath) {
-      containerRef.current.textContent = content;
+      containerRef.current.innerHTML = '';
+      renderBasicHtml(content, containerRef.current);
       return;
     }
 
@@ -142,8 +170,9 @@ export default function MathRenderer({ content, className = '', isDark = true, d
       const parseRegex = /(\$\$[\s\S]*?\$\$|\$(?!\s)(?:[^$]*?[^\s$])?\$)/g;
       
       if (!hasMath) {
-        // No math formulas, just render as plain text
-        containerRef.current.textContent = processedContent;
+        // No math formulas, just render as plain text but support basic HTML
+        containerRef.current.innerHTML = '';
+        renderBasicHtml(processedContent, containerRef.current);
         return;
       }
 
@@ -208,14 +237,14 @@ export default function MathRenderer({ content, className = '', isDark = true, d
           }
         } else {
           // Regular text
-          const textNode = document.createTextNode(part);
-          containerRef.current?.appendChild(textNode);
+          renderBasicHtml(part, containerRef.current);
         }
       });
     } catch (err) {
       console.error('Error rendering math:', err);
       if (containerRef.current) {
-        containerRef.current.textContent = content;
+        containerRef.current.innerHTML = '';
+        renderBasicHtml(content, containerRef.current);
       }
     }
   }, [content, isDark]);
