@@ -219,6 +219,8 @@ export default function DashboardScreen({
   const [isUploadingBanner, setIsUploadingBanner] = useState(false);
   const [bannerUrl, setBannerUrl] = useState<string | null>(null);
   const [bannerAlignment, setBannerAlignment] = useState<string>('center');
+  const [bannerHeight, setBannerHeight] = useState<number | null>(null);
+  const currentHeightRef = useRef<number | null>(null);
 
   useEffect(() => {
     const { data } = supabase.storage.from('exam-question-images').getPublicUrl('dashboard/welcome-banner.png');
@@ -237,6 +239,7 @@ export default function DashboardScreen({
             const text = await res.text();
             const json = JSON.parse(text);
             if (json.alignment) setBannerAlignment(json.alignment);
+            if (json.height) setBannerHeight(json.height);
           }
         } catch (e) {
           // ignore
@@ -246,10 +249,9 @@ export default function DashboardScreen({
     fetchBannerConfig();
   }, []);
 
-  const handleUpdateBannerAlignment = async (pos: string) => {
-    setBannerAlignment(pos);
+  const saveBannerConfig = async (pos: string, height: number | null) => {
     try {
-      const blob = new Blob([JSON.stringify({ alignment: pos })], { type: 'image/png' });
+      const blob = new Blob([JSON.stringify({ alignment: pos, height })], { type: 'image/png' });
       await supabase.storage
         .from('exam-question-images')
         .upload('dashboard/banner-config.png', blob, {
@@ -259,6 +261,35 @@ export default function DashboardScreen({
     } catch (e) {
       console.error('Lỗi lưu cấu hình banner:', e);
     }
+  };
+
+  const handleUpdateBannerAlignment = async (pos: string) => {
+    setBannerAlignment(pos);
+    await saveBannerConfig(pos, bannerHeight);
+  };
+
+  const handleResizeStart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const startY = e.clientY;
+    const startHeight = bannerRef.current?.getBoundingClientRect().height || 300;
+    
+    const handleMouseMove = (me: MouseEvent) => {
+      const delta = me.clientY - startY;
+      const newHeight = Math.max(150, startHeight + delta);
+      setBannerHeight(newHeight);
+      currentHeightRef.current = newHeight;
+    };
+    
+    const handleMouseUp = () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      if (currentHeightRef.current) {
+        saveBannerConfig(bannerAlignment, currentHeightRef.current);
+      }
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
   };
 
   const handleDeleteBanner = async () => {
@@ -444,12 +475,13 @@ export default function DashboardScreen({
       {/* ── Welcome Banner ── */}
       <div
         ref={bannerRef}
-        className={`relative overflow-hidden rounded-3xl border mb-6 ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
+        className={`relative overflow-hidden rounded-3xl border mb-6 transition-[height] duration-75 ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
           }`}
         style={{
           backgroundImage: bannerUrl ? `url(${bannerUrl})` : undefined,
           backgroundSize: 'cover',
           backgroundPosition: bannerAlignment,
+          height: bannerHeight ? `${bannerHeight}px` : undefined,
         }}
       >
         {/* Overlay removed as requested */}
@@ -492,7 +524,7 @@ export default function DashboardScreen({
               </>
             )}
             <button
-              onClick={() => fileInputRef.current?.click()}
+              onClick={handleUploadBannerClick}
               disabled={isUploadingBanner}
               className={`p-1.5 rounded-lg backdrop-blur-md border transition-colors ${isDark ? 'bg-black/30 border-white/10 text-white hover:bg-black/50' : 'bg-white/50 border-white/20 text-text-dark hover:bg-white/80'
                 }`}
@@ -503,90 +535,22 @@ export default function DashboardScreen({
           </div>
         )}
 
-        <div className="relative z-10 flex flex-col lg:flex-row items-stretch justify-between">
+        <div className="relative z-10 flex flex-col lg:flex-row items-stretch justify-between min-h-[250px] sm:min-h-[320px] lg:min-h-[400px]" style={{ minHeight: bannerHeight ? '100%' : undefined }}>
           {/* Left Content */}
           <div className="flex-1" />
-
-          {/* Right Content - Mockup Card (Glass Layer attached to edge) */}
-          <div className="relative w-full max-w-[360px] hidden lg:flex flex-col justify-center perspective-1000 z-30">
-            <motion.div 
-              onMouseEnter={() => setIsCardHovered(true)}
-              onMouseLeave={() => setIsCardHovered(false)}
-              style={{ 
-                rotateX, 
-                rotateY, 
-                transformStyle: 'preserve-3d', 
-                transformOrigin: 'center center', 
-                position: 'relative' 
-              }}
-              drag
-              dragConstraints={bannerRef}
-              dragElastic={0.1}
-              whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
-              className={`w-full p-4 md:p-5 backdrop-blur-xl border rounded-2xl shadow-[-20px_20px_40px_rgba(0,0,0,0.2)] cursor-grab active:cursor-grabbing ${isDark ? 'bg-slate-800/80 border-white/10' : 'bg-white/90 border-slate-100'}`}
-            >
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <h3 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Reading: Main Idea</h3>
-                  <p className={`text-[10px] mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Question 12 of 52</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 mb-4">
-                <div className="flex-1 space-y-1.5">
-                  <h4 className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Central Idea</h4>
-                  <p className={`text-[9px] leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                    The passage is primarily about the impact of social media on teenagers, highlighting both the positive and negative effects it can have on their mental health and well-being.
-                  </p>
-                </div>
-                <div className="flex-1 space-y-1.5">
-                  <h4 className={`text-[10px] font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Which best states the main idea?</h4>
-                  <div className="space-y-1.5">
-                    {[
-                      { id: 'A', text: 'Social media is only harmful to teenagers.' },
-                      { id: 'B', text: 'Social media can affect teenagers in both positive and negative ways.', active: true },
-                      { id: 'C', text: 'Teenagers should avoid social media completely.' },
-                      { id: 'D', text: 'Social media is more beneficial than harmful.' }
-                    ].map((opt) => (
-                      <div key={opt.id} className={`flex gap-2 items-center p-1.5 rounded-lg border text-[9px] leading-snug ${
-                        opt.active 
-                          ? 'border-primary bg-primary/5 text-primary font-medium shadow-sm' 
-                          : isDark ? 'border-white/10 text-slate-400' : 'border-slate-200 text-slate-600'
-                      }`}>
-                        <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold shrink-0 ${
-                          opt.active ? 'bg-primary text-white' : isDark ? 'bg-white/10 text-slate-400' : 'bg-slate-100 text-slate-600'
-                        }`}>
-                          {opt.id}
-                        </div>
-                        {opt.text}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className={`flex justify-between items-center pt-2.5 border-t ${isDark ? 'border-white/10' : 'border-slate-100'}`}>
-                <div className="flex items-center gap-2">
-                  <span className={`text-[9px] font-bold ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>12 / 52</span>
-                  <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden">
-                    <div className="w-[20%] h-full bg-primary rounded-full"></div>
-                  </div>
-                </div>
-                <div 
-                  className="text-primary text-[10px] font-bold flex items-center gap-1 cursor-pointer hover:text-primary-light transition-colors"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onNavigateToPractice?.();
-                  }}
-                  onPointerDownCapture={(e) => e.stopPropagation()}
-                  title="Practice Mode (Easter Egg)"
-                >
-                  Next <ArrowRight className="w-3 h-3" />
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          
+          {/* Mockup Card removed as requested */}
         </div>
+
+        {isAdmin && (
+          <div 
+            className="absolute bottom-0 left-0 w-full h-4 cursor-ns-resize z-50 flex items-end justify-center pb-1.5 opacity-0 hover:opacity-100 transition-opacity bg-gradient-to-t from-black/30 to-transparent"
+            onMouseDown={handleResizeStart}
+            title="Kéo để chỉnh chiều cao banner"
+          >
+            <div className="w-12 h-1 bg-white/70 rounded-full shadow-sm"></div>
+          </div>
+        )}
       </div>
 
       {/* ── Metrics Row ── */}
