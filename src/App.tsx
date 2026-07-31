@@ -49,7 +49,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
 
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const navigate = useNavigate();
   const location = useLocation();
 
