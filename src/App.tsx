@@ -17,6 +17,7 @@ import {
 import { supabase } from './supabaseClient';
 import { fetchWordData } from './utils/dictionaryAPI';
 import { calculateSM2 } from './utils/sm2';
+import { useAdminRole } from './hooks/useAdminRole';
 
 // Component Imports
 import LoginScreen from './components/LoginScreen';
@@ -48,6 +49,7 @@ import { motion, AnimatePresence } from 'motion/react';
 export default function App() {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
+  const { isAdmin } = useAdminRole();
 
   const [theme, setTheme] = useState<Theme>('light');
   const navigate = useNavigate();
@@ -880,7 +882,7 @@ export default function App() {
       if (e.key === '3') navigate('/vocabulary');
       if (e.key === '4') navigate('/leaderboard');
       if (e.key === '5') navigate('/history');
-      if (e.key === '6') navigate('/admin');
+      if (e.key === '6' && isAdmin) navigate('/admin');
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -945,7 +947,7 @@ export default function App() {
     { path: '/vocabulary', icon: <BookOpen className="w-4 h-4" />, label: 'Từ vựng' },
     { path: '/leaderboard', icon: <Award className="w-4 h-4" />, label: 'Xếp hạng' },
     { path: '/history', icon: <History className="w-4 h-4" />, label: 'Lịch sử' },
-    { path: '/admin', icon: <ShieldAlert className="w-4 h-4" />, label: 'Admin' },
+    ...(isAdmin ? [{ path: '/admin', icon: <ShieldAlert className="w-4 h-4" />, label: 'Admin' }] : []),
   ];
 
   // ─── Main render ─────────────────────────────────────────────────────────────
