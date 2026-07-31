@@ -146,6 +146,12 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes spinY {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+
 @keyframes burn {
   0%, 100% { transform: scale(1) rotate(-3deg); opacity: 0.9; }
   50% { transform: scale(1.15) rotate(3deg); opacity: 1; }

@@ -18,6 +18,7 @@ interface DashboardScreenProps {
   onStartModule: (moduleId: string) => void;
   onNavigateToVocab: () => void;
   onNavigateToLeaderboard: () => void;
+  onNavigateToPractice?: () => void;
 }
 
 const getDeadlineInfo = (deadlineStr: string) => {
@@ -27,7 +28,7 @@ const getDeadlineInfo = (deadlineStr: string) => {
     const startOfNowVN = new Date(nowVN.getFullYear(), nowVN.getMonth(), nowVN.getDate());
     const startOfDeadlineVN = new Date(deadlineVN.getFullYear(), deadlineVN.getMonth(), deadlineVN.getDate());
     const diffDays = Math.round((startOfDeadlineVN.getTime() - startOfNowVN.getTime()) / (1000 * 60 * 60 * 24));
-    
+
     let text = '';
     if (diffDays > 0) text = `(còn ${diffDays} ngày)`;
     else if (diffDays === 0) text = `(hôm nay)`;
@@ -59,6 +60,7 @@ export default function DashboardScreen({
   onStartModule,
   onNavigateToVocab,
   onNavigateToLeaderboard,
+  onNavigateToPractice,
 }: DashboardScreenProps) {
   const isDark = theme === 'dark';
 
@@ -87,6 +89,7 @@ export default function DashboardScreen({
   const [editYoutubeUrl, setEditYoutubeUrl] = useState('');
   const [editImageFile, setEditImageFile] = useState<File | null>(null);
   const [isSavingCardConfig, setIsSavingCardConfig] = useState(false);
+  const [isCardHovered, setIsCardHovered] = useState(false);
 
   useEffect(() => {
     const fetchConfigs = async () => {
@@ -112,7 +115,7 @@ export default function DashboardScreen({
     setIsSavingCardConfig(true);
     try {
       let timestamp = cardConfigs[editingCardId]?.imageTimestamp;
-      
+
       if (editImageFile) {
         timestamp = Date.now();
         const { error } = await supabase.storage
@@ -279,15 +282,15 @@ export default function DashboardScreen({
     try {
       const { error: uploadError } = await supabase.storage
         .from('exam-question-images')
-        .upload('dashboard/welcome-banner.png', file, { 
+        .upload('dashboard/welcome-banner.png', file, {
           upsert: true,
-          cacheControl: '0' 
+          cacheControl: '0'
         });
 
       if (uploadError) throw uploadError;
 
       const { data } = supabase.storage.from('exam-question-images').getPublicUrl('dashboard/welcome-banner.png');
-      
+
       setBannerUrl(`${data.publicUrl}?t=${Date.now()}`);
     } catch (err: any) {
       console.error(err);
@@ -325,25 +328,22 @@ export default function DashboardScreen({
     return (
       <motion.div
         key={m.id}
-        className={`group p-5 rounded-2xl border transition-colors flex flex-col md:flex-row md:items-center justify-between gap-4 ${
-          isDark
-            ? 'bg-bg-card border-white/5 hover:border-primary/30'
-            : 'bg-white border-slate-200 hover:border-primary/30'
-        }`}
+        className={`group p-5 rounded-2xl border transition-colors flex flex-col md:flex-row md:items-center justify-between gap-4 ${isDark
+          ? 'bg-bg-card border-white/5 hover:border-primary/30'
+          : 'bg-white border-slate-200 hover:border-primary/30'
+          }`}
       >
         {/* Left accent bar */}
         <div className="flex items-start gap-4">
-          <div className={`w-1 self-stretch rounded-full shrink-0 ${
-            isVerbal ? 'bg-primary' : 'bg-accent-gold'
-          }`} />
-          
+          <div className={`w-1 self-stretch rounded-full shrink-0 ${isVerbal ? 'bg-primary' : 'bg-accent-gold'
+            }`} />
+
           <div className="space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                isVerbal
-                  ? isDark ? 'bg-primary/10 text-primary-light border border-primary/15' : 'bg-primary/5 text-primary border border-primary/10'
-                  : isDark ? 'bg-accent-gold/10 text-accent-gold border border-accent-gold/15' : 'bg-amber-50 text-amber-600 border border-amber-200'
-              }`}>
+              <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${isVerbal
+                ? isDark ? 'bg-primary/10 text-primary-light border border-primary/15' : 'bg-primary/5 text-primary border border-primary/10'
+                : isDark ? 'bg-accent-gold/10 text-accent-gold border border-accent-gold/15' : 'bg-amber-50 text-amber-600 border border-amber-200'
+                }`}>
                 {m.subject}
               </span>
               <span className={`text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
@@ -367,9 +367,8 @@ export default function DashboardScreen({
               {!isAttempted && m.deadline && (() => {
                 const { diffDays, text } = getDeadlineInfo(m.deadline);
                 return (
-                  <span className={`flex items-center gap-1 ${
-                    diffDays < 0 ? 'text-red-500' : 'text-accent'
-                  }`}>
+                  <span className={`flex items-center gap-1 ${diffDays < 0 ? 'text-red-500' : 'text-accent'
+                    }`}>
                     <Calendar className="w-3.5 h-3.5" />
                     {new Date(m.deadline).toLocaleDateString('vi-VN')} {text}
                   </span>
@@ -382,9 +381,8 @@ export default function DashboardScreen({
         {/* Right: Status or Start */}
         <div className="flex items-center gap-3 ml-5 md:ml-0">
           {moduleLocked ? (
-            <div className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 ${
-              isDark ? 'bg-white/5 text-text-muted' : 'bg-slate-100 text-slate-400'
-            }`}>
+            <div className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 ${isDark ? 'bg-white/5 text-text-muted' : 'bg-slate-100 text-slate-400'
+              }`}>
               <Lock className="w-3.5 h-3.5" />
               Đã khóa
             </div>
@@ -401,9 +399,8 @@ export default function DashboardScreen({
               </div>
               <motion.button
                 onClick={() => onStartModule(m.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
-                  isDark ? 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20' : 'bg-primary/5 hover:bg-primary/10 text-primary border border-primary/20'
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${isDark ? 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20' : 'bg-primary/5 hover:bg-primary/10 text-primary border border-primary/20'
+                  }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.15, ease: [0.25, 1, 0.5, 1] }}
@@ -431,12 +428,11 @@ export default function DashboardScreen({
 
   return (
     <div className="space-y-8">
-      
+
       {/* ── Welcome Banner ── */}
-      <motion.div
-        className={`relative overflow-hidden rounded-2xl border p-8 md:p-10 ${
-          isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
-        }`}
+      <div
+        className={`relative overflow-hidden rounded-3xl border mb-6 ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
+          }`}
         style={{
           backgroundImage: bannerUrl ? `url(${bannerUrl})` : undefined,
           backgroundSize: 'cover',
@@ -444,32 +440,30 @@ export default function DashboardScreen({
         }}
       >
         {bannerUrl && (
-          <div className={`absolute inset-0 z-0 ${isDark ? 'bg-black/60' : 'bg-white/60 backdrop-blur-sm'}`} />
+          <div className={`absolute inset-0 z-0 ${isDark ? 'bg-black/80' : 'bg-white/90 backdrop-blur-sm'}`} />
         )}
-        
+
         {isAdmin && (
           <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
-            <input 
-              type="file" 
-              ref={fileInputRef} 
-              className="hidden" 
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="hidden"
               accept="image/png, image/jpeg, image/webp, image/gif"
               onChange={handleFileChange}
             />
             {bannerUrl && (
               <>
-                <div className={`flex items-center p-1 rounded-lg backdrop-blur-md border transition-all ${
-                  isDark ? 'bg-black/30 border-white/10 text-white' : 'bg-white/50 border-white/20 text-text-dark'
-                }`}>
+                <div className={`flex items-center p-1 rounded-lg backdrop-blur-md border transition-all ${isDark ? 'bg-black/30 border-white/10 text-white' : 'bg-white/50 border-white/20 text-text-dark'
+                  }`}>
                   {['top', 'center', 'bottom'].map(pos => (
                     <button
                       key={pos}
                       onClick={() => handleUpdateBannerAlignment(pos)}
-                      className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${
-                        bannerAlignment === pos 
-                          ? 'bg-primary text-white shadow-sm' 
-                          : 'hover:bg-black/10 dark:hover:bg-white/10'
-                      }`}
+                      className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${bannerAlignment === pos
+                        ? 'bg-primary text-white shadow-sm'
+                        : 'hover:bg-black/10 dark:hover:bg-white/10'
+                        }`}
                       title={`Căn ${pos === 'top' ? 'trên' : pos === 'center' ? 'giữa' : 'dưới'}`}
                     >
                       {pos === 'top' ? 'Trên' : pos === 'center' ? 'Giữa' : 'Dưới'}
@@ -478,11 +472,8 @@ export default function DashboardScreen({
                 </div>
                 <button
                   onClick={handleDeleteBanner}
-                  className={`p-2 rounded-lg backdrop-blur-md border transition-all ${
-                    isDark 
-                      ? 'bg-red-500/20 border-red-500/30 hover:bg-red-500/40 text-red-400' 
-                      : 'bg-red-50 border-red-200 hover:bg-red-100 text-red-500'
-                  }`}
+                  className={`p-1.5 rounded-lg backdrop-blur-md border transition-colors ${isDark ? 'bg-red-500/20 border-red-500/20 text-red-400 hover:bg-red-500/30' : 'bg-red-50 border-red-100 text-red-500 hover:bg-red-100'
+                    }`}
                   title="Xóa ảnh nền"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -490,13 +481,10 @@ export default function DashboardScreen({
               </>
             )}
             <button
-              onClick={handleUploadBannerClick}
+              onClick={() => fileInputRef.current?.click()}
               disabled={isUploadingBanner}
-              className={`p-2 rounded-lg backdrop-blur-md border transition-all ${
-                isDark 
-                  ? 'bg-black/30 border-white/10 hover:bg-black/50 text-white' 
-                  : 'bg-white/50 border-white/20 hover:bg-white/80 text-text-dark'
-              }`}
+              className={`p-1.5 rounded-lg backdrop-blur-md border transition-colors ${isDark ? 'bg-black/30 border-white/10 text-white hover:bg-black/50' : 'bg-white/50 border-white/20 text-text-dark hover:bg-white/80'
+                }`}
               title="Đổi ảnh nền"
             >
               {isUploadingBanner ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />}
@@ -504,32 +492,113 @@ export default function DashboardScreen({
           </div>
         )}
 
-        <div className="relative z-10 max-w-2xl space-y-4">
+        <div className="relative z-10 flex flex-col lg:flex-row items-stretch justify-between">
+          {/* Left Content */}
+          <div className="flex-1 space-y-2 p-5 md:p-6 lg:py-6 lg:pl-10 flex flex-col justify-center">
+            <div className="text-primary font-bold text-xs">
+              Lộ trình học SAT thông minh
+            </div>
+            <h1 className={`text-2xl md:text-3xl lg:text-[34px] font-black font-display tracking-tight leading-[1.15] ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              Hiểu đúng.<br />Luyện chuẩn.<br />
+              <span className="text-primary">Đạt mục tiêu.</span>
+            </h1>
+            <p className={`text-xs max-w-[320px] leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+              Hơn 1500+ học viên đã cải thiện điểm số cùng Mo Digital SAT. Còn bạn thì sao?
+            </p>
+            <div className="flex items-center gap-3 pt-1">
+              <button 
+                onClick={onNavigateToPractice}
+                className="bg-primary hover:bg-primary-light text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center gap-2 transition-colors shadow-sm"
+              >
+                Tiếp tục học <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
 
+          {/* Right Content - Mockup Card (Glass Layer attached to edge) */}
+          <div className="relative w-full max-w-[360px] hidden lg:flex flex-col justify-center perspective-1000">
+            <motion.div 
+              onMouseEnter={() => setIsCardHovered(true)}
+              onMouseLeave={() => setIsCardHovered(false)}
+              initial={{ rotateY: 0, rotateX: 0 }}
+              animate={
+                isCardHovered 
+                  ? { rotateY: [-2, 2, -2], rotateX: [1, -1, 1] } 
+                  : { rotateY: [0, 15, 0, -15, 0], rotateX: [15, 0, -15, 0, 15] }
+              }
+              transition={
+                isCardHovered
+                  ? { duration: 4, repeat: Infinity, ease: 'easeInOut' }
+                  : { duration: 12, repeat: Infinity, ease: 'linear' }
+              }
+              className={`w-full p-4 md:p-5 backdrop-blur-xl border rounded-2xl shadow-[-20px_20px_40px_rgba(0,0,0,0.2)] ${isDark ? 'bg-slate-800/80 border-white/10' : 'bg-white/90 border-slate-100'}`}
+              style={{ transformStyle: 'preserve-3d', transformOrigin: 'center center', position: 'relative' }}
+            >
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h3 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Reading: Main Idea</h3>
+                  <p className={`text-[10px] mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Question 12 of 52</p>
+                </div>
+              </div>
 
-          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black font-display tracking-tight leading-tight ${
-            isDark ? 'text-white' : 'text-text-dark'
-          }`}>
-            Chào mừng, <span className="text-primary">{userName || 'Học viên'}</span>!
-          </h2>
+              <div className="flex gap-4 mb-4">
+                <div className="flex-1 space-y-1.5">
+                  <h4 className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Central Idea</h4>
+                  <p className={`text-[9px] leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                    The passage is primarily about the impact of social media on teenagers, highlighting both the positive and negative effects it can have on their mental health and well-being.
+                  </p>
+                </div>
+                <div className="flex-1 space-y-1.5">
+                  <h4 className={`text-[10px] font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Which best states the main idea?</h4>
+                  <div className="space-y-1.5">
+                    {[
+                      { id: 'A', text: 'Social media is only harmful to teenagers.' },
+                      { id: 'B', text: 'Social media can affect teenagers in both positive and negative ways.', active: true },
+                      { id: 'C', text: 'Teenagers should avoid social media completely.' },
+                      { id: 'D', text: 'Social media is more beneficial than harmful.' }
+                    ].map((opt) => (
+                      <div key={opt.id} className={`flex gap-2 items-center p-1.5 rounded-lg border text-[9px] leading-snug ${
+                        opt.active 
+                          ? 'border-primary bg-primary/5 text-primary font-medium shadow-sm' 
+                          : isDark ? 'border-white/10 text-slate-400' : 'border-slate-200 text-slate-600'
+                      }`}>
+                        <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold shrink-0 ${
+                          opt.active ? 'bg-primary text-white' : isDark ? 'bg-white/10 text-slate-400' : 'bg-slate-100 text-slate-600'
+                        }`}>
+                          {opt.id}
+                        </div>
+                        {opt.text}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
-          <p className={`text-sm md:text-base leading-relaxed max-w-xl ${
-            isDark ? 'text-text-secondary' : 'text-text-dark-secondary'
-          }`}>
-            Lịch thi SAT Digital đang đến gần. Chinh phục thêm các Module bên dưới hoặc ôn tập từ vựng mỗi ngày.
-          </p>
+              <div className={`flex justify-between items-center pt-2.5 border-t ${isDark ? 'border-white/10' : 'border-slate-100'}`}>
+                <div className="flex items-center gap-2">
+                  <span className={`text-[9px] font-bold ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>12 / 52</span>
+                  <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden">
+                    <div className="w-[20%] h-full bg-primary rounded-full"></div>
+                  </div>
+                </div>
+                <div className="text-primary text-[10px] font-bold flex items-center gap-1">
+                  Next <ArrowRight className="w-3 h-3" />
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* ── Metrics Row ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-8">
         {[
           {
             id: 'streak',
             label: 'Chuỗi Ngày Học',
             value: streak,
             suffix: 'ngày',
-            icon: <Flame className="w-5 h-5 animate-burn" fill="currentColor" />,
+            icon: <Flame className="w-5 h-5 animate-burn" strokeWidth={1.5} />,
             color: 'text-orange-500',
             bgColor: isDark ? 'bg-orange-500/10' : 'bg-orange-50/80',
             borderColor: isDark ? 'border-orange-500/20' : 'border-orange-500/20',
@@ -542,7 +611,7 @@ export default function DashboardScreen({
             label: 'Từ Vựng Đã Học',
             value: vocabTotal,
             suffix: `${vocabMastered} mastered`,
-            icon: <BookOpen className="w-5 h-5" />,
+            icon: <BookOpen className="w-5 h-5" strokeWidth={1.5} />,
             color: 'text-accent',
             bgColor: isDark ? 'bg-accent/5' : 'bg-accent/5',
             borderColor: isDark ? 'border-accent/15' : 'border-accent/10',
@@ -555,7 +624,7 @@ export default function DashboardScreen({
             label: 'Hạng Bảng Xếp',
             value: leaderboardRankLabel,
             suffix: userName,
-            icon: <Award className="w-5 h-5" />,
+            icon: <Award className="w-5 h-5" strokeWidth={1.5} />,
             color: 'text-accent-gold',
             bgColor: isDark ? 'bg-accent-gold/5' : 'bg-accent-gold/5',
             borderColor: isDark ? 'border-accent-gold/15' : 'border-accent-gold/10',
@@ -565,7 +634,7 @@ export default function DashboardScreen({
           },
         ].map((card, idx) => {
           const config = cardConfigs[card.id];
-          const bannerUrl = config?.imageTimestamp 
+          const bannerUrl = config?.imageTimestamp
             ? supabase.storage.from('exam-question-images').getPublicUrl(`dashboard/${card.id}-banner.png`).data.publicUrl + `?t=${config.imageTimestamp}`
             : null;
 
@@ -580,11 +649,10 @@ export default function DashboardScreen({
           return (
             <motion.div
               key={idx}
-              className={`p-5 rounded-2xl border transition-all duration-200 relative group overflow-hidden flex flex-col justify-between ${
-                isDark
-                  ? `bg-bg-card ${card.borderColor} hover:border-primary/40`
-                  : `bg-white ${card.borderColor} hover:border-primary/30`
-              } ${card.action ? 'cursor-pointer hover:-translate-y-[2px] hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.05)]' : ''}`}
+              className={`p-5 rounded-2xl border transition-all duration-200 relative group overflow-hidden flex flex-col justify-between ${isDark
+                ? `bg-bg-card ${card.borderColor} hover:border-primary/40`
+                : `bg-white ${card.borderColor} hover:border-primary/30`
+                } ${card.action ? 'cursor-pointer hover:-translate-y-[2px] hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.05)]' : ''}`}
               onClick={() => card.action?.()}
             >
               <div>
@@ -626,17 +694,17 @@ export default function DashboardScreen({
 
                 {/* Banner / Video Thumbnail Section */}
                 {(displayUrl || config?.youtubeUrl || isAdmin) && (
-                  <div 
+                  <div
                     className={`relative rounded-xl overflow-hidden aspect-[21/9] border ${isDark ? 'border-white/5' : 'border-slate-100'} ${displayUrl || config?.youtubeUrl ? '' : 'bg-slate-100 dark:bg-white/5 border-dashed cursor-pointer'} group/video shrink-0`}
                     onClick={(e) => {
-                       if (isAdmin && !displayUrl && !config?.youtubeUrl) {
-                          e.stopPropagation();
-                          setEditingCardId(card.id);
-                          setEditYoutubeUrl(config?.youtubeUrl || '');
-                          setEditImageFile(null);
-                       } else if (!config?.youtubeUrl && card.action) {
-                          card.action();
-                       }
+                      if (isAdmin && !displayUrl && !config?.youtubeUrl) {
+                        e.stopPropagation();
+                        setEditingCardId(card.id);
+                        setEditYoutubeUrl(config?.youtubeUrl || '');
+                        setEditImageFile(null);
+                      } else if (!config?.youtubeUrl && card.action) {
+                        card.action();
+                      }
                     }}
                   >
                     {config?.youtubeUrl ? (
@@ -649,15 +717,15 @@ export default function DashboardScreen({
                         ></iframe>
                       </div>
                     ) : displayUrl ? (
-                      <img 
-                        src={displayUrl} 
-                        alt={card.label} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover/video:scale-105 z-0" 
+                      <img
+                        src={displayUrl}
+                        alt={card.label}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover/video:scale-105 z-0"
                         onError={(e) => {
                           if (e.currentTarget.src.includes('maxresdefault.jpg')) {
-                             e.currentTarget.src = e.currentTarget.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
+                            e.currentTarget.src = e.currentTarget.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
                           } else {
-                             (e.currentTarget as HTMLImageElement).style.opacity = '0';
+                            (e.currentTarget as HTMLImageElement).style.opacity = '0';
                           }
                         }}
                       />
@@ -670,7 +738,7 @@ export default function DashboardScreen({
 
                     {/* Admin Edit Button */}
                     {isAdmin && (
-                      <button 
+                      <button
                         className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 px-2 py-1 bg-black/60 hover:bg-black/90 rounded-lg text-white text-[10px] sm:text-xs font-medium backdrop-blur-md transition-opacity flex items-center gap-1 z-10 cursor-pointer pointer-events-auto ${config?.youtubeUrl ? 'opacity-80 hover:opacity-100' : 'opacity-0 group-hover/video:opacity-100'}`}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -680,7 +748,7 @@ export default function DashboardScreen({
                           setEditImageFile(null);
                         }}
                       >
-                         <Edit2 className="w-3 h-3" /> Sửa
+                        <Edit2 className="w-3 h-3" /> Sửa
                       </button>
                     )}
                   </div>
@@ -714,10 +782,9 @@ export default function DashboardScreen({
 
                 return (
                   <div key={f.id} className={`space-y-3 ${depth > 0 ? 'mt-3 ml-4 border-l-2 border-dashed border-slate-200 dark:border-white/10 pl-4' : ''}`}>
-                    <div 
-                      className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition-all ${
-                        isDark ? 'bg-bg-card border border-white/5 hover:border-white/10' : 'bg-slate-50 border border-slate-200 hover:border-slate-300'
-                      }`}
+                    <div
+                      className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition-all ${isDark ? 'bg-bg-card border border-white/5 hover:border-white/10' : 'bg-slate-50 border border-slate-200 hover:border-slate-300'
+                        }`}
                       onClick={() => toggleFolder(f.id)}
                     >
                       <div className="flex items-center gap-3">
@@ -769,19 +836,17 @@ export default function DashboardScreen({
           {/* VocabHub Widget */}
           <motion.div
             onClick={onNavigateToVocab}
-            className={`group p-6 rounded-2xl border-2 cursor-pointer transition-all duration-200 ${
-              isDark
-                ? 'bg-bg-card border-white/5 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
-                : 'bg-white border-slate-200 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
-            }`}
+            className={`group p-6 rounded-2xl border-2 cursor-pointer transition-all duration-200 ${isDark
+              ? 'bg-bg-card border-white/5 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
+              : 'bg-white border-slate-200 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
+              }`}
           >
             <div className="flex items-start justify-between">
               <div className={`p-3 rounded-xl ${isDark ? 'bg-primary/10 text-primary' : 'bg-primary/5 text-primary'}`}>
                 <BookOpen className="w-6 h-6" />
               </div>
-              <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${
-                isDark ? 'bg-accent/10 text-accent border border-accent/15' : 'bg-emerald-50 text-emerald-600 border border-emerald-200'
-              }`}>
+              <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${isDark ? 'bg-accent/10 text-accent border border-accent/15' : 'bg-emerald-50 text-emerald-600 border border-emerald-200'
+                }`}>
                 VocabHub
               </span>
             </div>
@@ -800,9 +865,8 @@ export default function DashboardScreen({
           </motion.div>
 
           {/* Upcoming Exams Widget */}
-          <div className={`p-5 rounded-2xl border ${
-            isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100'
-          }`}>
+          <div className={`p-5 rounded-2xl border ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100'
+            }`}>
             <div className="flex items-center justify-between mb-4">
               <div className="flex gap-2 items-center">
                 <div className={`p-2 rounded-lg shrink-0 ${isDark ? 'bg-accent/10 text-accent' : 'bg-emerald-50 text-emerald-500'}`}>
@@ -812,13 +876,13 @@ export default function DashboardScreen({
               </div>
               {upcomingExams.length > 1 && (
                 <div className="flex items-center gap-1">
-                  <button 
+                  <button
                     onClick={() => setUpcomingIndex(prev => (prev - 1 + upcomingExams.length) % upcomingExams.length)}
                     className={`p-1 rounded-md transition-colors ${isDark ? 'hover:bg-white/10 text-white' : 'hover:bg-slate-100 text-slate-700'}`}
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
-                  <button 
+                  <button
                     onClick={() => setUpcomingIndex(prev => (prev + 1) % upcomingExams.length)}
                     className={`p-1 rounded-md transition-colors ${isDark ? 'hover:bg-white/10 text-white' : 'hover:bg-slate-100 text-slate-700'}`}
                   >
@@ -839,7 +903,7 @@ export default function DashboardScreen({
                     transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                     className="absolute inset-0 w-full"
                   >
-                    <div 
+                    <div
                       onClick={() => {
                         let locked = isItemLocked(upcomingExams[upcomingIndex].is_locked, upcomingExams[upcomingIndex].allowed_users);
                         if (upcomingExams[upcomingIndex].folder_id) {
@@ -850,12 +914,11 @@ export default function DashboardScreen({
                         }
                         if (!locked) onStartModule(upcomingExams[upcomingIndex].id);
                       }}
-                      className={`h-full p-4 rounded-xl border flex flex-col justify-center transition-colors ${
-                        (isItemLocked(upcomingExams[upcomingIndex].is_locked, upcomingExams[upcomingIndex].allowed_users) || 
+                      className={`h-full p-4 rounded-xl border flex flex-col justify-center transition-colors ${(isItemLocked(upcomingExams[upcomingIndex].is_locked, upcomingExams[upcomingIndex].allowed_users) ||
                         (upcomingExams[upcomingIndex].folder_id && folders.find(f => f.id === upcomingExams[upcomingIndex].folder_id) && isItemLocked(folders.find(f => f.id === upcomingExams[upcomingIndex].folder_id)?.is_locked, folders.find(f => f.id === upcomingExams[upcomingIndex].folder_id)?.allowed_users)))
-                          ? isDark ? 'bg-white/5 border-white/5 cursor-not-allowed' : 'bg-slate-50 border-slate-100 cursor-not-allowed'
-                          : isDark ? 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer' : 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer'
-                      }`}
+                        ? isDark ? 'bg-white/5 border-white/5 cursor-not-allowed' : 'bg-slate-50 border-slate-100 cursor-not-allowed'
+                        : isDark ? 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer' : 'bg-primary/5 border-primary/20 hover:border-primary/40 cursor-pointer'
+                        }`}
                     >
                       <h6 className={`text-sm font-bold truncate ${isDark ? 'text-white' : 'text-text-dark'}`}>
                         {upcomingExams[upcomingIndex].title}
@@ -881,40 +944,39 @@ export default function DashboardScreen({
       <AnimatePresence>
         {editingCardId && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               onClick={() => setEditingCardId(null)}
             />
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className={`relative w-full max-w-md p-6 rounded-2xl shadow-2xl border ${isDark ? 'bg-bg-card border-white/10' : 'bg-white border-slate-200'}`}
             >
               <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Cập nhật Ảnh / Video 
+                Cập nhật Ảnh / Video
               </h3>
-              
+
               <div className="space-y-4">
                 <div>
                   <label className={`block text-sm font-medium mb-1.5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Ảnh đại diện (Thumbnail)
                   </label>
-                  <input 
-                    type="file" 
+                  <input
+                    type="file"
                     accept="image/*"
                     onChange={(e) => setEditImageFile(e.target.files?.[0] || null)}
-                    className={`block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold transition-colors cursor-pointer ${
-                      isDark 
-                        ? 'text-slate-300 file:bg-white/10 file:text-white hover:file:bg-white/20' 
-                        : 'text-slate-700 file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200'
-                    }`}
+                    className={`block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold transition-colors cursor-pointer ${isDark
+                      ? 'text-slate-300 file:bg-white/10 file:text-white hover:file:bg-white/20'
+                      : 'text-slate-700 file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200'
+                      }`}
                   />
                   {editImageFile && (
-                     <p className="text-xs text-emerald-500 mt-2 font-medium">Đã chọn: {editImageFile.name}</p>
+                    <p className="text-xs text-emerald-500 mt-2 font-medium">Đã chọn: {editImageFile.name}</p>
                   )}
                 </div>
 
@@ -922,22 +984,21 @@ export default function DashboardScreen({
                   <label className={`block text-sm font-medium mb-1.5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Link YouTube (Tùy chọn)
                   </label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     placeholder="https://youtube.com/..."
                     value={editYoutubeUrl}
                     onChange={(e) => setEditYoutubeUrl(e.target.value)}
-                    className={`w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
-                      isDark 
-                        ? 'bg-black/20 border-white/10 text-white placeholder:text-slate-500' 
-                        : 'bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400'
-                    }`}
+                    className={`w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-primary/50 transition-all ${isDark
+                      ? 'bg-black/20 border-white/10 text-white placeholder:text-slate-500'
+                      : 'bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400'
+                      }`}
                   />
                 </div>
               </div>
 
               <div className="flex items-center justify-between mt-6 pt-4 border-t border-dashed border-slate-200 dark:border-white/10">
-                <button 
+                <button
                   onClick={handleClearCardConfig}
                   disabled={isSavingCardConfig}
                   className="px-3 py-2 rounded-xl text-sm font-semibold text-red-500 hover:bg-red-50 hover:dark:bg-red-500/10 transition-colors disabled:opacity-50"
@@ -945,13 +1006,13 @@ export default function DashboardScreen({
                   Xóa thiết lập
                 </button>
                 <div className="flex items-center gap-2">
-                  <button 
+                  <button
                     onClick={() => setEditingCardId(null)}
                     className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${isDark ? 'hover:bg-white/10 text-slate-300' : 'hover:bg-slate-100 text-slate-600'}`}
                   >
                     Hủy
                   </button>
-                  <button 
+                  <button
                     onClick={handleSaveCardConfig}
                     disabled={isSavingCardConfig}
                     className="px-5 py-2 rounded-xl text-sm font-bold bg-primary hover:bg-primary-light text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"

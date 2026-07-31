@@ -1109,6 +1109,7 @@ export default function App() {
               onStartModule={handleStartModule}
               onNavigateToVocab={() => navigate('/vocabulary')}
               onNavigateToLeaderboard={() => navigate('/leaderboard')}
+              onNavigateToPractice={() => navigate('/practice_hub')}
             />
           } />
 
