@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { BookOpen, Award, ArrowRight, Play, Clock, BarChart3, CheckCircle2, AlertCircle, Sparkles, TrendingUp, Folder, FolderOpen, ChevronDown, ChevronRight, Layers, Image as ImageIcon, Loader2, Flame, Lock, ChevronLeft, Calendar, Edit2, Settings, Trash2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useTransform, useAnimationFrame } from 'motion/react';
 import { Module, Theme } from '../types';
 import { useAdminRole } from '../hooks/useAdminRole';
 import { supabase } from '../supabaseClient';
@@ -90,6 +90,18 @@ export default function DashboardScreen({
   const [editImageFile, setEditImageFile] = useState<File | null>(null);
   const [isSavingCardConfig, setIsSavingCardConfig] = useState(false);
   const [isCardHovered, setIsCardHovered] = useState(false);
+
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const time = useMotionValue(0);
+  useAnimationFrame((t, delta) => {
+    if (isCardHovered) {
+      time.set(time.get() + delta * 0.1); // Slow down to 10% speed when hovered
+    } else {
+      time.set(time.get() + delta); // Normal speed
+    }
+  });
+  const rotateX = useTransform(time, (t) => Math.sin(t / 2000) * 15);
+  const rotateY = useTransform(time, (t) => Math.cos(t / 2500) * 15);
 
   useEffect(() => {
     const fetchConfigs = async () => {
@@ -431,6 +443,7 @@ export default function DashboardScreen({
 
       {/* ── Welcome Banner ── */}
       <div
+        ref={bannerRef}
         className={`relative overflow-hidden rounded-3xl border mb-6 ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
           }`}
         style={{
@@ -439,9 +452,7 @@ export default function DashboardScreen({
           backgroundPosition: bannerAlignment,
         }}
       >
-        {bannerUrl && (
-          <div className={`absolute inset-0 z-0 ${isDark ? 'bg-black/80' : 'bg-white/90 backdrop-blur-sm'}`} />
-        )}
+        {/* Overlay removed as requested */}
 
         {isAdmin && (
           <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
@@ -494,45 +505,25 @@ export default function DashboardScreen({
 
         <div className="relative z-10 flex flex-col lg:flex-row items-stretch justify-between">
           {/* Left Content */}
-          <div className="flex-1 space-y-2 p-5 md:p-6 lg:py-6 lg:pl-10 flex flex-col justify-center">
-            <div className="text-primary font-bold text-xs">
-              Lộ trình học SAT thông minh
-            </div>
-            <h1 className={`text-2xl md:text-3xl lg:text-[34px] font-black font-display tracking-tight leading-[1.15] ${isDark ? 'text-white' : 'text-slate-900'}`}>
-              Hiểu đúng.<br />Luyện chuẩn.<br />
-              <span className="text-primary">Đạt mục tiêu.</span>
-            </h1>
-            <p className={`text-xs max-w-[320px] leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-              Hơn 1500+ học viên đã cải thiện điểm số cùng Mo Digital SAT. Còn bạn thì sao?
-            </p>
-            <div className="flex items-center gap-3 pt-1">
-              <button 
-                onClick={onNavigateToPractice}
-                className="bg-primary hover:bg-primary-light text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center gap-2 transition-colors shadow-sm"
-              >
-                Tiếp tục học <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
+          <div className="flex-1" />
 
           {/* Right Content - Mockup Card (Glass Layer attached to edge) */}
-          <div className="relative w-full max-w-[360px] hidden lg:flex flex-col justify-center perspective-1000">
+          <div className="relative w-full max-w-[360px] hidden lg:flex flex-col justify-center perspective-1000 z-30">
             <motion.div 
               onMouseEnter={() => setIsCardHovered(true)}
               onMouseLeave={() => setIsCardHovered(false)}
-              initial={{ rotateY: 0, rotateX: 0 }}
-              animate={
-                isCardHovered 
-                  ? { rotateY: [-2, 2, -2], rotateX: [1, -1, 1] } 
-                  : { rotateY: [0, 15, 0, -15, 0], rotateX: [15, 0, -15, 0, 15] }
-              }
-              transition={
-                isCardHovered
-                  ? { duration: 4, repeat: Infinity, ease: 'easeInOut' }
-                  : { duration: 12, repeat: Infinity, ease: 'linear' }
-              }
-              className={`w-full p-4 md:p-5 backdrop-blur-xl border rounded-2xl shadow-[-20px_20px_40px_rgba(0,0,0,0.2)] ${isDark ? 'bg-slate-800/80 border-white/10' : 'bg-white/90 border-slate-100'}`}
-              style={{ transformStyle: 'preserve-3d', transformOrigin: 'center center', position: 'relative' }}
+              style={{ 
+                rotateX, 
+                rotateY, 
+                transformStyle: 'preserve-3d', 
+                transformOrigin: 'center center', 
+                position: 'relative' 
+              }}
+              drag
+              dragConstraints={bannerRef}
+              dragElastic={0.1}
+              whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
+              className={`w-full p-4 md:p-5 backdrop-blur-xl border rounded-2xl shadow-[-20px_20px_40px_rgba(0,0,0,0.2)] cursor-grab active:cursor-grabbing ${isDark ? 'bg-slate-800/80 border-white/10' : 'bg-white/90 border-slate-100'}`}
             >
               <div className="flex justify-between items-start mb-3">
                 <div>
@@ -581,7 +572,15 @@ export default function DashboardScreen({
                     <div className="w-[20%] h-full bg-primary rounded-full"></div>
                   </div>
                 </div>
-                <div className="text-primary text-[10px] font-bold flex items-center gap-1">
+                <div 
+                  className="text-primary text-[10px] font-bold flex items-center gap-1 cursor-pointer hover:text-primary-light transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigateToPractice?.();
+                  }}
+                  onPointerDownCapture={(e) => e.stopPropagation()}
+                  title="Practice Mode (Easter Egg)"
+                >
                   Next <ArrowRight className="w-3 h-3" />
                 </div>
               </div>

@@ -614,7 +614,7 @@ export default function ActiveTestScreen({
           {moduleTitle}
         </div>
         
-        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none flex-1 justify-start px-4">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none flex-1 justify-start px-4 py-2 -my-2">
           {questions.map((q, idx) => {
             const isCurrent = idx === currentIdx;
             const isAnswered = !!userAnswers[q.id];
