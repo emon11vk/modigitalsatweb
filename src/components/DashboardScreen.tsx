@@ -294,7 +294,7 @@ export default function DashboardScreen({
           clearTimeout(idleTimeout);
           idleTimeout = setTimeout(() => {
             if (!isDestroyed) $el.ripples('pause');
-          }, 2500); // 2.5s idle timeout
+          }, 6000); // 6s idle timeout để sóng kịp tan hết
         };
         
         bannerRef.current.addEventListener('mousemove', handleMouseMove);
@@ -303,13 +303,13 @@ export default function DashboardScreen({
           clearTimeout(idleTimeout);
           idleTimeout = setTimeout(() => {
             if (!isDestroyed) $el.ripples('pause');
-          }, 2500);
+          }, 6000);
         });
 
         // Initial idle timeout
         idleTimeout = setTimeout(() => {
           if (!isDestroyed) $el.ripples('pause');
-        }, 2500);
+        }, 6000);
 
       } catch (e) {
         console.error("Water ripple init failed", e);
