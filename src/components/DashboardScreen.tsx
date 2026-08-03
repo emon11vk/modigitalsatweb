@@ -367,6 +367,9 @@ export default function DashboardScreen({
 
         if (bannerRef.current && !hero1YoutubeUrl) {
           $el1 = $(bannerRef.current);
+          if (hero1LoadedUrl) {
+            bannerRef.current.style.backgroundImage = `url("${hero1LoadedUrl}")`;
+          }
           try {
              if (hero1LoadedUrl) {
                 $el1.ripples(config);
@@ -384,6 +387,9 @@ export default function DashboardScreen({
 
         if (bannerRef2.current && !hero2YoutubeUrl) {
           $el2 = $(bannerRef2.current);
+          if (hero2LoadedUrl) {
+            bannerRef2.current.style.backgroundImage = `url("${hero2LoadedUrl}")`;
+          }
           try {
              if (hero2LoadedUrl) {
                 // If there's an uploaded image, rely on CSS background-image like Slide 1
