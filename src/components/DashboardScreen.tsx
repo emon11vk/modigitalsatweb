@@ -229,6 +229,8 @@ export default function DashboardScreen({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isUploadingBanner, setIsUploadingBanner] = useState(false);
   const [bannerUrl, setBannerUrl] = useState<string | null>(null);
+  const [hero1LoadedUrl, setHero1LoadedUrl] = useState<string | null>(null);
+  const [hero2LoadedUrl, setHero2LoadedUrl] = useState<string | null>(null);
   const [bannerAlignment, setBannerAlignment] = useState<string>('center');
   const [bannerHeight, setBannerHeight] = useState<number | null>(null);
   const currentHeightRef = useRef<number | null>(null);
@@ -271,6 +273,45 @@ export default function DashboardScreen({
   const hero2BannerUrl = hero2Config?.imageTimestamp 
     ? supabase.storage.from('exam-question-images').getPublicUrl('dashboard/hero2-banner.png').data.publicUrl + `?t=${hero2Config.imageTimestamp}` 
     : null;
+
+  useEffect(() => {
+    if (hero1BannerUrl) {
+      const img = new Image();
+      img.onload = () => setHero1LoadedUrl(hero1BannerUrl);
+      img.onerror = () => {
+        // Retry once after 1s if CDN is delayed
+        setTimeout(() => {
+           const retryImg = new Image();
+           retryImg.onload = () => setHero1LoadedUrl(hero1BannerUrl);
+           retryImg.src = hero1BannerUrl;
+        }, 1000);
+      };
+      img.src = hero1BannerUrl;
+    } else {
+      setHero1LoadedUrl(null);
+    }
+  }, [hero1BannerUrl]);
+
+  useEffect(() => {
+    if (hero2BannerUrl) {
+      const img = new Image();
+      img.onload = () => setHero2LoadedUrl(hero2BannerUrl);
+      img.onerror = () => {
+        // Retry once after 1s if CDN is delayed
+        setTimeout(() => {
+           const retryImg = new Image();
+           retryImg.onload = () => setHero2LoadedUrl(hero2BannerUrl);
+           retryImg.src = hero2BannerUrl;
+        }, 1000);
+      };
+      img.src = hero2BannerUrl;
+    } else {
+      setHero2LoadedUrl(null);
+    }
+  }, [hero2BannerUrl]);
+
+    return () => clearInterval(interval);
+  }, [isHeroHovered]);
 
   // -- WATER RIPPLE EFFECT --
   useEffect(() => {
@@ -324,19 +365,27 @@ export default function DashboardScreen({
              ctx.fillStyle = isDark ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)';
              ctx.fillRect(Math.random() * 1200, Math.random() * 400, 1, 1);
           }
-          return canvas.toDataURL('image/png');
-        };
-
-        if (bannerRef.current && hero1BannerUrl && !hero1YoutubeUrl) {
+        if (bannerRef.current && !hero1YoutubeUrl) {
           $el1 = $(bannerRef.current);
-          $el1.ripples(config);
-          $el1.ripples('pause');
+          try {
+             if (hero1LoadedUrl) {
+                $el1.ripples(config);
+             } else {
+                $el1.ripples({
+                  ...config,
+                  imageUrl: createGradientDataUrl()
+                });
+             }
+             $el1.ripples('pause');
+          } catch(e) {
+             console.error('Slide 1 ripple error', e);
+          }
         }
 
         if (bannerRef2.current && !hero2YoutubeUrl) {
           $el2 = $(bannerRef2.current);
           try {
-             if (hero2BannerUrl) {
+             if (hero2LoadedUrl) {
                 // If there's an uploaded image, rely on CSS background-image like Slide 1
                 $el2.ripples(config);
              } else {
@@ -404,7 +453,7 @@ export default function DashboardScreen({
         try { $el2.ripples('destroy'); } catch(e) {}
       }
     };
-  }, [hero1BannerUrl, hero1YoutubeUrl, hero2BannerUrl, hero2YoutubeUrl, isDark]);
+  }, [hero1LoadedUrl, hero1YoutubeUrl, hero2LoadedUrl, hero2YoutubeUrl, isDark]);
 
   const saveBannerConfig = async (pos: string, height: number | null) => {
     try {
@@ -647,7 +696,7 @@ export default function DashboardScreen({
             ref={bannerRef}
             className="w-full shrink-0 h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[400px] relative overflow-hidden group/slide1"
             style={{
-              backgroundImage: hero1YoutubeUrl ? undefined : (hero1BannerUrl ? `url(${hero1BannerUrl})` : undefined),
+              backgroundImage: hero1YoutubeUrl ? undefined : (hero1LoadedUrl ? `url(${hero1LoadedUrl})` : undefined),
               backgroundSize: 'cover',
               backgroundPosition: bannerAlignment,
             }}
@@ -725,10 +774,10 @@ export default function DashboardScreen({
           {/* Slide 2 */}
           <div 
             ref={bannerRef2}
-            className={`w-full shrink-0 h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[400px] flex flex-col items-center justify-center relative overflow-hidden group/slide2 ${!hero2BannerUrl ? (isDark ? 'bg-[#0f1115]' : 'bg-[#f8f9fa]') : ''}`}
+            className={`w-full shrink-0 h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[400px] flex flex-col items-center justify-center relative overflow-hidden group/slide2 ${!hero2LoadedUrl ? (isDark ? 'bg-[#0f1115]' : 'bg-[#f8f9fa]') : ''}`}
             style={{
-              backgroundImage: hero2YoutubeUrl ? undefined : (hero2BannerUrl ? `url(${hero2BannerUrl})` : (isDark ? 'radial-gradient(circle at top right, rgba(108,99,255,0.05), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.05), transparent 50%)' : 'radial-gradient(circle at top right, rgba(108,99,255,0.03), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.03), transparent 50%)')),
-              backgroundSize: (hero2BannerUrl && !hero2YoutubeUrl) ? 'cover' : undefined,
+              backgroundImage: hero2YoutubeUrl ? undefined : (hero2LoadedUrl ? `url(${hero2LoadedUrl})` : (isDark ? 'radial-gradient(circle at top right, rgba(108,99,255,0.05), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.05), transparent 50%)' : 'radial-gradient(circle at top right, rgba(108,99,255,0.03), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.03), transparent 50%)')),
+              backgroundSize: (hero2LoadedUrl && !hero2YoutubeUrl) ? 'cover' : undefined,
               backgroundPosition: 'center',
             }}
           >
