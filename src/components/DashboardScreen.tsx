@@ -796,36 +796,7 @@ export default function DashboardScreen({
             Tiện ích
           </h3>
 
-          {/* VocabHub Widget */}
-          <motion.div
-            onClick={onNavigateToVocab}
-            className={`group p-6 rounded-2xl border-2 cursor-pointer transition-all duration-200 ${isDark
-              ? 'bg-bg-card border-white/5 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
-              : 'bg-white border-slate-200 hover:border-primary/40 hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.1)]'
-              }`}
-          >
-            <div className="flex items-start justify-between">
-              <div className={`p-3 rounded-xl ${isDark ? 'bg-primary/10 text-primary' : 'bg-primary/5 text-primary'}`}>
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${isDark ? 'bg-accent/10 text-accent border border-accent/15' : 'bg-emerald-50 text-emerald-600 border border-emerald-200'
-                }`}>
-                VocabHub
-              </span>
-            </div>
 
-            <h4 className={`text-base font-bold mt-4 mb-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
-              Học Flashcard Từ Vựng
-            </h4>
-            <p className={`text-xs leading-relaxed mb-4 ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
-              250+ từ vựng SAT cốt lõi. Thẻ ghi nhớ thông minh với spaced repetition.
-            </p>
-
-            <div className={`flex items-center gap-1.5 text-xs font-semibold text-primary transition-transform group-hover:translate-x-1`}>
-              <span>Học ngay</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </motion.div>
 
           {/* Upcoming Exams Widget */}
           <div className={`p-5 rounded-2xl border ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-100'
