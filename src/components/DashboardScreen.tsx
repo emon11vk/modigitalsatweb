@@ -249,6 +249,87 @@ export default function DashboardScreen({
     fetchBannerConfig();
   }, []);
 
+  // -- WATER RIPPLE EFFECT --
+  useEffect(() => {
+    if (!bannerUrl || !bannerRef.current) return;
+
+    let $el: any;
+    let observer: IntersectionObserver;
+    let idleTimeout: NodeJS.Timeout;
+    let isDestroyed = false;
+
+    const initRipples = async () => {
+      try {
+        const $ = (await import('jquery')).default;
+        await import('jquery.ripples');
+        
+        if (isDestroyed || !bannerRef.current) return;
+
+        $el = $(bannerRef.current);
+        $el.ripples({
+          resolution: 256,
+          dropRadius: 20,
+          perturbance: 0.02,
+          interactive: true,
+          crossOrigin: 'anonymous'
+        });
+
+        // 1. Intersection Observer
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              $el.ripples('play');
+            } else {
+              $el.ripples('pause');
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        observer.observe(bannerRef.current);
+
+        // 2. Idle Timeout
+        const handleMouseMove = () => {
+          if (isDestroyed) return;
+          $el.ripples('play');
+          clearTimeout(idleTimeout);
+          idleTimeout = setTimeout(() => {
+            if (!isDestroyed) $el.ripples('pause');
+          }, 2500); // 2.5s idle timeout
+        };
+        
+        bannerRef.current.addEventListener('mousemove', handleMouseMove);
+        bannerRef.current.addEventListener('mouseleave', () => {
+          // Không pause ngay lập tức để sóng có thời gian tan biến mượt mà (fade out)
+          clearTimeout(idleTimeout);
+          idleTimeout = setTimeout(() => {
+            if (!isDestroyed) $el.ripples('pause');
+          }, 2500);
+        });
+
+        // Initial idle timeout
+        idleTimeout = setTimeout(() => {
+          if (!isDestroyed) $el.ripples('pause');
+        }, 2500);
+
+      } catch (e) {
+        console.error("Water ripple init failed", e);
+      }
+    };
+
+    initRipples();
+
+    return () => {
+      isDestroyed = true;
+      if (observer) observer.disconnect();
+      clearTimeout(idleTimeout);
+      if ($el) {
+        try {
+          $el.ripples('destroy');
+        } catch(e) {}
+      }
+    };
+  }, [bannerUrl]);
+
   const saveBannerConfig = async (pos: string, height: number | null) => {
     try {
       const blob = new Blob([JSON.stringify({ alignment: pos, height })], { type: 'image/png' });
@@ -658,7 +739,7 @@ export default function DashboardScreen({
                 {/* Banner / Video Thumbnail Section */}
                 {(displayUrl || config?.youtubeUrl || isAdmin) && (
                   <div
-                    className={`relative rounded-xl overflow-hidden aspect-[21/9] border ${isDark ? 'border-white/5' : 'border-slate-100'} ${displayUrl || config?.youtubeUrl ? '' : 'bg-slate-100 dark:bg-white/5 border-dashed cursor-pointer'} group/video shrink-0`}
+                    className={`relative rounded-lg overflow-hidden aspect-[21/9] border ${isDark ? 'border-white/5' : 'border-slate-100'} ${displayUrl || config?.youtubeUrl ? '' : 'bg-slate-100 dark:bg-white/5 border-dashed cursor-pointer'} group/video shrink-0`}
                     onClick={(e) => {
                       if (isAdmin && !displayUrl && !config?.youtubeUrl) {
                         e.stopPropagation();
@@ -671,7 +752,7 @@ export default function DashboardScreen({
                     }}
                   >
                     {config?.youtubeUrl ? (
-                      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden rounded-xl">
+                      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden rounded-lg">
                         <iframe
                           className="absolute top-1/2 left-1/2 w-[130%] aspect-video max-w-none -translate-x-1/2 -translate-y-1/2"
                           src={`https://www.youtube.com/embed/${getYoutubeId(config.youtubeUrl)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeId(config.youtubeUrl)}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3`}

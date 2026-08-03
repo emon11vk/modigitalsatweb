@@ -1,0 +1,612 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+45
+CONTINUE
+
+---PAGE_BREAK---
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+46
+CONTINUE
+
+---PAGE_BREAK---
+The function  is defined by 
+. What is the -
+intercept of the graph of 
+ in the 
+-plane?
+A)
+B)
+C)
+D)
+Which shaded region represents the solutions to the inequality
+?
+A)
+Graph A
+B)
+Graph B
+C)
+Graph C
+D)
+Graph D
+1
+f
+f(x) = 3x −
+​5
+1
+y
+y = f(x)
+xy
+(0, −
+​)
+5
+1
+(0, −3)
+(0, 3)
+(0, 5)
+2
+y < −60x + 50
+PDF version from learn.ronansat.com. Happy practicing!
+47
+CONTINUE
+
+---PAGE_BREAK---
+Antonia has $130 in an account. Each year she expects to have
+2.5% more money in the account than she had the previous year.
+Which of the following models best describes how Antonia
+expects the money in her account to change over time?
+A)
+Decreasing exponential
+B)
+Decreasing linear
+C)
+Increasing exponential
+D)
+Increasing linear
+The measure of an angle is 
+ radians, where  is a
+constant. What is the measure of this angle, in degrees?
+A)
+B)
+C)
+D)
+3
+4
+(51)(
+​)π
+2
+k
+k
+(51)
+​
+(360
+k )
+(51)(180k)
+(51)
+​
+(180
+k )
+(51)(90k)
+PDF version from learn.ronansat.com. Happy practicing!
+48
+CONTINUE
+
+---PAGE_BREAK---
+What is an equation of the graph shown?
+A)
+B)
+C)
+D)
+The function 
+ gives the estimated air
+temperature 
+, in degrees Celsius (
+), surrounding a hot air
+balloon at an altitude of  meters. If the estimated air temperature
+surrounding the hot air balloon is 
+, which of the following is
+closest to the altitude, in meters, of the hot air balloon?
+A)
+B)
+C)
+D)
+5
+7x −8y = 189
+8x −7y = 189
+49x −56y = 189
+56x −49y = 189
+6
+T(x) =
+​
+1, 000
+20, 000 −6.5x
+T(x)
+C
+∘
+x
+15 C
+∘
+20
+769
+1,333
+5,385
+PDF version from learn.ronansat.com. Happy practicing!
+49
+CONTINUE
+
+---PAGE_BREAK---
+What is one of the solutions to the given equation?
+A)
+B)
+C)
+D)
+A right triangle has sides of length 
+, 
+, and 
+ units.
+What is the area of the triangle, in square units?
+A)
+B)
+C)
+D)
+7
+x −
+2
+5x + 3 = 0
+​
+2
+5 +
+​
+13
+​
+2
+5 +
+​
+37
+​
+2
+−5 +
+​
+13
+​
+2
+−5 +
+​
+37
+8
+3
+​2 5
+​2
+​
+68
+8
+​ +
+2
+​
+68
+30
+​
+68
+30
+15
+PDF version from learn.ronansat.com. Happy practicing!
+50
+CONTINUE
+
+---PAGE_BREAK---
+Red team
+Green team
+Total
+Sixth grade
+47
+42
+89
+Seventh grade
+49
+36
+85
+Eighth grade
+38
+52
+90
+Total
+134
+130
+264
+For a school competition, each student in the sixth, seventh, and
+eighth grades is assigned to either the red team or the green team.
+The table shows the distribution of grade and team for the
+students in the school.
+A student from the competition will be selected at random. What
+is the probability of selecting a student who is in the sixth or
+seventh grade, given that the student is on the green team?
+(Express your answer as a decimal or fraction, not as a percent.)
+Data set X
+15
+15
+16
+17
+17
+18
+18
+19
+19
+Data set Y
+1
+1
+2
+3
+3
+4
+4
+5
+5
+The values in data sets X and Y are shown in the table.
+Which of the following statements must be true?
+I. The median of data set X is equal to the median of data set Y.
+II. The standard deviation of data set X is equal to the standard
+deviation of data set Y.
+A)
+I and II
+B)
+I only
+C)
+II only
+D)
+Neither I nor II
+9
+10
+PDF version from learn.ronansat.com. Happy practicing!
+51
+CONTINUE
+
+---PAGE_BREAK---
+The function  is defined by 
+. For any positive
+integer , the value of 
+ is 
+ less than the value of 
+.
+What is the value of ?
+A)
+B)
+C)
+D)
+The function  is defined by the given equation, where  and  are
+integer constants. If 
+, 
+, and 
+, what
+is one possible value of 
+?
+11
+f
+f(n) = 53(0.15)n
+n
+f(n)
+p%
+f(n −1)
+p
+15
+47
+53
+85
+12
+f(x) = (x −a)(x −b)
+f
+a
+b
+f(17) > 0 f(20) < 0
+f(23) > 0
+a + b
+PDF version from learn.ronansat.com. Happy practicing!
+52
+CONTINUE
+
+---PAGE_BREAK---
+In a collection of items, 
+ are red, 
+ are green, 
+ are
+blue, and 
+ are yellow. If there are 
+ green items, how many
+blue items are in the collection?
+A)
+B)
+C)
+D)
+The number of bacteria in a growth medium is expected to
+increase by 
+ every  hours during a period of observation.
+The number of bacteria in the growth medium was estimated to
+be 
+ when the period of observation began. Which function
+ gives the expected number of bacteria in this growth medium 
+hours after the period of observation began?
+A)
+B)
+C)
+D)
+13
+10%
+25%
+35%
+30%
+40
+14
+16
+48
+56
+14
+170%
+2
+5, 000
+P
+t
+P(t) = 5,000(1.70)
+​2
+t
+P(t) = 5,000(1.70)2t
+P(t) = 5,000(2.70)
+​2
+t
+P(t) = 5,000(2.70)2t
+PDF version from learn.ronansat.com. Happy practicing!
+53
+CONTINUE
+
+---PAGE_BREAK---
+The daily precipitation total at a weather station is recorded by a
+weather instrument each day. The daily precipitation total
+recorded on Monday was 
+ millimeters. The daily
+precipitation total recorded on Tuesday was a 
+ increase
+from the daily precipitation total recorded on Monday. What was
+the daily precipitation total, in millimeters, recorded on Tuesday?
+A)
+B)
+C)
+D)
+One gallon of paint will cover 
+ square feet of a surface. A room
+has a total wall area of  square feet. Which equation represents
+the total amount of paint , in gallons, needed to paint the walls
+of the room twice?
+A)
+B)
+C)
+D)
+15
+19.00
+134.00%
+8.12
+14.18
+25.46
+44.46
+16
+310
+w
+P
+P =
+​
+155
+w
+P = 620w
+P =
+​
+310
+w
+P = 310w
+PDF version from learn.ronansat.com. Happy practicing!
+54
+CONTINUE
+
+---PAGE_BREAK---
+The function  is defined by 
+. What is the
+minimum value of 
+?
+A)
+B)
+C)
+D)
+In the given equation,  is an integer constant. The given equation
+has no real solution. What is the largest possible value of ?
+17
+f(x) = 3x +
+2
+48x + 193
+g
+g(x) = f(x + 7)
+g(x)
+−15
+−8
+1
+8
+18
+r +
+2
+qr = 8r −97
+q
+q
+PDF version from learn.ronansat.com. Happy practicing!
+55
+CONTINUE
+
+---PAGE_BREAK---
+In triangle 
+, the measure of angle  is 
+, the measure of
+angle 
+ is 
+, and the measure of angle  is 
+, where 
+and  are constants. Which of the following must be true?
+A)
+B)
+C)
+D)
+There is not enough information to compare the values of
+ and 
+The graph of a system of two linear equations is shown. If a third
+equation, 
+ is added to this system, how many
+solutions will the resulting system of three equations have?
+A)
+Zero
+B)
+Exactly one
+C)
+Exactly two
+D)
+Infinitely many
+19
+JKL
+J
+(90b)∘
+K
+(69a)∘
+L
+(21a)∘
+a
+b
+cos L > sin K
+cos L = sin K
+cos L < sin K
+cos L
+sin K
+20
+x + 2y = −8
+PDF version from learn.ronansat.com. Happy practicing!
+56
+CONTINUE
+
+---PAGE_BREAK---
+The function
+models the population of a certain town each year from 1957
+through 1972, where  is the number of years after 1957. Which
+of the following is the best interpretation of "
+ is
+approximately equal to 617" in this context?
+A)
+The population of the town is estimated to be approximately
+617 in 1962.
+B)
+The population of the town is estimated to be approximately
+5 greater in 1962 than in 1957.
+C)
+The population of the town is estimated to be approximately
+5 times greater in 1962 than in 1957.
+D)
+The population of the town is estimated to increase by
+approximately 617 every 5 years between 1957 and 1972.
+The floor of a library has an area of 9,375 square feet. An architect
+creates a scale model of the floor of the library, where the length
+of each side of the model is 
+ times the length of the
+corresponding side of the floor of the actual library.
+What is the area, in square feet, of the scale model?
+21
+P(x) = 581(1.012)x
+x
+P(5)
+22
+​
+25
+1
+PDF version from learn.ronansat.com. Happy practicing!
+57
+CONTINUE
+
+---PAGE_BREAK---
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+58
+
+---PAGE_BREAK---
+RONAN SAT
+ANSWER KEY & SCORING
+How to Get Your Answers
+This booklet does not print an answer key. Your answers, your score, and a full step-by-step
+explanation for every question live online at learn.ronansat.com. Pick whichever method below fits
+how you took the test.
+METHOD 1 · FASTEST
+Scan your paper answer sheet
+Best if you took the test on paper.
+1. Finish the test and bubble in every answer on
+your answer sheet.
+2. Open the camera app on your phone, or any QR-
+code scanner.
+3. Point it at the QR code on the front cover of this
+booklet, or the one below.
+4. Tap the link that appears — it opens the scanner
+on learn.ronansat.com. Sign in, or create a free
+account, if asked.
+5. Hold the answer sheet flat inside the on-screen
+frame and capture it.
+6. We grade it automatically and save your result.
+Open Review to see correct answers and
+explanations.
+Same code as the cover
+Scan with your phone camera
+to open the scanner and grade
+your answer sheet.
+METHOD 2 · ON SCREEN
+Take the test online
+Best if you would rather answer on screen and be
+graded instantly.
+1. Go to learn.ronansat.com and sign in, or create
+a free account.
+2. Open this test from your Library on the
+dashboard.
+3. Pick a module — Reading and Writing, or Math
+— and work through it on screen.
+4. Submit the module. Your score, the correct
+answers, and a full explanation for every question
+appear right away.
+Tip: Save your result either way to track your progress over time and target the skills you miss most.
+PDF version from learn.ronansat.com. Happy practicing!
+59

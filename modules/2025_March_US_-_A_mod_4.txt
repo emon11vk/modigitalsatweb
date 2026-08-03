@@ -1,0 +1,673 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+47
+CONTINUE
+
+---PAGE_BREAK---
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+48
+CONTINUE
+
+---PAGE_BREAK---
+The function  is defined by 
+. What is the y-
+intercept of the graph of 
+ in the xy-plane?
+A)
+B)
+C)
+D)
+Which expression is equivalent to 
+, where 
+?
+A)
+B)
+C)
+D)
+1
+f
+f(x) = 6x −
+​8
+1
+y = f(x)
+(0, −
+​)
+8
+1
+(0, −6)
+(0, 6)
+(0, 8)
+2
+(57y)
+​2
+1
+y > 1
+57 ⋅
+​y
+​ ⋅
+57 y
+​
+57y
+​
+(57y)2
+PDF version from learn.ronansat.com. Happy practicing!
+49
+CONTINUE
+
+---PAGE_BREAK---
+Luis has $150 in an account. Each year he expects to have 1.1%
+more money in the account than he had the previous year. Which
+of the following models best describes how Luis expects the
+money in his account to change over time?
+A)
+Decreasing exponential
+B)
+Decreasing linear
+C)
+Increasing exponential
+D)
+Increasing linear
+The function 
+ is defined by 
+, and the function 
+is defined by 
+. What is the value of 
+?
+3
+4
+m
+m(x) = 5x + 3
+p
+p(x) = 3 −x
+2m(3) −p(3)
+PDF version from learn.ronansat.com. Happy practicing!
+50
+CONTINUE
+
+---PAGE_BREAK---
+The number of bacteria in a liquid medium doubles every day.
+There are 
+ bacteria in the liquid medium at the start of an
+observation. Which of the following represents the number of
+bacteria, , in the liquid medium  days after the start of the
+observation?
+A)
+B)
+C)
+D)
+The solution to the given system of equations is 
+. What is the
+value of 
+?
+A)
+6
+B)
+24
+C)
+30
+D)
+36
+5
+48, 000
+y
+t
+y =
+​(48,000)
+2
+1
+t
+y = 2(48,000)t
+y = 48,000
+​
+(2
+1)
+t
+y = 48,000(2)t
+6
+y =
+​ +
+4
+x
+6
+y = −
+​ +
+4
+x
+30
+(x, y)
+2y
+PDF version from learn.ronansat.com. Happy practicing!
+51
+CONTINUE
+
+---PAGE_BREAK---
+The functions  and  are defined by the equations shown. Which
+of the following is equivalent to 
+?
+A)
+B)
+C)
+D)
+In right triangle 
+, angles  and 
+ are acute, side 
+ has a
+length of 
+, and 
+. What is the length of side 
+,
+rounded to the nearest tenth?
+A)
+4.8
+B)
+5.8
+C)
+93.2
+D)
+542.9
+7
+f(x) = (2x −3)(x + 8)
+g(x) = 3(6x −9)
+f
+g
+f(x) −g(x)
+2x +
+2
+7x −15
+2x −
+2
+5x + 3
+2x −
+2
+x −3
+2x +
+2
+31x −51
+8
+ABC
+A
+B
+AC
+23.3
+tan(B) =
+​4
+1
+BC
+PDF version from learn.ronansat.com. Happy practicing!
+52
+CONTINUE
+
+---PAGE_BREAK---
+What are all solutions to the given equation?
+A)
+B)
+ and 
+C)
+ and 
+D)
+There is no solution.
+While walking on a path, Maksim stopped at a water fountain.
+The graph shows the total distance , in meters, Maksim had
+walked on the path  minutes after leaving the water fountain.
+What distance, in meters, did Maksim walk on the path in the 
+minutes after he left the water fountain?
+9
+−3∣5x + 7∣+ 9 = −12
+0
+0
+−
+​5
+6
+0
+−
+​
+5
+14
+10
+y
+x
+10
+PDF version from learn.ronansat.com. Happy practicing!
+53
+CONTINUE
+
+---PAGE_BREAK---
+The positive number  is 
+ of the sum of the positive
+numbers  and , and  is 
+ of . What percent of  is ?
+A)
+B)
+C)
+D)
+The shaded region shown represents the solutions to 
+, where  and  are constants. What is the value of 
+?
+A)
+6
+B)
+4
+C)
+-4
+D)
+-5
+11
+a
+2, 106%
+b
+c
+b
+81%
+c
+b
+a
+4,706%
+2,600%
+38.12%
+21.87%
+12
+rx + ty ≥
+−65
+r
+t
+r + t
+PDF version from learn.ronansat.com. Happy practicing!
+54
+CONTINUE
+
+---PAGE_BREAK---
+In the xy-plane, line  and line  are perpendicular and intersect
+at the point 
+. If line  is defined by the equation 
+, where 
+ and  are constants and 
+, which of the following
+points lies on line ?
+A)
+B)
+C)
+D)
+The histogram summarizes a data set of the weights, in pounds, of
+ salmon. If an additional weight of 
+ pounds is added to the
+original data set to create a new data set of 
+ weights, which of
+the following measures must be less for the new data set than for
+the original data set?
+I. The median
+II. The mean
+A)
+I only
+B)
+II only
+C)
+I and II
+D)
+Neither I nor II
+13
+k
+ℓ
+(7, 5)
+k
+y = mx + b
+m
+b
+m > 1
+ℓ
+(8,  5 −
+​)
+m
+1
+(8,  5 +
+​)
+m
+1
+(8,  5 −m)
+(8,  5 + m)
+14
+14
+32
+15
+PDF version from learn.ronansat.com. Happy practicing!
+55
+CONTINUE
+
+---PAGE_BREAK---
+For the function , for every increase of  in the value of , the
+value of 
+ increases by a factor of , where  is a constant.
+Which of the following equivalent forms of function  displays
+the value of  as the base or the coefficient?
+A)
+B)
+C)
+D)
+To investigate the effect of magnesium supplementation on the
+sleep quality of adults, a researcher selected 
+ adults at random
+from a community center to participate in a study. The researcher
+first measured the sleep efficiency of each participant. Each
+participant was then randomly assigned to take a magnesium
+supplement or a placebo each day for  weeks. At the end of the 
+weeks, the researcher measured the sleep efficiency of all
+participants again and found that the magnesium supplement
+caused statistically significant improved sleep quality for the
+adults at the community center. What feature of this study
+allowed the researcher to conclude that the magnesium
+supplement caused the improved sleep quality?
+A)
+There were more than 
+ participants in the study.
+B)
+The participants were selected at random from the
+community center.
+C)
+The sleep efficiency of each participant was measured again
+at the end of  weeks.
+D)
+Each participant was randomly assigned to take a
+magnesium supplement or a placebo.
+15
+f
+2
+x
+f(x)
+c
+c
+f
+c
+f(x) = 42(2)6x
+f(x) = 42(8)2x
+f(x) = 42(64)x
+f(x) = 42(4,096)
+​2
+x
+16
+190
+6
+6
+100
+6
+PDF version from learn.ronansat.com. Happy practicing!
+56
+CONTINUE
+
+---PAGE_BREAK---
+A circle in the xy-plane has its center at 
+. Line  is tangent
+to this circle at the point 
+. Which of the following points
+also lies on line ?
+A)
+B)
+C)
+D)
+The function  is defined by 
+, where , , and
+ are constants. The graph of the function  in the xy-plane,
+where 
+, does not intersect the line 
+. If 
+, what is the value of 
+?
+17
+(−1, 1)
+t
+(7, −6)
+t
+(0,
+​)
+7
+8
+(6, 9)
+(14, 2)
+(15, 1)
+18
+f
+f(x) =
+​
+2x + c
+x + ax + b
+2
+a b
+c
+f
+y = f(x)
+x = 4
+f(5) =
+f(6) = 0
+a + b + c
+PDF version from learn.ronansat.com. Happy practicing!
+57
+CONTINUE
+
+---PAGE_BREAK---
+If 
+, what is the value of 
+?
+In the given equation,  is an integer constant. If the equation has
+two distinct real solutions, what is the greatest possible value of ?
+19
+4x + 7 = 15
+8x −3
+20
+kx −
+2
+16x = 24x −
+2
+8
+k
+k
+PDF version from learn.ronansat.com. Happy practicing!
+58
+CONTINUE
+
+---PAGE_BREAK---
+Right rectangular prism X is similar to right rectangular prism Y.
+The surface area of right rectangular prism X is 
+ square
+centimeters (
+), and the surface area of right rectangular prism
+Y is 
+. The volume of right rectangular prism Y is 
+cubic centimeters (
+). What is the sum of the volumes, in 
+,
+of right rectangular prism X and right rectangular prism Y?
+In triangle 
+, the measure of angle 
+ is 
+ and 
+ is an
+altitude of the triangle. The length of 
+ is 
+ and the length of
+ is 
+ greater than the length of 
+. What is the value of 
+?
+A)
+B)
+C)
+D)
+21
+56
+cm2
+896 cm2
+1, 536
+cm3
+cm3
+22
+ABC
+B
+90∘
+BD
+AB
+24
+AC
+13
+AB
+​
+BD
+BC
+​
+24
+13
+​
+37
+24
+​
+24
+37
+​
+13
+24
+PDF version from learn.ronansat.com. Happy practicing!
+59
+CONTINUE
+
+---PAGE_BREAK---
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+60
+
+---PAGE_BREAK---
+No Test Material On This Page
+
+---PAGE_BREAK---
+Reading and Writing
+1 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important reading and writing skills. Read
+each passage and question carefully, and then choose the best answer to the question based on
+the passage(s).
+While researching a topic, a student has taken the following notes:
+• Felipe Posada (pseudonym The Invisible Realm) is a New York
+City–based artist who specializes in the form of art known as
+surrealist collage.
+• Manifestation of the unconscious mind is a central aspect of
+surrealist collage.
+• Irrational juxtaposition of disparate elements is a central aspect
+of surrealist collage.
+• Posada's Vagabonds irrationally juxtaposes images of a young
+couple, a boat made of leaves, and a vast celestial space.
+• Posada: "My art is a journey through the invisible realm—a
+space where intuition, memories, visions, and dreams are free to
+take visual form."
+The student wants to provide a specific example of irrational
+juxtaposition in surrealist collage. Which choice most effectively
+uses relevant information from the notes to accomplish this goal?
+A)
+Images of a young couple, a boat made of leaves, and a vast
+celestial space are juxtaposed irrationally in the surrealist
+collage piece Vagabonds by artist Felipe Posada.
+B)
+The irrational juxtaposition of disparate elements in Felipe
+Posada's art invokes "a space where intuition, memories,
+visions, and dreams are free to take visual form."
+C)
+Surrealist collage, such as Felipe Posada's Vagabonds,
+manifests the unconscious mind and irrationally juxtaposes
+disparate elements.
+D)
+Vagabonds by artist Felipe Posada is an example of surrealist
+collage, a form in which irrational juxtaposition is a central
+aspect.
+1
+PDF version from learn.ronansat.com. Happy practicing!
+61
+CONTINUE
+
+---PAGE_BREAK---
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+62
+
+---PAGE_BREAK---
+RONAN SAT
+ANSWER KEY & SCORING
+How to Get Your Answers
+This booklet does not print an answer key. Your answers, your score, and a full step-by-step
+explanation for every question live online at learn.ronansat.com. Pick whichever method below fits
+how you took the test.
+METHOD 1 · FASTEST
+Scan your paper answer sheet
+Best if you took the test on paper.
+1. Finish the test and bubble in every answer on
+your answer sheet.
+2. Open the camera app on your phone, or any QR-
+code scanner.
+3. Point it at the QR code on the front cover of this
+booklet, or the one below.
+4. Tap the link that appears — it opens the scanner
+on learn.ronansat.com. Sign in, or create a free
+account, if asked.
+5. Hold the answer sheet flat inside the on-screen
+frame and capture it.
+6. We grade it automatically and save your result.
+Open Review to see correct answers and
+explanations.
+Same code as the cover
+Scan with your phone camera
+to open the scanner and grade
+your answer sheet.
+METHOD 2 · ON SCREEN
+Take the test online
+Best if you would rather answer on screen and be
+graded instantly.
+1. Go to learn.ronansat.com and sign in, or create
+a free account.
+2. Open this test from your Library on the
+dashboard.
+3. Pick a module — Reading and Writing, or Math
+— and work through it on screen.
+4. Submit the module. Your score, the correct
+answers, and a full explanation for every question
+appear right away.
+Tip: Save your result either way to track your progress over time and target the skills you miss most.
+PDF version from learn.ronansat.com. Happy practicing!
+63

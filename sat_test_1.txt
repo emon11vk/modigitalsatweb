@@ -1,0 +1,16 @@
+==Start of PDF==
+The following is a <SYSTEM_MESSAGE> not actually sent by the user. It is provided by the system as important information to pay attention to.
+
+<SYSTEM_MESSAGE>
+[Message] timestamp=2026-07-19T14:12:12Z sender=534711e6-d5f8-496c-806a-8fe10932c8ef/task-68 priority=MESSAGE_PRIORITY_HIGH content=Task id "534711e6-d5f8-496c-806a-8fe10932c8ef/task-68" finished with result:
+
+				The command completed successfully.
+				Output:
+				Found ==Start of PDF== in step type: PLANNER_RESPONSE
+
+Keys in data: ['step_index', 'source', 'type', 'status', 'created_at', 'thinking', 'tool_calls']
+
+
+
+Log: file:///C:/Users/ADMIN/.gemini/antigravity/brain/534711e6-d5f8-496c-806a-8fe10932c8ef/.system_generated/tasks/task-68.log
+</SYSTEM_MESSAGE>

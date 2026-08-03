@@ -1,0 +1,302 @@
+[
+  {
+    "position": 1,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) It states the reasons why Adam and his great-uncle Richard decide to sleep on the ship rather than finding lodging on land.",
+      "B) It showcases how Adam’s flexibility and consideration strengthen his relationship with his great-uncle Richard.",
+      "C) It describes why Adam and his great-uncle Richard are excited for their upcoming journey on the ship.",
+      "D) It contrasts great-uncle Richard’s wary first impressions of Adam with his ultimate affection toward him."
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "The following text is from Bram Stoker’s 1911 novel The Lair of the White Worm. Adam is meeting his great-uncle Richard at a port. The meeting so auspiciously begun proceeded well. Adam, seeing that the old man was interested in the novelty of the ship, suggested that he should stay the night on board, and that he would himself be ready to start at any hour and go anywhere that the other suggested. This affectionate willingness to fall in with his own plans quite won the old man’s heart. He warmly accepted the invitation, and at once they became not only on terms of affectionate relationship, but almost like old friends."
+  },
+  {
+    "position": 2,
+    "question_text": "Which choice best describes the function of the underlined sentence in the text as a whole?",
+    "choices": [
+      "A) It identifies a scientific belief that Tharp and Heezen showed to be wrong.",
+      "B) It describes the design of Tharp and Heezen’s experiment.",
+      "C) It emphasizes a disagreement between Tharp and Heezen.",
+      "D) It presents data to support a claim that Tharp and Heezen made."
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "In the 1950s, scientists didn’t know much about the ocean floor. Many scientists at the time believed that the ocean floor was mostly flat. But geologist Marie Tharp and her research partner, Bruce Heezen, proved that this idea was wrong. Using sonar data collected from the Atlantic Ocean, Tharp and Heezen showed that the floor was filled with canyons, mountains, and valleys."
+  },
+  {
+    "position": 3,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) To show how Ormes’s Torchy Brown inspired other Black women to write comic strips in the 1930s",
+      "B) To illustrate how the subjects Ormes addressed in her comic strips changed over the course of her career",
+      "C) To give an example of how Ormes presented the experiences of Black Americans in her comic strips",
+      "D) To claim that several characters in Torchy Brown were based on people that Ormes knew personally"
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Jackie Ormes’s Torchy Brown in Dixie to Harlem (1937–38) was the first comic strip by a Black woman to appear in a widely read newspaper. The strip tells the story of Torchy, a young woman who leaves Mississippi to become a performer in New York City. Torchy’s story reflects the experience of the Great Migration (1910–1970), when millions of Black Americans left the South in search of opportunities in other parts of the United States. Torchy Brown thus shows how Ormes used comics to comment humorously on issues affecting Black Americans, which she continued to do throughout her career."
+  },
+  {
+    "position": 4,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) To give a reason why the narrator is excited to start middle school",
+      "B) To describe an activity that the narrator finds amusing",
+      "C) To explain a problem that the narrator has overcome",
+      "D) To discuss a movie that the narrator saw in a theater"
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "The following text is adapted from Jason Reynolds’s 2016 novel Ghost. The narrator, who is in middle school, is at a bus stop. I just go there [to the bus stop] to look at the people working out. See, the gym across the street has this big window—like the whole wall is a window—and they have those machines that make you feel like you walking up steps and so everybody just be facing the bus stop, looking all crazy like they’re about to pass out. And trust me, there ain’t nothing funnier than that. So I check that out for a little while like it’s some kind of movie: The About to Pass Out Show, starring stair-stepper person one through ten."
+  },
+  {
+    "position": 5,
+    "question_text": "Which choice best describes the function of the underlined portion in the text as a whole?",
+    "choices": [
+      "A) It presents Melisa Diaz’s remarks about difficulties that her team encountered.",
+      "B) It introduces a scientific term that is used in the discussion that follows.",
+      "C) It emphasizes the surprising nature of the findings that are presented.",
+      "D) It explains the difference between two kinds of geological material."
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Streams and rivers carry soil and rocks from one location to another. But there is another way for these geological materials to move. Scientists call this process “aeolian transport.” In aeolian transport, winds move small particles of soil or rock over potentially great distances. Geologist Melisa Diaz and her team studied dust in Antarctica to find out if it was moved by aeolian transport. They discovered that the dust matched geological material in Australia. Aeolian transport had carried it from one continent to another, across thousands of miles of open ocean."
+  },
+  {
+    "position": 6,
+    "question_text": "Which choice best describes the overall structure of the text?",
+    "choices": [
+      "A) The text identifies a complex problem, then presents examples of unsuccessful attempts to solve that problem.",
+      "B) The text summarizes a debate among researchers, then gives reasons for supporting one side in that debate.",
+      "C) The text describes a general situation, then illustrates that situation with specific examples.",
+      "D) The text discusses several notable individuals, then explains commonly overlooked differences between those individuals."
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Many films from the early 1900s have been lost. These losses include several films by the first wave of Black women filmmakers. We know about these lost movies only from small pieces of evidence. For example, an advertisement for Jennie Louise Touissant Welcome’s documentary Doing Their Bit still exists. There’s a reference in a magazine to Tressie Souders’s film A Woman’s Error. And Maria P. Williams’s The Flames of Wrath is mentioned in a letter and a newspaper article, and one image from the movie was discovered in the 1990s."
+  },
+  {
+    "position": 7,
+    "question_text": "Which choice best describes the overall structure of the text?",
+    "choices": [
+      "A) It introduces an artist and then explains some common characteristics of well-known paintings by that artist.",
+      "B) It explains a specific painting technique and then provides examples of artists who use the technique.",
+      "C) It describes a famous painting and then compares it to a lesser-known painting from the same time period.",
+      "D) It gives an opinion on an artist and then suggests multiple reasons why the artist’s work has been largely overlooked."
+    ],
+    "correct_answer": "A",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Hiroshi Senju is known worldwide for his paintings of waterfalls. These paintings are large and tend not to show the entire waterfall. Instead, Senju focuses on just the point where the falling water reaches the pool below, keeping the top of the waterfall out of view. While Senju’s paintings are rooted in art movements originating in the United States, the artist uses traditional Japanese techniques and materials that make his work instantly recognizable."
+  },
+  {
+    "position": 8,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) It explains why audiences prefer some kinds of music over others.",
+      "B) It discusses the development of a dance form.",
+      "C) It describes how to play a musical instrument.",
+      "D) It emphasizes the popularity of a famous dancer."
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Jazz tap is a dance form that was first developed in African American communities. Jazz tap was heavily influenced by jazz music, which became widely popular in the United States in the 1920s. Tap dancers were inspired by jazz music’s quick rhythms and by the way jazz musicians would make up melodies as they played. As jazz music continued to develop in the 1930s and 1940s, jazz tap evolved with it. Because of jazz music’s influence, jazz tap quickly developed into a dance form that was very different from earlier kinds of tap dance."
+  },
+  {
+    "position": 9,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) To consider how the repetitiveness inherent in human life can be both rewarding and challenging",
+      "B) To question whether activities completed at one time of day are more memorable than those completed at another time of day",
+      "C) To refute the idea that joy is a more commonly experienced emotion than sadness is",
+      "D) To demonstrate how the experiences of individuals relate to the experiences of their communities"
+    ],
+    "correct_answer": "A",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "The following text is from the 1924 poem “Cycle” by D’Arcy McNickle, who was a citizen of the Confederated Salish and Kootenai Tribes. There shall be new roads wending, A new beating of the drum— Men’s eyes shall have fresh seeing, Grey lives reprise their span— But under the new sun’s being, Completing what night began, There’ll be the same backs bending, The same sad feet shall drum— When this night finds its ending And day shall have come....."
+  },
+  {
+    "position": 10,
+    "question_text": "Which choice best states the function of the underlined portion in the text as a whole?",
+    "choices": [
+      "A) It illustrates a change in Tule geese’s usual flight behavior.",
+      "B) It suggests an explanation for why Tule geese breed in Alaska.",
+      "C) It describes part of the Tule geese’s typical winter migration journey.",
+      "D) It compares Tule geese to other birds that migrate south for the winter."
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Generally it takes Tule geese about four days to migrate south for the winter. From their summer breeding grounds in Cook Inlet, Alaska, the birds begin by flying over the Gulf of Alaska, keeping about 100 miles from the Canadian shore. They pause to rest on the Pacific Ocean, then fly toward Summer Lake, Oregon, before finally arriving at their winter destination of Sacramento Valley, California. In 2020, however, it took the geese over twice as long to make their way from Cook Inlet to Sacramento Valley. According to researchers, the reason was airborne pollutants."
+  },
+  {
+    "position": 11,
+    "question_text": "Which choice best describes the function of the underlined sentence in the text as a whole?",
+    "choices": [
+      "A) It urges contemporary musicians to adopt the unique sound of Keyboard Fantasies.",
+      "B) It responds to criticism of Keyboard Fantasies by some younger musicians.",
+      "C) It offers examples of younger musicians whose work has been impacted by Keyboard Fantasies.",
+      "D) It contrasts Keyboard Fantasies with the recordings of two younger musicians."
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "For his 1986 album Keyboard Fantasies, Beverly Glenn-Copeland wrote songs grounded in traditional soul and folk music, then accompanied them with futuristic synthesizer arrangements featuring ambient sounds and complex rhythms. The result was so strange, so unprecedented, that the album attracted little attention when first released. In recent years, however, a younger generation of musicians has embraced the stylistic experimentation of Keyboard Fantasies. Alternative R&B musicians Blood Orange and Moses Sumney, among other contemporary recording artists, cite the album as an influence."
+  },
+  {
+    "position": 12,
+    "question_text": "Which choice best describes the main purpose of the text?",
+    "choices": [
+      "A) To convey the narrator’s experience of observing and making sense of differences between two cultures she embraces",
+      "B) To establish the narrator’s hope of forming connections with new companions by sharing customs she learned as a child",
+      "C) To reveal the narrator’s recognition that she is hesitant to ask questions about certain aspects of a culture she is newly encountering",
+      "D) To emphasize the narrator’s wonder at discovering that the physical distance between two countries is greater than she had expected"
+    ],
+    "correct_answer": "A",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "The following text is adapted from Etsu Inagaki Sugimoto’s 1925 memoir A Daughter of the Samurai. As a young woman, Sugimoto moved from feudal Japan to the United States. The standards of my own and my adopted country differed so widely in some ways, and my love for both lands was so sincere, that sometimes I had an odd feeling of standing upon a cloud in space, and gazing with measuring eyes upon two separate worlds. At first I was continually trying to explain, by Japanese standards, all the queer things that came every day before my surprised eyes; for no one seemed to know the origin or significance of even the most familiar customs, nor why they existed and were followed."
+  },
+  {
+    "position": 13,
+    "question_text": "Which choice best describes the overall structure of the text?",
+    "choices": [
+      "A) The text outlines a debate between two authors of children’s literature and then traces how that debate shaped theories on early childhood education.",
+      "B) The text summarizes an argument about how children’s literature should be evaluated and then discusses a contrasting view on that subject.",
+      "C) The text lists the literary characteristics that are common to many classics of children’s literature and then indicates the narrative subjects that are most appropriate for young children.",
+      "D) The text presents a philosophy about what material is most suitable for children’s literature and then describes a book influenced by that philosophy."
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "In the Here and Now Storybook (1921), educator Lucy Sprague Mitchell advanced the then controversial idea that books for very young children should imitate how they use language, since toddlers, who cannot yet grasp narrative or abstract ideas, seek reassurance in verbal repetition and naming. The most enduring example of this idea is Margaret Wise Brown’s 1947 picture book Goodnight Moon, in which a young rabbit names the objects in his room as he drifts off to sleep. Scholars note that the book’s emphasis on repetition, rhythm, and nonsense rhyme speaks directly to Mitchell’s influence."
+  },
+  {
+    "position": 14,
+    "question_text": "Which choice best describes the function of the underlined portion in the text as a whole?",
+    "choices": [
+      "A) It portrays the surroundings as an imposing and intimidating scene.",
+      "B) It characterizes the sea’s waves as a relentless and enduring force.",
+      "C) It conveys the speaker’s ambivalence about the natural world.",
+      "D) It draws a contrast between the sea’s waves and the speaker’s thoughts."
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "The following text is from Charlotte Forten Grimké’s 1888 poem “At Newport.” Oh, deep delight to watch the gladsome waves Exultant leap upon the rugged rocks; Ever repulsed, yet ever rushing on— Filled with a life that will not know defeat; To see the glorious hues of sky and sea. The distant snowy sails, glide spirit like, Into an unknown world, to feel the sweet Enchantment of the sea thrill all the soul, Clearing the clouded brain, making the heart Leap joyous as it own bright, singing waves!"
+  },
+  {
+    "position": 15,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) To compare Spanish-language newspapers published in Texas today with ones published there during the late 1800s",
+      "B) To explain that Spanish-language newspapers thrived in Texas and especially in El Paso during the late 1800s",
+      "C) To argue that Spanish-language newspapers published in El Paso influenced the ones published in San Antonio during the late 1800s",
+      "D) To explain why Spanish-language newspapers published in Texas were so popular in Mexico during the late 1800s"
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "In the late 1800s, Spanish-language newspapers flourished in cities across Texas. San Antonio alone produced eleven newspapers in Spanish between 1890 and 1900. But El Paso surpassed all other cities in the state. This city produced twenty-two newspapers in Spanish during that period. El Paso is located on the border with Mexico and has always had a large population of Spanish speakers. Thus, it is unsurprising that this city became such a rich site for Spanish-language journalism."
+  },
+  {
+    "position": 16,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) To argue for the significance of new findings amid an ongoing debate among researchers",
+      "B) To discuss the advantages and disadvantages of the method used in an experiment",
+      "C) To summarize two competing hypotheses and a major finding associated with each one",
+      "D) To describe an experiment whose results cast doubt on an established hypothesis"
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Researchers have long hypothesized that woolly mammoths were hunted to extinction in North America by humans using spears with grooved tips known as Clovis points. One anthropologist set out to test this hypothesis. Using a mechanical spear-thrower, he launched spears with Clovis points into mounds of clay—substitutes for the animals’ large bodies. The projectiles generally penetrated only a few inches into the clay, an amount insufficient to have harmed most woolly mammoths. This led the anthropologist to conclude that hunters using spears with Clovis points likely weren’t the principal drivers of the extinction."
+  },
+  {
+    "position": 17,
+    "question_text": "Which choice best describes the overall structure of the text?",
+    "choices": [
+      "A) It presents a theoretical concept, illustrates how the name of the concept has changed, and shows how the name has entered common usage.",
+      "B) It introduces a respected researcher, describes an aspect of his work, and suggests why the work is historically significant.",
+      "C) It names the company where an important mathematician worked, details the mathematician’s career at the company, and provides an example of the recognition he received there.",
+      "D) It mentions a paper, offers a summary of the paper’s findings, and presents a researcher’s commentary on the paper."
+    ],
+    "correct_answer": "B",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Mathematician Claude Shannon is widely regarded as a foundational figure in information theory. His most important paper, “A Mathematical Theory of Communication,” published in 1948 when he was employed at Bell Labs, utilized a concept called a “binary digit” (shortened to “bit”) to measure the amount of information in any signal and determine the fastest rate at which information could be transmitted while still being reliably decipherable. Robert Gallagher, one of Shannon’s colleagues, said that the bit was “[Shannon’s] discovery, and from it the whole communications revolution has sprung.”"
+  },
+  {
+    "position": 18,
+    "question_text": "Which choice best states the function of the underlined sentence in the overall structure of the text?",
+    "choices": [
+      "A) To summarize the results of the team’s analysis",
+      "B) To present a specific example that illustrates the study’s findings",
+      "C) To explain part of the methodology used in the team’s study",
+      "D) To call out a challenge the team faced in conducting its analysis"
+    ],
+    "correct_answer": "A",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "A study by a team including finance professor Madhu Veeraraghavan suggests that exposure to sunshine during the workday can lead to overly optimistic behavior. Using data spanning from 1994 to 2010 for a set of US companies, the team compared over 29,000 annual earnings forecasts to the actual earnings later reported by those companies. The team found that the greater the exposure to sunshine at work in the two weeks before a manager submitted an earnings forecast, the more the manager’s forecast exceeded what the company actually earned that year."
+  },
+  {
+    "position": 19,
+    "question_text": "Which choice best describes the function of the underlined sentence in the text as a whole?",
+    "choices": [
+      "A) It provides an extended description of a location that John likes to visit.",
+      "B) It reveals that some residents of John’s town are confused by his behavior.",
+      "C) It illustrates the uniqueness of John’s imagination compared to the imaginations of other children.",
+      "D) It suggests that John longs to experience a larger life outside the Florida woods."
+    ],
+    "correct_answer": "D",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "The following text is adapted from Zora Neale Hurston’s 1921 short story “John Redding Goes to Sea.” John is a child who lives in a town in the woods. Perhaps ten-year-old John was puzzling to the folk there in the Florida woods for he was an imaginative child and fond of day-dreams. The St. John River flowed a scarce three hundred feet from his back door. On its banks at this point grow numerous palms, luxuriant magnolias and bay trees. On the bosom of the stream float millions of delicately colored hyacinths. [John Redding] loved to wander down to the water’s edge, and, casting in dry twigs, watch them sail away down stream to Jacksonville, the sea, the wide world and [he] wanted to follow them."
+  },
+  {
+    "position": 20,
+    "question_text": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "A) To indicate the specific tarweed ancestor of all plants that grow on the Hawaiian Islands and explain why the plants have such varied physical characteristics",
+      "B) To describe the specific habitat where Dubautia carrii are found and identify other plants that share a common ancestor with them",
+      "C) To describe the silversword alliance and explain how the plant family became so varied",
+      "D) To advance the claim that all plants on the Hawaiian Islands are part of the silversword alliance and list possible ancestors of the plants that make up the alliance"
+    ],
+    "correct_answer": "C",
+    "type": "multiple_choice",
+    "explanation": null,
+    "image_url": null,
+    "passage": "Dubautia carrii is a species in a family of plants known collectively as the silversword alliance, all of which grow only on the Hawaiian Islands. Members of this alliance exhibit an extraordinary range of phenotypes, with some species maturing into vines and others into shrubs and trees. All species in the alliance descended from a single ancestral tarweed plant that arrived on the islands around 5 million years ago. The tarweed’s descendants diversified into distinct species as they adapted to live in the wide variety of habitats found on the Hawaiian Islands."
+  }
+]

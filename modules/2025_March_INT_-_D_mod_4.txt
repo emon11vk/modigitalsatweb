@@ -1,0 +1,608 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+46
+CONTINUE
+
+---PAGE_BREAK---
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+47
+CONTINUE
+
+---PAGE_BREAK---
+In one week in 2017, a technician earned a total of 
+ by
+working at her regular job and at a second job doing part-time
+work. The equation 
+ represents this situation,
+where  is the number of hours worked at her regular job and  is
+the number of hours worked at her second job. Which of the
+following is the best interpretation of 
+ in this context?
+A)
+The amount, in dollars, the technician earned for each hour
+she worked at her regular job
+B)
+The amount, in dollars, the technician earned for each hour
+she worked at her second job
+C)
+The number of hours the technician worked in one week at
+her regular job
+D)
+The number of hours the technician worked in one week at
+her second job
+A marine biologist uses a linear model to estimate the weight of a
+blue whale after it is born. The model estimates that a certain blue
+whale weighs 
+ pounds at birth and gains 
+ pounds per
+hour, for 
+ hours, after it is born. Based on this model, what is
+the estimated weight, in pounds, of this blue whale  hours after it
+is born?
+1
+$716
+20h + 14c = 716
+h
+c
+20
+2
+5, 710
+10.0
+120
+7
+PDF version from learn.ronansat.com. Happy practicing!
+48
+CONTINUE
+
+---PAGE_BREAK---
+The given equation relates the positive numbers , , and .
+Which equation correctly expresses  in terms of  and ?
+A)
+B)
+C)
+D)
+A rectangle has a length that is 
+ times its width. The function
+ represents this situation, where  is the area, in
+square feet, of the rectangle and 
+. Which of the following is
+the best interpretation of 
+ in this context?
+A)
+The length of the rectangle, in feet
+B)
+The area of the rectangle, in square feet
+C)
+The difference between the length and the width of the
+rectangle, in feet
+D)
+The width of the rectangle, in feet
+3
+q −34r = s
+q r
+s
+q
+r
+s
+q = s −34r
+q = s + 34r
+q =
+​
+34r
+s
+q = −
+​
+34r
+s
+4
+49
+y = (49w)(w)
+y
+y > 0
+49w
+PDF version from learn.ronansat.com. Happy practicing!
+49
+CONTINUE
+
+---PAGE_BREAK---
+If 
+, what is the value of 
+?
+A)
+B)
+C)
+D)
+The solution to the given system of equations is 
+. What is the
+value of 
+?
+A)
+B)
+C)
+D)
+5
+5(x + 4) = 4(x + 4) + 39
+x + 4
+−4
+35
+39
+43
+6
+​
+​
+x + 10
+x −10
+= −9y + 5
+= 9y + 7
+(x, y)
+2x
+−
+​
+9
+11
+6
+12
+24
+PDF version from learn.ronansat.com. Happy practicing!
+50
+CONTINUE
+
+---PAGE_BREAK---
+In  days, a polar bear ate 
+ pounds of fat. Which equation
+describes the amount of fat , in pounds, the polar bear ate in
+these  days?
+A)
+B)
+C)
+D)
+To study fluctuations in leaf water potential, samples of wood
+were taken from 
+ trees and cut in the shape of a cube. The
+length of the edge of one of these cubes is 
+ centimeters. This
+cube has a density of 
+ grams per cubic centimeter. What is
+the mass of this cube, in grams?
+7
+8
+34.4
+y
+8
+y = 8
+y =
+​
+8
+34.4
+y = 34.4
+y = 34.4 + 8
+8
+25
+3.000
+0.220
+PDF version from learn.ronansat.com. Happy practicing!
+51
+CONTINUE
+
+---PAGE_BREAK---
+What are all solutions to the given equation?
+A)
+B)
+ and 
+C)
+ and 
+D)
+There is no solution.
+For the linear function , 
+, where  is a constant,
+, and the slope of the graph of 
+ in the xy-plane
+is . For the linear function , 
+ and 
+. What is
+the slope of the graph of 
+ in the xy-plane?
+A)
+B)
+C)
+D)
+9
+−4∣5x + 6∣+ 4 = −20
+0
+0
+−
+​5
+2
+0
+−
+​
+5
+12
+10
+p p(c) = −2
+c
+p(4) = 38
+y = p(x)
+8
+t t(c) = −3
+t(5) = 51
+y = t(x)
+−1
+6
+8
+9
+PDF version from learn.ronansat.com. Happy practicing!
+52
+CONTINUE
+
+---PAGE_BREAK---
+The shaded region shown represents the solutions to 
+, where  and  are constants. What is the value of 
+?
+A)
+B)
+C)
+D)
+The edge length, in inches, of cube Y is 
+ the edge length, in
+inches, of cube X. The surface area, in square inches, of cube Y is
+ times the surface area, in square inches, of cube X. What is the
+value of ?
+A)
+B)
+C)
+D)
+11
+rx + ty ≥
+−36
+r
+t
+r + t
+4
+2
+−2
+−4
+12
+​
+86
+3
+n
+n
+​
+7, 396
+9
+​
+3, 096
+27
+​
+86
+3
+​
+43
+9
+PDF version from learn.ronansat.com. Happy practicing!
+53
+CONTINUE
+
+---PAGE_BREAK---
+The graph of 
+ is shown. Which equation defines
+function ?
+A)
+B)
+C)
+D)
+Which expression is equivalent to 
+?
+A)
+B)
+C)
+D)
+13
+y = f(x) + 2
+f
+f(x) = −6 +
+x
+1
+f(x) = −6 +
+x
+3
+f(x) = −6 +
+x
+4
+f(x) = −6 +
+x
+5
+14
+15(x + 10)
+15x + 10
+15x + 150
+15x + 25
+15x + 5
+PDF version from learn.ronansat.com. Happy practicing!
+54
+CONTINUE
+
+---PAGE_BREAK---
+A square map has a side length of 
+ inches, and  inch on the
+map represents an actual distance of 
+ miles. A smaller version
+of the same map is printed as a square with the side length 
+shorter than the side length of the previous map. On the smaller
+map, which of the following is closest to the actual distance, in
+miles, represented by  inch?
+A)
+B)
+C)
+D)
+In the given system of equations,  is a constant. The system has
+two distinct real solutions. Which of the following could be the
+value of ?
+A)
+B)
+C)
+D)
+15
+35
+1
+13
+70%
+1
+3.90
+7.65
+24.50
+43.33
+16
+​
+​
+y
+y
+= x −c
+= −6(x −12)2
+c
+c
+7
+11
+​
+24
+287
+17
+PDF version from learn.ronansat.com. Happy practicing!
+55
+CONTINUE
+
+---PAGE_BREAK---
+In triangle 
+, the measure of angle  is 
+ and 
+. In
+triangle 
+, the measure of angle  is 
+ and 
+.
+Which additional piece of information is sufficient to prove that
+triangle 
+ is similar to triangle 
+?
+A)
+ and 
+.
+B)
+ and 
+.
+C)
+The measures of angle 
+ and angle  are 
+ and 
+,
+respectively.
+D)
+The measures of angle 
+ and angle  are 
+ and 
+,
+respectively.
+The perimeter of an equilateral triangle is 
+ centimeters. The
+three vertices of the triangle lie on a circle. The radius of the circle
+is 
+ centimeters. What is the value of ?
+17
+ABC
+A
+58∘
+AC = 30
+PQR
+P
+58∘
+PR = 120
+ABC
+PQR
+AB = 35
+PQ = 35
+AB = 35
+QR = 140
+B
+R
+34∘
+88∘
+B
+Q
+58∘
+34∘
+18
+876
+w
+​3
+w
+PDF version from learn.ronansat.com. Happy practicing!
+56
+CONTINUE
+
+---PAGE_BREAK---
+The function  is defined by 
+, where 
+. What
+is the product of 
+ and 
+?
+The function  is defined by 
+, where , , and  are
+constants, and  and  are integers. If 
+ and 
+,
+what is the value of 
+?
+19
+f
+f(x) =
+​ −
+a
+∣x∣
+16
+a < 0
+f(17a)
+f(8a)
+20
+f
+f(x) = ab
+​n
+x
+a b
+n
+b
+n
+f(5) = 7
+f(8) = 189
+f(10)
+PDF version from learn.ronansat.com. Happy practicing!
+57
+CONTINUE
+
+---PAGE_BREAK---
+A circle has center , and points 
+ and 
+ lie on the circle. Line
+segments 
+ and 
+ are tangent to the circle at points 
+ and
+, respectively. If the radius of the circle is 
+ millimeters and
+the perimeter of quadrilateral 
+ is 
+ millimeters, what
+is the distance, in millimeters, between points  and 
+?
+In the given equation,  is a positive integer. The equation has no
+real solution. What is the largest possible value of ?
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+21
+G
+M
+N
+MH
+NH
+M
+N
+247
+GMHN
+5, 174
+G
+H
+22
+−8x +
+2
+bx −98 = 0
+b
+b
+PDF version from learn.ronansat.com. Happy practicing!
+58
+
+---PAGE_BREAK---
+RONAN SAT
+ANSWER KEY & SCORING
+How to Get Your Answers
+This booklet does not print an answer key. Your answers, your score, and a full step-by-step
+explanation for every question live online at learn.ronansat.com. Pick whichever method below fits
+how you took the test.
+METHOD 1 · FASTEST
+Scan your paper answer sheet
+Best if you took the test on paper.
+1. Finish the test and bubble in every answer on
+your answer sheet.
+2. Open the camera app on your phone, or any QR-
+code scanner.
+3. Point it at the QR code on the front cover of this
+booklet, or the one below.
+4. Tap the link that appears — it opens the scanner
+on learn.ronansat.com. Sign in, or create a free
+account, if asked.
+5. Hold the answer sheet flat inside the on-screen
+frame and capture it.
+6. We grade it automatically and save your result.
+Open Review to see correct answers and
+explanations.
+Same code as the cover
+Scan with your phone camera
+to open the scanner and grade
+your answer sheet.
+METHOD 2 · ON SCREEN
+Take the test online
+Best if you would rather answer on screen and be
+graded instantly.
+1. Go to learn.ronansat.com and sign in, or create
+a free account.
+2. Open this test from your Library on the
+dashboard.
+3. Pick a module — Reading and Writing, or Math
+— and work through it on screen.
+4. Submit the module. Your score, the correct
+answers, and a full explanation for every question
+appear right away.
+Tip: Save your result either way to track your progress over time and target the skills you miss most.
+PDF version from learn.ronansat.com. Happy practicing!
+59

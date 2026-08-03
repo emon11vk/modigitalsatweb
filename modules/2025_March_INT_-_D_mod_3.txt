@@ -1,0 +1,573 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+32
+CONTINUE
+
+---PAGE_BREAK---
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+33
+CONTINUE
+
+---PAGE_BREAK---
+Which of the following equations best represents the line of best
+fit shown?
+A)
+B)
+C)
+D)
+In the given system of equations,  is a positive integer constant.
+The system has no real solutions. What is the least possible value
+of ?
+1
+y = 0.6 + 1.5x
+y = 0.6 −1.5x
+y = −0.6 + 1.5x
+y = −0.6 −1.5x
+2
+​
+​
+y
+y
+= −0.5
+= x + 8x + a
+2
+a
+a
+PDF version from learn.ronansat.com. Happy practicing!
+34
+CONTINUE
+
+---PAGE_BREAK---
+The width of a rectangle is  centimeters. The length of the
+rectangle is 
+ centimeters longer than the width. What is the
+area, in square centimeters, of this rectangle?
+A)
+B)
+C)
+D)
+The function  is defined by 
+. What is the y-
+intercept of the graph of 
+ in the xy-plane?
+A)
+B)
+C)
+D)
+3
+8
+50
+8
+16
+66
+464
+4
+f
+f(x) = 3x −
+​4
+1
+y = f(x)
+(0, −
+​)
+4
+1
+(0, −3)
+(0, 3)
+(0,
+​)
+4
+1
+PDF version from learn.ronansat.com. Happy practicing!
+35
+CONTINUE
+
+---PAGE_BREAK---
+The expression 
+ is equivalent to 
+, where  is a
+constant. What is the value of ?
+Which expression is equivalent to 
+, where 
+?
+A)
+B)
+C)
+D)
+5
+7x +
+6
+9x −
+6
+8x6
+bx6
+b
+b
+6
+(158y)
+​2
+1
+y > 1
+158 ⋅
+​y
+​ ⋅
+158 y
+​
+158y
+​
+(158y)2
+PDF version from learn.ronansat.com. Happy practicing!
+36
+CONTINUE
+
+---PAGE_BREAK---
+At a convention center, there are a total of 
+ visitors. Each
+visitor is located in either room A, room B, or room C. If one of
+these visitors is selected at random, the probability of selecting a
+visitor who is located in room A is 
+, and the probability of
+selecting a visitor who is located in room B is 
+. How many
+visitors are located in room C?
+A)
+B)
+C)
+D)
+Line  is defined by 
+. Line  is perpendicular to line
+ in the xy-plane. What is the slope of line ?
+A)
+B)
+C)
+D)
+7
+275
+0.68
+0.24
+8
+22
+45
+121
+8
+t
+y = −
+​x +
+4
+1
+15
+s
+t
+s
+15
+4
+​4
+1
+−
+​
+15
+1
+PDF version from learn.ronansat.com. Happy practicing!
+37
+CONTINUE
+
+---PAGE_BREAK---
+Which table gives four values of  and their corresponding values
+of 
+ for the given exponential function?
+A)
+B)
+C)
+D)
+The function 
+ is defined by 
+, and the function 
+is defined by 
+. What is the value of 
+?
+9
+f(x) = −10(2)
+​3
+x
+x
+f(x)
+x
+f(x)
+−3
+−5
+0
+−10
+3
+−20
+6
+−40
+x
+f(x)
+−3
+5
+0
+10
+3
+20
+6
+40
+x
+f(x)
+−3
+−5
+0
+−10
+3
+−20
+6
+−80
+x
+f(x)
+−3
+−20
+0
+−10
+3
+−5
+6
+−2.5
+10
+m
+m(x) = 5x + 3
+p
+p(x) = 3 −x
+2m(3) −p(3)
+PDF version from learn.ronansat.com. Happy practicing!
+38
+CONTINUE
+
+---PAGE_BREAK---
+A school is ordering tablet computers for its students. The tablets
+cost $170 each, and 7% tax is added to the total cost of the order.
+If the school can spend no more than 53,400 dollars on the tablets,
+including tax, what is the maximum number of tablets that the
+school can order?
+The difference between the measure of angle  and the measure
+of angle 
+ is 
+ radians. Which expression shows the
+difference between the measure of angle  and the measure of
+angle 
+, in degrees?
+A)
+B)
+C)
+D)
+11
+12
+A
+B
+−
+​π
+12
+5
+A
+B
+−
+​ ⋅
+12
+5
+​
+π
+180∘
+−
+​π ⋅
+12
+5
+​
+180∘
+π
+−
+​π ⋅
+12
+5
+​
+π
+180∘
+​π ⋅
+12
+5
+​
+π
+180∘
+PDF version from learn.ronansat.com. Happy practicing!
+39
+CONTINUE
+
+---PAGE_BREAK---
+A researcher observes a sample of a nuclide. An exponential
+model estimates that the mass, in grams, of the sample decreases
+by 
+ every 
+ minutes. Which of the following equations
+could represent this model, where 
+ is the estimated mass, in
+grams, of the sample  minutes after the researcher began
+observing the sample?
+A)
+B)
+C)
+D)
+In triangle 
+, the measure of angle  is 
+, the measure of
+angle  is 
+, and the measure of angle  is 
+. Point 
+lies on 
+, point 
+ lies on 
+, and 
+ is parallel to 
+. What
+is the measure, in degrees, of angle 
+? (Disregard the degree
+symbol when entering your answer.)
+13
+24%
+22.96
+M
+t
+M = 100(0.24)t+22.96
+M = 100(0.24)
+​
+22.96
+t
+M = 100(0.76)t+22.96
+M = 100(0.76)
+​
+22.96
+t
+14
+RST
+R
+39∘
+S
+x∘
+T
+(5x −3)∘
+L
+RS
+K
+ST
+LK
+RT
+SKL
+PDF version from learn.ronansat.com. Happy practicing!
+40
+CONTINUE
+
+---PAGE_BREAK---
+The function  is a quadratic function. In the xy-plane, the graph
+of 
+ has a vertex at 
+ and passes through the points
+ and 
+. What is the value of 
+?
+A)
+B)
+C)
+D)
+When several resistors are connected in series in a circuit, the
+total resistance of the circuit is the sum of the resistances of these
+resistors. A certain circuit consists of 8 resistors connected in
+series, where the resistance of each resistor is positive. This circuit
+has a total resistance of 
+ ohms. The total resistance of 3
+resistors in this circuit is 
+ ohms. Which inequality best
+represents all possible values of the resistance , in ohms, of one
+of the other 5 resistors in this circuit?
+A)
+B)
+C)
+D)
+15
+f
+y = f(x)
+(1, 7)
+(2, 53)
+(−1, 191)
+f(−2) −f(0)
+145
+237
+368
+421
+16
+130
+90
+x
+0 < x < 8
+0 < x < 40
+40 < x < 90
+40 < x < 130
+PDF version from learn.ronansat.com. Happy practicing!
+41
+CONTINUE
+
+---PAGE_BREAK---
+In the given equation,  is a constant. The equation has infinitely
+many solutions. What are all possible values of ?
+A)
+0 only
+B)
+ only
+C)
+Any real number
+D)
+No real number
+The solution to the given system of equations is 
+. What is the
+value of 
+?
+A)
+-12
+B)
+-5
+C)
+-4
+D)
+12
+17
+a(7x −14) + 5a = 7(ax −2a) −35
+a
+a
+−7
+18
+​ +
+5
+x −7
+​ =
+4
+y + 8
+0
+3x + 4y = 0
+(x, y)
+x + y
+PDF version from learn.ronansat.com. Happy practicing!
+42
+CONTINUE
+
+---PAGE_BREAK---
+Jackson mows lawns in the summer. When Jackson mows a lawn
+with a fence he charges $1.03 per minute. When Jackson mows a
+lawn without a fence, he charges $0.56 per minute. Jackson
+spends a total of 15 hours mowing lawns with and without a fence
+in a week and charges a total of $701.40 for mowing lawns during
+that week. How many minutes does Jackson spend mowing lawns
+with a fence during that week?
+Line  is shown in the xy-plane. Line  (not shown) is
+perpendicular to line  and passes through the point (19, 23).
+What is the y-coordinate of the y-intercept of line ?
+19
+20
+k
+j
+k
+j
+PDF version from learn.ronansat.com. Happy practicing!
+43
+CONTINUE
+
+---PAGE_BREAK---
+In the given system of equations, , , and  are constants. The
+system has infinitely many solutions. What is the value of ?
+In triangle 
+, the measure of angle  is 
+, the measure of
+angle 
+ is 
+, and the measure of angle  is 
+, where 
+and  are constants. Which of the following must be true?
+A)
+B)
+C)
+D)
+There is not enough information to compare the values of
+ and 
+21
+​x +
+9
+1
+​y =
+9
+4
+g
+​x +
+13
+5
+hy = k
+g h
+k
+h
+22
+JKL
+J
+(90b)∘
+K
+(69a)∘
+L
+(21a)∘
+a
+b
+cos L > sin K
+cos L = sin K
+cos L < sin K
+cos L
+sin K
+PDF version from learn.ronansat.com. Happy practicing!
+44
+CONTINUE
+
+---PAGE_BREAK---
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+45

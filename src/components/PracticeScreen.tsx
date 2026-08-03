@@ -165,7 +165,7 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
             <div className={`flex p-1 rounded-2xl border-2 ${isDark ? 'bg-black/20 border-white/10' : 'bg-slate-100 border-slate-200'}`}>
               <button
                 onClick={() => { setActiveCategory('general'); setSelectedFolderId(null); }}
-                className={`px-6 py-3 rounded-xl text-sm font-bold transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-bold transition-all ${
                   activeCategory === 'general'
                     ? isDark ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'bg-primary text-white shadow-md'
                     : isDark ? 'text-text-muted hover:text-white' : 'text-slate-500 hover:text-slate-800'
@@ -175,7 +175,7 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
               </button>
               <button
                 onClick={() => { setActiveCategory('course'); setSelectedFolderId(null); }}
-                className={`px-6 py-3 rounded-xl text-sm font-bold transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-bold transition-all ${
                   activeCategory === 'course'
                     ? isDark ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'bg-primary text-white shadow-md'
                     : isDark ? 'text-text-muted hover:text-white' : 'text-slate-500 hover:text-slate-800'
@@ -262,11 +262,11 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
                     </h4>
                     
                     <div className="flex items-center gap-3 mb-6">
-                      <div className={`px-3 py-2 rounded-xl border-2 ${isDark ? 'border-white/10 bg-black/20' : 'border-slate-200 bg-slate-50'}`}>
+                      <div className={`px-3 py-2 rounded-md border-2 ${isDark ? 'border-white/10 bg-black/20' : 'border-slate-200 bg-slate-50'}`}>
                         <p className={`text-[9px] uppercase font-bold text-center ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>Minutes</p>
                         <p className="text-lg font-black text-center">{module.durationMinutes || 134}</p>
                       </div>
-                      <div className={`px-3 py-2 rounded-xl border-2 ${isDark ? 'border-white/10 bg-black/20' : 'border-slate-200 bg-slate-50'}`}>
+                      <div className={`px-3 py-2 rounded-md border-2 ${isDark ? 'border-white/10 bg-black/20' : 'border-slate-200 bg-slate-50'}`}>
                         <p className={`text-[9px] uppercase font-bold text-center ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>Questions</p>
                         <p className="text-lg font-black text-center">{module.questionsCount || 98}</p>
                       </div>
@@ -274,13 +274,13 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
                   </div>
                   
                   {moduleLocked ? (
-                    <div className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold border-2 ${
+                    <div className={`w-full flex items-center justify-center gap-2 py-3 rounded-lg font-bold border-2 ${
                       isDark ? 'bg-white/5 border-white/10 text-text-muted' : 'bg-slate-50 border-slate-200 text-slate-400'
                     }`}>
                       LOCKED
                     </div>
                   ) : isAttempted ? (
-                    <div className={`w-full flex items-center justify-between gap-2 p-2 rounded-xl border-2 ${
+                    <div className={`w-full flex items-center justify-between gap-2 p-2 rounded-lg border-2 ${
                       isDark ? 'border-white/5 bg-white/5' : 'border-slate-100 bg-slate-50'
                     }`}>
                        <div className="flex flex-col pl-2">
@@ -289,7 +289,7 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
                        </div>
                        <button
                          onClick={() => onStartTest(module.id)}
-                         className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                         className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-md text-xs font-bold transition-all ${
                            isDark
                              ? 'bg-primary/20 text-primary hover:bg-primary/30'
                              : 'bg-primary/10 text-primary hover:bg-primary/20 shadow-sm'
@@ -301,7 +301,7 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
                   ) : (
                     <button
                       onClick={() => onStartTest(module.id)}
-                      className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all border-2 ${
+                      className={`w-full flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all border-2 ${
                         isDark
                           ? 'bg-primary border-primary text-white hover:bg-primary-hover hover:border-primary-hover'
                           : 'bg-primary border-primary text-white hover:bg-primary-hover hover:border-primary-hover shadow-md'

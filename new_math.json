@@ -1,0 +1,322 @@
+[
+    {
+        "position": 1,
+        "question_text": "For the function f, f(0) = 86, and for each increase in x by 1, the value of f(x) decreases by 80%. What is the value of f(2)?",
+        "choices": [],
+        "correct_answer": "3.44",
+        "type": "open_ended",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 2,
+        "question_text": "M = 1,800(1.02)^t\n\nThe equation above models the number of members, M, of a gym t years after the gym opens. Of the following, which equation models the number of members of the gym q quarter years after the gym opens?",
+        "choices": [
+            "A) M = 1,800(1.02)^(q/4)",
+            "B) M = 1,800(1.02)^(4q)",
+            "C) M = 1,800(1.005)^(4q)",
+            "D) M = 1,800(1.082)^q"
+        ],
+        "correct_answer": "A",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 3,
+        "question_text": "The functions f and g are defined by the given equations, where x >= 0. Which of the following equations displays, as a constant or coefficient, the maximum value of the function it defines, where x >= 0?\n\nI. f(x) = 18(1.25)^x + 41\nII. g(x) = 9(0.73)^x",
+        "choices": [
+            "A) I only",
+            "B) II only",
+            "C) I and II",
+            "D) Neither I nor II"
+        ],
+        "correct_answer": "B",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 4,
+        "question_text": "The population of a town is currently 50,000, and the population is estimated to increase each year by 3% from the previous year. Which of the following equations can be used to estimate the number of years, t, it will take for the population of the town to reach 60,000?",
+        "choices": [
+            "A) 50,000 = 60,000(0.03)^t",
+            "B) 50,000 = 60,000(3)^t",
+            "C) 60,000 = 50,000(0.03)^t",
+            "D) 60,000 = 50,000(1.03)^t"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 5,
+        "question_text": "At the time that an article was first featured on the home page of a news website, there were 40 comments on the article. An exponential model estimates that at the end of each hour after the article was first featured on the home page, the number of comments on the article had increased by 190% of the number of comments on the article at the end of the previous hour. Which of the following equations best represents this model, where C is the estimated number of comments on the article t hours after the article was first featured on the home page and t <= 4?",
+        "choices": [
+            "A) C = 40(1.19)^t",
+            "B) C = 40(1.9)^t",
+            "C) C = 40(19)^t",
+            "D) C = 40(2.9)^t"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 6,
+        "question_text": "The function f is defined by f(x) = (-8)(2)^x + 22. What is the y-intercept of the graph of y = f(x) in the xy-plane?",
+        "choices": [
+            "A) (0, 14)",
+            "B) (0, 2)",
+            "C) (0, 22)",
+            "D) (0, -8)"
+        ],
+        "correct_answer": "A",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 7,
+        "question_text": "f(x) = 9,000(0.66)^x\n\nThe given function f models the number of advertisements a company sent to its clients each year, where x represents the number of years since 1997, and 0 <= x <= 5. If y = f(x) is graphed in the xy-plane, which of the following is the best interpretation of the y-intercept of the graph in this context?",
+        "choices": [
+            "A) The minimum estimated number of advertisements the company sent to its clients during the 5 years was 1,708.",
+            "B) The minimum estimated number of advertisements the company sent to its clients during the 5 years was 9,000.",
+            "C) The estimated number of advertisements the company sent to its clients in 1997 was 1,708.",
+            "D) The estimated number of advertisements the company sent to its clients in 1997 was 9,000."
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 8,
+        "question_text": "The first term of a sequence is 9. Each term after the first is 4 times the preceding term. If w represents the nth term of the sequence, which equation gives w in terms of n?",
+        "choices": [
+            "A) w = 4(9^n)",
+            "B) w = 4(9^(n-1))",
+            "C) w = 9(4^n)",
+            "D) w = 9(4^(n-1))"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 9,
+        "question_text": "The function f is defined by f(x) = a(2.2^x + 2.2^b), where a and b are integer constants and 0 < a < b. The functions g and h are equivalent to function f, where k and m are constants. Which of the following equations displays the y-coordinate of the y-intercept of the graph of y = f(x) in the xy-plane as a constant or coefficient?\n\nI. g(x) = a(2.2^x + k)\nII. h(x) = a(2.2)^x + m",
+        "choices": [
+            "A) I only",
+            "B) II only",
+            "C) I and II",
+            "D) Neither I nor II"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 10,
+        "question_text": "x | g(x)\n-1 | 25\n0 | 1\n1 | 1/25\n2 | 1/625\n\nFor the exponential function g, the table shows four values of x and their corresponding values of g(x). Which equation defines g?",
+        "choices": [
+            "A) g(x) = -25^x",
+            "B) g(x) = -(1/25)^x",
+            "C) g(x) = 25^x",
+            "D) g(x) = (1/25)^x"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 11,
+        "question_text": "x | h(x)\n0 | 1.23\n2 | 1.54\n4 | 1.94\n\nThe table shows the exponential relationship between the number of years, x, since Hana started training in pole vault, and the estimated height h(x), in meters, of her best pole vault for that year. Which of the following functions best represents this relationship, where x <= 4?",
+        "choices": [
+            "A) h(x) = 1.12(0.23)^x",
+            "B) h(x) = 1.12(1.23)^x",
+            "C) h(x) = 1.23(0.12)^x",
+            "D) h(x) = 1.23(1.12)^x"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 12,
+        "question_text": "The function f is defined by f(x) = a^x + b, where a and b are constants. In the xy-plane, the graph of y = f(x) has an x-intercept at (2, 0) and a y-intercept at (0, -323). What is the value of b?",
+        "choices": [],
+        "correct_answer": "-324",
+        "type": "open_ended",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 13,
+        "question_text": "For the exponential function f, the value of f(0) is c, where c is a constant. Of the following equations that define the function f, which equation shows the value of c as the coefficient or the base?",
+        "choices": [
+            "A) f(x) = 22(1.5)^(x+1)",
+            "B) f(x) = 33(1.5)^x",
+            "C) f(x) = 49.5(1.5)^(x-1)",
+            "D) f(x) = 74.25(1.5)^(x-2)"
+        ],
+        "correct_answer": "B",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 14,
+        "question_text": "Growth of a Culture of Bacteria\nDay | Number of bacteria per milliliter at end of day\n1 | 2.5 * 10^5\n2 | 5.0 * 10^5\n3 | 1.0 * 10^6\n\nA culture of bacteria is growing at an exponential rate, as shown in the table above. At this rate, on which day would the number of bacteria per milliliter reach 5.12 * 10^8?",
+        "choices": [
+            "A) Day 5",
+            "B) Day 9",
+            "C) Day 11",
+            "D) Day 12"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 15,
+        "question_text": "D = 5,640(1.9)^t\n\nThe equation above estimates the global data traffic D, in terabytes, for the year that is t years after 2010. What is the best interpretation of the number 5,640 in this context?",
+        "choices": [
+            "A) The estimated amount of increase of data traffic, in terabytes, each year",
+            "B) The estimated percent increase in the data traffic, in terabytes, each year",
+            "C) The estimated data traffic, in terabytes, for the year that is t years after 2010",
+            "D) The estimated data traffic, in terabytes, in 2010"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 16,
+        "question_text": "P(t) = 260(1.04)^(t/6)\n\nThe function P models the population, in thousands, of a certain city t years after 2003. According to the model, the population is predicted to increase by 4% every n months. What is the value of n?",
+        "choices": [
+            "A) 8",
+            "B) 12",
+            "C) 18",
+            "D) 72"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 17,
+        "question_text": "A scientist initially measures 12,000 bacteria in a growth medium. 4 hours later, the scientist measures 24,000 bacteria. Assuming exponential growth, the formula P = C(2)^(rt) gives the number of bacteria in the growth medium, where r and C are constants and P is the number of bacteria t hours after the initial measurement. What is the value of r?",
+        "choices": [
+            "A) 1/12,000",
+            "B) 1/4",
+            "C) 4",
+            "D) 12,000"
+        ],
+        "correct_answer": "B",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 18,
+        "question_text": "A model estimates that at the end of each year from 2015 to 2020, the number of squirrels in a population was 150% more than the number of squirrels in the population at the end of the previous year. The model estimates that at the end of 2016, there were 180 squirrels in the population. Which of the following equations represents this model, where n is the estimated number of squirrels in the population t years after the end of 2015 and t <= 5?",
+        "choices": [
+            "A) n = 72(1.5)^t",
+            "B) n = 72(2.5)^t",
+            "C) n = 180(1.5)^t",
+            "D) n = 180(2.5)^t"
+        ],
+        "correct_answer": "B",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 19,
+        "question_text": "f(t) = 8,000(0.65)^t\n\nThe given function f models the number of coupons a company sent to their customers at the end of each year, where t represents the number of years since the end of 1998, and 0 <= t <= 5. If y = f(t) is graphed in the ty-plane, which of the following is the best interpretation of the y-intercept of the graph in this context?",
+        "choices": [
+            "A) The minimum estimated number of coupons the company sent to their customers during the 5 years was 1,428.",
+            "B) The minimum estimated number of coupons the company sent to their customers during the 5 years was 8,000.",
+            "C) The estimated number of coupons the company sent to their customers at the end of 1998 was 1,428",
+            "D) The estimated number of coupons the company sent to their customers at the end of 1998 was 8,000"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 20,
+        "question_text": "f(x) = 23(1.20)^(x/4)\n\nFor the given function f, the value of f(x) increases by p% for every increase of x by 8. What is the value of p?",
+        "choices": [
+            "A) 20",
+            "B) 31",
+            "C) 40",
+            "D) 44"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 21,
+        "question_text": "The function f is defined by f(x) = a^x - b, where a and b are constants. In the xy-plane, the graph of y = f(x) passes through the points (c, 11) and (2c, 221), where c is a constant. Which of the following could be the value of b?",
+        "choices": [
+            "A) 4",
+            "B) 25",
+            "C) 210",
+            "D) 232"
+        ],
+        "correct_answer": "A",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    },
+    {
+        "position": 22,
+        "question_text": "Which of the following functions has(have) a minimum value at -3?\n\nI. f(x) = -6(3)^x - 3\nII. g(x) = -3(6)^x",
+        "choices": [
+            "A) I only",
+            "B) II only",
+            "C) I and II",
+            "D) Neither I nor II"
+        ],
+        "correct_answer": "D",
+        "type": "multiple_choice",
+        "explanation": null,
+        "image_url": null,
+        "passage": null
+    }
+]

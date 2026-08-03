@@ -1,0 +1,488 @@
+Math
+22 QUESTIONS
+DIRECTIONS
+The questions in this section address a number of important math skills. Use of a calculator is
+permitted for all questions.
+NOTES
+Unless otherwise indicated:
+All variables and expressions represent real numbers.
+Figures provided are drawn to scale.
+All figures lie in a plane.
+The domain of a given function  is the set of all real numbers  for which 
+ is a real number.
+REFERENCE
+The number of degrees of arc in a circle is 
+.
+The number of radians of arc in a circle is 
+.
+The sum of the measures in degrees of the angles of a triangle is 
+.
+f
+x
+f(x)
+360
+2π
+180
+PDF version from learn.ronansat.com. Happy practicing!
+32
+CONTINUE
+
+---PAGE_BREAK---
+For multiple-choice questions, solve each problem, choose the correct answer from the
+choices provided, and then circle your answer in this book. Circle only one answer for each
+question. If you change your mind, completely erase the circle. You will not get credit for
+questions with more than one answer circled, or for questions with no answers circled.
+For student-produced response questions, solve each problem and write your answer next to
+or under the question in the test book as described below.
+Once you’ve written your answer, circle it clearly. You will not receive credit for anything
+written outside the circle, or for any questions with more than one circled answer.
+If you find more than one correct answer, write and circle only one answer.
+Your answer can be up to 5 characters for a positive answer and up to 6 characters
+(including the negative sign) for a negative answer, but no more.
+If your answer is a fraction that is too long, write the decimal equivalent.
+If your answer is a decimal that is too long, truncate it or round at the fourth digit.
+If your answer is a mixed number (such as 3 1/2), write it as an improper fraction (7/2) or its
+decimal equivalent (3.5).
+Don’t include symbols such as a percent sign, comma, or dollar sign in your circled answer.
+PDF version from learn.ronansat.com. Happy practicing!
+33
+CONTINUE
+
+---PAGE_BREAK---
+The cost , in dollars, for a manufacturer to make  rings is
+represented by the line shown.
+What is the cost, in dollars, for the manufacturer to make 
+rings?
+A)
+100
+B)
+125
+C)
+175
+D)
+225
+Which expression is equivalent to 
+?
+A)
+B)
+C)
+D)
+1
+y
+x
+50
+2
+7(x +
+2
+5)
+7x +
+2
+35
+7x +
+2
+12
+7x +
+2
+5
+7x +
+2
+2
+PDF version from learn.ronansat.com. Happy practicing!
+34
+CONTINUE
+
+---PAGE_BREAK---
+What is the y-intercept of the graph shown?
+A)
+B)
+C)
+D)
+The function  is defined by 
+. For what value of
+ does 
+?
+A)
+4
+B)
+6
+C)
+10
+D)
+39
+3
+(−5, 0)
+(−1, 0)
+(0, 1)
+(0, 5)
+4
+f
+f(x) = 8(2x + 2)
+x
+f(x) = 80
+PDF version from learn.ronansat.com. Happy practicing!
+35
+CONTINUE
+
+---PAGE_BREAK---
+The given equation relates the positive numbers , , and .
+Which equation correctly expresses  in terms of  and ?
+A)
+B)
+C)
+D)
+A line segment that has a length of 
+ is
+divided into three parts. One part is 
+ long. The other two
+parts have lengths that are equal to each other. What is the length,
+in cm, of one of the other two parts of equal length?
+5
+n =
+​
+23v
+p
+n p
+v
+p
+n
+v
+p = n −23v
+p = n + 23v
+p =
+​
+23v
+n
+p = 23vn
+6
+125 centimeters (cm)
+49 cm
+PDF version from learn.ronansat.com. Happy practicing!
+36
+CONTINUE
+
+---PAGE_BREAK---
+Circle N has a radius of 
+. Circle M has an area
+of 
+. What is the total area, in 
+, of circles N and M?
+A)
+B)
+C)
+D)
+The list gives the mass, in grams, of 5 ruffed lemurs.
+What is the mean mass, in grams, of these 5 ruffed lemurs?
+7
+9 millimeters (mm)
+25π mm2
+mm2
+106π
+61π
+43π
+14π
+8
+3, 710; 3, 710; 3, 130; 3, 750; 3, 150
+PDF version from learn.ronansat.com. Happy practicing!
+37
+CONTINUE
+
+---PAGE_BREAK---
+What is one of the solutions to the given equation?
+A)
+-3
+B)
+0
+C)
+2
+D)
+5
+In the figure shown, triangle CAE is similar to triangle CBD. The
+measure of angle CBD is 
+, and 
+. What is the
+measure of angle CAE?
+A)
+B)
+C)
+D)
+9
+2x(x −3)(x + 5) = 0
+10
+56∘
+AE = 22(BD)
+22∘
+56∘
+(22 + 56)∘
+(22 ⋅56)∘
+PDF version from learn.ronansat.com. Happy practicing!
+38
+CONTINUE
+
+---PAGE_BREAK---
+A clothing store buys shirts at a wholesale price of 
+each and resells them each at a retail price that is 
+ of the
+wholesale price. At the end of the season, any remaining shirts are
+marked at a discounted price that is 
+ off the retail price. What
+is the discounted price of each remaining shirt, in dollars?
+For the given linear function , which table gives three values of 
+and their corresponding values of 
+?
+A)
+0
+0
+1
+0
+2
+0
+B)
+0
+47
+1
+47
+2
+47
+C)
+0
+0
+1
+47
+2
+94
+D)
+0
+47
+1
+48
+2
+49
+11
+6.00 dollars
+310%
+75%
+12
+f(x) = 47
+f
+x
+f(x)
+x
+f(x)
+x
+f(x)
+x
+f(x)
+x
+f(x)
+PDF version from learn.ronansat.com. Happy practicing!
+39
+CONTINUE
+
+---PAGE_BREAK---
+A sample of a certain isotope takes 29 years to decay to half its
+original mass. The function 
+ gives the
+approximate mass of this isotope, in grams, that remains  years
+after a 136-gram sample starts to decay. Which statement is the
+best interpretation of 
+ in this context?
+A)
+Approximately 34 grams of the sample remains 58 years after
+the sample starts to decay.
+B)
+The mass of the sample has decreased by approximately 34
+grams 58 years after the sample starts to decay.
+C)
+The mass of the sample has decreased by approximately 58
+grams 34 years after the sample starts to decay.
+D)
+Approximately 58 grams of the sample remains 34 years after
+the sample starts to decay.
+Antonia has $130 in an account. Each year she expects to have
+ more money in the account than she had the previous year.
+Which of the following models best describes how Antonia
+expects the money in her account to change over time?
+A)
+Decreasing exponential
+B)
+Decreasing linear
+C)
+Increasing exponential
+D)
+Increasing linear
+13
+s(t) = 136(0.5)
+​
+29
+t
+t
+s(58) = 34
+14
+2.5%
+PDF version from learn.ronansat.com. Happy practicing!
+40
+CONTINUE
+
+---PAGE_BREAK---
+In the xy-plane, which of the following does NOT contain any
+points that are part of the solution set to 
+?
+A)
+The region where 
+ and 
+B)
+The region where 
+ and 
+C)
+The region where 
+ and 
+D)
+The x-axis
+A circle in the xy-plane has its center at 
+ and has a radius
+of 
+. Which equation represents this circle?
+A)
+B)
+C)
+D)
+15
+2x −6y > 12
+x < 0
+y > 0
+x < 0
+y < 0
+x > 0
+y > 0
+16
+(18, 16)
+6k
+(x −18) +
+2
+(y −16) =
+2
+36k
+(x −18) +
+2
+(y −16) =
+2
+36k2
+(x −18) +
+2
+(y −16) =
+2
+6k
+(x −18) +
+2
+(y −16) =
+2
+6k2
+PDF version from learn.ronansat.com. Happy practicing!
+41
+CONTINUE
+
+---PAGE_BREAK---
+What is the sum of the solutions to the given equation?
+A)
+0
+B)
+4
+C)
+8
+D)
+24
+According to a US law, ramps for use by the general public must
+form an angle with level ground such that 
+. If the
+ramp in the figure conforms to this law and has a height of
+, what is the least possible value of , in inches?
+17
+x −
+2
+24x −8 = 0
+18
+tan θ ≤
+​
+12
+1
+22.7 inches
+x
+PDF version from learn.ronansat.com. Happy practicing!
+42
+CONTINUE
+
+---PAGE_BREAK---
+In the figure, two lines intersect at a point. If 
+, what is the
+value of ?
+A)
+12
+B)
+56
+C)
+68
+D)
+112
+If 
+, what is the value
+of 
+?
+19
+w = 112
+z
+20
+3(2 −7x) + 5(2 −7x) + 6 = 7(2 −7x) + 2
+7x −2
+PDF version from learn.ronansat.com. Happy practicing!
+43
+CONTINUE
+
+---PAGE_BREAK---
+In the xy-plane, line  and line  are perpendicular and intersect
+at the point 
+. If line  is defined by the equation 
+, where 
+ and  are constants and 
+, which of the following
+points lies on line ?
+A)
+B)
+C)
+D)
+A sphere has a volume of 
+. What is the volume
+of the sphere, in cubic meters? (Use 
+.)
+21
+k
+ℓ
+(2, 9)
+k
+y = mx + b
+m
+b
+m > 1
+ℓ
+(3,  9 −
+​)
+m
+1
+(3,  9 +
+​)
+m
+1
+(3,  9 −m)
+(3,  9 + m)
+22
+245.00 cubic yards
+1 yard = 0.914 meter
+PDF version from learn.ronansat.com. Happy practicing!
+44
+CONTINUE
+
+---PAGE_BREAK---
+STOP
+If you finish before time is called, you may check your work on this module only.
+Do not turn to any other module in the test.
+PDF version from learn.ronansat.com. Happy practicing!
+45

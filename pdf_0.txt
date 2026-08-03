@@ -1,0 +1,34 @@
+<USER_REQUEST>
+/goal hãy từ kiểu sắp xếp dữ liệu của web tớ hãy tạo đề ra copy chính xác nội dung 100% từ các file pdf tớ gửi theo dạng json để tớ có thể import lên web (hãy phân tích web để biết định dạng thế nào là đúng) ( đừng viết kèm water mark) ( chia từng module ra) 
+- hãy xem đi xem lại cho đến khi nội dung chính xác 100% với pdf thì thôi 
+- hãy dùng các agent để check đi check lại các đáp án xem đã đúng chưa
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-07-19T20:59:49+07:00.
+
+The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:
+
+/goal is a [Slash Command]:
+The user has marked this task with /goal, indicating that this task is intended to run for a long time without user input, e.g. overnight. You should be extra thorough and only stop when you are confident the goal has been completely fulfilled. The system will force you to continue execution, prompting you to audit your work until completion.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.1 Pro (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
+
+<USER_REQUEST>
+/goal hãy từ kiểu sắp xếp dữ liệu của web tớ hãy tạo đề ra copy chính xác nội dung 100% từ các file pdf tớ gửi theo dạng json để tớ có thể import lên web (hãy phân tích web để biết định dạng thế nào là đúng) ( đừng viết kèm water mark) ( chia từng module ra) 
+- hãy xem đi xem lại cho đến khi nội dung chính xác 100% với pdf thì thôi 
+- hãy dùng các agent để check đi check lại các đáp án xem đã đúng chưa
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-07-19T20:59:49+07:00.
+
+The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:
+
+/goal is a [Slash Command]:
+The user has marked this task with /goal, indicating that this task is intended to run for a long time without user input, e.g. overnight. You should be extra thorough and only stop when you are confident the goal has been completely fulfilled. The system will force you to continue execution, prompting you to audit your work until completion.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.1 Pro (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
+
