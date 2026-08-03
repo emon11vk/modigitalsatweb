@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   ChevronLeft, ChevronRight, Flag, Timer, Eye, EyeOff,
-  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle, Send, Sun, Moon
+  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle, Send, Sun, Moon, Calculator
 } from 'lucide-react';
 import { Question, Passage, Theme } from '../types';
 import MathRenderer from './MathRenderer';
+import DesmosCalculator from './DesmosCalculator';
 
 // ─── Highlight Hook ────────────────────────────────────────────────────────────
 interface HighlightEntry { id: string; text: string; }
@@ -149,6 +150,7 @@ export default function ActiveTestScreen({
   // Modals
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
 
   // Resizing
   const [leftPaneRatio, setLeftPaneRatio] = useState(50);
@@ -323,6 +325,21 @@ export default function ActiveTestScreen({
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Calculator Button (Math Only) */}
+          {!isVerbal && (
+            <button
+              onClick={() => setShowCalculator(!showCalculator)}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border transition-all cursor-pointer ${
+                showCalculator
+                  ? isDark ? 'bg-primary/20 border-primary/30 text-primary-light' : 'bg-primary/10 border-primary/20 text-primary'
+                  : isDark ? 'border-white/10 text-text-muted hover:text-white' : 'border-slate-200 text-slate-400 hover:text-text-dark'
+              }`}
+            >
+              <Calculator className="w-4 h-4" />
+              <span className="hidden sm:inline font-semibold text-xs">Calculator</span>
+            </button>
+          )}
+
           {/* Timer */}
           {showTimer ? (
             <div className={`px-3 py-2 rounded-lg flex items-center gap-2 border transition-all ${
@@ -698,6 +715,35 @@ export default function ActiveTestScreen({
           >
             ✕
           </button>
+        </div>
+      )}
+
+      {/* ── DESMOS CALCULATOR WIDGET ── */}
+      {showCalculator && !isVerbal && (
+        <div 
+          className={`absolute top-20 left-1/2 -translate-x-1/2 md:left-auto md:-translate-x-0 md:right-8 z-40 w-[90vw] md:w-[600px] shadow-2xl rounded-xl overflow-hidden border flex flex-col ${
+            isDark ? 'bg-bg-dark border-white/20' : 'bg-white border-slate-300'
+          }`}
+        >
+          <div className={`px-4 py-2 flex items-center justify-between border-b cursor-move ${
+            isDark ? 'bg-bg-card border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-700'
+          }`}>
+            <div className="flex items-center gap-2 text-sm font-bold">
+              <Calculator className="w-4 h-4" />
+              Desmos Graphing Calculator
+            </div>
+            <button 
+              onClick={() => setShowCalculator(false)}
+              className={`p-1 rounded transition-colors ${
+                isDark ? 'hover:bg-white/10 text-slate-400 hover:text-white' : 'hover:bg-slate-200 text-slate-500 hover:text-black'
+              }`}
+            >
+              ✕
+            </button>
+          </div>
+          <div className="p-1 bg-white">
+            <DesmosCalculator style={{ height: '400px', borderRadius: '4px' }} />
+          </div>
         </div>
       )}
 
