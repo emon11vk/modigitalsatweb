@@ -83,6 +83,8 @@ export default function DashboardScreen({
 
   const [collapsedFolders, setCollapsedFolders] = useState<Record<string, boolean>>({});
   const [upcomingIndex, setUpcomingIndex] = useState(0);
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
 
   const [cardConfigs, setCardConfigs] = useState<Record<string, { youtubeUrl?: string; imageTimestamp?: number }>>({});
   const [editingCardId, setEditingCardId] = useState<string | null>(null);
@@ -92,6 +94,7 @@ export default function DashboardScreen({
   const [isCardHovered, setIsCardHovered] = useState(false);
 
   const bannerRef = useRef<HTMLDivElement>(null);
+  const bannerRef2 = useRef<HTMLDivElement>(null);
   const time = useMotionValue(0);
   useAnimationFrame((t, delta) => {
     if (isCardHovered) {
@@ -102,6 +105,14 @@ export default function DashboardScreen({
   });
   const rotateX = useTransform(time, (t) => Math.sin(t / 2000) * 15);
   const rotateY = useTransform(time, (t) => Math.cos(t / 2500) * 15);
+
+  useEffect(() => {
+    if (isHeroHovered) return;
+    const interval = setInterval(() => {
+      setCurrentHeroIndex(prev => (prev === 0 ? 1 : 0));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isHeroHovered]);
 
   useEffect(() => {
     const fetchConfigs = async () => {
@@ -249,13 +260,25 @@ export default function DashboardScreen({
     fetchBannerConfig();
   }, []);
 
+  const hero1Config = cardConfigs['hero1'];
+  const hero1YoutubeUrl = hero1Config?.youtubeUrl;
+  const hero1BannerUrl = hero1Config?.imageTimestamp 
+    ? supabase.storage.from('exam-question-images').getPublicUrl('dashboard/hero1-banner.png').data.publicUrl + `?t=${hero1Config.imageTimestamp}` 
+    : bannerUrl;
+
+  const hero2Config = cardConfigs['hero2'];
+  const hero2YoutubeUrl = hero2Config?.youtubeUrl;
+  const hero2BannerUrl = hero2Config?.imageTimestamp 
+    ? supabase.storage.from('exam-question-images').getPublicUrl('dashboard/hero2-banner.png').data.publicUrl + `?t=${hero2Config.imageTimestamp}` 
+    : null;
+
   // -- WATER RIPPLE EFFECT --
   useEffect(() => {
-    if (!bannerUrl || !bannerRef.current) return;
-
-    let $el: any;
+    let $el1: any;
+    let $el2: any;
     let observer: IntersectionObserver;
-    let idleTimeout: NodeJS.Timeout;
+    let idleTimeout1: NodeJS.Timeout;
+    let idleTimeout2: NodeJS.Timeout;
     let isDestroyed = false;
 
     const initRipples = async () => {
@@ -263,53 +286,104 @@ export default function DashboardScreen({
         const $ = (await import('jquery')).default;
         await import('jquery.ripples');
         
-        if (isDestroyed || !bannerRef.current) return;
+        if (isDestroyed) return;
 
-        $el = $(bannerRef.current);
-        $el.ripples({
+        const config = {
           resolution: 256,
           dropRadius: 20,
-          perturbance: 0.02,
+          perturbance: 0.01,
           interactive: true,
           crossOrigin: 'anonymous'
-        });
+        };
 
-        // 1. Intersection Observer
+        const createGradientDataUrl = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 1200;
+          canvas.height = 400;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return '';
+          
+          const bg = isDark ? '#0f1115' : '#f8f9fa';
+          ctx.fillStyle = bg;
+          ctx.fillRect(0, 0, 1200, 400);
+
+          const grad1 = ctx.createRadialGradient(1200, 0, 0, 1200, 0, 600);
+          grad1.addColorStop(0, isDark ? 'rgba(108,99,255,0.06)' : 'rgba(108,99,255,0.04)');
+          grad1.addColorStop(1, 'rgba(108,99,255,0)');
+          ctx.fillStyle = grad1;
+          ctx.fillRect(0, 0, 1200, 400);
+
+          const grad2 = ctx.createRadialGradient(0, 400, 0, 0, 400, 600);
+          grad2.addColorStop(0, isDark ? 'rgba(255,107,107,0.06)' : 'rgba(255,107,107,0.04)');
+          grad2.addColorStop(1, 'rgba(255,107,107,0)');
+          ctx.fillStyle = grad2;
+          ctx.fillRect(0, 0, 1200, 400);
+
+          // Add subtle noise for ripple texture
+          for (let i = 0; i < 30000; i++) {
+             ctx.fillStyle = isDark ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)';
+             ctx.fillRect(Math.random() * 1200, Math.random() * 400, 1, 1);
+          }
+          return canvas.toDataURL('image/png');
+        };
+
+        if (bannerRef.current && hero1BannerUrl && !hero1YoutubeUrl) {
+          $el1 = $(bannerRef.current);
+          $el1.ripples(config);
+          $el1.ripples('pause');
+        }
+
+        if (bannerRef2.current && !hero2YoutubeUrl) {
+          $el2 = $(bannerRef2.current);
+          try {
+             if (hero2BannerUrl) {
+                // If there's an uploaded image, rely on CSS background-image like Slide 1
+                $el2.ripples(config);
+             } else {
+                // If no image, provide the gradient canvas
+                $el2.ripples({
+                  ...config,
+                  imageUrl: createGradientDataUrl()
+                });
+             }
+             $el2.ripples('pause');
+          } catch(e) {
+             console.error('Slide 2 ripple error', e);
+          }
+        }
+
         observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              $el.ripples('play');
-            } else {
-              $el.ripples('pause');
+            if (!entry.isIntersecting) {
+              if (entry.target === bannerRef.current) $el1?.ripples('pause');
+              if (entry.target === bannerRef2.current) $el2?.ripples('pause');
             }
           });
         }, { threshold: 0.1 });
         
-        observer.observe(bannerRef.current);
+        if (bannerRef.current) observer.observe(bannerRef.current);
+        if (bannerRef2.current) observer.observe(bannerRef2.current);
 
-        // 2. Idle Timeout
-        const handleMouseMove = () => {
-          if (isDestroyed) return;
-          $el.ripples('play');
-          clearTimeout(idleTimeout);
-          idleTimeout = setTimeout(() => {
-            if (!isDestroyed) $el.ripples('pause');
-          }, 6000); // 6s idle timeout để sóng kịp tan hết
+        const setupMouse = (el: HTMLElement, $jEl: any, getTimeout: () => NodeJS.Timeout, setTimeoutRef: (t: NodeJS.Timeout) => void) => {
+          const handleMouseMove = () => {
+            if (isDestroyed || !$jEl) return;
+            $jEl.ripples('play');
+            clearTimeout(getTimeout());
+            setTimeoutRef(setTimeout(() => {
+              if (!isDestroyed) $jEl.ripples('pause');
+            }, 2000));
+          };
+          el.addEventListener('mousemove', handleMouseMove);
+          el.addEventListener('mouseleave', () => {
+            clearTimeout(getTimeout());
+            setTimeoutRef(setTimeout(() => {
+              if (!isDestroyed) $jEl?.ripples('pause');
+            }, 1000));
+          });
         };
-        
-        bannerRef.current.addEventListener('mousemove', handleMouseMove);
-        bannerRef.current.addEventListener('mouseleave', () => {
-          // Không pause ngay lập tức để sóng có thời gian tan biến mượt mà (fade out)
-          clearTimeout(idleTimeout);
-          idleTimeout = setTimeout(() => {
-            if (!isDestroyed) $el.ripples('pause');
-          }, 6000);
-        });
 
-        // Initial idle timeout
-        idleTimeout = setTimeout(() => {
-          if (!isDestroyed) $el.ripples('pause');
-        }, 6000);
+        if (bannerRef.current) setupMouse(bannerRef.current, $el1, () => idleTimeout1, (t) => { idleTimeout1 = t; });
+        if (bannerRef2.current) setupMouse(bannerRef2.current, $el2, () => idleTimeout2, (t) => { idleTimeout2 = t; });
 
       } catch (e) {
         console.error("Water ripple init failed", e);
@@ -321,14 +395,16 @@ export default function DashboardScreen({
     return () => {
       isDestroyed = true;
       if (observer) observer.disconnect();
-      clearTimeout(idleTimeout);
-      if ($el) {
-        try {
-          $el.ripples('destroy');
-        } catch(e) {}
+      clearTimeout(idleTimeout1);
+      clearTimeout(idleTimeout2);
+      if ($el1) {
+        try { $el1.ripples('destroy'); } catch(e) {}
+      }
+      if ($el2) {
+        try { $el2.ripples('destroy'); } catch(e) {}
       }
     };
-  }, [bannerUrl]);
+  }, [hero1BannerUrl, hero1YoutubeUrl, hero2BannerUrl, hero2YoutubeUrl, isDark]);
 
   const saveBannerConfig = async (pos: string, height: number | null) => {
     try {
@@ -555,83 +631,185 @@ export default function DashboardScreen({
 
       {/* ── Welcome Banner ── */}
       <div
-        ref={bannerRef}
-        className={`relative overflow-hidden rounded-3xl border mb-6 transition-[height] duration-75 ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'
-          }`}
+        className={`relative overflow-hidden rounded-3xl border mb-6 transition-[height] duration-75 group ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'}`}
         style={{
-          backgroundImage: bannerUrl ? `url(${bannerUrl})` : undefined,
-          backgroundSize: 'cover',
-          backgroundPosition: bannerAlignment,
           height: bannerHeight ? `${bannerHeight}px` : undefined,
         }}
+        onMouseEnter={() => setIsHeroHovered(true)}
+        onMouseLeave={() => setIsHeroHovered(false)}
       >
-        {/* Overlay removed as requested */}
-
-        {isAdmin && (
-          <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
-            <input
-              type="file"
-              ref={fileInputRef}
-              className="hidden"
-              accept="image/png, image/jpeg, image/webp, image/gif"
-              onChange={handleFileChange}
-            />
-            {bannerUrl && (
-              <>
-                <div className={`flex items-center p-1 rounded-lg backdrop-blur-md border transition-all ${isDark ? 'bg-black/30 border-white/10 text-white' : 'bg-white/50 border-white/20 text-text-dark'
-                  }`}>
-                  {['top', 'center', 'bottom'].map(pos => (
-                    <button
-                      key={pos}
-                      onClick={() => handleUpdateBannerAlignment(pos)}
-                      className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${bannerAlignment === pos
-                        ? 'bg-primary text-white shadow-sm'
-                        : 'hover:bg-black/10 dark:hover:bg-white/10'
-                        }`}
-                      title={`Căn ${pos === 'top' ? 'trên' : pos === 'center' ? 'giữa' : 'dưới'}`}
-                    >
-                      {pos === 'top' ? 'Trên' : pos === 'center' ? 'Giữa' : 'Dưới'}
-                    </button>
-                  ))}
-                </div>
-                <button
-                  onClick={handleDeleteBanner}
-                  className={`p-1.5 rounded-lg backdrop-blur-md border transition-colors ${isDark ? 'bg-red-500/20 border-red-500/20 text-red-400 hover:bg-red-500/30' : 'bg-red-50 border-red-100 text-red-500 hover:bg-red-100'
-                    }`}
-                  title="Xóa ảnh nền"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </>
+        <div 
+          className="relative z-10 flex w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+          style={{ transform: `translateX(-${currentHeroIndex * 100}%)` }}
+        >
+          {/* Slide 1 */}
+          <div 
+            ref={bannerRef}
+            className="w-full shrink-0 h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[400px] relative overflow-hidden group/slide1"
+            style={{
+              backgroundImage: hero1YoutubeUrl ? undefined : (hero1BannerUrl ? `url(${hero1BannerUrl})` : undefined),
+              backgroundSize: 'cover',
+              backgroundPosition: bannerAlignment,
+            }}
+          >
+            {hero1YoutubeUrl && (
+              <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                <iframe
+                  className="absolute top-1/2 left-1/2 w-[130%] aspect-video max-w-none -translate-x-1/2 -translate-y-1/2"
+                  src={`https://www.youtube.com/embed/${getYoutubeId(hero1YoutubeUrl)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeId(hero1YoutubeUrl)}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+              </div>
             )}
-            <button
-              onClick={handleUploadBannerClick}
-              disabled={isUploadingBanner}
-              className={`p-1.5 rounded-lg backdrop-blur-md border transition-colors ${isDark ? 'bg-black/30 border-white/10 text-white hover:bg-black/50' : 'bg-white/50 border-white/20 text-text-dark hover:bg-white/80'
-                }`}
-              title="Đổi ảnh nền"
-            >
-              {isUploadingBanner ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />}
-            </button>
-          </div>
-        )}
+            {isAdmin && (
+              <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  className="hidden"
+                  accept="image/png, image/jpeg, image/webp, image/gif"
+                  onChange={handleFileChange}
+                />
+                {!hero1Config?.imageTimestamp && !hero1YoutubeUrl && bannerUrl && (
+                  <>
+                    <div className={`flex items-center p-1 rounded-lg backdrop-blur-md border transition-all ${isDark ? 'bg-black/30 border-white/10 text-white' : 'bg-white/50 border-white/20 text-text-dark'
+                      }`}>
+                      {['top', 'center', 'bottom'].map(pos => (
+                        <button
+                          key={pos}
+                          onClick={() => handleUpdateBannerAlignment(pos)}
+                          className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${bannerAlignment === pos
+                            ? 'bg-primary text-white shadow-sm'
+                            : 'hover:bg-black/10 dark:hover:bg-white/10'
+                            }`}
+                          title={`Căn ${pos === 'top' ? 'trên' : pos === 'center' ? 'giữa' : 'dưới'}`}
+                        >
+                          {pos === 'top' ? 'Trên' : pos === 'center' ? 'Giữa' : 'Dưới'}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setEditingCardId('hero1');
+                    setEditYoutubeUrl(hero1YoutubeUrl || '');
+                    setEditImageFile(null);
+                  }}
+                  className={`px-3 py-1.5 rounded-lg backdrop-blur-md border transition-colors flex items-center gap-1.5 text-xs font-semibold ${isDark ? 'bg-black/50 border-white/10 text-white hover:bg-black/70' : 'bg-white/70 border-white/20 text-text-dark hover:bg-white/90'
+                    }`}
+                  title="Sửa nền Slide 1"
+                >
+                  <Edit2 className="w-3.5 h-3.5" /> Sửa nền
+                </button>
+              </div>
+            )}
 
-        <div className="relative z-10 flex flex-col lg:flex-row items-stretch justify-between min-h-[250px] sm:min-h-[320px] lg:min-h-[400px]" style={{ minHeight: bannerHeight ? '100%' : undefined }}>
-          {/* Left Content */}
-          <div className="flex-1" />
-          
-          {/* Mockup Card removed as requested */}
+            <div className="relative z-10 flex flex-col lg:flex-row items-stretch justify-between min-h-[250px] sm:min-h-[320px] lg:min-h-[400px]" style={{ minHeight: bannerHeight ? '100%' : undefined }}>
+              {/* Left Content */}
+              <div className="flex-1" />
+            </div>
+
+            {isAdmin && (
+              <div 
+                className="absolute bottom-0 left-0 w-full h-4 cursor-ns-resize z-50 flex items-end justify-center pb-1.5 opacity-0 hover:opacity-100 transition-opacity bg-gradient-to-t from-black/30 to-transparent"
+                onMouseDown={handleResizeStart}
+                title="Kéo để chỉnh chiều cao banner"
+              >
+                <div className="w-12 h-1 bg-white/70 rounded-full shadow-sm"></div>
+              </div>
+            )}
+          </div>
+
+          {/* Slide 2 */}
+          <div 
+            ref={bannerRef2}
+            className={`w-full shrink-0 h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[400px] flex flex-col items-center justify-center relative overflow-hidden group/slide2 ${!hero2BannerUrl ? (isDark ? 'bg-[#0f1115]' : 'bg-[#f8f9fa]') : ''}`}
+            style={{
+              backgroundImage: hero2YoutubeUrl ? undefined : (hero2BannerUrl ? `url(${hero2BannerUrl})` : (isDark ? 'radial-gradient(circle at top right, rgba(108,99,255,0.05), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.05), transparent 50%)' : 'radial-gradient(circle at top right, rgba(108,99,255,0.03), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.03), transparent 50%)')),
+              backgroundSize: (hero2BannerUrl && !hero2YoutubeUrl) ? 'cover' : undefined,
+              backgroundPosition: 'center',
+            }}
+          >
+            {hero2YoutubeUrl && (
+              <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                <iframe
+                  className="absolute top-1/2 left-1/2 w-[130%] aspect-video max-w-none -translate-x-1/2 -translate-y-1/2"
+                  src={`https://www.youtube.com/embed/${getYoutubeId(hero2YoutubeUrl)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeId(hero2YoutubeUrl)}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+              </div>
+            )}
+            
+            {isAdmin && (
+              <div className="absolute top-4 right-4 z-20 flex items-center gap-2 opacity-0 group-hover/slide2:opacity-100 transition-opacity">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setEditingCardId('hero2');
+                    setEditYoutubeUrl(hero2YoutubeUrl || '');
+                    setEditImageFile(null);
+                  }}
+                  className={`px-3 py-1.5 rounded-lg backdrop-blur-md border transition-colors flex items-center gap-1.5 text-xs font-semibold ${isDark ? 'bg-black/50 border-white/10 text-white hover:bg-black/70' : 'bg-white/70 border-white/20 text-text-dark hover:bg-white/90'
+                    }`}
+                  title="Sửa nền Slide 2"
+                >
+                  <Edit2 className="w-3.5 h-3.5" /> Sửa nền
+                </button>
+              </div>
+            )}
+
+            <h2 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-8 text-center px-4 tracking-tight z-10 ${isDark ? 'text-white' : 'text-slate-800'}`}>
+               Theo dõi <span className="text-primary relative inline-block">
+                 Mơ
+                 <svg className="absolute -bottom-1 left-0 w-full h-2 text-accent" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
+                 </svg>
+               </span> ngay trên các nền tảng
+            </h2>
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 z-10">
+               <a href="https://www.facebook.com/profile.php?id=61572035294391&locale=vi_VN" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-[#0866FF] text-white font-bold hover:bg-blue-700 hover:scale-105 hover:-translate-y-1 transition-all shadow-lg shadow-blue-500/20 w-full sm:w-auto justify-center">
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                 Facebook
+               </a>
+               <a href="https://www.threads.com/@mo.digital.sat_" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-black text-white font-bold hover:bg-zinc-800 hover:scale-105 hover:-translate-y-1 transition-all shadow-lg shadow-black/20 dark:bg-white dark:text-black dark:hover:bg-zinc-200 dark:shadow-white/10 w-full sm:w-auto justify-center">
+                 <svg viewBox="0 0 192 192" width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.152 170.096 113.668 172.247 95.9019 172.247C76.0247 172.247 51.6811 165.625 36.5 150.436C25.0018 138.93 18.0071 120.065 18.0071 95.8458C18.0071 71.691 24.9642 52.8361 36.4206 41.3409C51.5284 26.1856 75.8118 19.5376 95.9019 19.5376C115.435 19.5376 139.11 25.8643 153.948 40.7512C159.972 46.7946 164.717 54.3413 167.925 63.3087L184.093 57.5186C180.126 46.4023 174.195 37.0725 166.721 29.576C149.324 12.1228 122.257 2.5 95.9019 2.5C72.1006 2.5 44.5103 10.229 24.4239 30.3831C10.1554 44.7001 1 66.8665 1 95.8458C1 124.757 10.1983 146.982 24.5303 161.363C44.7214 181.621 72.3995 189.251 95.9019 189.251C116.891 189.251 138.57 186.262 154.516 170.264C171.393 153.332 172.822 131.782 166.657 117.408C162.249 107.123 153.766 98.7188 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path>
+                 </svg>
+                 Threads
+               </a>
+            </div>
+          </div>
         </div>
 
-        {isAdmin && (
-          <div 
-            className="absolute bottom-0 left-0 w-full h-4 cursor-ns-resize z-50 flex items-end justify-center pb-1.5 opacity-0 hover:opacity-100 transition-opacity bg-gradient-to-t from-black/30 to-transparent"
-            onMouseDown={handleResizeStart}
-            title="Kéo để chỉnh chiều cao banner"
-          >
-            <div className="w-12 h-1 bg-white/70 rounded-full shadow-sm"></div>
-          </div>
-        )}
+        {/* Navigation Arrows */}
+        <button 
+          onClick={(e) => { e.stopPropagation(); setCurrentHeroIndex(0); }}
+          className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentHeroIndex === 0 ? 'opacity-0 translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0 bg-black/10 hover:bg-black/20 text-black dark:bg-white/10 dark:hover:bg-white/20 dark:text-white backdrop-blur-sm'}`}
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button 
+          onClick={(e) => { e.stopPropagation(); setCurrentHeroIndex(1); }}
+          className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentHeroIndex === 1 ? 'opacity-0 -translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0 bg-black/20 hover:bg-black/40 text-white backdrop-blur-sm'}`}
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+          <button 
+            onClick={() => setCurrentHeroIndex(0)} 
+            className={`h-2 rounded-full transition-all duration-300 ${currentHeroIndex === 0 ? 'w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]' : 'w-2 bg-white/40 hover:bg-white/60'}`} 
+            aria-label="Go to slide 1"
+          />
+          <button 
+            onClick={() => setCurrentHeroIndex(1)} 
+            className={`h-2 rounded-full transition-all duration-300 ${currentHeroIndex === 1 ? (isDark ? 'w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]' : 'w-6 bg-black shadow-[0_0_10px_rgba(0,0,0,0.5)]') : (isDark ? 'w-2 bg-white/40 hover:bg-white/60' : 'w-2 bg-black/20 hover:bg-black/40')}`} 
+            aria-label="Go to slide 2"
+          />
+        </div>
       </div>
 
       {/* ── Metrics Row ── */}
