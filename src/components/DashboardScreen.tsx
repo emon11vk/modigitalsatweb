@@ -1162,7 +1162,11 @@ export default function DashboardScreen({
                   <input
                     type="file"
                     accept="image/*"
-                    onChange={(e) => setEditImageFile(e.target.files?.[0] || null)}
+                    onChange={(e) => {
+                      const file = e.target.files?.[0] || null;
+                      setEditImageFile(file);
+                      if (file) setEditYoutubeUrl('');
+                    }}
                     className={`block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold transition-colors cursor-pointer ${isDark
                       ? 'text-slate-300 file:bg-white/10 file:text-white hover:file:bg-white/20'
                       : 'text-slate-700 file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200'
@@ -1181,7 +1185,10 @@ export default function DashboardScreen({
                     type="text"
                     placeholder="https://youtube.com/..."
                     value={editYoutubeUrl}
-                    onChange={(e) => setEditYoutubeUrl(e.target.value)}
+                    onChange={(e) => {
+                      setEditYoutubeUrl(e.target.value);
+                      if (e.target.value) setEditImageFile(null);
+                    }}
                     className={`w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-primary/50 transition-all ${isDark
                       ? 'bg-black/20 border-white/10 text-white placeholder:text-slate-500'
                       : 'bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400'
