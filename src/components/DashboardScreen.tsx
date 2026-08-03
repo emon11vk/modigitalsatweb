@@ -310,9 +310,6 @@ export default function DashboardScreen({
     }
   }, [hero2BannerUrl]);
 
-    return () => clearInterval(interval);
-  }, [isHeroHovered]);
-
   // -- WATER RIPPLE EFFECT --
   useEffect(() => {
     let $el1: any;
@@ -365,6 +362,9 @@ export default function DashboardScreen({
              ctx.fillStyle = isDark ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)';
              ctx.fillRect(Math.random() * 1200, Math.random() * 400, 1, 1);
           }
+          return canvas.toDataURL();
+        };
+
         if (bannerRef.current && !hero1YoutubeUrl) {
           $el1 = $(bannerRef.current);
           try {
