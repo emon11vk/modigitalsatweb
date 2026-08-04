@@ -727,7 +727,7 @@ export default function DashboardScreen({
                 />
                 {!hero1Config?.imageTimestamp && !hero1YoutubeUrl && bannerUrl && (
                   <>
-                    <div className={`flex items-center p-1 rounded-lg backdrop-blur-md border transition-all ${isDark ? 'bg-black/30 border-white/10 text-white' : 'bg-white/50 border-white/20 text-text-dark'
+                    <div className={`flex items-center p-1 rounded-lg border transition-all shadow-sm ${isDark ? 'bg-bg-card border-white/10 text-white' : 'bg-white border-slate-200 text-text-dark'
                       }`}>
                       {['top', 'center', 'bottom'].map(pos => (
                         <button
@@ -752,7 +752,7 @@ export default function DashboardScreen({
                     setEditYoutubeUrl(hero1YoutubeUrl || '');
                     setEditImageFile(null);
                   }}
-                  className={`px-3 py-1.5 rounded-lg backdrop-blur-md border transition-colors flex items-center gap-1.5 text-xs font-semibold ${isDark ? 'bg-black/50 border-white/10 text-white hover:bg-black/70' : 'bg-white/70 border-white/20 text-text-dark hover:bg-white/90'
+                  className={`px-3 py-1.5 rounded-lg border transition-colors flex items-center gap-1.5 text-xs font-semibold shadow-sm ${isDark ? 'bg-bg-card border-white/10 text-white hover:bg-white/5' : 'bg-white border-slate-200 text-text-dark hover:bg-slate-50'
                     }`}
                   title="Sửa nền Slide 1"
                 >
@@ -782,7 +782,7 @@ export default function DashboardScreen({
             ref={bannerRef2}
             className={`w-full shrink-0 h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[400px] flex flex-col items-center justify-center relative overflow-hidden group/slide2 ${!hero2LoadedUrl ? (isDark ? 'bg-[#0f1115]' : 'bg-[#f8f9fa]') : ''}`}
             style={{
-              backgroundImage: hero2YoutubeUrl ? undefined : (hero2LoadedUrl ? `url(${hero2LoadedUrl})` : (isDark ? 'radial-gradient(circle at top right, rgba(108,99,255,0.05), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.05), transparent 50%)' : 'radial-gradient(circle at top right, rgba(108,99,255,0.03), transparent 50%), radial-gradient(circle at bottom left, rgba(255,107,107,0.03), transparent 50%)')),
+              backgroundImage: hero2YoutubeUrl ? undefined : (hero2LoadedUrl ? `url(${hero2LoadedUrl})` : undefined),
               backgroundSize: (hero2LoadedUrl && !hero2YoutubeUrl) ? 'cover' : undefined,
               backgroundPosition: 'center',
             }}
@@ -806,7 +806,7 @@ export default function DashboardScreen({
                     setEditYoutubeUrl(hero2YoutubeUrl || '');
                     setEditImageFile(null);
                   }}
-                  className={`px-3 py-1.5 rounded-lg backdrop-blur-md border transition-colors flex items-center gap-1.5 text-xs font-semibold ${isDark ? 'bg-black/50 border-white/10 text-white hover:bg-black/70' : 'bg-white/70 border-white/20 text-text-dark hover:bg-white/90'
+                  className={`px-3 py-1.5 rounded-lg border transition-colors flex items-center gap-1.5 text-xs font-semibold shadow-sm ${isDark ? 'bg-bg-card border-white/10 text-white hover:bg-white/5' : 'bg-white border-slate-200 text-text-dark hover:bg-slate-50'
                     }`}
                   title="Sửa nền Slide 2"
                 >
@@ -816,19 +816,14 @@ export default function DashboardScreen({
             )}
 
             <h2 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-8 text-center px-4 tracking-tight z-10 ${isDark ? 'text-white' : 'text-slate-800'}`}>
-               Theo dõi <span className="text-primary relative inline-block">
-                 Mơ
-                 <svg className="absolute -bottom-1 left-0 w-full h-2 text-accent" viewBox="0 0 100 10" preserveAspectRatio="none">
-                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
-                 </svg>
-               </span> ngay trên các nền tảng
+               Theo dõi <span className="text-primary">Mơ</span> ngay trên các nền tảng
             </h2>
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 z-10">
-               <a href="https://www.facebook.com/profile.php?id=61572035294391&locale=vi_VN" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-[#0866FF] text-white font-bold hover:bg-blue-700 hover:scale-105 hover:-translate-y-1 transition-all shadow-lg shadow-blue-500/20 w-full sm:w-auto justify-center">
+               <a href="https://www.facebook.com/profile.php?id=61572035294391&locale=vi_VN" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#0866FF] text-white font-semibold hover:bg-blue-700 transition-colors w-full sm:w-auto justify-center">
                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                  Facebook
                </a>
-               <a href="https://www.threads.com/@mo.digital.sat_" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-black text-white font-bold hover:bg-zinc-800 hover:scale-105 hover:-translate-y-1 transition-all shadow-lg shadow-black/20 dark:bg-white dark:text-black dark:hover:bg-zinc-200 dark:shadow-white/10 w-full sm:w-auto justify-center">
+               <a href="https://www.threads.com/@mo.digital.sat_" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-black text-white font-semibold hover:bg-zinc-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-slate-100 w-full sm:w-auto justify-center">
                  <svg viewBox="0 0 192 192" width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.152 170.096 113.668 172.247 95.9019 172.247C76.0247 172.247 51.6811 165.625 36.5 150.436C25.0018 138.93 18.0071 120.065 18.0071 95.8458C18.0071 71.691 24.9642 52.8361 36.4206 41.3409C51.5284 26.1856 75.8118 19.5376 95.9019 19.5376C115.435 19.5376 139.11 25.8643 153.948 40.7512C159.972 46.7946 164.717 54.3413 167.925 63.3087L184.093 57.5186C180.126 46.4023 174.195 37.0725 166.721 29.576C149.324 12.1228 122.257 2.5 95.9019 2.5C72.1006 2.5 44.5103 10.229 24.4239 30.3831C10.1554 44.7001 1 66.8665 1 95.8458C1 124.757 10.1983 146.982 24.5303 161.363C44.7214 181.621 72.3995 189.251 95.9019 189.251C116.891 189.251 138.57 186.262 154.516 170.264C171.393 153.332 172.822 131.782 166.657 117.408C162.249 107.123 153.766 98.7188 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path>
                  </svg>
@@ -841,13 +836,13 @@ export default function DashboardScreen({
         {/* Navigation Arrows */}
         <button 
           onClick={(e) => { e.stopPropagation(); setCurrentHeroIndex(0); }}
-          className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentHeroIndex === 0 ? 'opacity-0 translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0 bg-black/10 hover:bg-black/20 text-black dark:bg-white/10 dark:hover:bg-white/20 dark:text-white backdrop-blur-sm'}`}
+          className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${currentHeroIndex === 0 ? 'opacity-0 translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0 bg-white hover:bg-slate-50 text-slate-700 dark:bg-bg-card dark:border dark:border-white/10 dark:hover:bg-white/5 dark:text-white'}`}
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button 
           onClick={(e) => { e.stopPropagation(); setCurrentHeroIndex(1); }}
-          className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentHeroIndex === 1 ? 'opacity-0 -translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0 bg-black/20 hover:bg-black/40 text-white backdrop-blur-sm'}`}
+          className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${currentHeroIndex === 1 ? 'opacity-0 -translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0 bg-white hover:bg-slate-50 text-slate-700 dark:bg-bg-card dark:border dark:border-white/10 dark:hover:bg-white/5 dark:text-white'}`}
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -875,10 +870,10 @@ export default function DashboardScreen({
             label: 'Chuỗi Ngày Học',
             value: streak,
             suffix: 'ngày',
-            icon: <Flame className="w-5 h-5 animate-burn" strokeWidth={1.5} />,
-            color: 'text-orange-500',
-            bgColor: isDark ? 'bg-orange-500/10' : 'bg-orange-50/80',
-            borderColor: isDark ? 'border-orange-500/20' : 'border-orange-500/20',
+            icon: <Flame className="w-5 h-5" strokeWidth={1.5} />,
+            color: 'text-orange-600 dark:text-orange-400',
+            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
+            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
             action: null,
             progress: null,
             progressColor: '',
@@ -890,8 +885,8 @@ export default function DashboardScreen({
             suffix: `${vocabMastered} mastered`,
             icon: <BookOpen className="w-5 h-5" strokeWidth={1.5} />,
             color: 'text-accent',
-            bgColor: isDark ? 'bg-accent/5' : 'bg-accent/5',
-            borderColor: isDark ? 'border-accent/15' : 'border-accent/10',
+            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
+            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
             action: onNavigateToVocab,
             progress: vocabPercent,
             progressColor: 'bg-accent',
@@ -903,8 +898,8 @@ export default function DashboardScreen({
             suffix: userName,
             icon: <Award className="w-5 h-5" strokeWidth={1.5} />,
             color: 'text-accent-gold',
-            bgColor: isDark ? 'bg-accent-gold/5' : 'bg-accent-gold/5',
-            borderColor: isDark ? 'border-accent-gold/15' : 'border-accent-gold/10',
+            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
+            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
             action: onNavigateToLeaderboard,
             progress: null,
             progressColor: '',
@@ -926,15 +921,15 @@ export default function DashboardScreen({
           return (
             <motion.div
               key={idx}
-              className={`p-5 rounded-2xl border transition-all duration-200 relative group overflow-hidden flex flex-col justify-between ${isDark
-                ? `bg-bg-card ${card.borderColor} hover:border-primary/40`
-                : `bg-white ${card.borderColor} hover:border-primary/30`
-                } ${card.action ? 'cursor-pointer hover:-translate-y-[2px] hover:shadow-[0_4px_20px_-4px_rgba(108,99,255,0.05)]' : ''}`}
+              className={`p-5 rounded-xl border transition-colors relative flex flex-col justify-between ${isDark
+                ? `bg-bg-card ${card.borderColor} hover:border-white/20`
+                : `bg-white ${card.borderColor} hover:border-slate-300`
+                } ${card.action ? 'cursor-pointer' : ''}`}
               onClick={() => card.action?.()}
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                  <span className={`text-sm font-medium ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
                     {card.label}
                   </span>
                   <div className={`p-2 rounded-lg ${card.bgColor} ${card.color}`}>
