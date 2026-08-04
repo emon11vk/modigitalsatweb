@@ -53,7 +53,7 @@ html {
 @utility glass {
   background: rgba(17, 24, 39, 0.6);
   backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(14, 165, 233, 0.12);
+  border: 1px solid var(--color-border-glass);
 }
 
 @utility glass-light {
@@ -65,7 +65,7 @@ html {
 @utility glass-card {
   background: rgba(17, 24, 39, 0.5);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(14, 165, 233, 0.1);
+  border: 1px solid var(--color-border-glass);
 }
 
 @utility glass-card-light {
@@ -101,6 +101,12 @@ html {
 
 @utility rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+@media (min-width: 768px) {
+  .md-shape-triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
 }
 
 /* ─── Animated Gradient Background ─── */
@@ -311,3 +317,4 @@ input:focus, textarea:focus, select:focus, button:focus-visible {
     display: none !important;
   }
 }
+

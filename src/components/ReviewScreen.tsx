@@ -245,7 +245,7 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
 
                   {/* Question Text */}
                   {q.questionText && (
-                    <div>
+                    <div className={q.imageUrl ? 'mb-4' : ''}>
                       <span className={`text-[10px] font-semibold uppercase tracking-wider block mb-2 ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>
                         Câu hỏi
                       </span>
@@ -254,6 +254,20 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
                         className={`text-sm font-medium leading-relaxed ${isDark ? 'text-text-primary' : 'text-text-dark'}`}
                         isDark={isDark}
                         disableMath={!!q.passage}
+                      />
+                    </div>
+                  )}
+
+                  {/* Image Reference */}
+                  {q.imageUrl && (
+                    <div className="mb-6 flex justify-center">
+                      <img
+                        src={q.imageUrl}
+                        alt="Question reference"
+                        className={`max-w-full h-auto rounded-lg shadow-sm border ${
+                          isDark ? 'border-white/10' : 'border-slate-200'
+                        }`}
+                        style={{ maxHeight: '400px' }}
                       />
                     </div>
                   )}

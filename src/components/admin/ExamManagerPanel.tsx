@@ -487,9 +487,9 @@ export default function ExamManagerPanel({
             <button
               onClick={() => handleToggleLock(exam.id, exam.is_locked || false)}
               className={`p-1.5 rounded-xl border transition-all cursor-pointer ${
-                isDark
-                  ? (exam.is_locked ? 'bg-red-500/20 text-red-400 border-red-500/30' : 'border-white/10 text-text-muted hover:text-white')
-                  : (exam.is_locked ? 'bg-red-50 text-red-500 border-red-200' : 'border-slate-200 text-slate-400 hover:text-text-dark')
+                  isDark
+                    ? (exam.is_locked ? 'bg-accent-warm/20 text-accent-warm border-accent-warm/30' : 'border-white/10 text-text-muted hover:text-white')
+                    : (exam.is_locked ? 'bg-accent-warm/10 text-accent-warm border-accent-warm/30' : 'border-slate-200 text-slate-400 hover:text-text-dark')
               }`}
               title={exam.is_locked ? 'Mở khóa đề' : 'Khóa đề'}
             >
@@ -654,7 +654,7 @@ export default function ExamManagerPanel({
                     {childFolders.length > 0 && <span>• {childFolders.length} child {childFolders.length === 1 ? 'folder' : 'folders'}</span>}
                     <span className="uppercase text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary">{folder.category || 'general'}</span>
                     {folder.is_locked && (
-                      <span className="uppercase text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-red-500/10 text-red-500 flex items-center gap-1">
+                      <span className="uppercase text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-accent-warm/10 text-accent-warm flex items-center gap-1">
                         <Lock className="w-2.5 h-2.5" /> Khóa
                       </span>
                     )}
@@ -712,8 +712,8 @@ export default function ExamManagerPanel({
               }}
               className={`p-2 rounded-xl transition-all cursor-pointer ${
                 isDark
-                  ? (folder.is_locked ? 'bg-red-500/20 text-red-400' : 'text-text-muted hover:text-white hover:bg-white/10')
-                  : (folder.is_locked ? 'bg-red-50 text-red-500' : 'text-slate-400 hover:text-text-dark hover:bg-slate-100')
+                  ? (folder.is_locked ? 'bg-accent-warm/20 text-accent-warm' : 'text-text-muted hover:text-white hover:bg-white/10')
+                  : (folder.is_locked ? 'bg-accent-warm/10 text-accent-warm' : 'text-slate-400 hover:text-text-dark hover:bg-slate-100')
               }`}
               title={folder.is_locked ? 'Mở khóa thư mục' : 'Khóa thư mục'}
             >

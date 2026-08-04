@@ -2,7 +2,7 @@
 name: Mơ Digital SAT
 description: A structured, distraction-free testing environment for SAT prep.
 colors:
-  primary: "#6C63FF"
+  primary: "#0EA5E9"
   accent: "#00D4AA"
   accent-warm: "#FF6B6B"
   accent-gold: "#FFD93D"
@@ -18,9 +18,9 @@ colors:
   text-dark-secondary: "#475569"
 typography:
   display:
-    fontFamily: '"Inter", system-ui, sans-serif'
+    fontFamily: '"DM Sans", system-ui, sans-serif'
   body:
-    fontFamily: '"Inter", system-ui, sans-serif'
+    fontFamily: '"DM Sans", system-ui, sans-serif'
   mono:
     fontFamily: '"JetBrains Mono", monospace'
 rounded:
@@ -45,11 +45,11 @@ components:
 
 **Creative North Star: "Mở Điểm Số - Chạm Giấc Mơ Digital SAT"**
 
-Structured but inviting. We use soft lighting and subtle depth to make the strict testing environment feel approachable. The design focuses on eliminating distractions during practice while offering a welcoming, gamified experience when reviewing or studying vocabulary. It explicitly avoids cluttered, noisy UIs, keeping the academic process clear and direct.
+Structured but inviting. We use soft lighting and subtle depth to make the strict testing environment feel approachable, paired with carefully crafted micro-interactions (like the ripple banner) that draw the user's attention to the brand intentionally. The design balances a distraction-free testing UI with a gamified experience outside of tests.
 
 **Key Characteristics:**
 - Distraction-free testing UI
-- Soft, approachable lighting and depth
+- Intentional micro-interactions (brand-focused banners)
 - High contrast for readability
 - Clear, friendly component shapes
 
@@ -58,7 +58,7 @@ Structured but inviting. We use soft lighting and subtle depth to make the stric
 The palette balances strict, neutral backgrounds with vibrant, encouraging accents.
 
 ### Primary
-- **SAT Indigo** (#6C63FF): The main brand and action color. Used for primary CTAs, active states, and to anchor the visual identity.
+- **SAT Sky Blue** (#0EA5E9): The main brand and action color. Used for primary CTAs, active states, and to anchor the visual identity.
 
 ### Secondary
 - **Progress Teal** (#00D4AA): Used for success states, mastered vocabulary, and positive reinforcement.
@@ -74,11 +74,11 @@ The palette balances strict, neutral backgrounds with vibrant, encouraging accen
 
 ## 3. Typography
 
-**Display Font:** Inter (with system-ui fallback)
-**Body Font:** Inter (with system-ui fallback)
+**Display Font:** DM Sans (with system-ui fallback)
+**Body Font:** DM Sans (with system-ui fallback)
 **Label/Mono Font:** JetBrains Mono
 
-**Character:** Clean, highly legible, and academic. The exclusive use of Inter ensures reading comfort during long passages and provides a cohesive, structured feel across all headers and UI elements, avoiding unnecessary stylistic distraction.
+**Character:** Clean, highly legible, yet distinct from generic AI defaults. DM Sans provides a modern, approachable personality that feels deliberately designed rather than templated.
 
 ### Hierarchy
 - **Display** (Bold, clamp responsive): Hero sections, welcome screens, and major milestones.
@@ -86,7 +86,7 @@ The palette balances strict, neutral backgrounds with vibrant, encouraging accen
 - **Body** (Regular, 16px, 1.5 line-height): Test passages, question stems, and general UI text. Line length is capped at 65–75ch for readability.
 - **Label** (Medium, 12px, tracking-wide uppercase): Timers, stats, code snippets, and button text.
 
-**The Test Legibility Rule.** Question stems and passages must prioritize readability above all else. Use a comfortable line height and ensure a minimum 4.5:1 contrast ratio.
+**The Intentional Sans Rule.** Use DM Sans instead of Inter to avoid the saturated "AI generated" look, bringing a unique brand voice to the product.
 
 ## 4. Elevation
 
@@ -96,7 +96,7 @@ Subtle Layering - Clean, crisp dropshadows separate test panes from the backgrou
 - **Pane Elevation** (`box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1)`): Lifts the question pane slightly above the passage pane.
 - **Modal Elevation** (`box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1)`): Used for the pre-test gate and vocabulary popups to command focus.
 
-**The Depth-for-Focus Rule.** Shadows are used structurally to define what the user should be interacting with right now, not decoratively.
+**The Depth-for-Focus Rule.** Shadows are used structurally to define what the user should be interacting with right now, not decoratively, except on the dashboard where brand micro-interactions exist.
 
 ## 5. Components
 
@@ -104,7 +104,7 @@ Components are accessible and friendly, utilizing large tap targets, rounded cor
 
 ### Buttons
 - **Shape:** Rounded (12px or full-pill).
-- **Primary:** SAT Indigo background with white text.
+- **Primary:** SAT Sky Blue background with white text.
 - **Hover / Focus:** Subtle scale up or brightness shift, accompanied by a clear focus ring.
 - **Secondary / Ghost (if applicable):** Subtle transparent hover state with colored text.
 
@@ -129,9 +129,11 @@ Components are accessible and friendly, utilizing large tap targets, rounded cor
 - **Do** maintain a strict, distraction-free environment during the test itself.
 - **Do** use large tap targets (minimum 44x44px) for all interactive elements.
 - **Do** enforce a split-screen paradigm during testing, keeping the passage visible while answering questions.
-- **Do** use SAT Indigo for the primary actions and Progress Teal to celebrate success.
+- **Do** use SAT Sky Blue for the primary actions and Progress Teal to celebrate success.
+- **Do** use deliberate micro-interactions (like ripple on banner) to draw attention to brand elements, as long as it doesn't distract from the core task.
 
 ### Don't:
 - **Don't** include cluttered, noisy UIs with sidebars, footers, or ads during testing.
 - **Don't** use overly playful or cartoonish aesthetics that detract from the seriousness of a standardized test.
-- **Don't** use the 2014-era app look; avoid shadow-heavy or glassmorphism-heavy UI where not structurally needed.
+- **Don't** use gray text on colored backgrounds without adjusting for contrast (ensure readability).
+- **Don't** use the 2014-era app look; avoid shadow-heavy or glassmorphism-heavy UI where not structurally needed (keep shadows subtle like `shadow-sm`).

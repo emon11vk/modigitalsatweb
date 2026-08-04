@@ -80,13 +80,7 @@ export default function PracticeScreen({ theme, userName, userEmail, folders, mo
 
     const targetFolderIds = getFolderIdsRecursive(selectedFolderId);
     const filtered = modules.filter(m => m.folder_id && targetFolderIds.includes(m.folder_id));
-    console.log('DEBUG_PRACTICE:', {
-      totalModules: modules.length,
-      selectedFolderId,
-      targetFolderIds,
-      filteredCount: filtered.length,
-      modulesSample: modules.slice(0, 3)
-    });
+
     return filtered;
   }, [modules, selectedFolderId, folders, categoryFolders]);
 

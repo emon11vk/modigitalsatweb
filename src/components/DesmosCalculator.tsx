@@ -88,7 +88,7 @@ const DesmosCalculator: React.FC<DesmosCalculatorProps> = ({ style }) => {
       style={{ 
         width: '100%', 
         height: '400px',
-        border: '1px solid #ccc',
+        border: '1px solid var(--color-border-light)',
         borderRadius: '8px',
         overflow: 'hidden',
         ...style 

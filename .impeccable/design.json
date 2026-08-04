@@ -1,24 +1,32 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-06-26T14:30:00Z",
+  "generatedAt": "2026-08-04T18:55:00Z",
   "title": "Design System: Mơ Digital SAT",
   "extensions": {
     "colorMeta": {
-      "primary": { "role": "primary", "displayName": "SAT Indigo", "canonical": "#6C63FF", "tonalRamp": ["#E0DFFF", "#C2BFFF", "#A39FFF", "#857FFF", "#6C63FF", "#5348E0", "#3B31B8", "#251D91"] },
-      "accent": { "role": "secondary", "displayName": "Progress Teal", "canonical": "#00D4AA", "tonalRamp": ["#CCF6ED", "#99EDDC", "#66E5CC", "#33DDBB", "#00D4AA", "#00B38F", "#008A6E", "#00614D"] }
+      "primary": { "role": "primary", "displayName": "SAT Sky Blue", "canonical": "#0EA5E9" },
+      "accent": { "role": "secondary", "displayName": "Progress Teal", "canonical": "#00D4AA" },
+      "accent-warm": { "role": "tertiary", "displayName": "Accent Warm", "canonical": "#FF6B6B" },
+      "accent-gold": { "role": "tertiary", "displayName": "Accent Gold", "canonical": "#FFD93D" },
+      "bg-dark": { "role": "neutral", "displayName": "Dark Background", "canonical": "#0B0F1A" },
+      "bg-card": { "role": "neutral", "displayName": "Dark Card", "canonical": "#111827" },
+      "bg-surface": { "role": "neutral", "displayName": "Dark Surface", "canonical": "#151C2C" },
+      "bg-light": { "role": "neutral", "displayName": "Light Background", "canonical": "#F8FAFC" },
+      "bg-light-card": { "role": "neutral", "displayName": "Light Card", "canonical": "#FFFFFF" },
+      "text-primary": { "role": "neutral", "displayName": "Text Primary (Dark Mode)", "canonical": "#F1F5F9" },
+      "text-secondary": { "role": "neutral", "displayName": "Text Secondary (Dark Mode)", "canonical": "#94A3B8" },
+      "text-muted": { "role": "neutral", "displayName": "Text Muted", "canonical": "#64748B" },
+      "text-dark": { "role": "neutral", "displayName": "Text Dark (Light Mode)", "canonical": "#0F172A" },
+      "text-dark-secondary": { "role": "neutral", "displayName": "Text Dark Secondary", "canonical": "#475569" }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Major headers and hero sections." },
-      "body": { "displayName": "Body", "purpose": "Passages, question stems, UI text." },
-      "mono": { "displayName": "Mono", "purpose": "Timers, technical text." }
+      "display": { "displayName": "Display", "purpose": "Hero sections, welcome screens, and major milestones." },
+      "body": { "displayName": "Body", "purpose": "Test passages, question stems, and general UI text." },
+      "mono": { "displayName": "Mono", "purpose": "Timers, stats, code snippets, and button text." }
     },
     "shadows": [
-      { "name": "pane-elevation", "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)", "purpose": "Lifts question pane above background." },
-      { "name": "modal-elevation", "value": "0 20px 25px -5px rgba(0, 0, 0, 0.1)", "purpose": "Modal dialogs." }
-    ],
-    "breakpoints": [
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" }
+      { "name": "pane-elevation", "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)", "purpose": "Lifts the question pane slightly above the passage pane." },
+      { "name": "modal-elevation", "value": "0 20px 25px -5px rgba(0, 0, 0, 0.1)", "purpose": "Used for the pre-test gate and vocabulary popups to command focus." }
     ]
   },
   "components": [
@@ -26,35 +34,37 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Primary action button for starting tests or submitting.",
-      "html": "<button class=\"ds-btn-primary\">Start Test</button>",
-      "css": ".ds-btn-primary { background: #6C63FF; color: #FFFFFF; padding: 12px 24px; border-radius: 12px; font-family: Inter, sans-serif; font-weight: 600; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2); } .ds-btn-primary:focus-visible { outline: 2px solid #6C63FF; outline-offset: 2px; }"
+      "description": "Primary action button.",
+      "html": "<button class=\"ds-btn-primary\">START TEST</button>",
+      "css": ".ds-btn-primary { background-color: #0EA5E9; color: #FFFFFF; padding: 12px 24px; border-radius: 16px; border: none; font-family: 'DM Sans', system-ui, sans-serif; font-weight: bold; cursor: pointer; transition: transform 0.15s, background-color 0.15s; } .ds-btn-primary:hover { transform: scale(1.02); background-color: #38BDF8; } .ds-btn-primary:focus-visible { outline: 2px solid rgba(14, 165, 233, 0.4); outline-offset: 2px; }"
     }
   ],
   "narrative": {
     "northStar": "Mở Điểm Số - Chạm Giấc Mơ Digital SAT",
-    "overview": "Structured but inviting. We use soft lighting and subtle depth to make the strict testing environment feel approachable. The design focuses on eliminating distractions during practice while offering a welcoming, gamified experience when reviewing or studying vocabulary. It explicitly avoids cluttered, noisy UIs, keeping the academic process clear and direct.",
+    "overview": "Structured but inviting. We use soft lighting and subtle depth to make the strict testing environment feel approachable, paired with carefully crafted micro-interactions (like the ripple banner) that draw the user's attention to the brand intentionally. The design balances a distraction-free testing UI with a gamified experience outside of tests.",
     "keyCharacteristics": [
       "Distraction-free testing UI",
-      "Soft, approachable lighting and depth",
+      "Intentional micro-interactions (brand-focused banners)",
       "High contrast for readability",
       "Clear, friendly component shapes"
     ],
     "rules": [
       { "name": "The No-Distraction Rule", "body": "During a test attempt, vibrant colors (Teal, Gold, Warm) are strictly minimized to prevent cognitive overload. The interface should feel strictly neutral until the test is submitted.", "section": "colors" },
-      { "name": "The Test Legibility Rule", "body": "Question stems and passages must prioritize readability above all else. Use a comfortable line height and ensure a minimum 4.5:1 contrast ratio.", "section": "typography" },
-      { "name": "The Depth-for-Focus Rule", "body": "Shadows are used structurally to define what the user should be interacting with right now, not decoratively.", "section": "elevation" }
+      { "name": "The Intentional Sans Rule", "body": "Use DM Sans instead of Inter to avoid the saturated \"AI generated\" look, bringing a unique brand voice to the product.", "section": "typography" },
+      { "name": "The Depth-for-Focus Rule", "body": "Shadows are used structurally to define what the user should be interacting with right now, not decoratively, except on the dashboard where brand micro-interactions exist.", "section": "elevation" }
     ],
     "dos": [
       "Do maintain a strict, distraction-free environment during the test itself.",
       "Do use large tap targets (minimum 44x44px) for all interactive elements.",
       "Do enforce a split-screen paradigm during testing, keeping the passage visible while answering questions.",
-      "Do use SAT Indigo for the primary actions and Progress Teal to celebrate success."
+      "Do use SAT Sky Blue for the primary actions and Progress Teal to celebrate success.",
+      "Do use deliberate micro-interactions (like ripple on banner) to draw attention to brand elements, as long as it doesn't distract from the core task."
     ],
     "donts": [
       "Don't include cluttered, noisy UIs with sidebars, footers, or ads during testing.",
       "Don't use overly playful or cartoonish aesthetics that detract from the seriousness of a standardized test.",
-      "Don't use the 2014-era app look; avoid shadow-heavy or glassmorphism-heavy UI where not structurally needed."
+      "Don't use gray text on colored backgrounds without adjusting for contrast (ensure readability).",
+      "Don't use the 2014-era app look; avoid shadow-heavy or glassmorphism-heavy UI where not structurally needed (keep shadows subtle like shadow-sm)."
     ]
   }
 }

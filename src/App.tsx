@@ -41,7 +41,8 @@ import {
   GraduationCap,
   CheckCircle2,
   History,
-  ShieldAlert
+  ShieldAlert,
+  Menu
 } from 'lucide-react';
 
 import { motion, AnimatePresence } from 'motion/react';
@@ -52,6 +53,7 @@ export default function App() {
   const { isAdmin } = useAdminRole();
 
   const [theme, setTheme] = useState<Theme>('light');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -952,39 +954,66 @@ export default function App() {
 
   // ─── Main render ─────────────────────────────────────────────────────────────
   return (
-    <div className={`min-h-screen font-sans flex flex-col transition-colors duration-300 print:block print:min-h-0 print:h-auto ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
+    <div className={`min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 print:block print:min-h-0 print:h-auto ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
       }`}>
 
-      {/* ── Header ── */}
-      <header className={`px-4 py-3 md:px-8 border-b sticky top-0 z-40 transition-all print:hidden ${isDark
+      {/* ── Sidebar / Header ── */}
+      <header className={`px-4 py-3 md:px-4 md:py-6 border-b md:border-b-0 md:border-r sticky top-0 md:h-screen shrink-0 z-40 transition-all duration-300 print:hidden ${isSidebarCollapsed ? 'md:w-20' : 'md:w-64'} ${isDark
           ? 'bg-bg-dark/80 backdrop-blur-xl border-white/5'
           : 'bg-white/80 backdrop-blur-xl border-slate-200/50'
         }`}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto md:h-full flex md:flex-col items-center md:items-start justify-between md:justify-start gap-4 md:gap-8">
 
-          {/* Logo */}
-          <div
-            className="flex items-center gap-3 cursor-pointer group"
-            onClick={() => {
-              if (location.pathname === '/review') {
-                setSelectedAttempt(null);
-                localStorage.removeItem('modigitalsat_attemptId');
-                localStorage.removeItem('modigitalsat_currentScreen');
-              }
-              navigate('/dashboard');
-            }}
-          >
-            <div className={`relative flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <img src="/logo.png" alt="Mơ Digital SAT" className="h-16 sm:h-20 w-auto object-contain relative z-10 drop-shadow-md" />
+          {/* Logo & Toggle */}
+          <div className={`flex items-center w-full ${isSidebarCollapsed ? 'md:justify-center' : 'md:justify-between'}`}>
+            <div
+              className="flex items-center gap-3 cursor-pointer group hidden md:flex"
+              onClick={() => {
+                if (isSidebarCollapsed) {
+                  setIsSidebarCollapsed(false);
+                } else {
+                  if (location.pathname === '/review') {
+                    setSelectedAttempt(null);
+                    localStorage.removeItem('modigitalsat_attemptId');
+                    localStorage.removeItem('modigitalsat_currentScreen');
+                  }
+                  navigate('/dashboard');
+                }
+              }}
+              title={isSidebarCollapsed ? 'Mở rộng menu' : 'Trang chủ'}
+            >
+              <div className="relative flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <img src="/logo.png" alt="Mơ Digital SAT" className="h-10 sm:h-12 md:h-10 w-auto object-contain relative z-10 drop-shadow-md" />
+              </div>
+              {!isSidebarCollapsed && (
+                <h1 className="text-base md:text-lg font-black font-display tracking-tight select-none whitespace-nowrap">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500 drop-shadow-sm">Mơ Digital SAT</span>
+                </h1>
+              )}
             </div>
-            <h1 className="text-base sm:text-xl font-black font-display tracking-tight select-none">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500 drop-shadow-sm">Mơ Digital SAT</span>
-            </h1>
+
+            {!isSidebarCollapsed && (
+              <button
+                onClick={() => setIsSidebarCollapsed(true)}
+                className={`hidden md:flex p-2 rounded-full transition-colors shrink-0 ${isDark ? 'text-text-secondary hover:text-white hover:bg-white/5' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`}
+                title="Thu gọn menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            )}
+            
+            {/* Mobile Logo Only */}
+            <div className="flex md:hidden items-center gap-3 cursor-pointer group" onClick={() => navigate('/dashboard')}>
+               <img src="/logo.png" alt="Mơ Digital SAT" className="h-10 sm:h-12 w-auto object-contain relative z-10" />
+               <h1 className="text-base font-black font-display tracking-tight select-none">
+                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500 drop-shadow-sm">Mơ Digital SAT</span>
+               </h1>
+            </div>
           </div>
 
           {/* Navigation */}
-          <nav className={`hidden md:flex items-center gap-1 p-1 rounded-xl ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
+          <nav className={`hidden md:flex md:flex-col md:w-full items-stretch gap-1 p-1 rounded-none ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
             {navItems.map(({ path, icon, label }) => {
               const isActive = location.pathname === path || (path === '/history' && location.pathname === '/review');
               return (
@@ -998,21 +1027,18 @@ export default function App() {
                     }
                     navigate(path);
                   }}
-                  className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer flex items-center gap-2 ${isActive
+                  className={`px-4 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer flex items-center ${isSidebarCollapsed ? 'md:justify-center' : 'md:justify-between'} w-full ${isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20'
                       : isDark
                         ? 'text-text-muted hover:text-white hover:bg-white/5'
                         : 'text-text-dark-secondary hover:text-text-dark hover:bg-white'
                     }`}
+                  title={isSidebarCollapsed ? label : undefined}
                 >
-                  {icon}
-                  <span>{label}</span>
-                  <span className={`hidden lg:inline-flex items-center justify-center ml-1 w-4 h-4 text-[9px] rounded font-mono ${isActive
-                      ? 'bg-white/20 text-white/90'
-                      : isDark ? 'bg-white/5 text-text-muted/50' : 'bg-slate-200/50 text-slate-400'
-                    }`}>
-                    {navItems.findIndex(i => i.path === path) + 1}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    {icon}
+                    <span className={`transition-opacity duration-200 whitespace-nowrap ${isSidebarCollapsed ? 'md:hidden opacity-0' : 'opacity-100'}`}>{label}</span>
+                  </div>
                 </button>
               );
             })}
@@ -1033,7 +1059,7 @@ export default function App() {
                     }
                     navigate(path);
                   }}
-                  className={`p-2.5 rounded-lg transition-all cursor-pointer ${isActive
+                  className={`p-2.5 rounded-full transition-all cursor-pointer ${isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20'
                       : isDark ? 'text-text-muted hover:text-white' : 'text-text-dark-secondary hover:text-text-dark'
                     }`}
@@ -1045,21 +1071,9 @@ export default function App() {
           </nav>
 
           {/* Right Controls */}
-          <div className="flex items-center gap-2">
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg border transition-all cursor-pointer ${isDark
-                  ? 'border-white/10 bg-white/5 text-text-secondary hover:text-primary hover:border-primary/20'
-                  : 'border-slate-200 bg-white text-text-dark-secondary hover:text-primary hover:border-primary/20'
-                }`}
-              title="Đổi theme"
-            >
-              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
+          <div className="flex items-center md:flex-col md:items-stretch md:mt-auto gap-2 md:w-full">
             {/* User info */}
-            <div className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg border ${isDark ? 'bg-white/5 border-white/5' : 'bg-white border-slate-200'
+            <div className={`hidden lg:flex items-center px-3 py-2 rounded-full border ${isSidebarCollapsed ? 'justify-center' : 'gap-3'} ${isDark ? 'bg-white/5 border-white/5' : 'bg-white border-slate-200'
               }`}>
               <img
                 src={
@@ -1068,31 +1082,54 @@ export default function App() {
                 }
                 alt="Avatar"
                 referrerPolicy="no-referrer"
-                className="w-6 h-6 rounded-full object-cover"
+                className="w-8 h-8 rounded-full object-cover shrink-0"
               />
-              <span className={`text-xs font-medium truncate max-w-[100px] ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
-                {currentUser?.user_metadata?.full_name ||
-                  currentUser?.email?.split('@')[0]}
-              </span>
+              {!isSidebarCollapsed && (
+                <span className={`text-sm font-medium truncate max-w-[120px] ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
+                  {currentUser?.user_metadata?.full_name ||
+                    currentUser?.email?.split('@')[0]}
+                </span>
+              )}
             </div>
 
-            {/* Logout */}
-            <button
-              onClick={handleLogout}
-              className={`p-2 rounded-lg border transition-all cursor-pointer ${isDark
-                  ? 'border-white/10 bg-white/5 text-text-muted hover:text-accent-warm hover:border-accent-warm/20'
-                  : 'border-slate-200 bg-white text-slate-400 hover:text-accent-warm hover:border-accent-warm/20'
-                }`}
-              title="Đăng xuất"
-            >
-              <LogOut className="w-4 h-4" />
-            </button>
+            <div className={`flex items-center gap-2 ${isSidebarCollapsed ? 'md:flex-col' : 'md:grid md:grid-cols-2'}`}>
+              {/* Theme toggle */}
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-full border flex items-center justify-center transition-all cursor-pointer ${isDark
+                    ? 'border-white/10 bg-white/5 text-text-secondary hover:text-primary hover:border-primary/20'
+                    : 'border-slate-200 bg-white text-text-dark-secondary hover:text-primary hover:border-primary/20'
+                  }`}
+                title="Đổi theme"
+              >
+                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+
+              {/* Logout */}
+              <button
+                onClick={handleLogout}
+                className={`p-2 rounded-full border flex items-center justify-center transition-all cursor-pointer ${isDark
+                    ? 'border-white/10 bg-white/5 text-text-muted hover:text-accent-warm hover:border-accent-warm/20'
+                    : 'border-slate-200 bg-white text-slate-400 hover:text-accent-warm hover:border-accent-warm/20'
+                  }`}
+                title="Đăng xuất"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop Copyright */}
+          <div className={`hidden md:block w-full text-center mt-2 ${isSidebarCollapsed ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'} transition-opacity duration-300`}>
+            <p className={`text-[10px] ${isDark ? 'text-text-muted' : 'text-slate-400'}`}>© 2026 Mơ Digital SAT.<br/>All Rights Reserved.</p>
           </div>
         </div>
       </header>
 
-      {/* ── Main Content ── */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 print:block print:p-0 print:max-w-none print:h-auto">
+      {/* ── Main Layout Wrapper ── */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-x-hidden">
+        {/* ── Main Content ── */}
+        <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 relative z-10 print:block print:p-0 print:max-w-none print:h-auto">
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={
@@ -1178,13 +1215,15 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* ── Footer ── */}
-      <footer className={`border-t py-6 text-center select-none print:hidden ${isDark ? 'border-white/5 text-text-muted' : 'border-slate-100 text-slate-400'
+      {/* ── Mobile Footer ── */}
+      <footer className={`md:hidden border-t py-6 text-center select-none print:hidden ${isDark ? 'border-white/5 text-text-muted' : 'border-slate-100 text-slate-400'
         }`}>
         <div className="max-w-7xl mx-auto px-4 text-xs">
           <p>© 2026 Mơ Digital SAT. All Rights Reserved.</p>
         </div>
       </footer>
+      
+      </div>
 
       {/* ── Score Popup ── */}
       <AnimatePresence>

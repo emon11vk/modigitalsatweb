@@ -686,7 +686,7 @@ export default function DashboardScreen({
 
       {/* ── Welcome Banner ── */}
       <div
-        className={`relative overflow-hidden rounded-3xl border mb-6 transition-[height] duration-75 group ${isDark ? 'bg-bg-card border-white/5' : 'bg-white border-slate-200'}`}
+        className={`relative overflow-hidden rounded-[2.5rem] border mb-6 transition-all duration-500 ease-out group z-20 shadow-2xl md:scale-[1.01] hover:md:scale-[1.02] hover:-translate-y-2 ${isDark ? 'bg-bg-card border-white/10 shadow-primary/20 hover:shadow-primary/40' : 'bg-white border-slate-200 shadow-primary/15 hover:shadow-primary/30'}`}
         style={{
           height: bannerHeight ? `${bannerHeight}px` : undefined,
         }}
@@ -863,26 +863,8 @@ export default function DashboardScreen({
       </div>
 
       {/* ── Metrics Row ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-8 sm:items-end">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-8 sm:items-end md:mt-12">
         {[
-          {
-            id: 'streak',
-            label: 'Chuỗi Ngày Học',
-            value: streak,
-            suffix: 'ngày',
-            icon: <Flame className="w-5 h-5" strokeWidth={1.5} />,
-            color: 'text-orange-600 dark:text-orange-400',
-            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
-            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
-            action: onNavigateToPractice,
-            progress: null,
-            progressColor: '',
-            heightClass: 'h-auto sm:h-[380px]',
-            thumbnailClass: 'sm:h-[160px]',
-            centerValue: true,
-            valueSizeClass: 'text-6xl md:text-7xl',
-            valueColorClass: 'text-orange-500',
-          },
           {
             id: 'vocab',
             label: 'Từ Vựng Đã Học',
@@ -895,11 +877,35 @@ export default function DashboardScreen({
             action: onNavigateToVocab,
             progress: vocabPercent,
             progressColor: 'bg-accent',
-            heightClass: 'h-auto sm:h-[340px]',
+            heightClass: 'h-auto sm:h-[340px] md:h-auto md:aspect-[4/3]',
             thumbnailClass: 'sm:h-[130px]',
             centerValue: false,
-            valueSizeClass: '',
+            valueSizeClass: 'text-3xl md:text-4xl',
             valueColorClass: '',
+            shapeClass: 'rounded-[2rem] border-2 md:rounded-full md:origin-bottom md:scale-95',
+            shadowClass: 'shadow-md hover:shadow-xl hover:-translate-y-2 z-10 hover:z-20',
+            shapeStyle: {},
+          },
+          {
+            id: 'streak',
+            label: 'Chuỗi Ngày Học',
+            value: streak,
+            suffix: 'ngày',
+            icon: <Flame className="w-5 h-5" strokeWidth={1.5} />,
+            color: 'text-orange-600 dark:text-orange-400',
+            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
+            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
+            action: onNavigateToPractice,
+            progress: null,
+            progressColor: '',
+            heightClass: 'h-auto sm:h-[380px] md:h-auto md:aspect-[4/3]',
+            thumbnailClass: 'sm:h-[160px]',
+            centerValue: true,
+            valueSizeClass: 'text-6xl md:text-7xl',
+            valueColorClass: 'text-orange-500',
+            shapeClass: 'rounded-[2rem] border-2 md:rounded-full md:origin-bottom md:scale-110',
+            shadowClass: 'shadow-md hover:shadow-xl hover:-translate-y-2 z-10 hover:z-20',
+            shapeStyle: {},
           },
           {
             id: 'leaderboard',
@@ -913,11 +919,14 @@ export default function DashboardScreen({
             action: onNavigateToLeaderboard,
             progress: null,
             progressColor: '',
-            heightClass: 'h-auto sm:h-[300px]',
+            heightClass: 'h-auto sm:h-[300px] md:h-auto md:aspect-[4/3]',
             thumbnailClass: 'sm:h-[100px]',
             centerValue: false,
-            valueSizeClass: '',
+            valueSizeClass: 'text-3xl md:text-4xl',
             valueColorClass: '',
+            shapeClass: 'rounded-[2rem] border-2 md:rounded-full md:origin-bottom md:scale-95',
+            shadowClass: 'shadow-md hover:shadow-xl hover:-translate-y-2 z-10 hover:z-20',
+            shapeStyle: {},
           },
         ].map((card, idx) => {
           const config = cardConfigs[card.id];
@@ -933,36 +942,101 @@ export default function DashboardScreen({
             }
           }
 
+          const hasBg = !!(displayUrl || config?.youtubeUrl);
+
           return (
             <motion.div
               key={idx}
-              className={`p-5 rounded-xl border transition-colors relative flex flex-col justify-between ${isDark
+              style={card.shapeStyle}
+              className={`p-6 transition-all duration-300 ease-out relative flex flex-col justify-between overflow-hidden group/card ${isDark
                 ? `bg-bg-card ${card.borderColor} hover:border-white/20`
                 : `bg-white ${card.borderColor} hover:border-slate-300`
-                } ${card.action ? 'cursor-pointer' : ''} ${card.heightClass}`}
+                } ${card.action ? 'cursor-pointer' : ''} ${card.heightClass} ${card.shapeClass} ${card.shadowClass}`}
               onClick={() => card.action?.()}
             >
-              <div className={card.centerValue ? "flex flex-col flex-1" : ""}>
-                <div className="flex items-center justify-between mb-4 shrink-0">
-                  <span className={`text-sm font-medium ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
-                    {card.label}
-                  </span>
-                  <div className={`p-2 rounded-lg ${card.bgColor} ${card.color}`}>
+              {/* --- BACKGROUND LAYER --- */}
+              {config?.youtubeUrl ? (
+                <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                  <iframe
+                    className="absolute top-1/2 left-1/2 w-[130%] aspect-video max-w-none -translate-x-1/2 -translate-y-1/2"
+                    src={`https://www.youtube.com/embed/${getYoutubeId(config.youtubeUrl)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeId(config.youtubeUrl)}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3`}
+                    title="Background Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  ></iframe>
+                </div>
+              ) : displayUrl ? (
+                <img
+                  src={displayUrl}
+                  alt={card.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 z-0"
+                  onError={(e) => {
+                    if (e.currentTarget.src.includes('maxresdefault.jpg')) {
+                      e.currentTarget.src = e.currentTarget.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
+                    } else {
+                      (e.currentTarget as HTMLImageElement).style.opacity = '0';
+                    }
+                  }}
+                />
+              ) : null}
+
+              {/* OVERLAY for readable text when background exists */}
+              {hasBg && (
+                <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none transition-opacity group-hover/card:bg-black/60" />
+              )}
+
+              {/* ADMIN ADD BACKGROUND BUTTON (When no background exists) */}
+              {(isAdmin && !hasBg) && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-[10px] sm:text-xs text-slate-400 gap-1.5 hover:text-primary transition-colors z-0 bg-slate-100/50 dark:bg-white/5 opacity-0 group-hover/card:opacity-100"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setEditingCardId(card.id);
+                    setEditYoutubeUrl('');
+                    setEditImageFile(null);
+                  }}
+                >
+                  <ImageIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="text-center px-2">Thêm ảnh nền</span>
+                </div>
+              )}
+
+              {/* ADMIN EDIT BUTTON */}
+              {isAdmin && hasBg && (
+                <button
+                  className="absolute top-4 right-4 px-3 py-1.5 bg-black/60 hover:bg-black/90 rounded-lg text-white text-[10px] sm:text-xs font-medium backdrop-blur-md transition-opacity flex items-center gap-1.5 z-20 cursor-pointer pointer-events-auto opacity-0 group-hover/card:opacity-100"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setEditingCardId(card.id);
+                    setEditYoutubeUrl(config?.youtubeUrl || '');
+                    setEditImageFile(null);
+                  }}
+                >
+                  <Edit2 className="w-3.5 h-3.5" /> Sửa nền
+                </button>
+              )}
+
+              {/* --- FOREGROUND CONTENT --- */}
+              <div className="flex flex-col flex-1 items-center justify-center w-full z-10 relative pointer-events-none">
+                <div className="flex flex-col items-center justify-center shrink-0">
+                  <div className={`p-3 rounded-full mb-2 ${hasBg ? `bg-white/10 ${card.color} backdrop-blur-sm shadow-sm` : `${card.bgColor} ${card.color}`}`}>
                     {card.icon}
                   </div>
+                  <span className={`text-sm font-bold ${hasBg ? 'text-white/95 shadow-black/50 drop-shadow-md' : (isDark ? 'text-text-secondary' : 'text-text-dark-secondary')}`}>
+                    {card.label}
+                  </span>
                 </div>
 
-                <div className={`flex gap-2 ${card.centerValue ? 'flex-1 flex-col items-center justify-center mt-2' : 'items-baseline'}`}>
-                  <span className={`${card.valueSizeClass || 'text-2xl md:text-3xl'} font-black font-display ${card.valueColorClass || (isDark ? 'text-white' : 'text-text-dark')}`}>
+                <div className="flex flex-col items-center justify-center gap-1 mt-2">
+                  <span className={`${card.valueSizeClass || 'text-2xl md:text-3xl'} font-black font-display ${hasBg ? `${card.valueColorClass || card.color} drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]` : (card.valueColorClass || (isDark ? 'text-white' : 'text-text-dark'))}`}>
                     {card.value}
                   </span>
-                  <span className={`text-xs ${card.centerValue ? 'mt-1' : ''} ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+                  <span className={`text-xs font-semibold ${hasBg ? 'text-white/80 shadow-black/50 drop-shadow-md' : (isDark ? 'text-text-muted' : 'text-text-dark-secondary')}`}>
                     {card.suffix}
                   </span>
                 </div>
-
+                
                 {card.progress !== null && (
-                  <div className={`mt-4 w-full h-1.5 rounded-full overflow-hidden ${isDark ? 'bg-white/5' : 'bg-slate-100'}`}>
+                  <div className={`mt-4 w-full h-1.5 rounded-full overflow-hidden ${hasBg ? 'bg-white/20' : (isDark ? 'bg-white/5' : 'bg-slate-100')}`}>
                     <div
                       className={`h-full rounded-full ${card.progressColor} transition-all duration-700`}
                       style={{ width: `${Math.min(card.progress, 100)}%` }}
@@ -971,73 +1045,11 @@ export default function DashboardScreen({
                 )}
               </div>
 
-              <div className="mt-4 flex flex-col gap-3 justify-end h-full">
+              <div className="mt-4 flex flex-col gap-3 justify-end h-full w-full max-w-[80%] mx-auto z-10 relative pointer-events-none">
                 {card.action && (
-                  <div className={`flex items-center gap-1.5 text-xs font-semibold ${card.color}`}>
-                    <span>Xem chi tiết</span>
+                  <div className={`flex items-center justify-center gap-1.5 text-sm font-bold pointer-events-auto ${hasBg ? `${card.color} hover:brightness-125 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]` : card.color}`}>
+                    <span>Chi tiết</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                )}
-
-                {/* Banner / Video Thumbnail Section */}
-                {(displayUrl || config?.youtubeUrl || isAdmin) && (
-                  <div
-                    className={`relative rounded-lg overflow-hidden border ${isDark ? 'border-white/5' : 'border-slate-100'} ${displayUrl || config?.youtubeUrl ? '' : 'bg-slate-100 dark:bg-white/5 border-dashed cursor-pointer'} group/video shrink-0 aspect-[21/9] sm:aspect-auto ${card.thumbnailClass}`}
-                    onClick={(e) => {
-                      if (isAdmin && !displayUrl && !config?.youtubeUrl) {
-                        e.stopPropagation();
-                        setEditingCardId(card.id);
-                        setEditYoutubeUrl(config?.youtubeUrl || '');
-                        setEditImageFile(null);
-                      } else if (!config?.youtubeUrl && card.action) {
-                        card.action();
-                      }
-                    }}
-                  >
-                    {config?.youtubeUrl ? (
-                      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden rounded-lg">
-                        <iframe
-                          className="absolute top-1/2 left-1/2 w-[130%] aspect-video max-w-none -translate-x-1/2 -translate-y-1/2"
-                          src={`https://www.youtube.com/embed/${getYoutubeId(config.youtubeUrl)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeId(config.youtubeUrl)}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3`}
-                          title="Background Video"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        ></iframe>
-                      </div>
-                    ) : displayUrl ? (
-                      <img
-                        src={displayUrl}
-                        alt={card.label}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover/video:scale-105 z-0"
-                        onError={(e) => {
-                          if (e.currentTarget.src.includes('maxresdefault.jpg')) {
-                            e.currentTarget.src = e.currentTarget.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
-                          } else {
-                            (e.currentTarget as HTMLImageElement).style.opacity = '0';
-                          }
-                        }}
-                      />
-                    ) : isAdmin ? (
-                      <div className="w-full h-full flex flex-col items-center justify-center text-[10px] sm:text-xs text-slate-400 gap-1.5 hover:text-primary transition-colors">
-                        <ImageIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                        <span className="text-center px-2">Thêm ảnh/video</span>
-                      </div>
-                    ) : null}
-
-                    {/* Admin Edit Button */}
-                    {isAdmin && (
-                      <button
-                        className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 px-2 py-1 bg-black/60 hover:bg-black/90 rounded-lg text-white text-[10px] sm:text-xs font-medium backdrop-blur-md transition-opacity flex items-center gap-1 z-10 cursor-pointer pointer-events-auto ${config?.youtubeUrl ? 'opacity-80 hover:opacity-100' : 'opacity-0 group-hover/video:opacity-100'}`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          setEditingCardId(card.id);
-                          setEditYoutubeUrl(config?.youtubeUrl || '');
-                          setEditImageFile(null);
-                        }}
-                      >
-                        <Edit2 className="w-3 h-3" /> Sửa
-                      </button>
-                    )}
                   </div>
                 )}
               </div>

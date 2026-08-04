@@ -97,6 +97,45 @@ function useHighlight(containerRef: React.RefObject<HTMLDivElement | null>) {
 
   return { highlights, pending, handleSelectionEnd, confirmHighlight, removeById, clearAll, dismiss };
 }
+
+// ─── Draggable Hook ────────────────────────────────────────────────────────────
+function useDraggable() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragRef = useRef<{ startX: number; startY: number; initialX: number; initialY: number }>({
+    startX: 0, startY: 0, initialX: 0, initialY: 0
+  });
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    setIsDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+    dragRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      initialX: position.x,
+      initialY: position.y
+    };
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragRef.current.startX;
+    const dy = e.clientY - dragRef.current.startY;
+    setPosition({
+      x: dragRef.current.initialX + dx,
+      y: dragRef.current.initialY + dy
+    });
+  };
+
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  };
+
+  return { position, onPointerDown, onPointerMove, onPointerUp, isDragging };
+}
 // ───────────────────────────────────────────────────────────────────────────────
 
 interface ActiveTestScreenProps {
@@ -151,6 +190,7 @@ export default function ActiveTestScreen({
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
+  const { position: calcPos, onPointerDown: calcDragStart, onPointerMove: calcDragMove, onPointerUp: calcDragEnd, isDragging: calcIsDragging } = useDraggable();
 
   // Resizing
   const [leftPaneRatio, setLeftPaneRatio] = useState(50);
@@ -720,29 +760,38 @@ export default function ActiveTestScreen({
 
       {/* ── DESMOS CALCULATOR WIDGET ── */}
       {showCalculator && !isVerbal && (
-        <div 
-          className={`absolute top-20 left-1/2 -translate-x-1/2 md:left-auto md:-translate-x-0 md:right-8 z-40 w-[90vw] md:w-[600px] shadow-2xl rounded-xl overflow-hidden border flex flex-col ${
-            isDark ? 'bg-bg-dark border-white/20' : 'bg-white border-slate-300'
-          }`}
-        >
-          <div className={`px-4 py-2 flex items-center justify-between border-b cursor-move ${
-            isDark ? 'bg-bg-card border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-700'
-          }`}>
-            <div className="flex items-center gap-2 text-sm font-bold">
-              <Calculator className="w-4 h-4" />
-              Desmos Graphing Calculator
-            </div>
-            <button 
-              onClick={() => setShowCalculator(false)}
-              className={`p-1 rounded transition-colors ${
-                isDark ? 'hover:bg-white/10 text-slate-400 hover:text-white' : 'hover:bg-slate-200 text-slate-500 hover:text-black'
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 md:left-auto md:-translate-x-0 md:right-8 z-40 pointer-events-none">
+          <div 
+            className={`pointer-events-auto w-[90vw] md:w-[600px] shadow-2xl rounded-xl overflow-hidden border flex flex-col ${
+              isDark ? 'bg-bg-dark border-white/20' : 'bg-white border-slate-300'
+            } ${calcIsDragging ? 'opacity-90 transition-none' : 'transition-transform'}`}
+            style={{ transform: `translate3d(${calcPos.x}px, ${calcPos.y}px, 0)` }}
+          >
+            <div 
+              onPointerDown={calcDragStart}
+              onPointerMove={calcDragMove}
+              onPointerUp={calcDragEnd}
+              onPointerCancel={calcDragEnd}
+              className={`px-4 py-2 flex items-center justify-between border-b cursor-move touch-none select-none ${
+                isDark ? 'bg-bg-card border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-700'
               }`}
             >
-              ✕
-            </button>
-          </div>
-          <div className="p-1 bg-white">
-            <DesmosCalculator style={{ height: '400px', borderRadius: '4px' }} />
+              <div className="flex items-center gap-2 text-sm font-bold pointer-events-none">
+                <Calculator className="w-4 h-4" />
+                Desmos Graphing Calculator
+              </div>
+              <button 
+                onClick={(e) => { e.stopPropagation(); setShowCalculator(false); }}
+                className={`p-1 rounded transition-colors pointer-events-auto cursor-pointer ${
+                  isDark ? 'hover:bg-white/10 text-slate-400 hover:text-white' : 'hover:bg-slate-200 text-slate-500 hover:text-black'
+                }`}
+              >
+                ✕
+              </button>
+            </div>
+            <div className="p-1 bg-white">
+              <DesmosCalculator style={{ height: '400px', borderRadius: '8px' }} />
+            </div>
           </div>
         </div>
       )}
