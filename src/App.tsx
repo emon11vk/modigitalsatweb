@@ -20,6 +20,7 @@ import { calculateSM2 } from './utils/sm2';
 import { useAdminRole } from './hooks/useAdminRole';
 
 // Component Imports
+import IntroAnimation from './components/IntroAnimation';
 import LoginScreen from './components/LoginScreen';
 import DashboardScreen from './components/DashboardScreen';
 import ActiveTestScreen from './components/ActiveTestScreen';
@@ -954,8 +955,10 @@ export default function App() {
 
   // ─── Main render ─────────────────────────────────────────────────────────────
   return (
-    <div className={`min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 print:block print:min-h-0 print:h-auto ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
-      }`}>
+    <>
+      <IntroAnimation />
+      <div className={`min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 print:block print:min-h-0 print:h-auto ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
+        }`}>
 
       {/* ── Sidebar / Header ── */}
       <header className={`px-4 py-3 md:px-4 md:py-6 border-b md:border-b-0 md:border-r sticky top-0 md:h-screen shrink-0 z-40 transition-all duration-300 print:hidden ${isSidebarCollapsed ? 'md:w-20' : 'md:w-64'} ${isDark
@@ -1293,5 +1296,6 @@ export default function App() {
         )}
       </AnimatePresence>
     </div>
+    </>
   );
 }
