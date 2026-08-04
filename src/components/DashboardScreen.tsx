@@ -863,7 +863,7 @@ export default function DashboardScreen({
       </div>
 
       {/* ── Metrics Row ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-8 sm:items-end">
         {[
           {
             id: 'streak',
@@ -874,9 +874,14 @@ export default function DashboardScreen({
             color: 'text-orange-600 dark:text-orange-400',
             bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
             borderColor: isDark ? 'border-white/10' : 'border-slate-200',
-            action: null,
+            action: onNavigateToPractice,
             progress: null,
             progressColor: '',
+            heightClass: 'h-auto sm:h-[380px]',
+            thumbnailClass: 'sm:h-[160px]',
+            centerValue: true,
+            valueSizeClass: 'text-6xl md:text-7xl',
+            valueColorClass: 'text-orange-500',
           },
           {
             id: 'vocab',
@@ -890,6 +895,11 @@ export default function DashboardScreen({
             action: onNavigateToVocab,
             progress: vocabPercent,
             progressColor: 'bg-accent',
+            heightClass: 'h-auto sm:h-[340px]',
+            thumbnailClass: 'sm:h-[130px]',
+            centerValue: false,
+            valueSizeClass: '',
+            valueColorClass: '',
           },
           {
             id: 'leaderboard',
@@ -903,6 +913,11 @@ export default function DashboardScreen({
             action: onNavigateToLeaderboard,
             progress: null,
             progressColor: '',
+            heightClass: 'h-auto sm:h-[300px]',
+            thumbnailClass: 'sm:h-[100px]',
+            centerValue: false,
+            valueSizeClass: '',
+            valueColorClass: '',
           },
         ].map((card, idx) => {
           const config = cardConfigs[card.id];
@@ -924,11 +939,11 @@ export default function DashboardScreen({
               className={`p-5 rounded-xl border transition-colors relative flex flex-col justify-between ${isDark
                 ? `bg-bg-card ${card.borderColor} hover:border-white/20`
                 : `bg-white ${card.borderColor} hover:border-slate-300`
-                } ${card.action ? 'cursor-pointer' : ''}`}
+                } ${card.action ? 'cursor-pointer' : ''} ${card.heightClass}`}
               onClick={() => card.action?.()}
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
+              <div className={card.centerValue ? "flex flex-col flex-1" : ""}>
+                <div className="flex items-center justify-between mb-4 shrink-0">
                   <span className={`text-sm font-medium ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
                     {card.label}
                   </span>
@@ -937,11 +952,11 @@ export default function DashboardScreen({
                   </div>
                 </div>
 
-                <div className="flex items-baseline gap-2">
-                  <span className={`text-2xl md:text-3xl font-black font-display ${isDark ? 'text-white' : 'text-text-dark'}`}>
+                <div className={`flex gap-2 ${card.centerValue ? 'flex-1 flex-col items-center justify-center mt-2' : 'items-baseline'}`}>
+                  <span className={`${card.valueSizeClass || 'text-2xl md:text-3xl'} font-black font-display ${card.valueColorClass || (isDark ? 'text-white' : 'text-text-dark')}`}>
                     {card.value}
                   </span>
-                  <span className={`text-xs ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
+                  <span className={`text-xs ${card.centerValue ? 'mt-1' : ''} ${isDark ? 'text-text-muted' : 'text-text-dark-secondary'}`}>
                     {card.suffix}
                   </span>
                 </div>
@@ -967,7 +982,7 @@ export default function DashboardScreen({
                 {/* Banner / Video Thumbnail Section */}
                 {(displayUrl || config?.youtubeUrl || isAdmin) && (
                   <div
-                    className={`relative rounded-lg overflow-hidden aspect-[21/9] border ${isDark ? 'border-white/5' : 'border-slate-100'} ${displayUrl || config?.youtubeUrl ? '' : 'bg-slate-100 dark:bg-white/5 border-dashed cursor-pointer'} group/video shrink-0`}
+                    className={`relative rounded-lg overflow-hidden border ${isDark ? 'border-white/5' : 'border-slate-100'} ${displayUrl || config?.youtubeUrl ? '' : 'bg-slate-100 dark:bg-white/5 border-dashed cursor-pointer'} group/video shrink-0 aspect-[21/9] sm:aspect-auto ${card.thumbnailClass}`}
                     onClick={(e) => {
                       if (isAdmin && !displayUrl && !config?.youtubeUrl) {
                         e.stopPropagation();
