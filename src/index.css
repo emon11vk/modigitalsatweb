@@ -26,22 +26,29 @@ html {
   --color-accent-gold: #FFD93D;
   --color-accent-gold-light: #FFE66D;
 
-  --color-bg-dark: #0B0F1A;
-  --color-bg-card: #111827;
-  --color-bg-elevated: #1F2937;
-  --color-bg-surface: #151C2C;
+  --color-bg-dark: #131314; /* Mapped to bg-base */
+  --color-bg-card: #1e1f20; /* Mapped to bg-surface */
+  --color-bg-elevated: #1e1f20; /* Mapped to bg-surface */
+  --color-bg-surface-old: #151C2C;
   --color-bg-light: #F8FAFC;
   --color-bg-light-card: #FFFFFF;
   --color-bg-light-elevated: #F1F5F9;
 
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #94A3B8;
+  /* ─── New Dark Mode Tokens ─── */
+  --color-bg-base: #131314;
+  --color-bg-sidebar: #1a1a1b;
+  --color-bg-surface: #1e1f20;
+  --color-bg-surface-hover: #282a2c;
+
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #9a9a9a;
   --color-text-muted: #64748B;
   --color-text-dark: #0F172A;
   --color-text-dark-secondary: #475569;
 
   --color-border-glass: rgba(14, 165, 233, 0.15);
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-default: rgba(255, 255, 255, 0.12);
   --color-border-light: rgba(15, 23, 42, 0.1);
 
   --color-success: #00D4AA;

@@ -895,7 +895,7 @@ export default function App() {
   // ─── Loading state ────────────────────────────────────────────────────────────
   if (loadingAuth) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${theme === 'dark' ? 'bg-bg-dark' : 'bg-bg-light'
+      <div className={`min-h-screen flex items-center justify-center ${theme === 'dark' ? 'bg-bg-base' : 'bg-bg-light'
         }`}>
         <div className="flex flex-col items-center gap-4">
           <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
@@ -957,12 +957,12 @@ export default function App() {
   return (
     <>
       <IntroAnimation />
-      <div className={`min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 print:block print:min-h-0 print:h-auto ${isDark ? 'bg-bg-dark text-text-primary' : 'bg-bg-light text-text-dark'
+      <div className={`min-h-screen font-sans flex flex-col md:flex-row transition-colors duration-300 print:block print:min-h-0 print:h-auto ${isDark ? 'bg-bg-base text-text-primary' : 'bg-bg-light text-text-dark'
         }`}>
 
       {/* ── Sidebar / Header ── */}
       <header className={`px-4 py-3 md:px-4 md:py-6 border-b md:border-b-0 md:border-r sticky top-0 md:h-screen shrink-0 z-40 transition-all duration-300 print:hidden ${isSidebarCollapsed ? 'md:w-20' : 'md:w-64'} ${isDark
-          ? 'bg-bg-dark/80 backdrop-blur-xl border-white/5'
+          ? 'bg-bg-sidebar/80 backdrop-blur-xl border-border-subtle'
           : 'bg-white/80 backdrop-blur-xl border-slate-200/50'
         }`}>
         <div className="max-w-7xl mx-auto md:h-full flex md:flex-col items-center md:items-start justify-between md:justify-start gap-4 md:gap-8">
@@ -1031,9 +1031,9 @@ export default function App() {
                     navigate(path);
                   }}
                   className={`px-4 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer flex items-center ${isSidebarCollapsed ? 'md:justify-center' : 'md:justify-between'} w-full ${isActive
-                      ? 'bg-primary text-white shadow-md shadow-primary/20'
+                      ? isDark ? 'bg-bg-surface-hover text-accent shadow-none border-l-2 border-accent' : 'bg-primary text-white shadow-md shadow-primary/20'
                       : isDark
-                        ? 'text-text-muted hover:text-white hover:bg-white/5'
+                        ? 'text-text-muted hover:text-white hover:bg-bg-surface-hover'
                         : 'text-text-dark-secondary hover:text-text-dark hover:bg-white'
                     }`}
                   title={isSidebarCollapsed ? label : undefined}
@@ -1063,7 +1063,7 @@ export default function App() {
                     navigate(path);
                   }}
                   className={`p-2.5 rounded-full transition-all cursor-pointer ${isActive
-                      ? 'bg-primary text-white shadow-md shadow-primary/20'
+                      ? isDark ? 'bg-bg-surface-hover text-accent' : 'bg-primary text-white shadow-md shadow-primary/20'
                       : isDark ? 'text-text-muted hover:text-white' : 'text-text-dark-secondary hover:text-text-dark'
                     }`}
                 >

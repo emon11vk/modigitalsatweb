@@ -686,7 +686,7 @@ export default function DashboardScreen({
 
       {/* ── Welcome Banner ── */}
       <div
-        className={`relative overflow-hidden rounded-[2.5rem] border mb-6 transition-all duration-500 ease-out group z-20 shadow-2xl md:scale-[1.01] hover:md:scale-[1.02] hover:-translate-y-2 ${isDark ? 'bg-bg-card border-white/10 shadow-primary/20 hover:shadow-primary/40' : 'bg-white border-slate-200 shadow-primary/15 hover:shadow-primary/30'}`}
+        className={`relative overflow-hidden rounded-[2.5rem] border mb-6 transition-all duration-500 ease-out group z-20 shadow-2xl md:scale-[1.01] hover:md:scale-[1.02] hover:-translate-y-2 ${isDark ? 'bg-bg-surface border-border-subtle shadow-primary/20 hover:shadow-primary/40' : 'bg-white border-slate-200 shadow-primary/15 hover:shadow-primary/30'}`}
         style={{
           height: bannerHeight ? `${bannerHeight}px` : undefined,
         }}
@@ -872,8 +872,8 @@ export default function DashboardScreen({
             suffix: `${vocabMastered} mastered`,
             icon: <BookOpen className="w-5 h-5" strokeWidth={1.5} />,
             color: 'text-accent',
-            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
-            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
+            bgColor: isDark ? 'bg-bg-surface' : 'bg-slate-50',
+            borderColor: isDark ? 'border-border-subtle' : 'border-slate-200',
             action: onNavigateToVocab,
             progress: vocabPercent,
             progressColor: 'bg-accent',
@@ -893,8 +893,8 @@ export default function DashboardScreen({
             suffix: 'ngày',
             icon: <Flame className="w-5 h-5" strokeWidth={1.5} />,
             color: 'text-orange-600 dark:text-orange-400',
-            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
-            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
+            bgColor: isDark ? 'bg-bg-surface' : 'bg-slate-50',
+            borderColor: isDark ? 'border-border-subtle' : 'border-slate-200',
             action: onNavigateToPractice,
             progress: null,
             progressColor: '',
@@ -914,8 +914,8 @@ export default function DashboardScreen({
             suffix: userName,
             icon: <Award className="w-5 h-5" strokeWidth={1.5} />,
             color: 'text-accent-gold',
-            bgColor: isDark ? 'bg-white/5' : 'bg-slate-50',
-            borderColor: isDark ? 'border-white/10' : 'border-slate-200',
+            bgColor: isDark ? 'bg-bg-surface' : 'bg-slate-50',
+            borderColor: isDark ? 'border-border-subtle' : 'border-slate-200',
             action: onNavigateToLeaderboard,
             progress: null,
             progressColor: '',
@@ -949,7 +949,7 @@ export default function DashboardScreen({
               key={idx}
               style={card.shapeStyle}
               className={`p-6 transition-all duration-300 ease-out relative flex flex-col justify-between overflow-hidden group/card ${isDark
-                ? `bg-bg-card ${card.borderColor} hover:border-white/20`
+                ? `bg-bg-surface ${card.borderColor} hover:border-white/20`
                 : `bg-white ${card.borderColor} hover:border-slate-300`
                 } ${card.action ? 'cursor-pointer' : ''} ${card.heightClass} ${card.shapeClass} ${card.shadowClass}`}
               onClick={() => card.action?.()}
@@ -968,7 +968,7 @@ export default function DashboardScreen({
                 <img
                   src={displayUrl}
                   alt={card.label}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 z-0"
+                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 z-0 ${isDark ? 'brightness-[0.8]' : ''}`}
                   onError={(e) => {
                     if (e.currentTarget.src.includes('maxresdefault.jpg')) {
                       e.currentTarget.src = e.currentTarget.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
