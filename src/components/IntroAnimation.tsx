@@ -11,7 +11,7 @@ export default function IntroAnimation({ onComplete }: { onComplete?: () => void
     const text3 = document.getElementById("intro-text3");
     const progressBar = document.getElementById("intro-progressBar");
 
-    const introDuration = 3.5;
+    const introDuration = 4.5;
     const tl = gsap.timeline({
       onComplete: () => {
         setIsFinished(true);
@@ -41,14 +41,14 @@ export default function IntroAnimation({ onComplete }: { onComplete?: () => void
     }
 
     if (text1 && text2 && text3) {
-      tl.to(text1, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.2)
-        .to(text1, { opacity: 0, duration: 0.4, ease: "power2.in" }, 1.0);
+      tl.to(text1, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.3)
+        .to(text1, { opacity: 0, duration: 0.5, ease: "power2.in" }, 1.3);
 
-      tl.to(text2, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.4)
-        .to(text2, { opacity: 0, duration: 0.4, ease: "power2.in" }, 2.2);
+      tl.to(text2, { opacity: 1, duration: 0.5, ease: "power2.out" }, 1.8)
+        .to(text2, { opacity: 0, duration: 0.5, ease: "power2.in" }, 2.8);
 
-      tl.to(text3, { opacity: 1, duration: 0.4, ease: "power2.out" }, 2.6)
-        .to(text3, { opacity: 0, duration: 0.4, ease: "power2.in", delay: 0.2 }, 3.2);
+      tl.to(text3, { opacity: 1, duration: 0.5, ease: "power2.out" }, 3.3)
+        .to(text3, { opacity: 0, duration: 0.5, ease: "power2.in" }, 4.1);
     }
 
     return () => {
