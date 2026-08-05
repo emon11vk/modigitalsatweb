@@ -2,9 +2,16 @@ import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
 
 export default function IntroAnimation({ onComplete }: { onComplete?: () => void }) {
-  const [isFinished, setIsFinished] = useState(false);
+  const [isFinished, setIsFinished] = useState(() => {
+    return sessionStorage.getItem('modigitalsat_intro_seen') === 'true';
+  });
 
   useEffect(() => {
+    if (isFinished) {
+      if (onComplete) onComplete();
+      return;
+    }
+
     const counterEl = document.getElementById("intro-counter");
     const text1 = document.getElementById("intro-text1");
     const text2 = document.getElementById("intro-text2");
@@ -14,6 +21,7 @@ export default function IntroAnimation({ onComplete }: { onComplete?: () => void
     const introDuration = 3.5;
     const tl = gsap.timeline({
       onComplete: () => {
+        sessionStorage.setItem('modigitalsat_intro_seen', 'true');
         setIsFinished(true);
         if (onComplete) onComplete();
       }
@@ -54,7 +62,7 @@ export default function IntroAnimation({ onComplete }: { onComplete?: () => void
     return () => {
       tl.kill();
     };
-  }, [onComplete]);
+  }, []);
 
   if (isFinished) return null;
 
