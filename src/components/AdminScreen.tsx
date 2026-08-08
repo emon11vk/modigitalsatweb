@@ -8,6 +8,7 @@ import ExamManagerPanel from './admin/ExamManagerPanel';
 import AdminManagementPanel from './admin/AdminManagementPanel';
 import AdminVocabPanel from './admin/AdminVocabPanel';
 import StudentTrackerPanel from './admin/StudentTrackerPanel';
+import AdminReportsPanel from './admin/AdminReportsPanel';
 import {
   ShieldAlert,
   LayoutDashboard,
@@ -19,6 +20,7 @@ import {
   Lock,
   Crown,
   ShieldCheck,
+  AlertTriangle,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -26,7 +28,7 @@ interface AdminScreenProps {
   theme: Theme;
 }
 
-type AdminTab = 'dashboard' | 'editor' | 'manager' | 'vocab' | 'students' | 'admins';
+type AdminTab = 'dashboard' | 'editor' | 'manager' | 'vocab' | 'students' | 'reports' | 'admins';
 
 export default function AdminScreen({ theme }: AdminScreenProps) {
   const isDark = theme === 'dark';
@@ -105,6 +107,11 @@ export default function AdminScreen({ theme }: AdminScreenProps) {
       key: 'students',
       label: 'Học Viên',
       icon: <Users className="w-4 h-4" />,
+    },
+    {
+      key: 'reports',
+      label: 'Báo lỗi',
+      icon: <AlertTriangle className="w-4 h-4" />,
     },
     {
       key: 'admins',
@@ -250,6 +257,10 @@ export default function AdminScreen({ theme }: AdminScreenProps) {
 
         {activeTab === 'students' && (
           <StudentTrackerPanel theme={theme} />
+        )}
+
+        {activeTab === 'reports' && (
+          <AdminReportsPanel theme={theme} />
         )}
 
         {activeTab === 'admins' && (

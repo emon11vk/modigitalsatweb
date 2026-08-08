@@ -1,0 +1,416 @@
+[
+  {
+    "id": 1,
+    "text": "As with other river deltas, the Kolyma River delta is __________:\nit is a constantly evolving network of channels and strips of land\nthat change in size and shape as the river deposits new\nsedimentary particles where the river meets the waters of the East\nSiberian Sea.\nWhich choice completes the text with the most logical and precise\nword or phrase?",
+    "question_type": "mcq",
+    "options": {
+      "A": "unrivaled",
+      "B": "dynamic",
+      "C": "sustainable",
+      "D": "immutable"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Đồng bằng này liên tục tiến hóa và thay đổi hình dạng/kích thước ('constantly evolving', 'change in size'), từ phù hợp nhất là 'dynamic' (năng động/luôn thay đổi)."
+  },
+  {
+    "id": 2,
+    "text": "Noting the correspondence of Leonardo da Vinci's Mona Lisa to\nhis self-portrait in red chalk, artist Lillian Schwartz argued that\nthe former is a self-portrait, too—that by mapping his own\nfeatures onto those of its ostensible subject, Lisa del Giocondo,\nLeonardo depicted himself as a woman. Indeed, by subjecting\nboth works to digital analysis, Schwartz __________ the two\nfaces' structural resemblance.\nWhich choice completes the text with the most logical and precise\nword or phrase?",
+    "question_type": "mcq",
+    "options": {
+      "A": "corroborated",
+      "B": "amalgamated",
+      "C": "promulgated",
+      "D": "consolidated"
+    },
+    "correctAnswer": [
+      "A"
+    ],
+    "explanation": "Phân tích kỹ thuật số đã củng cố/chứng thực ('corroborated') sự tương đồng về cấu trúc giữa hai khuôn mặt mà tác giả đã chỉ ra."
+  },
+  {
+    "id": 3,
+    "text": "While modern composers may often get inspiration from past\ngreats like Ludwig van Beethoven, the extent of their influences is\nbroad. The music of Ernesto Lecuona, for example, can be said to\n__________ elements of both the classical European tradition and\nthe social, political, and cultural landscape of his native Cuba.\nWhich choice completes the text with the most logical and precise\nword or phrase?",
+    "question_type": "mcq",
+    "options": {
+      "A": "defy",
+      "B": "neglect",
+      "C": "foretell",
+      "D": "exhibit"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Âm nhạc của ông thể hiện/trưng bày ('exhibit') các yếu tố của cả truyền thống châu Âu và văn hóa Cuba."
+  },
+  {
+    "id": 4,
+    "text": "During the 2007–2010 financial crisis, the United States furnished\nbillions of dollars to selected countries' central banks via\nmechanisms called swap lines. Aditi Sahasrabuddhe found that\ncountries' policy environments seem to have been __________\nswap-line decisions: the probability that banks would be granted\nswap lines was 0.20 in countries open to foreign-capital inflows\nand 0.03 in countries with policies restricting such inflows.\nWhich choice completes the text with the most logical and precise\nword or phrase?",
+    "question_type": "mcq",
+    "options": {
+      "A": "predicated on",
+      "B": "mediated by",
+      "C": "decoupled from",
+      "D": "material to"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Chính sách của một quốc gia có ảnh hưởng trọng yếu ('material to') đến các quyết định hoán đổi, thể hiện qua xác suất khác biệt rõ rệt (0.20 so với 0.03)."
+  },
+  {
+    "id": 5,
+    "text": "Which choice best states the main purpose of the text?",
+    "question_type": "mcq",
+    "options": {
+      "A": "To present a reason why a literary critic is impressed by a certain novel",
+      "B": "To explain what inspired an author to write a particular work",
+      "C": "To compare the work of a writer with the work of a poet who admired him",
+      "D": "To argue that all writing must be classified as belonging to one of two categories"
+    },
+    "correctAnswer": [
+      "A"
+    ],
+    "explanation": "Đoạn văn giải thích lý do nhà phê bình Harold Bloom đánh giá cao ('praises') tiểu thuyết 'Little, Big' là do sự kết hợp khéo léo của hai yếu tố.",
+    "passage": "Though John Crowley, author of Four Freedoms, is perhaps not as\nwell known as the most widely read American writers of the past\nfifty years, influential figures have championed his work,\nincluding the poet James Merrill and the literary critic Harold\nBloom. In his afterword to Crowley's book Little, Big, Bloom\npraises the novel's adroit blend of what playwright Friedrich\nSchiller termed the naive and sentimental modes—while Schiller\nthought works could be classified as either naive (seeking to\ndescribe reality) or sentimental (seeking to develop ideas), Little,\nBig demonstrates that a work can be both."
+  },
+  {
+    "id": 6,
+    "text": "Which choice best describes the overall structure of the text?",
+    "question_type": "mcq",
+    "options": {
+      "A": "It implies that Mr. Ely's neighbors are more naive in their estimation of him than people in London are and then explains why his neighbors have been so easily misled.",
+      "B": "It presents the favorable opinion of Mr. Ely that other people hold and then describes the behaviors of Mr. Ely that enable him to maintain that favorable opinion.",
+      "C": "It shows that Mr. Ely had originally been held in high regard by his friends and then details the events that caused their regard for him to subside.",
+      "D": "It highlights the disparity between Mr. Ely's public and private behavior and then conveys why he labors to obscure his true self from other people."
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Nửa đầu nêu lên đánh giá tích cực của mọi người về ông Ely, nửa sau giải thích những hành vi thận trọng giúp ông giữ được hình ảnh đó.",
+    "passage": "The following text is adapted from George Eliot's 1857 short story\n\"The Sad Fortunes of the Rev. Amos Barton.\" Mr. Ely is a\nclergyman in the town of Milby.\nBy the laity of Milby and its neighbourhood [Mr. Ely] was\nregarded as a man of quite remarkable powers and learning, who\nmust make a considerable sensation in London pulpits and\ndrawing-rooms on his occasional visit to the metropolis; and by\nhis brother clergy he was regarded as a discreet and agreeable\nfellow. Mr. Ely never got into a warm discussion; he suggested\nwhat might be thought, but rarely said what he thought himself;\nhe never let either men or women see that he was laughing at\nthem, and he never gave any one an opportunity of laughing at\nhim."
+  },
+  {
+    "id": 7,
+    "text": "Text 1 is adapted from E.M. Forster's 1910 novel Howards End.\nText 2 discusses Howards End. King's Cross and St. Pancras are\nadjacent railway terminals in London from which trains travel to\nthe countryside.\nText 1\nTo Margaret the station of King's Cross had always suggested\nInfinity. Its very situation—withdrawn a little behind the facile\nsplendours of St. Pancras—implied a comment on the\nmaterialism of life. Those two great arches, colourless, indifferent,\nshouldering between them an unlovely clock, were fit portals for\nsome eternal adventure, whose issue might be prosperous, but\nwould certainly not be expressed in the ordinary language of\nprosperity.\nText 2\nThe interplay between opposing ideological positions in Howards\nEnd is broadly articulated in the novel's organization of\ngeographic space. On the one hand, the modern metropolis of\nLondon represents capitalism's emphasis on pragmatism and the\naccumulation of material wealth; on the other, the English\ncountryside, accessible via King's Cross, fosters an idealism that\nvalues tradition, authentic personal connection, and the aesthetic\n—what the novel calls \"the infinite.\"\nBased on the texts, the author of Text 2 would most likely agree\nwith which statement about King's Cross, as it is depicted in Text\n1?",
+    "question_type": "mcq",
+    "options": {
+      "A": "Because it is situated at the beginning of Margaret's journey from the city to the country, King's Cross emblematizes the intrusion of the forces of materialism and modernity into the rural spaces that the novel associates with idealism and tradition.",
+      "B": "The austerity conveyed by King's Cross's appearance mirrors Margaret's disillusionment with the prospect of having authentic connections with other people in a world that chiefly values more conventional forms of prosperity.",
+      "C": "As a point of connection between London and the countryside, King's Cross suggests to Margaret the possibility of acquiring the intangible abundance promised by the kinds of authentic engagements that the novel's rural spaces seem to offer.",
+      "D": "King's Cross has a relatively unassuming appearance whose sharp contrast with the more aesthetically pleasing appearance of St. Pancras suggests to Margaret the ascendancy of the pragmatic capitalistic outlook"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Text 2 giải thích King's Cross là trạm kết nối tới vùng nông thôn đại diện cho 'sự vô hạn'. Do đó, tác giả Text 2 sẽ đồng ý rằng King's Cross gợi mở khả năng đạt được những giá trị tinh thần (intangible abundance) ở nông thôn."
+  },
+  {
+    "id": 8,
+    "text": "Mexican architect Luis Barragán's prolific career, which spanned\nthe 1920s to the 1980s, evolved through distinct phases. After\ntraveling to the United States and Europe in the early 1930s and\nimmersing himself in a broader architectural discourse, Barragán\nbegan incorporating principles derived from functionalism and\nmodernism in his work, as seen in the apartment building at 14\nParque Melchor Ocampo, whose unadorned geometric forms\ncontrast with his earlier projects in Guadalajara, such as the\nCarmen Orozco House, which evince the aesthetics of traditional\nMediterranean and Mexican styles.\nInformation in the text best supports which statement about the\ndesign of the Carmen Orozco House?",
+    "question_type": "mcq",
+    "options": {
+      "A": "It represents a transitional moment between the early and late phases of Barragán's development.",
+      "B": "It displays the effects of Barragán's exposure to international architectural trends in the 1930s.",
+      "C": "It is characteristic of the Guadalajaran architecture that influenced Barragán throughout his career.",
+      "D": "It reflects an approach to ornamentation and shape that Barragán later stopped using."
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Ngôi nhà Carmen Orozco đại diện cho phong cách truyền thống ban đầu, đối lập với phong cách hình học không trang trí mà Barragán áp dụng sau này."
+  },
+  {
+    "id": 9,
+    "text": "Based on the text, which choice best describes Sir Winston Day?",
+    "question_type": "mcq",
+    "options": {
+      "A": "He has the appearance of a distinguished figure, but it is uncertain whether he has accomplished anything to earn distinction.",
+      "B": "He has maintained a modest profile even though he has served the public capably for many years.",
+      "C": "He looks like a person worthy of respect, but his memoirs reveal that some of his actions were dishonorable.",
+      "D": "He would be a celebrated public figure if his achievements did not have to be kept secret."
+    },
+    "correctAnswer": [
+      "A"
+    ],
+    "explanation": "Bề ngoài ông ta trông rất uyên bác và đáng kính trọng, nhưng người ta lại không rõ ông đã thực sự đạt được thành tựu gì.",
+    "passage": "The following text is from Mick Herron's 2023 novel The Secret\nHours. The narrator is describing members of a government\ncommittee.\nFinally, and adding much-needed gravitas, was Sir Winston Day,\nwhose features seemed moulded to adorn a bust, or possibly a\nstamp, and whose forehead was so evidently bulging with grey\nmatter that it would have been impertinent to inquire too closely\ninto the actual achievements his half century of public service had\nproduced. His recently published memoirs possibly cast light on\nthis enigma, but given that such details were not provided until\nafter the thirty-page mark, they might as well have remained state\nsecrets."
+  },
+  {
+    "id": 10,
+    "text": "Edinburgh, Scotland, has installed engineered structures along\n89% of its shoreline to protect infrastructure from wave erosion\nand other hazards, a practice known as shoreline hardening. To\nevaluate the responses of waterbirds to two types of hardening\nstructures—riprap and bulkheads—Diann Prosser et al. surveyed\nwaterbird communities consisting of the osprey, the common\ntern, and 62 other species at different sites in the Chesapeake Bay\non the US East Coast. Utilizing the Index of Waterbird\nCommunity Integrity (IWCI), on which a high score corresponds\nto high community integrity, the researchers found that\nbulkheads are more strongly negatively correlated with waterbird\ncommunity integrity than is riprap.\nWhich finding, if true, would most directly support the\nresearchers' conclusion?",
+    "question_type": "mcq",
+    "options": {
+      "A": "Waterbird communities at Curtis, a site with a high percentage of shoreline consisting of bulkheads and riprap, had lower average IWCI scores than did waterbird communities at Onancock, a site with a low percentage of shoreline consisting of bulkheads and riprap.",
+      "B": "Waterbird communities at Old Road, a site with a relatively high percentage of shoreline consisting of bulkheads, had lower average IWCI scores than did waterbird communities at Miles, a site with a relatively high percentage of shoreline consisting of riprap.",
+      "C": "Waterbird communities at Curtis, a site with equal percentages of shoreline consisting of bulkheads and riprap, had higher average IWCI scores than did waterbird communities at Miles, a site with different percentages of shoreline consisting of bulkheads and riprap.",
+      "D": "The difference in average IWCI scores for waterbird communities at Stony and Old Road, two sites with a higher percentage of shoreline consisting of bulkheads than of riprap, was statistically insignificant."
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Để chứng minh bulkheads tác động tiêu cực hơn riprap, cần dữ liệu cho thấy khu vực có nhiều bulkheads có điểm IWCI thấp hơn khu vực có nhiều riprap."
+  },
+  {
+    "id": 11,
+    "text": "For its 2022 exhibition Guarding the Art, the Baltimore Museum\nof Art cast the security personnel typically responsible for\nsafeguarding the institution's collections as the curators, whose\nindividual selections from the museum's holdings culminated in a\nshow amplifying a distinct perspective not typically given a formal\nplatform.\nWhich quote from one of the personnel who curated the\nexhibition would best support the underlined claim?",
+    "question_type": "mcq",
+    "options": {
+      "A": "\"The most enjoyable part of curating this show has been seeing the outcome of our efforts: a unique show that spans genres, mediums, cultures, and eras. We hope visitors will sense our genuine affinity for the pieces we are charged with protecting.\"",
+      "B": "\"My selections for the show were motivated by an interest in bringing publicity to lesser-known artifacts in the museum's collection, many of which tend to be overlooked or even dismissed as uninteresting by most visitors to the museum.\"",
+      "C": "\"The piece I chose is accompanied by a statement of the personal interpretation I've developed over countless hours overseeing the work and interacting with its visitors—an interpretation that I've previously shared only in small impromptu conversations with those visitors who are interested in discussing their reflections on the piece with me.\"",
+      "D": "\"Throughout the exhibition's development, my colleagues and I partnered closely with other museum staff whose areas of expertise lie in curation and conservation, and whose insights enriched our understandings of the pieces we selected for the exhibition.\""
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Lựa chọn C minh họa rõ nhất 'distinct perspective' (góc nhìn độc đáo) có được từ quá trình bảo vệ và tương tác trực tiếp với tác phẩm hàng ngày của nhân viên an ninh."
+  },
+  {
+    "id": 12,
+    "text": "A student is writing an essay on the subject of cultured meat,\nwhich is grown in a laboratory and is intended to help reduce the\nnumber of livestock harvested for food. The student wants to\nmake the case that cultured meat production may be useful in\nresponding to an expected widespread change in the public's\nbehavior.\nWhich quotation from a publication by a researcher would most\neffectively support the student's claim?",
+    "question_type": "mcq",
+    "options": {
+      "A": "\"Consumers tend to believe that using less packaging when selling meat products in stores would have a significant effect on the environment.\"",
+      "B": "\"The flavor of meat from livestock differs across species (from pig to chicken to cow), and is also influenced by farming conditions and the breeds and genders of animals.\"",
+      "C": "\"A growing population that is including significantly more meat in its diet will contribute to an increasing demand for meat products in the 21st century.\"",
+      "D": "\"Researchers who advocate for the development of lab-grown meat claim that it's better for the environment than conventional meat because it requires less water consumption.\""
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Sự thay đổi hành vi diện rộng được nhắc đến chính là việc dân số ngày càng ăn nhiều thịt hơn, làm tăng nhu cầu tiêu thụ thịt."
+  },
+  {
+    "id": 13,
+    "text": "Born in Chile in 1917, artist and ethnomusicologist Violeta Parra\nwas a pioneer in the nueva canción chilena (Chilean New Song)\nmovement that emerged in the late 1950s and then spread\nthroughout Latin America, Portugal, and Spain as nueva canción.\nParra traveled all over Chile compiling extensive records of\nauthentic folk music as well as recipes, proverbs, and other facets\nof cultural history. These records formed the foundation for the\nearly movement's revival of traditional Chilean folk forms in new\nsongs that represented modern realities of the working class and\nstrongly advocated for social change. As the movement spread\nbeyond Chile, the breadth of musical traditions incorporated into\nits foundation also expanded.\nWhich detail about songs associated with nueva canción, if true,\nwould best illustrate the underlined claim?",
+    "question_type": "mcq",
+    "options": {
+      "A": "Many feature political commentary addressing contemporary issues that stemmed from shared experiences of European colonization in Latin American countries.",
+      "B": "Many demonstrate the stylistic influence of corrido, a genre of narrative songs from Mexico that had come to be characterized by political themes in the early 1800s.",
+      "C": "Many were written with parts meant to be played on the quena, a traditional flute used across Andean countries, including Chile.",
+      "D": "Many were produced by Argentinian artists in the late 1950s, with others by artists in additional Latin American countries first emerging soon after."
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Để chứng minh phong trào đã kết hợp truyền thống âm nhạc ngoài Chile, đáp án B đưa ra dẫn chứng về sự ảnh hưởng của thể loại 'corrido' từ Mexico."
+  },
+  {
+    "id": 14,
+    "text": "Which choice most logically completes the text?",
+    "question_type": "mcq",
+    "options": {
+      "A": "the increasing need to build new highways and rehabilitate older highways in the US incentivizes agencies to grant CEs after 2020 for reasons that would not have been considered valid prior to 2020.",
+      "B": "the 2020 relaxation of the rule regarding CEs would permit more exclusions, resulting in more reviews of actions by federal agencies and a paradoxically slower review process.",
+      "C": "the rule that governed CEs before 2020 allowed expedited reviews of actions that might have significant effects on the environment if those effects were believed to be rare, while the 2020 revision of the rule subjected such actions to slower reviews.",
+      "D": "the 2020 revision of the rule governing CEs would allow expedited reviews of actions that had a minimal environmental effect when considered on their own but a significant effect when considered together."
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Luật cũ cấm nếu tác động 'tích lũy' (cumulatively) lớn. Luật mới bỏ qua chữ 'tích lũy', khiến các dự án nhỏ có thể gộp lại gây hại lớn nhưng vẫn được duyệt nhanh.",
+    "passage": "The National Environmental Policy Act (NEPA) requires US\nfederal agencies to assess environmental effects of potential\nactions, such as building highways. While many NEPA reviews\nrequire public comment, categorical exclusions (CEs) allow quick\nreviews with no public comment for actions that will minimally\naffect the environment. In 2020 the rule governing CEs was\nrevised: before, CEs could be granted for actions that \"do not\nindividually or cumulatively have a significant effect on the\nhuman environment,\" but the revised rule allowed CEs if actions\n\"normally do not have a significant effect on the human\nenvironment.\" Environmentalists found this revision to be\npotentially detrimental because __________"
+  },
+  {
+    "id": 15,
+    "text": "Which choice most logically completes the text?",
+    "question_type": "mcq",
+    "options": {
+      "A": "silver nanoparticles may increase the metabolic processes of the bacteria, thereby increasing the number of free electrons available to transfer to the electrode.",
+      "B": "as the density of the biofilm increases, the series of redox reactions may accelerate independent of the presence of the silver nanoparticles.",
+      "C": "electrons may be conducted directly to the electrode before the silver nanoparticles catalyze the redox reactions.",
+      "D": "silver nanoparticles may allow electrons to bypass the series of redox reactions and transfer directly to the electrode."
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Vì bạc dẫn điện tốt, các hạt nano bạc có thể giúp electron đi thẳng đến điện cực mà không cần qua chuỗi phản ứng oxi hóa khử kém hiệu quả.",
+    "passage": "Microbial fuel cells (MFCs) capitalize on the ability of some\nspecies of bacteria to metabolize metal, liberating electrons. The\nbacteria form a dense biofilm on the surface of an electron-\ncollecting anode, but moving the electrons from the bacterial\ncytoplasm to an external electrode requires that the electrons pass\nthrough a series of inefficient oxidation-reduction (redox)\nreactions. Accordingly, MFC power output rarely exceeds a\ndensity of 0.30 milliwatts per square centimeter (mW/cm²). In an\nexperiment, researchers added silver nanoparticles to carbon\npaper covering the anode in an MFC. The resulting power density\nwas 0.66 mW/cm². Since metals such as silver exhibit high\nelectrical conductivity, the researchers hypothesized that\n__________"
+  },
+  {
+    "id": 16,
+    "text": "Included in Serial Intent, a 2017 group exhibition at the Akron Art\nMuseum in Ohio, was the work of artist Lorna Simpson, who is\nbest known for her multimedia artworks that juxtapose images of\nAfrican American women with text fragments. Her work\nchallenges conventional notions of race, gender, history, and\n__________ she is credited with expanding the horizons of\nconceptual photographic art.\nWhich choice completes the text so that it conforms to the\nconventions of Standard English?",
+    "question_type": "mcq",
+    "options": {
+      "A": "memory,",
+      "B": "memory and",
+      "C": "memory",
+      "D": "memory, and"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Câu liệt kê kết thúc bằng 'memory', sau đó cần có dấu phẩy và liên từ 'and' để nối với mệnh đề độc lập tiếp theo ('she is credited with...')."
+  },
+  {
+    "id": 17,
+    "text": "Enacted in 2006, Nepal's constitution, according to legal\n__________ contains all of the six constitutional features that\nenhance judicial independence. Explicit provisions for judicial\nindependence, Melton and Ginsburg's research explains, are more\nlikely to be found in constitutions enacted after 1985.\nWhich choice completes the text so that it conforms to the\nconventions of Standard English?",
+    "question_type": "mcq",
+    "options": {
+      "A": "researchers James Melton and Tom Ginsburg",
+      "B": "researchers James Melton and Tom Ginsburg,",
+      "C": "researchers, James Melton and Tom Ginsburg",
+      "D": "researchers, James Melton and Tom Ginsburg,"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Cụm 'according to legal researchers James Melton and Tom Ginsburg' là cụm từ chêm xen, cần dấu phẩy ở cuối để tách biệt với động từ chính 'contains'."
+  },
+  {
+    "id": 18,
+    "text": "Although 60558 Echeclus and 2014 YX49 are both classified as\ncentaur objects—outer solar system bodies in unstable orbits—\nthey exhibit striking differences in __________ object 60558\nEcheclus is considered an active centaur, showing sporadic\ncomet-like activity (such as clouds of dust and gas on its surface),\n2014 YX49, showing no such activity, is considered dormant.\nWhich choice completes the text so that it conforms to the\nconventions of Standard English?",
+    "question_type": "mcq",
+    "options": {
+      "A": "behavior. The",
+      "B": "behavior: while the",
+      "C": "behavior, while the",
+      "D": "behavior; the"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Dấu hai chấm (:) dùng để giải thích cho 'striking differences in behavior' trước đó. 'while' được dùng để so sánh sự đối lập giữa hai thiên thể."
+  },
+  {
+    "id": 19,
+    "text": "In a US national election, one might expect major-party\ncampaigns to focus on the most populous states. However, if polls\nand past voting data suggest that the outcome in a given state is a\nforegone conclusion, a campaign will not invest its resources\nthere. Ultimately, a state's voting record and polling data, not its\npopulation size, __________ its importance to campaigns.\nWhich choice completes the text so that it conforms to the\nconventions of Standard English?",
+    "question_type": "mcq",
+    "options": {
+      "A": "has determined",
+      "B": "determines",
+      "C": "determining",
+      "D": "determine"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Chủ ngữ chính là 'a state's voting record and polling data' (số nhiều), nên động từ theo sau phải chia ở số nhiều là 'determine'."
+  },
+  {
+    "id": 20,
+    "text": "That the repeated thermonuclear outbursts of U Scorpii, a\nrecurrent nova system consisting of a white dwarf star and a\ncompanion star, have occurred on timescales as brief as eight\nyears—shorter intervals between outbursts than have been\nobserved in some other novae of its class—__________ to the\nwhite dwarf's extremely large mass and rapid accretion of\nhydrogen from its companion star.\nWhich choice completes the text so that it conforms to the\nconventions of Standard English?",
+    "question_type": "mcq",
+    "options": {
+      "A": "is due",
+      "B": "due",
+      "C": "being due",
+      "D": "having been due"
+    },
+    "correctAnswer": [
+      "A"
+    ],
+    "explanation": "Cả một mệnh đề danh từ đóng vai trò là chủ ngữ số ít, nên động từ chính phải chia là 'is due'."
+  },
+  {
+    "id": 21,
+    "text": "In his 2011 book, historian Sebouh David Aslanian quantifies the\nreading patterns of early modern Armenian merchants from New\nJulfa. Aslanian's macroanalysis __________ nearly 1,000 book\ntitles published between 1512 and 1800 shows not only the steady\npopularity of religious texts but also a broadening interest in\nsecular books, especially those on history and geography.\nWhich choice completes the text so that it conforms to the\nconventions of Standard English?",
+    "question_type": "mcq",
+    "options": {
+      "A": "had examined",
+      "B": "examining",
+      "C": "examines",
+      "D": "examined"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Câu đã có động từ chính là 'shows'. Chỗ trống cần một hiện tại phân từ 'examining' rút gọn mệnh đề quan hệ chủ động bổ nghĩa cho 'macroanalysis'."
+  },
+  {
+    "id": 22,
+    "text": "Which choice completes the text with the most logical transition?",
+    "question_type": "mcq",
+    "options": {
+      "A": "In comparison,",
+      "B": "In addition,",
+      "C": "Consequently,",
+      "D": "Specifically,"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Việc tàu vũ trụ đâm vào Dimorphos là nguyên nhân, làm quỹ đạo bị thay đổi là kết quả, nên dùng từ nối chỉ hệ quả 'Consequently' (Hậu quả là/Do đó).",
+    "passage": "Scientists studying asteroid deflection have focused on secondary\nobjects such as S/2020 (2013 PY6), a moonlet orbiting the near-\nEarth asteroid 2013 PY6. In 2022 NASA intentionally crashed a\nprobe into just such an object, the moonlet Dimorphos.\n__________ Dimorphos's orbital period around the near-Earth\nasteroid Didymos was permanently altered."
+  },
+  {
+    "id": 23,
+    "text": "Which choice completes the text with the most logical transition?",
+    "question_type": "mcq",
+    "options": {
+      "A": "For example,",
+      "B": "Rather,",
+      "C": "Accordingly,",
+      "D": "Likewise,"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Câu trước phủ định việc dùng chung electron, câu sau khẳng định cách thức thực sự (electron di chuyển tự do), do đó 'Rather' (Thay vào đó) là từ nối phù hợp nhất.",
+    "passage": "According to the free electron model, metals, such as copper and\nsilver, do not maintain bonds by sharing and exchanging\nelectrons. __________ metals are held together by a system of\nvalence electrons that travel freely, interacting with neither ions\nnor each other. This framework for understanding the subatomic\nrelationships within metals can be used to help explain heat and\nelectrical conductivity."
+  },
+  {
+    "id": 24,
+    "text": "Which choice completes the text with the most logical transition?",
+    "question_type": "mcq",
+    "options": {
+      "A": "nevertheless,",
+      "B": "conversely,",
+      "C": "likewise,",
+      "D": "hence,"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Hai tác giả, hai bài thơ đều lấy tranh làm chủ đề, thể hiện sự tương đồng. 'Likewise' (Tương tự như vậy) là từ nối chính xác.",
+    "passage": "In an ekphrastic poem, a poet explores a work of visual art, such\nas a drawing, sculpture, or painting. Robert Hayden's 1994 poem\n\"Monet's Waterlilies,\" for example, meditates on Claude Monet's\n1899 painting Water Lilies; Saad Ali's 2020 poem \"This Town,\"\n__________ takes a painting as its subject: Ivan Aivazovsky's 1859\nwork Lunar Night on the Black Sea."
+  },
+  {
+    "id": 25,
+    "text": "Which choice completes the text with the most logical transition?",
+    "question_type": "mcq",
+    "options": {
+      "A": "Nevertheless,",
+      "B": "In fact,",
+      "C": "Moreover,",
+      "D": "That is,"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Fluc vừa có khả năng oxi hóa, vừa hoạt động như enzyme ACS. Mệnh đề sau tóm tắt lại rằng nó là enzyme 'đa chức năng' (bifunctional), nên dùng 'That is' (Nghĩa là).",
+    "passage": "Firefly luciferase (Fluc) is a distinctly evolved enzyme that can\noxidize a substrate called D-luciferin to induce bioluminescence\nand can act as a fatty acyl-CoA synthetase (ACS) enzyme, a class\nof enzyme present in all insects. __________ Fluc is a bifunctional\nenzyme whose presence indicates an insect is capable of emitting\nlight; in contrast, the presence of ACS alone would be insufficient\nfor determining bioluminescence."
+  },
+  {
+    "id": 26,
+    "text": "While researching a topic, a student has taken the following notes:\n• The South Sudan Workers Trade Union Federation (SSWTUF)\nis a national union federation for the African nation of South\nSudan.\n• It helps improve conditions for workers in that nation.\n• ITUC-Africa is a regional union federation that represents\nnational union federations across Africa.\n• It represents the SSWTUF.\nWhich choice most effectively uses relevant information from the\nnotes to explain the purpose of national union federations?",
+    "question_type": "mcq",
+    "options": {
+      "A": "The SSWTUF is a national union federation in Africa.",
+      "B": "National union federations, such as the SSWTUF, work to improve conditions for workers in their member nations.",
+      "C": "The SSWTUF is one of the national union federations represented by ITUC-Africa.",
+      "D": "Regional union federations like ITUC-Africa represent the national union federations in a specific area."
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Yêu cầu giải thích mục đích (purpose), đáp án B nêu rõ mục đích là 'improve conditions for workers' (cải thiện điều kiện cho người lao động)."
+  },
+  {
+    "id": 27,
+    "text": "While researching a topic, a student has taken the following notes:\n• Generally, an object will heat up when twisted.\n• The twisting of an object is known as torsion.\n• A 2019 study led by Zunfeng Liu and Ray Baughman tested the\ntorsional heating of various fibers.\n• When a sample of styrene-ethylene-butylene-styrene (SEBS)\nrubber fiber was twisted, its average surface temperature increased\nby 3.5°C.\n• When a sample of single-ply nickel-titanium (NiTi) wire was\ntwisted, its average surface temperature increased by 21.3°C.\nThe student wants to emphasize a similarity between SEBS rubber\nand single-ply NiTi wire fibers. Which choice most effectively\nuses relevant information from the notes to accomplish this goal?",
+    "question_type": "mcq",
+    "options": {
+      "A": "In 2019, two research teams observed the effects of torsional heating on various fibers, including SEBS rubber and single-ply NiTi wire.",
+      "B": "Both SEBS rubber and single-ply NiTi wire fibers heat up when twisted, according to a 2019 study.",
+      "C": "Researchers determined that when the fibers were twisted, the average surface temperature of single-ply NiTi wire increased more than that of SEBS rubber.",
+      "D": "Twisting an object will generally cause its temperature to increase, a process known as torsional heating."
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Điểm chung (similarity) của hai loại sợi này là chúng đều tăng nhiệt độ khi bị xoắn ('heat up when twisted')."
+  }
+]

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   ChevronLeft, ChevronRight, Flag, Timer, Eye, EyeOff,
-  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle, Send, Sun, Moon, Calculator
+  CheckSquare, ArrowLeft, Paintbrush, Eraser, AlertCircle, Send, Sun, Moon, Calculator, AlertTriangle, X
 } from 'lucide-react';
 import { Question, Passage, Theme } from '../types';
 import MathRenderer from './MathRenderer';
 import DesmosCalculator from './DesmosCalculator';
+import { supabase } from '../supabaseClient';
 
 // ─── Highlight Hook ────────────────────────────────────────────────────────────
 interface HighlightEntry { id: string; text: string; }
@@ -190,6 +191,40 @@ export default function ActiveTestScreen({
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
+  
+  // Report Modal
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportType, setReportType] = useState<'Question' | 'Answers' | 'Missing Graph/Image'>('Question');
+  const [reportDetails, setReportDetails] = useState('');
+  const [isSubmittingReport, setIsSubmittingReport] = useState(false);
+  const [reportSuccess, setReportSuccess] = useState(false);
+
+  const submitReport = async () => {
+    setIsSubmittingReport(true);
+    try {
+      const { error } = await supabase.from('question_reports').insert({
+        question_id: questions[currentIdx].id,
+        error_type: reportType,
+        details: reportDetails,
+        status: 'pending'
+      });
+      if (!error) {
+        setReportSuccess(true);
+        setTimeout(() => {
+          setShowReportModal(false);
+          setReportSuccess(false);
+          setReportDetails('');
+        }, 2000);
+      } else {
+        alert('Có lỗi xảy ra khi gửi báo cáo: ' + error.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Có lỗi xảy ra khi gửi báo cáo.');
+    } finally {
+      setIsSubmittingReport(false);
+    }
+  };
   const { position: calcPos, onPointerDown: calcDragStart, onPointerMove: calcDragMove, onPointerUp: calcDragEnd, isDragging: calcIsDragging } = useDraggable();
 
   // Resizing
@@ -365,6 +400,17 @@ export default function ActiveTestScreen({
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Report Button */}
+          <button
+            onClick={() => setShowReportModal(true)}
+            className={`p-2 rounded-lg border transition-all cursor-pointer ${
+              isDark ? 'border-white/10 text-text-muted hover:text-accent-warm' : 'border-slate-200 text-slate-400 hover:text-accent-warm'
+            }`}
+            title="Báo lỗi câu hỏi"
+          >
+            <AlertTriangle className="w-4 h-4" />
+          </button>
+
           {/* Calculator Button (Math Only) */}
           {!isVerbal && (
             <button
@@ -781,6 +827,7 @@ export default function ActiveTestScreen({
                 Desmos Graphing Calculator
               </div>
               <button 
+                onPointerDown={(e) => e.stopPropagation()}
                 onClick={(e) => { e.stopPropagation(); setShowCalculator(false); }}
                 className={`p-1 rounded transition-colors pointer-events-auto cursor-pointer ${
                   isDark ? 'hover:bg-white/10 text-slate-400 hover:text-white' : 'hover:bg-slate-200 text-slate-500 hover:text-black'
@@ -792,6 +839,96 @@ export default function ActiveTestScreen({
             <div className="p-1 bg-white">
               <DesmosCalculator style={{ height: '400px', borderRadius: '8px' }} />
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── REPORT ERROR MODAL ── */}
+      {showReportModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className={`w-full max-w-sm p-6 rounded-2xl shadow-2xl transform transition-all ${
+            isDark ? 'bg-bg-card border border-white/10 text-text-primary' : 'bg-white border border-slate-200 text-text-dark'
+          }`}>
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-sm font-bold tracking-widest uppercase mb-1">Report Error</h3>
+                <p className={`text-xs ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>Q{currentIdx + 1} - {isVerbal ? 'Reading & Writing' : 'Math'} - {moduleTitle}</p>
+              </div>
+              <button
+                onClick={() => { setShowReportModal(false); setReportSuccess(false); setReportDetails(''); }}
+                className={`p-1.5 rounded-full border transition-colors cursor-pointer flex items-center justify-center ${
+                  isDark ? 'border-white/10 hover:bg-white/10' : 'border-slate-200 hover:bg-slate-100'
+                }`}
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {reportSuccess ? (
+              <div className="py-8 text-center text-sm text-green-500 font-bold">
+                Báo cáo đã được gửi thành công! Cảm ơn bạn.
+              </div>
+            ) : (
+              <>
+                <div className="mb-4">
+                  <label className={`block text-[10px] font-bold tracking-wider mb-2 ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>ERROR IN</label>
+                  <div className="grid grid-cols-2 gap-2 mb-2">
+                    <button
+                      onClick={() => setReportType('Question')}
+                      className={`py-2 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
+                        reportType === 'Question' 
+                          ? 'bg-accent-gold border-accent-gold text-black shadow-sm' 
+                          : (isDark ? 'border-white/10 hover:border-white/30' : 'border-slate-200 hover:border-slate-300')
+                      }`}
+                    >
+                      Question
+                    </button>
+                    <button
+                      onClick={() => setReportType('Answers')}
+                      className={`py-2 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
+                        reportType === 'Answers' 
+                          ? 'bg-accent-gold border-accent-gold text-black shadow-sm' 
+                          : (isDark ? 'border-white/10 hover:border-white/30' : 'border-slate-200 hover:border-slate-300')
+                      }`}
+                    >
+                      Answers
+                    </button>
+                  </div>
+                  <button
+                    onClick={() => setReportType('Missing Graph/Image')}
+                    className={`w-full py-2 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
+                      reportType === 'Missing Graph/Image' 
+                        ? 'bg-accent-gold border-accent-gold text-black shadow-sm' 
+                        : (isDark ? 'border-white/10 hover:border-white/30' : 'border-slate-200 hover:border-slate-300')
+                    }`}
+                  >
+                    Missing Graph/Image
+                  </button>
+                </div>
+
+                <div className="mb-6">
+                  <label className={`block text-[10px] font-bold tracking-wider mb-2 ${isDark ? 'text-text-muted' : 'text-slate-500'}`}>DETAILS (OPTIONAL)</label>
+                  <textarea
+                    value={reportDetails}
+                    onChange={(e) => setReportDetails(e.target.value)}
+                    placeholder="Tell us what looks wrong..."
+                    className={`w-full h-24 p-3 rounded-lg text-sm resize-none border focus:outline-none focus:ring-1 focus:ring-accent-gold ${
+                      isDark ? 'bg-white/5 border-white/10 text-white placeholder-text-muted' : 'bg-slate-50 border-slate-200 text-black placeholder-slate-400'
+                    }`}
+                  />
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    onClick={submitReport}
+                    disabled={isSubmittingReport}
+                    className="px-6 py-2 bg-accent-gold hover:bg-[#d4b055] text-black text-sm font-bold rounded-lg shadow-md transition-colors disabled:opacity-50 cursor-pointer"
+                  >
+                    {isSubmittingReport ? 'Sending...' : 'Send'}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

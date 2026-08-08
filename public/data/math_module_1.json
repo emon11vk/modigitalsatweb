@@ -1,0 +1,273 @@
+[
+  {
+    "id": 1,
+    "text": "The equation s = 40 + 2t gives the speed s, in miles per hour, of a certain car t seconds after it began to accelerate. What is the speed, in miles per hour, of the car 4 seconds after it began to accelerate?",
+    "question_type": "mcq",
+    "options": {
+      "A": "40",
+      "B": "42",
+      "C": "44",
+      "D": "48"
+    },
+    "correctAnswer": [
+      "D"
+    ]
+  },
+  {
+    "id": 2,
+    "text": "Which equation shows the relationship between the side lengths of the given triangle?",
+    "question_type": "mcq",
+    "options": {
+      "A": "8b = 20",
+      "B": "8 + b = 20",
+      "C": "8² + b² = 20²",
+      "D": "8² - b² = 20²"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "imageUrl": "placeholder_m1_q2.png"
+  },
+  {
+    "id": 3,
+    "text": "The histogram shows the distribution of 20 lengths, in feet, in a data set. The first bar represents the lengths that are at least 0 feet but less than 50 feet, and so on. Which of the following could be the maximum length, in feet, in this data set?",
+    "question_type": "mcq",
+    "options": {
+      "A": "69",
+      "B": "119",
+      "C": "169",
+      "D": "219"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "imageUrl": "placeholder_m1_q3.png"
+  },
+  {
+    "id": 4,
+    "text": "In the given equation, k is a constant. The equation has infinitely many solutions. What is the value of k?\n7x + 28 = 7x + k",
+    "question_type": "spr",
+    "correctAnswer": [
+      "28"
+    ]
+  },
+  {
+    "id": 5,
+    "text": "A line segment that has a length of 113 centimeters (cm) is divided into three parts. One part is 47 cm long. The other two parts have lengths that are equal to each other. What is the length, in cm, of one of the other two parts of equal length?",
+    "question_type": "spr",
+    "correctAnswer": [
+      "33"
+    ]
+  },
+  {
+    "id": 6,
+    "text": "The scatterplot shows the relationship between two variables, x and y. A line of best fit is also shown.\nWhich of the following equations best represents the line of best fit shown?",
+    "question_type": "mcq",
+    "options": {
+      "A": "y = x - 16.3",
+      "B": "y = -x + 16.3",
+      "C": "y = x - 2.3",
+      "D": "y = -x + 2.3"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "imageUrl": "placeholder_m1_q6.png"
+  },
+  {
+    "id": 7,
+    "text": "The expression 7x⁶ + 9x⁶ - 8x⁶ is equivalent to bx⁶, where b is a constant. What is the value of b?",
+    "question_type": "spr",
+    "correctAnswer": [
+      "8"
+    ]
+  },
+  {
+    "id": 8,
+    "text": "At what point (x, y) do the graphs of the equations y = 5x + 8 and y = 6x - 2 intersect in the xy-plane?",
+    "question_type": "mcq",
+    "options": {
+      "A": "(5, 6)",
+      "B": "(6, 5)",
+      "C": "(10, 58)",
+      "D": "(58, 10)"
+    },
+    "correctAnswer": [
+      "C"
+    ]
+  },
+  {
+    "id": 9,
+    "text": "A rectangle has a length that is 72 times its width. The function y = (72w)(w) represents this situation, where y is the area, in square feet, of the rectangle and y > 0. Which of the following is the best interpretation of 72w in this context?",
+    "question_type": "mcq",
+    "options": {
+      "A": "The length of the rectangle, in feet",
+      "B": "The area of the rectangle, in square feet",
+      "C": "The difference between the length and the width of the rectangle, in feet",
+      "D": "The width of the rectangle, in feet"
+    },
+    "correctAnswer": [
+      "A"
+    ]
+  },
+  {
+    "id": 10,
+    "text": "For the given linear function f, which table gives three values of x and their corresponding values of f(x)?\nf(x) = 29",
+    "question_type": "mcq",
+    "options": {
+      "A": "x: 0, 1, 2 | f(x): 0, 0, 0",
+      "B": "x: 0, 1, 2 | f(x): 29, 29, 29",
+      "C": "x: 0, 1, 2 | f(x): 0, 29, 58",
+      "D": "x: 0, 1, 2 | f(x): 29, 0, -29"
+    },
+    "correctAnswer": [
+      "B"
+    ]
+  },
+  {
+    "id": 11,
+    "text": "Note: Figure not drawn to scale.\nIn the figure shown, line k intersects lines r and s. If w = 160, which additional piece of information is sufficient to prove that lines r and s are parallel?",
+    "question_type": "mcq",
+    "options": {
+      "A": "x = 20",
+      "B": "y = 160",
+      "C": "w + y = 180",
+      "D": "y + z = 180"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "imageUrl": "placeholder_m1_q11.png"
+  },
+  {
+    "id": 12,
+    "text": "x² - 4x + y² - 8y - 80 = 0\nIn the xy-plane, the graph of the given equation is a circle. If this circle is inscribed in a square, what is the perimeter of the square?",
+    "question_type": "mcq",
+    "options": {
+      "A": "20",
+      "B": "40",
+      "C": "80",
+      "D": "320"
+    },
+    "correctAnswer": [
+      "C"
+    ]
+  },
+  {
+    "id": 13,
+    "text": "A real estate company offers a series of three webinars. 1,250 people attended the first webinar. 46% of the people who attended the first webinar attended the second webinar, and 32% of the people who attended the first and second webinars attended the third webinar. How many people attended all three webinars?",
+    "question_type": "spr",
+    "correctAnswer": [
+      "184"
+    ]
+  },
+  {
+    "id": 14,
+    "text": "f(x) = 24(2)^(x/6)\nWhich table gives four values of x and their corresponding values of f(x) for the given exponential function?",
+    "question_type": "mcq",
+    "options": {
+      "A": "x: -6, 0, 6, 12; f(x): 12, 0, 48, 96",
+      "B": "x: -6, 0, 6, 12; f(x): 12, 24, 48, 96",
+      "C": "x: -6, 0, 6, 12; f(x): -12, 24, 48, 96",
+      "D": "x: -6, 0, 6, 12; f(x): 12, 24, 48, 72"
+    },
+    "correctAnswer": [
+      "B"
+    ]
+  },
+  {
+    "id": 15,
+    "text": "To study fluctuations in leaf water potential, samples of wood were taken from 22 trees. Each sample was cut in the shape of a cube. The length of the edge of one of these cubes is 3.000 centimeters. This cube has a density of 0.250 grams per cubic centimeter. What is the mass of this cube, in grams?",
+    "question_type": "spr",
+    "correctAnswer": [
+      "6.75"
+    ]
+  },
+  {
+    "id": 16,
+    "text": "-2|5x + 9| + 7 = -11\nWhat are all solutions to the given equation?",
+    "question_type": "mcq",
+    "options": {
+      "A": "0",
+      "B": "0 and -7/5",
+      "C": "0 and -18/5",
+      "D": "There is no solution."
+    },
+    "correctAnswer": [
+      "C"
+    ]
+  },
+  {
+    "id": 17,
+    "text": "x² - 84x - 14 = 0\nWhat is the sum of the solutions to the given equation?",
+    "question_type": "mcq",
+    "options": {
+      "A": "0",
+      "B": "7",
+      "C": "14",
+      "D": "84"
+    },
+    "correctAnswer": [
+      "D"
+    ]
+  },
+  {
+    "id": 18,
+    "text": "Note: Figure not drawn to scale.\nFor the right circular cone shown, B is a point on the circumference of the base, and the length of segment AB (not shown) is 32 centimeters. If the height of the cone is 16 centimeters and the volume of the cone is kπ cubic centimeters, what is the value of k?",
+    "question_type": "spr",
+    "correctAnswer": [
+      "4096"
+    ],
+    "imageUrl": "placeholder_m1_q18.png"
+  },
+  {
+    "id": 19,
+    "text": "In the xy-plane, line k and line ℓ are perpendicular and intersect at the point (2, 8). If line k is defined by the equation y = mx + b, where m and b are constants and m > 1, which of the following points lies on line ℓ?",
+    "question_type": "mcq",
+    "options": {
+      "A": "(3, 8 - 1/m)",
+      "B": "(3, 8 + 1/m)",
+      "C": "(3, 8 - m)",
+      "D": "(3, 8 + m)"
+    },
+    "correctAnswer": [
+      "A"
+    ]
+  },
+  {
+    "id": 20,
+    "text": "5/4x + 2y = 17\n3/4x + 2y = 15\nThe solution to the given system of equations is (x, y). What is the value of 11/4x + 6y?",
+    "question_type": "mcq",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "32",
+      "D": "47"
+    },
+    "correctAnswer": [
+      "D"
+    ]
+  },
+  {
+    "id": 21,
+    "text": "The table shows three values of x and their corresponding values of y. The linear relationship between x and y can be represented by an equation written in the form Ax + By = C, where A, B, and C are constants. What is the value of A/B?\n\nx | y\n-2 | 19\n0 | 31\n2 | 43",
+    "question_type": "spr",
+    "correctAnswer": [
+      "-6"
+    ]
+  },
+  {
+    "id": 22,
+    "text": "5x + 8y = 9\n15x + 24y = 27\nFor each real number r, which of the following points lies on the graph of each equation in the xy-plane for the given system?",
+    "question_type": "mcq",
+    "options": {
+      "A": "(r, -5r/8 + 9/8)",
+      "B": "(-5r/8 + 9/8, r)",
+      "C": "(-5r/8 + 9, 5r/8 + 27)",
+      "D": "(r/3 + 9, -r/3 + 27)"
+    },
+    "correctAnswer": [
+      "A"
+    ]
+  }
+]
