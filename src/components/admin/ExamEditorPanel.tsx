@@ -28,6 +28,7 @@ import {
   MessageSquare,
   Image as ImageIcon,
   RotateCcw,
+  Underline as UnderlineIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -112,6 +113,41 @@ export default function ExamEditorPanel({
       return next;
     });
   }
+
+  // ─── Format Helpers ───────────────────────────────────────────
+  const wrapSelection = (id: string, tag: string, sIdx: number, qIdx: number, field: string, cIdx?: number) => {
+    const textarea = document.getElementById(id) as HTMLTextAreaElement | HTMLInputElement;
+    if (!textarea) return;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    if (start === null || end === null || start === end) return;
+
+    const val = textarea.value;
+    const selected = val.substring(start, end);
+    const newText = val.substring(0, start) + `<${tag}>${selected}</${tag}>` + val.substring(end);
+
+    if (field === 'passage' || field === 'questionText' || field === 'explanation') {
+      dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field, value: newText } });
+    } else if (field === 'choice' && cIdx !== undefined) {
+      dispatch({ type: 'UPDATE_CHOICE_TEXT', payload: { sectionIndex: sIdx, questionIndex: qIdx, choiceIndex: cIdx, text: newText } });
+    }
+
+    setTimeout(() => {
+      const el = document.getElementById(id) as HTMLTextAreaElement | HTMLInputElement;
+      if (el) {
+        el.focus();
+        el.setSelectionRange(start, start + selected.length + tag.length * 2 + 5);
+      }
+    }, 10);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>, id: string, sIdx: number, qIdx: number, field: string, cIdx?: number) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+      e.preventDefault();
+      wrapSelection(id, 'u', sIdx, qIdx, field, cIdx);
+    }
+  };
 
   // ─── Compute stats ────────────────────────────────────────────
   const totalQuestions = state.sections.reduce(
@@ -547,22 +583,38 @@ export default function ExamEditorPanel({
                                 )}
                               </button>
                               {!passageCollapsed && (
-                                <button
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
-                                    dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'passage', value: flatten(q.passage) } });
-                                  }}
-                                  className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
-                                    isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-                                  }`}
-                                >
-                                  Làm phẳng
-                                </button>
+                                <div className="flex items-center gap-1.5">
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      wrapSelection(`passage-${sIdx}-${qIdx}`, 'u', sIdx, qIdx, 'passage');
+                                    }}
+                                    title="Gạch chân (Ctrl+U)"
+                                    className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                      isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                    }`}
+                                  >
+                                    <UnderlineIcon className="w-3 h-3" />
+                                  </button>
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
+                                      dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'passage', value: flatten(q.passage) } });
+                                    }}
+                                    className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                      isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                    }`}
+                                  >
+                                    Làm phẳng
+                                  </button>
+                                </div>
                               )}
                             </div>
                             {!passageCollapsed && (
                               <textarea
+                                id={`passage-${sIdx}-${qIdx}`}
+                                onKeyDown={(e) => handleKeyDown(e, `passage-${sIdx}-${qIdx}`, sIdx, qIdx, 'passage')}
                                 value={typeof q.passage === 'string' ? q.passage : ''}
                                 onChange={(e) =>
                                   dispatch({
@@ -594,20 +646,36 @@ export default function ExamEditorPanel({
                               <Type className="w-3.5 h-3.5" />
                               Question Text
                             </label>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
-                                dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'questionText', value: flatten(q.questionText) } });
-                              }}
-                              className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
-                                isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-                              }`}
-                            >
-                              Làm phẳng
-                            </button>
+                            <div className="flex items-center gap-1.5">
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  wrapSelection(`questionText-${sIdx}-${qIdx}`, 'u', sIdx, qIdx, 'questionText');
+                                }}
+                                title="Gạch chân (Ctrl+U)"
+                                className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                  isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                }`}
+                              >
+                                <UnderlineIcon className="w-3 h-3" />
+                              </button>
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
+                                  dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'questionText', value: flatten(q.questionText) } });
+                                }}
+                                className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                  isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                }`}
+                              >
+                                Làm phẳng
+                              </button>
+                            </div>
                           </div>
                           <textarea
+                            id={`questionText-${sIdx}-${qIdx}`}
+                            onKeyDown={(e) => handleKeyDown(e, `questionText-${sIdx}-${qIdx}`, sIdx, qIdx, 'questionText')}
                             value={q.questionText}
                             onChange={(e) =>
                               dispatch({
@@ -725,6 +793,8 @@ export default function ExamEditorPanel({
   
                                     {/* Choice text */}
                                     <input
+                                      id={`choice-${sIdx}-${qIdx}-${cIdx}`}
+                                      onKeyDown={(e) => handleKeyDown(e, `choice-${sIdx}-${qIdx}-${cIdx}`, sIdx, qIdx, 'choice', cIdx)}
                                       type="text"
                                       value={choice.text}
                                       onChange={(e) =>
@@ -749,6 +819,18 @@ export default function ExamEditorPanel({
                                           : 'bg-white border-slate-200 text-text-dark-secondary placeholder:text-slate-300'
                                       }`}
                                     />
+                                    <button
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        wrapSelection(`choice-${sIdx}-${qIdx}-${cIdx}`, 'u', sIdx, qIdx, 'choice', cIdx);
+                                      }}
+                                      title="Gạch chân (Ctrl+U)"
+                                      className={`p-1.5 rounded-lg border transition-all cursor-pointer shrink-0 ${
+                                        isDark ? 'border-white/10 text-text-muted hover:text-white hover:bg-white/5' : 'border-slate-200 text-slate-400 hover:text-text-dark hover:bg-slate-50'
+                                      }`}
+                                    >
+                                      <UnderlineIcon className="w-3.5 h-3.5" />
+                                    </button>
                                   </div>
                                 ))}
                               </div>
@@ -763,20 +845,36 @@ export default function ExamEditorPanel({
                               <MessageSquare className="w-3.5 h-3.5" />
                               Explanation (optional)
                             </label>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
-                                dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'explanation', value: flatten(q.explanation) } });
-                              }}
-                              className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
-                                isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-                              }`}
-                            >
-                              Làm phẳng
-                            </button>
+                            <div className="flex items-center gap-1.5">
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  wrapSelection(`explanation-${sIdx}-${qIdx}`, 'u', sIdx, qIdx, 'explanation');
+                                }}
+                                title="Gạch chân (Ctrl+U)"
+                                className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                  isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                }`}
+                              >
+                                <UnderlineIcon className="w-3 h-3" />
+                              </button>
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  const flatten = (t: any) => typeof t === 'string' ? t.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim() : t;
+                                  dispatch({ type: 'UPDATE_QUESTION_FIELD', payload: { sectionIndex: sIdx, questionIndex: qIdx, field: 'explanation', value: flatten(q.explanation) } });
+                                }}
+                                className={`text-[10px] px-2 py-0.5 rounded font-semibold transition-colors cursor-pointer ${
+                                  isDark ? 'bg-white/5 hover:bg-white/10 text-text-secondary' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                                }`}
+                              >
+                                Làm phẳng
+                              </button>
+                            </div>
                           </div>
                           <textarea
+                            id={`explanation-${sIdx}-${qIdx}`}
+                            onKeyDown={(e) => handleKeyDown(e, `explanation-${sIdx}-${qIdx}`, sIdx, qIdx, 'explanation')}
                             value={q.explanation}
                             onChange={(e) =>
                               dispatch({
