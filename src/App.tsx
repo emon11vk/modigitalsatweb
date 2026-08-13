@@ -15,6 +15,7 @@ import {
 } from './types';
 
 import { supabase } from './supabaseClient';
+import { checkAnswerMathEquivalent } from './utils/mathAnswerChecker';
 import { fetchWordData } from './utils/dictionaryAPI';
 import { calculateSM2 } from './utils/sm2';
 import { useAdminRole } from './hooks/useAdminRole';
@@ -501,10 +502,11 @@ export default function App() {
     try {
       // 1. Tính toán điểm số
       let correctCount = 0;
+      const isMath = module.subject === 'Math';
       activeQuestions.forEach((q) => {
         const userAnswer = answers[q.id];
         const correctAnswers = Array.isArray(q.correctAnswer) ? q.correctAnswer : [q.correctAnswer];
-        if (correctAnswers.includes(userAnswer)) correctCount++;
+        if (checkAnswerMathEquivalent(userAnswer, correctAnswers, isMath)) correctCount++;
       });
 
       const totalCount = activeQuestions.length;
@@ -555,7 +557,7 @@ export default function App() {
               history_id: insertedHistory.id,
               question_id: q.id,
               user_answer: userAnswer ?? null,
-              is_correct: correctAnswers.includes(userAnswer)
+              is_correct: checkAnswerMathEquivalent(userAnswer, correctAnswers, isMath)
             };
           });
 
@@ -588,7 +590,7 @@ export default function App() {
               question_type: q.question_type,
               userAnswer: userAnswer ?? null,
               correctAnswer: correctAnswers,
-              isCorrect: correctAnswers.includes(userAnswer),
+              isCorrect: checkAnswerMathEquivalent(userAnswer, correctAnswers, isMath),
               options: q.options,
               passage: q.passage,
               imageUrl: q.imageUrl,

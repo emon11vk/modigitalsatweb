@@ -1,4 +1,5 @@
 import { TestAttemptHistory } from '../types';
+import { checkAnswerMathEquivalent } from '../utils/mathAnswerChecker';
 import {
   ArrowLeft, CheckCircle2, XCircle, Calendar, BookOpen,
   Trophy, BarChart2, AlertCircle, Target, Clock, Download,
@@ -175,7 +176,8 @@ export default function ReviewScreen({ theme, attempt, onBack }: ReviewScreenPro
 
         {attempt.questions && attempt.questions.length > 0 ? (
           attempt.questions.map((q, idx) => {
-            const isCorrect = q.correctAnswer.includes(q.userAnswer?.trim() || '');
+            const isMath = attempt.subject === 'Math';
+            const isCorrect = checkAnswerMathEquivalent(q.userAnswer, q.correctAnswer, isMath);
 
             return (
               <motion.div
