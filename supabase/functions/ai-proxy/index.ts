@@ -14,6 +14,20 @@ serve(async (req) => {
   }
 
   try {
+    const { action, payload } = await req.json()
+
+    if (action === 'list-models') {
+      const apiKey = Deno.env.get('GROQ_API_KEY')
+      if (!apiKey) throw new Error('GROQ_API_KEY is missing.')
+      const res = await fetch('https://api.groq.com/openai/v1/models', {
+        headers: { 'Authorization': `Bearer ${apiKey}` }
+      })
+      const data = await res.json()
+      return new Response(JSON.stringify(data), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      })
+    }
+
     // 1. Authenticate User
     const authHeader = req.headers.get('Authorization')
     if (!authHeader) {
@@ -35,70 +49,52 @@ serve(async (req) => {
       })
     }
 
-    const { action, payload } = await req.json()
-
     if (action === 'generate-story') {
       const { words, genre } = payload
       const apiKey = Deno.env.get('GROQ_API_KEY')
       if (!apiKey) throw new Error('GROQ_API_KEY is missing in Edge Function secrets.')
 
       const wordListStr = words.map((w: any) => `- ${w.term} (${w.type}): ${w.definition}`).join('\n')
-      const systemPrompt1 = `You are an expert prompt engineer. Your task is to write a prompt for another AI to generate a short story. 
-The story must be of genre: "${genre}".
+      const systemPrompt = `You are a skilled creative writer. Write an engaging short story (under 300 words).
+The genre or theme of the story is: "${genre}".
+CRITICAL RULE 1: The story MUST be written ENTIRELY in English, even if the genre/theme is provided in another language.
 The story MUST naturally include all of the following English vocabulary words:
 ${wordListStr}
 
-Please generate a highly detailed prompt instructing the next AI to write this story. 
-CRITICAL RULE: The prompt MUST instruct the AI to wrap EVERY vocabulary word in double asterisks (like **word**) whenever it appears in the story.
-The prompt should also ask for an engaging, short story (under 300 words), suitable for an SAT student. Provide only the prompt text, nothing else.`;
+CRITICAL RULE 2: You MUST wrap EVERY vocabulary word in double asterisks (e.g., **word**) whenever it appears in the story. Do not add any <think> tags, commentary, or meta-text. Just output the story directly.`;
 
       const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
       
-      const layer1Res = await fetch(GROQ_API_URL, {
+      const response = await fetch(GROQ_API_URL, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'llama-3.1-8b-instant',
-          messages: [{ role: 'system', content: systemPrompt1 }],
+          model: 'openai/gpt-oss-120b',
+          messages: [
+            { role: 'system', content: 'You are a creative writer.' },
+            { role: 'user', content: systemPrompt }
+          ],
           temperature: 0.7,
-          max_tokens: 500,
+          max_tokens: 2500,
         })
       });
 
-      if (!layer1Res.ok) {
-        const err = await layer1Res.text();
-        throw new Error(`Layer 1 API Error: ${err}`);
+      if (!response.ok) {
+        const err = await response.text();
+        throw new Error(`API Error: ${err}`);
       }
       
-      const layer1Data = await layer1Res.json();
-      const improvedPrompt = layer1Data.choices?.[0]?.message?.content;
-      if (!improvedPrompt) throw new Error('Failed to generate improved prompt.');
+      const data = await response.json();
+      let story = data.choices?.[0]?.message?.content || 'No story generated.';
+      story = story.replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, '').trim();
+      
+      if (!story) {
+        story = "AI is thinking too much and couldn't finish the story. Please try again.";
+      }
 
-      const layer2Res = await fetch(GROQ_API_URL, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'llama-3.1-8b-instant',
-          messages: [{ role: 'user', content: improvedPrompt }],
-          temperature: 0.7,
-          max_tokens: 1000,
-        })
-      });
-      
-      if (!layer2Res.ok) {
-        const err = await layer2Res.text();
-        throw new Error(`Layer 2 API Error: ${err}`);
-      }
-      
-      const layer2Data = await layer2Res.json();
-      const story = layer2Data.choices?.[0]?.message?.content || 'No story generated.';
-      
       return new Response(JSON.stringify({ story }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
@@ -131,11 +127,24 @@ The prompt should also ask for an engaging, short story (under 300 words), suita
       })
     }
 
+    if (action === 'list-models') {
+      const apiKey = Deno.env.get('GROQ_API_KEY')
+      if (!apiKey) throw new Error('GROQ_API_KEY is missing.')
+      const res = await fetch('https://api.groq.com/openai/v1/models', {
+        headers: { 'Authorization': `Bearer ${apiKey}` }
+      })
+      const data = await res.json()
+      return new Response(JSON.stringify(data), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      })
+    }
+
     return new Response(JSON.stringify({ error: 'Unknown action' }), {
       status: 400,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (error: any) {
+    console.error('Edge Function Error:', error.message, error.stack);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

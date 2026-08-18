@@ -16,7 +16,18 @@ export async function generateAIStory({ words, genre }: GenerateStoryOptions): P
     });
 
     if (error) {
-      throw new Error(`Edge Function Error: ${error.message}`);
+      console.error('Full Edge Function Error Object:', error);
+      let errorDetail = error.message;
+      try {
+        if (error.context && typeof error.context.json === 'function') {
+           const errBody = await error.context.json();
+           console.error('Edge Function Error Body:', errBody);
+           errorDetail = errBody.error || error.message;
+        }
+      } catch (e) {
+        // ignore
+      }
+      throw new Error(`Edge Function Error: ${errorDetail}`);
     }
 
     if (data?.error) {

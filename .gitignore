@@ -16,3 +16,14 @@ mod_1_verbal.json
 mod_2_verbal.json
 2024_*.json
 2024_*.txt
+
+# Ignore test files with API keys and scratchpads
+test-groq-models.js
+test_pdf_page1.txt
+user_input_dump.txt
+JSON_SCHEMA_GUIDE.md
+parsed_questions.json
+
+# Ignore questions/exams data
+extracted_json/
+public/data/
