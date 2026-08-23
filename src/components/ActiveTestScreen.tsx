@@ -165,7 +165,7 @@ export default function ActiveTestScreen({
   onExit,
 }: ActiveTestScreenProps) {
   const isDark = theme === 'dark';
-  const isVerbal = subject === 'Reading & Writing' || subject === 'VERBAL';
+  const isVerbal = subject === 'Reading & Writing' || subject === 'VERBAL' || (subject && subject.toLowerCase().includes('verbal')) || (subject && subject.toLowerCase().includes('reading')) || moduleTitle.toLowerCase().includes('verbal') || moduleTitle.toLowerCase().includes('reading');
 
   if (!questions || questions.length === 0) {
     return (
@@ -198,6 +198,7 @@ export default function ActiveTestScreen({
   const [reportDetails, setReportDetails] = useState('');
   const [isSubmittingReport, setIsSubmittingReport] = useState(false);
   const [reportSuccess, setReportSuccess] = useState(false);
+  const [isEliminatorMode, setIsEliminatorMode] = useState(false);
 
   const submitReport = async () => {
     setIsSubmittingReport(true);
@@ -609,7 +610,12 @@ export default function ActiveTestScreen({
               </div>
               
               <button 
-                className={`p-1.5 rounded border transition-all ${isDark ? 'border-white/20 text-white hover:bg-white/10' : 'border-slate-300 text-black hover:bg-slate-100'}`}
+                onClick={() => setIsEliminatorMode(!isEliminatorMode)}
+                className={`p-1.5 rounded border transition-all ${
+                  isEliminatorMode
+                    ? isDark ? 'bg-primary/20 border-primary text-primary-light' : 'bg-primary/10 border-primary text-primary'
+                    : isDark ? 'border-white/20 text-white hover:bg-white/10' : 'border-slate-300 text-black hover:bg-slate-100'
+                }`}
                 title="Cross out options"
               >
                 <span className="font-mono text-[10px] line-through font-bold">ABC</span>
@@ -646,19 +652,27 @@ export default function ActiveTestScreen({
                           : 'bg-white border-slate-300 hover:border-slate-400'
                       }`}
                     >
+                      {isEliminatorMode && (
+                        <button
+                          onClick={(e) => { e.stopPropagation(); toggleEliminate(letter); }}
+                          className={`px-3 flex items-center justify-center transition-colors border-r text-[10px] cursor-pointer shrink-0 ${
+                            isEliminated
+                              ? isDark ? 'border-white/5 text-accent-warm' : 'border-slate-100 text-accent-warm'
+                              : isDark ? 'border-white/5 text-text-muted hover:text-accent-warm' : 'border-slate-100 text-slate-300 hover:text-accent-warm'
+                          }`}
+                          title={isEliminated ? 'Khôi phục' : 'Gạch bỏ'}
+                        >
+                          ✕
+                        </button>
+                      )}
                       <button
-                        onClick={(e) => { e.stopPropagation(); toggleEliminate(letter); }}
-                        className={`px-3 flex items-center justify-center transition-colors border-r text-[10px] cursor-pointer ${
-                          isEliminated
-                            ? isDark ? 'border-white/5 text-accent-warm' : 'border-slate-100 text-accent-warm'
-                            : isDark ? 'border-white/5 text-text-muted hover:text-accent-warm' : 'border-slate-100 text-slate-300 hover:text-accent-warm'
-                        }`}
-                        title={isEliminated ? 'Khôi phục' : 'Gạch bỏ'}
-                      >
-                        ✕
-                      </button>
-                      <button
-                        onClick={() => handleSelectAnswer(letter)}
+                        onClick={() => {
+                          if (isEliminatorMode) {
+                            toggleEliminate(letter);
+                          } else {
+                            handleSelectAnswer(letter);
+                          }
+                        }}
                         className="flex-1 p-4 text-left flex items-start gap-4 cursor-pointer"
                       >
                         <span className={`flex items-center justify-center w-7 h-7 text-sm font-bold rounded-full border-2 shrink-0 transition-all mt-0.5 ${

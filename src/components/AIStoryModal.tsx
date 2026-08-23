@@ -101,14 +101,15 @@ export default function AIStoryModal({ theme, words, isOpen, onClose }: AIStoryM
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className={`w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 ${
+          className={`w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden rounded-2xl ${
             isDark ? 'bg-bg-card border border-primary/15' : 'bg-white border border-slate-200 shadow-2xl'
           }`}
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
         >
-          <div className="flex items-center justify-between mb-6">
+          {/* Sticky Header */}
+          <div className={`flex items-center justify-between p-6 sm:p-8 shrink-0 border-b ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
             <h3 className={`text-lg font-bold font-display flex items-center gap-2 ${isDark ? 'text-white' : 'text-text-dark'}`}>
               <Sparkles className="w-5 h-5 text-primary" />
               Tạo câu chuyện với AI
@@ -121,7 +122,8 @@ export default function AIStoryModal({ theme, words, isOpen, onClose }: AIStoryM
             </button>
           </div>
 
-          <div className="space-y-6">
+          {/* Scrollable Content */}
+          <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1">
             {/* Step 1: Select Words */}
             <div className="space-y-3">
               <label className={`block text-sm font-semibold ${isDark ? 'text-text-secondary' : 'text-text-dark-secondary'}`}>
