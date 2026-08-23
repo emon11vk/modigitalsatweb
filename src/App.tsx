@@ -1291,7 +1291,7 @@ export default function App() {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
               >
-                Trở lại trang chủ
+                Đóng
               </motion.button>
             </motion.div>
           </motion.div>
