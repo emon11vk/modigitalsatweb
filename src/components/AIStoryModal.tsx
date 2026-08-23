@@ -95,7 +95,10 @@ export default function AIStoryModal({ theme, words, isOpen, onClose }: AIStoryM
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 overflow-y-auto"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -202,6 +205,18 @@ export default function AIStoryModal({ theme, words, isOpen, onClose }: AIStoryM
 
             {/* Story Output */}
             {renderStory()}
+
+            {/* Fallback Close Button */}
+            <div className={`pt-4 mt-6 border-t ${isDark ? 'border-white/5' : 'border-slate-100'} flex justify-end`}>
+              <button
+                onClick={onClose}
+                className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                  isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                }`}
+              >
+                Đóng
+              </button>
+            </div>
           </div>
         </motion.div>
       </motion.div>
