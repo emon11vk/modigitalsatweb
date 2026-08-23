@@ -636,7 +636,7 @@ export default function App() {
         subject: module.subject,
         moduleTitle: module.title
       });
-      navigate('/dashboard');
+      navigate('/practice_hub');
       setActiveModuleId(null);
 
     } catch (err) {
