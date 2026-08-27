@@ -12,7 +12,7 @@ interface MathRendererProps {
 // Helper to render basic HTML tags securely
 function renderBasicHtml(text: string, parentNode: HTMLElement | null) {
   if (!parentNode) return;
-  const regex = /(<\/?(?:u|b|i|strong|em)>)/gi;
+  const regex = /(<\/?(?:u|b|i|strong|em)>|<br\s*\/?>)/gi;
   const parts = text.split(regex);
   let currentParent = parentNode;
   
@@ -29,6 +29,8 @@ function renderBasicHtml(text: string, parentNode: HTMLElement | null) {
       if (currentParent.tagName === tag && currentParent.parentElement && currentParent !== parentNode) {
         currentParent = currentParent.parentElement;
       }
+    } else if (/^<br\s*\/?>$/.test(lowerPart)) {
+      currentParent.appendChild(document.createElement('br'));
     } else {
       currentParent.appendChild(document.createTextNode(part));
     }
