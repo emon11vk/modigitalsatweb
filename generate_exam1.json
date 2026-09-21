@@ -1,0 +1,272 @@
+exam = {
+    "examTitle": "Digital SAT Exam 1",
+    "durationMinutes": 64,
+    "subject": "Math",
+    "sections": [
+        {
+            "sectionName": "Module 1",
+            "questions": [
+                {
+                    "questionText": "The expression $4x^6 \\cdot 3x$ is equivalent to $bx^7$, where $b$ is a constant. What is the value of $b$?",
+                    "question_type": "spr",
+                    "correctAnswer": "12"
+                },
+                {
+                    "questionText": "A linear function $g$ is defined by $g(x) = ax + b$, where $a$ and $b$ are constants. If $g(-2) = -7$ and $g(1) = 5$, what is the value of $a$?",
+                    "question_type": "spr",
+                    "correctAnswer": "4"
+                },
+                {
+                    "questionText": "What value of $n$ is the solution to the equation $11n - 8 = 5n + 16$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "4", "B": "6", "C": "11", "D": "16"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "For the function $h$, the table gives three values of $x$ and their corresponding values of $h(x)$. Which equation could define $h$? <br> $x=0, h(x)=30$<br>$x=1, h(x)=31$<br>$x=2, h(x)=33$",
+                    "question_type": "mcq",
+                    "choices": {"A": "$h(x) = 2^x$", "B": "$h(x) = 2^x + 2$", "C": "$h(x) = 2^x + 28$", "D": "$h(x) = 2^x + 29$"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "In the $xy$-plane, line $p$ has a slope of $\\frac{3}{4}$ and an $x$-intercept of $(16, 0)$. What is the $y$-coordinate of the $y$-intercept of line $p$?",
+                    "question_type": "spr",
+                    "correctAnswer": "-12"
+                },
+                {
+                    "questionText": "A bin contains a mixture of T-shirts for two sports teams. The table shows the number of T-shirts in the bin, classified by size and sports team. <br> Small: Flames 8, Sharks 7 <br> Medium: Flames 22, Sharks 34 <br> Large: Flames 14, Sharks 27 <br> One T-shirt from the bin will be selected at random. What is the probability of selecting a T-shirt that is medium, given that the T-shirt is a Flames T-shirt?",
+                    "question_type": "mcq",
+                    "choices": {"A": "0.20", "B": "0.22", "C": "0.39", "D": "0.50"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "In the given scatterplot, a line of best fit for the data is shown. Which of the following is closest to the slope of the line of best fit?",
+                    "question_type": "mcq",
+                    "choices": {"A": "-2.42", "B": "-0.22", "C": "0.22", "D": "2.42"},
+                    "correctAnswer": "C"
+                },
+                {
+                    "questionText": "The positive number $a$ is 2,352% of the sum of the positive numbers $b$ and $c$, and $b$ is 84% of $c$. What percent of $b$ is $a$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "5,152%", "B": "2,436%", "C": "51.52%", "D": "24.36%"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "For the linear function $f$, $f(-5) = -7$, and the slope of the graph of $y = f(x)$ in the $xy$-plane is 3. Which equation defines $f$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$f(x) = 3x + 8$", "B": "$f(x) = 3x - 5$", "C": "$f(x) = 3x - 7$", "D": "$f(x) = 3x - 12$"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "A circle has center $O$, and points $A$ and $B$ lie on the circle. The measure of arc $AB$ is $30^\\circ$ and the length of this arc is 4 inches. What is the circumference, in inches, of the circle?",
+                    "question_type": "mcq",
+                    "choices": {"A": "4", "B": "8", "C": "16", "D": "48"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "The table summarizes the distribution of average pitching speed, in miles per hour (mph), for a sample of 21 pitchers in a youth softball league. <br> At least 30 but less than 35: 11 <br> At least 35 but less than 40: 5 <br> At least 40 but less than 45: 4 <br> At least 45 but less than 50: 1 <br> According to the table, how many pitchers in the sample have an average pitching speed of at least 30 mph but less than 35 mph?",
+                    "question_type": "mcq",
+                    "choices": {"A": "11", "B": "5", "C": "4", "D": "1"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "$7x - 5y = -70$<br>For the given equation, which table gives three values of $x$ and their corresponding values of $y$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "x=0, y=14; x=5, y=21; x=10, y=28", "B": "x=0, y=28; x=5, y=21; x=10, y=14", "C": "x=14, y=0; x=21, y=5; x=28, y=10", "D": "x=14, y=10; x=21, y=5; x=28, y=0"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "Line $r$ in the $xy$-plane has a slope of 2 and passes through the point $(0, 12)$. Which equation defines line $r$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$y = -12x + 2$", "B": "$y = 12x + 2$", "C": "$y = 2x - 12$", "D": "$y = 2x + 12$"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "A soccer team's goal is to earn at least $1,320 by selling coupon books. The team earns $12 from selling each coupon book. Which of the following inequalities describes all possible values for the number of coupon books, $n$, the team can sell to meet the goal?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$n + 12 \\leq 1,320$", "B": "$n + 12 \\geq 1,320$", "C": "$12n \\leq 1,320$", "D": "$12n \\geq 1,320$"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "For a particular car, the linear function $f$ gives the predicted power, in brake horsepower (bhp), for engine speeds between 1,000 revolutions per minute (rpm) and 6,000 rpm. According to this function, the car's predicted power is 228 bhp at an engine speed of 1,896 rpm and 600 bhp at an engine speed of 4,500 rpm. The equation $f(x) = \\frac{1}{7}(x - a) + 228$ defines $f$, where $x$ is the engine speed, in rpm, and $a$ is a constant. What is the value of $a$?",
+                    "question_type": "spr",
+                    "correctAnswer": "1896"
+                },
+                {
+                    "questionText": "The function $f(t) = 30,000(2)^{\\frac{t}{370}}$ gives the number of bacteria in a population $t$ minutes after an initial observation. How much time, in minutes, does it take for the number of bacteria in the population to double?",
+                    "question_type": "mcq",
+                    "choices": {"A": "2", "B": "370", "C": "740", "D": "30,000"},
+                    "correctAnswer": "B"
+                },
+                {
+                    "questionText": "The mass of object A is 498% of the mass of object B, and the mass of object A is 0.830% of the mass of object C. If the mass of object C is $p\\%$ of the mass of object B, what is the value of $p$?",
+                    "question_type": "spr",
+                    "correctAnswer": "60000"
+                },
+                {
+                    "questionText": "The Southern Oscillation Index (SOI) predicts weather patterns in the Pacific Ocean. SOI values less than $-7$ over a period of time predict a temporary decrease in the strength of the Pacific trade winds. Each of the following inequalities represents SOI values, $s$, over a certain period of time. Which inequality represents SOI values that predict a temporary decrease in the strength of the Pacific trade winds?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$-27 < s < -17$", "B": "$-7 < s < 0$", "C": "$-7 < s < 7$", "D": "$19 < s < 24$"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "In triangle $RST$, the measure of angle $R$ is 29 degrees. Which statement provides sufficient information to prove that triangle $RST$ is isosceles?",
+                    "question_type": "mcq",
+                    "choices": {"A": "The measure of angle $S$ is 151 degrees.", "B": "The measure of angle $S$ is 61 degrees.", "C": "The measure of angle $S$ is 58 degrees.", "D": "The measure of angle $S$ is 29 degrees."},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "Marko purchased a camera in September 2017 when the camera had a value of 1,000 dollars. Each month for the next 50 months, the value of the camera decreased by 3% of the previous month's value. Which equation represents this situation, where $v$ is the value of the camera, in dollars, $m$ is the number of months since Marko purchased the camera, and $m \\leq 50$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$v = 2,017(0.97)^m$", "B": "$v = 2,017(3)^m$", "C": "$v = 1,000(0.97)^m$", "D": "$v = 1,000(3)^m$"},
+                    "correctAnswer": "C"
+                },
+                {
+                    "questionText": "In right triangle ABC, the hypotenuse AB has length 43, and side AC has length 42. What is the value of $\\cos A$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$\\frac{43}{42}$", "B": "$\\frac{42}{43}$", "C": "$\\frac{1}{43}$", "D": "$\\frac{1}{42}$"},
+                    "correctAnswer": "B"
+                },
+                {
+                    "questionText": "$5x + 7y = 6$<br>$20x + 28y = 24$<br>For each real number $r$, which of the following points lies on the graph of each equation in the $xy$-plane for the given system?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$(r, -\\frac{7r}{5} + \\frac{6}{5})$", "B": "$(r, \\frac{5r}{7} + \\frac{6}{7})$", "C": "$(\\frac{r}{4} + 6, -\\frac{r}{4} + 24)$", "D": "$(-\\frac{7r}{5} + \\frac{6}{5}, r)$"},
+                    "correctAnswer": "D"
+                }
+            ]
+        },
+        {
+            "sectionName": "Module 2",
+            "questions": [
+                {
+                    "questionText": "The shaded region shown represents solutions to an inequality. The boundary line passes through $(8, -4)$ and $(6, 0)$. The shaded region is above the boundary line. Which ordered pair $(x,y)$ is a solution to this inequality?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$(-8, 0)$", "B": "$(0, 8)$", "C": "$(0, -8)$", "D": "$(8, 0)$"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "$-4x(7x + p) = 63$<br>In the given equation, $p$ is an integer constant. The equation has no real solution. What is the least possible value of $p$?",
+                    "question_type": "spr",
+                    "correctAnswer": "-20"
+                },
+                {
+                    "questionText": "In the right triangle shown, one acute angle is $36^\\circ$ and the other is $a^\\circ$. What is the value of $a$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "36", "B": "54", "C": "90", "D": "126"},
+                    "correctAnswer": "B"
+                },
+                {
+                    "questionText": "$y = 6x + 16$<br>$-7x - y = 36$<br>What is the solution $(x, y)$ to the given system of equations?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$(-4, -8)$", "B": "$(-\\frac{20}{13}, -\\frac{80}{13})$", "C": "$(4, 40)$", "D": "$(20, 136)$"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "A parabola in the $xy$-plane has a vertex of $(1, 35)$. The equation $y = -ax^2 + bx + c$ represents this parabola, where $a, b$, and $c$ are positive integer constants. What is the greatest possible value of $b$?",
+                    "question_type": "spr",
+                    "correctAnswer": "68"
+                },
+                {
+                    "questionText": "Which expression is equivalent to $4(x^2 + 6)$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$4x^2 + 24$", "B": "$4x^2 + 10$", "C": "$4x^2 + 6$", "D": "$4x^2 - 2$"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "Raheem bought 9 shirts that were each the same price. He used a coupon for $54 off the entire purchase. The cost for the entire purchase after using the coupon was $108. What was the original price, in dollars, for 1 shirt?",
+                    "question_type": "spr",
+                    "correctAnswer": "18"
+                },
+                {
+                    "questionText": "The exponential function $f$ is defined by $f(x) = ab^x$, where $a$ and $b$ are positive constants. If $f(s) = t$ and $f(s + 1) = t - 0.80t$, where $s$ and $t$ are constants, what is the value of $b$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "0.20", "B": "0.80", "C": "1.20", "D": "1.80"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "$g(m) = -0.05m + 12.4$<br>The given function $g$ models the number of gallons of gasoline that remains from a full gas tank in a car after driving $m$ miles. According to the model, about how many gallons of gasoline are used to drive each mile?",
+                    "question_type": "mcq",
+                    "choices": {"A": "0.05", "B": "12.4", "C": "20", "D": "248.0"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "How many solutions does the equation $7x - 19 = 19 - 7x$ have?",
+                    "question_type": "mcq",
+                    "choices": {"A": "Zero", "B": "Exactly one", "C": "Exactly two", "D": "Infinitely many"},
+                    "correctAnswer": "B"
+                },
+                {
+                    "questionText": "$f(x) = 5x^2 + 60x + 181$<br>The function $g$ is defined by $g(x) = f(x + 8)$. What is the minimum value of $g(x)$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "-14", "B": "-6", "C": "1", "D": "9"},
+                    "correctAnswer": "C"
+                },
+                {
+                    "questionText": "$f(x) = (x - 4)^2 + 11$<br>What is the minimum value of the given function?",
+                    "question_type": "mcq",
+                    "choices": {"A": "4", "B": "7", "C": "11", "D": "15"},
+                    "correctAnswer": "C"
+                },
+                {
+                    "questionText": "In the figure shown, line $r$ is parallel to line $s$, and both lines are intersected by line $t$. Angle $x^\\circ$ and angle $y^\\circ$ are supplementary interior angles. If $x = 2w + 22, y = 6w + 27$, and $8w = a$, where $a$ is a constant, what is the value of $a$?",
+                    "question_type": "spr",
+                    "correctAnswer": "131"
+                },
+                {
+                    "questionText": "Each side of square $A$ has a length of 13 inches. Each side of square $A$ is multiplied by a scale factor of 3 to create square $B$. What is the length, in inches, of each side of square $B$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "39", "B": "16", "C": "13", "D": "10"},
+                    "correctAnswer": "A"
+                },
+                {
+                    "questionText": "Cylinder $A$ and cylinder $B$ are each right circular cylinders with a radius of 3 inches. The height of cylinder $A$ is half the height of cylinder $B$, and the total surface area of cylinder $A$ is $96\\pi$ square inches. If the cylinders are glued together along a circular base, what is the height, in inches, of the resulting cylinder?",
+                    "question_type": "mcq",
+                    "choices": {"A": "6", "B": "13", "C": "26", "D": "39"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "$6(x - 4) = (x - 4) + 6$<br>If $x$ is the solution to the given equation, what is the value of $x - 4$?",
+                    "question_type": "spr",
+                    "correctAnswer": "1.2"
+                },
+                {
+                    "questionText": "In triangle $ABC$ and triangle $DEF$, sides $AB$ and $DE$ each have a side length of 10 inches, and angles $A$ and $D$ each have an angle measure of $40^\\circ$. Which of the following additional pieces of information is(are) sufficient to prove whether triangle $ABC$ is congruent to triangle $DEF$?<br>I. The measures of angles $B$ and $C$ are equal.<br>II. The lengths of sides $AC$ and $DF$ are equal.<br>III. The lengths of sides $BC$ and $EF$ are equal.",
+                    "question_type": "mcq",
+                    "choices": {"A": "I is sufficient, but II and III are not.", "B": "II is sufficient, but I and III are not.", "C": "III is sufficient, but I and II are not.", "D": "II is sufficient and III is sufficient, but I is not."},
+                    "correctAnswer": "B"
+                },
+                {
+                    "questionText": "The graph of a system of two linear equations is shown. The intersection point is $(-2, 1)$. The solution to the system is $(x,y)$. What is the value of $y$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "-5", "B": "-2", "C": "1", "D": "3"},
+                    "correctAnswer": "C"
+                },
+                {
+                    "questionText": "The bar graph shows the frequency of each data value in a data set. The bar for data value 2 has a frequency of 6. What is the frequency of data value 2 in this data set?",
+                    "question_type": "spr",
+                    "correctAnswer": "6"
+                },
+                {
+                    "questionText": "On average, a certain tree grows 69 centimeters every $m$ months. At this rate, which expression represents the number of centimeters, on average, the tree grows every $k$ years?",
+                    "question_type": "mcq",
+                    "choices": {"A": "$\\frac{23m}{4k}$", "B": "$\\frac{23k}{4m}$", "C": "$\\frac{828m}{k}$", "D": "$\\frac{828k}{m}$"},
+                    "correctAnswer": "D"
+                },
+                {
+                    "questionText": "The expression $7x^6 + 9x^6 - 8x^6$ is equivalent to $bx^6$, where $b$ is a constant. What is the value of $b$?",
+                    "question_type": "spr",
+                    "correctAnswer": "8"
+                },
+                {
+                    "questionText": "$q(x) = 21(3^x)$<br>Which table gives three values of $x$ and their corresponding values of $q(x)$ for function $q$?",
+                    "question_type": "mcq",
+                    "choices": {"A": "x=-1, q(x)=7; x=0, q(x)=21; x=1, q(x)=63", "B": "x=-1, q(x)=1/7; x=0, q(x)=21; x=1, q(x)=63", "C": "x=-1, q(x)=1/7; x=0, q(x)=3; x=1, q(x)=63", "D": "x=-1, q(x)=-63; x=0, q(x)=0; x=1, q(x)=63"},
+                    "correctAnswer": "A"
+                }
+            ]
+        }
+    ]
+}
+
+with open("exam1.json", "w", encoding="utf-8") as f:
+    json.dump(exam, f, indent=2, ensure_ascii=False)

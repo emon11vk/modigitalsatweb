@@ -1,0 +1,429 @@
+{
+  "examTitle": "Digital SAT Exam 3",
+  "durationMinutes": 64,
+  "subject": "Math",
+  "sections": [
+    {
+      "sectionName": "Module 1",
+      "questions": [
+        {
+          "questionText": "$x = 7$<br>$x + 3y = 19$<br>The solution to the given system of equations is $(x, y)$. What is the value of $y$?",
+          "question_type": "spr",
+          "correctAnswer": "4"
+        },
+        {
+          "questionText": "Which expression is equivalent to $(6t^4 - 3t^2 + 3t - 6) - (2t^4 - 4t^3 + 6t^2 - 6)$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$4t^4 + 4t^3 - 9t^2 + 3t - 12$",
+            "B": "$4t^4 + 4t^3 - 9t^2 + 3t$",
+            "C": "$4t^4 + t^3 + 9t - 12$",
+            "D": "$4t^4 + t^3 + 3t$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "In right triangle ABC, angles A and B are acute, side AC has a length of 28.2, and $\\tan(B) = \\frac{1}{3}$. What is the length of side BC, rounded to the nearest tenth?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "795.2",
+            "B": "84.6",
+            "C": "9.4",
+            "D": "5.3"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "During a physics experiment, the speed of an object was determined to be 145.0 inches per second. What is this speed in feet per second? (12 inches = 1 foot)",
+          "question_type": "spr",
+          "correctAnswer": "12.08"
+        },
+        {
+          "questionText": "Cylinder $A$ and cylinder $B$ are each right circular cylinders with a radius of 3 inches. The height of cylinder $A$ is half the height of cylinder $B$, and the total surface area of cylinder $A$ is $96\\pi$ square inches. If the cylinders are glued together along a circular base, what is the height, in inches, of the resulting cylinder?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "6",
+            "B": "13",
+            "C": "26",
+            "D": "39"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "The cost of renting a piece of construction equipment for up to 10 days is $370 for the first day and $185 for each additional day. Which of the following equations gives the cost $y$, in dollars, of renting the equipment for $x$ days, where $x$ is a positive integer and $x \\leq 10$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$y = 370x - 185$",
+            "B": "$y = 185x + 185$",
+            "C": "$y = 185x + 370$",
+            "D": "$y = 370x + 185$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "A newspaper stand sells magazines for $5 each and newspapers for $2 each. The stand needs to sell $m$ magazines and $n$ newspapers for a combined total value of at least $150 each day to cover operational costs. Which inequality represents this situation?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$5m + 2n \\leq 150$",
+            "B": "$5m + 2n \\geq 150$",
+            "C": "$7mn \\leq 150$",
+            "D": "$7mn \\geq 150$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "For a survey, a sample of 1,018 people was selected at random from all registered voters in a county. Based on the survey, it is estimated that 66% of all registered voters in the county are in favor of a new law, with an associated margin of error of 2.91%. Which of the following best describes the plausible values for the percent of all registered voters in the county who are in favor of the new law?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "Any value greater than 63.09% and less than 68.91%",
+            "B": "Any value greater than 63.09%",
+            "C": "Any value less than 63.09% or greater than 68.91%",
+            "D": "Any value less than 68.91%"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "Line $k$ is defined by $y = 7x + \\frac{1}{4}$. Line $j$ is perpendicular to line $k$ in the $xy$-plane. What is the slope of line $j$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "-4",
+            "B": "$-\\frac{1}{7}$",
+            "C": "$\\frac{1}{4}$",
+            "D": "7"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "$\\sqrt{k - x} = 57 - x$<br>In the given equation, $k$ is a constant. The equation has exactly one real solution. What is the minimum possible value of $4k$?",
+          "question_type": "spr",
+          "correctAnswer": "227"
+        },
+        {
+          "questionText": "In the given scatterplot, a line of best fit for the data is shown. Which of the following is closest to the slope of this line of best fit?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "-7",
+            "B": "-0.7",
+            "C": "0.7",
+            "D": "7"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "A right rectangular prism has a length of 26 centimeters (cm), a width of 16 cm, and a height of 14 cm. What is the surface area, in square centimeters, of the right rectangular prism?",
+          "question_type": "spr",
+          "correctAnswer": "2008"
+        },
+        {
+          "questionText": "$x(r - 7) + 3 = 19x + 25$<br>In the given equation, $r$ is a positive integer. If the given equation has exactly one solution, what CANNOT be the value of $r$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "3",
+            "B": "7",
+            "C": "22",
+            "D": "26"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "Which expression is equivalent to $7x^2 + 8x$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$x(7x + 8)$",
+            "B": "$7x(x + 8)$",
+            "C": "$8x(7x + 1)$",
+            "D": "$x^2(7x + 8)$"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "While the mass of an object is the same everywhere, the weight of an object is not the same on different planets. An object has a weight of 130.00 pounds on Earth and a weight of 138.58 pounds on Saturn. The object's weight on Jupiter is 252.8% of its weight on Earth. If the object's weight on Saturn is $x\\%$ of its weight on Jupiter, which of the following is closest to the value of $x$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "42.17",
+            "B": "69.76",
+            "C": "269.48",
+            "D": "328.64"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "A data set of the orbital periods, rounded to the nearest whole number of Earth days, for 13 of Jupiter's moons is represented in the dot plot. An additional moon with an orbital period of 621 days is added to the original data set to create a new data set of 14 orbital periods. Which statement best compares the mean and median of the new data set to the mean and median of the original data set?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "The mean of the new data set is equal to the mean of the original data set, and the median of the new data set is equal to the median of the original data set.",
+            "B": "The mean of the new data set is equal to the mean of the original data set, and the median of the new data set is less than the median of the original data set.",
+            "C": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is less than the median of the original data set.",
+            "D": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is equal to the median of the original data set."
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "The table shows the distribution of people in a certain city by age group.<br>Less than 18: 27%<br>18-40: 24%<br>41-65: 28%<br>Greater than 65: 21%<br>If a person in this city is selected at random, which of the following is closest to the probability of selecting a person who is greater than 65 years old, given that the person is at least 18 years old?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "0.21",
+            "B": "0.29",
+            "C": "0.43",
+            "D": "0.73"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "Circle A in the $xy$-plane has the equation $(x + 9)^2 + (y - 9)^2 = 4$. Circle B has the same center as circle A. The radius of circle B is two times the radius of circle A. The equation defining circle B in the $xy$-plane is $(x + 9)^2 + (y - 9)^2 = k$, where $k$ is a constant. What is the value of $k$?",
+          "question_type": "spr",
+          "correctAnswer": "16"
+        },
+        {
+          "questionText": "In the figure, $\\overline{LQ}$ intersects $\\overline{MP}$ at point $R$, and $\\overline{LM}$ is parallel to $\\overline{PQ}$. The lengths of $\\overline{MR}$, $\\overline{LR}$, and $\\overline{RP}$ are 9, 10, and 19, respectively. What is the length of $\\overline{LQ}$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$\\frac{280}{19}$",
+            "B": "$\\frac{190}{9}$",
+            "C": "$\\frac{271}{9}$",
+            "D": "$\\frac{280}{9}$"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "A district school board in a certain state is proposing a change to the time school starts for all high schools in the district. A sample of 353 high school students was selected at random from all high school students in the district. The selected students were asked whether they approved of the proposed change, and 300 students responded that they did not approve. Which of the following is the largest population to which the results of the survey can be generalized?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "All high school students in the district",
+            "B": "The 353 students who were surveyed",
+            "C": "The 300 students who responded that they did not approve of the proposed change",
+            "D": "All high school students in the state"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "The function $f$ is defined by $f(x) = \\frac{x^2 + ax + b}{2x + c}$, where $a, b,$ and $c$ are constants. The graph of the function $f$ in the $xy$-plane, where $y = f(x)$, does not intersect the line $x = 5$. If $f(7) = f(9) = 0$, what is the value of $a + b + c$?",
+          "question_type": "spr",
+          "correctAnswer": "37"
+        },
+        {
+          "questionText": "$y \\geq x + 6$<br>$y \\leq -3x - 6$<br>Which point $(x, y)$ is a solution to the given system of inequalities in the $xy$-plane?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$(-4, 5)$",
+            "B": "$(-4, 1)$",
+            "C": "$(-2, 5)$",
+            "D": "$(-2, 1)$"
+          },
+          "correctAnswer": "A"
+        }
+      ]
+    },
+    {
+      "sectionName": "Module 2",
+      "questions": [
+        {
+          "questionText": "The number $b$ is 15 more than half of the number $a$. Which equation represents the relationship between $a$ and $b$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$b = 30a$",
+            "B": "$b = 15a + 2$",
+            "C": "$b = \\frac{a}{15} + 2$",
+            "D": "$b = \\frac{a}{2} + 15$"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "A researcher investigated two species of mites: a predator and its prey. At the start of a week, there was an equal number of the two species. At the end of the week, the number of prey had increased by 2400% of the number of prey at the start of the week, and the number of predators had increased by 450% of the number of predators at the start of the week. The number of predators at the end of the week was $p\\%$ less than the number of prey at the end of the week. What is the value of $p$?",
+          "question_type": "spr",
+          "correctAnswer": "78"
+        },
+        {
+          "questionText": "A community organization surveyed a random sample of residents of the community to estimate the percentage of residents who visit their local library at least once per month. From the survey, the organization estimates that 12% of residents of the community visit their local library at least once per month, with an associated margin of error of 3.7%. The organization repeated the survey with a random sample of residents that was double the original sample size. Assuming the margins of error are calculated in the same way for both studies, which of the following is true about the margin of error associated with the estimate from the larger sample?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "The margin of error is 2.4%.",
+            "B": "The margin of error is 7.4%.",
+            "C": "The margin of error is greater than 12%.",
+            "D": "The margin of error is less than 3.7%."
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "An exponential function $h$ estimates the number of people in attendance at a festival $x$ minutes after the start of the festival. The function estimates that there were 47 people in attendance at the start of the festival. The function also estimates that every 25 minutes for the first 150 minutes of the festival, the number of people in attendance increased by 133% of the number of people in attendance 25 minutes earlier. Which function defines $h$, where $x \\leq 150$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$h(x) = 47(1.33)^{\\frac{x}{25}}$",
+            "B": "$h(x) = 47(1.33)^{x+25}$",
+            "C": "$h(x) = 47(2.33)^{\\frac{x}{25}}$",
+            "D": "$h(x) = 47(2.33)^{x+25}$"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "In the $xy$-plane, an equation of circle A is $(x - 2)^2 + (y - 3)^2 = 9$. Circle B has the same center as circle A but has a radius that is twice the radius of circle A. Which equation represents circle B?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$(x - 2)^2 + (y - 3)^2 = 18$",
+            "B": "$(x - 2)^2 + (y - 3)^2 = 36$",
+            "C": "$(x - 2)^2 + (y - 3)^2 = 54$",
+            "D": "$(x - 2)^2 + (y - 3)^2 = 81$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "The edge length, in inches, of cube Y is $\\frac{3}{86}$ the edge length, in inches, of cube X. The surface area, in square inches, of cube Y is $n$ times the surface area, in square inches, of cube X. What is the value of $n$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$\\frac{9}{7396}$",
+            "B": "$\\frac{27}{3608}$",
+            "C": "$\\frac{3}{86}$",
+            "D": "$\\frac{9}{43}$"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "$(x - 2) - 8(y + 3) = 123$<br>$(x - 2) + 8(y + 3) = 432$<br>The solution to the given system of equations is $(x, y)$. What is the value of $10(x - 2)$?",
+          "question_type": "spr",
+          "correctAnswer": "2775"
+        },
+        {
+          "questionText": "The gas mileage of a certain car is 35 miles per gallon when driven on the highway. If the car begins with 10 gallons of gas in the tank, which function predicts the amount of gas remaining in the tank, $f(d)$, after the car is driven $d$ miles on the highway?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$f(d) = \\frac{d}{35} - 10$",
+            "B": "$f(d) = d - 10$",
+            "C": "$f(d) = 10 - \\frac{d}{35}$",
+            "D": "$f(d) = 10 - d$"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "Scientists collected fallen acorns that each housed a colony of the ant species P. ohioensis and analyzed each colony's structure. For any of these colonies, if the colony has $x$ worker ants, the equation $y = 0.67x + 2.6$, where $20 \\leq x \\leq 110$, gives the predicted number of larvae, $y$, in the colony. If one of these colonies has 53 worker ants, which of the following is closest to the predicted number of larvae in the colony?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "173",
+            "B": "75",
+            "C": "56",
+            "D": "38"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "The graph of a system of a linear and a quadratic equation is shown. The linear equation passes through $(-1, 2)$ and $(1, -2)$. The quadratic equation has a vertex at $(0, -7)$ and passes through $(1, -6)$. Which system of equations is represented by the graph?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$y = -2x$<br>$y = x^2 + 7$",
+            "B": "$y = -2x$<br>$y = x^2 - 7$",
+            "C": "$y = 2x$<br>$y = x^2 + 7$",
+            "D": "$y = 2x$<br>$y = x^2 - 7$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "A choir of 48 singers has 12 members who sing bass. If one singer from the choir is selected at random, what is the probability of selecting a singer who sings bass?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$\\frac{1}{48}$",
+            "B": "$\\frac{12}{48}$",
+            "C": "$\\frac{36}{48}$",
+            "D": "$\\frac{48}{48}$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "In the $xy$-plane, circle F is defined by the equation $(x + 7)^2 + (y + 7)^2 = 36$. Circle G has the same center as circle F, and the radius of circle G is 2 units greater than the radius of circle F. Circle G is defined by the equation $(x + 7)^2 + (y + 7)^2 = p$, where $p$ is a constant. What is the value of $p$?",
+          "question_type": "spr",
+          "correctAnswer": "64"
+        },
+        {
+          "questionText": "$\\frac{1}{3}(x + 6) - \\frac{1}{2}(x + 6) = -8$<br>What value of $x$ is the solution to the given equation?",
+          "question_type": "spr",
+          "correctAnswer": "42"
+        },
+        {
+          "questionText": "In the $xy$-plane, which of the following does NOT contain any points that are part of the solution set to $3x - 8y > 24$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "The region where $x < 0$ and $y > 0$",
+            "B": "The region where $x < 0$ and $y < 0$",
+            "C": "The region where $x > 0$ and $y > 0$",
+            "D": "The x-axis"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "The table shows three values of $x$ and their corresponding values of $y$, where $s$ is a constant. There is a linear relationship between $x$ and $y$. Which of the following equations represents this relationship?<br>x=-2s, y=17<br>x=-s, y=14<br>x=s, y=8",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$sx + 3y = 11s$",
+            "B": "$3x + sy = 11s$",
+            "C": "$3x + sy = 11$",
+            "D": "$sx + 3y = 11$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "For a study, a group of chipmunks will be selected from a habitat consisting of 220 chipmunks, and a group of prairie dogs will be selected from a habitat consisting of 190 prairie dogs. Some of the chipmunks and prairie dogs will be in a treatment group, and some of the chipmunks and prairie dogs will be in a control group. Which of the following is necessary for this study to attempt to establish a cause-and-effect relationship between two variables?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "The number of chipmunks in the treatment group is equal to the number of prairie dogs in the treatment group, and the number of chipmunks in the control group is equal to the number of prairie dogs in the control group.",
+            "B": "The chipmunks and the prairie dogs are randomly assigned to the treatment and control groups.",
+            "C": "The chipmunks and the prairie dogs are randomly selected from their respective habitats.",
+            "D": "The average age of the chipmunks in the treatment group is equal to the average age of the prairie dogs in the treatment group, and the average age of the chipmunks in the control group is equal to the average age of the prairie dogs in the control group."
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "$104x + 78y = 65$<br>One of the equations in a system of two linear equations is given. The system has infinitely many solutions. If the second equation in the system is written as $Ax + By = C$, where $A, B$, and $C$ are constants, what is the value of $\\frac{A + C}{B}$?",
+          "question_type": "spr",
+          "correctAnswer": "13/6"
+        },
+        {
+          "questionText": "An object's speed is increasing at a rate of 10.7 meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (Use 1 mile = 1,609 meters.)",
+          "question_type": "mcq",
+          "choices": {
+            "A": "0.4",
+            "B": "23.9",
+            "C": "150.4",
+            "D": "286.9"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "In the figure, line $q$ is parallel to line $r$, and both lines are intersected by line $s$. An acute angle between $s$ and $q$ is $61^\\circ$. The corresponding acute angle between $s$ and $r$ is $y^\\circ$. If $y = 2x + 9$, what is the value of $x$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "26",
+            "B": "35",
+            "C": "55",
+            "D": "65"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "Data sets A and B each consist of 6 values as shown, where $h$ is a constant. If the standard deviation of data set A is greater than the standard deviation of data set B, which of the following could be the value of $h$?<br>Dataset A: 8, 11, 12, 15, 21, 27<br>Dataset B: 9, 12, 13, 16, 22, $h$<br><br>I. 23<br>II. 28<br>III. 29",
+          "question_type": "mcq",
+          "choices": {
+            "A": "I only",
+            "B": "II only",
+            "C": "III only",
+            "D": "II or III"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "Which expression is equivalent to $\\sqrt[12]{x^5y^5}$, where $x$ and $y$ are positive?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$(xy)^{\\frac{12}{5}}$",
+            "B": "$(xy)^{\\frac{5}{12}}$",
+            "C": "$(xy)^{17}$",
+            "D": "$(xy)^{60}$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "If the perimeter of an equilateral triangle with a height of 21 is $a\\sqrt{3}$, what is the value of $a$?",
+          "question_type": "spr",
+          "correctAnswer": "42"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "examTitle": "Digital SAT Exam 2",
+  "durationMinutes": 64,
+  "subject": "Math",
+  "sections": [
+    {
+      "sectionName": "Module 1",
+      "questions": [
+        {
+          "questionText": "A right square prism has a height of 9 units. The volume of the prism is 324 cubic units. What is the length, in units, of an edge of the base?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "18",
+            "B": "9",
+            "C": "6",
+            "D": "36"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "In the given expression $\\sqrt[5]{x^m}$, $m$ is a constant and $x > 1$. The expression can be rewritten as $x$. What is the value of $m$?",
+          "question_type": "spr",
+          "correctAnswer": "5"
+        },
+        {
+          "questionText": "$f = \\frac{(10x)^2}{7g}$<br>The given equation relates the positive numbers $f, x$, and $g$. Which equation correctly expresses $x$ in terms of $f$ and $g$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$x = \\frac{\\sqrt{7fg}}{10}$",
+            "B": "$x = 10\\sqrt{7fg}$",
+            "C": "$x = \\sqrt{\\frac{7fg}{10}}$",
+            "D": "$x = \\sqrt{7fg} - 10$"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "The function $f$ is defined by $f(x) = 4\\sqrt{x}$. For what value of $x$ does $f(x) = 28$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "4",
+            "B": "7",
+            "C": "16",
+            "D": "49"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "$\\frac{1}{2}x + y = 42$<br>$\\frac{1}{2}x = 10$<br>The solution to the given system of equations is $(x,y)$. What is the value of $y$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "10",
+            "B": "32",
+            "C": "42",
+            "D": "84"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "$x^2 - 12x + c = 0$<br>In the given equation, $c$ is a constant. The equation has no real solutions if $c > n$. What is the least possible value of $n$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "-36",
+            "B": "-12",
+            "C": "12",
+            "D": "36"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "$a(4x - 8) + 5a = 4(ax - 2a) - 20$<br>In the given equation, $a$ is a constant. The equation has infinitely many solutions. What are all possible values of $a$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "-4 only",
+            "B": "0 only",
+            "C": "Any real number",
+            "D": "No real number"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "$r^2 + qr = 2r - 69$<br>In the given equation, $q$ is an integer constant. The given equation has no real solutions. What is the largest possible value of $q$?",
+          "question_type": "spr",
+          "correctAnswer": "18"
+        },
+        {
+          "questionText": "A line intersects two parallel lines, forming four acute angles and four obtuse angles. The measure of one of these eight angles is $(7x - 250)^\\circ$. The sum of the measures of four of the eight angles is $k^\\circ$. Which of the following could NOT be equivalent to $k$, for all values of $x$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$-14x + 1,540$",
+            "B": "$14x - 320$",
+            "C": "$-28x + 1,720$",
+            "D": "$360$"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "$x + 5y = 5$<br>$x - 5y = 3$<br>The solution to the given system of equations is $(x, y)$. What is the value of $x$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "0.8",
+            "B": "4",
+            "C": "5",
+            "D": "8"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "$(x - 2) - 8(y + 3) = 123$<br>$(x - 2) + 8(y + 3) = 432$<br>The solution to the given system of equations is $(x, y)$. What is the value of $10(x - 2)$?",
+          "question_type": "spr",
+          "correctAnswer": "2775"
+        },
+        {
+          "questionText": "The number of muskrat in a 131-acre area is estimated to be 2,096. What is the estimated population density, in muskrat per acre, of this area?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "16",
+            "B": "131",
+            "C": "147",
+            "D": "2,112"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "Which of the following expressions has a factor of $x + 2b$, where $b$ is a positive integer constant?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$3x^2 + 5x + 10b$",
+            "B": "$3x^2 + 26x + 10b$",
+            "C": "$3x^2 + 42x + 10b$",
+            "D": "$3x^2 + 47x + 10b$"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "The graph of $y = f(x)$ is shown, where $f(x) = ab^x + c$, and $a, b,$ and $c$ are constants. The horizontal asymptote is at $y=-8$ and the graph crosses the x-axis exactly once. For how many values of $x$ does $f(x) = 0$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "Three",
+            "B": "Two",
+            "C": "One",
+            "D": "Zero"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "The scatterplot shows the relationship between two variables, $x$ and $y$. A line of best fit for the data is also shown. For how many of the 9 data points is the actual $y$-value less than the $y$-value predicted by the line of best fit?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "2",
+            "B": "4",
+            "C": "5",
+            "D": "7"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "The function $f(x) = 236(1.022)^x$ models the value, in dollars, of a certain bank account from 1958 through 1973, where $x$ is the number of years after the end of 1958. Which of the following is the best interpretation of $f(5)$ is approximately equal to 263 in this context?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "The value of the bank account is estimated to increase by approximately 263 dollars every 5 years between the end of 1958 and the end of 1973.",
+            "B": "The value, in dollars, of the bank account is estimated to be approximately 5 times greater at the end of 1963 than at the end of 1958.",
+            "C": "The value of the bank account is estimated to be approximately 5 dollars greater at the end of 1963 than at the end of 1958.",
+            "D": "The value of the bank account is estimated to be approximately 263 dollars at the end of 1963."
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "A line in the $xy$-plane has a slope of $-1/4$ and passes through the point $(0, 19)$. Which equation represents this line?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$y = -\\frac{1}{4}x - 19$",
+            "B": "$y = -\\frac{1}{4}x + 19$",
+            "C": "$y = \\frac{1}{4}x - 19$",
+            "D": "$y = \\frac{1}{4}x + 19$"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "For the function $h$, the table gives three values of $x$ and their corresponding values of $h(x)$. Which equation could define $h$? <br> $x=0, h(x)=30$<br>$x=1, h(x)=31$<br>$x=2, h(x)=33$",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$h(x) = 2^x$",
+            "B": "$h(x) = 2^x + 2$",
+            "C": "$h(x) = 2^x + 28$",
+            "D": "$h(x) = 2^x + 29$"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "Which expression is a factor of $2x^2 + 30x + 8$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "2",
+            "B": "4x",
+            "C": "30x",
+            "D": "$2x^2$"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "$x^2 = 2,601$<br>How many distinct real solutions does the given equation have?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "Zero",
+            "B": "Exactly one",
+            "C": "Exactly two",
+            "D": "Infinitely many"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "The function $f$ is a quadratic function. In the $xy$-plane, the graph of $y = f(x)$ has a vertex at $(1, 7)$ and passes through the points $(2, 43)$ and $(-1, 151)$. What is the value of $f(-2) - f(0)$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "115",
+            "B": "187",
+            "C": "288",
+            "D": "331"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "$R = \\frac{0.36 l}{A}$<br>The given equation relates the resistance $R$, in ohms, of a wire to its length $l$, in meters, and its cross-sectional area $A$, in square meters. Which equation correctly expresses the length, in meters, of the wire in terms of its resistance, in ohms, and its cross-sectional area, in square meters?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$l = \\frac{R - A}{0.36}$",
+            "B": "$l = \\frac{R + A}{0.36}$",
+            "C": "$l = \\frac{0.36 R}{A}$",
+            "D": "$l = \\frac{A R}{0.36}$"
+          },
+          "correctAnswer": "D"
+        }
+      ]
+    },
+    {
+      "sectionName": "Module 2",
+      "questions": [
+        {
+          "questionText": "There are 450 objects in a box. Of these objects, 8% are spheres. How many spheres are in the box?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "8",
+            "B": "36",
+            "C": "180",
+            "D": "442"
+          },
+          "correctAnswer": "B"
+        },
+        {
+          "questionText": "$(2x - 7)^2 - 8(2x - 7) + 15 = 0$<br>What is a solution to the given equation?",
+          "question_type": "spr",
+          "correctAnswer": "5"
+        },
+        {
+          "questionText": "The function $f$ gives the product of a number, $x$, and a number that is 7 more than $x$. Which equation defines $f$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$f(x) = x^2 + x + 7$",
+            "B": "$f(x) = x^2 + 7$",
+            "C": "$f(x) = x^2 + 7x$",
+            "D": "$f(x) = x^2 + 7x + 7$"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "In triangle $QRS$ shown, angle $R = 90^\\circ$ and $QR < RS$. $RS = 17$. Which expression represents the length of $QS$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$17 \\cos Q$",
+            "B": "$17 \\sin Q$",
+            "C": "$\\frac{17}{\\cos Q}$",
+            "D": "$\\frac{17}{\\sin Q}$"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "A rectangle has a length that is 31 times its width. The function $y = (31w)(w)$ represents this situation, where $y$ is the area, in square feet, of the rectangle and $y > 0$. Which of the following is the best interpretation of $31w$ in this context?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "The length of the rectangle, in feet",
+            "B": "The area of the rectangle, in square feet",
+            "C": "The difference between the length and the width of the rectangle, in feet",
+            "D": "The width of the rectangle, in feet"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "For the linear function $f$, the graph of $y = f(x)$ in the $xy$-plane has a slope of 28 and passes through the point $(0, 0)$. The function $f$ is defined by $f(x) = ax$, where $a$ is a constant. What is the value of $a$?",
+          "question_type": "spr",
+          "correctAnswer": "28"
+        },
+        {
+          "questionText": "If $10 + \\frac{6(7 - x)}{5} = \\frac{4(7 - x)}{3}$, which equation must also be true?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$7 - x = 148$",
+            "B": "$7 - x = -75$",
+            "C": "$x - 7 = 148$",
+            "D": "$x - 7 = -75$"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "A bank account was opened with an initial deposit. Over the next several months, regular deposits were made into this account, and there were no withdrawals made during this time. The graph of the function $f$ shown, where $y = f(x)$, estimates the account balance, in dollars, in this bank account $x$ months since the initial deposit. The y-intercept of the graph is at $y=10$. To the nearest whole dollar, what is the amount of the initial deposit estimated by the graph?",
+          "question_type": "spr",
+          "correctAnswer": "10"
+        },
+        {
+          "questionText": "$P(t) = 67(\\frac{5}{4})^t$<br>A reindeer population was introduced into an area and researched for 19 years. Function $P$ models this reindeer population $t$ years after the population was introduced into the area. Which statement is the best interpretation of $\\frac{5}{4}$ in this context?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "For every 4 reindeer there were in this population in a certain year, it is predicted that there were 5 reindeer the next year.",
+            "B": "For every 5 reindeer there were in this population in a certain year, it is predicted that there were 4 reindeer the next year.",
+            "C": "It is predicted that this reindeer population grew by 4 reindeer every 5 years.",
+            "D": "It is predicted that this reindeer population grew by 5 reindeer every 4 years."
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "A quadratic model gives the predicted instantaneous rate of change, in bacteria per hour, of a bacteria population as a function of the population size. According to the model, the predicted instantaneous rate of change is 0 bacteria per hour for a population size of 0, and the maximum predicted instantaneous rate of change is 0.200 bacteria per hour for a population size of 7,000. Based on this model, what is the predicted instantaneous rate of change, in bacteria per hour, of the bacteria population for a population size of 700?",
+          "question_type": "spr",
+          "correctAnswer": "0.038"
+        },
+        {
+          "questionText": "$r + g < 39$<br>For which of the following tables are all the values of $r$ and their corresponding values of $g$ solutions to the given inequality?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "r=0, g=34; r=2, g=36; r=4, g=38",
+            "B": "r=0, g=34; r=2, g=38; r=4, g=36",
+            "C": "r=0, g=36; r=2, g=38; r=4, g=34",
+            "D": "r=0, g=38; r=2, g=36; r=4, g=34"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "In the $xy$-plane, the graph of the equation $(x - 6)^2 + (y - 2)^2 = 36$ is a circle. The point $(12, c)$, where $c$ is a constant, lies on this circle. What is the value of $c$?",
+          "question_type": "spr",
+          "correctAnswer": "2"
+        },
+        {
+          "questionText": "If $16 - 5(3 - 7x) = 4 - 6(3 - 7x)$, what is the value of $3 - 7x$?",
+          "question_type": "spr",
+          "correctAnswer": "-12"
+        },
+        {
+          "questionText": "$-16(5x - 2)^2 + 6(5x - 3)^2$<br>The given expression can be rewritten as $\\frac{a}{4}x^2 + \\frac{b}{4}x + \\frac{c}{4}$, where $a, b,$ and $c$ are constants. What is the value of $a + b + c$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "-480",
+            "B": "-240",
+            "C": "-120",
+            "D": "-30"
+          },
+          "correctAnswer": "A"
+        },
+        {
+          "questionText": "The table shows three values of $x$ and their corresponding values of $y$. There is a linear relationship between $x$ and $y$. What is the $x$-coordinate of the $x$-intercept of the graph that represents this linear relationship in the $xy$-plane?<br>x=2, y=-183/10<br>x=4, y=-171/10<br>x=7, y=-153/10",
+          "question_type": "spr",
+          "correctAnswer": "32.5"
+        },
+        {
+          "questionText": "Which expression is equivalent to $5xy(2x^2 + 6y)$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$7x^3y + 11xy^2$",
+            "B": "$10x^2y + 6y$",
+            "C": "$10x^2y + 30xy$",
+            "D": "$10x^3y + 30xy^2$"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "The ratio of $k$ to $p$ is constant. If $k = 4$, then $p = 3$. What is the value of $k$ when $p = 24$?",
+          "question_type": "spr",
+          "correctAnswer": "32"
+        },
+        {
+          "questionText": "The cost to rent a bus from Company X is $950 for the first 2 hours and an additional $50 per hour for each hour after the first 2 hours. If the total cost to rent the bus from Company X for $t$ hours, where $t > 2$, is $1,150, which equation represents this situation?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "$950(t - 2) + 50t = 1,150$",
+            "B": "$950(2t) + 50t = 1,150$",
+            "C": "$950 + 50(t - 2) = 1,150$",
+            "D": "$950 + 50(2t) = 1,150$"
+          },
+          "correctAnswer": "C"
+        },
+        {
+          "questionText": "The area of a triangle is equal to $x^2$ square centimeters. The length of the base of the triangle is $2x + 12.5$ centimeters, and the height of the triangle is $x - 5$ centimeters. What is the value of $x$?",
+          "question_type": "spr",
+          "correctAnswer": "25"
+        },
+        {
+          "questionText": "The table gives the perimeters of similar triangles $TUV$ and $XYZ$, where $TU$ corresponds to $XY$. The length of $TU$ is 16.<br>Triangle TUV Perimeter = 44<br>Triangle XYZ Perimeter = 352<br>What is the length of $XY$?",
+          "question_type": "mcq",
+          "choices": {
+            "A": "2",
+            "B": "16",
+            "C": "60",
+            "D": "128"
+          },
+          "correctAnswer": "D"
+        },
+        {
+          "questionText": "The function $f$ is defined by $f(x) = ab^{\\frac{x}{n}}$, where $a, b,$ and $n$ are constants, and $b$ and $n$ are integers. If $f(5) = 7$ and $f(8) = 189$, what is the value of $f(10)$?",
+          "question_type": "spr",
+          "correctAnswer": "1701"
+        },
+        {
+          "questionText": "The graph of $y = 6x^2 + bx + c$ is shown, where $b$ and $c$ are constants. The vertex is at $(1, -10)$. What is the value of $bc$?",
+          "question_type": "spr",
+          "correctAnswer": "48"
+        }
+      ]
+    }
+  ]
+}
